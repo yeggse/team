@@ -42,7 +42,6 @@ input{
 .div2{
   width: 500px;
   height: 700px;
-  border: 2px solid gray;
   padding: 40px;
   margin: auto;
 }
