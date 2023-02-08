@@ -6,12 +6,31 @@
 	<meta charset="UTF-8">
 	<script src="js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<title>[세잎] 메인페이지</title>
+	<title>[세잎] 업체군 리스트</title>
 </head>
 <style>
 	        * {
 	            font-family: 'Noto Sans KR', sans-serif;
 	        }
+	        
+	        /* ul li태그에 리스트 스타일을 없앰 */
+			ul li{
+				list-style: none;
+			}
+			/* a태그에 텍스트 밑줄을 없애고 색상을 #333 */
+			a {
+				text-decoration: none;
+				color:#333;
+			}
+		
+			/* menu태그 자식의 ul의 자식 li를 왼쪽정렬과 넓이 140설정 */
+			#menu > ul > li > ul {
+				width:130px;
+				display:none;
+				position: absolute;
+				font-size:14px;
+				background: skyblue;
+				}
 	        /* 점(.)으로 시작하는 아이 : html 파트에서 클래스(명)를 의미. */
 	        .div1 {
 	        	font-size: xxx-large;
@@ -34,8 +53,8 @@
 	            padding: 20px;	/* 안쪽 여백 */	/* padding-top: 50px 등으로 활용 */
 	        }
 	      .div3{
-	        margin-top: -20px;	/* 바깥쪽여백 */	
-	         margin-left: 600px;
+	        margin-top: 50px;	/* 바깥쪽여백 */	
+	         margin-left: 50px;
 	       }
 	      .div4{
 	        margin-top: 50px;	/* 바깥쪽여백 */	
@@ -43,91 +62,69 @@
 	      }
 	      
 	      input {
-	            width: 50%;
+	            width: 400px;
 	            margin-top: 0px;
-	            padding: 20px;
+	            padding: 10px;
 	            box-sizing: border-box;
 	            border-radius: 10px;
 	            border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
 	        }   
 	       #btn{
 		       background-color: #8FBC94;
-		       width: 100px;
-		       height: 60px;
+		       width: 80px;
+		       height: 40px;
 		       border-radius: 20px;
 		       border: solid 2px #8FBC94;
-		       font-size: x-large;
+		       font-size: large;
 		       color: white;
 		       padding: 0px;
 	       }
-	    #imgbtn1{
-		       width: 350px;
-		       height: 370px;
-		       border-radius: 20px;
-		       margin-right: 40px;
-		       padding: 0px;
-		       background: url("img/Mfood.png") no-repeat;
-	       }      
-	    #imgbtn2{
-		       width: 350px;
-		       height: 370px;
-		       border-radius: 20px;
-		       margin-right: 40px;
-		       padding: 0px;
-		       background: url("img/Mkor.PNG") no-repeat;
-	       }   
-	    #imgbtn3{
-		       width: 350px;
-		       height: 370px;
-		       border-radius: 20px;
-		       margin-right: 30px;
-		       padding: 0px;
-		       background: url("img/Mjap.PNG") no-repeat;
-	       }   
-	    #imgbtn4{
-		       width: 350px;
-		       height: 370px;
-		       border-radius: 20px;
-		       margin-right: 40px;
-		       padding: 0px;
-		       background: url("img/Mchi.PNG") no-repeat;
-	       }      
-	    #imgbtn5{
-		       width: 350px;
-		       height: 370px;
-		       border-radius: 20px;
-		       margin-right: 40px;
-		       padding: 0px;
-		       background: url("img/Masia.PNG") no-repeat;
-	       }   
-	    #imgbtn6{
-		       width: 350px;
-		       height: 370px;
-		       border-radius: 20px;
-		       margin-right: 30px;
-		       padding: 0px;
-		       background: url("img/Mwe.PNG") no-repeat;
-	       }   
 </style>
 
 <body>
 	<div id="app">
-	<div class="div1">지금 계신 장소가 어디신가요?</div>
-	<div class="div2">주변 식당에서 음식을 픽업해 가세요!</div>
 	<div class="div3">
-		<img src="img/point.PNG" width=80px height=100px>
-		<input type="text" placeholder="장소를 입력해 주세요"></input>
-		<button id="btn">조회</button>
-	</div>
-	<div class="div4">
-		<button id="imgbtn1"></button>
-		<button id="imgbtn2"></button>
-		<button id="imgbtn3"></button>
-	</div>
-	<div class="div4">
-		<button id="imgbtn4"></button>
-		<button id="imgbtn5"></button>
-		<button id="imgbtn6"></button>
+		<input type="text" placeholder="업종을 검색해 주세요"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
+		<button id="btn">검색</button>
+		<span>
+	<ul>
+		<li><a href="#">MENU1</a>
+			<ul>
+				<li><a href="#">SUB_MENU</a></li>
+				<li><a href="#">SUB_MENU2</a></li>
+				<li><a href="#">SUB_MENU3</a></li>
+			</ul>
+		</li>
+		<li><a href="#">MENU2</a>
+			<ul>
+				<li><a href="#">SUB_MENU</a></li>
+				<li><a href="#">SUB_MENU2</a></li>
+				<li><a href="#">SUB_MENU3</a></li>
+			</ul>
+		</li>
+		<li><a href="#">MENU3</a>
+			<ul>
+				<li><a href="#">SUB_MENU</a></li>
+				<li><a href="#">SUB_MENU2</a></li>
+				<li><a href="#">SUB_MENU3</a></li>
+			</ul>
+		</li>
+		<li><a href="#">MENU4</a>
+			<ul>
+				<li><a href="#">SUB_MENU</a></li>
+				<li><a href="#">SUB_MENU2</a></li>
+				<li><a href="#">SUB_MENU3</a></li>
+			</ul>
+		</li>
+		<li><a href="#">MENU5</a>
+			<ul>
+				<li><a href="#">SUB_MENU</a></li>
+				<li><a href="#">SUB_MENU2</a></li>
+				<li><a href="#">SUB_MENU3</a></li>
+			</ul>
+		</li>
+	</ul>
+		</span>
 	</div>
 		
 	   
