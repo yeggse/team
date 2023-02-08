@@ -8,25 +8,185 @@
   <title>JS Bin</title>
   <jsp:include page="/layout/header.jsp"></jsp:include>
 </head>
+
 <style>
-.table{
-  background: black;
-  color: white;
+body{
+     line-height:2em;        
+     font-family:"맑은 고딕";
+}
+ul, li{ 
+     list-style:none;
+     text-align:center;
+     padding:0;
+     margin:0;
+}
+#mainWrapper{
+     width: 800px;
+     margin: 0 auto; /*가운데 정렬*/
+     float: right;
+    }
+#mainWrapper > ul > li:first-child {
+     text-align: left;
+     font-size:32px;
+     height:40px;
+     vertical-align:middle;
+     line-height:30px;
+}
+#ulTable{
+	margin-top:10px;
+}
+#ulTable > li:first-child > ul > li {
+    background-color:#c9c9c9;
+    font-weight:bold;
+    text-align:center;
+}
+#ulTable > li > ul {
+    clear:both;
+    padding:0px auto;
+    position:relative;
+    min-width:40px;
+}
+#ulTable > li > ul > li { 
+    float:left;
+    font-size:10pt;
+    border-bottom:1px solid silver;
+    vertical-align:baseline;
+}    
+#ulTable > li > ul > li:first-child               	  {width:10%;} /*주문번호*/
+#ulTable > li > ul > li:first-child +li               {width:15%;} /*상호명*/
+#ulTable > li > ul > li:first-child +li+li            {width:15%;} /*메뉴*/
+#ulTable > li > ul > li:first-child +li+li+li         {width:15%;} /*시간*/
+#ulTable > li > ul > li:first-child +li+li+li+li      {width:10%;} /*결제금액*/
+#ulTable > li > ul > li:first-child +li+li+li+li+li	  {width:10%;} /*예약상태*/
+#ulTable > li > ul > li:first-child +li+li+li+li+li+li{width:10%;} /*상태변경*/
+#divPaging {
+     clear:both; 
+     margin:0 auto; 
+     width:220px; 
+     height:50px;
+}
+#divPaging > div {
+     float:left;
+     width: 30px;
+     margin:0 auto;
+     text-align:center;
+}
+#liSearchOption {
+	 clear:both;
+}
+#liSearchOption {
+     margin-left:180px; auto; 
+     width:auto; 
+     positio
+}
+.left {
+     text-align : left;
+}
+.btn{
+ 	 background:green;
+  	 color:white;
+ 	 border:none;
+ 	 width:66px;
 }
 </style>
+
 <body>
-<body>
-  <div class="table">
-    <table>aaaaaaaa</table>
-    <table>aaaaaaaa</table>
-    <table>aaaaaaaa</table>
-    <table>aaaaaaaa</table>
-    <table>aaaaaaaa</table>
-    <list>aaa</list>
-     <list>aaa</list>
-     <list>aaa</list>
-     <list>aaa</list>
-    
-  </div>
+<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+    <div id="mainWrapper">
+        <ul>
+            <!-- 게시판 제목 -->
+            <li>예약내역 </li>
+            
+             <!-- 검색 폼 영역 -->
+            <li id='liSearchOption'>
+                    <select id='selSearchOption' >
+                        <option value='A'>제목+내용</option>
+                        <option value='T'>제목</option>
+                        <option value='C'>내용</option>
+                    </select>
+                    <input id='txtKeyWord' />
+                    <input type='button' value='검색'/>
+                </li>
+
+            <!-- 게시판 목록  -->
+            <li>
+                <ul id ="ulTable">
+                    <li>
+                        <ul>
+                            <li>주문번호</li>
+                            <li>상호명</li>
+                            <li>메뉴</li>
+                            <li>시간</li>
+                            <li>결제금액</li>
+                            <li>예약상태</li>
+                            <li>상태변경</li>
+                        </ul>
+                    </li>
+                    
+                    <!-- 게시물이 출력될 영역 -->
+                    <li>
+                        <ul>
+                            <li>1</li>
+                            <li class="left">여기맛집</li>
+                            <li>후라이드치킨</li>
+                            <li>40분</li>
+                            <li>20000원</li>
+                            <li>예약완료</li>
+                            <li><button class="btn">예약취소</button></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul>
+                            <li>2</li>
+                            <li class="left">떡참잘</li>
+                            <li>짜장면</li>
+                            <li>30분</li>
+                            <li>미결제</li>
+                            <li>결제취소</li>
+                           <li><button class="btn">예약취소</button></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul>
+                            <li>3</li>
+                            <li class="left">기라성</li>
+                            <li>짬뽕</li>
+                            <li>14:40</li>
+                            <li>9000원</li>
+                            <li>예약완료</li>
+                           <li><button class="btn">예약취소</button></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul>
+                            <li>4</li>
+                            <li class="left">마라마라탕</li>
+                            <li>햄버거</li>
+                            <li>20분</li>
+                            <li>50000원</li>
+                            <li>예약완료</li>
+                           <li><button class="btn">예약취소</button></li>
+                        </ul>
+                    <li>                                        
+                </ul>
+            </li>
+
+            <!-- 게시판 페이징 영역 -->
+            <li>
+                <div id="divPaging">
+                    <div>◀</div>
+                       <div><b>1</b></div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>▶</div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </body>
-</html>
+</html>  

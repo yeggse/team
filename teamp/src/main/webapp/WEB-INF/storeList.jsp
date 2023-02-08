@@ -6,87 +6,20 @@
 	<meta charset="UTF-8">
 	<script src="js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	 <jsp:include page="/layout/header.jsp"></jsp:include>
 	<title>[세잎] 업체군 리스트</title>
 </head>
 <style>
 	        * {
 	            font-family: 'Noto Sans KR', sans-serif;
 	        }
-	        
-	        /* ul li태그에 리스트 스타일을 없앰 */
-			ul li{
-				list-style: none;
-			}
-			/* a태그에 텍스트 밑줄을 없애고 색상을 #333 */
-			a {
-				text-decoration: none;
-				color:#333;
-			}
-		
-/* 글자크기를 16px 맑은 고딕 굵게하고 width넓이 700, 높이 50만큼 배경색은 #ccc, 글자색은 검정색, 라인높이50px
-menu박스 가운데정렬, 글자가운데 정렬 */
-	#filter {
-		font:bold 16px "malgun gothic";
-		width:700px;
-		height:50px;
-		background: #ccc;
-		color:black;
-		line-height: 50px; 
-		margin:0 auto;
-		text-align: center;
-	}
 
-/* menu태그 자식의 ul의 자식 li를 왼쪽정렬과 넓이 140설정 */
-	#filter > ul > li {
-		float:left;
-		width:140px;
-		position:relative;
-	}
-#filter > ul > li > ul {
-		width:130px;
-		display:none;
-		position: absolute;
-		font-size:14px;
-		background: skyblue;
-	}
-	#filter > ul > li:hover > ul {
-		display:block;
-	}
-	
-#filter > ul > li > ul > li:hover {
-		background: orange;
-		transition: ease 1s;
-		}
 		
 	        /* 점(.)으로 시작하는 아이 : html 파트에서 클래스(명)를 의미. */
-	        .div1 {
-	        	font-size: xxx-large;
-	        	font-weight: bolder;
-	            margin-top: 100px;	/* 바깥쪽여백 */	
-	            margin-left: 750px;
-	            width: 800px;
-	            border-radius: 5px;	/* 모서리 둥글기 크기 */
-	            /* text-align: center; */
-	            padding: 20px;	/* 안쪽 여백 */	/* padding-top: 50px 등으로 활용 */
-	        }
-	        .div2 {
-	        	font-size: x-large;
-	        	font-weight: bold;
-	            margin-top: -25px;	/* 바깥쪽여백 */	
-	            margin-left: 850px;
-	            width: 600px;
-	            border-radius: 5px;	/* 모서리 둥글기 크기 */
-	            /* text-align: center; */
-	            padding: 20px;	/* 안쪽 여백 */	/* padding-top: 50px 등으로 활용 */
-	        }
-	      .div3{
-	        margin-top: 50px;	/* 바깥쪽여백 */	
-	         margin-left: 50px;
+	      .div1{
+	        margin-top: 70px;	/* 바깥쪽여백 */	
+	         margin-left: 100px;
 	       }
-	      .div4{
-	        margin-top: 50px;	/* 바깥쪽여백 */	
-	        margin-left: 500px;
-	      }
 	      
 	      input {
 	            width: 400px;
@@ -106,29 +39,64 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 		       color: white;
 		       padding: 0px;
 	       }
+	       #btnList{
+		       color: #8FBC94;
+		       font-weight: bold; 
+		       width: 80px;
+		       height: 40px;
+		       background-color: white;
+		       border-radius: 20px;
+		       border: white ;
+		       font-size: large;
+		       padding: 0px;
+	       }
 </style>
 
-<body>
+<body style="margin: 0px">
 	<div id="app">
-	<div class="div3">
-		<input type="text" placeholder="업종을 검색해 주세요"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
-		<button id="btn">검색</button>
-		<span id="filter">
-	<ul>
-		<li><a href="#">MENU1</a>
-			<ul>
-				<li><a href="#">SUB_MENU</a></li>
-				<li><a href="#">SUB_MENU2</a></li>
-				<li><a href="#">SUB_MENU3</a></li>
-			</ul>
-		</li>
-	</ul>
-	</span>
-		
-	</div>
-		
-	   
-	</div>
+		<div class="div1">
+			<button id="btnList">추천순</button>	<!--클릭되었을 경우, 색변화되도록 이벤트 넣기!!!  -->
+			<button id="btnList">재고순</button>	<!-- 선택순으로 리스트 출력하는 쿼리 생성 필요!! -->
+			<span style="margin-left: 1200px">
+				<input type="text" placeholder="업종을 검색해 주세요"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
+				<button id="btn">검색</button>
+			</span>
+		</div>
+		<div style="margin-top: 45px; margin-left: 150px; font-weight: bold; font-size: x-large;">
+			지금 픽업 가능한 음식점🍕
+	    </div>
+	    
+	    <div style="background-color: yellow; ">
+	    <!-- DB연결 후, 아래 링크 확인하고, 연동하기 -->
+	    <!-- https://velog.io/@dldldl1022/Spring%EA%B3%BC-vue%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9E%A5%EC%86%8C-%EB%AA%A9%EB%A1%9D-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0 -->
+		    <div style="margin-top: 90px; margin-left: 170px; font-size: large;">
+	    		<a href= "http://localhost:8080/join.do">	<!--링크 변경하기  -->
+	    		<span style="background-color: lightgray;">
+		    	<img src="img/main/point.PNG" width=90px height=90px>
+		    	{{가게명}} / {{평점}} {{주소}}
+	    		</span>
+		    	</a>
+ 	  		</div>
+		    <div style="margin-top: 90px; margin-left: 170px; font-size: large;">
+	    		<a href= "http://localhost:8080/join.do">  <!--링크 변경하기  -->
+	    		<span style="background-color: lightgray;">
+		    	<img src="img/main/point.PNG" width=90px height=90px>
+		    	{{가게명}} / {{평점}} {{주소}}
+	    		</span>
+	    		</a>
+   			</div>
+   			
+	    
+    	   <!--  <table style="border: 1px solid black; border-collapse : collapse;">
+				<tr>첫번째 줄 시작
+		 		   <td>첫번째 칸</td>
+		 		   <td>두번째 칸</td>
+		 		   <td>세번째 칸</td>
+				</tr>첫번째 줄 끝
+	    	</table> -->
+	    
+	    </div>
+	  </div>
 </body>
 </html>
 <script type="text/javascript">
