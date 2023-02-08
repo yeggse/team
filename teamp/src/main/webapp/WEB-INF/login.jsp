@@ -116,6 +116,8 @@ input {
 			class="span">공지사항</span>
 		<h4>Copyright © Safe Corp. All rights reserved.</h4>
 	</div>
+	<!-- 전체 footer -->
+	<jsp:include page="/layout/footer.jsp"></jsp:include>
 	</div>                            
 </body>
 </html>

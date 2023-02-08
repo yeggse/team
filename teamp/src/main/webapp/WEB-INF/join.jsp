@@ -124,7 +124,7 @@
 			</div>
 		</div> 
 	 </body>
-	
+	<jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
 <script type="text/javascript">
 var app = new Vue({
@@ -132,12 +132,20 @@ var app = new Vue({
     data: {
     	id : ""
     	, pwd : ""
+    	, pwd2 : ""
     	, name : ""
     	, age : ""
     	, address : ""
+    	
     } 
     , methods: {
-    	
+    	var self = this;
+    	fncheck: function(){
+    		if(self.pwd = self.pwd2){
+    		self.flg = true;
+    		}
+    	}
+    
    
     
     }   
