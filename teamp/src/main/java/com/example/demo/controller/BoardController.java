@@ -23,12 +23,22 @@ public class BoardController {
     private BoardService boardService; 
 
     // 웹 주소
-    @RequestMapping("/board.do") 
+    @RequestMapping("/board*.do") 
     public String main(Model model) throws Exception{
+    	
+    	return "/header"; // WEB-INF에서 호출할 파일명
+    }
+    
+	@RequestMapping("/Home.do") 
+    public String home(Model model) throws Exception{
     	
     	return "/boardList"; // WEB-INF에서 호출할 파일명
     }
-    
+	@RequestMapping("/Mypage.do") 
+    public String mp(Model model) throws Exception{
+    	
+    	return "/mypage"; // WEB-INF에서 호출할 파일명
+    }
     // 데이터 호출
 	@RequestMapping(value = "/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody

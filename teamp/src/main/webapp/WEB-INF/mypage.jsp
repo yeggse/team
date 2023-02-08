@@ -18,30 +18,6 @@
 </style>
 <body>
 	<div id="app">
-		<div class="table-list">
-	        <table>                   
-	            <thead>
-	                <tr>        
-	                    <th scope="col"></th>      
-	                    <th scope="col">No.</th>                 
-	                    <th scope="col">제목</th>
-	                    <th scope="col">조회수</th>
-	                    <th scope="col">작성일</th>
-	                </tr>
-	            </thead>
-	            <tbody>
-	              <input type="text" v-model="keyword"></input>
-	        	  <button @click="fnSearch">검색</button>
-	                <tr v-for="(item, index) in list" v-if="item.hitCnt>=3" >                            
-	                    <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
-	                    <td><label v-bind:for="'idx_' + index">{{item.boardIdx}}</label></td> 
-	                    <td><label v-bind:for="'idx_' + index">{{item.title}}</label></td> 
-	                    <td><label v-bind:for="'idx_' + index">{{item.hitCnt}}</label></td>
-	                    <td><label v-bind:for="'idx_' + index">{{item.createdDatetime}}</label></td> <!-- v-bind:for="'idx_' + index" 의미는 id 부분에 눌렀을때 콤보박스 클릭이 됨, 없어도 콤보박스는 살아있음.-->
-	                </tr> <!-- tr은 행을 의미 td는 행안의 열 -->
-	            </tbody>                   
-	        </table>
-	    </div> 
 	    <table border="1">
 		<th>테이블</th>
 		<th>만들기</th>
