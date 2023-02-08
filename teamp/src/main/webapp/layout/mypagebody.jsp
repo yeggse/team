@@ -18,7 +18,7 @@
 	        <div style = "margin:20px"><a href="location.href='http://localhost:8080/join2.do'" >회원 정보 수정</a></div>
 	        <div style = "margin:20px"><a href="location.href='http://localhost:8080/reservemy.do'">예약 내역</a></div>
 	        
-	        <div style = "margin:20px"><a href="location.href='http://localhost:8080/paymentmy.do'">결제 내역</a></div>
+	        <div style = "margin:20px"><a href="paymentmy.do">결제 내역</a></div>
 	        </div>
 	    </div>
 	</body>
