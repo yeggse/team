@@ -96,14 +96,7 @@ input{
   margin: 20px;
   padding: 5px;
 }
-
-
-  
-  
-
 </style>
-
-
 
 <body>
   <div class="div2">
@@ -112,7 +105,7 @@ input{
 	</div>
     <div>
         <button class="btn1"ID>아이디</button>
-        <button class="btn2"PW>비밀번호</button>
+        <button class="btn2"PW  onClick="location.href='http://localhost:8080/searchpw.do'">비밀번호</button>
     </div>
 	<div class="div1">
   		<div class="text1">아이디가 생각나지 않으세요?</div>

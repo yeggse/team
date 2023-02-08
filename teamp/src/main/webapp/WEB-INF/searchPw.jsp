@@ -105,7 +105,7 @@ input{
   		<h3>비밀번호 찾기</h3>
 	</div>
     <div>
-        <button class="btn1"ID>아이디</button>
+        <button class="btn1"ID onClick="location.href='http://localhost:8080/searchid.do'">아이디</button>
         <button class="btn2"PW>비밀번호</button>
     </div>
 	<div class="div1">
@@ -129,7 +129,7 @@ input{
   		</div>
 	</div>
     <div class="text5">
-      <a class="text6" href="http://localhost:8080/login.do">아이디를 잊으셨나요?</a>
+      <a class="text6" href="http://localhost:8080/searchid.do">아이디를 잊으셨나요?</a>
       <a  class="text6" href="http://localhost:8080/login.do">로그인</a>
     </div>
 	<div class="footer">
