@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>JS Bin</title>
+  <jsp:include page="/layout/header.jsp"></jsp:include>
 </head>
 <style>
 .title{
