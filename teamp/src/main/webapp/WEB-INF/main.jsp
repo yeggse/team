@@ -6,6 +6,7 @@
 	<meta charset="UTF-8">
 	<script src="js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<jsp:include page="/layout/header.jsp"></jsp:include>
 	<title>[세잎] 메인페이지</title>
 </head>
 <style>
@@ -117,12 +118,12 @@
 	<div class="div3">
 		<img src="img/main/point.PNG" width=80px height=100px>
 		<input type="text" placeholder="장소를 입력해 주세요"></input>
-		<button id="btn">조회</button>
+		<button id="btn">선택</button>	<!-- 조건 넣어줘야 함: 버튼이벤트 생성 : 미선택시 안넘어가게!!!!!! -->
 	</div>
 	<div class="div4">
-		<button id="imgbtn1"></button>
-		<button id="imgbtn2"></button>
-		<button id="imgbtn3"></button>
+		<button id="imgbtn1" onclick="location.href='/main.storelist.do'"> </button>	<!-- 선택별로 다른 화면 출력되어야 함!!! -->
+		<button id="imgbtn2" onclick="location.href='/main.storelist.do'"> </button>	<!-- 선택별로 다른 화면 출력되어야 함!!! -->
+		<button id="imgbtn3" onclick="location.href='/main.storelist.do'"> </button>	<!-- 선택별로 다른 화면 출력되어야 함!!! -->
 	</div>
 	<div class="div4">
 		<button id="imgbtn4"></button>
@@ -138,10 +139,9 @@
 var app = new Vue({ 
     el: '#app',
     data: {
-      
     }   
     , methods: {
-       
+    	
     }
     
     		 

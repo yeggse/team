@@ -22,7 +22,10 @@ ul, li{
 }
 #mainWrapper{
      width: 800px;
-     margin: 0 auto; /*가운데 정렬*/
+     margin-left: 350px; /*가운데 정렬*/
+     margin-right: 350px; /*가운데 정렬*/
+     margin-bottom: 350px; /*가운데 정렬*/
+     margin-top: 200px; /*가운데 정렬*/
      float: right;
     }
 #mainWrapper > ul > li:first-child {
@@ -88,6 +91,7 @@ ul, li{
  	 border:none;
  	 width:66px;
 }
+
 </style>
 
 <body>
@@ -95,7 +99,7 @@ ul, li{
     <div id="mainWrapper">
         <ul>
             <!-- 게시판 제목 -->
-            <li>예약내역 </li>
+            <li>결제내역 </li>
             
              <!-- 검색 폼 영역 -->
             <li id='liSearchOption'>
@@ -113,13 +117,13 @@ ul, li{
                 <ul id ="ulTable">
                     <li>
                         <ul>
+                            <li>No.</li>
                             <li>주문번호</li>
-                            <li>상호명</li>
+                            <li>가게명</li>
                             <li>메뉴</li>
-                            <li>시간</li>
+                            <li>일시</li>
                             <li>결제금액</li>
-                            <li>예약상태</li>
-                            <li>상태변경</li>
+                            <li>리뷰</li>
                         </ul>
                     </li>
                     
@@ -127,48 +131,48 @@ ul, li{
                     <li>
                         <ul>
                             <li>1</li>
-                            <li class="left">여기맛집</li>
-                            <li>후라이드치킨</li>
-                            <li>40분</li>
+                            <li class="left">123165456</li>
+                            <li>떡참잘</li>
+                            <li>짜장면</li>
+                            <li>2023.02.08</li>
                             <li>20000원</li>
-                            <li>예약완료</li>
-                            <li><button class="btn">예약취소</button></li>
+                            <li><button class="btn">리뷰</button></li>
                         </ul>
                     </li>
 
                     <li>
                         <ul>
                             <li>2</li>
-                            <li class="left">떡참잘</li>
+                            <li class="left">123165456</li>
+                            <li>떡참잘</li>
                             <li>짜장면</li>
-                            <li>30분</li>
-                            <li>미결제</li>
-                            <li>결제취소</li>
-                           <li><button class="btn">예약취소</button></li>
+                            <li>2023.02.08</li>
+                            <li>20000원</li>
+                           <li><button class="btn">리뷰</button></li>
                         </ul>
                     </li>
 
                     <li>
                         <ul>
                             <li>3</li>
-                            <li class="left">기라성</li>
-                            <li>짬뽕</li>
-                            <li>14:40</li>
-                            <li>9000원</li>
-                            <li>예약완료</li>
-                           <li><button class="btn">예약취소</button></li>
+                            <li class="left">123165456</li>
+                            <li>떡참잘</li>
+                            <li>짜장면</li>
+                            <li>2023.02.08</li>
+                            <li>20000원</li>
+                           <li><button class="btn">리뷰</button></li>
                         </ul>
                     </li>
 
                     <li>
                         <ul>
                             <li>4</li>
-                            <li class="left">마라마라탕</li>
-                            <li>햄버거</li>
-                            <li>20분</li>
-                            <li>50000원</li>
-                            <li>예약완료</li>
-                           <li><button class="btn">예약취소</button></li>
+                            <li class="left">123165456</li>
+                            <li>떡참잘</li>
+                            <li>짜장면</li>
+                            <li>2023.02.08</li>
+                            <li>20000원</li>
+                           <li><button class="btn">리뷰</button></li>
                         </ul>
                     <li>                                        
                 </ul>

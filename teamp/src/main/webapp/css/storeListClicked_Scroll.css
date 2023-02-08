@@ -1,0 +1,10 @@
+body, html{
+	height: 100%;
+}
+#foods{
+	padding-top: 800px;
+	height: 300px;
+	margin-top: 40px;
+	background: non repeat scroll 0 0 green;
+	border: 5px solid black;
+}

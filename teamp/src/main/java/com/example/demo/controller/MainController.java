@@ -21,7 +21,7 @@ public class MainController {
     	return "/main"; // WEB-INF에서 호출할 파일명
     }
     // 웹 주소
-    @RequestMapping("/main/storelist.do") 
+    @RequestMapping("/main.storelist.do") 
     public String storeList(Model model) throws Exception{
     	
     	return "/storeList"; // WEB-INF에서 호출할 파일명

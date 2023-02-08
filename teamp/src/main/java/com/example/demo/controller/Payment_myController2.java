@@ -17,11 +17,11 @@ import com.google.gson.Gson;
 
 
 @Controller // 컨트롤러라고 선언함
-public class SearchIdController {
+public class Payment_myController2 {
 	// Service 인터페이스 객체 생성 및 연결
     // 웹 주소
-    @RequestMapping("/searchid.do") 
+    @RequestMapping("/paymentmy.do") 
     public String login(Model model) throws Exception{
-    	return "/searchId"; // WEB-INF에서 호출할 파일명
+    	return "/payment_my"; // WEB-INF에서 호출할 파일명
     }
 }
