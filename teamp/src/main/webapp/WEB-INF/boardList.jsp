@@ -18,7 +18,7 @@
 </style>
 <body>
 	<div id="app">
-		<div>fdafdafdsafdsafdsafdsa</div>
+		<div></div>
 		<div> <input v-model="keyword"></input>
 		<button @click = "fnClick">버튼</button></div>
 		<div class="table-list">
