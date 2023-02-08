@@ -66,7 +66,7 @@
 		       border-radius: 20px;
 		       margin-right: 40px;
 		       padding: 0px;
-		       background: url("img/Mfood.png") no-repeat;
+		       background: url("img/main/Mfood.png") no-repeat;
 	       }      
 	    #imgbtn2{
 		       width: 350px;
@@ -74,7 +74,7 @@
 		       border-radius: 20px;
 		       margin-right: 40px;
 		       padding: 0px;
-		       background: url("img/Mkor.PNG") no-repeat;
+		       background: url("img/main/Mkor.PNG") no-repeat;
 	       }   
 	    #imgbtn3{
 		       width: 350px;
@@ -82,7 +82,7 @@
 		       border-radius: 20px;
 		       margin-right: 30px;
 		       padding: 0px;
-		       background: url("img/Mjap.PNG") no-repeat;
+		       background: url("img/main/Mjap.PNG") no-repeat;
 	       }   
 	    #imgbtn4{
 		       width: 350px;
@@ -90,7 +90,7 @@
 		       border-radius: 20px;
 		       margin-right: 40px;
 		       padding: 0px;
-		       background: url("img/Mchi.PNG") no-repeat;
+		       background: url("img/main/Mchi.PNG") no-repeat;
 	       }      
 	    #imgbtn5{
 		       width: 350px;
@@ -98,7 +98,7 @@
 		       border-radius: 20px;
 		       margin-right: 40px;
 		       padding: 0px;
-		       background: url("img/Masia.PNG") no-repeat;
+		       background: url("img/main/Masia.PNG") no-repeat;
 	       }   
 	    #imgbtn6{
 		       width: 350px;
@@ -106,7 +106,7 @@
 		       border-radius: 20px;
 		       margin-right: 30px;
 		       padding: 0px;
-		       background: url("img/Mwe.PNG") no-repeat;
+		       background: url("img/main/Mwe.PNG") no-repeat;
 	       }   
 </style>
 
@@ -115,7 +115,7 @@
 	<div class="div1">지금 계신 장소가 어디신가요?</div>
 	<div class="div2">주변 식당에서 음식을 픽업해 가세요!</div>
 	<div class="div3">
-		<img src="img/point.PNG" width=80px height=100px>
+		<img src="img/main/point.PNG" width=80px height=100px>
 		<input type="text" placeholder="장소를 입력해 주세요"></input>
 		<button id="btn">조회</button>
 	</div>

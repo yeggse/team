@@ -23,14 +23,41 @@
 				color:#333;
 			}
 		
-			/* menu태그 자식의 ul의 자식 li를 왼쪽정렬과 넓이 140설정 */
-			#menu > ul > li > ul {
-				width:130px;
-				display:none;
-				position: absolute;
-				font-size:14px;
-				background: skyblue;
-				}
+/* 글자크기를 16px 맑은 고딕 굵게하고 width넓이 700, 높이 50만큼 배경색은 #ccc, 글자색은 검정색, 라인높이50px
+menu박스 가운데정렬, 글자가운데 정렬 */
+	#filter {
+		font:bold 16px "malgun gothic";
+		width:700px;
+		height:50px;
+		background: #ccc;
+		color:black;
+		line-height: 50px; 
+		margin:0 auto;
+		text-align: center;
+	}
+
+/* menu태그 자식의 ul의 자식 li를 왼쪽정렬과 넓이 140설정 */
+	#filter > ul > li {
+		float:left;
+		width:140px;
+		position:relative;
+	}
+#filter > ul > li > ul {
+		width:130px;
+		display:none;
+		position: absolute;
+		font-size:14px;
+		background: skyblue;
+	}
+	#filter > ul > li:hover > ul {
+		display:block;
+	}
+	
+#filter > ul > li > ul > li:hover {
+		background: orange;
+		transition: ease 1s;
+		}
+		
 	        /* 점(.)으로 시작하는 아이 : html 파트에서 클래스(명)를 의미. */
 	        .div1 {
 	        	font-size: xxx-large;
@@ -86,7 +113,7 @@
 	<div class="div3">
 		<input type="text" placeholder="업종을 검색해 주세요"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
 		<button id="btn">검색</button>
-		<span>
+		<span id="filter">
 	<ul>
 		<li><a href="#">MENU1</a>
 			<ul>
@@ -95,36 +122,9 @@
 				<li><a href="#">SUB_MENU3</a></li>
 			</ul>
 		</li>
-		<li><a href="#">MENU2</a>
-			<ul>
-				<li><a href="#">SUB_MENU</a></li>
-				<li><a href="#">SUB_MENU2</a></li>
-				<li><a href="#">SUB_MENU3</a></li>
-			</ul>
-		</li>
-		<li><a href="#">MENU3</a>
-			<ul>
-				<li><a href="#">SUB_MENU</a></li>
-				<li><a href="#">SUB_MENU2</a></li>
-				<li><a href="#">SUB_MENU3</a></li>
-			</ul>
-		</li>
-		<li><a href="#">MENU4</a>
-			<ul>
-				<li><a href="#">SUB_MENU</a></li>
-				<li><a href="#">SUB_MENU2</a></li>
-				<li><a href="#">SUB_MENU3</a></li>
-			</ul>
-		</li>
-		<li><a href="#">MENU5</a>
-			<ul>
-				<li><a href="#">SUB_MENU</a></li>
-				<li><a href="#">SUB_MENU2</a></li>
-				<li><a href="#">SUB_MENU3</a></li>
-			</ul>
-		</li>
 	</ul>
-		</span>
+	</span>
+		
 	</div>
 		
 	   
