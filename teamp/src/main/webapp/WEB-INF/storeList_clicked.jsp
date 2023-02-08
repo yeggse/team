@@ -157,6 +157,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 	</div>
 	
 </body>
+<jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
