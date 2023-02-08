@@ -7,6 +7,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<jsp:include page="/layout/header.jsp"></jsp:include>
+	<link rel="stylesheet" href="css/storeListClicked_Scroll.css">
 	<title>[세잎] 업체군 리스트</title>
 </head>
 <style>
@@ -60,29 +61,25 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 		}
 		
 	        /* 점(.)으로 시작하는 아이 : html 파트에서 클래스(명)를 의미. */
-	        .div1 {
-	        	font-size: xxx-large;
-	        	font-weight: bolder;
-	            margin-top: 100px;	/* 바깥쪽여백 */	
-	            margin-left: 750px;
-	            width: 800px;
-	            border-radius: 5px;	/* 모서리 둥글기 크기 */
-	            /* text-align: center; */
-	            padding: 20px;	/* 안쪽 여백 */	/* padding-top: 50px 등으로 활용 */
-	        }
-	        .div2 {
-	        	font-size: x-large;
+	        .position_res {
+	        	font-size: 25px;
 	        	font-weight: bold;
-	            margin-top: -25px;	/* 바깥쪽여백 */	
-	            margin-left: 850px;
-	            width: 600px;
-	            border-radius: 5px;	/* 모서리 둥글기 크기 */
-	            /* text-align: center; */
-	            padding: 20px;	/* 안쪽 여백 */	/* padding-top: 50px 등으로 활용 */
+	            margin-left: 750px;
+	            margin-top: 10px;
+
 	        }
-	      .div3{
-	        margin-top: 50px;	/* 바깥쪽여백 */	
-	         margin-left: 50px;
+	       .title_food {
+	        	font-size: 50px;
+	        	font-weight: bold;
+	            margin-left: 150px;
+	            margin-top: 50px;
+	            padding: 20px;	
+	        }
+	      .grade{
+	     		font-size: 20px;
+	       		margin-top: 0px;	/* 바깥쪽여백 */	
+	      		margin-left: 180px;
+	        	color: #ed9108;
 	       }
 	      .div4{
 	        margin-top: 50px;	/* 바깥쪽여백 */	
@@ -97,36 +94,55 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 	            border-radius: 10px;
 	            border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
 	        }   
-	       #btn{
-		       background-color: #8FBC94;
-		       width: 80px;
+	       #btn_menu{
+		       background-color: #2ecc71;
+		       width: 250px;
 		       height: 40px;
-		       border-radius: 20px;
-		       border: solid 2px #8FBC94;
+		       border-radius: 10px;
+		       border: solid 2px #2ecc71;
 		       font-size: large;
 		       color: white;
 		       padding: 0px;
+		       margin-top: 50px;
+               margin-left: 100px;
+	       }
+	        #btn_review{
+		       background-color: gray;
+		       width: 250px;
+		       height: 40px;
+		       border-radius: 10px;
+		       border: solid 0px #gray;
+		       font-size: large;
+		       color: white;
+		       padding: 0px;
+		       margin-top: 50px;
+               margin-left: 100px;
+	       }
+	        .count_menu{
+		       font-size: 30px;
+		       color: black;
+		       padding: 0px;
+		       margin-top: 50px;
+               margin-left: 50px;
 	       }
 </style>
 
 <body>
 	<div id="app">
-	<div class="div3">
-		<input type="text" placeholder="업종을 검색해 주세요"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
-		<button id="btn">검색</button>
-		<span id="filter">
-	<ul>
-		<li><a href="#">MENU1</a>
-			<ul>
-				<li><a href="#">SUB_MENU</a></li>
-				<li><a href="#">SUB_MENU2</a></li>
-				<li><a href="#">SUB_MENU3</a></li>
-			</ul>
-		</li>
-	</ul>
-	</span>
-		
-	</div>
+		<div class="title_food" >옛날짜장 <div class="position_res" style="marin-top: -50px;" >가게위치 : 
+										</div><!-- 가계주소들어와야함 -->
+										<div class="position_res" >픽업시간 : 
+										</div><!-- 가계주소들어와야함 -->	</div>
+				<div class="grade" >평점 :</div><!-- DB넣기 -->
+					<button id="btn_menu">메뉴</button><!-- 이동하는 리스너 넣어주기. -->
+					<button id="btn_review">리뷰</button><!-- 이동하는 리스너 넣어주기. -->
+						<span style="margin-left:300px; font-size: 30px;" >db수</span>
+						<span class="count_menu">메뉴선택 갯수</span>
+							
+							<div id="foods">
+							<button >fdafdafdsa</button>
+								scroll down to see the div
+							</div>
 		
 	   
 	</div>
