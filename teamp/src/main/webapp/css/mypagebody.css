@@ -1,5 +1,4 @@
-
-a1 {
+.a1 {
 	            margin-left:0px;
 	            background-color: #4c4343;
 	            color: gray;
@@ -14,11 +13,9 @@ a1 {
 
 .div4 {
 		        margin:auto;
-		        
-	            height:800px;
+		        height:800px;
 	            background-color: #4c4343;
 	            border-radius: 5px;
-	            
 	            float:left;
 	            padding:10px
 	   }
