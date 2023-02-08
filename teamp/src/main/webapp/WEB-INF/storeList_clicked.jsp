@@ -64,7 +64,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 	        .position_res {
 	        	font-size: 25px;
 	        	font-weight: bold;
-	            margin-left: 750px;
+	            margin-left: 30%;
 	            margin-top: 10px;
 
 	        }
@@ -81,10 +81,6 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 	      		margin-left: 180px;
 	        	color: #ed9108;
 	       }
-	      .div4{
-	        margin-top: 50px;	/* 바깥쪽여백 */	
-	        margin-left: 500px;
-	      }
 	      
 	      input {
 	            width: 400px;
@@ -123,7 +119,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 		       color: black;
 		       padding: 0px;
 		       margin-top: 50px;
-               margin-left: 50px;
+               margin-left: 8%;
 	       }
 	       #btn_order{
 		       background-color: #2ecc71;
@@ -148,11 +144,11 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 				<div class="grade" >평점 :</div><!-- DB넣기 -->
 					<button id="btn_menu">메뉴</button><!-- 이동하는 리스너 넣어주기. -->
 					<button id="btn_review">리뷰</button><!-- 이동하는 리스너 넣어주기. -->
-						<span style="margin-left:300px; font-size: 30px;" >db수</span>
+						<span style="margin-left:40%; font-size: 30px;" >db수</span>
 						<span class="count_menu">메뉴선택 갯수</span>
-							<div>
+							<div style="margin-top:50px;">
 								<div style="overflow: auto">
-								<br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br>
+								<br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br>
 								 <button id="btn_order">주문시작</button>
 								</div>
 							</div>
