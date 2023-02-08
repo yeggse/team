@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<script src="js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	 <jsp:include page="/layout/header.jsp"></jsp:include>
+	<jsp:include page="/layout/header.jsp"></jsp:include>
 	<title>[세잎] 업체군 리스트</title>
 </head>
 <style>
@@ -85,15 +85,6 @@
 	    		</span>
 	    		</a>
    			</div>
-   			
-	    
-    	   <!--  <table style="border: 1px solid black; border-collapse : collapse;">
-				<tr>첫번째 줄 시작
-		 		   <td>첫번째 칸</td>
-		 		   <td>두번째 칸</td>
-		 		   <td>세번째 칸</td>
-				</tr>첫번째 줄 끝
-	    	</table> -->
 	    
 	    </div>
 	  </div>
