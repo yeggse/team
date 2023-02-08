@@ -15,9 +15,10 @@
 	<body >
 	    <div>
 	        <div class = "div4" >
-	        <button id ="bodybtn" onClick="location.href='http://localhost:8080/join2.do'" style = "margin:30px">회원 정보 수정</button>
-	        <button id ="bodybtn" onClick="location.href='http://localhost:8080/reservemy.do'" style = "margin:30px">예약 내역</button>
-	        <button id ="bodybtn" onClick="location.href='http://localhost:8080/paymentmy.do'" style = "margin:30px">결제 내역</button>
+	        <div style = "margin:20px"><a href="location.href='http://localhost:8080/join2.do'" >회원 정보 수정</a></div>
+	        <div style = "margin:20px"><a href="location.href='http://localhost:8080/reservemy.do'">예약 내역</a></div>
+	        
+	        <div style = "margin:20px"><a href="location.href='http://localhost:8080/paymentmy.do'">결제 내역</a></div>
 	        </div>
 	    </div>
 	</body>
