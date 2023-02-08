@@ -93,8 +93,8 @@ input{
   		</div>
   		<div >
     		<a href="http://localhost:8080/join.do"  class="asign">회원가입</a>
-    		<a href="" class="afind">아이디 찾기</a>
-    		<a href="" class="afind">비밀번호 찾기</a>
+    		<a href="http://localhost:8080/searchid.do" class="afind">아이디 찾기</a>
+    		<a href="http://localhost:8080/searchpw.do" class="afind">비밀번호 찾기</a>
   		</div>
 	</div>
 	<div class="footer">
@@ -103,7 +103,7 @@ input{
   		<span class="span">운영정책</span>
   		<span class="span">고객센터</span>
   		<span class="span">공지사항</span>
-  		<h4>Copyright © Safe Corp. All rights reserved.</h4>                
+  		<h4>Copyright © Safe. All rights reserved.</h4>                
 	</div>                            
 </body>
 </html>
