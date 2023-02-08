@@ -111,7 +111,7 @@
 	       }   
 </style>
 
-<body>
+<body style="margin: 0px">
 	<div id="app">
 	<div class="div1">지금 계신 장소가 어디신가요?</div>
 	<div class="div2">주변 식당에서 음식을 픽업해 가세요!</div>
@@ -134,6 +134,7 @@
 	   
 	</div>
 </body>
+<jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
