@@ -83,30 +83,12 @@ input {
 }
 </style>
 <body>
+	<!-- 타이틀 -->
 	<div class="title">
 		<h1>세잎</h1>
 	</div>
+	<!-- 전체 div -->
 	<div class="div1">
-<<<<<<< HEAD
-		<div>
-			<input type="text" name="loginKey" placeholder="아이디">
-		</div>
-		<div>
-			<input type="password" name="password" placeholder="비밀번호">
-		</div>
-		<div class="radio">
-			<input type="radio" style="width: 15px; height: 10px; border: 1px;"
-				" value="" /> <span>로그인 상태 유지</span>
-		</div>
-		<div>
-			<button class="login > btn2">로그인</button>
-		</div>
-		<div>
-			<a href="http://localhost:8080/join.do" class="asign">회원가입</a> <a
-				href="" class="afind">아이디 찾기</a> <a href="" class="afind">비밀번호
-				찾기</a>
-		</div>
-=======
   		<div>
     		<input type="text" name="loginKey" placeholder="아이디">
   		</div>
@@ -120,28 +102,20 @@ input {
   		<div>
      		<button class="login > btn2">로그인</button>
   		</div>
+  		<!-- 아랫 div -->
   		<div >
     		<a href="http://localhost:8080/join.do"  class="asign">회원가입</a>
     		<a href="http://localhost:8080/searchid.do" class="afind">아이디 찾기</a>
     		<a href="http://localhost:8080/searchpw.do" class="afind">비밀번호 찾기</a>
   		</div>
->>>>>>> branch 'main' of https://github.com/yeggse/team.git
 	</div>
+	<!-- 로그인 footer -->
 	<div class="footer">
-<<<<<<< HEAD
 		<span class="span">이용약관</span> <span class="span">개인정보 처리방침</span> <span
 			class="span">운영정책</span> <span class="span">고객센터</span> <span
 			class="span">공지사항</span>
 		<h4>Copyright © Safe Corp. All rights reserved.</h4>
 	</div>
-=======
-  		<span class="span">이용약관</span>
-  		<span class="span">개인정보 처리방침</span>
-  		<span class="span">운영정책</span>
-  		<span class="span">고객센터</span>
-  		<span class="span">공지사항</span>
-  		<h4>Copyright © Safe. All rights reserved.</h4>                
 	</div>                            
->>>>>>> branch 'main' of https://github.com/yeggse/team.git
 </body>
 </html>
