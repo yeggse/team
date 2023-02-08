@@ -125,6 +125,18 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 		       margin-top: 50px;
                margin-left: 50px;
 	       }
+	       #btn_order{
+		       background-color: #2ecc71;
+		       width: 190px;
+		       height: 50px;
+		       border-radius: 10px;
+		       font-size: large;
+		       color: white;
+		       padding: 0px;
+		       margin-top: 20px;
+               margin-left: 85%;
+               margin-bottom: 20px;
+	       }
 </style>
 
 <body>
@@ -138,14 +150,16 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 					<button id="btn_review">리뷰</button><!-- 이동하는 리스너 넣어주기. -->
 						<span style="margin-left:300px; font-size: 30px;" >db수</span>
 						<span class="count_menu">메뉴선택 갯수</span>
-							
-							<div id="foods">
-							<button >fdafdafdsa</button>
-								scroll down to see the div
+							<div>
+								<div style="overflow: auto">
+								<br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br>
+								 <button id="btn_order">주문시작</button>
+								</div>
 							</div>
-		
-	   
+								
+	  
 	</div>
+	
 </body>
 </html>
 <script type="text/javascript">
