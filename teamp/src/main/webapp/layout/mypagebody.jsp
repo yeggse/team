@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href= "css/mypagebody.css" type ="text/css">
 	</head>
 	<body >
-	    <div>
+	    <div id = "app1">
 	        <div class = "div4" >
 	        <button @click = "fnCheck1"> 테스트 버튼</button>
 	        <div v-if = "flg" style = "margin:20px"><a href="datachange.do" class ="a1">회원 정보 수정</a></div>
@@ -24,13 +24,14 @@
 var app1 = new Vue({ 
     el: '#app1',
     data: {
-    	flg : false;
+    	flg : false
     }   
     , methods: {
 
     	fnCheck1: function(){
     		console.log("test");
     		var self = this;
+    		flg = true;
     		
     	}
     }
