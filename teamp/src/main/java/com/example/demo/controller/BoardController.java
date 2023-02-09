@@ -26,7 +26,7 @@ public class BoardController {
     @RequestMapping("/board*.do") 
     public String main(Model model) throws Exception{
     	
-    	return "/header"; // WEB-INF에서 호출할 파일명
+    	return "/boardList"; // WEB-INF에서 호출할 파일명
     }
     
 	@RequestMapping("/Home.do") 
