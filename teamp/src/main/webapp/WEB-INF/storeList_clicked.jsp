@@ -64,7 +64,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 	        .position_res {
 	        	font-size: 25px;
 	        	font-weight: bold;
-	            margin-left: 30%;
+	            margin-left: 20%;
 	            margin-top: 10px;
 
 	        }
@@ -72,7 +72,6 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 	        	font-size: 50px;
 	        	font-weight: bold;
 	            margin-left: 150px;
-	            margin-top: 50px;
 	            padding: 20px;	
 	        }
 	      .grade{
@@ -137,15 +136,19 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 
 <body>
 	<div id="app" style="width:2483.02px; padding-top:120px;", anlign="center">
-		<div class="title_food" >옛날짜장 <div class="position_res" style="marin-top: -50px;" >가게위치 : 
-										</div><!-- 가계주소들어와야함 -->
+		<div class="title_food" >옛날짜장 	</div>
+		<span class="grade" style="margin-left:180px;" >평점 :</span>
+										<span class="position_res" style="marin-top: -50px;" >
+										<!-- DB넣기 -->가게위치 : 
+										</span><!-- 가계주소들어와야함 -->
 										<div class="position_res" >픽업시간 : 
-										</div><!-- 가계주소들어와야함 -->	</div>
-				<div class="grade" >평점 :</div><!-- DB넣기 -->
+										</div><!-- 가계주소들어와야함 -->
+										<div>
 					<button id="btn_menu">메뉴</button><!-- 이동하는 리스너 넣어주기. -->
 					<button id="btn_review">리뷰</button><!-- 이동하는 리스너 넣어주기. -->
-						<span style="margin-left:40%; font-size: 30px;" >db수</span>
+						<span style="margin-left:25%; font-size: 30px;" >db수</span>
 						<span class="count_menu">메뉴선택 갯수</span>
+						</div>
 							<div style="margin-top:50px;">
 								<div style="overflow: auto">
 								<br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br>
