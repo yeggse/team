@@ -149,7 +149,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 </style>
 
 <body>
-	<div id="app" style="width:100%; padding-top:120px;", anlign="center">
+	<div id="app2" style="width:100%; padding-top:120px;", anlign="center">
 		<div class="title_food" >옛날짜장 	</div>
 		<span class="grade" style="margin-left:180px;" >평점 :</span>
 										<span class="position_res" style="marin-top: -50px;" >
@@ -165,9 +165,10 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 						</div>
 							<div style="margin-top:50px;">
 								<div style="overflow: auto">
+				
 				<!-for문으로 차례대로 그림들어가게 하기  -->
 							
-					<div style="margin-top:30px; margin-left:60px; width:300px; height:180px; border-radius:10px; border:1px solid red; float:left; margin-right:60px;">
+	<!-- 지금 예쁘게 나오는 예시 -->				<div style="margin-top:30px; margin-left:60px; width:300px; height:180px; border-radius:10px; border:1px solid red; float:left; margin-right:60px;">
 							<img style="margin-left:40px"src="img/main/newlogo.png" width="100px" height="80px">							</div>
 							<div style="margin-top:30px; margin-right: 100px; width:1000px; height:180px; border:1px solid green; float:left;">
 							<div style="margin-bottom:10px;">보통짜장면:</div>
@@ -206,7 +207,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
-    el: '#app',
+    el: '#app2',
     data: {
       
     }   
