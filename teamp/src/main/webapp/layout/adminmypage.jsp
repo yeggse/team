@@ -6,6 +6,7 @@
 		<meta charset="UTF-8">
 		<script src="js/jquery.js"></script>
 		<script src="js/vue.js"></script>
+		<jsp:include page="/layout/header.jsp"></jsp:include>
 		<link rel="stylesheet" href= "css/mypagebody.css" type ="text/css">
 		<style>
 		</style>
