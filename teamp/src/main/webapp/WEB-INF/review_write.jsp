@@ -14,184 +14,125 @@
      line-height:2em;        
      font-family:"맑은 고딕";
 }
-ul, li{ 
-     list-style:none;
-     text-align:center;
-     padding:0;
-     margin:0;
+.div1{
+  width: 600px;
+  height: 1000px;
+  padding: 20px;
+  position: absolute; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  border: 2px solid black;
 }
-#mainWrapper{
-     width: 800px;
-     margin-left: 350px; /*가운데 정렬*/
-     margin-right: 350px; /*가운데 정렬*/
-     margin-bottom: 350px; /*가운데 정렬*/
-     margin-top: 200px; /*가운데 정렬*/
-     float: right;
-    }
-#mainWrapper > ul > li:first-child {
-     text-align: left;
-     font-size:32px;
-     height:40px;
-     vertical-align:middle;
-     line-height:30px;
+.text{
+  text-align:center;
+  font-size:16px;
+  width:500px;
+  height:500px;
 }
-#ulTable{
-	margin-top:10px;
-}
-#ulTable > li:first-child > ul > li {
-    background-color:#c9c9c9;
-    font-weight:bold;
-    text-align:center;
-}
-#ulTable > li > ul {
-    clear:both;
-    padding:0px auto;
-    position:relative;
-    min-width:40px;
-}
-#ulTable > li > ul > li { 
-    float:left;
-    font-size:10pt;
-    border-bottom:1px solid silver;
-    vertical-align:baseline;
-}    
-#ulTable > li > ul > li:first-child               	  {width:10%;} /*주문번호*/
-#ulTable > li > ul > li:first-child +li               {width:15%;} /*상호명*/
-#ulTable > li > ul > li:first-child +li+li            {width:15%;} /*메뉴*/
-#ulTable > li > ul > li:first-child +li+li+li         {width:15%;} /*시간*/
-#ulTable > li > ul > li:first-child +li+li+li+li      {width:10%;} /*결제금액*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li	  {width:10%;} /*예약상태*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li+li{width:10%;} /*상태변경*/
-#divPaging {
-     clear:both; 
-     margin:0 auto; 
-     width:220px; 
-     height:50px;
-}
-#divPaging > div {
-     float:left;
-     width: 30px;
-     margin:0 auto;
+.btnphoto1{
+ 	 background:white;
+  	 color:black;
+ 	 border:2px solid black;
+ 	 width:18%;
+     height:150px;
+     margin:10px;
+     padding:5px;
      text-align:center;
 }
-#liSearchOption {
-	 clear:both;
+.btnphoto2{
+ 	 background:white;
+  	 color:black;
+ 	 border:2px dashed black;
+ 	 width:18%;
+     height:150px;
+     margin:10px;
+     padding:5px;
+     text-align:center;
 }
-#liSearchOption {
-     margin-left:180px; auto; 
-     width:auto; 
-     positio
-}
-.left {
-     text-align : left;
-}
-.btn{
+.btncomplete{
  	 background:green;
   	 color:white;
  	 border:none;
- 	 width:66px;
+ 	 width:500px;
+     height:45px;
+     margin:10px;
+     font-size:32px;
+}
+input{
+  width:200px;
+  height:200px;
 }
 
+/*별점*/
+#myform fieldset{
+    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+    direction: rtl; /* 이모지 순서 반전 */
+    border: 0; /* 필드셋 테두리 제거 */
+}
+#myform fieldset legend{
+    text-align: left;
+}
+#myform input[type=radio]{
+    display: none; /* 라디오박스 감춤 */
+}
+#myform label{
+    font-size: 2em; /* 이모지 크기 */
+    color: transparent; /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
+}
+#myform label:hover{
+    text-shadow: 0 0 0 gray; /* 마우스 호버 */
+}
+#myform label:hover ~ label{
+    text-shadow: 0 0 0 gray; /* 마우스 호버 뒤에오는 이모지들 */
+}
+#myform input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 yellow; /* 마우스 클릭 체크 */
+}
 </style>
 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
 <body class="body">
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
-    <div id="mainWrapper">
-        <ul>
-            <!-- 게시판 제목 -->
-            <li>결제내역 </li>
-            
-             <!-- 검색 폼 영역 -->
-            <li id='liSearchOption'>
-                    <select id='selSearchOption' >
-                        <option value='A'>제목+내용</option>
-                        <option value='T'>제목</option>
-                        <option value='C'>내용</option>
-                    </select>
-                    <input id='txtKeyWord' />
-                    <input type='button' value='검색'/>
-                </li>
-
-            <!-- 게시판 목록  -->
-            <li>
-                <ul id ="ulTable">
-                    <li>
-                        <ul>
-                            <li>No.</li>
-                            <li>주문번호</li>
-                            <li>가게명</li>
-                            <li>메뉴</li>
-                            <li>일시</li>
-                            <li>결제금액</li>
-                            <li>리뷰</li>
-                        </ul>
-                    </li>
-                    
-                    <!-- 게시물이 출력될 영역 -->
-                    <li>
-                        <ul>
-                            <li>1</li>
-                            <li class="left">123165456</li>
-                            <li>떡참잘</li>
-                            <li>짜장면</li>
-                            <li>2023.02.08</li>
-                            <li>20000원</li>
-                            <li><button class="btn">리뷰</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>2</li>
-                            <li class="left">123165456</li>
-                            <li>떡참잘</li>
-                            <li>짜장면</li>
-                            <li>2023.02.08</li>
-                            <li>20000원</li>
-                           <li><button class="btn">리뷰</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>3</li>
-                            <li class="left">123165456</li>
-                            <li>떡참잘</li>
-                            <li>짜장면</li>
-                            <li>2023.02.08</li>
-                            <li>20000원</li>
-                           <li><button class="btn">리뷰</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>4</li>
-                            <li class="left">123165456</li>
-                            <li>떡참잘</li>
-                            <li>짜장면</li>
-                            <li>2023.02.08</li>
-                            <li>20000원</li>
-                           <li><button class="btn">리뷰</button></li>
-                        </ul>
-                    <li>                                        
-                </ul>
-            </li>
-
-            <!-- 게시판 페이징 영역 -->
-            <li>
-                <div id="divPaging">
-                    <div>◀</div>
-                       <div><b>1</b></div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
-                    <div>5</div>
-                    <div>▶</div>
-                </div>
-            </li>
-        </ul>
-    </div>
+    <div class="div1"> <!--전체 div-->
+     
+      <div class="div2"> <!--별점,텍스트 div-->
+        <h1 style="font-size:50px">리뷰 작성하기</h1>
+        <div>
+          <div>
+            <form name="myform" id="myform" method="post" action="./save">
+              <fieldset>
+                <legend><h2>별점</h2></legend>
+                <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
+                <input type="radio" name="rating" value="4" id="rate2"><label for="rate2">⭐</label>
+                <input type="radio" name="rating" value="3" id="rate3"><label for="rate3">⭐</label>
+                <input type="radio" name="rating" value="2" id="rate4"><label for="rate4">⭐</label>
+                <input type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
+              </fieldset>
+            </form>
+          <div>
+            <input type="text" class="text" placeholder="음식에 대한 솔직한 리뷰를 남겨주세요. ">
+          </div>  
+          <div>
+            <button class="btnphoto1">
+              <img src="https://cdn-icons-png.flaticon.com/512/158/158715.png" style="width:50px; height:50px;" alt="사진0/5">
+              <ol>사진첨부</ol>
+            </button>
+            <button class="btnphoto2">사진</button>
+            <button class="btnphoto2">사진</button>
+          </div>
+          <div>
+            <button class="btncomplete">완료</button>
+          </div>
+        </div>
+     
+   </div>     <!--전체 div-->
 </body>
- <jsp:include page="/layout/footer.jsp"></jsp:include>
+  <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
