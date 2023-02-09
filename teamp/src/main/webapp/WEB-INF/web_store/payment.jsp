@@ -46,17 +46,6 @@
 		       color: white;
 		       padding: 0px;
 	       }
-	       #btnList{
-		       color: #8FBC94;
-		       font-weight: bold; 
-		       width: 80px;
-		       height: 40px;
-		       background-color: white;
-		       border-radius: 20px;
-		       border: white ;
-		       font-size: large;
-		       padding: 0px;
-	       }
 	       label {
  				display: flex;
   				align-items: center;

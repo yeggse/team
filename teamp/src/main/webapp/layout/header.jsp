@@ -26,12 +26,12 @@
 </head>
 
 <body>
-	<div id="app"></div>
+	<div id="app2"></div>
 </body>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
-    el: '#app',
+    el: '#app2',
     data: {
     }   
     , methods: {

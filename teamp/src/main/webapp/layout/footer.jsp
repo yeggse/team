@@ -18,6 +18,8 @@
 	       		margin-top: 100px;
 	            background-color: #393b44;
 	            color: white;
+	            position: fixed;
+	             width: 100%;
 	        } 
 	        table{
 	        width: 100%;
