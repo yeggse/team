@@ -24,8 +24,8 @@
 	        <div v-if ="serve1" style = "margin:20px"><a href="datachange2.do" class = "a1">아시아</a></div>
 	        <div><label style ="font-size:25px; margin-left: 10px; color:gray"> 회원 관리 </label>
 	        <button id = "bodybtn" @click = "Aserve2" style ="font-size:20px; margin-left: 5px; color:gray"> > </button></div>
-	        <div v-if ="serve2" style = "margin:20px"><a href="paymentmy.do" class = "a1">일반 회원 관리</a></div>
-	        <div v-if ="serve2" style = "margin:20px"><a href="datachange2.do" class = "a1">사업자 회원 관리</a></div>
+	        <div v-if ="serve2" style = "margin:20px" ani_type="fade"><a href="paymentmy.do" class = "a1">일반 회원 관리</a></div>
+	        <div v-if ="serve2" style = "margin:20px" ani_type="fade"><a href="datachange2.do" class = "a1">사업자 회원 관리</a></div>
 	        </div>
 	    </div>
 	</body>
