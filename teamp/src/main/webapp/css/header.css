@@ -10,6 +10,7 @@
 	        flot:right;
 	        background-color:white;
 	        box-shadow: 10px 1px 2px 0px rgb(32 33 36 / 28%);
-	        
-
+}
+.hidden_login{
+			visibility: hidden;
 }
