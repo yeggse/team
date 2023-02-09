@@ -136,7 +136,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 </style>
 
 <body>
-	<div id="app" style="width:2400px; padding-top:120px;", anlign="center">
+	<div id="app" style="width:2483.02px; padding-top:120px;", anlign="center">
 		<div class="title_food" >옛날짜장 <div class="position_res" style="marin-top: -50px;" >가게위치 : 
 										</div><!-- 가계주소들어와야함 -->
 										<div class="position_res" >픽업시간 : 
