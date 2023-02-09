@@ -112,7 +112,7 @@
 			<div class="div2">
 			    계좌번호 <input type="text" id = "text1" v-model="account" style = "margin-left:45px"></input>
 			</div>
-			<button @click = "fnChec" style = "width:200px; height:35px;">회원가입</button>
+			<button @click = "fnCheck" style = "width:200px; height:35px;">회원가입</button>
 			
 			<div class="div2">
 			<a href="join.do">일반 회원가입하기</a>
