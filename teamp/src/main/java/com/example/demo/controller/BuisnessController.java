@@ -17,11 +17,15 @@ import com.google.gson.Gson;
 
 
 @Controller // 컨트롤러라고 선언함
-public class Reserve_myController {
+public class BuisnessController {
 	// Service 인터페이스 객체 생성 및 연결
     // 웹 주소
-    @RequestMapping("/reservemy.do") 
-    public String login(Model model) throws Exception{
-    	return "/reserve_my"; // WEB-INF에서 호출할 파일명
+    @RequestMapping("/menumanagementbusiness.do") 
+    public String menumanagement(Model model) throws Exception{
+    	return "/menumanagement_business"; // WEB-INF에서 호출할 파일명
+    }
+    @RequestMapping("/menuaddbusiness.do") 
+    public String menuadd(Model model) throws Exception{
+    	return "/menuadd_business"; // WEB-INF에서 호출할 파일명
     }
 }

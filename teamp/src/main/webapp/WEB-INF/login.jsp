@@ -9,37 +9,58 @@
 <jsp:include page="/layout/header.jsp"></jsp:include>
 </head>
 <style>
-.title {
+* {
+  box-sizing: border-box;
+}
+.div0{
+width:50%;
+border:10px solid red;
+
+
+}
+<!--임시-->
+.tempbtn{
+width:500px;
+height:500px;
+border: 10px solid green;
+}
+.div1 {
+	width: 200px;
+	height: 120px;
 	font-size: 30px;
 	text-align: center;
+	border: 1px solid blue;
+	
+	
+}
+.div2 {
+	width: 400px;
+	height: 280px;
+	padding: 40px;
+	margin: auto;
+	font-family: Fantasy;
+	border: 2px solid gray;
 }
 
 .span {
 	margin: 0px 5px 0px 5px;
+	
 }
 
 .footer {
+	width: 400px;
 	font-size: 10px;
 	text-align: center;
 	margin: 20px;
 	padding: 5px;
+	border: 1px solid black;
+	
 }
 
 .radio {
 	font-size: 12px;
 }
 
-.div1 {
-	position: relative;
-	border: 1px solid black;
-	box-sizing: border-box;
-	width: 400px;
-	height: 280px;
-	border: 2px solid gray;
-	padding: 40px;
-	margin: auto;
-	font-family: Fantasy;
-}
 
 .btn1 {
 	margin: 5px 10px 10px 10px;
@@ -81,32 +102,26 @@ input {
 	border-width: 0 0 2px;
 	padding-right: 90px;
 }
-<!--임시-->
-.temp{
-float:left;
-width:200px;
-height:500px;
-
-
-}
 </style>
-<body>
+<body >
 	<!-- 타이틀 -->
-  <div id="app" style="width:2483.02px; padding-top:120px;" align="center">
-  	<div class="temp">
-  	<div>간편한 페이지전환을 위한 테스트용 버튼</div>
-  	<button onClick="location.href='http://127.0.0.1:8080/paymentmy.do'">결제내역</button>
-  	<button onClick="location.href='http://127.0.0.1:8080/reservemy.do'">예약내역</button>
-  	<button onClick="location.href='http://127.0.0.1:8080/reviewwrite.do'">리뷰쓰기</button>
-  	<button onClick="location.href='http://127.0.0.1:8080/searchid.do'">아이디찾기</button>
-  	<button onClick="location.href='http://127.0.0.1:8080/searchpw.do'">비밀번호찾기</button>
-  	<button onClick="location.href='http://127.0.0.1:8080/menumanagementbusiness.do'">메뉴관리</button>
-  	</div>
-	<div class="title" >
+  <div id="app"style="width:2483.02px; padding-top:120px;" align="center">
+  	<div class="div0">
+  		<div>
+  			class="tempbtn"> 간편한 페이지전환을 위한 테스트용 버튼
+  			<button onClick="location.href='http://127.0.0.1:8080/paymentmy.do'">결제내역</button>
+  			<button onClick="location.href='http://127.0.0.1:8080/reservemy.do'">예약내역</button>
+  			<button onClick="location.href='http://127.0.0.1:8080/reviewwrite.do'">리뷰쓰기</button>
+  			<button onClick="location.href='http://127.0.0.1:8080/searchid.do'">아이디찾기</button>
+  			<button onClick="location.href='http://127.0.0.1:8080/searchpw.do'">비밀번호찾기</button>
+  			<button onClick="location.href='http://127.0.0.1:8080/menumanagementbusiness.do'">메뉴관리</button>
+  			<button onClick="location.href='http://127.0.0.1:8080/menuaddbusiness.do'">메뉴추가</button>
+  		</div>
+	<div class="div1" >
 		<h1>세잎</h1>
 	</div>
 	<!-- 전체 div -->
-	<div class="div1">
+	<div class="div2">
   		<div>
     		<input type="text" name="loginKey" placeholder="아이디">
   		</div>
@@ -135,7 +150,8 @@ height:500px;
 		<h4>Copyright © Safe Corp. All rights reserved.</h4>
 	</div>
 	<!-- 전체 footer -->
-	<jsp:include page="/layout/footer.jsp"></jsp:include>
-	</div>    
+	<!--  <jsp:include page="/layout/footer.jsp"></jsp:include>-->
+	</div>
+	</div>  
 </body>
 </html>

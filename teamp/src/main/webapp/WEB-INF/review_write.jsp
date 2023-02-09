@@ -18,11 +18,11 @@
   width: 400px;
   height: 800px;
   padding: 20px;
+  border: 2px solid black;
+  background: white;
   position: absolute; 
   left: 50%; 
   transform: translateX(-50%); 
-  border: 2px solid black;
-  background: white;
 }
 .text{
   text-align:center;
