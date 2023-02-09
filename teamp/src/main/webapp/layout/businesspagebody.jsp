@@ -20,7 +20,7 @@
 	        <div style = "margin:20px"><a href="reservemy.do" class = "a1">주문 내역</a></div>
 	        <div style = "margin:20px"><a href="paymentmy.do" class = "a1">매출 관리</a></div>
 	        <div style = "margin:20px"><a href="paymentmy.do" class = "a1">리뷰 관리</a></div>
-	        <div style = "margin:20px"><a href="datachange.do" class = "a1">회원 정보 수정</a></div>
+	        <div style = "margin:20px"><a href="datachange2.do" class = "a1">회원 정보 수정</a></div>
 	        </div>
 	    </div>
 	</body>
