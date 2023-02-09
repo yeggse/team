@@ -17,7 +17,7 @@
 		
 	        /* 점(.)으로 시작하는 아이 : html 파트에서 클래스(명)를 의미. */
 	      .div1{
-	        margin-top: 70px;	/* 바깥쪽여백 */	
+	        margin-top: 100px;	/* 바깥쪽여백 */	
 	         margin-left: 100px;
 	       }
 	      
@@ -57,7 +57,7 @@
 		<div class="div1">
 			<button id="btnList">추천순</button>	<!--클릭되었을 경우, 색변화되도록 이벤트 넣기!!!  -->
 			<button id="btnList">재고순</button>	<!-- 선택순으로 리스트 출력하는 쿼리 생성 필요!! -->
-			<span style="margin-left: 1200px">
+			<span style="margin-left: 1000px">
 				<input type="text" placeholder="업종을 검색해 주세요"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
 				<button id="btn">검색</button>
 			</span>

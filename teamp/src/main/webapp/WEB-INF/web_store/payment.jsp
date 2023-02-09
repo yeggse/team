@@ -18,7 +18,7 @@
 	        /* 점(.)으로 시작하는 아이 : html 파트에서 클래스(명)를 의미. */
 	      .div1{
 	        margin-top: 170px;	/* 바깥쪽여백 */	
-	        margin-left: 1000px;
+	        margin-left: 900px;
 	        font-size: xxx-large;
 	        font-weight: bolder;
 	        width: 500px;
@@ -63,7 +63,7 @@
 	<div style="width:2483.02px", anlign="center">
 		<div class="div1">결제창</div>
 		
-		<table style="margin-left: 600px; width: 1000px; border: 1px solid black; border-collapse : collapse; margin-top: 50px; text-align: center;">
+		<table style="margin-left: 400px; width: 1000px; border: 1px solid black; border-collapse : collapse; margin-top: 50px; text-align: center;">
 			<td style="border: 1px solid #444444; font-size: x-large; font-weight: bolder; margin-top: 20px; ">
 				<div style="margin-top: 30px;">아&nbsp;이&nbsp;디 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" placeholder="아이디 자동출력되도록!!!!!!!!!!!" readonly ></input>
@@ -88,19 +88,17 @@
 
 				</div>
 			</td>
-			<td style="border: 1px solid #444444;">ㄴㄴ</td>
+			<td style="border: 1px solid #444444; background-color: #E0F0F0;">
+				
+				<div style="margin-top: 10px; font-size: xx-large; font-weight: bolder;s"> 선택하신 메뉴
+				</div> 
+				
+				<div>메뉴들 출력</div>
+				
+				<button style="color:white; background-color: green; font-weight: bold; font-size: large; margin-bottom: 0px; "> 주문하기 </button>
+				
+			</td>
 		</table>	
-		<div>
-			<button id="btnList">추천순</button>	<!--클릭되었을 경우, 색변화되도록 이벤트 넣기!!!  -->
-			<button id="btnList">재고순</button>	<!-- 선택순으로 리스트 출력하는 쿼리 생성 필요!! -->
-			<span style="margin-left: 1200px">
-				<input type="text" placeholder="업종을 검색해 주세요"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
-				<button id="btn">검색</button>
-			</span>
-		</div>
-		<div style="margin-top: 45px; margin-left: 150px; font-weight: bold; font-size: x-large;">
-			지금 픽업 가능한 음식점🍕
-	    </div>
 	    
 	  </div>
 </body>
@@ -108,7 +106,7 @@
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
-    el: '#app',
+    el: '#app8',
     data: {
       
     }   
