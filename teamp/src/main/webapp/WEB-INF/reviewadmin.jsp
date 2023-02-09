@@ -21,8 +21,13 @@ ul, li{
      margin:0;
 }
 #mainWrapper{
+
+     position: relative; 
+     left: 500px; 
+     bottom:800px; 
+     clear:both;
      width: 800px;
-     
+     height :500px;
      margin-left: 350px; /*가운데 정렬*/
      margin-right: 350px; /*가운데 정렬*/
      margin-bottom: 350px; /*가운데 정렬*/
@@ -95,9 +100,9 @@ ul, li{
 </style>
 
 <body class="body">
-<jsp:include page="/layout/adminmypage.jsp"></jsp:include>
-<div style = "margin-top: 100px">
-	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
+
+<div id="app" style="width:2483.02px; padding-top:120px;" align="center"  style = "margin-top: 100px">
+	<jsp:include page="/layout/adminmypage.jsp"></jsp:include>
     <div id="mainWrapper"> 
         <ul>
         	<div>
@@ -106,6 +111,7 @@ ul, li{
         	</div>
             
              <!-- 검색 폼 영역 -->
+             
             <li id='liSearchOption'>
                     <select id='selSearchOption' >
                         <option value='A'>제목+내용</option>
@@ -115,7 +121,7 @@ ul, li{
                     <input id='txtKeyWord' />
                     <input type='button' value='검색'/>
                 </li>
-
+                
             <!-- 게시판 목록  -->
             <li>
                 <ul id ="ulTable">
@@ -195,7 +201,7 @@ ul, li{
                 </div>
             </li>
         </ul>
-    </div>
+    
     </div>
     </div>
 </body>
