@@ -15,16 +15,17 @@
 	</style>
 	<title>testing_header</title>
 	<div class="header"  >
-		<img style="margin-left:40px"src="img/logo1.png" width="100px" height="80px"> 
-		<a href="main.do" style="margin-top: 30px; margin-left: 40px; margin-bottom: 50px; font-weight: nomal; 
-		font-style: Script; font-size: 50px; line-height: 1.0em; font-family: Verdana; color: green;">세잎</a>
-		<a href="main.do" class="header" style="margin-left: 1500px; ">홈</a> <!-- a태그를 쓰면 갈려는 페이지 바로 입력하기, 처음에 @click으로 되지 않은 이유는 불러올 라이브러리 id="app"에 연결이 되어있지 않아서-->
-		<a class="header" style="margin-left: 1600px; ">게시글</a>
-		<a class="header" style="margin-left: 1700px; ">내정보</a>
-		<span v-if="login2">
-		<span href="login.do" class="header" style="margin-left: 1800px; ">로그인</span>
-		</span>
-		<span v-if="login2" href="board*.do" class="header1" style="margin-left: 1800px; ">로그인</span>
+      <img style="margin-left:40px"src="img/logo1.png" width="100px" height="80px"> 
+      <a href="main.do" style="margin-top: 30px; margin-left: 40px; margin-bottom: 50px; font-weight: nomal; 
+      font-style: Script; font-size: 50px;  font-family: Verdana; color: green; display: flex; align-items: center;">세잎</a>
+      <a href="main.do" class="header" style="margin-left: 1500px; display: flex; align-items: center;">홈</a> <!-- a태그를 쓰면 갈려는 페이지 바로 입력하기, 처음에 @click으로 되지 않은 이유는 불러올 라이브러리 id="app"에 연결이 되어있지 않아서-->
+      <a class="header" style="margin-left: 1600px; display: flex; align-items: center;">게시글</a>
+      <a class="header" style="margin-left: 1700px; display: flex; align-items: center;">내정보</a>
+      <span v-if="login2">
+      <span href="login.do" class="header" style="margin-left: 1800px; display: flex; align-items: center;">로그인</span>
+      </span>
+      <span v-if="login2" href="board*.do" class="header1" style="margin-left: 1800px; ">로그인</span>
+
 
 		    
  
