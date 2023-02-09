@@ -118,7 +118,7 @@ input {
   			<button onClick="location.href='http://127.0.0.1:8080/menuaddbusiness2.do'">추가</button>
   		</div>
 	<div class="div1" >
-		세잎
+		세잎1
 	</div>
 	<!-- 전체 div -->
 	<div class="div2">
