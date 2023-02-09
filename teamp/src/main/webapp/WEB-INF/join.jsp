@@ -136,6 +136,7 @@ var app = new Vue({
     	, name : ""
     	, age : ""
     	, address : ""
+    	, flg : true
     	
     } 
     , methods: {
