@@ -101,6 +101,7 @@ input{
 </head>
 <body class="body">
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
     <div class="div1"> <!--전체 div-->
       <div class="div2"> <!--별점,텍스트 div-->
         <h1 style="font-size:50px">리뷰 작성하기</h1>
@@ -134,6 +135,7 @@ input{
      </div>     
     </div>
    </div> <!--전체 div-->
+   </div>
 </body>
   <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
