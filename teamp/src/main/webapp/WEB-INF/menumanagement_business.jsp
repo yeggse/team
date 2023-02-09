@@ -75,11 +75,13 @@ ul, li{
 }
 #liSearchOption {
 	 clear:both;
+	 border: 2px solid black;
 }
 #liSearchOption {
      margin-left:180px; auto; 
      width:auto; 
-     positio
+     positio;
+	 border: 2px solid black;
 }
 .left {
      text-align : left;
@@ -94,15 +96,15 @@ ul, li{
 </style>
 
 <body class="body">
-<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+<jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
     <div id="mainWrapper"> 
         <ul>
         	<div>
-            <!-- 게시판 제목 -->
-            <li>결제내역 </li>
+			<button>영업시작</button>        	
+			<button>영업종료</button>
+			<p><h2>메누관리</h2></p>        	
         	</div>
-            
              <!-- 검색 폼 영역 -->
             <li id='liSearchOption'>
                     <select id='selSearchOption' >
