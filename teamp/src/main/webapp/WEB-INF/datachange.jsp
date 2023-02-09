@@ -68,7 +68,7 @@ body{
 			<div class="div2">
 			    계좌번호 <input type="text" id = "text1" v-model="account" style = "margin-left:45px"></input>
 			</div>
-			<button @click = "fnJoin" style = "width:200px; height:35px; margin-top:50px">수정하기</button>
+			<button @click = "" style = "width:200px; height:35px; margin-top:50px">수정하기</button>
 			
 		</div> 
 	 </body>
@@ -79,10 +79,14 @@ var app = new Vue({
 	el: '#app',
     data: {
     	id : ""
+    	, pwd2 : ""
     	, pwd : ""
     	, name : ""
     	, age : ""
     	, address : ""
+    	, nickname : ""
+    	, num : ""
+    	, account : ""
     	
     } 
     , methods: {
