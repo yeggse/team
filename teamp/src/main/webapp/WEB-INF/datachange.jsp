@@ -15,6 +15,7 @@ body{
 }
  .div3 {
 	            margin: auto;
+	            margin-top : 100px; 
 	            width: 800px;
 	            height:800px;
 	            background-color: white;

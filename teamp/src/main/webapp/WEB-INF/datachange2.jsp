@@ -14,6 +14,7 @@ body{
      font-family:"맑은 고딕";
 }
  .div3 {
+                
 	            margin: auto;
 	            width: 800px;
 	            height:800px;
@@ -24,6 +25,7 @@ body{
 	            
 	        }
 	         .div2 {
+	         
 	            margin-left:50px;
 	            margin-bottom: 10px;
 	            width: 800px;
@@ -35,11 +37,11 @@ body{
 	        }
 </style>
 
-<body>
+<body >
 <jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
-     <div id="app" class = "div3" >
+     <div id="app" class = "div3" style = "margin-top:100px" >
 	       <div id="app" class = "div2" style = "background-color: white;height: 50px;font-size: 25px;" >
-	             일반 회원가입
+	             회원정보 수정
 	       </div>
 		    
 			<div class="div2">
@@ -98,10 +100,21 @@ var app = new Vue({
 	el: '#app',
     data: {
     	id : ""
-    	, pwd : ""
-    	, name : ""
-    	, age : ""
-    	, address : ""
+        	, pwd2 : ""
+        	, pwd : ""
+        	, name : ""
+        	, age : ""
+        	, address : ""
+        	, nickname : ""
+        	, num : ""
+        	, account : ""
+        	, restaurant : ""
+        	, resnum : ""
+        	, kind : ""
+        	, region : ""
+        	, resad : ""
+        	, resphonenum : ""
+        	
     } 
     , methods: {
     	
