@@ -101,7 +101,7 @@ ul, li{
 
 <body class="body">
 
-<div id="app" style="width:2483.02px; padding-top:120px;" align="center"  style = "margin-top: 100px">
+<div id="app" style="width:100%; padding-top:120px;" align="center"  style = "margin-top: 100px">
 	<jsp:include page="/layout/adminmypage.jsp"></jsp:include>
     <div id="mainWrapper"> 
         <ul>
