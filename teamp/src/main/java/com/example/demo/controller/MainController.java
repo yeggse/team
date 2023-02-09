@@ -14,19 +14,25 @@ public class MainController {
     @Autowired
     private MainService mainService; 
 
-    // 웹 주소
+    // 웹 주소 : 메인페이지
     @RequestMapping("/main.do") 
     public String main(Model model) throws Exception{
     	
-    	return "/main"; // WEB-INF에서 호출할 파일명
+    	return "/web_main/main"; // WEB-INF에서 호출할 파일명
     }
-    // 웹 주소
+    // 웹 주소 : 업종 목록 출력
     @RequestMapping("/main.storelist.do") 
     public String storeList(Model model) throws Exception{
     	
-    	return "/storeList"; // WEB-INF에서 호출할 파일명
+    	return "/web_store/storeList"; // WEB-INF에서 호출할 파일명
     }
     
+    // 웹 주소 : 결제창
+    @RequestMapping("/main.payment.do") 
+    public String payment(Model model) throws Exception{
+    	
+    	return "/web_store/payment"; // WEB-INF에서 호출할 파일명
+    }
     
     // 데이터 호출
 //	@RequestMapping(value = "/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

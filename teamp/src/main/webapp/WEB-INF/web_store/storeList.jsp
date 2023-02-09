@@ -52,8 +52,8 @@
 	       }
 </style>
 
-<body style="margin: 0px">
-	<div id="app">
+<body style="margin: 0px">	
+	<div id="app" style="width:2483.02px", anlign="center">		<!-- 화면 고정을 위해 필요 -->
 		<div class="div1">
 			<button id="btnList">추천순</button>	<!--클릭되었을 경우, 색변화되도록 이벤트 넣기!!!  -->
 			<button id="btnList">재고순</button>	<!-- 선택순으로 리스트 출력하는 쿼리 생성 필요!! -->
