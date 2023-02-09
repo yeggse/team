@@ -22,6 +22,7 @@ ul, li{
 }
 #mainWrapper{
      width: 800px;
+     
      margin-left: 350px; /*가운데 정렬*/
      margin-right: 350px; /*가운데 정렬*/
      margin-bottom: 350px; /*가운데 정렬*/

@@ -35,7 +35,10 @@
 var app = new Vue({ 
     el: '#app2',
     data: {
+<<<<<<< HEAD
     	
+=======
+>>>>>>> branch 'main' of https://github.com/yeggse/team.git
     }   
     , methods: {
     	 

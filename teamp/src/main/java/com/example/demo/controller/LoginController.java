@@ -15,4 +15,12 @@ public class LoginController {
     public String login(Model model) throws Exception{
     	return "/login"; // WEB-INF에서 호출할 파일명
     }
+    @RequestMapping("/searchid.do") 
+    public String searchid(Model model) throws Exception{
+    	return "/search_id"; // WEB-INF에서 호출할 파일명
+    }
+    @RequestMapping("/searchpw.do") 
+    public String searchpw(Model model) throws Exception{
+    	return "/search_pw"; // WEB-INF에서 호출할 파일명
+    }
 }

@@ -44,6 +44,8 @@ input{
   height: 700px;
   padding: 40px;
   margin: auto;
+  margin-top:100px;
+  
 }
 .div1{
   position: relative;
