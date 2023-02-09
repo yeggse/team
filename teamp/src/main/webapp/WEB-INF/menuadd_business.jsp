@@ -135,7 +135,7 @@ padding: 5px;
 			</div>
                 <!-- 메뉴관리 -->
         	<div class="tempborder">
-			<span class="titletext">메뉴관리</span>
+			<span class="titletext">메뉴추가</span>
 			<span>
 			<button class="btnadd">추가</button>
 			</span>   	
@@ -151,7 +151,7 @@ padding: 5px;
                             <li>재고</li>
                             <li>픽업시간</li>
                             <li>메뉴설명</li>
-                            <li>사진등록여부</li>
+                            <li>사진</li>
                             <li>삭제</li>
                             <li>수정</li>
                         </ul>
@@ -165,7 +165,7 @@ padding: 5px;
                             <li>1개</li>
                             <li>14:40</li>
                             <li>맛있어요</li>
-                            <li>등록완료</li>
+                            <li>사진</li>
                             <li><button @click="fnDelete" class="btnreview" >삭제</button></li>
                             <li><button class="btnreview">수정</button></li>
                         </ul>
@@ -178,7 +178,7 @@ padding: 5px;
                             <li>1개</li>
                             <li>20분뒤</li>
                             <li>맛있어요</li>
-                            <li>등록완료</li>
+                            <li>사진</li>
                             <li><button @click="fnDelete" class="btnreview" >삭제</button></li>
                             <li><button class="btnreview">수정</button></li>
                         </ul>
@@ -191,7 +191,7 @@ padding: 5px;
                             <li>1개</li>
                             <li>20분뒤</li>
                             <li>맛있어요</li>
-                            <li>등록완료</li>
+                            <li>사진</li>
                             <li><button @click="fnDelete" class="btnreview" >삭제</button></li>
                             <li><button class="btnreview">수정</button></li>
                         </ul>
@@ -204,7 +204,7 @@ padding: 5px;
                             <li>1개</li>
                             <li>20분뒤</li>
                             <li>맛있어요</li>
-                            <li>등록완료</li>
+                            <li>사진</li>
                             <li><button @click="fnDelete" class="btnreview" >삭제</button></li>
                             <li><button class="btnreview">수정</button></li>
                         </ul>
