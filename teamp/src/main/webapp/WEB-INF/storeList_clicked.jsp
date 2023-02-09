@@ -141,9 +141,9 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 										<span class="position_res" style="marin-top: -50px;" >
 										<!-- DB넣기 -->가게위치 : 
 										</span><!-- 가계주소들어와야함 -->
-										<div class="position_res" >픽업시간 : 
+										<div class="position_res" style="margin-left: 735px;" >픽업시간 : 
 										</div><!-- 가계주소들어와야함 -->
-										<div>
+						<div>
 					<button id="btn_menu">메뉴</button><!-- 이동하는 리스너 넣어주기. -->
 					<button id="btn_review">리뷰</button><!-- 이동하는 리스너 넣어주기. -->
 						<span style="margin-left:25%; font-size: 30px;" >db수</span>
