@@ -167,23 +167,34 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 								<div style="overflow: auto">
 								<!-for문으로 차례대로 그림들어가게 하기  -->
 							
-					<div style="width:200px; height:150px; border:1px solid red; float:left; margin-right:10px;">
-첫번째 영역:
-왼쪽에 위치시킴 =>  float:left
-오른쪽에 바깥여백을 줌 =>  margin-right:10px;
-여기에 그림이나 글자 또는 광고 등을 넣음
-</div>
-<div style="width:200px; height:150px; border:1px solid green; float:left;">
-두번째 영역:
-첫번째 영역 옆에 나란히 붙임 => float:left
-여기에 그림이나 글자 또는 광고 등을 넣음
-</div>
+					<div style="margin-top:30px; margin-left:60px; width:300px; height:180px; border-radius:10px; border:1px solid red; float:left; margin-right:60px;">
+							첫번째 영역:
+							왼쪽에 위치시킴 =>  float:left
+							오른쪽에 바깥여백을 줌 =>  margin-right:10px;
+							여기에 그림이나 글자 또는 광고 등을 넣음
+							</div>
+							<div style="margin-top:30px; margin-right: 1000px; width:1000px; height:180px; border:1px solid green; float:left;">
+							두번째 영역:
+							첫번째 영역 옆에 나란히 붙임 => float:left
+							여기에 그림이나 글자 또는 광고 등을 넣음
+							</div>
+							<div style="margin-left:60px; width:300px; height:180px; border-radius:10px; border:1px solid red; float:left; margin-right:60px;">
+							첫번째 영역:
+							왼쪽에 위치시킴 =>  float:left
+							오른쪽에 바깥여백을 줌 =>  margin-right:10px;
+							여기에 그림이나 글자 또는 광고 등을 넣음
+							</div>
+							<div style="margin-right: 1000px; width:1000px; height:180px; border:1px solid green; float:left;">
+							두번째 영역:
+							첫번째 영역 옆에 나란히 붙임 => float:left
+							여기에 그림이나 글자 또는 광고 등을 넣음
+							</div>
+							
 								
-								
+								</div>
 								<div>
 								 <button id="btn_order">주문시작</button>
 								 </div>
-								</div>
 							</div>
 								
 	  
