@@ -17,7 +17,7 @@
 		
 	        /* 점(.)으로 시작하는 아이 : html 파트에서 클래스(명)를 의미. */
 	      .div1{
-	        margin-top: 70px;	/* 바깥쪽여백 */	
+	        margin-top: 170px;	/* 바깥쪽여백 */	
 	        margin-left: 1000px;
 	        font-size: xxx-large;
 	        font-weight: bolder;

@@ -147,7 +147,7 @@ var app = new Vue({
     
     		 
     , created: function () {
-		this.fnGetList();       
+	//	this.fnGetList();       
 	}
 });
 </script>

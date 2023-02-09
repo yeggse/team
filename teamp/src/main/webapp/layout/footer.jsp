@@ -15,22 +15,38 @@
 	         text-decoration-line: none;
 	        }
 	       .lll {
-	       		margin-top: 100px;
-	            background-color: #393b44;
-	            color: white;
-	            position: fixed;
-	             width: 100%;
+	        /* position: relative;
+	        
+	        transform : translateY(-100%);  */
+	        
+	        height: 300px;
+	            position : absolute;  
+	 	    background-color: #393b44;  
+	        color: white;  
+	        bottom:0; 
+			left: 0;
+			right: 0;
+			width: 100%;
+	        flot: right;
+	        padding: 5px;
+	        display: inline-flex;
 	        } 
-	        table{
-	        width: 100%;
-	        }
+	        
+	        /* #wrapper{
+  				height: auto;
+				min-height: 100%;
+  				padding-bottom: 300px;
+			} */
 	</style>
 </head>
 
 <body>
 	
-	<div class="lll" >
-		
+<!-- 	<div id='wrapper'>
+ 		 <div>
+  		</div>
+	</div> -->
+	<div class="lll">	
 		<table style="border: 1px solid #393b44; border-collapse : collapse;">
 			<tr>
 		 		 <td>
