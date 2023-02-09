@@ -14,13 +14,13 @@
 	        }
 	</style>
 	<title>testing_header</title>
-	<div>
+	<div class="header" >
 	<span style="margin-left: 40px; font-weight: nomal; font-style:Script; font-size: 50px; line-height: 1.0em; font-family:Verdana; color: green;">
 		<img src="img/logo1.png" width="100px" height="100px">            세잎
-			<a href="main.do" class="header" style="margin-left: 1600px">홈</a> <!-- a태그를 쓰면 갈려는 페이지 바로 입력하기, 처음에 @click으로 되지 않은 이유는 불러올 라이브러리 id="app"에 연결이 되어있지 않아서-->
-		<a class="header" style="margin-left: 50px">게시글</a>
-		<a class="header" style="margin-left: 50px">내정보</a>
-		<a class="header" style="margin-left: 50px">로그인</a>
+			<a href="main.do" class="header" style="margin-left: 1900px">홈</a> <!-- a태그를 쓰면 갈려는 페이지 바로 입력하기, 처음에 @click으로 되지 않은 이유는 불러올 라이브러리 id="app"에 연결이 되어있지 않아서-->
+		<a class="header" style="margin-left: 2000px">게시글</a>
+		<a class="header" style="margin-left: 2100px">내정보</a>
+		<a class="header" style="margin-left: 2200px">로그인</a>
 	</span>
 	<hr></hr> 
 	</div>

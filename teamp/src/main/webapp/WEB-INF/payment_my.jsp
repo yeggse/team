@@ -10,7 +10,7 @@
 </head>
 
 <style>
-body{
+.body{
      line-height:2em;        
      font-family:"맑은 고딕";
 }
@@ -94,7 +94,7 @@ ul, li{
 
 </style>
 
-<body>
+<body class="body">
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
     <div id="mainWrapper">
         <ul>
@@ -136,7 +136,7 @@ ul, li{
                             <li>짜장면</li>
                             <li>2023.02.08</li>
                             <li>20000원</li>
-                            <li><button class="btn">리뷰</button></li>
+                            <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
                         </ul>
                     </li>
 
@@ -148,7 +148,7 @@ ul, li{
                             <li>짜장면</li>
                             <li>2023.02.08</li>
                             <li>20000원</li>
-                           <li><button class="btn">리뷰</button></li>
+                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
                         </ul>
                     </li>
 
@@ -160,7 +160,7 @@ ul, li{
                             <li>짜장면</li>
                             <li>2023.02.08</li>
                             <li>20000원</li>
-                           <li><button class="btn">리뷰</button></li>
+                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
                         </ul>
                     </li>
 
@@ -172,7 +172,7 @@ ul, li{
                             <li>짜장면</li>
                             <li>2023.02.08</li>
                             <li>20000원</li>
-                           <li><button class="btn">리뷰</button></li>
+                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
                         </ul>
                     <li>                                        
                 </ul>
@@ -193,4 +193,5 @@ ul, li{
         </ul>
     </div>
 </body>
+    <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  

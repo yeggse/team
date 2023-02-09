@@ -32,7 +32,7 @@ public class BoardController {
 	@RequestMapping("/Home.do") 
     public String home(Model model) throws Exception{
     	
-    	return "/boardList"; // WEB-INF에서 호출할 파일명
+    	return "/main"; // WEB-INF에서 호출할 파일명
     }
 	@RequestMapping("/Mypage.do") 
     public String mp(Model model) throws Exception{

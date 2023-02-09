@@ -10,7 +10,7 @@
 </head>
 
 <style>
-body{
+.body{
      line-height:2em;        
      font-family:"맑은 고딕";
 }
@@ -93,7 +93,7 @@ ul, li{
 }
 </style>
 
-<body>
+<body class="body">
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
     <div id="mainWrapper">
         <ul>
@@ -192,4 +192,5 @@ ul, li{
         </ul>
     </div>
 </body>
+ <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
