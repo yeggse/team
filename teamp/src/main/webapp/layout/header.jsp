@@ -22,6 +22,13 @@
 		<a class="header" style="margin-left: 2000px; ">게시글</a>
 		<a class="header" style="margin-left: 2100px; ">내정보</a>
 
+		<a href="login.do" class="header1" style="margin-left: 2200px; ">로그인</a>
+
+		<a href="board*.do" class="header" style="margin-left: 2200px; ">로그인</a>
+		    
+ 
+	
+
 
 	
 	</div>
