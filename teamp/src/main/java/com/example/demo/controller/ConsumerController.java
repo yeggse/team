@@ -21,4 +21,9 @@ public class ConsumerController {
     public String review(Model model) throws Exception{
     	return "/review_write"; // WEB-INF에서 호출할 파일명
     }
+    
+    @RequestMapping("/reviewadmin.do") 
+    public String review1(Model model) throws Exception{
+    	return "/reviewadmin"; // WEB-INF에서 호출할 파일명
+    }
 }

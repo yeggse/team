@@ -19,4 +19,10 @@
 	            float:left;
 	            padding:10px
 	   }
+	   
+#bodybtn {
+	margin:auto;
+	background-color: #4c4343;
+	border: solid #4c4343;
+}
 	 
