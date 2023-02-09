@@ -94,9 +94,9 @@ ul, li{
 
 </style>
 
-<body class="body">
+<body >
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
-	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
+	<div id="app" class="body" style="width:2483.02px; padding-top:120px;" align="center">
     <div id="mainWrapper"> 
         <ul>
         	<div>
