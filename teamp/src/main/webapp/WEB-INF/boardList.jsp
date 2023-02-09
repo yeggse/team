@@ -6,6 +6,8 @@
 	<meta charset="UTF-8">
 	<script src="js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<jsp:include page="/layout/header.jsp"></jsp:include>
+	<link rel="stylesheet" href="css/storeListClicked_Scroll.css">
 	<title>board 페이지</title>
 </head>
 <style>
