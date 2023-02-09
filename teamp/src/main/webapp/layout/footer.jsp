@@ -21,7 +21,7 @@
 	<div class="footer">	
 					<span style="float: left; display: flex; align-items: center;" >
 						<span style="float: left;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-							<img style="margin-left:40px"src="img/logo1.png" width="60px" height="50px"> &nbsp; &nbsp; &nbsp;
+							<img style="margin-left:40px " src="img/logo1.png" width="60px" height="50px"> &nbsp;
 								<a href="main.do" style="font-weight: bold; vertical-align:top; 
 								font-style: Script; font-size: 25px; font-family: Verdana; color: white;">세잎</a>
 						</span>

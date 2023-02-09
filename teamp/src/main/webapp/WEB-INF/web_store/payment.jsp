@@ -34,23 +34,7 @@
 	            font-weight: bold; 
 	            font-size: large;
 	        }   
-	       #btn{
-		       background-color: #8FBC94;
-		       width: 80px;
-		       height: 40px;
-		       border-radius: 20px;
-		       border: solid 2px #8FBC94;
-		       font-size: large;
-		       color: white;
-		       padding: 0px;
-	       }
-	       label {
- 				display: flex;
-  				align-items: center;
-  				justify-content: center;
- 				margin: 0 auto;
-			}
-			select {	/* https://www.freecodecamp.org/korean/news/html-select-taegeu-deurobdaun-menyu-ddoneun-kombo-riseuteureul-mandeuneun-bangbeob/ */
+			select {	/* 콤보리스트 : https://www.freecodecamp.org/korean/news/html-select-taegeu-deurobdaun-menyu-ddoneun-kombo-riseuteureul-mandeuneun-bangbeob/ */
 			  	margin-bottom: 10px;
   				margin-top: 10px;
   				background: lightgray;
@@ -77,6 +61,8 @@
 	            float:right;
 	            padding:10px;
 	   }
+	   
+	   
 </style>
 
 <body style="margin: 0px">
@@ -121,12 +107,25 @@
 			결제 금액 : {{계산 금액 출력}}	  원
 	  	</div>
 	  	<div>
-	  		<button style="color:white; background-color: green; margin-top: 10px; font-weight: bold; font-size: large; margin-bottom: 0px; width:100%;"> 예약 완료 </button>
+	  		<button style="color:white; background-color: #8FBC94; margin-top: 10px; font-weight: bold; font-size: large; margin-bottom: 0px; width:100%; border-radius: 10px;
+		       border: solid 2px #8FBC94;"> 예약 완료 </button>
 	  	</div>
 	  	<div>
-	  		<button style="color:white; background-color: lightgray; margin-top: 5px; font-weight: bold; font-size: large; margin-bottom: 0px; width:100%;"> 취소 </button>
+	  		<button style="color:white; background-color: lightgray; margin-top: 5px; font-weight: bold; font-size: large; margin-bottom: 0px; width:100%; border-radius: 10px;
+		       border: solid 2px lightgray;"> 취소 </button>
 	  	</div>
 	  </div>
+	<div>
+		<label>
+		  <input type='checkbox' id='my_checkbox' onclick='is_checked()'> 체크하세요 </input>
+		</label>
+	<pre id='result'></pre>
+		<label><input type="checkbox" name="color" value="blue"> Blue</label>
+      <label><input type="checkbox" name="color" value="red"> Red</label>
+	</div>
+	
+
+	
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
