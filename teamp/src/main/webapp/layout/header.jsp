@@ -26,11 +26,6 @@
 		</span>
 		<span v-if="login2" href="board*.do" class="header1" style="margin-left: 1800px; ">로그인</span>
 
-		    
- 
-	
-
-
 	
 	</div>
 </head>
