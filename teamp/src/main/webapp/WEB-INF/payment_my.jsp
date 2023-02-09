@@ -96,7 +96,7 @@ ul, li{
 
 <body class="body">
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
-    <div id="mainWrapper">
+    <div id="mainWrapper"> 
         <ul>
             <!-- 게시판 제목 -->
             <li>결제내역 </li>

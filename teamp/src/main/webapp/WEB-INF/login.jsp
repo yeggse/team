@@ -84,7 +84,8 @@ input {
 </style>
 <body>
 	<!-- 타이틀 -->
-	<div class="title">
+  <div id="app" style="width:2483.02px; padding-top:120px;", anlign="center">
+	<div class="title" >
 		<h1>세잎</h1>
 	</div>
 	<!-- 전체 div -->
@@ -118,6 +119,7 @@ input {
 	</div>
 	<!-- 전체 footer -->
 	<jsp:include page="/layout/footer.jsp"></jsp:include>
-	</div>                            
+	</div>    
+  </div>	                        
 </body>
 </html>

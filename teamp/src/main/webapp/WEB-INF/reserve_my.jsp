@@ -194,3 +194,19 @@ ul, li{
 </body>
  <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
+<script type="text/javascript">
+	alert('hi');
+var app = new Vue({ 
+    el: '#app',
+    data: {
+    }   
+    , methods: {
+    	
+    }
+    
+    		 
+    , created: function () {
+		this.fnGetList();       
+	}
+});
+</script>

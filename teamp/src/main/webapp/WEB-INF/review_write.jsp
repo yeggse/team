@@ -15,26 +15,27 @@
      font-family:"맑은 고딕";
 }
 .div1{
-  width: 600px;
-  height: 1000px;
+  width: 400px;
+  height: 800px;
   padding: 20px;
   position: absolute; 
   left: 50%; 
   transform: translateX(-50%); 
   border: 2px solid black;
+  background: white;
 }
 .text{
   text-align:center;
   font-size:16px;
-  width:500px;
-  height:500px;
+  width:400px;
+  height:350px;
 }
 .btnphoto1{
  	 background:white;
   	 color:black;
  	 border:2px solid black;
- 	 width:18%;
-     height:150px;
+ 	 width:27%;
+     height:100px;
      margin:10px;
      padding:5px;
      text-align:center;
@@ -43,8 +44,8 @@
  	 background:white;
   	 color:black;
  	 border:2px dashed black;
- 	 width:18%;
-     height:150px;
+ 	 width:27%;
+     height:100px;
      margin:10px;
      padding:5px;
      text-align:center;
@@ -53,10 +54,10 @@
  	 background:green;
   	 color:white;
  	 border:none;
- 	 width:500px;
-     height:45px;
+ 	 width:400px;
+     height:35px;
      margin:10px;
-     font-size:32px;
+     font-size:25px;
 }
 input{
   width:200px;
@@ -101,7 +102,6 @@ input{
 <body class="body">
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
     <div class="div1"> <!--전체 div-->
-     
       <div class="div2"> <!--별점,텍스트 div-->
         <h1 style="font-size:50px">리뷰 작성하기</h1>
         <div>
@@ -131,8 +131,9 @@ input{
             <button class="btncomplete">완료</button>
           </div>
         </div>
-     
-   </div>     <!--전체 div-->
+     </div>     
+    </div>
+   </div> <!--전체 div-->
 </body>
   <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
