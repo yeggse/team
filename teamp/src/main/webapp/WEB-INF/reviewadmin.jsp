@@ -23,7 +23,7 @@ ul, li{
 #mainWrapper{
 
      position: relative; 
-     left: 500px; 
+     left: 0px; 
      bottom:800px; 
      clear:both;
      width: 800px;
@@ -99,11 +99,11 @@ ul, li{
 
 </style>
 
-<body class="body">
+<body>
 
 <div id="app" style="width:100%; padding-top:120px;" align="center"  style = "margin-top: 100px">
 	<jsp:include page="/layout/adminmypage.jsp"></jsp:include>
-    <div id="mainWrapper"> 
+    <div id="mainWrapper" class="body"> 
         <ul>
         	<div>
             <!-- 게시판 제목 -->
