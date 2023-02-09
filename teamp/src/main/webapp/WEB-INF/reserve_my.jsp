@@ -27,6 +27,7 @@ ul, li{
      margin-bottom: 350px; /*가운데 정렬*/
      margin-top: 200px; /*가운데 정렬*/
      float: right;
+     border: 2px solid black;
     }
 #mainWrapper > ul > li:first-child {
      text-align: left;
@@ -95,6 +96,7 @@ ul, li{
 
 <body class="body">
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
     <div id="mainWrapper">
         <ul>
             <!-- 게시판 제목 -->
@@ -191,11 +193,12 @@ ul, li{
             </li>
         </ul>
     </div>
+    </div>
 </body>
  <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
+
 <script type="text/javascript">
-	alert('hi');
 var app = new Vue({ 
     el: '#app',
     data: {
