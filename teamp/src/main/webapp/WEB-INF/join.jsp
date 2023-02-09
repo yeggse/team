@@ -23,7 +23,7 @@
 	            margin: auto;
 	            margin-top: 200px;
 	            margin-bottom: 200px;
-	            width: 400px;
+	            width: 600px;
 	            height:800px;
 	            background-color: #EEEFF1;
 	            border-radius: 5px;
@@ -34,11 +34,12 @@
 	         .div2 {
 	            margin-left:50px;
 	            margin-bottom: 10px;
-	            width: 350px;
+	            width: 550px;
 	            height:50px;
 	            background-color: #EEEFF1;
 	            border-radius: 5px;
 	            text-align: initial;
+	            font-size:25px;
 	            
 	        }
 	        
@@ -97,7 +98,7 @@
 			</div>
 			<div class="div2">
 				주민번호 <input type="text" v-model="age" style = "margin-left:45px"></input>
-				- <input type="password" v-model="age"></input> <button @click="">실명인증</button>
+				- <input type="password" v-model="age1"></input> <button @click="">실명인증</button>
 			</div>
 			<div class="div2">
 				주소 <input type="text" id = "text1" v-model="address" style = "margin-left:75px"></input>
@@ -135,6 +136,7 @@ var app = new Vue({
     	, pwd2 : ""
     	, name : ""
     	, age : ""
+    	, age1 : ""
     	, address : ""
     	, flg : false
     	

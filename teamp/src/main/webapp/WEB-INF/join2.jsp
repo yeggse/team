@@ -24,7 +24,7 @@
 	            margin-top: 200px;
 	            margin-bottom: 200px;
 	            width: 400px;
-	            height:1050px;
+	            height:1200px;
 	            background-color: #EEEFF1;
 	            border-radius: 5px;
 	            text-align: center;
