@@ -69,7 +69,7 @@ body{
 			    계좌번호 <input type="text" id = "text1" v-model="account" style = "margin-left:45px"></input>
 			</div>
 			<button @click = "" style = "width:200px; height:35px; margin-top:50px">수정하기</button>
-			<div v-if = "flg">테스트</div>
+			
 		</div> 
 	 </body>
 	<jsp:include page="/layout/footer.jsp"></jsp:include>
