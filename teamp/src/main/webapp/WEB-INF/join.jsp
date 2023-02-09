@@ -83,7 +83,7 @@
 	     <div id="app" class = "div2" style = "background-color: white;height: 50px;font-size: 25px;" >
 	     일반 회원가입</div>
 		    <div class="div2"  >
-				아이디 <input type="text" id = "text1"v-model="id" style = "margin-left:60px"></input>
+				아이디 <input type="text" id = "text1" v-model="id" style = "margin-left:60px"></input>
 				<button @click="">중복확인</button>
 			</div>
 			<div class="div2">
@@ -112,7 +112,7 @@
 			<div class="div2">
 			    계좌번호 <input type="text" id = "text1" v-model="account" style = "margin-left:45px"></input>
 			</div>
-			<button @click = "fnJoin" style = "width:200px; height:35px;">회원가입</button>
+			<button @click = "fnCheck" style = "width:200px; height:35px;">회원가입</button>
 			
 			<div class="div2">
 			<a href="join.do">일반 회원가입하기</a>
@@ -139,10 +139,14 @@ var app = new Vue({
     	
     } 
     , methods: {
-    	var self = this;
-    	fncheck: function(){
-    		if(self.pwd = self.pwd2){
-    		self.flg = true;
+    	
+    	fnCheck: function(){
+    		var self = this;
+    		if(self.pwd == self.pwd2){
+    		alert("비밀번호가 일치합니다");
+    		}
+    		else{
+    			alert("비밀번호가 일치하지 않습니다.");
     		}
     	}
     
