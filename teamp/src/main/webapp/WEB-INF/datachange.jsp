@@ -36,7 +36,7 @@ body{
 </style>
 
 <body>
-<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+<jsp:include page="/layout/pagebody.jsp"></jsp:include>
      <div id="app" class = "div3" >
 	       <div id="app" class = "div2" style = "background-color: white;height: 50px;font-size: 25px;" >
 	             일반 회원가입
