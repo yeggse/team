@@ -103,7 +103,7 @@ ul, li{
 
 <div id="app" style="width:100%; padding-top:120px;" align="center"  style = "margin-top: 100px">
 	<jsp:include page="/layout/adminmypage.jsp"></jsp:include>
-    <div id="mainWrapper" class="body1"> 
+    <div id="mainWrapper" class="body"> 
         <ul>
         	<div>
             <!-- 게시판 제목 -->
