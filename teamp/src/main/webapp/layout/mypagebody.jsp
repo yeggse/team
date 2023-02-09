@@ -21,16 +21,17 @@
 </html>
 
 <script type="text/javascript">
-var app = new Vue({ 
+var app1 = new Vue({ 
     el: '#app1',
     data: {
-    	
+    	flg : false
     }   
     , methods: {
 
     	fnCheck1: function(){
     		console.log("test");
-    		
+    		var self = this;
+    		self.flg = true;
     		
     	}
     }

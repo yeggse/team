@@ -118,7 +118,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 		       color: black;
 		       padding: 0px;
 		       margin-top: 50px;
-               margin-left: 8%;
+               margin-left: 1%;
 	       }
 	       #btn_order{
 		       background-color: #2ecc71;
@@ -129,7 +129,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 		       color: white;
 		       padding: 0px;
 		       margin-top: 60px;
-               margin-left: 65%;
+               margin-left: 74%;
                margin-bottom: 70px;
 	       }
 	        #btn_img{
@@ -149,41 +149,52 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 </style>
 
 <body>
-	<div id="app" style="width:2483.02px; padding-top:120px;", anlign="center">
+	<div id="app" style="width:100%; padding-top:120px;", anlign="center">
 		<div class="title_food" >옛날짜장 	</div>
 		<span class="grade" style="margin-left:180px;" >평점 :</span>
 										<span class="position_res" style="marin-top: -50px;" >
 										<!-- DB넣기 -->가게위치 : 
 										</span><!-- 가계주소들어와야함 -->
-										<div class="position_res" style="margin-left: 735px;" >픽업시간 : 
+										<div class="position_res" style="margin-left: 619px;" >픽업시간 : 
 										</div><!-- 가계주소들어와야함 -->
 						<div>
 					<button id="btn_menu">메뉴</button><!-- 이동하는 리스너 넣어주기. -->
 					<button id="btn_review">리뷰</button><!-- 이동하는 리스너 넣어주기. -->
-						<span style="margin-left:25%; font-size: 30px;" >db수</span>
+						<span style="margin-left:30%; font-size: 30px;" >db수</span>
 						<span class="count_menu">메뉴선택 갯수</span>
 						</div>
 							<div style="margin-top:50px;">
 								<div style="overflow: auto">
-								<!-for문으로 차례대로 그림들어가게 하기  -->
+				<!-for문으로 차례대로 그림들어가게 하기  -->
 							
-					<div style="width:200px; height:150px; border:1px solid red; float:left; margin-right:10px;">
-첫번째 영역:
-왼쪽에 위치시킴 =>  float:left
-오른쪽에 바깥여백을 줌 =>  margin-right:10px;
-여기에 그림이나 글자 또는 광고 등을 넣음
-</div>
-<div style="width:200px; height:150px; border:1px solid green; float:left;">
-두번째 영역:
-첫번째 영역 옆에 나란히 붙임 => float:left
-여기에 그림이나 글자 또는 광고 등을 넣음
-</div>
-								
-								
+					<div style="margin-top:30px; margin-left:60px; width:300px; height:180px; border-radius:10px; border:1px solid red; float:left; margin-right:60px;">
+							<img style="margin-left:40px"src="img/main/newlogo.png" width="100px" height="80px">							</div>
+							<div style="margin-top:30px; margin-right: 100px; width:1000px; height:180px; border:1px solid green; float:left;">
+							<div style="margin-bottom:10px;">보통짜장면:</div>
+							<div style="margin-bottom:10px;">수량:</div>
+							<div style="margin-bottom:10px;">가격:</div>
+							<div style="margin-bottom:10px;">간단한 음식설명:</div>
+							</div>
+							<div style="margin-top:30px; margin-left:60px; width:300px; height:180px; border-radius:10px; border:1px solid red; float:left; margin-right:60px;">
+							<img style="margin-left:40px"src="img/main/newlogo.png" width="100px" height="80px">							</div>
+							<div style="margin-top:30px; margin-right: 100px; width:1000px; height:180px; border:1px solid green; float:left;">
+							두번째 영역:
+							첫번째 영역 옆에 나란히 붙임 => float:left
+							여기에 그림이나 글자 또는 광고 등을 넣음
+							</div>
+							<div style="margin-top:30px; margin-left:60px; width:300px; height:180px; border-radius:10px; border:1px solid red; float:left; margin-right:60px;">
+							<img style="margin-left:40px"src="img/main/newlogo.png" width="100px" height="80px">							</div>
+							<div style="margin-top:30px; margin-right: 100px; width:1000px; height:180px; border:1px solid green; float:left;">
+							두번째 영역:
+							첫번째 영역 옆에 나란히 붙임 => float:left
+							여기에 그림이나 글자 또는 광고 등을 넣음
+							</div>
+							
+						
+								</div>
 								<div>
 								 <button id="btn_order">주문시작</button>
 								 </div>
-								</div>
 							</div>
 								
 	  
