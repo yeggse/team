@@ -93,7 +93,6 @@ border: 10px solid green;
 	margin-left: 5px;
 	font-size: 10px;
 }
-
 input {
 	width: 200px;
 	height: 50px;
@@ -102,6 +101,7 @@ input {
 	border-width: 0 0 2px;
 	padding-right: 90px;
 }
+
 </style>
 <body>
 	<!-- 타이틀 -->
@@ -115,6 +115,7 @@ input {
   			<button onClick="location.href='http://127.0.0.1:8080/searchpw.do'">비밀번호찾기</button>
   			<button onClick="location.href='http://127.0.0.1:8080/menumanagementbusiness.do'">메뉴관리</button>
   			<button onClick="location.href='http://127.0.0.1:8080/menuaddbusiness.do'">메뉴추가</button>
+  			<button onClick="location.href='http://127.0.0.1:8080/menuaddbusiness2.do'">추가</button>
   		</div>
 	<div class="div1" >
 		세잎
@@ -154,5 +155,8 @@ input {
 	-->
 	</div>
 	</div>  
+	
+	
+	
 </body>
 </html>

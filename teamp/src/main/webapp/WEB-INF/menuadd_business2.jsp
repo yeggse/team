@@ -133,7 +133,7 @@ padding: 5px;
 			</div>
                 <!-- 메뉴관리 -->
         	<div class="tempborder">
-			<span class="titletext">메뉴추가</span>
+			<span class="titletext">메뉴</span>
 			<span>
 			<button class="btnadd">추가</button>
 			</span>   	

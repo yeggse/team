@@ -20,13 +20,7 @@ ul, li{
      padding:0;
      margin:0;
 }
-#mainWrapper{
-     width: 800px;
-     margin-left: 350px; /*가운데 정렬*/
-     margin-right: 350px; /*가운데 정렬*/
-     margin-bottom: 350px; /*가운데 정렬*/
-     border: 2px solid black;
-    }
+
 #mainWrapper > ul > li:first-child {
      text-align: left;
      font-size:32px;
@@ -87,21 +81,7 @@ ul, li{
  	 border:none;
  	 width:66px;
 }
-.btnonoff{
- 	 background:black;
-  	 color:white;
- 	 border:none;
- 	 width:350px;
- 	 height:50px;
-}
-.btnadd{
- 	 background:green;
-  	 color:white;
- 	 border:none;
- 	 width:80px;
- 	 height:35px;
- 	 float:right;
-}
+
 .titletext{
 font-size: 2em;
 padding-right: 500px;
@@ -116,25 +96,66 @@ width: 700px;
 align: center;
 }
 
-.tempborder{
+.btnonoff{
+ 	 background:black;
+  	 color:white;
+ 	 border:none;
+ 	 width:350px;
+ 	 height:50px;
+}
+
+.btnadd{
+ 	 background:green;
+  	 color:white;
+ 	 border:none;
+ 	 width:80px;
+ 	 height:35px;
+ 	 float:right;
+}
+
+.div1{
 border: 1px solid blue;
 margin:10px;
 padding: 5px;
 }
 
+#mainWrapper{
+	 clear:both;
+     width: 800px;
+     margin-left: 350px; /*가운데 정렬*/
+     margin-right: 350px; /*가운데 정렬*/
+     margin-bottom: 350px; /*가운데 정렬*/
+     border: 2px solid black;
+     position: relative; left: -500px; bottom:900px; 
+    }
+.div2{
+border: 5px solid black;	
+width: 90%;
+height: 55px;
+padding: 5px;
+margin: 5px;
+}
+.div3{
+border: 5px solid green;	
+width: 90%;
+height: 40px;
+margin-top: 5px;
+}
+
 </style>
 
 <body class="body">
-<jsp:include page="/layout/businesspagebody.jsp "></jsp:include>
+<div>
+<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
     <div id="mainWrapper"> 
                 <!--영업 on/off  -->
-        	<div class="tempborder">
+        	<div class="div2">
 			<button class="btnonoff">영업시작</button>        	
 			<button class="btnonoff">영업종료</button>
 			</div>
                 <!-- 메뉴관리 -->
-        	<div class="tempborder">
+        	<div class="div3">
 			<span class="titletext">메뉴관리</span>
 			<span>
 			<button class="btnadd">추가</button>
@@ -225,6 +246,7 @@ padding: 5px;
                 </div>
             </li>
         </ul>
+    </div>
     </div>
     </div>
 </body>
