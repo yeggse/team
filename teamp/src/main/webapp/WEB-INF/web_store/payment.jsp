@@ -61,6 +61,16 @@
 	            float:right;
 	            padding:10px;
 	   }
+	   .div4 {
+				margin-top: 10px;
+				width: 580px;
+		        height:100px;
+	            background-color: #E0F0F0;
+	            border-radius: 5px;
+	            float:left;
+	            margin-left: 350px; 
+	            padding:10px;
+	   }
 	   
 	   
 </style>
@@ -70,20 +80,20 @@
 		<div class="div1">결제창</div>
 		
 		<table style="float:left; margin-left: 350px; width: 600px; border: 1px solid black; border-collapse : collapse; margin-top: 100px; border-radius: 5px; text-align: center;">
-			<td style="border: 1px solid #444444; font-size: x-large; font-weight: bolder; margin-top: 20px; ">
-				<div style="margin-top: 30px;">아&nbsp;이&nbsp;디 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<td style="border: 1px solid #444444; font-size: x-large; font-weight: bolder; margin-top: 5px; ">
+				<div style="margin-top: 5px;">아&nbsp;이&nbsp;디 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" placeholder="아이디 자동출력되도록!!!!!!!!!!!" readonly ></input>
 				</div> 
-				<div style="margin-top: 30px;">이&nbsp;&nbsp;&nbsp;&nbsp;름 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div style="margin-top: 20px;">이&nbsp;&nbsp;&nbsp;&nbsp;름 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" placeholder="이름 자동출력되도록!!!!!!!!!!!" readonly></input>
 				</div>
-				<div style="margin-top: 30px;">전화번호 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div style="margin-top: 20px;">전화번호 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" placeholder="전화번호 자동출력되도록!!!!!!!!!!!" readonly></input>
 				</div>
-				<div style="margin-top: 30px;">계좌번호 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div style="margin-top: 20px;">계좌번호 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" placeholder="계좌번호 자동출력되도록!!!!!!!!!!!" readonly></input>
 				</div>					
-				<div style="margin-top: 30px; margin-bottom: 20px">결제방법 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div style="margin-top: 20px; margin-bottom: 5px">결제방법 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<form action="#" style=" display: inline;">	<!-- 나란히 만들기 위해서 display: inline -->
 						<select style="width: 400px; height: 40px; font-size: large; font-weight: bold;">
    							<option value="CASH">만나서 현금 결제</option>
@@ -91,7 +101,6 @@
    							<option value="card">만나서 카드 결제</option>
    						</select>
 					</form>
-
 				</div>
 			</td>
 		</table>	
@@ -115,16 +124,10 @@
 		       border: solid 2px lightgray;"> 취소 </button>
 	  	</div>
 	  </div>
-	<div>
-		<label>
-		  <input type='checkbox' id='my_checkbox' onclick='is_checked()'> 체크하세요 </input>
-		</label>
-	<pre id='result'></pre>
-		<label><input type="checkbox" name="color" value="blue"> Blue</label>
-      <label><input type="checkbox" name="color" value="red"> Red</label>
-	</div>
-	
-
+	  <div class="div4">	<!-- 체크 안되어있으면, 결제 안됨. -->
+     		<input type="CHECKBOX" id="ch" style="width:15px;height:10px;border:1px; name="" value="" />
+     		<label for="ch">이용약관, 개인정보 수집 및 이용, 개인정보 제3자 제공 , 전자금융거래 이용약관, 만 14세 이상 이용자 내용 확인하였으며 결제에 동의합니다.</label></div>
+		</div>
 	
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
