@@ -129,8 +129,8 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 		       color: white;
 		       padding: 0px;
 		       margin-top: 20px;
-               margin-left: 85%;
-               margin-bottom: 20px;
+               margin-left: 65%;
+               margin-bottom: 70px;
 	       }
 </style>
 
