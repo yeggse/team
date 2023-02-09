@@ -128,9 +128,23 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 		       font-size: large;
 		       color: white;
 		       padding: 0px;
-		       margin-top: 20px;
+		       margin-top: 60px;
                margin-left: 65%;
                margin-bottom: 70px;
+	       }
+	        #btn_img{
+		       width: 350px;
+ 			   height: 210px;
+  			   border-radius: 10px;
+  		       margin-left: 50px;
+  		       margin-top: 60px;
+	       }
+	         .text_img{
+		      width: 1300px;
+    		  height: 210px;
+   	          margin-left: 500px;
+              margin-top: 60px;
+              border: 1px solid green;
 	       }
 </style>
 
@@ -151,11 +165,39 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 						</div>
 							<div style="margin-top:50px;">
 								<div style="overflow: auto">
-								<br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br><br>f</br>
-								 <button id="btn_order">주문시작</button>
+								<!-for문으로 차례대로 그림들어가게 하기  -->
+							
+					<div style="margin-top:30px; margin-left:60px; width:300px; height:180px; border-radius:10px; border:1px solid red; float:left; margin-right:60px;">
+							첫번째 영역:
+							왼쪽에 위치시킴 =>  float:left
+							오른쪽에 바깥여백을 줌 =>  margin-right:10px;
+							여기에 그림이나 글자 또는 광고 등을 넣음
+							</div>
+							<div style="margin-top:30px; margin-right: 1000px; width:1000px; height:180px; border:1px solid green; float:left;">
+							두번째 영역:
+							첫번째 영역 옆에 나란히 붙임 => float:left
+							여기에 그림이나 글자 또는 광고 등을 넣음
+							</div>
+							<div style="margin-left:60px; width:300px; height:180px; border-radius:10px; border:1px solid red; float:left; margin-right:60px;">
+							첫번째 영역:
+							왼쪽에 위치시킴 =>  float:left
+							오른쪽에 바깥여백을 줌 =>  margin-right:10px;
+							여기에 그림이나 글자 또는 광고 등을 넣음
+							</div>
+							<div style="margin-right: 1000px; width:1000px; height:180px; border:1px solid green; float:left;">
+							두번째 영역:
+							첫번째 영역 옆에 나란히 붙임 => float:left
+							여기에 그림이나 글자 또는 광고 등을 넣음
+							</div>
+							
+								
 								</div>
+								<div>
+								 <button id="btn_order">주문시작</button>
+								 </div>
 							</div>
 								
+	  
 	  
 	</div>
 	
