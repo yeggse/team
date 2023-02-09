@@ -13,8 +13,9 @@
   box-sizing: border-box;
 }
 .div0{
-width:50%;
+width:30%;
 border:10px solid red;
+margin-top:100px;
 
 
 }
@@ -25,13 +26,12 @@ height:500px;
 border: 10px solid green;
 }
 .div1 {
-	width: 200px;
-	height: 120px;
-	font-size: 30px;
+	width: 180px;
+	height: 100px;
+	font-size: 4em;
 	text-align: center;
 	border: 1px solid blue;
-	
-	
+	padding: 10px;
 }
 .div2 {
 	width: 400px;
@@ -103,12 +103,11 @@ input {
 	padding-right: 90px;
 }
 </style>
-<body >
+<body>
 	<!-- 타이틀 -->
   <div id="app"style="width:2483.02px; padding-top:120px;" align="center">
   	<div class="div0">
   		<div>
-  			class="tempbtn"> 간편한 페이지전환을 위한 테스트용 버튼
   			<button onClick="location.href='http://127.0.0.1:8080/paymentmy.do'">결제내역</button>
   			<button onClick="location.href='http://127.0.0.1:8080/reservemy.do'">예약내역</button>
   			<button onClick="location.href='http://127.0.0.1:8080/reviewwrite.do'">리뷰쓰기</button>
@@ -118,7 +117,7 @@ input {
   			<button onClick="location.href='http://127.0.0.1:8080/menuaddbusiness.do'">메뉴추가</button>
   		</div>
 	<div class="div1" >
-		<h1>세잎</h1>
+		세잎
 	</div>
 	<!-- 전체 div -->
 	<div class="div2">
@@ -150,7 +149,9 @@ input {
 		<h4>Copyright © Safe Corp. All rights reserved.</h4>
 	</div>
 	<!-- 전체 footer -->
-	<!--  <jsp:include page="/layout/footer.jsp"></jsp:include>-->
+	<!--  
+	<jsp:include page="/layout/footer.jsp"></jsp:include>
+	-->
 	</div>
 	</div>  
 </body>
