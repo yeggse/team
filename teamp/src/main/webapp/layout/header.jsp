@@ -43,7 +43,7 @@
 var app = new Vue({ 
     el: '#app2',
     data: {
-    	login2=false
+    	login2 : false
     }   
     , methods: {
     	  fnLogin1 : function(){
