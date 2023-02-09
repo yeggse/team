@@ -81,10 +81,27 @@ input {
 	border-width: 0 0 2px;
 	padding-right: 90px;
 }
+<!--임시-->
+.temp{
+float:left;
+width:200px;
+height:500px;
+
+
+}
 </style>
 <body>
 	<!-- 타이틀 -->
   <div id="app" style="width:2483.02px; padding-top:120px;" align="center">
+  	<div class="temp">
+  	<div>간편한 페이지전환을 위한 테스트용 버튼</div>
+  	<button onClick="location.href='http://127.0.0.1:8080/paymentmy.do'">결제내역</button>
+  	<button onClick="location.href='http://127.0.0.1:8080/reservemy.do'">예약내역</button>
+  	<button onClick="location.href='http://127.0.0.1:8080/reviewwrite.do'">리뷰쓰기</button>
+  	<button onClick="location.href='http://127.0.0.1:8080/searchid.do'">아이디찾기</button>
+  	<button onClick="location.href='http://127.0.0.1:8080/searchpw.do'">비밀번호찾기</button>
+  	<button onClick="location.href='http://127.0.0.1:8080/menumanagementbusiness.do'">메뉴관리</button>
+  	</div>
 	<div class="title" >
 		<h1>세잎</h1>
 	</div>
@@ -105,9 +122,9 @@ input {
   		</div>
   		<!-- 아랫 div -->
   		<div >
-    		<a href="http://localhost:8080/join.do"  class="asign">회원가입</a>
-    		<a href="http://localhost:8080/searchid.do" class="afind">아이디 찾기</a>
-    		<a href="http://localhost:8080/searchpw.do" class="afind">비밀번호 찾기</a>
+    		<a href="http://127.0.0.1:8080/join.do"  class="asign">회원가입</a>
+    		<a href="http://127.0.0.1:8080/searchid.do" class="afind">아이디 찾기</a>
+    		<a href="http://127.0.0.1:8080/searchpw.do" class="afind">비밀번호 찾기</a>
   		</div>
 	</div>
 	<!-- 로그인 footer -->

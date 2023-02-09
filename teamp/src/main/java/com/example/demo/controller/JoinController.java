@@ -25,4 +25,9 @@ public class JoinController {
 
 		return "/datachange"; // WEB-INF에서 호출할 파일명
 	}
+	@RequestMapping("/datachange2.do")
+	public String main3(Model model) throws Exception {
+
+		return "/datachange2"; // WEB-INF에서 호출할 파일명
+	}
 }
