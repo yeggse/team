@@ -136,7 +136,7 @@ var app = new Vue({
     	, name : ""
     	, age : ""
     	, address : ""
-    	, flg : true
+    	, flg : false
     	
     } 
     , methods: {
@@ -149,6 +149,7 @@ var app = new Vue({
     		else{
     			alert("비밀번호가 일치하지 않습니다.");
     		}
+    		self.flg = true;
     	}
     
    

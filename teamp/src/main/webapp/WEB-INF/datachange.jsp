@@ -83,6 +83,7 @@ var app = new Vue({
     	, name : ""
     	, age : ""
     	, address : ""
+    	
     } 
     , methods: {
     	
