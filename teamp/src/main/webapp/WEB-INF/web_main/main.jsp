@@ -15,46 +15,46 @@
 	        }
 	        /* 점(.)으로 시작하는 아이 : html 파트에서 클래스(명)를 의미. */
 	        .div1 {
-	        	font-size: xxx-large;
+	        	font-size: xx-large;
 	        	font-weight: bolder;
 	            margin-top: 100px;	/* 바깥쪽여백 */	
-	            margin-left: 750px;
+	            margin-left: 730px;
 	            width: 800px;
 	            border-radius: 5px;	/* 모서리 둥글기 크기 */
 	            /* text-align: center; */
 	            padding: 20px;	/* 안쪽 여백 */	/* padding-top: 50px 등으로 활용 */
 	        }
 	        .div2 {
-	        	font-size: x-large;
+	        	font-size: large;
 	        	font-weight: bold;
 	            margin-top: -25px;	/* 바깥쪽여백 */	
-	            margin-left: 850px;
+	            margin-left: 775px;
 	            width: 600px;
 	            border-radius: 5px;	/* 모서리 둥글기 크기 */
 	            /* text-align: center; */
 	            padding: 20px;	/* 안쪽 여백 */	/* padding-top: 50px 등으로 활용 */
 	        }
 	      .div3{
-	        margin-top: -20px;	/* 바깥쪽여백 */	
-	         margin-left: 600px;
+	        margin-top: -50px;	/* 바깥쪽여백 */	
+	         margin-left: 688px;
 	       }
 	      .div4{
 	        margin-top: 50px;	/* 바깥쪽여백 */	
-	        margin-left: 500px;
+	        margin-left: 400px;
 	      }
 	      
 	      input {
-	            width: 50%;
+	            width: 25%;
 	            margin-top: 0px;
-	            padding: 20px;
+	            padding: 10px;
 	            box-sizing: border-box;
 	            border-radius: 10px;
 	            border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
 	        }   
 	       #btn{
 		       background-color: #8FBC94;
-		       width: 100px;
-		       height: 60px;
+		       width: 70px;
+		       height: 40px;
 		       border-radius: 20px;
 		       border: solid 2px #8FBC94;
 		       font-size: x-large;
@@ -63,7 +63,7 @@
 	       }
 	    #imgbtn1{
 		       width: 350px;
-		       height: 370px;
+		       height: 250px;
 		       border-radius: 20px;
 		       margin-right: 40px;
 		       padding: 0px;
@@ -71,7 +71,7 @@
 	       }      
 	    #imgbtn2{
 		       width: 350px;
-		       height: 370px;
+		       height: 250px;
 		       border-radius: 20px;
 		       margin-right: 40px;
 		       padding: 0px;
@@ -79,7 +79,7 @@
 	       }   
 	    #imgbtn3{
 		       width: 350px;
-		       height: 370px;
+		       height: 250px;
 		       border-radius: 20px;
 		       margin-right: 30px;
 		       padding: 0px;
@@ -87,7 +87,7 @@
 	       }   
 	    #imgbtn4{
 		       width: 350px;
-		       height: 370px;
+		       height: 250px;
 		       border-radius: 20px;
 		       margin-right: 40px;
 		       padding: 0px;
@@ -95,7 +95,7 @@
 	       }      
 	    #imgbtn5{
 		       width: 350px;
-		       height: 370px;
+		       height: 250px;
 		       border-radius: 20px;
 		       margin-right: 40px;
 		       padding: 0px;
@@ -103,7 +103,7 @@
 	       }   
 	    #imgbtn6{
 		       width: 350px;
-		       height: 370px;
+		       height: 250px;
 		       border-radius: 20px;
 		       margin-right: 30px;
 		       padding: 0px;
@@ -116,7 +116,7 @@
 	<div class="div1">지금 계신 장소가 어디신가요?</div>
 	<div class="div2">주변 식당에서 음식을 픽업해 가세요!</div>
 	<div class="div3">
-		<img src="img/main/point.PNG" width=80px height=100px>
+		<img src="img/main/point.PNG" margin-top= 10px width=50px height=70px>
 		<input type="text" placeholder="장소를 입력해 주세요"></input>
 		<button id="btn">선택</button>	<!-- 조건 넣어줘야 함: 버튼이벤트 생성 : 미선택시 안넘어가게!!!!!! -->
 	</div>
