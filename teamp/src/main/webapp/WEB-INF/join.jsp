@@ -3,78 +3,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<script src="js/jquery.js"></script>
-<script src="js/vue.js"></script>
-<jsp:include page="/layout/header.jsp"></jsp:include>
-<title>테스트</title>
-<style>
-@import
-	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
-	;
-
-* {
-	font-family: 'Noto Sans KR', sans-serif;
-}
-
-body {
-	background-color: #1BBC9B;
-}
-
-.div3 {
-	margin: auto;
-	margin-top: 5px;
-	margin-bottom: 200px;
-	width: 600px;
-	height: 800px;
-	background-color: #EEEFF1;
-	border-radius: 5px;
-	text-align: center;
-	padding: 20px;
-}
-
-.div2 {
-	margin-left: 50px;
-	margin-top: 20px;
-	width: 550px;
-	height: 50px;
-	background-color: #EEEFF1;
-	border-radius: 5px;
-	text-align: initial;
-	font-size: 25px;
-	display: inline-box;
-}
-
-#text1 {
-	width: 150px;
-	height: 30px;
-	text-align: right;
-}
-
-input {
-	width: 100px;
-	height: 10px;
-	padding: 10px;
-	box-sizing: border-box;
-	border: solid black;
-}
-
-.in {
-	margin-bottom: 10px;
-}
-
-#btn1 {
-	background-color: #1BBC9B;
-	color: white;
-	border-radius: 10px;
-	border: solid black;
-}
-
-a {
-	text-decoration: none;
-	color: #9B9B9B;
-	font-size: 12px;
-}
+		<meta charset="UTF-8">
+		<script src="js/jquery.js"></script>
+		<script src="js/vue.js"></script>
+		<jsp:include page="/layout/header.jsp"></jsp:include>
+		<title>테스트</title>
+		<style>
+		      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+	
+	        * {
+	            font-family: 'Noto Sans KR', sans-serif;
+	        }
+	
+	        body {
+	            background-color: #1BBC9B;
+	        }
+	
+	        .div3 {
+	            margin: auto;
+	            margin-top: 5px;
+	            margin-bottom: 200px;
+	            width: 600px;
+	            height:800px;
+	            background-color: #EEEFF1;
+	            border-radius: 5px;
+	            text-align: center;
+	            padding: 20px;
+	            
+	        }
+	         .div2 {
+	            margin-left:50px;
+	            margin-top: 20px;
+	            width: 550px;
+	            height:50px;
+	            background-color: #EEEFF1;
+	            border-radius: 5px;
+	            text-align: initial;
+	            font-size:25px;
+	            display: inline-box;
+	        }
+	        
+	        #text1 {
+	             width: 150px;
+	             height: 30px;
+	             text-align: right;
+	        }
+	       
+	
+	        input {
+	            width: 100px;
+	            height: 10px;
+	            padding: 10px;
+	            box-sizing: border-box;
+	            
+	            border: solid black;
+	        }
+	
+	        .in {
+	            margin-bottom: 10px;
+	        }
+	
+	        #btn1 {
+	            background-color: #1BBC9B;
+	            
+	            color: white;
+	            border-radius: 10px;
+	            border: solid black;
+	            
+	        }
+	
+	        a {
+	            text-decoration: none;
+	            color: #9B9B9B;
+	            font-size: 12px;
+	        }
+		
 </style>
 </head>
 <body>
