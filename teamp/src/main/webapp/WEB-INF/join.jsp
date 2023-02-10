@@ -21,7 +21,7 @@
 	
 	        .div3 {
 	            margin: auto;
-	            margin-top: 200px;
+	            margin-top: 5px;
 	            margin-bottom: 200px;
 	            width: 600px;
 	            height:800px;
@@ -40,7 +40,6 @@
 	            border-radius: 5px;
 	            text-align: initial;
 	            font-size:25px;
-	            
 	        }
 	        
 	        #text1 {
@@ -78,11 +77,15 @@
 	        }
 		</style>
 	</head>
-	     <body >
-	     
-	     <div id="app" class = "div3" style = "border:solid black;">
-	     <div id="app" class = "div2" style = "background-color: white;height: 50px;font-size: 25px;" >
-	     일반 회원가입</div>
+	<body >
+	 <div id="app" style = "margin-top:190px; background-color: white; height: 50px; font-weight: bolder; font-size: 45px; text-align: center;" >
+	    <img style="vertical-align: middle; margin-right:20px"src="img/main/newlogo.png" width="100px" height="80px"> 일반 회원가입
+	 </div>
+	 <div style = "margin-top:15px; background-color: white; height: 30px; text-align: center; margin-left: 500px;">
+		<a href="join.do" style="font-size: 15px; font-weight: normal;">사업자 회원가입</a>
+	 </div>
+     <div id="app" class = "div3" style = "border:solid black;">
+
 		    <div class="div2"  >
 				아이디 <input type="text" id = "text1" v-model="id" style = "margin-left:60px"></input>
 				<button @click="">중복확인</button>
@@ -115,10 +118,7 @@
 			</div>
 			<button @click = "fnjoin" style = "width:200px; height:35px;">회원가입</button>
 			
-			<div class="div2">
-			<a href="join.do">일반 회원가입하기</a>
-			
-			</div>
+
 			<div class="div2">
 			
 			<a href="login.do">로그인 페이지로 이동</a>
