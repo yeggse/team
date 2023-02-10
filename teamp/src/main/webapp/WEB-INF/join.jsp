@@ -88,7 +88,7 @@
 	 </div>
      <div id="app" class = "div3" style = "border:solid black;">
 		    <div class="div2">
-				아이디 <input type="text" id = "text1" v-model="id" style = "margin-left:60px"></input>
+				아이디 <input type="text" id = "text1" dir="ltr" v-model="id" style = "margin-left:60px"></input>
 				<button @click="">중복확인</button>
 			</div>
 			<div class="div2">

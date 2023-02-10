@@ -17,7 +17,7 @@
 		
 	        /* 점(.)으로 시작하는 아이 : html 파트에서 클래스(명)를 의미. */
 	      .div1{
-	        margin-top: 100px;	/* 바깥쪽여백 */	
+	        margin-top: 120px;	/* 바깥쪽여백 */	
 	         margin-left: 100px;
 	       }
 	      
@@ -53,13 +53,13 @@
 </style>
 
 <body style="margin: 0px">	
-	<div id="app" style="width:2483.02px", anlign="center">		<!-- 화면 고정을 위해 필요 -->
+	<div id="app9" style="width:2483.02px", anlign="center">		<!-- 화면 고정을 위해 필요 -->
 		<div class="div1">
-			<button id="btnList">추천순</button>	<!--클릭되었을 경우, 색변화되도록 이벤트 넣기!!!  -->
+			<button  id="btnList">추천순</button>	<!--클릭되었을 경우, 색변화되도록 이벤트 넣기!!!  -->
 			<button id="btnList">재고순</button>	<!-- 선택순으로 리스트 출력하는 쿼리 생성 필요!! -->
 			<span style="margin-left: 1000px">
 				<input type="text" placeholder="업종을 검색해 주세요"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
-				<button id="btn">검색</button>
+				<button id="btn" >검색</button>
 			</span>
 		</div>
 		<div style="margin-top: 45px; margin-left: 150px; font-weight: bold; font-size: x-large;">
@@ -73,7 +73,7 @@
 	    		<a href= "http://localhost:8080/Mypage.do">	<!--링크 변경하기  -->
 	    		<span style="background-color: lightgray;">
 		    	<img src="img/main/point.PNG" width=90px height=90px>
-		    	{{가게명}} / {{평점}} {{주소}}
+		    	{{resname}} / {{grade}} {{resadd}}
 	    		</span>
 		    	</a>
  	  		</div>
@@ -81,10 +81,35 @@
 	    		<a href= "http://localhost:8080/Mypage.do">  <!--링크 변경하기  -->
 	    		<span style="background-color: lightgray;">
 		    	<img src="img/main/point.PNG" width=90px height=90px>
-		    	{{가게명}} / {{평점}} {{주소}}
+		    	{{resname}} / {{grade}} {{resadd}}
 	    		</span>
 	    		</a>
    			</div>
+   			
+   			
+	    <div>
+			<table >
+				<colgroup>
+					<col width="5%"/>
+					<col width="5%"/>
+					<col width="*"/>
+					<col width="5%"/>
+					<col width="10%"/>
+					<col width="25%"/>
+				</colgroup>
+				<tbody>
+					<tr v-for="(data, index) in list" >                            
+	                   <td><input type="checkbox" name="s" v-bind:id="'idx_' + index" v-bind:value="data" v-model="searchList"></td>                       
+	                   <td>{{data.resname}}</td> 
+	                   <td>{{data.grade}}</td> 
+	                   <td>{{data.resadd}}</td>
+	               	
+	               </tr>
+				</tbody>
+			</table>
+	    </div>
+	    
+	    
 	    
 	    </div>
 	  </div>
@@ -94,17 +119,33 @@
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
-    el: '#app',
+    el: '#app9',
     data: {
-      
+    	resname: "",
+    	grade: "",
+    	resadd: ""
     }   
     , methods: {
-       
+       	fnGet : function(){
+            var self = this;
+            if(self.flg==true){
+                var nparmap = {resname : self.resname, grade : self.grade, resadd : self.resadd}; 
+                $.ajax({
+                    url:"/main.storelist/list.dox",
+                    dataType:"json",	
+                    type : "POST", 
+                    data : nparmap,
+                    success : function(data) {      /* 데이터가 제대로 넘어오면, success실행됨 */                                 
+    	                console.log(data.list);
+                    }
+                }
+             }
+    	}
     }
     
     		 
     , created: function () {
-		this.fnGetList();       
+		this.fnGet();       
 	}
 });
 </script>
