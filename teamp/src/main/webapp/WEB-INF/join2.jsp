@@ -97,7 +97,7 @@
 			</div>
 			<div class="div2">
 				주민번호 <input type="text" v-model="age" style = "margin-left:45px"></input>
-				- <input type="password" v-model="age"></input> <button @click="">실명인증</button>
+				- <input type="password" v-model="age1"></input> <button @click="">실명인증</button>
 			</div>
 			<div class="div2">
 				주소 <input type="text" id = "text1" v-model="address" style = "margin-left:75px"></input>
@@ -149,12 +149,45 @@ var app = new Vue({
 	el: '#app',
     data: {
     	id : ""
-    	, pwd : ""
-    	, name : ""
-    	, age : ""
-    	, address : ""
+        	, pwd : ""
+        	, pwd2 : ""
+        	, name : ""
+        	, age : ""
+        	, age1 : ""
+        	, address : ""
+        	, account : ""
+        	, nickname : ""
+        	, num : ""
+        	, restaurant : ""
+        	, resnum: ""
+        	, kind: ""
+        	, region: ""
+        	, resad: ""
+        	, resphonenum: ""
+            , idcheck : false
+            , agecheck : false
+            , nickcheck : false
     } 
     , methods: {
+    	
+    	fnjoin: function(){
+    		var self = this;
+    		if(self.pwd != self.pwd2){
+    		alert("비밀번호가 일치하지 않습니다.");
+    		}
+    		else if(self.id == "" || self.pwd =="" || self.pwd2 =="" || self.name =="" 
+    			|| self.age =="" || self.age1 =="" || self.address =="" || self.account ==""
+    				|| self.nickname ==""|| self.num =="" || self.restaurant =="" || self.resnum =="" 
+    	    			|| self.kind =="" || self.region =="" || self.resad =="" || self.resphonenum ==""
+    	    				){
+    			alert("빈칸을 확인해주세요");
+    		}
+    		
+    		else{
+    			alert("회원가입 성공!");
+    		}
+    		self.flg = true;
+    	}
     	
     
     }   
