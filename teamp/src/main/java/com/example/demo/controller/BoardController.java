@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.BoardService;
+import com.example.demo.dao.ResmenuService;
 import com.example.demo.model.Board;
+import com.example.demo.model.Res;
 import com.google.gson.Gson;
 
 
@@ -20,7 +22,7 @@ import com.google.gson.Gson;
 public class BoardController {
 	// Service 인터페이스 객체 생성 및 연결
     @Autowired
-    private BoardService boardService; 
+    private BoardService boardService;
 
     // 웹 주소
     @RequestMapping("/board*.do") 
@@ -28,17 +30,7 @@ public class BoardController {
     	
     	return "/boardList"; // WEB-INF에서 호출할 파일명
     }
-    
-	@RequestMapping("/Home.do") 
-    public String home(Model model) throws Exception{
-    	
-    	return "/main"; // WEB-INF에서 호출할 파일명
-    }
-	@RequestMapping("/Mypage.do") 
-    public String mp(Model model) throws Exception{
-    	
-    	return "/storeList_clicked"; // WEB-INF에서 호출할 파일명
-    }
+	
     // 데이터 호출
 	@RequestMapping(value = "/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody

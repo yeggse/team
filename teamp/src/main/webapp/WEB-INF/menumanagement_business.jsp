@@ -246,6 +246,7 @@ margin-top: 5px;
                 </div>
             </li>
         </ul>
+        수정할것: 레이아웃,rem, 사이즈,헤더 푸터 옆에거랑 연동 잘 해보기
     </div>
     </div>
     </div>

@@ -10,16 +10,14 @@
 </head>
 
 <style>
-.body{
-     line-height:2em;        
-     font-family:"맑은 고딕";
+*{
+border: 1px solid;
 }
-
 .text{
   text-align:center;
-  font-size:16px;
-  width:400px;
-  height:350px;
+  font-size:2rem;
+  width:30rem;
+  height:20rem;
 }
 .btnphoto1{
  	 background:white;
@@ -45,14 +43,10 @@
  	 background:green;
   	 color:white;
  	 border:none;
- 	 width:400px;
-     height:35px;
-     margin:10px;
-     font-size:25px;
-}
-input{
-  width:200px;
-  height:200px;
+ 	 width:30rem;
+     height:3rem;
+     margin:1rem;
+     font-size:2rem;
 }
 
 /*별점*/
@@ -68,7 +62,7 @@ input{
     display: none; /* 라디오박스 감춤 */
 }
 #myform label{
-    font-size: 2em; /* 이모지 크기 */
+    font-size: 2rem; /* 이모지 크기 */
     color: transparent; /* 기존 이모지 컬러 제거 */
     text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
 }
@@ -82,22 +76,22 @@ input{
     text-shadow: 0 0 0 yellow; /* 마우스 클릭 체크 */
 }
 .div1{
-  width: 500px;
-  height: 900px;
+  width: 60rem;
+  height: 65rem;
   padding: 20px;
   border: 2px solid black;
   background: white;
-  position: absolute; 
+  1position: absolute; 
   left: 50%; 
   transform: translateX(-50%); 
 }
 .div2{
-  width: 450px;
-  height: 800px;
-  padding: 20px;
+  width: 30rem;
+  height: 50rem;
+  padding: 2rem;
   border: 2px solid black;
   background: white;
-  position: absolute; 
+  1position: absolute; 
   left: 50%; 
   transform: translateX(-50%); 
 }
@@ -112,7 +106,7 @@ input{
   <meta name="viewport" content="width=device-width">
   <title>JS Bin</title>
 </head>
-<body class="body">
+<body>
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
     <div class="div1"> <!--전체 div-->
@@ -143,6 +137,7 @@ input{
           </div>
           <div>
             <button class="btncomplete">완료</button>
+            수정할것: 레이아웃,rem, 사이즈,헤더 푸터 옆에거 연동 잘 해보기,클릭시 아래 페이지 나오게하기
           </div>
         </div>
      </div>     

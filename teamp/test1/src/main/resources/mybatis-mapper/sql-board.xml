@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.test1.mapper.BoardMapper">	
+	<select id="selectBoardList" parameterType="hashmap" resultType="com.example.test1.model.Board">	
+			SELECT 
+				board_idx, title, hit_cnt, created_datetime, creator_id
+			FROM
+				t_board
+			WHERE
+				deleted_yn = 'N'
+			ORDER BY created_datetime DESC
+			LIMIT #{startNum}, #{lastNum}
+				
+	</select>
+	
+	<select id="selectBoardCnt" resultType="int">	
+		SELECT 
+			COUNT(*) AS CNT
+		FROM
+			t_board
+	</select>
+	
+	<delete id="deleteBoard" parameterType="hashmap">	
+		DELETE FROM 
+			t_board 
+		WHERE 
+			BOARD_IDX IN ( 
+				<foreach collection="list" item="item" separator=" , ">#{item.boardIdx}</foreach> 
+			) 
+	</delete>
+	
+	<update id="updateBoard" parameterType="hashmap" >	
+		UPDATE t_board SET title = #{title}, contents = #{content} WHERE BOARD_IDX = #{boardIdx}
+	</update>
+	
+	<insert id="insertBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="id" keyColumn="board_idx">	
+		INSERT INTO t_board
+			(title, contents, hit_cnt, created_datetime, creator_id)  
+		VALUES
+			(#{title}, #{content}, '0', NOW() , #{userId})
+	</insert>
+	
+	<insert id="insertBoardImg" parameterType="hashmap">	
+		INSERT INTO t_board_img
+			(board_idx, img)  
+		VALUES
+			(#{boardIdx}, #{img})
+	</insert>
+	
+	<insert id="insertComment" parameterType="hashmap">	
+		INSERT INTO t_board_comment
+			(board_idx, content, createdate, writer, depth, cgroup)  
+		VALUES
+			(#{boardIdx}, #{content}, NOW(), #{userId} , #{depth}, #{cgroup})
+	</insert>
+	
+	<select id="selectGetBoard" resultType="com.example.test1.model.Board">	
+		SELECT 
+			t.board_idx
+			, title
+			, contents
+			, hit_cnt
+			, creator_id
+			, created_datetime
+			, img
+			
+		FROM
+			t_board t
+		LEFT OUTER JOIN t_board_img i on t.board_idx = i.board_idx 
+		WHERE
+			t.board_idx = #{boardIdx}
+	</select>
+	
+	<select id="selectCommentList" parameterType="hashmap" resultType="com.example.test1.model.Board">	
+		SELECT 
+			board_idx, content, createdate, writer, depth, cgroup
+		FROM
+			t_board_comment
+		WHERE
+			board_idx = #{boardIdx}
+	</select>
+	
+	<update id="updateCnt" parameterType="hashmap" >	
+		UPDATE t_board SET hit_cnt = hit_cnt + 1 WHERE board_idx = #{boardIdx}
+	</update>
+</mapper>

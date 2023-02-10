@@ -70,7 +70,7 @@
 	    <!-- DB연결 후, 아래 링크 확인하고, 연동하기 -->
 	    <!-- https://velog.io/@dldldl1022/Spring%EA%B3%BC-vue%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9E%A5%EC%86%8C-%EB%AA%A9%EB%A1%9D-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0 -->
 		    <div style="margin-top: 90px; margin-left: 170px; font-size: large;">
-	    		<a href= "http://localhost:8080/join.do">	<!--링크 변경하기  -->
+	    		<a href= "http://localhost:8080/Mypage.do">	<!--링크 변경하기  -->
 	    		<span style="background-color: lightgray;">
 		    	<img src="img/main/point.PNG" width=90px height=90px>
 		    	{{가게명}} / {{평점}} {{주소}}
@@ -78,7 +78,7 @@
 		    	</a>
  	  		</div>
 		    <div style="margin-top: 90px; margin-left: 170px; font-size: large;">
-	    		<a href= "http://localhost:8080/join.do">  <!--링크 변경하기  -->
+	    		<a href= "http://localhost:8080/Mypage.do">  <!--링크 변경하기  -->
 	    		<span style="background-color: lightgray;">
 		    	<img src="img/main/point.PNG" width=90px height=90px>
 		    	{{가게명}} / {{평점}} {{주소}}
