@@ -10,7 +10,15 @@
 			t3_account
 		WHERE id = #{id} AND pwd = #{pwd}
 	</select>
-
+	
+	<select id="searchid" parameterType="hashmap" resultType="com.example.demo.model.Login">	
+		SELECT
+			id, regisnum, name
+		FROM
+			t3_account
+		WHERE id = #{id} AND regisnum = #{regisnum}
+	</select>
+	
 </mapper>
 	
 	
