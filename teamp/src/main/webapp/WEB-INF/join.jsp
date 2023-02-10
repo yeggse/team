@@ -139,7 +139,7 @@ var app = new Vue({
     	, age1 : ""
     	, address : ""
     	, account : ""
-    	, nicknmae : ""
+    	, nickname : ""
     	, num : ""
     	, idcheck : false
     	, agecheck : false
