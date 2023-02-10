@@ -156,7 +156,7 @@ var app = new Vue({
         	, age1 : ""
         	, address : ""
         	, account : ""
-        	, nicknmae : ""
+        	, nickname : ""
         	, num : ""
         	, restaurant : ""
         	, resnum: ""
