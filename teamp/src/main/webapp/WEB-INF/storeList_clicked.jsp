@@ -149,7 +149,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 </style>
 
 <body>
-	<div id="app2" style="width:100%; padding-top:120px;", anlign="center">
+	<div id="app" style="width:100%; padding-top:120px;" anlign="center">
 		<div class="title_food" >옛날짜장 	</div>
 		<span class="grade" style="margin-left:180px;" >평점 :</span>
 										<span class="position_res" style="marin-top: -50px;" >
@@ -160,7 +160,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 						<div>
 					<button id="btn_menu">메뉴</button><!-- 이동하는 리스너 넣어주기. -->
 					<button id="btn_review">리뷰</button><!-- 이동하는 리스너 넣어주기. -->
-						<span style="margin-left:30%; font-size: 30px;" >db수</span>
+						<span style="margin-left:800px; font-size: 30px;" >db수</span>
 						<span class="count_menu">메뉴선택 갯수</span>
 						</div>
 							<div style="margin-top:50px;">
@@ -168,29 +168,17 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 				
 				<!-for문으로 차례대로 그림들어가게 하기  -->
 							
-	<!-- 지금 예쁘게 나오는 예시 -->				<div style="margin-top:30px; margin-left:60px; width:300px; height:180px; border-radius:10px; border:1px solid red; float:left; margin-right:60px;">
-							<img style="margin-left:40px"src="img/main/newlogo.png" width="100px" height="80px">							</div>
+	<!-- 지금 예쁘게 나오는 예시 -->
+	<div v-for="(item, index) in list">				
+				<div style="margin-top:30px; margin-left:60px; width:300px; height:180px; border-radius:10px; border:1px solid red; float:left; margin-right:60px;">
+							<img style="margin-left:0px"src="img/main/newlogo.png" width="100%" height="100%">							</div>
 							<div style="margin-top:30px; margin-right: 100px; width:1000px; height:180px; border:1px solid green; float:left;">
-							<div style="margin-bottom:10px;">보통짜장면:</div>
-							<div style="margin-bottom:10px;">수량:</div>
-							<div style="margin-bottom:10px;">가격:</div>
-							<div style="margin-bottom:10px;">간단한 음식설명:</div>
-							</div>
-							<div style="margin-top:30px; margin-left:60px; width:300px; height:180px; border-radius:10px; border:1px solid red; float:left; margin-right:60px;">
-							<img style="margin-left:40px"src="img/main/newlogo.png" width="100px" height="80px">							</div>
-							<div style="margin-top:30px; margin-right: 100px; width:1000px; height:180px; border:1px solid green; float:left;">
-							두번째 영역:
-							첫번째 영역 옆에 나란히 붙임 => float:left
-							여기에 그림이나 글자 또는 광고 등을 넣음
-							</div>
-							<div style="margin-top:30px; margin-left:60px; width:300px; height:180px; border-radius:10px; border:1px solid red; float:left; margin-right:60px;">
-							<img style="margin-left:40px"src="img/main/newlogo.png" width="100px" height="80px">							</div>
-							<div style="margin-top:30px; margin-right: 100px; width:1000px; height:180px; border:1px solid green; float:left;">
-							두번째 영역:
-							첫번째 영역 옆에 나란히 붙임 => float:left
-							여기에 그림이나 글자 또는 광고 등을 넣음
-							</div>
-							
+							<div style="margin-bottom:10px;">보통짜장면:{{item.menuname}}</div>
+							<div style="margin-bottom:10px;">수량:{{item.supply}}</div>
+							<div style="margin-bottom:10px;">가격:{{item.price}}</div>
+							<div style="margin-bottom:10px;">간단한 음식설명:{{item.introduce}}</div>
+				</div>
+	</div>			
 						
 								</div>
 								<div>
@@ -207,15 +195,26 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
-    el: '#app2',
+    el: '#app',
     data: {
-      
+    	list : []
     }   
     , methods: {
-       
+    	   fnGetList : function(){
+               var self = this;
+               var nparmap = {};
+               $.ajax({
+                   url:"/Res.dox",
+                   dataType:"json",	
+                   type : "POST", 
+                   data : nparmap,
+                   success : function(data) {                                       
+   	                self.list = data.list;
+   	                console.log(self.list);    
+                   }
+               }); 
+           } 
     }
-    
-    		 
     , created: function () {
 		this.fnGetList();       
 	}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.ResmenuMapper">	
+	<select id="selectResmenu" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+		SELECT
+			*
+		FROM
+			t3_resmenu
+		WHERE 1=1
+		ORDER BY resnum DESC
+	</select>
+<!-- group by 컬럼명 -->
+</mapper>
