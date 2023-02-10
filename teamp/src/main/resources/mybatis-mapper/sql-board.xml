@@ -25,5 +25,13 @@
 			deleted_yn = 'N' AND creator_id = #{creator_id}
 		ORDER BY board_idx DESC
 	</select>
+	<select id="selectResmenu" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+		SELECT
+			*
+		FROM
+			t3_resmenu
+		WHERE 1=1
+		ORDER BY resnum DESC
+	</select>
 
 </mapper>

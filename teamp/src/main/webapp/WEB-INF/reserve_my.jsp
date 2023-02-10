@@ -10,72 +10,80 @@
 </head>
 
 <style>
-
-#mainWrapper > ul > li:first-child 
-	clear:both;
-     text-align: left;
-     font-size:32px;
-     height:40px;
+#mainWrapper > ul > li:first-child {
+	 clear:both;
+     text-align:left;
+     font-size:2rem;
+     height:3rem;
      vertical-align:middle;
-     line-height:30px;
+     line-height:2rem;
 }
 #ulTable{
-	margin-top:10px;
+	margin:1rem 1rem 1rem 1rem;
 }
 #ulTable > li:first-child > ul > li {
-    background-color:#c9c9c9;
+  background-color:green;
+    color:white;
     font-weight:bold;
     text-align:center;
-    
-}
-#ulTable > li > ul {
+ }
+ #ulTable > li > ul {
     clear:both;
-    padding:0px auto;
+    padding:0.5rem 0.5rem;
     position:relative;
     min-width:40px;
 }
 #ulTable > li > ul > li { 
     float:left;
-    font-size:10pt;
+    font-size:1rem;
     border-bottom:1px solid silver;
     vertical-align:baseline;
 }    
-#ulTable > li > ul > li:first-child               	  {width:10%;} /*주문번호*/
-#ulTable > li > ul > li:first-child +li               {width:15%;} /*상호명*/
-#ulTable > li > ul > li:first-child +li+li            {width:15%;} /*메뉴*/
-#ulTable > li > ul > li:first-child +li+li+li         {width:15%;} /*시간*/
-#ulTable > li > ul > li:first-child +li+li+li+li      {width:15%;} /*결제금액*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li	  {width:15%;} /*예약상태*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li+li{width:15%;} /*상태변경*/
-#divPaging {
+ #ulTable > li > ul > li:first-child               	  {width:10%; height:3rem;} /*주문번호*/
+#ulTable > li > ul > li:first-child +li               {width:15%; height:3rem;} /*상호명*/
+#ulTable > li > ul > li:first-child +li+li            {width:15%; height:3rem;} /*메뉴*/
+#ulTable > li > ul > li:first-child +li+li+li         {width:15%; height:3rem;} /*시간*/
+#ulTable > li > ul > li:first-child +li+li+li+li      {width:15%; height:3rem;} /*결제금액*/
+#ulTable > li > ul > li:first-child +li+li+li+li+li	  {width:15%; height:3rem;} /*예약상태*/
+#ulTable > li > ul > li:first-child +li+li+li+li+li+li{width:15%; height:3rem;} /*상태변경*/
+ 
+ #divPaging {
      clear:both; 
-     margin:0 auto; 
-     width:220px; 
-     height:50px;
+     margin:auto; 
+     width:15rem; 
+     height:5rem;
+     font-size:2rem;
 }
+
 #divPaging > div {
      float:left;
-     width: 30px;
+     width: 1.9rem;
      margin:0 auto;
      text-align:center;
 }
+
 #liSearchOption {
 	 clear:both;
+     margin:0rem 0rem 0rem 20rem; 
+     width:40rem; 
+     height: 4rem;
+     padding: 0.2rem 0.2rem;
 }
-#liSearchOption {
-     margin-left:180px; auto; 
-     width:auto; 
-}
-.btn{
+.btn1{
  	 background:green;
   	 color:white;
  	 border:none;
- 	 width:66px;
+ 	 width:6rem;
+ 	 height:2rem;
 }
-.body{
-     line-height:2em;        
-     font-family:"맑은 고딕";
+.btn2{
+ 	 background:green;
+  	 color:white;
+ 	 border:none;
+ 	 width:6rem;
+ 	 height:3.2rem;
 }
+
 ul, li{ 
      list-style:none;
      text-align:center;
@@ -87,45 +95,50 @@ border: 10px solid pink;
 height: 50%;
 width: 100%;
 }
-
 #mainWrapper{
      border: 10px solid red;
 	 clear:both;
-     width: 800px;
+     width: 100rem;
+     height: 60rem;
      margin-left: 350px; /*가운데 정렬*/
      margin-right: 350px; /*가운데 정렬*/
      margin-bottom: 350px; /*가운데 정렬*/
      position: relative; left: -100px; bottom:900px; 
     }
-.div1{
+    .div1{
 border: 10px solid black;
-height: 30px;
-width: 500px;
+width: 60rem;
+height: 4rem;
 margin:auto;
-
+padding: 0.3rem 0rem 0rem 30rem;
 }
+
 .div2{
 border: 10px solid blue;
-width: 300px;
-height: 60px;
-font-size:4em;
-padding:10px;
-margin:auto;
+width: 40rem;
+height: 10rem;
+font-align: center;
+font-size:8rem;
+padding:1rem 1rem 1rem 1rem;
+margin: 0rem 0rem 0rem 6rem;
+
 }
 .div3{
-border: 1px solid blue;
-margin:5px;
-width: 600px;
-height: 180px;
+border: 10px solid green;
+margin:0.5rem;
+width: 80rem;
+height: 22rem;
 margin:auto;
-}
-.div4{
-border: 1px solid blue;
+padding:0rem 1rem 0rem 1rem;
 }
 
+#txtKeyWord{
+	width:20rem;
+	height:3rem;
+}
 </style>
 
-<body class="body">
+<body>
 <!--  
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
 -->
@@ -142,13 +155,13 @@ border: 1px solid blue;
         	<ul>
              <!-- 검색 폼 영역 -->
             <li id='liSearchOption'>
-                    <select id='selSearchOption' >
+                    <select class="btn2" id='selSearchOption' >
                         <option value='A'>제목+내용</option>
                         <option value='T'>제목</option>
                         <option value='C'>내용</option>
                     </select>
                     <input id='txtKeyWord' />
-                    <input type='button' value='검색'/>
+                    <input class="btn2" type='button' value='검색'/>
                 </li>
                 </div>
              <div class="div3">
@@ -176,7 +189,7 @@ border: 1px solid blue;
                             <li>40분</li>
                             <li>20000원</li>
                             <li>예약완료</li>
-                            <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
+                            <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
                         </ul>
                     </li>
 
@@ -188,7 +201,7 @@ border: 1px solid blue;
                             <li>30분</li>
                             <li>20000원</li>
                             <li>예약완료</li>
-                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
+                           <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
                         </ul>
                     </li>
 
@@ -200,7 +213,7 @@ border: 1px solid blue;
                             <li>40분</li>
                             <li>20000원</li>
                             <li>결제취소</li>
-                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
+                           <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
                         </ul>
                     </li>
 
@@ -212,7 +225,7 @@ border: 1px solid blue;
                             <li>40분</li>
                             <li>20000원</li>
                             <li>결제취소</li>
-                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
+                           <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
                         </ul>
                     <li>                                        
                 </ul>

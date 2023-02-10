@@ -27,7 +27,8 @@
 	margin:1rem 1rem 1rem 1rem;
 }
 #ulTable > li:first-child > ul > li {
-    background-color:#c9c9c9;
+    background-color:green;
+    color:white;
     font-weight:bold;
     text-align:center;
     
@@ -51,13 +52,13 @@
 #ulTable > li > ul > li:first-child +li+li+li+li      {width:15%; height:3rem;} /*결제금액*/
 #ulTable > li > ul > li:first-child +li+li+li+li+li	  {width:15%; height:3rem;} /*예약상태*/
 #ulTable > li > ul > li:first-child +li+li+li+li+li+li{width:15%; height:3rem;} /*상태변경*/
+
 #divPaging {
      clear:both; 
-     margin:0 auto; 
-     width:220px; 
-     height:50px;
-}
-#divPaging{
+     margin:auto; 
+     width:15rem; 
+     height:5rem;
+     font-size:2rem;
 }
 
 #divPaging > div {
