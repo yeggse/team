@@ -195,8 +195,8 @@ input {
 						<div style="margin-bottom: 10px;">수량:{{item.supply}}</div>
 						<div style="margin-bottom: 10px;">가격:{{item.price}}</div>
 						<div style="margin-bottom: 10px;">간단한 음식설명:{{item.introduce}}</div>
-						<button style="margin-left:1000px;">-</button>
-						<button style="margin-left:1200px;">+</button>
+						<button style="margin-left:1050px;">-</button><button style="margin-left:1200px;">+</button>
+						
 						<input style="margin-left:1100px; width:50px;" type="text" value="0"></input>
 					</div>
 				</div>
