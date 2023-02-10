@@ -113,7 +113,7 @@
 			<div class="div2">
 			    계좌번호 <input type="text" id = "text1" v-model="account" style = "margin-left:45px"></input>
 			</div>
-			<button @click = "fnCheck" style = "width:200px; height:35px;">회원가입</button>
+			<button @click = "fnjoin" style = "width:200px; height:35px;">회원가입</button>
 			
 			<div class="div2">
 			<a href="join.do">일반 회원가입하기</a>
@@ -138,18 +138,29 @@ var app = new Vue({
     	, age : ""
     	, age1 : ""
     	, address : ""
-    	, flg : false
+    	, account : ""
+    	, nicknmae : ""
+    	, num : ""
+    	, idcheck : false
+    	, agecheck : false
+    	, nickcheck : false
     	
     } 
     , methods: {
     	
-    	fnCheck: function(){
+    	fnjoin: function(){
     		var self = this;
-    		if(self.pwd == self.pwd2){
-    		alert("비밀번호가 일치합니다");
+    		if(self.pwd != self.pwd2){
+    		alert("비밀번호가 일치하지 않습니다.");
     		}
+    		else if(self.id == "" || self.pwd =="" || self.pwd2 =="" || self.name =="" 
+    			|| self.age =="" || self.age1 =="" || self.address =="" || self.account ==""
+    				|| self.nickname =="" || self.num ==""){
+    			alert("빈칸을 확인해주세요");
+    		}
+    		
     		else{
-    			alert("비밀번호가 일치하지 않습니다.");
+    			alert("회원가입 성공!");
     		}
     		self.flg = true;
     	}
