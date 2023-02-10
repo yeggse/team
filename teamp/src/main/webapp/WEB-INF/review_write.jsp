@@ -137,6 +137,7 @@ border: 1px solid;
           </div>
           <div>
             <button class="btncomplete">완료</button>
+            수정할것: 레이아웃,rem, 사이즈,헤더 푸터 옆에거 연동 잘 해보기,클릭시 아래 페이지 나오게하기
           </div>
         </div>
      </div>     
