@@ -13,21 +13,15 @@
 	        * {
 	            font-family: 'Noto Sans KR', sans-serif;
 	        }
-	        /* 점(.)으로 시작하는 아이 : html 파트에서 클래스(명)를 의미. */
-	      .div1{
-	        margin-top: 170px;	/* 바깥쪽여백 */	
-	        margin-left: 900px;
-	        font-size: xxx-large;
-	        font-weight: bolder;
-	        width: 500px;
-	        height: 50px;
-	       }
-	      
-			
+	    .div{
+	    	display: inline-grid;
+	    	float: right;
+	    	
+	    }
 		.div2 {
-				margin-right: 250px; 
-				width: 600px;
-		        margin-top:120px;
+				margin-right: 150px; 
+				width: 400px;
+		        margin-top:200px;
 		        height:320px;
 	            background-color: #E0F0F0;
 	            border-radius: 5px;
@@ -36,30 +30,32 @@
 	   }
 		.div3 {
 				margin-top: 10px;
-				margin-right: 250px; 
-				width: 600px;
-		        height:125px;
+				margin-right: 150px; 
+				width: 400px;
+		        height:50px;
 	            background-color: #E0F0F0;
 	            border-radius: 5px;
 	            float:right;
 	            padding:10px;
 	   }
-	   
+	   a{
+	   	font-size:large; font-weight: bold; margin-left: 200px; color: orange;
+	   	text-decoration-line: none;
+	   }
 	   
 </style>
 
 <body style="margin: 0px">
-<div id="app">
+<div id="app" class="div">
 	  <div class="div2">
 		<div style="font-size: xx-large; font-weight: bolder; margin-bottom: 10px; margin-left: 30px; margin-top:10px;" > 선택하신 메뉴</div> 
 		<div style="margin-bottom:5px; font-size:large; font-weight: bold; margin-left: 20px;">메뉴들 출력</div>	<!-- for문!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 	  </div>
-<!-- 	  <div class="div3">
-	  	<a href="main.storelist.do" style="font-size:large; font-weight: bold; margin-left: 200px; color: orange;"> 메뉴를 추가하시겠습니까?</a> 
+ 	  <div class="div3">
 		<div style="margin-top: 5px; font-size:large; font-weight: bold; margin-left: 100px;">
-			결제 금액 : {{계산 금액 출력}}	  원
+			총 금액 : {{계산값 적기} 원
 	  	</div>
-	</div> -->
+	</div> 
  </div>
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
