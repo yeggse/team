@@ -66,7 +66,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 .position_res {
 	font-size: 25px;
 	font-weight: bold;
-	margin-left: 382px;
+	margin-left: 390px;
 	margin-top: 10px;
 }
 
@@ -164,14 +164,13 @@ input {
 		<!-- <span v-else>test2</span> -->
 		<div class="title_food">옛날짜장</div>
 		<span class="grade" style="margin-left: 180px;">평점 :</span> <span
-			class="position_res" style="marin-top: -50px;"> <!-- DB넣기 -->가게위치
-			:
+			class="position_res" style="marin-top: -50px;"> 가게위치: <!-- {{list[0].pickuptime}} 집에서 mysqpl로 다시 수정하기.-->
 		</span>
 		<!-- 가계주소들어와야함 -->
 		<div class="position_res" style="margin-left: 619px;">픽업시간 :</div>
 		<!-- 가계주소들어와야함 -->
 		<div>
-			<button id="btn_menu" @click="flg=true">메뉴</button>
+			<button id="btn_menu" @click="fnClick1">메뉴</button>
 			<!-- 이동하는 리스너 넣어주기. -->
 			<button id="btn_review" @click="fnClick">리뷰</button>
 			<!-- 처음에 안눌러져있으면 이것 -->
@@ -195,15 +194,65 @@ input {
 						<div style="margin-bottom: 10px;">보통짜장면:{{item.menuname}}</div>
 						<div style="margin-bottom: 10px;">수량:{{item.supply}}</div>
 						<div style="margin-bottom: 10px;">가격:{{item.price}}</div>
-						<div style="margin-bottom: 10px;">간단한
-							음식설명:{{item.introduce}}</div>
+						<div style="margin-bottom: 10px;">간단한 음식설명:{{item.introduce}}</div>
+						<input style="margin-left:1100px; width:50px;" anlign="center" type="text" value="0"></input>
 					</div>
 				</div>
+					<div>
+						<button id="btn_order">주문시작</button>
+					</div>
 			</div>
-			<div v-else>동해불과백두신아ㅣ</div>
-			<div>
-				<button id="btn_order">주문시작</button>
+			<div v-else><h2 style="margin-left: 50px;">게시글 목록</h2>
+			<table class="board_list">
+				<colgroup>
+					<col width="5%"/>
+					<col width="5%"/>
+					<col width="*"/>
+					<col width="5%"/>
+					<col width="10%"/>
+					<col width="25%"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">No.</th>
+						<th scope="col">분류</th>
+						<th scope="col">작성자닉네임</th>
+						<th scope="col">제목</th>
+						<th scope="col">날짜</th>
+						<th scope="col">별점</th>
+					</tr>
+				</thead>
+			<!-- 	<tbody>
+					<tr v-for="(item, index) in list" >                            
+	                   <td @click="fnView(item)">{{item.boardIdx}}</td> 
+	                   <td @click="fnView(item)">{{item.title}}</td> 
+	                   <td @click="fnView(item)">{{item.hitCnt}}</td>
+	                   <td @click="fnView(item)">{{item.creatorId}}</td>
+	                   <td @click="fnView(item)">{{item.createdDatetime}}</td>
+	               	
+	               </tr>
+				</tbody> -->
+			</table>
+			<template>
+			  <paginate
+			    :page-count="pageCount"
+			    :page-range="3"
+			    :margin-pages="2"
+			    :click-handler="changePage"
+			    :prev-text="'<'"
+			    :next-text="'>'"
+			    :container-class="'pagination'"
+			    :page-class="'page-item'">
+			  </paginate>
+			</template>
+		  	<!-- <div>
+		  		<button @click="fnAdd" style="float: right; margin-right:30px;">글쓰기</button>
+		  		<button @click="fnRemove" style="float: right; margin-right : 5px;">삭제</button>
+		  	</div> -->
+		</div>
+	</div>
 			</div>
+			
 		</div>
 
 
@@ -218,6 +267,7 @@ input {
 		el : '#app',
 		data : {
 			list : [],
+			/* 게시판에 올려지는 글들은 다른 리스트 새로만들기  */
 			flg : true
 		},
 		methods : {
@@ -238,6 +288,10 @@ input {
 		,fnClick : function() {
 			var self = this;
 			self.flg = false;
+		}
+		,fnClick1 : function() {
+			var self = this;
+			self.flg = true;
 		}
 		},
 		created : function() {
