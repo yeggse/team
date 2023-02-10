@@ -1,24 +1,23 @@
 package com.example.demo.model;
 
 public class Join {
-	private String kind; //회원타입(20)
-	private String id;  //아이디(20) *pk*
-	private String pwd;  //비밀번호(20)
-	private String nickname;  //닉네임(20)
-	private String name;  //이름(20)
-	private String email;  //메일(20)
-	private String resname;  //사업자명(20)
-	private String add; // 주소(20)
-	private int resnum; // 사업자번호
-	private int resphone; // 사업자연락처
-	private int acc; // 계좌
+	private String id;
+	private String pwd;
+	private String kind;
+	private int phonenum;
+	private int acc;
+	private String name;
+	private String add;
+	private int frontregisnum;
+	private int afterregisnum;
+	private String nickname;
+	private String resname;
+	private int resnum;
+	private String reskind;
+	private String region;
+	private String resad;
+	private int resphone;
 	
-	public String getKind() {
-		return kind;
-	}
-	public void setKind(String kind) {
-		this.kind = kind;
-	}
 	public String getId() {
 		return id;
 	}
@@ -31,47 +30,17 @@ public class Join {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public String getNickname() {
-		return nickname;
+	public String getKind() {
+		return kind;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
-	public String getName() {
-		return name;
+	public int getPhonenum() {
+		return phonenum;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getResname() {
-		return resname;
-	}
-	public void setResname(String resname) {
-		this.resname = resname;
-	}
-	public String getAdd() {
-		return add;
-	}
-	public void setAdd(String add) {
-		this.add = add;
-	}
-	public int getResnum() {
-		return resnum;
-	}
-	public void setResnum(int resnum) {
-		this.resnum = resnum;
-	}
-	public int getResphone() {
-		return resphone;
-	}
-	public void setResphone(int resphone) {
-		this.resphone = resphone;
+	public void setPhonenum(int phonenum) {
+		this.phonenum = phonenum;
 	}
 	public int getAcc() {
 		return acc;
@@ -79,12 +48,71 @@ public class Join {
 	public void setAcc(int acc) {
 		this.acc = acc;
 	}
-	public int getRegisnum() {
-		return regisnum;
+	public String getName() {
+		return name;
 	}
-	public void setRegisnum(int regisnum) {
-		this.regisnum = regisnum;
+	public void setName(String name) {
+		this.name = name;
 	}
-	private int regisnum; // 주민번호
+	public String getAdd() {
+		return add;
+	}
+	public void setAdd(String add) {
+		this.add = add;
+	}
+	public int getFrontregisnum() {
+		return frontregisnum;
+	}
+	public void setFrontregisnum(int frontregisnum) {
+		this.frontregisnum = frontregisnum;
+	}
+	public int getAfterregisnum() {
+		return afterregisnum;
+	}
+	public void setAfterregisnum(int afterregisnum) {
+		this.afterregisnum = afterregisnum;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getResname() {
+		return resname;
+	}
+	public void setResname(String resname) {
+		this.resname = resname;
+	}
+	public int getResnum() {
+		return resnum;
+	}
+	public void setResnum(int resnum) {
+		this.resnum = resnum;
+	}
+	public String getReskind() {
+		return reskind;
+	}
+	public void setReskind(String reskind) {
+		this.reskind = reskind;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	public String getResad() {
+		return resad;
+	}
+	public void setResad(String resad) {
+		this.resad = resad;
+	}
+	public int getResphone() {
+		return resphone;
+	}
+	public void setResphone(int resphone) {
+		this.resphone = resphone;
+	}
 
 }
