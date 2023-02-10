@@ -46,6 +46,11 @@ public class LoginController {
 	public String selectLoginList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Login> list = loginService.selectLoginList(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+		if(list.size()>0) {
+ 			resultMap.put("result", "success");
+ 		}else {
+ 			resultMap.put("result", "fail");
+ 		}
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}

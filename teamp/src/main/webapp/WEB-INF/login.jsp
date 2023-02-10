@@ -198,12 +198,15 @@ var app = new Vue({
             var self = this;
             var nparmap = {id : self.id, pwd : self.pwd}; 
             console.log(nparmap);
+           
             $.ajax({
                 url:"/login.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
-                success : function(data) {     
+               
+                success : function(data) {
+                	 console.log(data.list);
                 	if(data.result == "success"){
                 		alert(data.list[0].name + "님 로그인 성공!!");
                 		self.name = data.list[0].name;
