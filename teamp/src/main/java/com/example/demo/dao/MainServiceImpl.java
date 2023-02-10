@@ -45,10 +45,17 @@ public class MainServiceImpl implements MainService{
 		}
 		
 		
-		///////@@인터페이스 구체화
+		// 기본 화면 출력 이벤트 (식당 출력)
 		@Override
 		public List<Main> getList(HashMap<String, Object> map) {
 			// TODO Auto-generated method stub
-			return mainMapper.searchList(map);
+			return mainMapper.firstList(map);
 		}
+		
+		// 식당명 검색 출력 이벤트
+		@Override
+		public List<Main> searchList(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			return mainMapper.searchList(map);
+		} 
 }

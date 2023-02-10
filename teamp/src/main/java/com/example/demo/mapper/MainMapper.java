@@ -14,7 +14,9 @@ public interface MainMapper {
 	List<Main> selectMainList2(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 	Main selectstore(HashMap<String, Object> map);
 	
-	//@@@
-	List<Main> searchList(HashMap<String, Object> map); // xml파일 접근 및 db 호출결과 리턴 받음
+	// 기본 화면 출력 이벤트 (식당 출력)
+	List<Main> firstList(HashMap<String, Object> map); // xml파일 접근 및 db 호출결과 리턴 받음
 
+	// 식당명 검색 출력 이벤트
+	List<Main> searchList(HashMap<String, Object> map); // xml파일 접근 및 db 호출결과 리턴 받음	
 }

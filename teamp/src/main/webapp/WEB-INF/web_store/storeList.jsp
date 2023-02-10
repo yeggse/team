@@ -62,19 +62,20 @@
 </style>
 
 <body style="margin: 0px">	
-	<div id="app9" style="width:2483.02pxl" align="center">		<!-- 화면 고정을 위해 필요 -->
+	<div id="app" style="width:2483.02pxl" align="center">		<!-- 화면 고정을 위해 필요 -->
 		<div class="div1">
 			<button  id="btnList">추천순</button>	<!--클릭되었을 경우, 색변화되도록 이벤트 넣기!!!  -->
 			<button id="btnList">재고순</button>	<!-- 선택순으로 리스트 출력하는 쿼리 생성 필요!! -->
 			<span style="margin-left: 1000px">
-				<input type="text" placeholder="업종을 검색해 주세요"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
-				<button id="btn" >검색</button>
+				<input type="text" placeholder="가게명을 검색해 주세요" v-model="resname"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
+				<button id="btn" @click="fnSearch" >검색</button>
 			</span>
 		</div>
 		<div style="margin-top: 45px; text-align: center; font-weight: bold; font-size: x-large;">
 			지금 픽업 가능한 음식점🍕
 	    </div>
 	    
+    <!-- [기본 ] 음식점 출력!! -->
 	    <div style="background-color: yellow; ">
 	    <!-- DB연결 후, 아래 링크 확인하고, 연동하기 -->
 	    <!-- https://velog.io/@dldldl1022/Spring%EA%B3%BC-vue%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9E%A5%EC%86%8C-%EB%AA%A9%EB%A1%9D-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0 -->
@@ -127,43 +128,22 @@
 					</tbody>
 				</table>
 				</div>
+	   	 </div>
 
-
-
-		    	
-<!-- 	    		
-	    <div>
-			<table >
-				<colgroup>
-					<col width="5%"/>
-					<col width="5%"/>
-					<col width="*"/>
-					<col width="5%"/>
-					<col width="10%"/>
-					<col width="25%"/>
-				</colgroup>
-				<tbody>
-					<tr v-for="(data, index) in list" >                            
-	                   <td><input type="checkbox" name="s" v-bind:id="'idx_' + index" v-bind:value="data" v-model="searchList"></td>                       
-	                   <td>{{data.resname}}</td> 
-	                   <td>{{data.grade}}</td> 
-	                   <td>{{data.resadd}}</td>
-	               	
-	               </tr>
-				</tbody>
-			</table>
-	    </div>
-	     -->
-	    
-	    
-	    </div>
+<!-- 가게명 검색 -->
+	   	 
+	   	 
+	   	 
+	   	 
+	   	 
+ </div>
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
 
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
-    el: '#app9',
+    el: '#app',
     data: {
     	list:[],
     	searchList : [],
@@ -173,6 +153,7 @@ var app = new Vue({
     	tempGrade : ""
     }   
     , methods: {
+    	// 기본 화면 출력 이벤트 (식당 출력)
        	fnGet : function(){
             var self = this;
             var nparmap = {resname : self.resname, grade : self.grade, resadd : self.resadd}; 
@@ -189,10 +170,30 @@ var app = new Vue({
                 	console.log(self.list);
                 }
            });
-    	}
+    	},
+    	
+ 	// 기본 화면 출력 이벤트 (식당 출력)
+   	fnSearch : function(){
+        var self = this;
+        var nparmap = {resname : self.resname, grade : self.grade, resadd : self.resadd}; 
+        $.ajax({
+            url:"/main.storelist/slist.dox",
+            dataType:"json",	
+            type : "POST", 
+            data : nparmap,
+            success : function(data) {       
+            	self.list = data.list;
+	            	if(self.list.length == 0){
+	            		self.fnGet();
+	            	}    
+            	console.log(self.list);
+            }
+       });
+	} 	
+    	
+    	
+    	
     }
-    
-    		 
     , created: function () {
 		this.fnGet();       
 	}
