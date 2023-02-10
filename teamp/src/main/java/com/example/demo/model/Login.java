@@ -2,7 +2,7 @@ package com.example.demo.model;
 
 
 public class Login {
-	private String id; 
+	private String id; //id
 	private String pwd;
 	private String name;
 
