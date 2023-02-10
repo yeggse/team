@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface JoinMapper {
-	int insertMember(HashMap<String, Object> map);                                                 // xml파일 접근 및 db 호출결과 리턴 받음
+	int insertMember(HashMap<String, Object> map);                                                 
 }
 

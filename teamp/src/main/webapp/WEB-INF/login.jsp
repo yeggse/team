@@ -136,16 +136,16 @@ input {
 	<!-- 전체 div -->
 	<div class="div2">
   		<div style="display: inline-block;">
-  			<label for="id" style="font-weight: bolder; font-size: x-large; margin-right: 50px; ">
+  			<label for="id" style="font-weight: bolder; font-size: x-large; margin-right: 50px;">
 				ID
 			</label>
-    		<input id="id" type="text" name="loginKey" placeholder="아이디" >
+    		<input id="id" type="text" name="loginKey" placeholder="아이디" v-model="id">
   		</div>
   		<div>
   			<label for="pw" style="font-weight: bolder; font-size: x-large; margin-right: 40px; letter-spacing: -1px;">
 				PW
 			</label>
-    		<input id="pw" type="password" name="password" placeholder="비밀번호" >
+    		<input id="pw" type="password" name="password" placeholder="비밀번호" v-model="pwd" >
   		</div>
   		<div>
      		<input id="logining" type="checkbox" style="width:20px;height:10px;border:1px; font-size: 12px;" name="" value=""/>
@@ -197,7 +197,7 @@ var app = new Vue({
     	fnLogin : function(){
             var self = this;
             var nparmap = {id : self.id, pwd : self.pwd}; 
-            console.log("test");
+            console.log(nparmap);
             $.ajax({
                 url:"/login.dox",
                 dataType:"json",	
