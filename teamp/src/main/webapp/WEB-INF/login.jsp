@@ -12,35 +12,38 @@
 * {
   box-sizing: border-box;
 }
-.div0{
-width:30%;
-border:10px solid red;
-margin-top:100px;
-
-
-}
+	.div0{
+		width:30%;
+		border:10px solid green;
+		margin-top:100px;
+		margin-right: 500px;
+		border-radius: 15px;
+	}
 <!--임시-->
 .tempbtn{
 width:500px;
 height:500px;
 border: 10px solid green;
 }
-.div1 {
-	width: 180px;
-	height: 100px;
-	font-size: 4em;
-	text-align: center;
-	border: 1px solid blue;
-	padding: 10px;
-}
-.div2 {
-	width: 400px;
-	height: 280px;
-	padding: 40px;
-	margin: auto;
-	font-family: Fantasy;
-	border: 2px solid gray;
-}
+	.div1 {
+		width: 180px;
+		height: 100px;
+		font-size: 3em;
+		text-align: center;
+		border: 1px solid blue;
+		padding: 10px;
+		margin-right: 400px;
+		font-weight: bold;
+		margin-bottom: -50px;
+	}
+	.div2 {
+		width: 500px;
+		height: 280px;
+		padding: 40px;
+		margin-top: 0px;
+		font-family: Fantasy;
+		border: 2px solid gray;
+	}
 
 .span {
 	margin: 0px 5px 0px 5px;
@@ -93,7 +96,6 @@ border: 10px solid green;
 	margin-left: 5px;
 	font-size: 10px;
 }
-
 input {
 	width: 200px;
 	height: 50px;
@@ -102,6 +104,7 @@ input {
 	border-width: 0 0 2px;
 	padding-right: 90px;
 }
+
 </style>
 <body>
 	<!-- 타이틀 -->
@@ -115,10 +118,11 @@ input {
   			<button onClick="location.href='http://127.0.0.1:8080/searchpw.do'">비밀번호찾기</button>
   			<button onClick="location.href='http://127.0.0.1:8080/menumanagementbusiness.do'">메뉴관리</button>
   			<button onClick="location.href='http://127.0.0.1:8080/menuaddbusiness.do'">메뉴추가</button>
+  			<button onClick="location.href='http://127.0.0.1:8080/menuaddbusiness2.do'">추가</button>
   		</div>
-	<div class="div1" >
-		세잎
-	</div>
+	<lavel class="div1" >
+		로그인
+	</lavel>
 	<!-- 전체 div -->
 	<div class="div2">
   		<div>
@@ -154,5 +158,8 @@ input {
 	-->
 	</div>
 	</div>  
+	
+	
+	
 </body>
 </html>

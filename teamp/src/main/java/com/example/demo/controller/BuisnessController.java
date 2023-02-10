@@ -28,4 +28,8 @@ public class BuisnessController {
     public String menuadd(Model model) throws Exception{
     	return "/menuadd_business"; // WEB-INF에서 호출할 파일명
     }
+    @RequestMapping("/menuaddbusiness2.do") 
+    public String menuadd2(Model model) throws Exception{
+    	return "/menuadd_business2"; // WEB-INF에서 호출할 파일명
+    }
 }

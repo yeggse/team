@@ -10,23 +10,13 @@
 </head>
 
 <style>
-.body{
-     line-height:2em;        
-     font-family:"맑은 고딕";
-}
 ul, li{ 
      list-style:none;
      text-align:center;
      padding:0;
      margin:0;
 }
-#mainWrapper{
-     width: 800px;
-     margin-left: 350px; /*가운데 정렬*/
-     margin-right: 350px; /*가운데 정렬*/
-     margin-bottom: 350px; /*가운데 정렬*/
-     border: 2px solid black;
-    }
+
 #mainWrapper > ul > li:first-child {
      text-align: left;
      font-size:32px;
@@ -108,6 +98,9 @@ padding-right: 500px;
 
 
 } 	 
+
+
+
 .ul{
 border: 5px solid red; 
 margin: 10px;
@@ -116,20 +109,75 @@ width: 700px;
 align: center;
 }
 
+#mainWrapper{
+     width: 800px;
+     margin-left: 350px; /*가운데 정렬*/
+     margin-right: 350px; /*가운데 정렬*/
+     margin-bottom: 350px; /*가운데 정렬*/
+     border: 2px solid black;
+    }
+
 .tempborder{
 border: 1px solid blue;
 margin:10px;
 padding: 5px;
 }
 
+  
+   /* -------------클리시 뜨는 페이지------------------------ */
+    
+    
+.div1{
+position: absolute;
+  width:50%;
+  height:50%;
+  border-radius: 10px;
+  margin:auto;
+  border: 5px solid red;
+  padding:10px;
+}
+.input1{
+  border-radius: 3px;
+  width:90%;
+  height:30px;
+}
+
+.input2{
+  border-radius: 3px;
+  width:90%;
+  height:100px;
+}
+
+.input3{
+  border-radius: 3px;
+  width:60%;
+  height:30px;
+}
+
+.btn1{
+  border: none;
+  margin: 0px;
+  color: white;
+  background: blue;
+}
+    
+      
+    /*-------------클리시 뜨는 페이지------------------------*/
+
+
+
+
+
 </style>
 
-<body class="body">
+<body>
 <jsp:include page="/layout/businesspagebody.jsp "></jsp:include>
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
     <div id="mainWrapper"> 
                 <!--영업 on/off  -->
         	<div class="tempborder">
+			<button class="btnonoff">영업시작</button>        	
+			<button class="btnonoff">영업종료</button>
 			</div>
                 <!-- 메뉴관리 -->
         	<div class="tempborder">
@@ -225,6 +273,56 @@ padding: 5px;
         </ul>
     </div>
     </div>
+    
+    
+    -------------클리시 뜨는 페이지------------------------
+  <div class="div1">
+    <div>
+      메뉴추가
+    </div>
+  ----------------
+    <div>
+      <div>
+        메뉴명
+      </div>
+      <div>
+       <input class="input1" type="text" placeholder="메뉴명">
+      </div>
+    </div>
+  -----------------------
+    <div>
+      <div>
+        메뉴설명
+      </div>
+      <div>
+       <input class="input2" type="text" placeholder="메뉴설명">
+      </div>
+    </div>
+  ----------------------------
+    <div>
+      <div>
+         가격
+      </div>
+      <div>
+       <input class="input3" type="text" placeholder="가격">
+       원      
+      </div>
+      
+    </div>
+  -----------------------------
+    <div>
+      <div>
+        상태변경
+      </div>
+      <div>
+        <button class="btn1">판매중</button>
+        <button class="btn1">품절</button>
+        <button class="btn1">숨김</button>
+      </div>  
+    </div>
+  </div>
+    -------------클리시 뜨는 페이지------------------------
+  
 </body>
     <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  

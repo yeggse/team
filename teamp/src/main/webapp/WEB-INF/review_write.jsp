@@ -14,16 +14,7 @@
      line-height:2em;        
      font-family:"맑은 고딕";
 }
-.div1{
-  width: 400px;
-  height: 800px;
-  padding: 20px;
-  border: 2px solid black;
-  background: white;
-  position: absolute; 
-  left: 50%; 
-  transform: translateX(-50%); 
-}
+
 .text{
   text-align:center;
   font-size:16px;
@@ -90,7 +81,29 @@ input{
 #myform input[type=radio]:checked ~ label{
     text-shadow: 0 0 0 yellow; /* 마우스 클릭 체크 */
 }
+.div1{
+  width: 500px;
+  height: 900px;
+  padding: 20px;
+  border: 2px solid black;
+  background: white;
+  position: absolute; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+.div2{
+  width: 450px;
+  height: 800px;
+  padding: 20px;
+  border: 2px solid black;
+  background: white;
+  position: absolute; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
 </style>
+
+
 
 <!DOCTYPE html>
 <html>

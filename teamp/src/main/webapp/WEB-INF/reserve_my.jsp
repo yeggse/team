@@ -10,26 +10,9 @@
 </head>
 
 <style>
-.body{
-     line-height:2em;        
-     font-family:"맑은 고딕";
-}
-ul, li{ 
-     list-style:none;
-     text-align:center;
-     padding:0;
-     margin:0;
-}
-#mainWrapper{
-     width: 800px;
-     margin-left: 350px; /*가운데 정렬*/
-     margin-right: 350px; /*가운데 정렬*/
-     margin-bottom: 350px; /*가운데 정렬*/
-     margin-top: 200px; /*가운데 정렬*/
-     float: right;
-     border: 2px solid black;
-    }
-#mainWrapper > ul > li:first-child {
+
+#mainWrapper > ul > li:first-child 
+	clear:both;
      text-align: left;
      font-size:32px;
      height:40px;
@@ -43,6 +26,7 @@ ul, li{
     background-color:#c9c9c9;
     font-weight:bold;
     text-align:center;
+    
 }
 #ulTable > li > ul {
     clear:both;
@@ -60,9 +44,9 @@ ul, li{
 #ulTable > li > ul > li:first-child +li               {width:15%;} /*상호명*/
 #ulTable > li > ul > li:first-child +li+li            {width:15%;} /*메뉴*/
 #ulTable > li > ul > li:first-child +li+li+li         {width:15%;} /*시간*/
-#ulTable > li > ul > li:first-child +li+li+li+li      {width:10%;} /*결제금액*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li	  {width:10%;} /*예약상태*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li+li{width:10%;} /*상태변경*/
+#ulTable > li > ul > li:first-child +li+li+li+li      {width:15%;} /*결제금액*/
+#ulTable > li > ul > li:first-child +li+li+li+li+li	  {width:15%;} /*예약상태*/
+#ulTable > li > ul > li:first-child +li+li+li+li+li+li{width:15%;} /*상태변경*/
 #divPaging {
      clear:both; 
      margin:0 auto; 
@@ -81,10 +65,6 @@ ul, li{
 #liSearchOption {
      margin-left:180px; auto; 
      width:auto; 
-     positio
-}
-.left {
-     text-align : left;
 }
 .btn{
  	 background:green;
@@ -92,16 +72,74 @@ ul, li{
  	 border:none;
  	 width:66px;
 }
+.body{
+     line-height:2em;        
+     font-family:"맑은 고딕";
+}
+ul, li{ 
+     list-style:none;
+     text-align:center;
+     padding:0;
+     margin:0;
+}
+.div0{
+border: 10px solid pink;
+height: 50%;
+width: 100%;
+}
+
+#mainWrapper{
+     border: 10px solid red;
+	 clear:both;
+     width: 800px;
+     margin-left: 350px; /*가운데 정렬*/
+     margin-right: 350px; /*가운데 정렬*/
+     margin-bottom: 350px; /*가운데 정렬*/
+     position: relative; left: -100px; bottom:900px; 
+    }
+.div1{
+border: 10px solid black;
+height: 30px;
+width: 500px;
+margin:auto;
+
+}
+.div2{
+border: 10px solid blue;
+width: 300px;
+height: 60px;
+font-size:4em;
+padding:10px;
+margin:auto;
+}
+.div3{
+border: 1px solid blue;
+margin:5px;
+width: 600px;
+height: 180px;
+margin:auto;
+}
+.div4{
+border: 1px solid blue;
+}
+
 </style>
 
 <body class="body">
-<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+<!--  
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
+-->
+	
+	
+	<div class="div0">
+<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
     <div id="mainWrapper">
-        <ul>
+        	<div class="div2">
             <!-- 게시판 제목 -->
-            <li>예약내역 </li>
-            
+            예약내역 
+        	</div>
+            <div class="div1">
+        	<ul>
              <!-- 검색 폼 영역 -->
             <li id='liSearchOption'>
                     <select id='selSearchOption' >
@@ -112,7 +150,8 @@ ul, li{
                     <input id='txtKeyWord' />
                     <input type='button' value='검색'/>
                 </li>
-
+                </div>
+             <div class="div3">
             <!-- 게시판 목록  -->
             <li>
                 <ul id ="ulTable">
@@ -133,52 +172,53 @@ ul, li{
                         <ul>
                             <li>1</li>
                             <li class="left">여기맛집</li>
-                            <li>후라이드치킨</li>
+                            <li>짜장면</li>
                             <li>40분</li>
                             <li>20000원</li>
                             <li>예약완료</li>
-                            <li><button class="btn">예약취소</button></li>
+                            <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
                         </ul>
                     </li>
 
                     <li>
                         <ul>
                             <li>2</li>
-                            <li class="left">떡참잘</li>
+                            <li class="left">여기맛집</li>
                             <li>짜장면</li>
                             <li>30분</li>
-                            <li>미결제</li>
-                            <li>결제취소</li>
-                           <li><button class="btn">예약취소</button></li>
+                            <li>20000원</li>
+                            <li>예약완료</li>
+                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
                         </ul>
                     </li>
 
                     <li>
                         <ul>
                             <li>3</li>
-                            <li class="left">기라성</li>
-                            <li>짬뽕</li>
-                            <li>14:40</li>
-                            <li>9000원</li>
-                            <li>예약완료</li>
-                           <li><button class="btn">예약취소</button></li>
+                            <li class="left">여기맛집</li>
+                            <li>짜장면</li>
+                            <li>40분</li>
+                            <li>20000원</li>
+                            <li>결제취소</li>
+                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
                         </ul>
                     </li>
 
                     <li>
                         <ul>
                             <li>4</li>
-                            <li class="left">마라마라탕</li>
-                            <li>햄버거</li>
-                            <li>20분</li>
-                            <li>50000원</li>
-                            <li>예약완료</li>
-                           <li><button class="btn">예약취소</button></li>
+                            <li class="left">여기맛집</li>
+                            <li>짜장면</li>
+                            <li>40분</li>
+                            <li>20000원</li>
+                            <li>결제취소</li>
+                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
                         </ul>
                     <li>                                        
                 </ul>
             </li>
-
+            </div>   
+			<div>
             <!-- 게시판 페이징 영역 -->
             <li>
                 <div id="divPaging">
@@ -192,24 +232,12 @@ ul, li{
                 </div>
             </li>
         </ul>
+        </div>	
     </div>
     </div>
+    <!-- 
+    </div> <!--id app  -->
+     -->
 </body>
- <jsp:include page="/layout/footer.jsp"></jsp:include>
+    <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
-
-<script type="text/javascript">
-var app = new Vue({ 
-    el: '#app',
-    data: {
-    }   
-    , methods: {
-    	
-    }
-    
-    		 
-    , created: function () {
-		this.fnGetList();       
-	}
-});
-</script>
