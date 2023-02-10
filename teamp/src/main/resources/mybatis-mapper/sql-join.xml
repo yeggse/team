@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.JoinMapper">
-	<select id="selectJoinList" parameterType="hashmap"
+	<select id="selectCheckList" parameterType="hashmap"
 		resultType="com.example.demo.model.Join">
 		SELECT
 
@@ -28,6 +28,17 @@
 		t3_account
 
 	</select>
+
+    <select id="selectCheck" parameterType="hashmap" resultType="int">	
+		
+			SELECT
+				count(*)
+			FROM
+				t_member
+			WHERE id = #{id}
+	</select>
+	
+
 	<insert id="insertMember" parameterType="hashmap">
 		INSERT INTO t3_account
 		VALUES(
@@ -39,7 +50,8 @@
 		, #{acc}
 		, #{name}
 		, #{add}
-		, #{frontregisnum}
+		,
+		#{frontregisnum}
 		, #{afterregisnum}
 		, #{nickname}
 		, #{resname}

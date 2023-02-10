@@ -12,4 +12,5 @@
 		ORDER BY resnum DESC
 	</select>
 <!-- group by 컬럼명 -->
+
 </mapper>

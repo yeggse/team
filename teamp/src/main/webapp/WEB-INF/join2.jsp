@@ -83,7 +83,7 @@ a {
 		<div class="div2">
 			아이디 <input type="text" id="text1" v-model="id"
 				style="margin-left: 60px"></input>
-			<button @click="">중복확인</button>
+			<button @click="fnCheck">중복확인</button>
 		</div>
 		<div class="div2">
 			패스워드 <input type="password" id="text1" v-model="pwd"
@@ -184,6 +184,29 @@ a {
 
 		},
 		methods : {
+
+			fnCheck : function() {
+				var self = this;
+				var nparmap = {id : self.id};
+				console.log(nparmap);
+				$.ajax({
+					url:"/join/check.dox",
+					dataType: "json",
+					type : "POST",
+					data : nparmap,
+					success : function(data){
+						//self.list = data.list;
+						if(data.num>0){
+							alert("중복되었습니다");
+						}
+						else{
+							alert("사용하실수 있는 아이디입니다.");
+							idcheck = true;
+						}
+					}
+				})
+
+			},
 
 			fnjoin : function() {
 				var self = this;

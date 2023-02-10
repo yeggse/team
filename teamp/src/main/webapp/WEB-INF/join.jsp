@@ -92,7 +92,7 @@ a {
 		<div class="div2">
 			아이디 <input type="text" id="text1" v-model="id"
 				style="margin-left: 60px"></input>
-			<button @click="">중복확인</button>
+			<button @click="fnCheck">중복확인</button>
 		</div>
 		<div class="div2">
 			비밀번호 <input type="password" id="text1" v-model="pwd"
@@ -101,6 +101,7 @@ a {
 		<div class="div2">
 			비밀번호 확인 <input type="password" id="text1" v-model="pwd2"
 				style="margin-left: 12px"></input>
+			<button @click="fnPwcheck">비밀번호 유효성 확인</button>
 		</div>
 		<div class="div2">
 			이름 <input type="text" id="text1" v-model="name"
@@ -140,77 +141,126 @@ a {
 <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
 <script type="text/javascript">
-	var app = new Vue({
-		el : '#app',
-		data : {
-			id : "",
-			pwd : "",
-			pwd2 : "",
-			name : "",
-			age : "",
-			age1 : "",
-			address : "",
-			account : "",
-			nickname : "",
-			num : "",
-			idcheck : false,
-			agecheck : false,
-			nickcheck : false,
-			flg : false
+	var app = new Vue(
+			{
+				el : '#app',
+				data : {
+					id : "",
+					pwd : "",
+					pwd2 : "",
+					name : "",
+					age : "",
+					age1 : "",
+					address : "",
+					account : "",
+					nickname : "",
+					num : "",
+					idcheck : false,
+					agecheck : false,
+					nickcheck : false,
+					flg : false
 
-		},
-		methods : {
-
-			fnjoin : function() {
-				var self = this;
-				var nparmap = {
-					id : self.id,
-					pwd : self.pwd,
-					kind : "일반",
-					phonenum : self.num,
-					acc : self.account,
-					name : self.name,
-					add : self.address,
-					frontregisnum : self.age,
-					afterregisnum : self.age1,
-					nickname : self.nickname,
-					resname : "",
-					resnum : 0,
-					reskind : "",
-					region : "",
-					resad : "",
-					resphone : 0
-				};
-				console.log(nparmap);
-				if (self.pwd != self.pwd2) {
-					alert("비밀번호가 일치하지 않습니다.");
-				} else if (self.id == "" || self.pwd == "" || self.pwd2 == ""
-						|| self.name == "" || self.age == "" || self.age1 == ""
-						|| self.address == "" || self.account == ""
-						|| self.nickname == "" || self.num == "") {
-					alert("빈칸을 확인해주세요");
-				} else {
-					$.ajax({
-						url : "/join/get.dox",
-						dataType : "json",
-						type : "POST",
-						data : nparmap,
-						success : function(data) {
-							self.list = data.list;
-							if (data.result == "success") {
-								alert("회원가입 성공!");
-								self.flg = true;
-							} else {
-								alert("회원가입 실패!");
+				},
+				methods : {
+					fnCheck : function() {
+						var self = this;
+						var nparmap = {
+							id : self.id
+						};
+						console.log(nparmap);
+						$.ajax({
+							url : "/join/check.dox",
+							dataType : "json",
+							type : "POST",
+							data : nparmap,
+							success : function(data) {
+								//self.list = data.list;
+								if (data.num > 0) {
+									alert("중복되었습니다");
+								} else {
+									alert("사용하실수 있는 아이디입니다.");
+									idcheck = true;
+								}
 							}
+						})
 
+					},
+					fnjoin : function() {
+						var self = this;
+						var nparmap = {
+							id : self.id,
+							pwd : self.pwd,
+							kind : "일반",
+							phonenum : self.num,
+							acc : self.account,
+							name : self.name,
+							add : self.address,
+							frontregisnum : self.age,
+							afterregisnum : self.age1,
+							nickname : self.nickname,
+							resname : "",
+							resnum : 0,
+							reskind : "",
+							region : "",
+							resad : "",
+							resphone : 0
+						};
+						console.log(nparmap);
+						if (self.pwd != self.pwd2) {
+							alert("비밀번호가 일치하지 않습니다.");
+						} else if (self.id == "" || self.pwd == ""
+								|| self.pwd2 == "" || self.name == ""
+								|| self.age == "" || self.age1 == ""
+								|| self.address == "" || self.account == ""
+								|| self.nickname == "" || self.num == "") {
+							alert("빈칸을 확인해주세요");
+						} else {
+							$.ajax({
+								url : "/join/get.dox",
+								dataType : "json",
+								type : "POST",
+								data : nparmap,
+								success : function(data) {
+									self.list = data.list;
+									if (data.result == "success") {
+										alert("회원가입 성공!");
+										self.flg = true;
+									} else {
+										alert("회원가입 실패!");
+									}
+
+								}
+							})
 						}
-					})
-				}
-			}
-		},
-		created : function() {
 
-		}
-	});
+					},
+					fnPwcheck : function() {
+						var self = this;
+						var nparmap = {
+							pwd : self.pwd,
+							pwd2 : self.pwd2
+						};
+						var pattern1 = /[0-9]/;
+						var pattern2 = /[a-zA-Z]/;
+						var pattern3 = /[~!@\#$%<>^&*]/; // 원하는 특수문자 추가&제거 가능
+						if (self.pwd == "") {
+							alert("❗ 비밀번호를 입력하세요.");
+						} else {
+							if (!pattern1.test(self.pwd)
+									|| !pattern2.test(self.pwd)
+									|| !pattern3.test(self.pwd)
+									|| self.pwd.length<8||self.pwd.length>50) {
+								alert("❗ 영문, 숫자, 특수기호를 모두 사용하여, 8자리 이상으로 구성하세요. \n❗❗ 사용가능한 특수 문자 : ~!@\#$%<>^&* ");
+							} else {
+								alert("오케!");
+							}
+						}
+
+					}
+
+				},
+				created : function() {
+
+				}
+			});
 </script>

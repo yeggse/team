@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.JoinService;
+import com.example.demo.model.Join;
 import com.google.gson.Gson;
 
 @Controller
@@ -53,6 +55,15 @@ public class JoinController {
  			resultMap.put("result", "fail");
  		}
  		resultMap.put("list", num);
+ 		return new Gson().toJson(resultMap);
+ 	}
+	
+    @RequestMapping(value = "/join/check.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+ 	@ResponseBody
+ 	public String check(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+ 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+ 		int num = joinService.getCheck(map);
+ 		resultMap.put("num", num);
  		return new Gson().toJson(resultMap);
  	}
     
