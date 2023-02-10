@@ -195,11 +195,13 @@ input {
 						<div style="margin-bottom: 10px;">수량:{{item.supply}}</div>
 						<div style="margin-bottom: 10px;">가격:{{item.price}}</div>
 						<div style="margin-bottom: 10px;">간단한 음식설명:{{item.introduce}}</div>
-						<input style="margin-left:1100px; width:50px;" anlign="center" type="text" value="0"></input>
+						<button style="margin-left:1000px;">-</button>
+						<button style="margin-left:1200px;">+</button>
+						<input style="margin-left:1100px; width:50px;" type="text" value="0"></input>
 					</div>
 				</div>
 					<div>
-						<button id="btn_order">주문시작</button>
+						<a href="/main.payment.do"><button id="btn_order">주문시작</button></a>
 					</div>
 			</div>
 			<div v-else><h2 style="margin-left: 50px;">게시글 목록</h2>

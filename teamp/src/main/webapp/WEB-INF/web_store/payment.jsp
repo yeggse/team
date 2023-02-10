@@ -41,7 +41,6 @@
 			}
 			
 		.div2 {
-				margin-top: 90px;
 				margin-right: 250px; 
 				width: 600px;
 		        margin-top:100px;

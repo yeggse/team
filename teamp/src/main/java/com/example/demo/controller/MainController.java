@@ -42,15 +42,32 @@ public class MainController {
     	return "/web_store/payment"; // WEB-INF에서 호출할 파일명
     }
     
+    // 웹 주소 : 확인용 결제 바구니
+    @RequestMapping("/main.basket.do") 
+    public String basketcheck(Model model) throws Exception{
+    	
+    	return "/web_store/basket"; // WEB-INF에서 호출할 파일명
+    }
     
     
     // 데이터 호출
+    // 기본 화면 출력 이벤트 (식당 출력)
 	@RequestMapping(value = "/main.storelist/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String searchStoreList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	public String firstList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Main> list = mainService.getList(map); // DB 접근 및 쿼리를 통한 데이터 호출 
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}
+	
+    // 식당명 검색 출력 이벤트 (식당 출력)
+	@RequestMapping(value = "/main.storelist/slist.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String searchList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Main> list = mainService.searchList(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+		resultMap.put("list", list);
+		return new Gson().toJson(resultMap);
+	} 
 }
