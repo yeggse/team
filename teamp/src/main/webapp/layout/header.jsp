@@ -19,7 +19,7 @@
       <a href="main.do" class="header" style="margin-left: 1500px; display: flex; align-items: center;">홈</a> <!-- a태그를 쓰면 갈려는 페이지 바로 입력하기, 처음에 @click으로 되지 않은 이유는 불러올 라이브러리 id="app"에 연결이 되어있지 않아서-->
       <a class="header" style="margin-left: 1600px; display: flex; align-items: center;">게시글</a> <!-- 로그인 사람에 따라서, 연결되는 링크가 달라져야 함 -->
       <a class="header" style="margin-left: 1700px; display: flex; align-items: center;">설정</a>	 <!-- 로그인 사람에 따라서, 연결되는 링크가 달라져야 함 -->
-      <a href="login.do" class="header" style="margin-left: 1800px; display: flex; align-items: center;">
+      <a href="login.do" class="header" style="margin-left: 1800px; display: flex; align-items: center;"> 로그인
       </a>
       
      </div>
