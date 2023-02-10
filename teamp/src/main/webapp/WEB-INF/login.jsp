@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>JS Bin</title>
-<jsp:include page="/layout/header.jsp"></jsp:include>
+	<meta charset="UTF-8">
+	<script src="js/jquery.js"></script>
+	<script src="js/vue.js"></script>
+	<title>login</title>
 </head>
+
 <style>
 * {
   box-sizing: border-box;
@@ -113,9 +114,11 @@ input {
 	}
 
 </style>
+
 <body>
+<jsp:include page="/layout/header.jsp"></jsp:include>
 	<!-- 타이틀 -->
-  <div id="app"style="width:2483.02px; padding-top:120px;" align="center">
+  <div id="app" style="width:2483.02px; padding-top:120px;" align="center">
     		<div>
   			<button onClick="location.href='http://127.0.0.1:8080/paymentmy.do'">결제내역</button>
   			<button onClick="location.href='http://127.0.0.1:8080/reservemy.do'">예약내역</button>
@@ -136,7 +139,7 @@ input {
   			<label for="id" style="font-weight: bolder; font-size: x-large; margin-right: 50px; ">
 				ID
 			</label>
-    		<input id="id" type="text" name="loginKey" placeholder="아이디">
+    		<input id="id" type="text" name="loginKey" placeholder="아이디" >
   		</div>
   		<div>
   			<label for="pw" style="font-weight: bolder; font-size: x-large; margin-right: 40px; letter-spacing: -1px;">
@@ -149,7 +152,7 @@ input {
      		<label for="logining">로그인 상태 유지</label>
   		</div>
   		<div>
-     		<button class="login > btn2">로그인</button>
+     		<button class="login > btn2" @click ="fnLogin">로그인</button>
   		</div>
   		<!-- 아랫 div -->
   		<div >
@@ -172,11 +175,48 @@ input {
 	</div>
 	<!-- 전체 footer -->
 	
-	<jsp:include page="/layout/footer.jsp"></jsp:include>
+	
 	
 	</div>  
 	
 	
 	
 </body>
+<jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
+
+<script type="text/javascript">
+var app = new Vue({ 
+    el: '#app',
+    data: {
+    	id:""
+    	,pwd:""
+    	, name: ""
+    }
+    , methods: {
+    	fnLogin : function(){
+            var self = this;
+            var nparmap = {id : self.id, pwd : self.pwd}; 
+            console.log("test");
+            $.ajax({
+                url:"/login.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {     
+                	if(data.result == "success"){
+                		alert(data.list[0].name + "님 로그인 성공!!");
+                		self.name = data.list[0].name;
+                	} else {
+                		alert("로그인 실패!!");
+                	}
+                }
+            }); 
+        }
+    }
+    , created: function () {
+        
+	}
+});
+    
+</script>
