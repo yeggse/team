@@ -41,12 +41,12 @@
     vertical-align:baseline;
 }    
 #ulTable > li > ul > li:first-child               	  {width:10%;} /*주문번호*/
-#ulTable > li > ul > li:first-child +li               {width:10%;} /*상호명*/
+#ulTable > li > ul > li:first-child +li               {width:15%;} /*상호명*/
 #ulTable > li > ul > li:first-child +li+li            {width:15%;} /*메뉴*/
-#ulTable > li > ul > li:first-child +li+li+li         {width:10%;} /*시간*/
+#ulTable > li > ul > li:first-child +li+li+li         {width:15%;} /*시간*/
 #ulTable > li > ul > li:first-child +li+li+li+li      {width:15%;} /*결제금액*/
 #ulTable > li > ul > li:first-child +li+li+li+li+li	  {width:15%;} /*예약상태*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li+li{width:10%;} /*상태변경*/
+#ulTable > li > ul > li:first-child +li+li+li+li+li+li{width:15%;} /*상태변경*/
 #divPaging {
      clear:both; 
      margin:0 auto; 
