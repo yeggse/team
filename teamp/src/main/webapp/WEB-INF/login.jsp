@@ -15,7 +15,7 @@
 	.div0{
 		width:30%;
 		border:10px solid #99dd81;
-		margin-top:80px;
+		margin-top:50px;
 		margin-right: 500px;
 		border-radius: 15px;
 		padding: 50px;
@@ -109,7 +109,7 @@ input {
 	padding-right: 90px;
 }
 	#image{
-		margin-top: 10px;
+		margin-top: 20px;
 	}
 
 </style>
@@ -167,13 +167,13 @@ input {
 		<span class="span">이용약관</span> <span class="span">개인정보 처리방침</span> 
 		<span class="span">운영정책</span> <span class="span">고객센터</span> 
 		<span class="span">공지사항</span>
-		<div style="display: inline-block"> <img src="img/login/naver.jpg" width="30px" height="30px" style="float: left; display: flex;">
+		<div style="display: inline-block"> <img src="img/main/newlogo.png" width="30px" height="30px" style="float: left; display: flex; margin-right: 5px;">
 			<h4 style="float: right; display: flex;">Copyright © Safe Corp. All rights reserved.</h4> </div>
 	</div>
 	<!-- 전체 footer -->
-	<!--  
+	
 	<jsp:include page="/layout/footer.jsp"></jsp:include>
-	-->
+	
 	</div>  
 	
 	
