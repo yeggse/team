@@ -46,7 +46,7 @@
 	        #text1 {
 	             width: 150px;
 	             height: 30px;
-	             text-align: right;
+	             text-align: left;
 	        }
 	       
 	
@@ -200,10 +200,14 @@
 					data : nparmap,
 					success : function(data) {
 						self.list = data.list;
-
+						if(data.result == "success"){
 						alert("회원가입 성공!");
 						self.flg = true;
-
+						}
+						else{
+							alert("회원가입 실패!");
+						}
+						
 					}
 				})
 

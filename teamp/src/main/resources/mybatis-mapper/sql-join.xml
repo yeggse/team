@@ -28,7 +28,7 @@
 		t3_account
 
 	</select>
-	<insert id="insertJoinList" parameterType="hashmap">
+	<insert id="insertMember" parameterType="hashmap">
 		INSERT INTO t3_account
 		VALUES(
 
