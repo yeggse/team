@@ -98,12 +98,13 @@
 			<button @click="">중복확인</button>
 		</div>
 		<div class="div2">
-			비밀번호 <input type="password" id="text1" v-model="pwd"
+			비밀번호 <input type="password" id="text1" v-model="pwd" 
 				style="margin-left: 45px"></input>
 		</div>
 		<div class="div2">
 			비밀번호 확인 <input type="password" id="text1" v-model="pwd2"
 				style="margin-left: 12px"></input>
+			<button @click="fnPwcheck">비밀번호 유효성 확인</button>
 		</div>
 		<div class="div2">
 			이름 <input type="text" id="text1" v-model="name"
@@ -211,7 +212,25 @@
 					}
 				})
 
+			},
+			fnPwcheck : function(){
+				var self = this;
+				var nparmap = {	pwd : self.pwd,	pwd2 : self.pwd2};
+		        var pattern1 = /[0-9]/;
+		        var pattern2 = /[a-zA-Z]/;
+		        var pattern3 = /[~!@\#$%<>^&*]/;     // 원하는 특수문자 추가&제거 가능
+		        if(self.pwd==""){
+		        	 alert("❗ 비밀번호를 입력하세요.");
+		        } else{
+			        if(!pattern1.test(self.pwd)||!pattern2.test(self.pwd)||!pattern3.test(self.pwd)||self.pwd.length<8||self.pwd.length>50){
+			            alert("❗ 영문, 숫자, 특수기호를 모두 사용하여, 8자리 이상으로 구성하세요. \n❗❗ 사용가능한 특수 문자 : ~!@\#$%<>^&* ");
+			        } else{
+			        	alert("오케!");
+			        }      
+		        }
 			}
+			
+			
 		},
 		created : function() {
 
