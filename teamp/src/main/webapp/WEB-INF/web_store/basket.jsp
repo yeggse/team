@@ -14,11 +14,13 @@
 	            font-family: 'Noto Sans KR', sans-serif;
 	        }
 	    .div{
-	    	display: flex;
+	    	display: inline-grid;
+	    	float: right;
+	    	
 	    }
 		.div2 {
-				margin-right: 250px; 
-				width: 600px;
+				margin-right: 150px; 
+				width: 400px;
 		        margin-top:200px;
 		        height:320px;
 	            background-color: #E0F0F0;
@@ -28,9 +30,9 @@
 	   }
 		.div3 {
 				margin-top: 10px;
-				margin-right: 250px; 
-				width: 600px;
-		        height:125px;
+				margin-right: 150px; 
+				width: 400px;
+		        height:50px;
 	            background-color: #E0F0F0;
 	            border-radius: 5px;
 	            float:right;
@@ -38,6 +40,7 @@
 	   }
 	   a{
 	   	font-size:large; font-weight: bold; margin-left: 200px; color: orange;
+	   	text-decoration-line: none;
 	   }
 	   
 </style>
