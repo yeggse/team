@@ -12,12 +12,5 @@
 		ORDER BY resnum DESC
 	</select>
 <!-- group by 컬럼명 -->
-<select id="selectResmenu" parameterType="hashmap" resultType="com.example.demo.model.Res">	
-		SELECT
-			resaad
-		FROM
-			t3_restaurant
-		WHERE 1=1
-		ORDER BY resnum DESC
-	</select>
+
 </mapper>

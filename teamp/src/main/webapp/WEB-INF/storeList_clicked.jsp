@@ -183,7 +183,7 @@ input {
 
 			<!-- 지금 예쁘게 나오는 예시 -->
 			<div v-if="flg">
-				<div v-for="(item, index) in list">
+				<div v-for="(item, index) in list" style="height:200px;">
 					<div
 						style="margin-top: 30px; margin-left: 60px; width: 300px; height: 180px; border-radius: 10px; border: 1px solid red; float: left; margin-right: 60px;">
 						<img style="margin-left: 0px" src="img/main/newlogo.png"
@@ -195,9 +195,11 @@ input {
 						<div style="margin-bottom: 10px;">수량:{{item.supply}}</div>
 						<div style="margin-bottom: 10px;">가격:{{item.price}}</div>
 						<div style="margin-bottom: 10px;">간단한 음식설명:{{item.introduce}}</div>
-						<button style="margin-left:1050px;">-</button><button style="margin-left:1200px;">+</button>
-						
-						<input style="margin-left:1100px; width:50px;" type="text" value="0"></input>
+					</div>
+					<div style="padding-top: 110px;">
+						<button >-</button>
+						<input style="width:50px; text-align:center;"  type="text" value="0"></input>
+						<button >+</button>
 					</div>
 				</div>
 					<div>
