@@ -164,7 +164,6 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 						<span class="count_menu">메뉴선택 갯수</span>
 						</div>
 							<div style="margin-top:50px;">
-								<div style="overflow: auto">
 				
 				<!-for문으로 차례대로 그림들어가게 하기  -->
 							
@@ -180,7 +179,6 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 				</div>
 	</div>			
 						
-								</div>
 								<div>
 								 <button id="btn_order">주문시작</button>
 								 </div>
