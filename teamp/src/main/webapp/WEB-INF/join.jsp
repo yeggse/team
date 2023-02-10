@@ -33,18 +33,20 @@
 	        }
 	         .div2 {
 	            margin-left:50px;
-	            margin-bottom: 10px;
+	            margin-top: 20px;
 	            width: 550px;
 	            height:50px;
 	            background-color: #EEEFF1;
 	            border-radius: 5px;
 	            text-align: initial;
 	            font-size:25px;
+	            display: inline-box;
 	        }
 	        
 	        #text1 {
 	             width: 150px;
 	             height: 30px;
+	             text-align: right;
 	        }
 	       
 	
@@ -78,23 +80,22 @@
 		</style>
 	</head>
 	<body >
-	 <div id="app" style = "margin-top:190px; background-color: white; height: 50px; font-weight: bolder; font-size: 45px; text-align: center;" >
+	 <div style = "margin-top:190px; background-color: white; height: 50px; font-weight: bolder; font-size: 45px; text-align: center;" >
 	    <img style="vertical-align: middle; margin-right:20px"src="img/main/newlogo.png" width="100px" height="80px"> 일반 회원가입
 	 </div>
 	 <div style = "margin-top:15px; background-color: white; height: 30px; text-align: center; margin-left: 500px;">
-		<a href="join.do" style="font-size: 15px; font-weight: normal;">사업자 회원가입</a>
+		<a href="join2.do" style="font-size: 15px; font-weight: normal;">사업자 회원가입</a>
 	 </div>
      <div id="app" class = "div3" style = "border:solid black;">
-
-		    <div class="div2"  >
+		    <div class="div2">
 				아이디 <input type="text" id = "text1" v-model="id" style = "margin-left:60px"></input>
 				<button @click="">중복확인</button>
 			</div>
 			<div class="div2">
-				패스워드 <input type="password" id = "text1" v-model="pwd" style = "margin-left:45px"></input>
+				비밀번호 <input type="password" id = "text1" v-model="pwd" style = "margin-left:45px"></input>
 			</div>
 			<div class="div2">
-				패스워드 확인 <input type="password" id = "text1"  v-model="pwd2" style = "margin-left:12px"></input>
+				비밀번호 확인 <input type="password" id = "text1"  v-model="pwd2" style = "margin-left:12px"></input>
 			</div>
 			<div class="div2">
 				이름 <input type="text" id = "text1" v-model="name" style = "margin-left:75px"></input>

@@ -128,12 +128,12 @@ ul, li{
                     <li>
                         <ul>
                             <li>No.</li>
-                            <li>주문번호</li>
-                            <li>가게명</li>
-                            <li>메뉴</li>
-                            <li>일시</li>
-                            <li>결제금액</li>
-                            <li>리뷰</li>
+                            <li>점포명</li>
+                            <li>분류</li>
+                            <li>닉네임</li>
+                            <li>제목</li>
+                            <li>날짜</li>
+                            <li>별점</li>
                         </ul>
                     </li>
                     
@@ -146,7 +146,8 @@ ul, li{
                             <li>짜장면</li>
                             <li>2023.02.08</li>
                             <li>20000원</li>
-                            <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
+                            <li>4.5</li>
+                            <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">삭제</button></li>
                         </ul>
                     </li>
 
@@ -158,7 +159,8 @@ ul, li{
                             <li>짜장면</li>
                             <li>2023.02.08</li>
                             <li>20000원</li>
-                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
+                            <li>4.5</li>
+                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">삭제</button></li>
                         </ul>
                     </li>
 
@@ -170,7 +172,8 @@ ul, li{
                             <li>짜장면</li>
                             <li>2023.02.08</li>
                             <li>20000원</li>
-                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
+                            <li>4.5</li>
+                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">삭제</button></li>
                         </ul>
                     </li>
 
@@ -182,7 +185,8 @@ ul, li{
                             <li>짜장면</li>
                             <li>2023.02.08</li>
                             <li>20000원</li>
-                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
+                            <li>4.5</li>
+                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">삭제</button></li>
                         </ul>
                     <li>                                        
                 </ul>
