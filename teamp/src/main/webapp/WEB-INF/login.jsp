@@ -14,10 +14,11 @@
 }
 	.div0{
 		width:30%;
-		border:10px solid green;
-		margin-top:100px;
+		border:10px solid #99dd81;
+		margin-top:80px;
 		margin-right: 500px;
 		border-radius: 15px;
+		padding: 50px;
 	}
 <!--임시-->
 .tempbtn{
@@ -25,7 +26,7 @@ width:500px;
 height:500px;
 border: 10px solid green;
 }
-	.div1 {
+	.label1 {
 		width: 180px;
 		height: 100px;
 		font-size: 3em;
@@ -33,6 +34,7 @@ border: 10px solid green;
 		border: 1px solid blue;
 		padding: 10px;
 		margin-right: 400px;
+		margin-top:50px;
 		font-weight: bold;
 		margin-bottom: -50px;
 	}
@@ -50,20 +52,15 @@ border: 10px solid green;
 	
 }
 
-.footer {
-	width: 400px;
+.loginfooter {
+	width: 500px;
 	font-size: 10px;
 	text-align: center;
-	margin: 20px;
+	margin-top: 10px;
 	padding: 5px;
 	border: 1px solid black;
-	
+	margin-right: 500px;
 }
-
-.radio {
-	font-size: 12px;
-}
-
 
 .btn1 {
 	margin: 5px 10px 10px 10px;
@@ -72,11 +69,17 @@ border: 10px solid green;
 }
 
 .btn2 {
-	margin: 15px 0px 5px 0px;
-	font-size: 16px;
+	margin: 20px 0px 5px 0px;
+	font-size: 18px;
+	font-weight: bold;
 	width: 300px;
 	height: 35px;
 	text-align: center;
+	background-color: #99dd81;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	letter-spacing: 4px;
 }
 
 .btn_icon {
@@ -86,16 +89,17 @@ border: 10px solid green;
 
 .afind {
 	text-decoration: none;
-	font-size: 10px;
+	font-size: 12px;
 	margin-right: 20px;
 }
 
 .asign {
 	text-decoration: none;
-	margin-right: 100px;
-	margin-left: 5px;
-	font-size: 10px;
+	margin-right: 70px;
+	margin-left: 35px;
+	font-size: 12px;
 }
+
 input {
 	width: 200px;
 	height: 50px;
@@ -104,13 +108,15 @@ input {
 	border-width: 0 0 2px;
 	padding-right: 90px;
 }
+	#image{
+		margin-top: 10px;
+	}
 
 </style>
 <body>
 	<!-- 타이틀 -->
   <div id="app"style="width:2483.02px; padding-top:120px;" align="center">
-  	<div class="div0">
-  		<div>
+    		<div>
   			<button onClick="location.href='http://127.0.0.1:8080/paymentmy.do'">결제내역</button>
   			<button onClick="location.href='http://127.0.0.1:8080/reservemy.do'">예약내역</button>
   			<button onClick="location.href='http://127.0.0.1:8080/reviewwrite.do'">리뷰쓰기</button>
@@ -120,20 +126,27 @@ input {
   			<button onClick="location.href='http://127.0.0.1:8080/menuaddbusiness.do'">메뉴추가</button>
   			<button onClick="location.href='http://127.0.0.1:8080/menuaddbusiness2.do'">추가</button>
   		</div>
-	<lavel class="div1" >
+  	<div class="div0">
+	<label class="label1" >
 		로그인
-	</lavel>
+	</label>
 	<!-- 전체 div -->
 	<div class="div2">
-  		<div>
-    		<input type="text" name="loginKey" placeholder="아이디">
+  		<div style="display: inline-block;">
+  			<label for="id" style="font-weight: bolder; font-size: x-large; margin-right: 50px; ">
+				ID
+			</label>
+    		<input id="id" type="text" name="loginKey" placeholder="아이디">
   		</div>
   		<div>
-    		<input type="password" name="password" placeholder="비밀번호" >
+  			<label for="pw" style="font-weight: bolder; font-size: x-large; margin-right: 40px; letter-spacing: -1px;">
+				PW
+			</label>
+    		<input id="pw" type="password" name="password" placeholder="비밀번호" >
   		</div>
-  		<div class="radio">
-     		<input type="radio" style="width:15px;height:10px;border:1px; name="" value="" />
-     		<span>로그인 상태 유지</span>
+  		<div>
+     		<input id="logining" type="checkbox" style="width:20px;height:10px;border:1px; font-size: 12px;" name="" value=""/>
+     		<label for="logining">로그인 상태 유지</label>
   		</div>
   		<div>
      		<button class="login > btn2">로그인</button>
@@ -145,18 +158,22 @@ input {
     		<a href="http://127.0.0.1:8080/searchpw.do" class="afind">비밀번호 찾기</a>
   		</div>
 	</div>
+	</div>
+	<div id="image">
+      <a  href="main.do"><img style="margin-right:500px"src="img/login/naver.jpg" width="500px" height="90px"></a> 		<!-- 링크달아주기 -->
+	</div>
 	<!-- 로그인 footer -->
-	<div class="footer">
-		<span class="span">이용약관</span> <span class="span">개인정보 처리방침</span> <span
-			class="span">운영정책</span> <span class="span">고객센터</span> <span
-			class="span">공지사항</span>
-		<h4>Copyright © Safe Corp. All rights reserved.</h4>
+	<div class="loginfooter">
+		<span class="span">이용약관</span> <span class="span">개인정보 처리방침</span> 
+		<span class="span">운영정책</span> <span class="span">고객센터</span> 
+		<span class="span">공지사항</span>
+		<div style="display: inline-block"> <img src="img/login/naver.jpg" width="30px" height="30px" style="float: left; display: flex;">
+			<h4 style="float: right; display: flex;">Copyright © Safe Corp. All rights reserved.</h4> </div>
 	</div>
 	<!-- 전체 footer -->
 	<!--  
 	<jsp:include page="/layout/footer.jsp"></jsp:include>
 	-->
-	</div>
 	</div>  
 	
 	
