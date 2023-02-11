@@ -45,6 +45,12 @@ public class JoinController {
 		return "/datachange2"; // WEB-INF에서 호출할 파일명
 	}
 	
+	@RequestMapping("/searchpwchange.do") 
+	    public String searchpwchange(Model model) throws Exception{
+	    	return "/search_pwchange"; // WEB-INF에서 호출할 파일명
+	}
+	    
+	
 	@RequestMapping(value = "/join/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
  	@ResponseBody
  	public String searchBbsList1(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
