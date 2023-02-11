@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.JoinService;
 import com.example.demo.model.Join;
-import com.example.demo.model.Login;
 import com.google.gson.Gson;
 
 @Controller
@@ -45,9 +44,9 @@ public class JoinController {
 		return "/datachange2"; // WEB-INF에서 호출할 파일명
 	}
 	
-	@RequestMapping("/searchpwchange.do") 
+	@RequestMapping("/searchpwdchange.do") 
 	    public String searchpwchange(Model model) throws Exception{
-	    	return "/search_pwchange"; // WEB-INF에서 호출할 파일명
+	    	return "/search_pwdchange"; // WEB-INF에서 호출할 파일명
 	}
 	    
 	
@@ -86,7 +85,7 @@ public class JoinController {
 	// 데이터 호출
 	@RequestMapping(value = "/searchpw.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String searchid(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	public String searchpw(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Join> list = joinService.searchpw(map); // DB 접근 및 쿼리를 통한 데이터 호출 
 		if(list.size()>0) {
@@ -97,5 +96,32 @@ public class JoinController {
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}
-    
+	
+//	@RequestMapping(value = "/searchpwdchange.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+// 	@ResponseBody
+// 	public String pwdchange(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+// 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+// 	    int num = joinService.pwdchange(map);
+// 		if(num>0) {
+// 			resultMap.put("result", "success");
+// 		}else {
+// 			resultMap.put("result", "fail");
+// 		}
+// 		resultMap.put("list", num);
+// 		return new Gson().toJson(resultMap);
+// 	}
+
+	@RequestMapping(value = "/searchpwdchange.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String pwdchange(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Join> list = joinService.pwdchange(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+		if(list.size()>0) {
+			resultMap.put("result", "success");
+		}else {
+			resultMap.put("result", "fail");
+		}
+		resultMap.put("list", list);
+		return new Gson().toJson(resultMap);
+	}
 }

@@ -82,6 +82,17 @@
 			t3_account
 		WHERE id = #{id} AND frontregisnum = #{frontregisnum} AND afterregisnum = #{afterregisnum}
 	</select>
-
-
+	
+	
+	
+	<update id="pwdchange" parameterType="hashmap">	
+		UPDATE 
+			t3_account
+		SET
+			pwd = #{newpwd}
+		WHERE 
+			id = #{id}, frontregisnum=#{frontregisnum}, afterregisnum=#{afterregisnum}
+	</update>
+	
+	
 </mapper>

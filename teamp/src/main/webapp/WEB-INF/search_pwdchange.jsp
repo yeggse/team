@@ -15,36 +15,27 @@
   margin: 1.2rem 0.3rem 0.3rem 0.3rem ;
   border: solid #ccc;
   border-width: 0 0 0.18rem;
-  padding-right: 90px;
+  padding-right: 5rem;
 }
 .title{
-  font-size: 30px;
+  font-size: 2rem;
   text-align: center;
 }
 .btn1{
-  font-size: 16px;
-  width: 100px;
-  height: 35px;
+  font-size: 1rem;
+  width: 6.5rem;
+  height: 2.3rem;
   text-align: center;
   color: white;
   background: gray;
   border:none;
 }
-.btn2{
-  font-size: 16px;
-  width: 100px;
-  height: 35px;
-  text-align: center;
-  color: white;
-  background: green;
-  border:none;
-}
 .div2{
-  width: 500px;
-  height: 700px;
-  padding: 40px;
+  width: 31.4rem;
+  height: 42rem;
+  padding: 2.5rem;
   margin: auto;
-  margin-top:100px;
+  margin-top:6.5rem;
 }
 .div1{
   position: relative;
@@ -108,8 +99,8 @@
   		<h3>비밀번호 변경하기</h3>
 	</div>
     <div>
-        <button class="btn1"ID onClick="location.href='http://localhost:8080/searchid.do'">아이디</button>
-        <button class="btn1"PW>비밀번호</button>
+        <button class="btn1"ID onClick="">아이디</button>
+        <button class="btn1"PW onClick="">비밀번호</button>
     </div>
 	<div class="div1">
   		<div class="text1">비밀번호가 생각나지 않으세요?</div>
@@ -117,14 +108,14 @@
         <div class="text2">회원 정보에 등록한 정보와 일치해야, 비밀번호를 변경할 수 있습니다.</div>
   		<div>
             <span class="text4">새로운 비밀번호</span>
-    		<input class="input1" type="text" placeholder="새로운 비밀번호를 입력해주세요" v-model="newpw" >
+    		<input class="input1" type="text" placeholder="새로운 비밀번호를 입력해주세요" v-model="newpwd" >
   		</div>
       	<div>
             <span class="text4">비밀번호 확인</span>
-    		<input class="input1" type="text" placeholder="새로운 비밀번호를 다시 입력해주세요" v-model="newpw" >
+    		<input class="input1" type="text" placeholder="새로운 비밀번호를 다시 입력해주세요" v-model="newpwdconfirm" >
   		</div>
   		<div>
-     		<button class="btn3" @click="fnSearchpwchange">비밀번호 변경</button>
+     		<button class="btn3" @click="fnSearchpwdchange">비밀번호 변경</button>
   		</div>
 	</div>
     <div class="text5">
@@ -145,21 +136,23 @@
 
 
 <script type="text/javascript">
-var app = new Vue({ 
+	var app = new Vue({ 
     el: '#app',
     data: {
-    	newpw:""
+    	newpwd:""
+    	,newpwdconfirm:""
 		, id:""
 		,	
     }
     , methods: {
-    	fnSearchpwchange : function(){
+    	fnSearchpwdchange : function(){
             var self = this;
-            var nparmap = { newpw: self.newpw
-            				id: self.id};
+            var nparmap = { newpwd: self.newpwd
+            				,newpwdconfirm: self.newpwdconfirm
+            				,id: self.id};
            
             $.ajax({
-                url:"/searchpwchange.dox",
+                url:"/searchpwdchange.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
@@ -168,13 +161,25 @@ var app = new Vue({
                 	self.list = data.list;
                 	console.log(nparmap);
                 	console.log(data.list);
-                	if(data.result == "success"){
-                		alert(data.list[0].id + "님의 비밀번호가 변경되었습니다.");
+                	
+                		alert("비밀번호가 일치하지 않습니다.");
+                	
+   /*              	if(newpwd.equals(newpwdconfirm)==false){
+                		alert("비밀번호가 일치하지 않습니다.");
+                	}else{
+                		alert("비밀번호가 변경되었습니다.");
+                	}            
+                	 */
+                	
+                	
+                	
+                	
+              /*   	if(data.result == "success"){
                 		location.replace("http://www.naver.com")
-                		self.newpw = data.list[0].newpw;
+                		self.newpwd = data.list[0].newpwd;
                 	} else {
                 		alert("형식에 맞지 않습니다. 형식에 맞추어 다시 입력해주세요.");
-                	}
+                	} */
                 }
             }); 
         }
@@ -182,6 +187,6 @@ var app = new Vue({
     , created: function () {
         
 	}
-});
+}); 
     
 </script>

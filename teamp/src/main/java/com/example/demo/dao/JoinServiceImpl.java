@@ -40,5 +40,17 @@ public class JoinServiceImpl implements JoinService{
 		// TODO Auto-generated method stub
 		return joinMapper.selectnickCheck(map);
 	}
-
+	
+	
+//	@Override
+//	public int pwdchange(HashMap<String, Object> map) {
+//		// TODO Auto-generated method stub
+//		return joinMapper.pwdchange(map);
+//	}
+	
+	@Override
+	public List<Join> pwdchange(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return joinMapper.pwdchange(map);
+	}
 }
