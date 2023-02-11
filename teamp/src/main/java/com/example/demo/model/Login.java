@@ -5,7 +5,7 @@ public class Login {
 	private String id; 
 	private String pwd;
 	private String name;
-	private int regisnum;
+	private int frontregisnum;
 
 	public String getName() {
 		return name;
@@ -25,11 +25,11 @@ public class Login {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public int getRegisnum() {
-		return regisnum;
+	public int getFrontregisnum() {
+		return frontregisnum;
 	}
-	public void setRegisnum(int regisnum) {
-		this.regisnum = regisnum;
+	public void setFrontregisnum(int frontregisnum) {
+		this.frontregisnum = frontregisnum;
 	}
 	
 

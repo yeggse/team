@@ -121,7 +121,7 @@
         <div class="text2">회원 정보에 등록한 정보와 일치해야, 아이디를 찾을 수 있습니다.</div>
         <div>
             <span class="text3">이름</span>
-    		<input class="input1" type="text" placeholder="아이디" v-model="id">
+    		<input class="input1" type="text" placeholder="이름" v-model="name">
   		</div>
   		<div>
             <span class="text4">주민번호</span>
@@ -159,7 +159,7 @@ var app = new Vue({
     , methods: {
     	fnSearchid : function(){
             var self = this;
-            var nparmap = {name : self.name, regisnum : self.regisnum}; 
+            var nparmap = {id: self.id,name : self.name, regisnum : self.regisnum}; 
            
             $.ajax({
                 url:"/searchid.dox",
@@ -168,7 +168,9 @@ var app = new Vue({
                 data : nparmap,
                
                 success : function(data) {
-                	console.log(data.list[0]);
+                	self.list = data.list;
+                	console.log(nparmap);
+                	console.log(data.list);
                 	if(data.result == "success"){
                 		alert(data.list[0].name + "님의 아이디는: " + data.list[0].id);
                 		self.id = data.list[0].id;
