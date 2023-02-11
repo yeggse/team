@@ -211,7 +211,7 @@ var app = new Vue({
                 		alert(data.list[0].name + "님 로그인 성공!!");
                 		self.name = data.list[0].name;
                 	} else {
-                		alert("로그인 실패!!");
+                		alert("로그인 실패!!1");
                 	}
                 }
             }); 
