@@ -35,4 +35,10 @@ public class JoinServiceImpl implements JoinService{
 		return joinMapper.searchpw(map);
 	}
 
+	@Override
+	public int getnickCheck(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return joinMapper.selectnickCheck(map);
+	}
+
 }

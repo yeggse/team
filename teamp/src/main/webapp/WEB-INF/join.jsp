@@ -119,7 +119,7 @@ a {
 		<div class="div2">
 			닉네임 <input type="text" id="text1" v-model="nickname"
 				style="margin-left: 60px"></input>
-			<button @click="">중복확인</button>
+			<button @click="fnnickCheck">중복확인</button>
 		</div>
 		<div class="div2">
 			연락처 <input type="text" id="text1" v-model="num"
@@ -179,12 +179,36 @@ a {
 									alert("중복되었습니다");
 								} else {
 									alert("사용하실수 있는 아이디입니다.");
-									idcheck = true;
+									self.idcheck = true;
 								}
 							}
 						})
 
-					},
+					},//아이디 중복확인
+					
+					fnnickCheck : function() {
+						var self = this;
+						var nparmap = {
+							nickname : self.nickname
+						};
+						console.log(nparmap);
+						$.ajax({
+							url : "/join/nickcheck.dox",
+							dataType : "json",
+							type : "POST",
+							data : nparmap,
+							success : function(data) {
+								//self.list = data.list;
+								if (data.num > 0) {
+									alert("중복되었습니다");
+								} else {
+									alert("사용하실수 있는 닉네임입니다.");
+									self.nickcheck = true;
+								}
+							}
+						})
+
+					},//닉네임 중복확인
 					fnjoin : function() {
 						var self = this;
 						var nparmap = {
@@ -214,7 +238,14 @@ a {
 								|| self.address == "" || self.account == ""
 								|| self.nickname == "" || self.num == "") {
 							alert("빈칸을 확인해주세요");
-						} else {
+						} else if(!self.idcheck){
+							alert("아이디 중복확인을 해주세요");
+						}
+						else if(!self.nickcheck){
+							alert("닉네임 중복확인을 해주세요");
+						}
+						
+						else {
 							$.ajax({
 								url : "/join/get.dox",
 								dataType : "json",
@@ -233,7 +264,7 @@ a {
 							})
 						}
 
-					},
+					},//회원가입
 					fnPwcheck : function() {
 						var self = this;
 						var nparmap = {

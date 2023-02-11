@@ -68,6 +68,15 @@ public class JoinController {
  		return new Gson().toJson(resultMap);
  	}
     
+    @RequestMapping(value = "/join/nickcheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+ 	@ResponseBody
+ 	public String nickcheck(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+ 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+ 		int num = joinService.getnickCheck(map);
+ 		resultMap.put("num", num);
+ 		return new Gson().toJson(resultMap);
+ 	}
+    
 	// 데이터 호출
 	@RequestMapping(value = "/searchpw.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
