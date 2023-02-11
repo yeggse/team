@@ -39,6 +39,7 @@ public class LoginController {
     	return "/search_pw"; // WEB-INF에서 호출할 파일명
     }
     
+  
     
     // 데이터 호출
 	@RequestMapping(value = "/login.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
