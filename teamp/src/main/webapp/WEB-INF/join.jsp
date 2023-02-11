@@ -244,7 +244,7 @@ a {
 						var pattern2 = /[a-zA-Z]/;
 						var pattern3 = /[~!@\#$%<>^&*]/; // 원하는 특수문자 추가&제거 가능
 						if (self.pwd == "") {
-							alert("❗ 비밀번호를 입력하세요1.");
+							alert("❗ 비밀번호를 입력하세요.");
 						} else {
 							if (!pattern1.test(self.pwd)
 									|| !pattern2.test(self.pwd)
