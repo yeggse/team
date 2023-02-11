@@ -5,6 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
+  <jsp:include page="/layout/header.jsp"></jsp:include>
   <title>JS Bin</title>
   
 </head>
@@ -152,13 +153,13 @@ padding:0rem 1rem 0rem 1rem;
 <!--  
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
 -->	
-	<jsp:include page="/layout/header.jsp"></jsp:include>
+	
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
 	<div class="div0">
     <div id="mainWrapper">
         	<div class="div2">
             <!-- 게시판 제목 -->
-            결제내역 
+            결제내역
         	</div>
             <div class="div1">
         	<ul>

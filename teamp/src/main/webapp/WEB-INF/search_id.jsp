@@ -9,13 +9,20 @@
   <jsp:include page="/layout/header.jsp"></jsp:include>
 </head>
 <style>
-input{
-  width:200px;
-  height: 50px;
-  margin: 20px 5px 5px 5px ;
+.input1{
+  width:13rem;
+  height: 3.2rem;
+  margin: 1.2rem 0.3rem 0.3rem 0.3rem ;
   border: solid #ccc;
-  border-width: 0 0 2px;
+  border-width: 0 0 0.18rem;
   padding-right: 90px;
+}
+.input2{
+  width:7.5rem;
+  height: 3.2rem;
+  margin: 1.2rem 0.3rem 0.3rem 0.3rem ;
+  border: solid #ccc;
+  border-width: 0 0 0.18rem;
 }
 .title{
   font-size: 30px;
@@ -100,7 +107,7 @@ input{
 </style>
 
 <body>
-  <div class="div2">
+  <div class="div2" id="app" >
 	<div class="title">
   		<h3>아이디 찾기</h3>
 	</div>
@@ -114,14 +121,17 @@ input{
         <div class="text2">회원 정보에 등록한 정보와 일치해야, 아이디를 찾을 수 있습니다.</div>
         <div>
             <span class="text3">이름</span>
-    		<input type="text" name="loginKey" placeholder="아이디">
+    		<input class="input1" type="text" placeholder="아이디" v-model="id">
   		</div>
   		<div>
-            <span class="text4">이메일</span>
-    		<input type="password" name="password" placeholder="비밀번호" >
+            <span class="text4">주민번호</span>
+    		<input class="input2" type="text" placeholder="6자리" v-model="regisnum"> ㅡ
+    		<!-- 
+    		<input class="input2" type="password" >
+    		 -->
   		</div>
   		<div>
-     		<button class="btn3">아이디 찾기</button>
+     		<button class="btn3" @click="fnSearchid">아이디 찾기</button>
   		</div>
 	</div>
     <div class="text5"><a href="http://localhost:8080/login.do">로그인</a></div>
@@ -136,3 +146,42 @@ input{
     </div>
 </body>
 </html>
+
+<script type="text/javascript">
+var app = new Vue({ 
+    el: '#app',
+    data: {
+    	id:""
+    	,name: ""
+    	,regisnum:""
+
+    }
+    , methods: {
+    	fnSearchid : function(){
+            var self = this;
+            var nparmap = {name : self.name, regisnum : self.regisnum}; 
+           
+            $.ajax({
+                url:"/searchid.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+               
+                success : function(data) {
+                	console.log(data.list[0]);
+                	if(data.result == "success"){
+                		alert(data.list[0].name + "님의 아이디는: " + data.list[0].id);
+                		self.id = data.list[0].id;
+                	} else {
+                		alert("일치하는 정보가 없습니다.");
+                	}
+                }
+            }); 
+        }
+    }
+    , created: function () {
+        
+	}
+});
+    
+</script>

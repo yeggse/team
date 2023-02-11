@@ -2,9 +2,10 @@ package com.example.demo.model;
 
 
 public class Login {
-	private String id; //id
+	private String id; 
 	private String pwd;
 	private String name;
+	private int regisnum;
 
 	public String getName() {
 		return name;
@@ -24,5 +25,12 @@ public class Login {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+	public int getRegisnum() {
+		return regisnum;
+	}
+	public void setRegisnum(int regisnum) {
+		this.regisnum = regisnum;
+	}
+	
 
 }

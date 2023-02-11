@@ -20,5 +20,10 @@ public class LoginServiceImpl implements LoginService{
 		// TODO Auto-generated method stub
 		return loginMapper.selectLoginList(map);
 	}
+	@Override
+	public List<Login> searchid(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return loginMapper.searchid(map);
+	}
 }
 
