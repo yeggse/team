@@ -9,14 +9,22 @@
   <jsp:include page="/layout/header.jsp"></jsp:include>
 </head>
 <style>
-input{
-  width:200px;
-  height: 50px;
-  margin: 20px 5px 5px 5px ;
+.input1{
+  width:13rem;
+  height: 3.2rem;
+  margin: 1.2rem 0.3rem 0.3rem 0.3rem ;
   border: solid #ccc;
-  border-width: 0 0 2px;
+  border-width: 0 0 0.18rem;
   padding-right: 90px;
 }
+.input2{
+  width:7.5rem;
+  height: 3.2rem;
+  margin: 1.2rem 0.3rem 0.3rem 0.3rem ;
+  border: solid #ccc;
+  border-width: 0 0 0.18rem;
+}
+
 .title{
   font-size: 30px;
   text-align: center;
@@ -101,7 +109,7 @@ input{
 }
 </style>
 <body>
-  <div class="div2">
+  <div class="div2" id="app">
 	<div class="title">
   		<h3>비밀번호 찾기</h3>
 	</div>
@@ -115,18 +123,23 @@ input{
         <div class="text2">회원 정보에 등록한 정보와 일치해야, 비밀번호를 변경할 수 있습니다.</div>
         <div>
             <span class="text3">아이디</span>
-    		<input type="text" name="loginKey" placeholder="아이디를 입력해주세요">
+    		<input class="input1" type="text" name="loginKey" placeholder="아이디를 입력해주세요" v-model="id">
   		</div>
-  		<div>
+  			<div>
+            <span class="text4">주민번호</span>
+    		<input class="input2" type="text" placeholder="6자리" v-model="frontregisnum"> ㅡ
+    		<input class="input2" type="password" placeholde="" v-model="afterregisnum">
+  		</div>
+  		<!-- <div>
             <span class="text4">새 비밀번호</span>
     		<input type="password" name="password" placeholder="새로운 비밀번호를 입력해주세요" >
   		</div>
       	<div>
             <span class="text4">새 비밀번호</span>
     		<input type="password" name="password" placeholder="새로운 비밀번호를 다시 입력해주세요" >
-  		</div>
+  		</div> -->
   		<div>
-     		<button class="btn3">비밀번호 변경</button>
+     		<button class="btn3" @click="fnSearchpw">비밀번호 변경</button>
   		</div>
 	</div>
     <div class="text5">
@@ -144,3 +157,48 @@ input{
     </div>
 </body>
 </html>
+
+
+<script type="text/javascript">
+var app = new Vue({ 
+    el: '#app',
+    data: {
+    	id:""
+    	,frontregisnum:""
+    	,afterregisnum:""
+
+    }
+    , methods: {
+    	fnSearchpw : function(){
+            var self = this;
+            var nparmap = {id: self.id,
+            				frontregisnum: self.frontregisnum, 
+            				afterregisnum: self.afterregisnum}; 
+           
+            $.ajax({
+                url:"/searchpw.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+               
+                success : function(data) {
+                	self.list = data.list;
+                	console.log(nparmap);
+                	console.log(data.list);
+                	if(data.result == "success"){
+                		alert(data.list[0].id + "님의 비밀번호를 변경해주세요. ");
+                		location.replace("http://www.naver.com")
+                		self.id = data.list[0].id;
+                	} else {
+                		alert("일치하는 정보가 없습니다.");
+                	}
+                }
+            }); 
+        }
+    }
+    , created: function () {
+        
+	}
+});
+    
+</script>

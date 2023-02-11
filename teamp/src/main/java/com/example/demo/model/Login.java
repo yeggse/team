@@ -6,6 +6,7 @@ public class Login {
 	private String pwd;
 	private String name;
 	private int frontregisnum;
+	private int afterregisnum;
 
 	public String getName() {
 		return name;
@@ -30,6 +31,12 @@ public class Login {
 	}
 	public void setFrontregisnum(int frontregisnum) {
 		this.frontregisnum = frontregisnum;
+	}
+	public int getAfterregisnum() {
+		return afterregisnum;
+	}
+	public void setAfterregisnum(int afterregisnum) {
+		this.afterregisnum = afterregisnum;
 	}
 	
 

@@ -13,11 +13,12 @@
 	
 	<select id="searchid" parameterType="hashmap" resultType="com.example.demo.model.Login">	
 		SELECT
-			id, frontregisnum, name
+			id, name, frontregisnum, afterregisnum
 		FROM
 			t3_account
-		WHERE name = #{name} AND frontregisnum = #{regisnum}
+		WHERE name = #{name} AND frontregisnum = #{frontregisnum} AND afterregisnum = #{afterregisnum}
 	</select>
+	
 	
 </mapper>
 	

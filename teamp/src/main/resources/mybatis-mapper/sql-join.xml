@@ -64,6 +64,15 @@
 		)
 
 	</insert>
+	
+	
+	<select id="searchpw" parameterType="hashmap" resultType="com.example.demo.model.Join">	
+		SELECT
+			id, frontregisnum, afterregisnum
+		FROM
+			t3_account
+		WHERE id = #{id} AND frontregisnum = #{frontregisnum} AND afterregisnum = #{afterregisnum}
+	</select>
 
 
 </mapper>

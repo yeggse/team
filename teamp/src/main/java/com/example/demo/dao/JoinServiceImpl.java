@@ -29,4 +29,10 @@ public class JoinServiceImpl implements JoinService{
 		return joinMapper.selectCheck(map);
 	}
 
+	@Override
+	public List<Join> searchpw(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return joinMapper.searchpw(map);
+	}
+
 }
