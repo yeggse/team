@@ -29,13 +29,26 @@ public class ConsumerController {
     	return "/payment_my"; // WEB-INF에서 호출할 파일명
     }
     @RequestMapping("/reservemy.do") 
-    public String reserve(Model model) throws Exception{
-    	return "/reserve_my"; // WEB-INF에서 호출할 파일명
-    }
+      public String reservemy(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+      	HashMap<String, Object> map = new HashMap<String, Object>();
+      	String kind = (String)session.getAttribute("KindSession");
+      	String id = (String)session.getAttribute("userIdSession");
+      	
+      	request.setAttribute("kind", kind);
+      	request.setAttribute("userId", id);   
+      	return "/reserve_my"; // WEB-INF에서 호출할 파일명
+      }
+    
     @RequestMapping("/reviewwrite.do") 
-    public String review(Model model) throws Exception{
-    	return "/review_write"; // WEB-INF에서 호출할 파일명
-    }
+      public String review(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+      	HashMap<String, Object> map = new HashMap<String, Object>();
+      	String kind = (String)session.getAttribute("KindSession");
+      	String id = (String)session.getAttribute("userIdSession");
+      	
+      	request.setAttribute("kind", kind);
+      	request.setAttribute("userId", id); 
+      	return "/review_write"; // WEB-INF에서 호출할 파일명
+      }
     
     @RequestMapping("/reviewadmin.do") 
     public String review1(Model model) throws Exception{
