@@ -241,7 +241,7 @@ a {
 					phonenum : self.num,
 					acc : self.account,
 					name : self.name,
-					add : self.address,
+					address : self.address,
 					frontregisnum : self.age,
 					afterregisnum : self.age1,
 					nickname : self.nickname,

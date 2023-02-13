@@ -7,7 +7,7 @@ public class Join {
 	private String phonenum;
 	private String acc;
 	private String name;
-	private String add;
+	private String address;
 	private int frontregisnum;
 	private int afterregisnum;
 	private String nickname;
@@ -54,11 +54,11 @@ public class Join {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAdd() {
-		return add;
+	public String getAddress() {
+		return address;
 	}
-	public void setAdd(String add) {
-		this.add = add;
+	public void setAdd(String address) {
+		this.address = address;
 	}
 	public int getFrontregisnum() {
 		return frontregisnum;
