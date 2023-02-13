@@ -22,7 +22,16 @@
 <script type="text/javascript">
 var app1 = new Vue({ 
     el: '#app1',
-    data: {
+    data: {id : ""
+        , pwd : ""
+        , pwd2 : ""
+        , name : ""
+       	, age : ""
+       	, address : ""
+       	, flg : true
+       	, kind : "${kind}"
+     	, userId : "${userId}"
+        	
     	
     }   
     , methods: {
@@ -31,7 +40,6 @@ var app1 = new Vue({
     		console.log("test");
     		var self = this;
     		self.flg = true;
-    		
     	}
     }
     , created: function () {

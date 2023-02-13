@@ -74,8 +74,9 @@ public class JoinController {
 				session.setAttribute("KindSession", user.getKind());
 				session.setAttribute("useraccSession", user.getAcc());
 				session.setAttribute("userphoneNumSession", user.getPhonenum());
-				session.setAttribute("userFrontregisnum", user.getFrontregisnum());
-		    	session.setAttribute("userAfterregisnum", user.getAfterregisnum());
+				session.setAttribute("userFrontregisnumSession", user.getFrontregisnum());
+		    	session.setAttribute("userAfterregisnumSession", user.getAfterregisnum());
+		    	session.setAttribute("userAddressSession", user.getAddress());
 				resultMap.put("user", user);
 				resultMap.put("result", "success");
 			} else {
@@ -104,15 +105,16 @@ public class JoinController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
     	String id = (String)session.getAttribute("userIdSession");
     	String name = (String)session.getAttribute("userNameSession");
-    	int frontregisnum = (Integer)session.getAttribute("userFrontregisnum");
-    	int afterregisnum = (Integer)session.getAttribute("userAfterregisnum");
-        String add = (String)session.getAttribute("userAdd");
+    	int frontregisnum = (Integer)session.getAttribute("userFrontregisnumSession");
+    	int afterregisnum = (Integer)session.getAttribute("userAfterregisnumSession");
+        String add = (String)session.getAttribute("userAddSession");
         
     	request.setAttribute("userId", id);
     	request.setAttribute("userName", name);
     	request.setAttribute("userFrontregisnum", frontregisnum);
     	request.setAttribute("userafterregisnum", afterregisnum);
     	request.setAttribute("userAdd", add);
+    	
 		return "/datachange"; // WEB-INF에서 호출할 파일명
 	}
 	@RequestMapping("/datachange2.do")

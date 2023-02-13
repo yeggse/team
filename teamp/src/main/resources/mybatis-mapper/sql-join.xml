@@ -62,7 +62,7 @@
 		, #{phonenum}
 		, #{acc}
 		, #{name}
-		, #{add}
+		, #{address}
 		,
 		#{frontregisnum}
 		, #{afterregisnum}
@@ -90,20 +90,17 @@
 	</select>
 
 
-	<update id="datachage" parameterType="hashmap">
+	<update id="datachange" parameterType="hashmap">
 		UPDATE
 		
-		t3_account
-		
-		SET
-		
-		pwd = #{pwd},
-		phonenum = #{phonenum},
-		nickname = #{nickname},
-		acc = #{acc}
-		
+		t3_account SET
+			pwd = #{pwd},
+			phonenum = #{phonenum},
+			nickname = #{nickname},
+			acc = #{account},
+			address = #{address}
 		WHERE 
-		id = #{id}
+			id = #{id}
 	</update>
 
 	<update id="pwdchange" parameterType="hashmap">
@@ -118,7 +115,7 @@
 		
 	<select id="selectLoginList" parameterType="hashmap" resultType="com.example.demo.model.Join">	
 		SELECT
-			id, pwd, name, kind, acc, phonenum, frontregisnum, afterregisnum
+			id, pwd, name, kind, acc, phonenum, frontregisnum, afterregisnum, address
 		FROM
 			t3_account
 		WHERE id = #{id} AND pwd = #{pwd}

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.MainService;
-import com.example.demo.model.Join;
+import com.example.demo.model.Area;
 import com.example.demo.model.Main;
 import com.google.gson.Gson;
 
@@ -26,6 +26,7 @@ public class MainController {
 	// Service 인터페이스 객체 생성 및 연결
     @Autowired
     private MainService mainService;
+    
     
 	@Autowired
     HttpSession session;
@@ -42,6 +43,9 @@ public class MainController {
     	request.setAttribute("userId", id);
     	request.setAttribute("kind", kind);
     	request.setAttribute("Region", region);
+    	List<Area> siList = mainService.selectSiList(map);
+    	map.put("si", siList.get(0).getSi());
+    	request.setAttribute("siList",  new Gson().toJson(siList));
     	return "/web_main/main"; // WEB-INF에서 호출할 파일명
     }
     // 웹 주소 : 업종 목록 출력
@@ -124,6 +128,5 @@ public class MainController {
 		 * area).getRegion()); resultMap.put("area", area); resultMap.put("result",
 		 * "success"); }else { resultMap.put("result", "fail"); }
 		 */
-		
 	}
 }

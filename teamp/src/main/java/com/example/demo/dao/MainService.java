@@ -3,6 +3,7 @@ package com.example.demo.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import com.example.demo.model.Area;
 import com.example.demo.model.Main;
 
 
@@ -24,4 +25,5 @@ public interface MainService {
 	// 메인화면 지역 설정
 	List<Main> ListArea(HashMap<String, Object> map); // 데이터 호출을 위한 인터페이스
 	
+	List<Area> selectSiList(HashMap<String, Object> map) throws Exception;
 }

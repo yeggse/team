@@ -5,8 +5,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <jsp:include page="/layout/header.jsp"></jsp:include>
   <title>JS Bin</title>
+  <jsp:include page="/layout/header.jsp"></jsp:include>
   
 </head>
 
@@ -117,7 +117,8 @@ width: 100%;
      margin-left: 350px; /*가운데 정렬*/
      margin-right: 350px; /*가운데 정렬*/
      margin-bottom: 350px; /*가운데 정렬*/
-     position: relative; left: -100px; bottom:900px; 
+   	 position: relative;
+     left: -100px; bottom:900px; 
     }
     
 .div1{
@@ -150,12 +151,10 @@ padding:0rem 1rem 0rem 1rem;
 </style>
 
 <body >
- 
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
-
-	
-<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
 	<div class="div0">
+	
+	<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
     <div id="mainWrapper">
         	<div class="div2">
             <!-- 게시판 제목 -->
@@ -260,34 +259,8 @@ padding:0rem 1rem 0rem 1rem;
     </div>
   
     </div>  
-     
 </body>
     <jsp:include page="/layout/footer.jsp"></jsp:include>
-</html>  
-<script type="text/javascript">
-var app = new Vue({
-	el: '#app',
-    data: {
-    	id : ""
-    	, pwd : ""
-    	, pwd2 : ""
-    	, name : ""
-    	, age : ""
-    	, address : ""
-    	, flg : true
-    	, kind : "${kind}"
-    		, userId : "${userId}"
-    	
-    	
-    } 
-    , methods: {
-    	
-    	
-    }   
-    , created: function () {
     
-	}
-});
+</html>  
 
-
-</script>

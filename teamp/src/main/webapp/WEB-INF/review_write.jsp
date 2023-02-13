@@ -81,7 +81,7 @@ border: 1px solid;
   padding: 20px;
   border: 2px solid black;
   background: white;
-  1position: absolute; 
+  position: absolute; 
   left: 50%; 
   transform: translateX(-50%); 
 }
@@ -107,8 +107,9 @@ border: 1px solid;
   <title>JS Bin</title>
 </head>
 <body>
-<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
+<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
     <div class="div1"> <!--전체 div-->
       <div class="div2"> <!--별점,텍스트 div-->
         <h1 style="font-size:50px">리뷰 작성하기</h1>
@@ -132,8 +133,12 @@ border: 1px solid;
               <img src="https://cdn-icons-png.flaticon.com/512/158/158715.png" style="width:50px; height:50px;" alt="사진0/5">
               <ol>사진첨부</ol>
             </button>
-            <button class="btnphoto2">사진</button>
-            <button class="btnphoto2">사진</button>
+            <input type="file">
+			<!--  
+			<input type="file" onchange="readURL(this);">  //사진 미리보기 시도하려다 실패
+				-->            
+           <!--  <button class="btnphoto2">사진</button>
+            <button class="btnphoto2">사진</button> -->
           </div>
           <div>
             <button class="btncomplete">완료</button>
@@ -147,3 +152,26 @@ border: 1px solid;
 </body>
   <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
+<script type="text/javascript">
+/* var app = new Vue({   //사진 미리보기 하려다 실패
+    el: '#app',
+    data: {
+    	id:""
+    	,name: ""
+
+    }
+    , methods: {
+		function readURL(input) {
+  			if (input.files && input.files[0]) {
+    		var reader = new FileReader();
+    		reader.onload = function(e) {
+      		document.getElementById('preview').src = e.target.result;
+   		 };
+    		reader.readAsDataURL(input.files[0]);
+  			} else {
+  			  document.getElementById('preview').src = "";
+  	}
+} */
+
+</script>
+
