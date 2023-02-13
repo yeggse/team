@@ -160,8 +160,6 @@ input {
 
 <body>
 	<div id="app" style="width: 100%; padding-top: 120px;" anlign="center">
-		<!-- <span v-if="flg">test1</span> -->
-		<!-- <span v-else>test2</span> -->
 		<div class="title_food">옛날짜장</div>
 		<span class="grade" style="margin-left: 180px;">평점 :</span> <span
 			class="position_res" style="marin-top: -50px;"> 가게위치: <!-- {{list[0].pickuptime}} 집에서 mysqpl로 다시 수정하기.-->
@@ -171,9 +169,7 @@ input {
 		<!-- 가계주소들어와야함 -->
 		<div>
 			<button id="btn_menu" @click="fnClick1">메뉴</button>
-			<!-- 이동하는 리스너 넣어주기. -->
 			<button id="btn_review" @click="fnClick">리뷰</button>
-			<!-- 처음에 안눌러져있으면 이것 -->
 			<span style="margin-left: 800px; font-size: 30px;">db수</span> <span
 				class="count_menu">메뉴선택 갯수</span>
 		</div>

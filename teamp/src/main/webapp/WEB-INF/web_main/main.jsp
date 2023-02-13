@@ -122,7 +122,7 @@
 		<button id="btn" @click="fnSearch">선택</button>	조건 넣어줘야 함: 버튼이벤트 생성 : 미선택시 안넘어가게!!!!!! -->
 			<div >
 				<label for="si" >지역을 먼저 설정해주세요~ : </label>
-				<select v-model="si" id="si" > 
+				<select v-model="si" id="si" onchage="selectBoxChange(this.si);"> 
 					<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
 				</select>
 			</div>
@@ -171,7 +171,10 @@ var app = new Vue({
                 }
            }); 
     	} 	
-    	
+    var selectBoxChange = function(si){
+		console.log("값변경테스트: "+si);
+		$("changeInput").val(si);
+	}  
     }
     , created: function () {
 		//this.fnGetList();       
