@@ -7,7 +7,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<jsp:include page="/layout/header.jsp"></jsp:include>
-	<title>[세잎] 결제창</title>
+	<title>[세잎] 예약 완료</title>
 </head>
 <style>
 	        * {
@@ -76,20 +76,20 @@
 
 <body style="margin: 0px">
 	<div id="app" style="width:2483.02px; anlign:center;">
-		<div class="div1">결제창</div>
+		<div class="div1">예약완료</div>
 		
 		<table style="float:left; margin-left: 350px; width: 600px; border: 1px solid black; border-collapse : collapse; margin-top: 100px; border-radius: 5px; text-align: center;">
 			<td style="border: 1px solid #444444; font-size: x-large; font-weight: bolder; margin-top: 5px; ">
-				<div style="margin-top: 5px;"><label style="display: inline-flex; "><pre>아  이  디 </pre></label>
+				<div style="margin-top: 5px;"><label style="display: inline-flex; "><pre>가  게  명 </pre></label>
 					<input type="text" :placeholder="userId" readonly ></input>
 				</div> 
 				<div style="margin-top: 20px; "><label style="display: inline-flex; "><pre>이      름 </pre></label>
 					<input type="text" :placeholder="phoneNum" readonly style="    height: fit-content;"></input>
 				</div>
-				<div style="margin-top: 20px;"><label style="display: inline-flex; "><pre>전화번호 </pre></label>
+				<div style="margin-top: 20px;"><label style="display: inline-flex; "><pre>가게번호 </pre></label>
 					<input type="text" :placeholder="phoneNum" readonly></input>
 				</div>
-				<div style="margin-top: 20px;"><label style="display: inline-flex; "><pre>계좌번호 </pre></label>
+				<div style="margin-top: 20px;"><label style="display: inline-flex; "><pre>주문번호 </pre></label>
 					<input type="text" :placeholder="acc" readonly></input>
 				</div>					
 				<div style="margin-top: 20px; margin-bottom: 5px"><label style="display: inline-flex; "><pre>결제방법 </pre></label>
@@ -109,22 +109,10 @@
 		<div style="margin-bottom:5px; font-size:large; font-weight: bold; margin-left: 20px;">메뉴들 출력</div>	<!-- for문!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 	  </div>
 	  <div class="div3">
-	  	<a href="main.storelist.do" style="font-size:large; font-weight: bold; margin-left: 200px; color: orange;"> 메뉴를 추가하시겠습니까?</a> 
 		<div style="margin-top: 5px; font-size:large; font-weight: bold; margin-left: 100px;">
 			결제 금액 : 계산 금액 출력	  원
 	  	</div>
-	  	<div>
-	  		<button @click="fnFinish" style="color:white; background-color: #8FBC94; margin-top: 10px; font-weight: bold; font-size: large; margin-bottom: 0px; width:100%; border-radius: 10px;
-		       border: solid 2px #8FBC94;"> 예약 완료 </button>
-	  	</div>
-	  	<div>
-	  		<button onclick="history.back()" style="color:white; background-color: lightgray; margin-top: 5px; font-weight: bold; font-size: large; margin-bottom: 0px; width:100%; border-radius: 10px;
-		       border: solid 2px lightgray;"> 취소 </button>
-	  	</div>
 	  </div>
-	  <div class="div4">	<!-- 체크 안되어있으면, 결제 안됨. -->
-     		<input type="CHECKBOX" id="ch" style="width:15px;height:10px;border:1px; " />
-     		<label for="ch">이용약관, 개인정보 수집 및 이용, 개인정보 제3자 제공 , 전자금융거래 이용약관, 만 14세 이상 이용자 내용 확인하였으며 결제에 동의합니다.</label></div>
 	</div>
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
@@ -139,41 +127,7 @@ var app = new Vue({
         ,acc : "${acc}"        	
     }   
     , methods: {
-    	//예약 완료
-       fnFinish : function(){
-    		var self = this;
-    		self.pageChange("/Mypage.do",{});
-       }
-		// 화면전환 메소드
-		, pageChange : function(url, param) {
-			var target = "_self";
-			if(param == undefined){
-				//   this.linkCall(url);
-       		return;
-    		    }
-			var form = document.createElement("form"); 
-			form.name = "dataform";
-		    form.action = url;
-			form.method = "post";
-			form.target = target;
-			for(var name in param){
-   			    var item = name;
-			    var val = "";
-    			if(param[name] instanceof Object){
-   				      val = JSON.stringify(param[name]);
-     			} else {
-      				  val = param[name];
-     			}
-     			var input = document.createElement("input");
-      			input.type = "hidden";
-      			input.name = item;
-      			input.value = val;
-      			form.insertBefore(input, null);
-      		}
-      		document.body.appendChild(form);
-      		form.submit();
-      		document.body.removeChild(form);
-      	}
+
     }
     
     		 
