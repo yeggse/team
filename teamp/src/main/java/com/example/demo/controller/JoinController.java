@@ -25,8 +25,8 @@ public class JoinController {
 	@Autowired
     private JoinService joinService; 
 	
-	 @Autowired
-		HttpSession session;
+	@Autowired
+    HttpSession session;
 
 	@RequestMapping("/join.do")
 	public String main(Model model) throws Exception {
@@ -56,7 +56,7 @@ public class JoinController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
     	String id = (String)session.getAttribute("userId1Session");
     	
-    	request.setAttribute("userId", id);
+    	request.setAttribute("userId1", id);
 	    	return "/search_pwdchange"; // WEB-INF에서 호출할 파일명
 	}
 	    
@@ -100,7 +100,7 @@ public class JoinController {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		Join user = joinService.searchpw(map);
 		
-		if( user != null) {
+		if(user != null) {
 			session.setAttribute("userId1Session", user.getId());
 			session.setAttribute("NameSession", user.getName());
 			
@@ -146,8 +146,6 @@ public class JoinController {
 	@ResponseBody
 	public String pwdchange(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		
-    	
 		joinService.pwdchange(map);
 		resultMap.put("message, ", "성공");
 		return new Gson().toJson(resultMap);
