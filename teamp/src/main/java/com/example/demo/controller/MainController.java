@@ -15,17 +15,27 @@ import com.example.demo.dao.MainService;
 import com.example.demo.model.Main;
 import com.google.gson.Gson;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller // 컨트롤러라고 선언함
 public class MainController {
 	// Service 인터페이스 객체 생성 및 연결
     @Autowired
-    private MainService mainService; 
+    private MainService mainService;
+    
+    @Autowired
+	HttpSession session;
 
     // 웹 주소 : 메인페이지
     @RequestMapping("/main.do") 
-    public String main(Model model) throws Exception{
+    public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	HashMap<String, Object> map = new HashMap<String, Object>();
+    	String id = (String)session.getAttribute("userIdSession");
     	
+    	request.setAttribute("userId", id);
     	return "/web_main/main"; // WEB-INF에서 호출할 파일명
     }
     // 웹 주소 : 업종 목록 출력

@@ -5,6 +5,7 @@ public class Login {
 	private String id; 
 	private String pwd;
 	private String name;
+	private String kind;
 	private int frontregisnum;
 	private int afterregisnum;
 
@@ -37,6 +38,12 @@ public class Login {
 	}
 	public void setAfterregisnum(int afterregisnum) {
 		this.afterregisnum = afterregisnum;
+	}
+	public String getKind() {
+		return kind;
+	}
+	public void setType(String kind) {
+		this.kind = kind;
 	}
 	
 
