@@ -131,7 +131,7 @@
 		<button id="imgbtn6"></button>
 	</div>
 		
-	   
+	   ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
 	</div>
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
