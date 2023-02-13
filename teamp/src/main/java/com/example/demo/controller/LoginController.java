@@ -35,7 +35,12 @@ public class LoginController {
     // 웹 주소
     @RequestMapping("/login.do") 
     public String login(Model model) throws Exception{
-    	
+    	// 세션에 넣었던 값들 꺼내서 remove
+    	String id = (String)session.getAttribute("id");  
+    	session.removeAttribute("id");
+
+    	// 제거
+    	session.invalidate();	
     	return "/login"; // WEB-INF에서 호출할 파일명
     }
     @RequestMapping("/searchid.do") 
