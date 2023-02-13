@@ -19,4 +19,5 @@ public interface MainMapper {
 
 	// 식당명 검색 출력 이벤트
 	List<Main> searchList(HashMap<String, Object> map); // xml파일 접근 및 db 호출결과 리턴 받음	
+	List<Main> searchListArea(HashMap<String, Object> map);
 }

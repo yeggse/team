@@ -39,6 +39,16 @@
 		ORDER BY board_idx DESC
 	</select>
 
+	<select id="searchListArea" parameterType="hashmap" resultType="com.example.demo.model.Main">	
+		SELECT
+			resnum, region, reskind, resname, resphone, grade
+		FROM
+			t3_restaurant
+		WHERE 1=1
+			<if test='region != null and region != ""'>
+				title LIKE CONCAT('%', #{region}, '%')
+			</if>
+	</select>
 </mapper>
 
 <!-- 

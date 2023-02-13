@@ -19,5 +19,8 @@ public interface MainService {
 	// 기본 화면 출력 이벤트 (식당 출력)
 	List<Main> getList(HashMap<String, Object> map); // 데이터 호출을 위한 인터페이스
 	// 식당명 검색 출력 이벤트
-	List<Main> searchList(HashMap<String, Object> map); // 데이터 호출을 위한 인터페이스	
+	List<Main> searchList(HashMap<String, Object> map); // 데이터 호출을 위한 인터페이스
+	// 메인화면 지역 설정
+	List<Main> searchListArea(HashMap<String, Object> map); // 데이터 호출을 위한 인터페이스
+	
 }

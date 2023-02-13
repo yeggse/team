@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.MainService;
+import com.example.demo.model.Join;
 import com.example.demo.model.Main;
 import com.google.gson.Gson;
 
@@ -34,11 +35,12 @@ public class MainController {
     public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
     	//세션 연결
     	HashMap<String, Object> map = new HashMap<String, Object>();
-
     	String kind = (String)session.getAttribute("KindSession");
     	String id = (String)session.getAttribute("userIdSession");
+    	String region = (String)session.getAttribute("RegionSession");
     	request.setAttribute("userId", id);
     	request.setAttribute("kind", kind);
+    	request.setAttribute("Region", region);
     	return "/web_main/main"; // WEB-INF에서 호출할 파일명
     }
     // 웹 주소 : 업종 목록 출력
@@ -92,4 +94,22 @@ public class MainController {
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	} 
+	
+	 // 데이터 호출
+    @RequestMapping(value = "/main.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String areaa(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Main> area = mainService.searchListArea(map);
+		
+		if(area.size()>0) {
+			session.setAttribute("RegionSession", ((Main) area).getRegion());
+			resultMap.put("area", area);
+			resultMap.put("result", "success");
+  		}else {
+  			resultMap.put("result", "fail");
+  		}
+		
+ 		return new Gson().toJson(resultMap);
+	}
 }
