@@ -14,6 +14,7 @@
 	            font-family: 'Noto Sans KR', sans-serif;
 	        }
 	        /* 점(.)으로 시작하는 아이 : html 파트에서 클래스(명)를 의미. */
+	        
 	        .div1 {
 	        	font-size: xx-large;
 	        	font-weight: bolder;

@@ -54,6 +54,7 @@ var app = new Vue({
     data: {
     	userId : "${userId}"
     	,kind : "${kind}"
+    	,acc:""
     }   
     , methods: {
     	 
