@@ -52,7 +52,11 @@ public class JoinController {
 	}
 	
 	@RequestMapping("/searchpwdchange.do") 
-	    public String searchpwchange(Model model) throws Exception{
+	    public String searchpwchange(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception{
+		HashMap<String, Object> map = new HashMap<String, Object>();
+    	String id = (String)session.getAttribute("userId1Session");
+    	
+    	request.setAttribute("userId", id);
 	    	return "/search_pwdchange"; // WEB-INF에서 호출할 파일명
 	}
 	    
@@ -97,7 +101,7 @@ public class JoinController {
 		Join user = joinService.searchpw(map);
 		
 		if( user != null) {
-			session.setAttribute("userIdSession", user.getId());
+			session.setAttribute("userId1Session", user.getId());
 			session.setAttribute("NameSession", user.getName());
 			
 			resultMap.put("user", user);
@@ -140,12 +144,10 @@ public class JoinController {
 	//선생님 버전
 	@RequestMapping(value = "/searchpwdchange.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String pwdchange(Model model,HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map ) throws Exception {
+	public String pwdchange(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		
-    	String id = (String)session.getAttribute("userIdSession");
     	
-    	request.setAttribute("userId", id);
 		joinService.pwdchange(map);
 		resultMap.put("message, ", "성공");
 		return new Gson().toJson(resultMap);

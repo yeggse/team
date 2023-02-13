@@ -107,8 +107,7 @@
         <div class="text2">비밀번호를 재 설정 해주세요.</div>
         <div class="text2">회원 정보에 등록한 정보와 일치해야, 비밀번호를 변경할 수 있습니다.</div>
         <div>
-            <span class="text4">아이디 확인</span>
-    		<input class="input1" type="text" placeholder="새로운 비밀번호를 입력해주세요" v-model="id" >
+            <span class="text4">아이디:{{id}}</span>
   		</div>
   		<div>
             <span class="text4">새로운 비밀번호</span>
@@ -147,7 +146,7 @@
     data: {
     	newpwd:""
     	,newpwdconfirm:""
-		, id:"${userId}"
+		, id:"${userId1}"
 			
     }
     , methods: {
@@ -155,7 +154,6 @@
             var self = this;
             var nparmap = { newpwd: self.newpwd
             				,newpwdconfirm: self.newpwdconfirm
-            				
             				};
            
             $.ajax({
@@ -166,7 +164,7 @@
                
                 success : function(data) {
                 	
-                	console.log("${userId}");
+                	console.log(self.id);
                 	/* if(self.newpwd != self.newpwdconfirm){
                 		alert("비밀번호가 일치하지 않습니다.");
                 	}else{
