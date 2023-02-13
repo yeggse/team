@@ -37,7 +37,7 @@
       </a>
       </div>
       <div v-else>
-      <a  href="login.do" class="header" style="margin-left: 1800px; display: flex; align-items: center;"> 로그아웃{{userId}}
+      <a  href="login.do" class="header" style="margin-left: 1800px; display: flex; align-items: center;"> 로그아웃{{userId}}{{acc}}
       </a>
       </div>
       

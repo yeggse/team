@@ -33,7 +33,18 @@
 	            text-align: center; 
 	            font-weight: bold; 
 	            font-size: large;
-	        }   
+	        }  
+	      #in {
+	            width: 400px;
+	            margin-top: 0px;
+	            padding: 10px;
+	            box-sizing: border-box;
+	            border-radius: 10px;
+	            border: solid 4px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
+	            text-align: center; 
+	            font-weight: bold; 
+	            font-size: large;
+	        } 	         
 			select {	/* 콤보리스트 : https://www.freecodecamp.org/korean/news/html-select-taegeu-deurobdaun-menyu-ddoneun-kombo-riseuteureul-mandeuneun-bangbeob/ */
 			  	margin-bottom: 10px;
   				margin-top: 10px;
@@ -75,7 +86,7 @@
 </style>
 
 <body style="margin: 0px">
-	<div style="width:2483.02px", anlign="center">
+	<div id="app" style="width:2483.02px; anlign:center;">
 		<div class="div1">결제창</div>
 		
 		<table style="float:left; margin-left: 350px; width: 600px; border: 1px solid black; border-collapse : collapse; margin-top: 100px; border-radius: 5px; text-align: center;">
@@ -87,10 +98,11 @@
 					<input type="text" placeholder="이름 자동출력되도록!!!!!!!!!!!" readonly></input>
 				</div>
 				<div style="margin-top: 20px;">전화번호 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="text" placeholder="전화번호 자동출력되도록!!!!!!!!!!!" readonly></input>
+					<span id="in">{{kind}}</span>
 				</div>
 				<div style="margin-top: 20px;">계좌번호 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="text" placeholder="계좌번호 자동출력되도록!!!!!!!!!!!" readonly></input>
+					<span id="in">{{phoneNum}}</span>
+					<!-- <input type="text" placeholder="'{{phoneNum}}'" readonly></input> -->
 				</div>					
 				<div style="margin-top: 20px; margin-bottom: 5px">결제방법 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<form action="#" style=" display: inline;">	<!-- 나란히 만들기 위해서 display: inline -->
@@ -103,8 +115,7 @@
 				</div>
 			</td>
 		</table>	
-	  </div>
-	  <div>
+	  
 	  <div class="div2">
 		<div style="font-size: xx-large; font-weight: bolder; margin-bottom: 10px; margin-left: 30px; margin-top:10px;" > 선택하신 메뉴</div> 
 		<div style="margin-bottom:5px; font-size:large; font-weight: bold; margin-left: 20px;">메뉴들 출력</div>	<!-- for문!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
@@ -112,7 +123,7 @@
 	  <div class="div3">
 	  	<a href="main.storelist.do" style="font-size:large; font-weight: bold; margin-left: 200px; color: orange;"> 메뉴를 추가하시겠습니까?</a> 
 		<div style="margin-top: 5px; font-size:large; font-weight: bold; margin-left: 100px;">
-			결제 금액 : {{계산 금액 출력}}	  원
+			결제 금액 : 계산 금액 출력	  원
 	  	</div>
 	  	<div>
 	  		<button style="color:white; background-color: #8FBC94; margin-top: 10px; font-weight: bold; font-size: large; margin-bottom: 0px; width:100%; border-radius: 10px;
@@ -124,18 +135,20 @@
 	  	</div>
 	  </div>
 	  <div class="div4">	<!-- 체크 안되어있으면, 결제 안됨. -->
-     		<input type="CHECKBOX" id="ch" style="width:15px;height:10px;border:1px; name="" value="" />
+     		<input type="CHECKBOX" id="ch" style="width:15px;height:10px;border:1px; " />
      		<label for="ch">이용약관, 개인정보 수집 및 이용, 개인정보 제3자 제공 , 전자금융거래 이용약관, 만 14세 이상 이용자 내용 확인하였으며 결제에 동의합니다.</label></div>
-		</div>
-	
+	</div>
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
-    el: '#app8',
+    el: '#app',
     data: {
-      
+    	userId : "${userId}"
+       	,kind : "${kind}"
+       	,phoneNum : "${phoneNum}"
+        ,acc : "${acc}"        	
     }   
     , methods: {
        
@@ -143,7 +156,6 @@ var app = new Vue({
     
     		 
     , created: function () {
-		this.fnGetList();       
 	}
 });
 </script>
