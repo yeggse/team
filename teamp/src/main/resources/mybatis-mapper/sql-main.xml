@@ -25,7 +25,25 @@
 	
 	
 	
+	<!-- 지역검색 -->
+	<select id="regionSearch" parameterType="hashmap" resultType="com.example.demo.model.Main">	
+		SELECT
+			resnum, region, startdate, reskind, resname, resphone, grade, resadd
+		FROM
+			t3_restaurant	
+		where
+			region like concat('%', #{region}, '%')
+		ORDER BY resnum ASC
+	</select>		
 	
+	
+	<!-- 식당 세션 출력 -->
+	<select id="sessionStore" parameterType="hashmap" resultType="com.example.demo.model.Main">
+		SELECT
+			resnum, ordernum, menuname, orderer, pickuptime, payment, totalprice, review, salecomple
+		FROM
+		t3_restaurant
+	</select>
 	
 	
 	

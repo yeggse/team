@@ -58,9 +58,11 @@ public class MainServiceImpl implements MainService{
 			// TODO Auto-generated method stub
 			return mainMapper.searchList(map);
 		} 
+		
+		// 지역 검색 이벤트
 		@Override
-		public List<Main> searchListArea(HashMap<String, Object> map) {
+		public List<Main> ListArea(HashMap<String, Object> map) {
 			// TODO Auto-generated method stub
-			return mainMapper.searchListArea(map);
+			return mainMapper.regionSearch(map);
 		}
 }

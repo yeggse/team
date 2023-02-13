@@ -27,8 +27,9 @@ public class MainController {
     @Autowired
     private MainService mainService;
     
-    @Autowired
-	HttpSession session;
+	@Autowired
+    HttpSession session;
+	
     // 원래는 Model model -> 세션 연결 후 : Model model, HttpServletRequest request, HttpServletResponse response
     // 웹 주소 : 메인페이지
     @RequestMapping("/main.do") 
@@ -110,21 +111,19 @@ public class MainController {
 		return new Gson().toJson(resultMap);
 	} 
 	
-	 // 데이터 호출
-    @RequestMapping(value = "/main.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 // 지역 검색 출력 이벤트 데이터 호출
+    @RequestMapping(value = "/main.region.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String areaa(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Main> area = mainService.searchListArea(map);
+		List<Main> area = mainService.ListArea(map);
+		resultMap.put("list", area);
+		return new Gson().toJson(resultMap);		
+		/*
+		 * if(area.size()>0) { session.setAttribute("RegionSession", ((Main)
+		 * area).getRegion()); resultMap.put("area", area); resultMap.put("result",
+		 * "success"); }else { resultMap.put("result", "fail"); }
+		 */
 		
-		if(area.size()>0) {
-			session.setAttribute("RegionSession", ((Main) area).getRegion());
-			resultMap.put("area", area);
-			resultMap.put("result", "success");
-  		}else {
-  			resultMap.put("result", "fail");
-  		}
-		
- 		return new Gson().toJson(resultMap);
 	}
 }
