@@ -24,13 +24,6 @@ public class BoardServiceImpl implements BoardService{
 //		return boardMapper.selectBoardList(map); // db를 호출하는 mapper와 연결
 //	}
 	
-	// 인터페이스 구체화
-		@Override
-		public List<Board> selectBoardList2(HashMap<String, Object> map) throws Exception {
-			// TODO Auto-generated method stub
-			
-			return boardMapper.selectBoardList2(map); // db를 호출하는 mapper와 연결
-		}
 
 		// 게시글 기본 출력
 		@Override
@@ -42,4 +35,20 @@ public class BoardServiceImpl implements BoardService{
 			map.put("lastNum", lastNum);
 			return boardMapper.firstBoardList(map);
 		}
+		
+		// 게시글 상세 출력
+		@Override
+		public HashMap<String, Object> detailBoard(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			// 조회수 
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		//	boardMapper.updateCnt(map);
+		//	List<Board> commentList = boardMapper.selectCommentList(map);
+			Board board = boardMapper.detailBoard(map);
+		//	resultMap.put("commentList", commentList);
+			resultMap.put("board", board);
+			return resultMap;
+		}
+
+		
 }

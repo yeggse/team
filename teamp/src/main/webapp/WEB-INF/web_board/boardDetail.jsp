@@ -35,7 +35,7 @@
 <body>
 	<div id="app">
 		<div class="container">
-			<h2>공지사항 상세보기 - 내용출력 이벤트 등 필요</h2>
+			<h2>공지사항 상세보기 - 내용출력 이벤트 등 필요 </h2>
 			<div class="card">
 				<h3 class="card-header p-4">
 					{{info.title}}
@@ -46,19 +46,15 @@
 				   		<img :src="info.img"/>	<!-- src앞에 콜론: 을 붙이면 변수로 지정가능 -->
 				   	</div>
 				   	<div style="margin: 10px 10px 10px 10px;">
-				   		{{info.contents}}
+				   		{{info.content}}
 				   	</div>
 			   	</div>
 			</div>
 			<div v-for="(item, index) in commentList" style="font-size: 20px;">
-				{{item.writer}}({{item.createdate}}) : {{item.content}}
+				{{item.nickname}}({{item.startdate}}) : {{item.content}}
 			</div>
-			<div>
-				<textarea rows="3" cols="100" v-model="comment"></textarea>
-				<button @click="fnComment" class="btn" style="margin-bottom:40px;">댓글달기</button>
-			</div>
-			<button @click="fnList" class="btn" style="float: right;">목록으로</button>
-			<button v-if="info.creatorId == userId" @click="fnEdit" class="btn">수정하기</button>		<!-- 세션의 id와 게시글의 작성자 아이디가 같을 떄 수정하기 버튼 활성화 -->
+		 	<button @click="fnList" class="btn" style="float: right;">목록으로</button> 
+		 	<!-- <button v-if="info.creatorId == userId" @click="fnEdit" class="btn">수정하기</button> -->	 	<!-- 세션의 id와 게시글의 작성자 아이디가 같을 떄 수정하기 버튼 활성화 -->
 		</div>
 	</div>
 	        
@@ -71,28 +67,31 @@ var app = new Vue({
     data: {
        list : [] 
        , info : {}
-       , idx : "${map.boardIdx}"
+       , idx : "${map.noticenum}"	// boardList 에서 받아온 값!!!
        , userId : "${userId}"	//세션으로 id가져오기
        , comment : ""
        , commentList : []
        
     }   
     , methods: {
+    	// 게시글 상세 기본 출력
     	fnGetBoard : function(){
             var self = this;
-            var nparmap = {boardIdx : self.idx};
+            console.log("test == " + self.idx);
+            var nparmap = {noticenum : self.idx};
             $.ajax({
-                url:"/view.dox",
+                url:"/detailBoard.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
                 success : function(data) {                                       
 	                self.info = data.board;
-	                self.commentList = data.commentList;
+	                //self.commentList = data.commentList;
+	                console.log(self.idx);
                 }
             }); 
         }
-    	, fnComment : function(){
+/*     	, fnComment : function(){
             var self = this;
             var nparmap = {boardIdx : self.idx, userId : self.userId, content : self.comment, depth : "0", cgroup : ""};
             $.ajax({
@@ -106,19 +105,20 @@ var app = new Vue({
                 	window.location.reload()
                 }
             }); 
-        }
+        } */
     	, fnEdit : function(){
 			var self = this;
 			self.pageChange("./edit.do", {boardIdx : self.idx});
 		}
+		
+		// 목록으로 가기 버튼
     	, fnList : function(){
-    		location.href="/board.do";
-    	}
-    	
+    		location.href="/main.board.do";
+    	} 
+    	// 페이지 이동
     	, pageChange : function(url, param) {
     		var target = "_self";
     		if(param == undefined){
-    		//	this.linkCall(url);
     			return;
     		}
     		var form = document.createElement("form"); 

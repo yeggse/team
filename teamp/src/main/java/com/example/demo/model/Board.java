@@ -7,7 +7,36 @@ public class Board {
     private int hits;
     private String nickname;
     private String startdate;
-    public int getNoticenum() {
+	private String boardtype;
+	private String content;
+	private String id;
+	private String image;
+    
+    public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getBoardtype() {
+		return boardtype;
+	}
+	public void setBoardtype(String boardtype) {
+		this.boardtype = boardtype;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public int getNoticenum() {
 		return noticenum;
 	}
 	public void setNoticenum(int noticenum) {

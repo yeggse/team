@@ -3,6 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.BoardMapper">	
+	<!-- 게시글 기본출력 -->
 	<select id="firstBoardList" parameterType="hashmap" resultType="com.example.demo.model.Board">	
 			SELECT 
 				noticenum, nickname, startdate, title, hits
@@ -10,6 +11,17 @@
 				t3_board
 			ORDER BY noticenum DESC
 			LIMIT #{startNum}, #{lastNum}
+				
+	</select>
+	<!-- 게시글 상세 출력 -->
+	<select id="detailBoard" resultType="com.example.demo.model.Board">	
+		SELECT 
+			noticenum, nickname, startdate, title, hits, boardtype, content, id
+		FROM
+			t3_board t
+		LEFT OUTER JOIN t3_board_img i on t.noticenum = i.boardnum 
+		WHERE
+			t.noticenum = #{noticenum}
 				
 	</select>
 
