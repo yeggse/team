@@ -72,6 +72,8 @@ public class JoinController {
 				session.setAttribute("userIdSession", user.getId());
 				session.setAttribute("NameSession", user.getName());
 				session.setAttribute("KindSession", user.getKind());
+				session.setAttribute("accSession", user.getAcc());
+				session.setAttribute("phoneNumSession", user.getPhonenum());
 				resultMap.put("user", user);
 				resultMap.put("result", "success");
 			} else {

@@ -49,7 +49,10 @@ public class MainController {
     	//세션 연결
     	HashMap<String, Object> map = new HashMap<String, Object>();
     	String id = (String)session.getAttribute("userIdSession");	
+    	String kind = (String)session.getAttribute("KindSession");
     	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
+    	
     	return "/web_store/storeList"; // WEB-INF에서 호출할 파일명
     }
     
@@ -59,7 +62,13 @@ public class MainController {
     	//세션 연결
     	HashMap<String, Object> map = new HashMap<String, Object>();
     	String id = (String)session.getAttribute("userIdSession");	
+    	String kind = (String)session.getAttribute("KindSession");
+    	String acc = (String)session.getAttribute("accSession");
+    	String phoneNum = (String)session.getAttribute("phoneNumSession");
     	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
+    	request.setAttribute("acc", acc);
+    	request.setAttribute("phoneNum", phoneNum);
     	return "/web_store/payment"; // WEB-INF에서 호출할 파일명
     }
     
@@ -69,7 +78,13 @@ public class MainController {
     	//세션 연결
     	HashMap<String, Object> map = new HashMap<String, Object>();
     	String id = (String)session.getAttribute("userIdSession");	
+    	String kind = (String)session.getAttribute("KindSession");
+    	String acc = (String)session.getAttribute("accSession");
+    	String phoneNum = (String)session.getAttribute("phoneNumSession");
     	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
+    	request.setAttribute("acc", acc);
+    	request.setAttribute("phoneNum", phoneNum);
     	return "/web_store/basket"; // WEB-INF에서 호출할 파일명
     }
     

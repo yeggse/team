@@ -172,17 +172,6 @@
                 		alert("비밀번호가 변경되었습니다.");
                 		
                 	}         
-                	 
-                	
-                	
-                	
-                	
-              /*   	if(data.result == "success"){
-                		location.replace("http://www.naver.com")
-                		self.newpwd = data.list[0].newpwd;
-                	} else {
-                		alert("형식에 맞지 않습니다. 형식에 맞추어 다시 입력해주세요.");
-                	} */
                 }
             }); 
         }

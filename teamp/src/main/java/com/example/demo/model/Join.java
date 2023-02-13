@@ -4,8 +4,8 @@ public class Join {
 	private String id;
 	private String pwd;
 	private String kind;
-	private int phonenum;
-	private int acc;
+	private String phonenum;
+	private String acc;
 	private String name;
 	private String add;
 	private int frontregisnum;
@@ -18,6 +18,18 @@ public class Join {
 	private String resad;
 	private int resphone;
 	
+	public String getPhonenum() {
+		return phonenum;
+	}
+	public void setPhonenum(String phonenum) {
+		this.phonenum = phonenum;
+	}
+	public String getAcc() {
+		return acc;
+	}
+	public void setAcc(String acc) {
+		this.acc = acc;
+	}
 	public String getId() {
 		return id;
 	}
@@ -35,18 +47,6 @@ public class Join {
 	}
 	public void setKind(String kind) {
 		this.kind = kind;
-	}
-	public int getPhonenum() {
-		return phonenum;
-	}
-	public void setPhonenum(int phonenum) {
-		this.phonenum = phonenum;
-	}
-	public int getAcc() {
-		return acc;
-	}
-	public void setAcc(int acc) {
-		this.acc = acc;
 	}
 	public String getName() {
 		return name;
