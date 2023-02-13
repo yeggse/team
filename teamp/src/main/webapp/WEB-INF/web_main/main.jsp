@@ -114,12 +114,19 @@
 <body style="margin: 0px">
 	<div id="app" style="width:2483.02px" anlign="center">
 	<div class="div1">지금 계신 장소가 어디신가요?</div>
-	<div class="div2">주변 식당에서 음식을 픽업해 가세요!{{region1}}</div>
+	<div class="div2">주변 식당에서 음식을 픽업해 가세요!</div>
 	<div class="div3">
 		<img src="img/main/point.PNG" margin-top= 10px width=50px height=70px>
-		<input type="text" v-model="region" placeholder="장소를 입력해 주세요" ></input>
-		<button id="btn" @click="fnSearch1">선택</button>	<!-- 조건 넣어줘야 함: 버튼이벤트 생성 : 미선택시 안넘어가게!!!!!! -->
+		<!-- <input type="text" v-model="region" placeholder="장소를 입력해 주세요" ></input>
+		<button id="btn" @click="fnSearch">선택</button>	조건 넣어줘야 함: 버튼이벤트 생성 : 미선택시 안넘어가게!!!!!! -->
+			<div >
+				<label for="si" >지역을 먼저 설정해주세요~ : </label>
+				<select v-model="si" id="si" > 
+					<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+				</select>
+			</div>
 	</div>
+	
 	<div class="div4">
 		<button id="imgbtn1" onclick="location.href='/main.storelist.do'"> </button>	<!-- 선택별로 다른 화면 출력되어야 함!!! -->
 		<button id="imgbtn2" onclick="location.href='/main.storelist.do'"> </button>	<!-- 선택별로 다른 화면 출력되어야 함!!! -->
@@ -131,7 +138,6 @@
 		<button id="imgbtn6"></button>
 	</div>
 		
-	   ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
 	</div>
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
@@ -141,26 +147,28 @@ var app = new Vue({
     el: '#app',
     data: {
     	region: ""
-    	region1: "${region}"
-    	,area: []
+    	,list: []
+		, siList : ${siList}
+		, si : ""
     }   
     , methods: {
-    	fnSearch1 : function(){
+    	fnSearch : function(){
             var self = this;
             var nparmap = {region: self.region}; 
-            $.ajax({
-                url:"/main.dox",
+             $.ajax({
+                url:"/main.region.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
                 success : function(data) {       
-                	self.area = data.area;
-    	            	if(self.area.length == 0){
-    	            		self.fnGet();
-    	            	}    
-                	console.log(self.area);
+                	self.list = data.list;
+    	           	if(self.list.length == 0){
+    	            	alert("지역명을 확인해 주세요");
+    	            }else{
+    	            	alert(self.list[0].region);
+    	            }
                 }
-           });
+           }); 
     	} 	
     	
     }

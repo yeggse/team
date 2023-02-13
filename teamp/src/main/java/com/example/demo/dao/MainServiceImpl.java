@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.mapper.MainMapper;
+import com.example.demo.model.Area;
 import com.example.demo.model.Main;
 
 @Service //서비스임을 선언
@@ -58,9 +59,16 @@ public class MainServiceImpl implements MainService{
 			// TODO Auto-generated method stub
 			return mainMapper.searchList(map);
 		} 
+		
+		// 지역 검색 이벤트
 		@Override
-		public List<Main> searchListArea(HashMap<String, Object> map) {
+		public List<Main> ListArea(HashMap<String, Object> map) {
 			// TODO Auto-generated method stub
-			return mainMapper.searchListArea(map);
+			return mainMapper.regionSearch(map);
+		}
+		@Override
+		public List<Area> selectSiList(HashMap<String, Object> map) throws Exception {
+			// TODO Auto-generated method stub
+			return mainMapper.selectSiList(map);
 		}
 }

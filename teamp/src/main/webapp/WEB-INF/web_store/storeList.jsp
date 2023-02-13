@@ -172,7 +172,7 @@ var app = new Vue({
            });
     	},
     	
- 	// 기본 화면 출력 이벤트 (식당 출력)
+ 	// 가게명 검색 이벤트 (식당 출력)
    	fnSearch : function(){
         var self = this;
         var nparmap = {resname : self.resname, grade : self.grade, resadd : self.resadd}; 

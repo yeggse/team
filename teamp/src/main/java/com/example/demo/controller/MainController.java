@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.MainService;
-import com.example.demo.model.Join;
+import com.example.demo.model.Area;
 import com.example.demo.model.Main;
 import com.google.gson.Gson;
 
@@ -27,8 +27,10 @@ public class MainController {
     @Autowired
     private MainService mainService;
     
-    @Autowired
-	HttpSession session;
+    
+	@Autowired
+    HttpSession session;
+	
     // 원래는 Model model -> 세션 연결 후 : Model model, HttpServletRequest request, HttpServletResponse response
     // 웹 주소 : 메인페이지
     @RequestMapping("/main.do") 
@@ -41,6 +43,9 @@ public class MainController {
     	request.setAttribute("userId", id);
     	request.setAttribute("kind", kind);
     	request.setAttribute("Region", region);
+    	List<Area> siList = mainService.selectSiList(map);
+    	map.put("si", siList.get(0).getSi());
+    	request.setAttribute("siList",  new Gson().toJson(siList));
     	return "/web_main/main"; // WEB-INF에서 호출할 파일명
     }
     // 웹 주소 : 업종 목록 출력
@@ -110,21 +115,18 @@ public class MainController {
 		return new Gson().toJson(resultMap);
 	} 
 	
-	 // 데이터 호출
-    @RequestMapping(value = "/main.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 // 지역 검색 출력 이벤트 데이터 호출
+    @RequestMapping(value = "/main.region.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String areaa(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Main> area = mainService.searchListArea(map);
-		
-		if(area.size()>0) {
-			session.setAttribute("RegionSession", ((Main) area).getRegion());
-			resultMap.put("area", area);
-			resultMap.put("result", "success");
-  		}else {
-  			resultMap.put("result", "fail");
-  		}
-		
- 		return new Gson().toJson(resultMap);
+		List<Main> area = mainService.ListArea(map);
+		resultMap.put("list", area);
+		return new Gson().toJson(resultMap);		
+		/*
+		 * if(area.size()>0) { session.setAttribute("RegionSession", ((Main)
+		 * area).getRegion()); resultMap.put("area", area); resultMap.put("result",
+		 * "success"); }else { resultMap.put("result", "fail"); }
+		 */
 	}
 }

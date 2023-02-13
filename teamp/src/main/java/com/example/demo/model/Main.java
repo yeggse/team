@@ -10,7 +10,65 @@ public class Main {
    private int resphone; 
    private String grade; 
    private String resadd;
-   public int getResnum() {
+   private int ordernum;
+   private String menuname;
+   private String orderer;
+   private String pickuptime;
+   private String payment;
+   private int totalprice;
+   private String review;
+   private String salecomple;
+   
+   
+   public int getOrdernum() {
+	return ordernum;
+}
+public void setOrdernum(int ordernum) {
+	this.ordernum = ordernum;
+}
+public String getMenuname() {
+	return menuname;
+}
+public void setMenuname(String menuname) {
+	this.menuname = menuname;
+}
+public String getOrderer() {
+	return orderer;
+}
+public void setOrderer(String orderer) {
+	this.orderer = orderer;
+}
+public String getPickuptime() {
+	return pickuptime;
+}
+public void setPickuptime(String pickuptime) {
+	this.pickuptime = pickuptime;
+}
+public String getPayment() {
+	return payment;
+}
+public void setPayment(String payment) {
+	this.payment = payment;
+}
+public int getTotalprice() {
+	return totalprice;
+}
+public void setTotalprice(int totalprice) {
+	this.totalprice = totalprice;
+}
+public String getReview() {
+	return review;
+}
+public void setReview(String review) {
+	this.review = review;
+}
+public String getSalecomple() {
+	return salecomple;
+}
+public void setSalecomple(String salecomple) {
+	this.salecomple = salecomple;
+}
+public int getResnum() {
 	return resnum;
 }
 public void setResnum(int resnum) {
