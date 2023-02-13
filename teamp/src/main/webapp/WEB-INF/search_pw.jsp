@@ -182,13 +182,13 @@ var app = new Vue({
                 data : nparmap,
                
                 success : function(data) {
-                	self.list = data.list;
+                	
                 	console.log(nparmap);
                 	console.log(data.list);
                 	if(data.result == "success"){
-                		alert(data.list[0].id + "님의 비밀번호를 변경해주세요. ");
+                		alert(data.user.id + "님의 비밀번호를 변경해주세요. ");
                 		location.replace("http://127.0.0.1:8080/searchpwdchange.do")
-                		self.id = data.list[0].id;
+                		
                 	} else {
                 		alert("일치하는 정보가 없습니다.");
                 	}

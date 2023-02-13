@@ -84,14 +84,21 @@
 	</select>
 	
 	
+<!-- 	<select id="pwdchage" parameterType="hashmap" resultType="com.example.demo.model.Join">	
+		SELECT
+			id, frontregisnum, afterregisnum
+		FROM
+			t3_account
+		WHERE id = #{id} AND frontregisnum = #{frontregisnum} AND afterregisnum = #{afterregisnum}
+	</select> -->
 	
-	<update id="pwdchange" parameterType="hashmap">	
+	<update id="pwdchange" parameterType="hashmap"  >	
 		UPDATE 
 			t3_account
 		SET
 			pwd = #{newpwd}
 		WHERE 
-			id = #{id}, frontregisnum=#{frontregisnum}, afterregisnum=#{afterregisnum}
+			id = #{id}
 	</update>
 	
 	

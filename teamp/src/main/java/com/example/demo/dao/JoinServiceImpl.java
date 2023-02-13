@@ -30,7 +30,7 @@ public class JoinServiceImpl implements JoinService{
 	}
 
 	@Override
-	public List<Join> searchpw(HashMap<String, Object> map) throws Exception {
+	public Join searchpw(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return joinMapper.searchpw(map);
 	}
@@ -48,9 +48,15 @@ public class JoinServiceImpl implements JoinService{
 //		return joinMapper.pwdchange(map);
 //	}
 	
+//	@Override
+//	public List<Join> pwdchange(HashMap<String, Object> map) {
+//		// TODO Auto-generated method stub
+//		return joinMapper.pwdchange(map);
+//	}
+	
 	@Override
-	public List<Join> pwdchange(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		return joinMapper.pwdchange(map);
-	}
+	public void pwdchange(HashMap<String, Object> map) {
+		joinMapper.pwdchange(map);
+	} //선생님 버전
+
 }

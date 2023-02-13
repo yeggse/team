@@ -28,11 +28,13 @@ public class MainController {
     
     @Autowired
 	HttpSession session;
-
+    // 원래는 Model model -> 세션 연결 후 : Model model, HttpServletRequest request, HttpServletResponse response
     // 웹 주소 : 메인페이지
     @RequestMapping("/main.do") 
     public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	//세션 연결
     	HashMap<String, Object> map = new HashMap<String, Object>();
+
     	String kind = (String)session.getAttribute("KindSession");
     	String id = (String)session.getAttribute("userIdSession");
     	request.setAttribute("userId", id);
@@ -41,22 +43,31 @@ public class MainController {
     }
     // 웹 주소 : 업종 목록 출력
     @RequestMapping("/main.storelist.do") 
-    public String storeList(Model model) throws Exception{
-    	
+    public String storeList(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	//세션 연결
+    	HashMap<String, Object> map = new HashMap<String, Object>();
+    	String id = (String)session.getAttribute("userIdSession");	
+    	request.setAttribute("userId", id);
     	return "/web_store/storeList"; // WEB-INF에서 호출할 파일명
     }
     
     // 웹 주소 : 결제창
     @RequestMapping("/main.payment.do") 
-    public String payment(Model model) throws Exception{
-    	
+    public String payment(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	//세션 연결
+    	HashMap<String, Object> map = new HashMap<String, Object>();
+    	String id = (String)session.getAttribute("userIdSession");	
+    	request.setAttribute("userId", id);
     	return "/web_store/payment"; // WEB-INF에서 호출할 파일명
     }
     
     // 웹 주소 : 확인용 결제 바구니
     @RequestMapping("/main.basket.do") 
-    public String basketcheck(Model model) throws Exception{
-    	
+    public String basketcheck(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	//세션 연결
+    	HashMap<String, Object> map = new HashMap<String, Object>();
+    	String id = (String)session.getAttribute("userIdSession");	
+    	request.setAttribute("userId", id);
     	return "/web_store/basket"; // WEB-INF에서 호출할 파일명
     }
     

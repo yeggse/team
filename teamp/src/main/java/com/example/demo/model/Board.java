@@ -2,16 +2,16 @@ package com.example.demo.model;
 
 
 public class Board {
-    private int boardIdx;
-    private String title;
-    private int hitCnt;
-    private String createdDatetime;
-    private String creatorId;
-	public int getBoardIdx() {
-		return boardIdx;
+    private int noticenum;
+	private String title;
+    private int hits;
+    private String nickname;
+    private String startdate;
+    public int getNoticenum() {
+		return noticenum;
 	}
-	public void setBoardIdx(int boardIdx) {
-		this.boardIdx = boardIdx;
+	public void setNoticenum(int noticenum) {
+		this.noticenum = noticenum;
 	}
 	public String getTitle() {
 		return title;
@@ -19,22 +19,23 @@ public class Board {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getHitCnt() {
-		return hitCnt;
+	public int getHits() {
+		return hits;
 	}
-	public void setHitCnt(int hitCnt) {
-		this.hitCnt = hitCnt;
+	public void setHits(int hits) {
+		this.hits = hits;
 	}
-	public String getCreatedDatetime() {
-		return createdDatetime;
+	public String getNickname() {
+		return nickname;
 	}
-	public void setCreatedDatetime(String createdDatetime) {
-		this.createdDatetime = createdDatetime;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
-	public String getCreatorId() {
-		return creatorId;
+	public String getStartdate() {
+		return startdate;
 	}
-	public void setCreatorId(String creatorId) {
-		this.creatorId = creatorId;
+	public void setStartdate(String startdate) {
+		this.startdate = startdate;
 	}
+
 }
