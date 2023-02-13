@@ -35,7 +35,7 @@
 <body>
 	<div id="app">
 		<div class="container">
-			<h2>공지사항 상세보기 - 내용출력 이벤트 등 필요 </h2>
+			<h2>공지사항 상세보기 - 내용출력 이벤트 등 필요! </h2>
 			<div class="card">
 				<h3 class="card-header p-4">
 					{{info.title}}
