@@ -12,5 +12,8 @@ public interface JoinService {
      List<Join> searchpw(HashMap<String, Object> map) throws Exception; 
      
 //     int pwdchange(HashMap<String, Object> map);
-     List<Join> pwdchange(HashMap<String, Object> map);
+//     List<Join> pwdchange(HashMap<String, Object> map);
+     
+     void pwdchange(HashMap<String, Object> map); //선생님 버전
+
 }

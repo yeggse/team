@@ -111,17 +111,29 @@ public class JoinController {
 // 		return new Gson().toJson(resultMap);
 // 	}
 
+//	@RequestMapping(value = "/searchpwdchange.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+//	@ResponseBody
+//	public String pwdchange(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+//		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+//		List<Join> list = joinService.pwdchange(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+//		if(list.size()>0) {
+//			resultMap.put("result", "success");
+//		}else {
+//			resultMap.put("result", "fail");
+//		}
+//		resultMap.put("list", list);
+//		return new Gson().toJson(resultMap);
+//	}
+	
+	//선생님 버전
 	@RequestMapping(value = "/searchpwdchange.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String pwdchange(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	public String pwdchange(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Join> list = joinService.pwdchange(map); // DB 접근 및 쿼리를 통한 데이터 호출 
-		if(list.size()>0) {
-			resultMap.put("result", "success");
-		}else {
-			resultMap.put("result", "fail");
-		}
-		resultMap.put("list", list);
+		
+		joinService.pwdchange(map);
+		resultMap.put("message, ", "성공");
 		return new Gson().toJson(resultMap);
 	}
+
 }

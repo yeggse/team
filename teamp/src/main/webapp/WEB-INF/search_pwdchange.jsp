@@ -115,6 +115,18 @@
     		<input class="input1" type="text" placeholder="새로운 비밀번호를 다시 입력해주세요" v-model="newpwdconfirm" >
   		</div>
   		<div>
+            <span class="text4">아이디</span>
+    		<input class="input1" type="text" placeholder="새로운 비밀번호를 입력해주세요" v-model="id" >
+  		</div>
+      	<div>
+            <span class="text4">앞주민번호</span>
+    		<input class="input1" type="text" placeholder="새로운 비밀번호를 다시 입력해주세요" v-model="frontregisnum" >
+  		</div>
+      	<div>
+            <span class="text4">뒤주민번호</span>
+    		<input class="input1" type="text" placeholder="새로운 비밀번호를 다시 입력해주세요" v-model="afterregisnum" >
+  		</div>
+  		<div>
      		<button class="btn3" @click="fnSearchpwdchange">비밀번호 변경</button>
   		</div>
 	</div>
@@ -142,14 +154,17 @@
     	newpwd:""
     	,newpwdconfirm:""
 		, id:""
-		,	
+		, frontregisnum:""
+	    ,afterregisnum:""	
     }
     , methods: {
     	fnSearchpwdchange : function(){
             var self = this;
             var nparmap = { newpwd: self.newpwd
             				,newpwdconfirm: self.newpwdconfirm
-            				,id: self.id};
+            				,id: self.id
+            				,frontregisnum: self.frontregisnum
+            				,afterregisnum: self.afterregisnum};
            
             $.ajax({
                 url:"/searchpwdchange.dox",
@@ -158,18 +173,15 @@
                 data : nparmap,
                
                 success : function(data) {
-                	self.list = data.list;
+                	
                 	console.log(nparmap);
-                	console.log(data.list);
-                	
-                		alert("비밀번호가 일치하지 않습니다.");
-                	
-   /*              	if(newpwd.equals(newpwdconfirm)==false){
+                	if(self.newpwd != self.newpwdconfirm){
                 		alert("비밀번호가 일치하지 않습니다.");
                 	}else{
                 		alert("비밀번호가 변경되었습니다.");
+                		
                 	}            
-                	 */
+                	 
                 	
                 	
                 	

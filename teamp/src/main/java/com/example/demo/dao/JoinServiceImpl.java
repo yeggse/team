@@ -48,9 +48,15 @@ public class JoinServiceImpl implements JoinService{
 //		return joinMapper.pwdchange(map);
 //	}
 	
+//	@Override
+//	public List<Join> pwdchange(HashMap<String, Object> map) {
+//		// TODO Auto-generated method stub
+//		return joinMapper.pwdchange(map);
+//	}
+	
 	@Override
-	public List<Join> pwdchange(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		return joinMapper.pwdchange(map);
-	}
+	public void pwdchange(HashMap<String, Object> map) {
+		joinMapper.pwdchange(map);
+	} //선생님 버전
+
 }
