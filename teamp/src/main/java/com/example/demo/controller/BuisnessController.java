@@ -15,13 +15,25 @@ import com.example.demo.dao.BoardService;
 import com.example.demo.model.Board;
 import com.google.gson.Gson;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller // 컨트롤러라고 선언함
 public class BuisnessController {
+    @Autowired
+	HttpSession session;	
 	// Service 인터페이스 객체 생성 및 연결
     // 웹 주소
     @RequestMapping("/menumanagementbusiness.do") 
-    public String menumanagement(Model model) throws Exception{
+    public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	HashMap<String, Object> map = new HashMap<String, Object>();
+    	String kind = (String)session.getAttribute("KindSession");
+    	String id = (String)session.getAttribute("userIdSession");
+    	
+    	request.setAttribute("kind", kind);
+    	request.setAttribute("userId", id);
     	return "/menumanagement_business"; // WEB-INF에서 호출할 파일명
     }
     @RequestMapping("/menuaddbusiness.do") 

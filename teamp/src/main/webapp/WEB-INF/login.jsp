@@ -208,31 +208,26 @@ input {
 			name : ""
 		},
 		methods : {
-			fnLogin : function() {
-				var self = this;
-				var nparmap = {
-					id : self.id,
-					pwd : self.pwd
-				};
-				console.log(nparmap);
-
-				$.ajax({
-					url : "/login.dox",
-					dataType : "json",
-					type : "POST",
-					data : nparmap,
-
-					success : function(data) {
-						
-						if (data.result == "success") {
-							alert(data.user.name + "님 로그인 성공!!");
-							self.pageChange("/main.do", {})
-						} else {
-							alert("로그인 실패!!1");
-						}
-					}
-				});
-			},
+			fnLogin : function(){
+	            var self = this;
+	            var nparmap = {id : self.id, pwd : self.pwd};
+	            
+	            $.ajax({
+	                url:"/login.dox",
+	                dataType:"json",	
+	                type : "POST", 
+	                data : nparmap,
+	                success : function(data) {
+	                	if(data.result == "success"){
+	                		alert(data.user.name + "님 로그인 성공!!");
+	                		self.pageChange("/main.do", {});
+	                		console.log(id, pwd);
+	                	} else {
+	                		alert("로그인 실패!!");
+	                	}
+	                }
+	            }); 
+	        },
 			pageChange : function(url, param) {
 				var target = "_self";
 				if (param == undefined) {

@@ -33,9 +33,10 @@ public class MainController {
     @RequestMapping("/main.do") 
     public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
     	HashMap<String, Object> map = new HashMap<String, Object>();
+    	String kind = (String)session.getAttribute("KindSession");
     	String id = (String)session.getAttribute("userIdSession");
-    	
     	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
     	return "/web_main/main"; // WEB-INF에서 호출할 파일명
     }
     // 웹 주소 : 업종 목록 출력

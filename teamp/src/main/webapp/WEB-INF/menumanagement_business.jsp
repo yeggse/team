@@ -266,6 +266,8 @@ var app = new Vue({
     	, age : ""
     	, address : ""
     	, flg : true
+    	, kind : "${kind}"
+    	, userId : "${userId}"
     	
     } 
     , methods: {

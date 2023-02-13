@@ -59,13 +59,12 @@ public class LoginController {
 		if( user != null) {
 			session.setAttribute("userIdSession", user.getId());
 			session.setAttribute("NameSession", user.getName());
-			session.setAttribute("TypeSession", user.getKind());
+			session.setAttribute("KindSession", user.getKind());
 			resultMap.put("user", user);
 			resultMap.put("result", "success");
 		} else {
  			resultMap.put("result", "fail");
  		}
-		
  		return new Gson().toJson(resultMap);
 	}	
 	

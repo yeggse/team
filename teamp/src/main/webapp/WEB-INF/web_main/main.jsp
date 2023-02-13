@@ -112,7 +112,7 @@
 </style>
 
 <body style="margin: 0px">
-	<div id="app" style="width:2483.02px", anlign="center">
+	<div id="app" style="width:2483.02px" anlign="center">
 	<div class="div1">지금 계신 장소가 어디신가요?</div>
 	<div class="div2">주변 식당에서 음식을 픽업해 가세요!</div>
 	<div class="div3">
