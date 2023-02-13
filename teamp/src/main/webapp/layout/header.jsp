@@ -21,7 +21,7 @@
       <a class="header" style="margin-left: 1700px; display: flex; align-items: center;">설정</a>	 <!-- 로그인 사람에 따라서, 연결되는 링크가 달라져야 함 -->
       <a v-if="userId == ''" href="login.do" class="header" style="margin-left: 1800px; display: flex; align-items: center;"> 로그인
       </a>
-      <a v-else href="login.do" class="header" style="margin-left: 1800px; display: flex; align-items: center;"> 로그아웃1
+      <a v-else href="login.do" class="header" style="margin-left: 1800px; display: flex; align-items: center;"> 로그아웃
       </a>
       
      </div>
