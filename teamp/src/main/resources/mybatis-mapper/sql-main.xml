@@ -67,6 +67,14 @@
 				title LIKE CONCAT('%', #{region}, '%')
 			</if>
 	</select>
+	
+		<select id="selectSiList" parameterType="hashmap" resultType="com.example.demo.model.Area">	
+		select si
+		from 
+			t_area
+		group by si
+	</select>
+	
 </mapper>
 
 <!-- 

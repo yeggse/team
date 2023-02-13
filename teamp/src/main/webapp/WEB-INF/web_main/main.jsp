@@ -117,9 +117,16 @@
 	<div class="div2">주변 식당에서 음식을 픽업해 가세요!</div>
 	<div class="div3">
 		<img src="img/main/point.PNG" margin-top= 10px width=50px height=70px>
-		<input type="text" v-model="region" placeholder="장소를 입력해 주세요" ></input>
-		<button id="btn" @click="fnSearch">선택</button>	<!-- 조건 넣어줘야 함: 버튼이벤트 생성 : 미선택시 안넘어가게!!!!!! -->
+		<!-- <input type="text" v-model="region" placeholder="장소를 입력해 주세요" ></input>
+		<button id="btn" @click="fnSearch">선택</button>	조건 넣어줘야 함: 버튼이벤트 생성 : 미선택시 안넘어가게!!!!!! -->
+			<div >
+				<label for="si" >지역을 먼저 설정해주세요~ : </label>
+				<select v-model="si" id="si" > 
+					<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+				</select>
+			</div>
 	</div>
+	
 	<div class="div4">
 		<button id="imgbtn1" onclick="location.href='/main.storelist.do'"> </button>	<!-- 선택별로 다른 화면 출력되어야 함!!! -->
 		<button id="imgbtn2" onclick="location.href='/main.storelist.do'"> </button>	<!-- 선택별로 다른 화면 출력되어야 함!!! -->
@@ -141,6 +148,8 @@ var app = new Vue({
     data: {
     	region: ""
     	,list: []
+		, siList : ${siList}
+		, si : ""
     }   
     , methods: {
     	fnSearch : function(){
