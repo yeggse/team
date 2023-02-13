@@ -98,7 +98,7 @@
 		SET
 			pwd = #{newpwd}
 		WHERE 
-			id = #{id} AND frontregisnum=#{frontregisnum} AND afterregisnum=#{afterregisnum}
+			id = #{id}
 	</update>
 	
 	

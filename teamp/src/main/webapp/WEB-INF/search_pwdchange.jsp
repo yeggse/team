@@ -106,6 +106,10 @@
   		<div class="text1">비밀번호가 생각나지 않으세요?</div>
         <div class="text2">비밀번호를 재 설정 해주세요.</div>
         <div class="text2">회원 정보에 등록한 정보와 일치해야, 비밀번호를 변경할 수 있습니다.</div>
+        <div>
+            <span class="text4">아이디 확인</span>
+    		<input class="input1" type="text" placeholder="새로운 비밀번호를 입력해주세요" v-model="id" >
+  		</div>
   		<div>
             <span class="text4">새로운 비밀번호</span>
     		<input class="input1" type="text" placeholder="새로운 비밀번호를 입력해주세요" v-model="newpwd" >
@@ -114,18 +118,8 @@
             <span class="text4">비밀번호 확인</span>
     		<input class="input1" type="text" placeholder="새로운 비밀번호를 다시 입력해주세요" v-model="newpwdconfirm" >
   		</div>
-  		<div>
-            <span class="text4">아이디</span>
-    		<input class="input1" type="text" placeholder="새로운 비밀번호를 입력해주세요" v-model="id" >
-  		</div>
-      	<div>
-            <span class="text4">앞주민번호</span>
-    		<input class="input1" type="text" placeholder="새로운 비밀번호를 다시 입력해주세요" v-model="frontregisnum" >
-  		</div>
-      	<div>
-            <span class="text4">뒤주민번호</span>
-    		<input class="input1" type="text" placeholder="새로운 비밀번호를 다시 입력해주세요" v-model="afterregisnum" >
-  		</div>
+  		
+      	
   		<div>
      		<button class="btn3" @click="fnSearchpwdchange">비밀번호 변경</button>
   		</div>
@@ -153,18 +147,16 @@
     data: {
     	newpwd:""
     	,newpwdconfirm:""
-		, id:""
-		, frontregisnum:""
-	    ,afterregisnum:""	
+		, id:"${userId}"
+			
     }
     , methods: {
     	fnSearchpwdchange : function(){
             var self = this;
             var nparmap = { newpwd: self.newpwd
             				,newpwdconfirm: self.newpwdconfirm
-            				,id: self.id
-            				,frontregisnum: self.frontregisnum
-            				,afterregisnum: self.afterregisnum};
+            				
+            				};
            
             $.ajax({
                 url:"/searchpwdchange.dox",
@@ -174,13 +166,13 @@
                
                 success : function(data) {
                 	
-                	console.log(nparmap);
-                	if(self.newpwd != self.newpwdconfirm){
+                	console.log("${userId}");
+                	/* if(self.newpwd != self.newpwdconfirm){
                 		alert("비밀번호가 일치하지 않습니다.");
                 	}else{
                 		alert("비밀번호가 변경되었습니다.");
                 		
-                	}            
+                	}      */       
                 	 
                 	
                 	

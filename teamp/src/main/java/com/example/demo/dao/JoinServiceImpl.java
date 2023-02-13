@@ -30,7 +30,7 @@ public class JoinServiceImpl implements JoinService{
 	}
 
 	@Override
-	public List<Join> searchpw(HashMap<String, Object> map) throws Exception {
+	public Join searchpw(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return joinMapper.searchpw(map);
 	}
