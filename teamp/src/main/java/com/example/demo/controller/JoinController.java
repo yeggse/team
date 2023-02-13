@@ -70,10 +70,12 @@ public class JoinController {
 			
 			if( user != null) {
 				session.setAttribute("userIdSession", user.getId());
-				session.setAttribute("NameSession", user.getName());
+				session.setAttribute("userNameSession", user.getName());
 				session.setAttribute("KindSession", user.getKind());
-				session.setAttribute("accSession", user.getAcc());
-				session.setAttribute("phoneNumSession", user.getPhonenum());
+				session.setAttribute("useraccSession", user.getAcc());
+				session.setAttribute("userphoneNumSession", user.getPhonenum());
+				session.setAttribute("userFrontregisnum", user.getFrontregisnum());
+		    	session.setAttribute("userAfterregisnum", user.getAfterregisnum());
 				resultMap.put("user", user);
 				resultMap.put("result", "success");
 			} else {
@@ -100,12 +102,17 @@ public class JoinController {
 	@RequestMapping("/datachange.do")
 	public String main2(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-    	String id = (String)session.getAttribute("userId1Session");
+    	String id = (String)session.getAttribute("userIdSession");
     	String name = (String)session.getAttribute("userNameSession");
-    	int frontregisnum = (int)session.getAttribute("userFrontregisnum");
-    	int afterregisnum = (int)session.getAttribute("userAfterregisnum");
+    	int frontregisnum = (Integer)session.getAttribute("userFrontregisnum");
+    	int afterregisnum = (Integer)session.getAttribute("userAfterregisnum");
         String add = (String)session.getAttribute("userAdd");
-    	request.setAttribute("userId1", id);
+        
+    	request.setAttribute("userId", id);
+    	request.setAttribute("userName", name);
+    	request.setAttribute("userFrontregisnum", frontregisnum);
+    	request.setAttribute("userafterregisnum", afterregisnum);
+    	request.setAttribute("userAdd", add);
 		return "/datachange"; // WEB-INF에서 호출할 파일명
 	}
 	@RequestMapping("/datachange2.do")

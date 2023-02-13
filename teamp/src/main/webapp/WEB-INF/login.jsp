@@ -219,9 +219,10 @@ input {
 	                data : nparmap,
 	                success : function(data) {
 	                	if(data.result == "success"){
+	                		
 	                		alert(data.user.name + "님 로그인 성공!!");
 	                		self.pageChange("/main.do", {});
-	                		console.log(id, pwd);
+	                		
 	                	} else {
 	                		alert("로그인 실패!!");
 	                	}

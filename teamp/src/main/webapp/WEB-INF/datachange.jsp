@@ -42,19 +42,21 @@ body{
 	       <div id="app" class = "div2" style = "background-color: white;height: 50px;font-size: 25px;" >
 	             일반 회원가입
 	       </div>
-		    
-			<div class="div2">
-				패스워드 <input type="password" id = "text1" v-model="pwd" style = "margin-left:45px"></input>
-			</div>
+		 
+			
+			   
+			<div class ="div2"> 아이디 : {{id}}</div>
+			   
+			<div class ="div2"> 패스워드 <input type="password" id = "text1" v-model="pwd" style = "margin-left:45px"></input></div>
+			
 			<div class="div2">
 				패스워드 확인 <input type="password" id = "text1"  v-model="pwd2" style = "margin-left:12px"></input>
 			</div>
 			<div class="div2">
-				이름 <input type="text" id = "text1" v-model="name" style = "margin-left:75px"></input>
+				이름 : {{name}} 
 			</div>
 			<div class="div2">
-				주민번호 <input type="text" v-model="age" style = "margin-left:45px"></input>
-				- <input type="password" v-model="age"></input> <button @click="">실명인증</button>
+				주민번호 : {{age}}-{{age1}}
 			</div>
 			<div class="div2">
 				주소 <input type="text" id = "text1" v-model="address" style = "margin-left:75px"></input>
@@ -83,7 +85,8 @@ var app = new Vue({
     	, pwd2 : ""
     	, pwd : ""
     	, name : "${userName}"
-    	, age : ""
+    	, age : "${userFrontregisnum}"
+    	, age1 : "${userAfterregisnum}"
     	, address : ""
     	, nickname : ""
     	, num : ""
@@ -91,7 +94,7 @@ var app = new Vue({
     	
     } 
     , methods: {
-    	
+    
    
     
     }   
