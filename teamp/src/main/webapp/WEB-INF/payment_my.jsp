@@ -264,3 +264,29 @@ padding:0rem 1rem 0rem 1rem;
 </body>
     <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
+<script type="text/javascript">
+var app = new Vue({
+	el: '#app',
+    data: {
+    	id : ""
+    	, pwd : ""
+    	, pwd2 : ""
+    	, name : ""
+    	, age : ""
+    	, address : ""
+    	, flg : true
+    	, kind : "${kind}"
+    		, userId : "${userId}"
+    	
+    	
+    } 
+    , methods: {
+    	
+    }   
+    , created: function () {
+    
+	}
+});
+
+
+</script>

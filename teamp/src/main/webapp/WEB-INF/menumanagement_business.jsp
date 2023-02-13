@@ -267,7 +267,7 @@ var app = new Vue({
     	, address : ""
     	, flg : true
     	, kind : "${kind}"
-    	, userId : "${userId}"
+    	
     	
     } 
     , methods: {
@@ -276,7 +276,6 @@ var app = new Vue({
     		var self = this;
     		alert("정말 삭제하시겠습니까?");
     	}
-    
     }   
     , created: function () {
     
