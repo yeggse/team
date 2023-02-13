@@ -5,7 +5,7 @@
 <mapper namespace="com.example.demo.mapper.LoginMapper">	
 	<select id="selectLoginList" parameterType="hashmap" resultType="com.example.demo.model.Login">	
 		SELECT
-			id, pwd, name
+			id, pwd, name, kind
 		FROM
 			t3_account
 		WHERE id = #{id} AND pwd = #{pwd}

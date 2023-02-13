@@ -7,6 +7,6 @@ import com.example.demo.model.Login;
 
 
 public interface LoginService {
-	List<Login> selectLoginList(HashMap<String, Object> map) throws Exception; 
+	Login selectLoginList(HashMap<String, Object> map) throws Exception; 
 	List<Login> searchid(HashMap<String, Object> map) throws Exception; 
 }

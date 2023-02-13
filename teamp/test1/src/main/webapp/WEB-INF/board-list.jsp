@@ -37,6 +37,7 @@
 				</select>
 			</div>
 			<h2>게시글 목록</h2>
+			<div>{{userId}}</div>
 			<table class="board_list">
 				<colgroup>
 					<col width="5%"/>
@@ -182,7 +183,9 @@ var app = new Vue({
     	// 작성
     	, fnAdd : function(){
     		var self = this;
-    		self.pageChange("./add.do", {});
+    		console.log(${userId});
+    		//self.pageChange("./add.do", {});
+    		
     	}
 	    , fnEdit : function(){
 			var self = this;

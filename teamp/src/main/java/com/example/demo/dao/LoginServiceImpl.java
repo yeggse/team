@@ -16,7 +16,7 @@ public class LoginServiceImpl implements LoginService{
 	private LoginMapper loginMapper;
 
 	@Override
-	public List<Login> selectLoginList(HashMap<String, Object> map) throws Exception {
+	public Login selectLoginList(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return loginMapper.selectLoginList(map);
 	}
