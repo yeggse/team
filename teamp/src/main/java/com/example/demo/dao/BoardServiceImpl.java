@@ -17,12 +17,12 @@ public class BoardServiceImpl implements BoardService{
 	private BoardMapper boardMapper;
 
 	// 인터페이스 구체화
-	@Override
-	public List<Board> selectBoardList(HashMap<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		
-		return boardMapper.selectBoardList(map); // db를 호출하는 mapper와 연결
-	}
+//	@Override
+//	public List<Board> selectBoardList(HashMap<String, Object> map) throws Exception {
+//		// TODO Auto-generated method stub
+//		
+//		return boardMapper.selectBoardList(map); // db를 호출하는 mapper와 연결
+//	}
 	
 	// 인터페이스 구체화
 		@Override
@@ -30,5 +30,16 @@ public class BoardServiceImpl implements BoardService{
 			// TODO Auto-generated method stub
 			
 			return boardMapper.selectBoardList2(map); // db를 호출하는 mapper와 연결
+		}
+
+		// 게시글 기본 출력
+		@Override
+		public List<Board> firstBoard(HashMap<String, Object> map) throws Exception {
+			// TODO Auto-generated method stub
+			int startNum = Integer.parseInt(String.valueOf(map.get("startNum")));
+			int lastNum = Integer.parseInt(String.valueOf(map.get("lastNum")));
+			map.put("startNum", startNum);
+			map.put("lastNum", lastNum);
+			return boardMapper.firstBoardList(map);
 		}
 }
