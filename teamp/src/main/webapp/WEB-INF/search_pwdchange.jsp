@@ -152,7 +152,8 @@
     , methods: {
     	fnSearchpwdchange : function(){
             var self = this;
-            var nparmap = { newpwd: self.newpwd
+            var nparmap = { id: self.id,
+            		        newpwd: self.newpwd
             				,newpwdconfirm: self.newpwdconfirm
             				};
            
@@ -165,12 +166,12 @@
                 success : function(data) {
                 	
                 	console.log(self.id);
-                	/* if(self.newpwd != self.newpwdconfirm){
+                	if(self.newpwd != self.newpwdconfirm){
                 		alert("비밀번호가 일치하지 않습니다.");
                 	}else{
                 		alert("비밀번호가 변경되었습니다.");
                 		
-                	}      */       
+                	}         
                 	 
                 	
                 	
