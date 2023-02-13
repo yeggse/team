@@ -282,6 +282,7 @@ var app = new Vue({
     } 
     , methods: {
     	
+    	
     }   
     , created: function () {
     
