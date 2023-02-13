@@ -40,9 +40,70 @@ public class JoinController {
 		return "/join2"; // WEB-INF에서 호출할 파일명
 	}
 	
-	@RequestMapping("/datachange.do")
-	public String main2(Model model) throws Exception {
+	 @RequestMapping("/login.do") 
+	    public String login(Model model) throws Exception{
+	    	// 세션에 넣었던 값들 꺼내서 remove
+	    	String id = (String)session.getAttribute("id");  
+	    	session.removeAttribute("id");
 
+	    	// 제거
+	    	session.invalidate();	
+	    	return "/login"; // WEB-INF에서 호출할 파일명
+	    }
+	    @RequestMapping("/searchid.do") 
+	    public String searchid(Model model) throws Exception{
+	    	return "/search_id"; // WEB-INF에서 호출할 파일명
+	    }
+	    @RequestMapping("/searchpw.do") 
+	    public String searchpw(Model model) throws Exception{
+	    	return "/search_pw"; // WEB-INF에서 호출할 파일명
+	    }
+	    
+	  
+	    
+	    // 데이터 호출
+	    @RequestMapping(value = "/login.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String login(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			Join user = joinService.selectLoginList(map);
+			
+			if( user != null) {
+				session.setAttribute("userIdSession", user.getId());
+				session.setAttribute("NameSession", user.getName());
+				session.setAttribute("KindSession", user.getKind());
+				resultMap.put("user", user);
+				resultMap.put("result", "success");
+			} else {
+	 			resultMap.put("result", "fail");
+	 		}
+	 		return new Gson().toJson(resultMap);
+		}	
+		
+		// 데이터 호출
+		@RequestMapping(value = "/searchid.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String searchid(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			List<Join> list = joinService.searchid(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+			if(list.size()>0) {
+				resultMap.put("result", "success");
+			}else {
+				resultMap.put("result", "fail");
+			}
+			resultMap.put("list", list);
+			return new Gson().toJson(resultMap);
+		}
+	
+	@RequestMapping("/datachange.do")
+	public String main2(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+    	String id = (String)session.getAttribute("userId1Session");
+    	String name = (String)session.getAttribute("userNameSession");
+    	int frontregisnum = (int)session.getAttribute("userFrontregisnum");
+    	int afterregisnum = (int)session.getAttribute("userAfterregisnum");
+        String add = (String)session.getAttribute("userAdd");
+    	request.setAttribute("userId1", id);
 		return "/datachange"; // WEB-INF에서 호출할 파일명
 	}
 	@RequestMapping("/datachange2.do")
@@ -113,33 +174,7 @@ public class JoinController {
  		return new Gson().toJson(resultMap);
 	}
 	
-//	@RequestMapping(value = "/searchpwdchange.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-// 	@ResponseBody
-// 	public String pwdchange(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-// 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-// 	    int num = joinService.pwdchange(map);
-// 		if(num>0) {
-// 			resultMap.put("result", "success");
-// 		}else {
-// 			resultMap.put("result", "fail");
-// 		}
-// 		resultMap.put("list", num);
-// 		return new Gson().toJson(resultMap);
-// 	}
 
-//	@RequestMapping(value = "/searchpwdchange.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-//	@ResponseBody
-//	public String pwdchange(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-//		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-//		List<Join> list = joinService.pwdchange(map); // DB 접근 및 쿼리를 통한 데이터 호출 
-//		if(list.size()>0) {
-//			resultMap.put("result", "success");
-//		}else {
-//			resultMap.put("result", "fail");
-//		}
-//		resultMap.put("list", list);
-//		return new Gson().toJson(resultMap);
-//	}
 	
 	//선생님 버전
 	@RequestMapping(value = "/searchpwdchange.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -147,6 +182,15 @@ public class JoinController {
 	public String pwdchange(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		joinService.pwdchange(map);
+		resultMap.put("message, ", "성공");
+		return new Gson().toJson(resultMap);
+	}
+	
+	@RequestMapping(value = "/datachange.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String datachange(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		joinService.datachange(map);
 		resultMap.put("message, ", "성공");
 		return new Gson().toJson(resultMap);
 	}

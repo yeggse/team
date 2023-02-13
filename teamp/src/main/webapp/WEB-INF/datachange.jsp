@@ -79,10 +79,10 @@ body{
 var app = new Vue({
 	el: '#app',
     data: {
-    	id : ""
+    	id : "${userId}"
     	, pwd2 : ""
     	, pwd : ""
-    	, name : ""
+    	, name : "${userName}"
     	, age : ""
     	, address : ""
     	, nickname : ""

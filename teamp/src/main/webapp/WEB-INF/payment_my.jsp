@@ -150,9 +150,9 @@ padding:0rem 1rem 0rem 1rem;
 </style>
 
 <body >
-<!--  
+ 
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
--->	
+
 	
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
 	<div class="div0">
@@ -258,9 +258,9 @@ padding:0rem 1rem 0rem 1rem;
         </div>	
     </div>
     </div>
-    <!-- 
-    </div> <!--id app  -->
-     -->
+  
+    </div>  
+     
 </body>
     <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  

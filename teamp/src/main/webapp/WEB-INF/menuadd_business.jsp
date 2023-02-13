@@ -125,9 +125,10 @@ padding: 5px;
 </style>
 
 <body class="body">
-<jsp:include page="/layout/businesspagebody.jsp "></jsp:include>
-	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
-    <div id="mainWrapper"> 
+	<div id="app" style="width:100%; padding-top:120px;" align="center">
+	<jsp:include page="/layout/businesspagebody.jsp "></jsp:include>
+	<div id="mainWrapper"> 
+    
                 <!--영업 on/off  -->
         	<div class="tempborder">
 			<button class="btnonoff">영업시작</button>        	

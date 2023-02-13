@@ -59,4 +59,22 @@ public class JoinServiceImpl implements JoinService{
 		joinMapper.pwdchange(map);
 	} //선생님 버전
 
+	@Override
+	public void datachange(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		joinMapper.datachange(map);
+	}
+
+	@Override
+	public Join selectLoginList(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return joinMapper.selectLoginList(map);
+	}
+
+	@Override
+	public List<Join> searchid(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return joinMapper.searchid(map);
+	}
+
 }

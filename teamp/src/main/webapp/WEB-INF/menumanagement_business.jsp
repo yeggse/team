@@ -146,8 +146,9 @@ margin-top: 5px;
 
 <body class="body">
 <div>
-<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
+	<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
     <div id="mainWrapper"> 
                 <!--영업 on/off  -->
         	<div class="div2">

@@ -139,13 +139,13 @@ padding:0rem 1rem 0rem 1rem;
 </style>
 
 <body>
-<!--  
+
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
--->
+
 	
 	
 	<div class="div0">
-<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+    <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
     <div id="mainWrapper">
         	<div class="div2">
             <!-- 게시판 제목 -->
@@ -248,9 +248,9 @@ padding:0rem 1rem 0rem 1rem;
         </div>	
     </div>
     </div>
-    <!-- 
-    </div> <!--id app  -->
-     -->
+    
+    </div>
+   
 </body>
     <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  

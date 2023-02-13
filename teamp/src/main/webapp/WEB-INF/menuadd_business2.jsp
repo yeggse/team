@@ -171,8 +171,9 @@ position: absolute;
 </style>
 
 <body>
-<jsp:include page="/layout/businesspagebody.jsp "></jsp:include>
+
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
+	<jsp:include page="/layout/businesspagebody.jsp "></jsp:include>
     <div id="mainWrapper"> 
                 <!--영업 on/off  -->
         	<div class="tempborder">
