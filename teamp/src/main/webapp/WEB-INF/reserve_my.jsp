@@ -103,7 +103,7 @@ width: 100%;
      margin-left: 350px; /*가운데 정렬*/
      margin-right: 350px; /*가운데 정렬*/
      margin-bottom: 350px; /*가운데 정렬*/
-     position: relative; left: -100px; bottom:900px; 
+    
     }
     .div1{
 border: 10px solid black;
