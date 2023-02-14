@@ -126,7 +126,7 @@ border: 1px solid;
               </fieldset>
             </form>
           <div>
-            <input type="text" class="text" placeholder="음식에 대한 솔직한 리뷰를 남겨주세요. ">
+            <input type="text" class="text" placeholder="음식에 대한 솔직한 리뷰를 남겨주세요." v-model="reviewnum">
           </div>  
           <div>
             <button class="btnphoto1">
@@ -141,7 +141,7 @@ border: 1px solid;
             <button class="btnphoto2">사진</button> -->
           </div>
           <div>
-            <button class="btncomplete">완료</button>
+            <button class="btncomplete" @click="fnTest">완료</button>
             수정할것: 레이아웃,rem, 사이즈,헤더 푸터 옆에거 연동 잘 해보기,클릭시 아래 페이지 나오게하기
           </div>
         </div>
@@ -153,25 +153,48 @@ border: 1px solid;
   <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
 <script type="text/javascript">
-/* var app = new Vue({   //사진 미리보기 하려다 실패
+var app = new Vue({ 
     el: '#app',
-    data: {
-    	id:""
-    	,name: ""
-
+    data: {resnum:""
+    		,reviewnum:""
+			,startdate:""
+			,menuname:""
+			,price:""
+			,ordernum:""
+	
     }
-    , methods: {
-		function readURL(input) {
-  			if (input.files && input.files[0]) {
-    		var reader = new FileReader();
-    		reader.onload = function(e) {
-      		document.getElementById('preview').src = e.target.result;
-   		 };
-    		reader.readAsDataURL(input.files[0]);
-  			} else {
-  			  document.getElementById('preview').src = "";
-  	}
-} */
 
+    , methods: {
+    	fnTest : function(){
+            var self = this;
+            var nparmap = {resnum: self.resnum, 
+            		startdate: self.startdate, 
+            	 	menuname: self.menuname, 
+            	 	price: self.price, 
+            	 	ordernum:self.ordernum
+            	 	reviewnum: self.reviewnum}; 
+            
+                console.log(nparmap);
+           
+            $.ajax({
+                url:"/reviewwrite.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                
+                success : function(data) {
+                	self.list = data.list;
+                	
+                	console.log(nparmap);
+                	console.log(data.list);
+                }
+            }); 
+        }
+    }
+    , created: function () {
+        
+	}
+});
+    
 </script>
 

@@ -18,37 +18,37 @@ public class ConsumerController {
 		HttpSession session;	
 	// Service 인터페이스 객체 생성 및 연결
     // 웹 주소
-    @RequestMapping("/paymentmy.do") 
-    public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-    	HashMap<String, Object> map = new HashMap<String, Object>();
-    	String kind = (String)session.getAttribute("KindSession");
-    	String id = (String)session.getAttribute("userIdSession");
-    	
-    	request.setAttribute("kind", kind);
-    	request.setAttribute("userId", id);    	
-    	return "/payment_my"; // WEB-INF에서 호출할 파일명
-    }
-    @RequestMapping("/reservemy.do") 
-      public String reservemy(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-      	HashMap<String, Object> map = new HashMap<String, Object>();
-      	String kind = (String)session.getAttribute("KindSession");
-      	String id = (String)session.getAttribute("userIdSession");
-      	
-      	request.setAttribute("kind", kind);
-      	request.setAttribute("userId", id);   
-      	return "/reserve_my"; // WEB-INF에서 호출할 파일명
-      }
+//    @RequestMapping("/paymentmy.do") 
+//    public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+//    	HashMap<String, Object> map = new HashMap<String, Object>();
+//    	String kind = (String)session.getAttribute("KindSession");
+//    	String id = (String)session.getAttribute("userIdSession");
+//    	
+//    	request.setAttribute("kind", kind);
+//    	request.setAttribute("userId", id);    	
+//    	return "/payment_my"; // WEB-INF에서 호출할 파일명
+//    }
+	/*
+	 * @RequestMapping("/reservemy.do") public String reservemy(Model model,
+	 * HttpServletRequest request, HttpServletResponse response) throws Exception{
+	 * HashMap<String, Object> map = new HashMap<String, Object>(); String kind =
+	 * (String)session.getAttribute("KindSession"); String id =
+	 * (String)session.getAttribute("userIdSession");
+	 * 
+	 * request.setAttribute("kind", kind); request.setAttribute("userId", id);
+	 * return "/reserve_my"; // WEB-INF에서 호출할 파일명 }
+	 */
     
-    @RequestMapping("/reviewwrite.do") 
-      public String review(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-      	HashMap<String, Object> map = new HashMap<String, Object>();
-      	String kind = (String)session.getAttribute("KindSession");
-      	String id = (String)session.getAttribute("userIdSession");
-      	
-      	request.setAttribute("kind", kind);
-      	request.setAttribute("userId", id); 
-      	return "/review_write"; // WEB-INF에서 호출할 파일명
-      }
+	/*
+	 * @RequestMapping("/reviewwrite.do") public String review(Model model,
+	 * HttpServletRequest request, HttpServletResponse response) throws Exception{
+	 * HashMap<String, Object> map = new HashMap<String, Object>(); String kind =
+	 * (String)session.getAttribute("KindSession"); String id =
+	 * (String)session.getAttribute("userIdSession");
+	 * 
+	 * request.setAttribute("kind", kind); request.setAttribute("userId", id);
+	 * return "/review_write"; // WEB-INF에서 호출할 파일명 }
+	 */
     
     @RequestMapping("/reviewadmin.do") 
     public String review1(Model model) throws Exception{

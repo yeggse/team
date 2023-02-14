@@ -158,8 +158,8 @@ padding:0rem 1rem 0rem 1rem;
                         <option value='T'>제목</option>
                         <option value='C'>내용</option>
                     </select>
-                    <input id='txtKeyWord' />
-                    <input class="btn2" type='button' value='검색'/>
+                    <input id='txtKeyWord' V-model="resnum" />
+                    <input class="btn2" type='button' value='검색' @click="fnTest"/>
                 </li>
                 </div>
              <div class="div3">
@@ -252,4 +252,46 @@ padding:0rem 1rem 0rem 1rem;
 </body>
     <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
+
+<script type="text/javascript">
+var app = new Vue({ 
+    el: '#app',
+    data: {resnum:""
+			,startdate:""
+			,menuname:""
+			,price:""
+			,ordernum:""
+	
+    }
+
+    , methods: {
+    	fnTest : function(){
+            var self = this;
+            var nparmap = {resnum: self.resnum, startdate: self.startdate, 
+            	 	menuname: self.menuname, price: self.price, ordernum:self.ordernum}; 
+            
+                console.log(nparmap);
+           
+            $.ajax({
+                url:"/reservemy.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                
+                success : function(data) {
+                	self.list = data.list;
+                	
+                	console.log(nparmap);
+                	console.log(data.list);
+                }
+            }); 
+        }
+    }
+    , created: function () {
+        
+	}
+});
+    
+</script>
+
 

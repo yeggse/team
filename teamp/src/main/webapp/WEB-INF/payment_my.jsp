@@ -169,8 +169,8 @@ padding:0rem 1rem 0rem 1rem;
                         <option value='T'>제목</option>
                         <option value='C'>내용</option>
                     </select>
-                    <input id='txtKeyWord' />
-                    <input class = "btn2" type='button' value='검색'/>
+                    <input id='txtKeyWord' v-model="resnum" />
+                    <input class = "btn2" type='button' value='검색' @click="fnTest"/>
                 </li>
                 </div>
              <div class="div3">
@@ -192,7 +192,7 @@ padding:0rem 1rem 0rem 1rem;
                     <!-- 게시물이 출력될 영역 -->
                     <li>
                         <ul>
-                            <li>1</li>
+                            <li>{{resnum}}</li>
                             <li>12316516</li>
                             <li>중국집</li>
                             <li>짜장면</li>
@@ -234,7 +234,7 @@ padding:0rem 1rem 0rem 1rem;
                             <li>짜장면</li>
                             <li>2023.02.08</li>
                             <li>20000원</li>
-                           <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
+                           <li><button class="btn1" @click="fnTest" onClick="">리뷰</button></li>
                         </ul>
                     <li>                                        
                 </ul>
@@ -263,28 +263,45 @@ padding:0rem 1rem 0rem 1rem;
     <jsp:include page="/layout/footer.jsp"></jsp:include>
     
 </html>  
+
 <script type="text/javascript">
-	var app = new Vue({
-		el : '#app',
-		data : {
-			list : [],
-			flg : true
-		},
-		methods : {
-			fnGetList : function() {
-				var self = this;
-				var nparmap = {};
-				$.ajax({
-					url : "/paymentmy.dox",
-					dataType : "json",
-					type : "POST",
-					data : nparmap,
-					success : function(data) {
-						self.list = data.list;
-						console.log(self.list);
-					}
-				});
-			}
+var app = new Vue({ 
+    el: '#app',
+    data: {resnum:"${resnum}"
+			,menuname:"${menuname}"
+			,price:"${price}"
+			
+	
+    }
 
+    , methods: {
+    	fnTest : function(){
+            var self = this;
+            var nparmap = {}; 
+            
+                console.log(nparmap);
+           
+            $.ajax({
+                url:"/paymentmy.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                
+                success : function(data) {
+                	self.list = data.list;
+                	
+                	console.log(nparmap);
+                	console.log(data.list);
+                	console.log(resnum);
+                	console.log(menuname);
+                	console.log(price);
+                }
+            }); 
+        }
+    }
+    , created: function () {
+        
+	}
+});
+    
 </script>
-
