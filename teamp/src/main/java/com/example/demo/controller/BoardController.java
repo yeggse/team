@@ -94,8 +94,42 @@ public class BoardController {
 		resultMap.put("message", "성공");
 		return new Gson().toJson(resultMap);
 	}
-	
-	
+
+    // 웹 주소 :  게시글 작성하기
+    @RequestMapping("/main.board.add.do") 
+    public String boardAdd(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+    	String id = (String)session.getAttribute("userIdSession");
+    	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
+    	String kind = (String)session.getAttribute("KindSession");
+    	System.out.println(map.get("noticenum"));
+    	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
+    	return "/web_board/boardAdd"; // WEB-INF에서 호출할 파일명
+    }
+    // 게시글 작성 데이터 호출
+	@RequestMapping(value = "/addBoard.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String addBoardList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		//String img = (String) map.get("img");
+		boardService.insertBoard(map);
+		resultMap.put("message", "성공");
+		resultMap.put("noticenum", map.get("id")); //!!
+		return new Gson().toJson(resultMap);
+	}
+	/*
+	 * // 게시글 작성 데이터 호출
+	 * 
+	 * @RequestMapping(value = "/add.dox", method = RequestMethod.POST, produces =
+	 * "application/json;charset=UTF-8")
+	 * 
+	 * @ResponseBody public String add(Model model, @RequestParam HashMap<String,
+	 * Object> map ) throws Exception { HashMap<String, Object> resultMap = new
+	 * HashMap<String, Object>(); String img = (String) map.get("img");
+	 * boardService.insertBoard(map); resultMap.put("message", "성공");
+	 * resultMap.put("boardIdx", map.get("id")); return new !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	 * Gson().toJson(resultMap); }
+	 */
 }
 
 

@@ -19,4 +19,7 @@ public interface BoardMapper {
 	// 게시글 수정
 	void editBoard(HashMap<String, Object> map);	//update
 	
+	// 게시글 추가
+	void addBoard(HashMap<String, Object> map);	//insert
+	
 }
