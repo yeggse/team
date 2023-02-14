@@ -10,8 +10,9 @@ public class Res {
 	private String introduce;
 	private String price;
 	private String supply;
-	private String oder;
-	private String puckuptime;
+	private String ordernum;
+	private String pickuptime;
+	private String Payment;
 	public String getResnum() {
 		return resnum;
 	}
@@ -66,17 +67,24 @@ public class Res {
 	public void setSupply(String supply) {
 		this.supply = supply;
 	}
-	public String getOder() {
-		return oder;
+	public String getOrdernum() {
+		return ordernum;
 	}
-	public void setOder(String oder) {
-		this.oder = oder;
+	public void setOrder(String ordernum) {
+		this.ordernum = ordernum;
 	}
-	public String getPuckuptime() {
-		return puckuptime;
+	public String getPickuptime() {
+		return pickuptime;
 	}
-	public void setPuckuptime(String puckuptime) {
-		this.puckuptime = puckuptime;
+	public void setPuckuptime(String pickuptime) {
+		this.pickuptime = pickuptime;
 	}
+	public String getPayment() {
+		return Payment;
+	}
+	public void setPayment(String payment) {
+		Payment = payment;
+	}
+	
 }
 

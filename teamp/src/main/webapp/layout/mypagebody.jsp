@@ -5,14 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="js/jquery.js"></script>
+	<script src="js/vue.js"></script>
+	
     <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
 
     <title>SideBar sub menus</title>
 </head>
 <body id="body-pd">
-    <div class="l-navbar" id="navbar">
+
+    <div class="l-navbar" id="navbar" >
         <nav class="nav">
             <div>
                 <div class="nav__brand">
@@ -26,7 +29,7 @@
                     </a>
                     
 
-                    <div href="#" class="nav__link collapse">
+                    <div href="#" onclick = "fntest()" class="nav__link collapse">
                         <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">결제 관련</span>
 
@@ -73,10 +76,37 @@
             </div>
         </nav>
     </div>
-
-    <!-- IONICONS -->
+ <!-- IONICONS -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <!-- JS -->
     <script src="js/main.js"></script>
+    <script>
+function fntest(){
+	var self = this;
+    var nparmap = {id : "${userId}"};
+    
+    $.ajax({
+        url:"/Res1.dox",
+        dataType:"json",	
+        type : "POST", 
+        data : nparmap,
+        success : function(data) {
+        	if(data.result == "success"){
+        		
+        		alert(data.user.menuname);
+        		
+        		
+        	} else{
+        		alert("실패")
+        	}
+        }
+    }); 
+}
+</script>
+   
 </body>
 </html>
+
+
+
+

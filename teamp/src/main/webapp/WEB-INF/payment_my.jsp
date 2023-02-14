@@ -263,28 +263,5 @@ padding:0rem 1rem 0rem 1rem;
     <jsp:include page="/layout/footer.jsp"></jsp:include>
     
 </html>  
-<script type="text/javascript">
-	var app = new Vue({
-		el : '#app',
-		data : {
-			list : [],
-			flg : true
-		},
-		methods : {
-			fnGetList : function() {
-				var self = this;
-				var nparmap = {};
-				$.ajax({
-					url : "/paymentmy.dox",
-					dataType : "json",
-					type : "POST",
-					data : nparmap,
-					success : function(data) {
-						self.list = data.list;
-						console.log(self.list);
-					}
-				});
-			}
 
-</script>
 

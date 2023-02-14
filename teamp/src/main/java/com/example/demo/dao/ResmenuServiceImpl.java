@@ -22,4 +22,9 @@ public class ResmenuServiceImpl implements ResmenuService{
 			
 			return resmenuMapper.selectResmenu(map); // db를 호출하는 mapper와 연결
 		}
+		@Override
+		public Res selectResmenu1(HashMap<String, Object> map) throws Exception {
+			// TODO Auto-generated method stub
+			return resmenuMapper.selectResmenu1(map);
+		}
 }

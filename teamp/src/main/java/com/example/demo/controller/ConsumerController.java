@@ -31,10 +31,10 @@ public class ConsumerController {
     @RequestMapping("/reservemy.do") 
       public String reservemy(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
       	HashMap<String, Object> map = new HashMap<String, Object>();
-      	String kind = (String)session.getAttribute("KindSession");
+      	String menuname = (String)session.getAttribute("userMenunameSession");
       	String id = (String)session.getAttribute("userIdSession");
       	
-      	request.setAttribute("kind", kind);
+      	request.setAttribute("userMenuname", menuname);
       	request.setAttribute("userId", id);   
       	return "/reserve_my"; // WEB-INF에서 호출할 파일명
       }

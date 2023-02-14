@@ -140,14 +140,14 @@ padding:0rem 1rem 0rem 1rem;
 
 <body>
 
-	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
+	<div style="width:2483.02px; padding-top:120px;" align="center">
 	<div class="div0">
 	
     <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
     <div id="mainWrapper">
         	<div class="div2">
             <!-- 게시판 제목 -->
-            예약내역 
+            예약내역
         	</div>
             <div class="div1">
         	<ul>
@@ -183,7 +183,7 @@ padding:0rem 1rem 0rem 1rem;
                         <ul>
                             <li>1</li>
                             <li class="left">여기맛집</li>
-                            <li>짜장면</li>
+                            <li>${userMenuname}</li>
                             <li>40분</li>
                             <li>20000원</li>
                             <li>예약완료</li>
@@ -248,50 +248,9 @@ padding:0rem 1rem 0rem 1rem;
     </div>
     
     </div>
-   
+    
 </body>
     <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
-
-<script type="text/javascript">
-var app = new Vue({ 
-    el: '#app',
-    data: {resnum:""
-			,startdate:""
-			,menuname:""
-			,price:""
-			,ordernum:""
-	
-    }
-
-    , methods: {
-    	fnTest : function(){
-            var self = this;
-            var nparmap = {resnum: self.resnum, startdate: self.startdate, 
-            	 	menuname: self.menuname, price: self.price, ordernum:self.ordernum}; 
-            
-                console.log(nparmap);
-           
-            $.ajax({
-                url:"/reservemy.dox",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                
-                success : function(data) {
-                	self.list = data.list;
-                	
-                	console.log(nparmap);
-                	console.log(data.list);
-                }
-            }); 
-        }
-    }
-    , created: function () {
-        
-	}
-});
-    
-</script>
 
 

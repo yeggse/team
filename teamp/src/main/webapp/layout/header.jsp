@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head >
-
 	<meta charset="UTF-8">
 	<script src="js/jquery.js"></script>
 	<script src="js/vue.js"></script>
@@ -16,7 +15,6 @@
 	        }
 	</style>
 	<title>testing_header</title>
-	
 	<div id = "app2" class="header" >
       <a  href="main.do"><img style="margin-left:40px"src="img/main/newlogo.png" width="100px" height="80px"></a> 
       <a href="main.do" class="header" style="margin-left: 1500px; display: flex; align-items: center;">홈</a> <!-- a태그를 쓰면 갈려는 페이지 바로 입력하기, 처음에 @click으로 되지 않은 이유는 불러올 라이브러리 id="app"에 연결이 되어있지 않아서-->
