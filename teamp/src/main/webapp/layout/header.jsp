@@ -49,18 +49,3 @@
 	<div id="app2"></div>
 </body>
 </html>
-<script type="text/javascript">
-var app = new Vue({ 
-    el: '#app2',
-    data: {
-    	
-    	
-    	
-    }   
-    , methods: {
-    	 
-    }
-    , created: function () {
-	}
-});
-</script>
