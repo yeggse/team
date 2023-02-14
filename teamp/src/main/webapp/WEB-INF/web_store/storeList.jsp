@@ -72,7 +72,7 @@
 			</span>
 		</div>
 		<div style="margin-top: 45px; text-align: center; font-weight: bold; font-size: x-large;">
-			지금 픽업 가능한 음식점🍕
+			오늘 픽업 가능한 음식점🍕
 	    </div>
 	    
     <!-- [기본 ] 음식점 출력!! -->
@@ -90,6 +90,19 @@
 								<span style="text-align: right; margin-right: 10px;" >
 		    					<a href= "http://localhost:8080/Mypage.do">	<!-- 링크 확인!!!!!!!!!!!! -->
 	    						<span style="background-color: lightgray; display: flex; text-align: center; width: 700px; height: 100px;">
+	    							<!-- 스토리에 c 문법 사용할 수 있는지 더 찾아보기. -->
+	    							<%-- <c:if test="${data.name eq '짜' }">
+			    						<img src="img/main/1.PNG" width=100px height=90px vertical-align= middle margin-right=70px>
+	    							</c:if>
+	    							<c:if test="${data.name eq '짜2' }">
+			    						<img src="img/main/2.PNG" width=100px height=90px vertical-align= middle margin-right=70px>
+	    							</c:if>
+	    							<c:if test="${data.name eq '짜3' }">
+			    						<img src="img/main/3.PNG" width=100px height=90px vertical-align= middle margin-right=70px>
+	    							</c:if>
+	    							<c:if test="${data.name eq '짜4' }">
+			    						<img src="img/main/3.PNG" width=100px height=90px vertical-align= middle margin-right=70px>
+	    							</c:if> --%>
 		    						<img src="img/main/point.PNG" width=100px height=90px vertical-align= middle margin-right=70px>
 		    						<span style="font-size: large; font-weight: bold; color: black; margin-left: 50px;">
 		    						<br>
@@ -150,13 +163,14 @@ var app = new Vue({
     	resname: "",
     	grade: "",
     	resadd: "",
-    	tempGrade : ""
+    	tempGrade : "",
+    	si : "${si}"
     }   
     , methods: {
     	// 기본 화면 출력 이벤트 (식당 출력)
        	fnGet : function(){
             var self = this;
-            var nparmap = {resname : self.resname, grade : self.grade, resadd : self.resadd}; 
+            var nparmap = {si : self.si }; 
             $.ajax({
                 url:"/main.storelist/list.dox",
                 dataType:"json",	

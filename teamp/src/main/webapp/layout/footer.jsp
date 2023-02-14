@@ -38,7 +38,7 @@
 							<div style="font-weight: nomal; font-size: 10px; font-family:Verdana; margin-top: 2px; display: flex; align-items: center;">
 								사업자 번호 : 109-457-12648-58</div>
 							<div style="font-weight: nomal; font-size: 10px; font-family:Verdana; margin-top: 2px; display: flex; align-items: center;">
-								fax : 32-123-4567 /  E-mail : service@savif.co.kr  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div> 
+								fax : 32-123-4567 /  E-mail : service@saved.co.kr  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div> 
 						</span>
 					</span>
 	</div>

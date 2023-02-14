@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.MainService;
 import com.example.demo.model.Area;
+import com.example.demo.model.Board;
 import com.example.demo.model.Main;
 import com.google.gson.Gson;
 
@@ -44,19 +46,24 @@ public class MainController {
     	request.setAttribute("kind", kind);
     	request.setAttribute("Region", region);
     	List<Area> siList = mainService.selectSiList(map);
+    	System.out.println(siList.get(0).getSi());
     	map.put("si", siList.get(0).getSi());
     	request.setAttribute("siList",  new Gson().toJson(siList));
     	return "/web_main/main"; // WEB-INF에서 호출할 파일명
     }
     // 웹 주소 : 업종 목록 출력
     @RequestMapping("/main.storelist.do") 
-    public String storeList(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public String storeList(Area area, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	//Area area: 이 페이지로 오면서 지역정보를 객체로 가져온다는 의미. 다이얼로그 넘어 올때 객체를 넘겨받는것과 같은 의미(6)
+    	System.out.println(area.getSi()); 
+
     	//세션 연결
     	HashMap<String, Object> map = new HashMap<String, Object>();
     	String id = (String)session.getAttribute("userIdSession");	
     	String kind = (String)session.getAttribute("KindSession");
     	request.setAttribute("userId", id);
     	request.setAttribute("kind", kind);
+    	request.setAttribute("si", area.getSi()); // 지역정보 시를 받아오는 것 request에 다시 넣어준다. 세션에는 따로 저장할 필요없어 넣어주거나 가져오지 않음(7)
     	
     	return "/web_store/storeList"; // WEB-INF에서 호출할 파일명
     }

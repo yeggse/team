@@ -120,11 +120,14 @@
 		<img src="img/main/point.PNG" margin-top= 10px width=50px height=70px>
 		<!-- <input type="text" v-model="region" placeholder="장소를 입력해 주세요" ></input>
 		<button id="btn" @click="fnSearch">선택</button>	조건 넣어줘야 함: 버튼이벤트 생성 : 미선택시 안넘어가게!!!!!! -->
-			<div >
-				<label for="si" >지역을 먼저 설정해주세요~ : </label>
-				<select v-model="si" id="si" onchage="selectBoxChange(this.si);"> 
-					<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
-				</select>
+			<div>
+				<form method="post" id="frm" name="frm"> <!-- form을 통해서 값을 다른 페이지로 값을 넘겨준다는 의미 frm이라는 이름을 주고 id에 form안에의 값이 있다. 넘겨주는 페이지 주소 있어야함!(1)-->
+					<label for="si" class="control-label">먼저 지역을 골라주세요~ : </label>
+					<select id="si" name="si" v-model="si" class="form-control" @change="fnSiChange"> <!-- 선택을 했을때 change가되는데 메소드를 넣어줌(3)-->
+						<option value="">지역선택</option> <!-- 처음 값을 선택할 수 있게 빈값을 넣어준다.(2) -->
+						<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+					</select>
+				</form>
 			</div>
 	</div>
 	
@@ -170,11 +173,16 @@ var app = new Vue({
     	            }
                 }
            }); 
-    	} 	
-    var selectBoxChange = function(si){
-		console.log("값변경테스트: "+si);
-		$("changeInput").val(si);
-	}  
+    	}
+    	,fnSiChange : function(){
+    		if($("#si").val() == ""){//선택된 지역의 값이 빈값이면 화면이 넘어가지 않음
+    			alert("주소를 먼저 선택해 주세요!");//검색버튼 있을때 필요함.
+    		}else{
+	    		document.frm.action = "/main.storelist.do"; //시를 선택하고 이 값으로 페이지를 이동한다는 뜻 (4)
+	    		document.frm.submit(); // 이동하면서 선택한 지역을 저장한다는 의미.(5)
+    		}
+    		//alert($("#si").val());
+    	}
     }
     , created: function () {
 		//this.fnGetList();       

@@ -9,6 +9,7 @@
 			resnum, region, startdate, reskind, resname, resphone, grade, resadd
 		FROM
 			t3_restaurant	
+		where region = '${si}'
 		ORDER BY resnum ASC
 	</select>
 	
