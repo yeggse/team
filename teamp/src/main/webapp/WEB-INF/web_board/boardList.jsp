@@ -10,7 +10,7 @@
 	<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
 	<jsp:include page="/layout/header.jsp"></jsp:include>
 	
-	<title>board 페이지</title>
+	<title>board 공지사항 기본 출력 페이지</title>
 </head>
 <style>
 /*    td{
@@ -20,7 +20,7 @@
         padding : 6px;
     }
      */
-  	      input {
+  	      #input {
             width: 400px;
             margin-top: 0px;
 	        padding: 10px;
@@ -38,8 +38,8 @@
 		       color: white;
 		       padding: 0px;
 	       }
-    .container {max-width:1024px; margin:30px auto; margin-top: 120px;}
-	.board_list {width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:15px 0; border-collapse: collapse;}
+    .container {max-width:1024px; margin:30px auto; margin-top: 120px;}	/* 게시글 출력 파트 */
+	.board_list {table-layout: fixed; width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:15px 0; border-collapse: collapse;}
 	.board_list thead th:first-child {background-image:none;}
 	.board_list thead th {border-bottom:1px solid #ccc; padding:13px 0; color:#3b3a3a; text-align: center; vertical-align:middle;}
 	.board_list tbody td {border-top:1px solid #ccc; padding:13px 0; text-align:center; vertical-align:middle;}
@@ -47,6 +47,36 @@
 	.board_list tbody tr:hover{background:#ffff99;}
 	.board_list tbody td.title {text-align:left; padding-left:20px;}
 	.board_list tbody td a {display:inline-block}
+
+	/* 화면 넘기는 아이템 디자인 */
+.pagination {
+        margin:24px;
+        display: inline-flex;
+        
+    }
+.pagination li {
+    min-width:32px;
+    padding:2px 6px;
+    text-align:center;
+    margin:0 3px;
+    border-radius: 6px;
+    border:1px solid #eee;
+    color:#666;
+}
+.pagination li:hover {
+    background: #E4DBD6;
+}
+.page-item a {
+    color:#666;
+    text-decoration: none;
+}
+.pagination li.active {
+    background-color : red;	/* #E7AA8D */
+    color:#fff;
+}
+ .pagination li.active a {
+    color:#fff;
+} 
 
 </style>
 <body>
@@ -56,13 +86,13 @@
 			<div class="container">
 			<h2>세잎 공지사항</h2>
 			<div style="text-align: center;">
-				<input type="text" placeholder="검색어를 입력해 주세요"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
+				<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
 				<button id="btn"  >검색</button>
 			</div>
 			<table class="board_list">
 				<colgroup>
 					<col width="5%"/>
-					<col width="5%"/>
+					<col width="5%"/> 
 					<col width="*"/>
 					<col width="5%"/>
 					<col width="10%"/>
@@ -70,7 +100,7 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="col"></th>
+						<th scope="col">-</th>
 						<th scope="col">글번호</th>
 						<th scope="col">제목</th>
 						<th scope="col">조회수</th>
@@ -90,8 +120,9 @@
 	               </tr>
 				</tbody>
 			</table>
+		<!-- 페이지 넘어가는 버튼들 -->			
 			<template>
-			<%--   <paginate
+			<paginate
 			    :page-count="pageCount"
 			    :page-range="3"
 			    :margin-pages="2"
@@ -100,8 +131,9 @@
 			    :next-text="'>'"
 			    :container-class="'pagination'"
 			    :page-class="'page-item'">
-			  </paginate> --%>
+			  </paginate>
 			</template>
+			
 		  	<div>
 		  		<button  style="float: right;">글쓰기</button>
 		  		<button  style="float: right; margin-right : 5px;">삭제</button>
@@ -120,10 +152,11 @@ var app = new Vue({
     data: {
         list : [] 
        	, selectedItemList : []
-		, selectPage: 1
+		, selectPage: 1	// 기본 세팅이 1번 페이지로 맞추어져 있음.
        	, pageCount: 1
     }   
     , methods: {
+    	// 기본 출력 메소드
         fnGetList : function(){
             var self = this;
             var startNum = ((self.selectPage-1) * 10);
@@ -146,7 +179,7 @@ var app = new Vue({
     		var self = this;
     		self.pageChange("/main.board.detail.do", {noticenum : item.noticenum});	// 상세페이지로 해당 인덱스 번호를 넘겨줌~~!
     	}
-		// 화면 전환
+		// 화면 전환 for 게시글 상세 확인
     	, pageChange : function(url, param) {
     		var target = "_self";
     		if(param == undefined){
@@ -175,6 +208,27 @@ var app = new Vue({
     		form.submit();
     		document.body.removeChild(form);
     	}
+		
+		// 페이지 전환 메소드
+		, changePage : function(pageNum) {
+			var self = this;
+			self.selectPage = pageNum;
+			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
+			var lastNum = pageNum * 10
+	        var nparmap = {startNum : startNum, lastNum : lastNum};
+	        $.ajax({
+	            url:"/firstBoard.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {                                       
+	                self.list = data.list;
+	                self.pageCount = Math.ceil(data.cnt / 10);
+	                console.log(self.pageCount);
+	            }
+	        }); 
+			
+		}
     	
     }   
     , created: function () {

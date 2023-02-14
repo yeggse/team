@@ -16,7 +16,7 @@
 	<!-- 게시글 상세 출력 -->
 	<select id="detailBoard" resultType="com.example.demo.model.Board">	
 		SELECT 
-			noticenum, nickname, startdate, title, hits, boardtype, content, id
+			noticenum, nickname, startdate, title, hits, boardtype, content, creatorid
 		FROM
 			t3_board t
 		LEFT OUTER JOIN t3_board_img i on t.noticenum = i.boardnum 
