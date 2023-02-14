@@ -32,8 +32,14 @@
 		WHERE noticenum = #{noticenum}
 	</update>
 
+	<!-- 게시글 작성 -->
+	<insert id="addBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="id" keyColumn="noticenum">	
+		INSERT INTO t3_board 
+			(title, content, hits, startdate, creatorid) 
+		VALUES
+			(#{title}, #{content}, '0', NOW() , #{userId})
+	</insert>
 	
-
 	<!-- <select id="searchBoardList" parameterType="hashmap" resultType="com.example.demo.model.Board">	
 		SELECT
 			board_idx, title, hit_cnt, created_datetime
