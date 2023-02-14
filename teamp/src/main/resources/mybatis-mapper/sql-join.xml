@@ -98,7 +98,13 @@
 			phonenum = #{phonenum},
 			nickname = #{nickname},
 			acc = #{account},
-			address = #{address}
+			address = #{address},
+			resname = #{restaurant},
+			resnum = #{resnum},
+			reskind = #{kind},
+			region = #{region},
+			resad = #{resad},
+			resphone = #{resphonenum}
 		WHERE 
 			id = #{id}
 	</update>

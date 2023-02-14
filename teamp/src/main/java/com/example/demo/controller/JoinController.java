@@ -118,8 +118,19 @@ public class JoinController {
 		return "/datachange"; // WEB-INF에서 호출할 파일명
 	}
 	@RequestMapping("/datachange2.do")
-	public String main3(Model model) throws Exception {
-
+	public String main3(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+    	String id = (String)session.getAttribute("userIdSession");
+    	String name = (String)session.getAttribute("userNameSession");
+    	int frontregisnum = (Integer)session.getAttribute("userFrontregisnumSession");
+    	int afterregisnum = (Integer)session.getAttribute("userAfterregisnumSession");
+        String add = (String)session.getAttribute("userAddSession");
+        
+    	request.setAttribute("userId", id);
+    	request.setAttribute("userName", name);
+    	request.setAttribute("userFrontregisnum", frontregisnum);
+    	request.setAttribute("userafterregisnum", afterregisnum);
+    	request.setAttribute("userAdd", add);
 		return "/datachange2"; // WEB-INF에서 호출할 파일명
 	}
 	
