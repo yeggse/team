@@ -54,7 +54,7 @@
 				{{item.nickname}}({{item.startdate}}) : {{item.content}}
 			</div>
 		 	<button @click="fnList" class="btn" style="float: right;">목록으로</button> 
-		 	<!-- <button v-if="info.creatorid == userId" @click="fnEdit" class="btn">수정하기</button> -->	 	<!-- 세션의 id와 게시글의 작성자 아이디가 같을 떄 수정하기 버튼 활성화 -->
+		 	<button @click="fnEdit" class="btn">수정하기</button>	 	<!--v-if="info.creatorid == userId" :  세션의 id와 게시글의 작성자 아이디가 같을 떄 수정하기 버튼 활성화 -->
 		</div>
 	</div>
 	        
@@ -108,7 +108,7 @@ var app = new Vue({
         } */
     	, fnEdit : function(){
 			var self = this;
-			self.pageChange("./edit.do", {boardIdx : self.idx});
+			self.pageChange("./main.board.edit.do", {boardIdx : self.idx});
 		}
 		
 		// 목록으로 가기 버튼

@@ -53,13 +53,15 @@ public class BoardController {
 	}
 	
 	
-    // 웹 주소 :  게시글 상세보기 출력
+    // 웹 주소 :  게시글 상세보기
     @RequestMapping("/main.board.detail.do") 
     public String boardDetail(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
     	String id = (String)session.getAttribute("userIdSession");
     	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
+    	String kind = (String)session.getAttribute("KindSession");
     	System.out.println(map.get("noticenum"));
     	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
     	return "/web_board/boardDetail"; // WEB-INF에서 호출할 파일명
     }
     // 게시글 상세 출력 데이터 호출
@@ -71,6 +73,29 @@ public class BoardController {
 		resultMap.put("message", "성공");
 		return new Gson().toJson(resultMap);
 	}
+	
+    // 웹 주소 :  게시글 수정하기
+    @RequestMapping("/main.board.edit.do") 
+    public String boardEdit(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+    	String id = (String)session.getAttribute("userIdSession");
+    	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
+    	String kind = (String)session.getAttribute("KindSession");
+    	System.out.println(map.get("noticenum"));
+    	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
+    	return "/web_board/boardEdit"; // WEB-INF에서 호출할 파일명
+    }
+    // 게시글 상세 출력 데이터 호출
+	@RequestMapping(value = "/editBoard.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String editBoardList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		boardService.editBoard(map);
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
+	
+	
 }
 
 

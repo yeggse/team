@@ -11,8 +11,8 @@
 				t3_board
 			ORDER BY noticenum DESC
 			LIMIT #{startNum}, #{lastNum}
-				
 	</select>
+	
 	<!-- 게시글 상세 출력 -->
 	<select id="detailBoard" resultType="com.example.demo.model.Board">	
 		SELECT 
@@ -22,8 +22,17 @@
 		LEFT OUTER JOIN t3_board_img i on t.noticenum = i.boardnum 
 		WHERE
 			t.noticenum = #{noticenum}
-				
 	</select>
+	
+	<!-- 게시글 수정 -->
+	<update id="editBoard" parameterType="hashmap" >	
+		UPDATE t3_board 
+		SET
+			title = #{title}, content = #{content} 
+		WHERE noticenum = #{noticenum}
+	</update>
+
+	
 
 	<!-- <select id="searchBoardList" parameterType="hashmap" resultType="com.example.demo.model.Board">	
 		SELECT

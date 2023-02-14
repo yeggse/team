@@ -16,15 +16,6 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired //Mapper와 연결
 	private BoardMapper boardMapper;
 
-	// 인터페이스 구체화
-//	@Override
-//	public List<Board> selectBoardList(HashMap<String, Object> map) throws Exception {
-//		// TODO Auto-generated method stub
-//		
-//		return boardMapper.selectBoardList(map); // db를 호출하는 mapper와 연결
-//	}
-	
-
 		// 게시글 기본 출력
 		@Override
 		public List<Board> firstBoard(HashMap<String, Object> map) throws Exception {
@@ -48,6 +39,13 @@ public class BoardServiceImpl implements BoardService{
 		//	resultMap.put("commentList", commentList);
 			resultMap.put("board", board);
 			return resultMap;
+		}
+
+		//게시글 수정
+		@Override
+		public void editBoard(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			boardMapper.editBoard(map);	//수정만 존재함으로 return이 필요 없다!
 		}
 
 		
