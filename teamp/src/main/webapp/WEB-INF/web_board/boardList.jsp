@@ -78,6 +78,30 @@
     color:#fff;
 } 
 
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #a4e271;
+	background-color:#a5d296;
+	border-radius:6px;
+	border:1px solid #74b807;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #77a809 5%, #89c403 100%);
+	background-color:#77a809;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
 </style>
 <body>
 	<div id="app">
@@ -135,8 +159,8 @@
 			</template>
 			
 		  	<div>
-		  		<button  style="float: right;">글쓰기</button>
-		  		<button  style="float: right; margin-right : 5px;">삭제</button>
+		  		<button @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
+		  		<button class="myButton" style="float: right; margin-right : 5px;">삭제</button>
 		  	</div>
 		  	
 		  </div>	
@@ -227,7 +251,11 @@ var app = new Vue({
 	                console.log(self.pageCount);
 	            }
 	        }); 
-			
+		}
+		, fnAdd : function(){
+    		var self = this;
+    		console.log(${userId});
+    		self.pageChange("/main.board.add.do", {});
 		}
     	
     }   
