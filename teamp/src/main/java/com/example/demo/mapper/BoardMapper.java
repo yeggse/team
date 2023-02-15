@@ -22,4 +22,6 @@ public interface BoardMapper {
 	// 게시글 추가
 	void addBoard(HashMap<String, Object> map);	//insert
 	
+	// 게시글 삭제
+	void deleteBoard(HashMap<String, Object>map);	// delete
 }

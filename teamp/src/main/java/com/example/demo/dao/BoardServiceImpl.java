@@ -53,6 +53,12 @@ public class BoardServiceImpl implements BoardService{
 			// TODO Auto-generated method stub
 			boardMapper.addBoard(map);	//추가만 존재함으로 return이 필요 없다!
 		}
+		// 게시글 삭제
+		@Override
+		public void deleteBoard(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			boardMapper.deleteBoard(map);
+		}
 
 		
 }

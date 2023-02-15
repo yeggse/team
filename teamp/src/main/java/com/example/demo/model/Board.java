@@ -11,8 +11,15 @@ public class Board {
 	private String content;
 	private String id;
 	private String image;
+    private String creatorid;
     
-    public String getImage() {
+    public String getCreatorid() {
+		return creatorid;
+	}
+	public void setCreatorid(String creatorid) {
+		this.creatorid = creatorid;
+	}
+	public String getImage() {
 		return image;
 	}
 	public void setImage(String image) {

@@ -6,7 +6,7 @@
 	<!-- 게시글 기본출력 -->
 	<select id="firstBoardList" parameterType="hashmap" resultType="com.example.demo.model.Board">	
 			SELECT 
-				noticenum, nickname, startdate, title, hits
+				noticenum, nickname, startdate, title, hits, creatorid, boardtype
 			FROM
 				t3_board
 			ORDER BY noticenum DESC
@@ -35,10 +35,20 @@
 	<!-- 게시글 작성 -->
 	<insert id="addBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="id" keyColumn="noticenum">	
 		INSERT INTO t3_board 
-			(title, content, hits, startdate, creatorid) 
+			(title, content, hits, startdate, creatorid, boardtype, nickname) 
 		VALUES
-			(#{title}, #{content}, '0', NOW() , #{userId})
+			(#{title}, #{content}, '0', NOW() , #{userId}, #{boardtype}, #{nickname})
 	</insert>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard" parameterType="hashmap">	
+		DELETE FROM 
+			t3_board 
+		WHERE 
+			noticenum IN ( 
+				<foreach collection="list" item="item" separator=" , ">#{item.noticenum}</foreach> 
+			) 
+	</delete>
 	
 	<!-- <select id="searchBoardList" parameterType="hashmap" resultType="com.example.demo.model.Board">	
 		SELECT

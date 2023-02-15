@@ -30,17 +30,19 @@
 		       color: white;
 		       padding: 0px;
 	       }
-
 </style>
 <body>
 	<div id="app">
 		<div class="container">
 			<h2>공지사항 상세보기 - 내용출력 이벤트 등 필요! </h2>
 			<div class="card">
-				<h3 class="card-header p-4">
+				<h2 class="card-header p-4">
 					{{info.title}}
-					<span class="badge badge-pill badge-dark pull-right" style="float: right;">{{info.createdDatetime}}</span>
-				</h3>
+				</h2>
+				<div class="card-body1">
+					<h4 style="font-size: large; margin-left: 20px;">분류
+					<span class="badge badge-pill badge-dark pull-right" style="font-size: large; float: right;">{{info.startdate}}</span></h4>
+				</div>
 				<div class="card-body">
 				   	<div v-if="info.img != null" style="margin: 10px 10px 10px 10px;">	<!-- info.img : 이미지 경로(img/이미지 이름) -->
 				   		<img :src="info.img"/>	<!-- src앞에 콜론: 을 붙이면 변수로 지정가능 -->
@@ -54,7 +56,7 @@
 				{{item.nickname}}({{item.startdate}}) : {{item.content}}
 			</div>
 		 	<button @click="fnList" class="btn" style="float: right;">목록으로</button> 
-		 	<button @click="fnEdit" class="btn">수정하기</button>	 	<!--v-if="info.creatorid == userId" :  세션의 id와 게시글의 작성자 아이디가 같을 떄 수정하기 버튼 활성화 -->
+		 	<button v-if="'admin' == userId"  @click="fnEdit" class="btn">수정하기</button>	 	
 		</div>
 	</div>
 	        
@@ -106,6 +108,7 @@ var app = new Vue({
                 }
             }); 
         } */
+        
     	, fnEdit : function(){
 			var self = this;
 			self.pageChange("./main.board.edit.do", {boardIdx : self.idx});
