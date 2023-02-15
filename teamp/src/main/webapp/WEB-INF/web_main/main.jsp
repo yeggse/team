@@ -220,7 +220,7 @@ var app = new Vue({
     	    	        console.log(self.reskind);
 				        alert("성공");
 				        document.frm.action = "/main.storelist.do"; //시를 선택하고 이 값으로 페이지를 이동한다는 뜻 (4)
-						document.frm.submit(); // 이동하면서 선택한 지역을 저장한다는 의미.(5)
+						document.frm.submit(); // 이동하면서 선택한 지역을 저장한다는 의미.(5)1
 				        }
 				
 					}
