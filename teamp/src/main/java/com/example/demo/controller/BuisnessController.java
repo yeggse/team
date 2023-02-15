@@ -26,15 +26,32 @@ public class BuisnessController {
 	HttpSession session;	
 	// Service 인터페이스 객체 생성 및 연결1
     // 웹 주소
+//    @RequestMapping("/menumanagementbusiness.do") 
+//    public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+//    	HashMap<String, Object> map = new HashMap<String, Object>();
+//    	String kind = (String)session.getAttribute("KindSession");
+//    	String id = (String)session.getAttribute("userIdSession");
+//    	String resnum = (String)session.getAttribute("userResnumSession");
+//    	String reskind = (String)session.getAttribute("userReskindSession");
+//    	
+//    	
+//    	request.setAttribute("kind", kind);
+//    	request.setAttribute("userId", id);
+//    	request.setAttribute("resnum", resnum);
+//    	request.setAttribute("reskind", reskind);
+//    	
+//    	return "/menumanagement_business"; // WEB-INF에서 호출할 파일명
+//    }
+    
     @RequestMapping("/menumanagementbusiness.do") 
-    public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public String menumanagement(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
     	HashMap<String, Object> map = new HashMap<String, Object>();
     	String kind = (String)session.getAttribute("KindSession");
     	String id = (String)session.getAttribute("userIdSession");
     	
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id);
-    	return "/menumanagement_business"; // WEB-INF에서 호출할 파일명
+    	return "/web_business/menumanagement"; // WEB-INF에서 호출할 파일명
     }
     @RequestMapping("/menuaddbusiness.do") 
     public String menuadd(Model model) throws Exception{
