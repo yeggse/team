@@ -102,7 +102,9 @@ height:6rem;
  .pagination li.active a {
     color:whir;
 } 
-
+.tdinput{
+width:2rem;
+}
 
 
 
@@ -121,23 +123,25 @@ height:6rem;
 			<table class="board_list">
 				<colgroup>
 					<col width="5%"/>
-					<col width="5%"/> 
 					<col width="10%"/> 
-					<col width="*"/>
-					<col width="5%"/>
-					<col width="10%"/>
+					<col width="10%"/> 
 					<col width="20%"/>
+					<col width="12.5%"/>
+					<col width="15%"/>
+					<col width="5%"/>
+					<col width="5%"/>
 				</colgroup>
 				<thead>
 					<tr>
 						<th scope="col">-</th>
 						<th scope="col">메뉴명</th>
 						<th scope="col">가격</th>
-						<th scope="col">재고</th>
 						<th scope="col">메뉴설명</th>
 						<th scope="col">사진</th>
 						<th scope="col">업로드날짜</th>
 						<th scope="col">수정날짜</th>
+						<th scope="col">재고</th>
+						<th scope="col">-</th>
 					</tr>
 				</thead>
 				<!-- db 수정되면 알맞은 값 가져오기 -->
@@ -145,12 +149,29 @@ height:6rem;
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
 	                   <td @click="fnDetailView(item)">{{item.menuname}}</td> 
-	                   <td @click="fnDetailView(item)">{{item.price}}</td> 
-	                   <td @click="fnDetailView(item)">{{item.supply}}</td> 
+	                   <td @click="fnDetailView(item)">{{item.price}}원</td> 
 	                   <td @click="fnDetailView(item)">{{item.introduce}}</td>
-	                   <td @click="fnDetailView(item)"><img src="{{item.picture}}"></td>
+	                   <td @click="fnDetailView(item)">{{item.picture}}<img src=""></td>
 	                   <td @click="fnDetailView(item)">{{item.startdate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.enddate}}</td>
+	                   <td @click="fnDetailView(item)">{{item.supply}}</td> 
+	                   <td @click=""><button>수정</button></td> 
+	                   <!-- 재고 수정관련 html (미완성) -->
+    					<!-- 	<td>
+							<button type ="button" onclick="fnCalCount('p',this);">+</button>
+        					<input class="tdinput" type="text" name="pop_out" value= "{{item.supply}}"/>  values에 값 어떻게 넣어야하는지 모르겠음 
+        					<button type="button" onclick="fnCalCount('m', this);">-</button>
+    						</td> -->
+    						
+    							
+	                   <!--------------------------------------------------------------------  -->
+	                  			<form action="">
+								<fieldset>
+										<legend>input type</legend>
+										<p><label for="number">수량: </label><input type="number" min="1"  max="10" step="1" value="1" id="number"/></p>
+								</fieldset>
+								</form>
+	                   
 	               	
 	               </tr>
 				</tbody>
@@ -176,7 +197,6 @@ height:6rem;
 		  	
 		  </div>	
 		  	</div>
-	        
 	</div>
 </body>
 
@@ -195,6 +215,23 @@ var app = new Vue({
         , boardtype : ""
     }   
     , methods: {
+/*     	//재고 수정관련 메소드 (미완성)
+    	function fnCalCount(type, ths){
+    	    var $input = $(ths).parents("td").find("input[name='pop_out']");
+    	    var tCount = Number($input.val());
+    	    var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html());
+    	    
+    	    if(type=='p'){
+    	        if(tCount < tEqCount) $input.val(Number(tCount)+1);
+    	        
+    	    }else{
+    	        if(tCount >0) $input.val(Number(tCount)-1);    
+    	        }
+    	}
+    	 /////////////////////////////////////////////// */
+    	
+    	
+    	
     	// 기본 출력 메소드
         fnGetList : function(){
             var self = this;
@@ -301,11 +338,6 @@ var app = new Vue({
 	}
 });
 </script> 
-
-
-
-
-
 
 </html>
 
