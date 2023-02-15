@@ -7,6 +7,7 @@ import com.example.demo.model.Join;
 
 public interface JoinService {
      int getMemberList(HashMap<String, Object> map);
+     int getRes(HashMap<String, Object> map);
      int getCheck(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
      int getnickCheck(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
      Join searchpw(HashMap<String, Object> map) throws Exception; 

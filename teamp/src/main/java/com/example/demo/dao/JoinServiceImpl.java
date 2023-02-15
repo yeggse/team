@@ -77,4 +77,10 @@ public class JoinServiceImpl implements JoinService{
 		return joinMapper.searchid(map);
 	}
 
+	@Override
+	public int getRes(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return joinMapper.insertRes(map);
+	}
+
 }

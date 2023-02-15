@@ -78,6 +78,7 @@ a {
 </style>
 </head>
 <body>
+
 	<div
 		style="margin-top: 190px; background-color: white; height: 50px; font-weight: bolder; font-size: 45px; text-align: center;">
 		<img style="vertical-align: middle; margin-right: 20px"
@@ -154,7 +155,6 @@ a {
 					address : "",
 					account : "",
 					nickname : "",
-					resnum : '0',
 					num : "",
 					idcheck : false,
 					agecheck : false,
@@ -215,7 +215,7 @@ a {
 						var nparmap = {
 							id : self.id,
 							pwd : self.pwd,
-							kind : "일반",
+							kind : "A",
 							phonenum : self.num,
 							acc : self.account,
 							name : self.name,
@@ -223,7 +223,12 @@ a {
 							frontregisnum : self.age,
 							afterregisnum : self.age1,
 							nickname : self.nickname,
-							
+							resname : "",
+							resnum : 0,
+							reskind : "",
+							region : "",
+							resad : "",
+							resphone : 0
 						};
 						console.log(nparmap);
 						if (self.pwd != self.pwd2) {

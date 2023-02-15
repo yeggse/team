@@ -124,7 +124,7 @@ a {
 				style="margin-left: 45px"></input>
 		</div>
 		<div class="div2">
-			사업자번호 <input type="text" id="text1" v-model="num"
+			사업자번호 <input type="text" id="text1" v-model="resnum"
 				style="margin-left: 30px"></input>
 		</div>
 		<div class="div2">
@@ -172,7 +172,7 @@ a {
 			nickname : "",
 			num : "",
 			restaurant : "",
-			num : "";
+			resnum : "",
 			kind : "",
 			region : "",
 			resad : "",
@@ -237,7 +237,7 @@ a {
 				var nparmap = {
 					id : self.id,
 					pwd : self.pwd,
-					kind : "사업자",
+					kind : "B",
 					phonenum : self.num,
 					acc : self.account,
 					name : self.name,
@@ -263,9 +263,9 @@ a {
 						|| self.reskind == "" || self.region == ""
 						|| self.resad == "" || self.resphone == "") {
 					alert("빈칸을 확인해주세요");
-				} else if(!self.idcheck){
+				} else if (!self.idcheck) {
 					alert("아이디 중복확인을 해주세요");
-				} else if(!self.nickcheck){
+				} else if (!self.nickcheck) {
 					alert("닉네임 중복확인을 해주세요");
 				} else {
 					$.ajax({
@@ -278,44 +278,45 @@ a {
 							if (data.result == "success") {
 								alert("회원가입 성공!");
 								self.flg = true;
-								self.pageChange("/login.do",{});
+								self.pageChange("/login.do", {});
 							} else {
 								alert("회원가입 실패!");
 							}
 
 						}
 					})
+					
 				}
+			},
+			pageChange : function(url, param) {
+				var target = "_self";
+				if (param == undefined) {
+					//   this.linkCall(url);
+					return;
+				}
+				var form = document.createElement("form");
+				form.name = "dataform";
+				form.action = url;
+				form.method = "post";
+				form.target = target;
+				for ( var name in param) {
+					var item = name;
+					var val = "";
+					if (param[name] instanceof Object) {
+						val = JSON.stringify(param[name]);
+					} else {
+						val = param[name];
+					}
+					var input = document.createElement("input");
+					input.type = "hidden";
+					input.name = item;
+					input.value = val;
+					form.insertBefore(input, null);
+				}
+				document.body.appendChild(form);
+				form.submit();
+				document.body.removeChild(form);
 			}
-			, pageChange : function(url, param) {
-		        var target = "_self";
-		        if(param == undefined){
-		        //   this.linkCall(url);
-		           return;
-		        }
-		        var form = document.createElement("form"); 
-		        form.name = "dataform";
-		        form.action = url;
-		        form.method = "post";
-		        form.target = target;
-		        for(var name in param){
-		          var item = name;
-		          var val = "";
-		          if(param[name] instanceof Object){
-		             val = JSON.stringify(param[name]);
-		          } else {
-		             val = param[name];
-		          }
-		          var input = document.createElement("input");
-		           input.type = "hidden";
-		           input.name = item;
-		           input.value = val;
-		           form.insertBefore(input, null);
-		       }
-		        document.body.appendChild(form);
-		        form.submit();
-		        document.body.removeChild(form);
-		     }
 		},
 		created : function() {
 

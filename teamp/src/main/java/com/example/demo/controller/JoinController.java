@@ -157,14 +157,18 @@ public class JoinController {
  	public String searchBbsList1(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
  		HashMap<String, Object> resultMap = new HashMap<String, Object>();
  	    int num = joinService.getMemberList(map);
+ 	    int num2 = joinService.getRes(map);
  		if(num>0) {
  			resultMap.put("result", "success");
  		}else {
  			resultMap.put("result", "fail");
  		}
  		resultMap.put("list", num);
+ 		resultMap.put("list", num2);
  		return new Gson().toJson(resultMap);
  	}
+	
+	
 	
     @RequestMapping(value = "/join/check.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
  	@ResponseBody
