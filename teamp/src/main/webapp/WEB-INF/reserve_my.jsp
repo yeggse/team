@@ -33,7 +33,7 @@
     clear:both;
     padding:0.5rem 0.5rem;
     position:relative;
-    min-width:40px;
+    min-width:2.5rem;
 }
 #ulTable > li > ul > li { 
     float:left;
