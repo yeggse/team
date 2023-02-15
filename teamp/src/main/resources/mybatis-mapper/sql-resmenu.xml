@@ -21,5 +21,14 @@
 		WHERE orderer = #{id}
 		
 	</select>
+	
+<select id="selectPaymentmy1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+		SELECT
+			ordernum, menuname, price, resnum
+		FROM
+			t3_reserve
+		WHERE
+		 	orderer = #{id} AND salecomple = "Y"
+	</select>
 
 </mapper>

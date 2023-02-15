@@ -60,4 +60,14 @@ public class ResmenuController {
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}
+	
+	//payment_my
+	@RequestMapping(value = "/Res2.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String paymentmy(Model model,@RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Res> list = resmenuService.selectPaymentmy1(map);
+		resultMap.put("list", list);
+		return new Gson().toJson(resultMap);
+	}
 }

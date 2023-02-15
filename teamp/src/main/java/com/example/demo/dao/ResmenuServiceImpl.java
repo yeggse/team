@@ -27,4 +27,9 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			return resmenuMapper.selectResmenu1(map);
 		}
+		@Override
+		public List<Res> selectPaymentmy1(HashMap<String, Object> map) throws Exception {
+			// TODO Auto-generated method stub
+			return resmenuMapper.selectPaymentmy1(map);
+		}
 }
