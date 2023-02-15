@@ -2,48 +2,70 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.demo.mapper.ResmenuMapper">
-	<select id="selectResmenu" parameterType="hashmap"
-		resultType="com.example.demo.model.Res">
+<mapper namespace="com.example.demo.mapper.ResmenuMapper">	
+	<select id="selectResmenu" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
-		*
+			*
 		FROM
-		t3_resmenu
+			t3_resmenu
 		WHERE 1=1
-
+		
 	</select>
-	<!-- group by 컬럼명 -->
+<!-- group by 컬럼명 -->
 
-	<select id="selectResmenu1" parameterType="hashmap"
-		resultType="com.example.demo.model.Res">
+<select id="selectResmenu1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
-		ordernum,menuname,pickuptime,payment,price
+			ordernum,menuname,pickuptime,payment,price
 		FROM
-		t3_reserve
+			t3_reserve
 		WHERE orderer = #{id}
-
+		
 	</select>
+	
+<select id="selectPaymentmy1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+		SELECT
+			ordernum, menuname, price, resnum
+		FROM
+			t3_reserve
+		WHERE
+		 	orderer = #{id} AND salecomple = "Y"
+	</select>
+	
+	
+	
+	
 	
 	<!-- 사업자 메뉴관리 페이지에 사용 -->
 <select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
 			resnum, reskind, startdate, enddate, menuname, picture, introduce, price, supply, orderer  
 		FROM
-			t3_resmenu
-		WHERE
-		 	orderer = #{id} AND reskind ="chi"
-		 	<!--  -->
-	</select>
+			t3_resmenu ORDER BY resnum DESC
+			<!-- 
+			LIMIT #{startNum}, #{lastNum}
+			 -->
+	<!-- 	WHERE
+			reskind ="chi" -->
+			
+			
+	 	<!-- ORDER BY 
+	 		noticenum DESC
+		LIMIT 
+			#{startNum}, #{lastNum}  -->
 
-	<select id="selectPaymentmy1" parameterType="hashmap"
-		resultType="com.example.demo.model.Res">
-		SELECT
-		ordernum, menuname, price, resnum
+
+		<!--  
+		WHERE
+			orderer = #{id} AND reskind ="chi"
+		--> 	
+	</select>
+	<!-- 사업자 메뉴관리 페이지 게시물 갯수 -->
+	<select id="selectResmenuCnt" resultType="int">	
+		SELECT 
+			COUNT(*) AS CNT
 		FROM
-		t3_reserve
-		WHERE
-		orderer = #{id} AND salecomple = "Y"
+			t3_resmenu
 	</select>
-
 	
+
 </mapper>

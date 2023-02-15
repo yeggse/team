@@ -1,9 +1,7 @@
 package com.example.demo.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.BoardService;
 import com.example.demo.model.Board;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -89,7 +85,7 @@ public class BoardController {
     	request.setAttribute("kind", kind);
     	return "/web_board/boardEdit"; // WEB-INF에서 호출할 파일명
     }
-    // 게시글 수정 데이터 호출
+    // 게시글 상세 출력 데이터 호출
 	@RequestMapping(value = "/editBoard.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String editBoardList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -121,21 +117,19 @@ public class BoardController {
 		resultMap.put("noticenum", map.get("id")); //!!
 		return new Gson().toJson(resultMap);
 	}
-	
-    // 게시글 삭제 데이터 호출
-	@RequestMapping(value = "/deleteBoard.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String deleteBoardList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		String json = map.get("list").toString();
-		ObjectMapper mapper = new ObjectMapper();
-	    List<Map<String, Object>> list = mapper.readValue(json, new TypeReference<ArrayList<Map<String, Object>>>(){});
-		map.put("list", list);
-	    boardService.deleteBoard(map);
-		resultMap.put("message", "성공");
-		return new Gson().toJson(resultMap);
-		
-	}
+	/*
+	 * // 게시글 작성 데이터 호출
+	 * 
+	 * @RequestMapping(value = "/add.dox", method = RequestMethod.POST, produces =
+	 * "application/json;charset=UTF-8")
+	 * 
+	 * @ResponseBody public String add(Model model, @RequestParam HashMap<String,
+	 * Object> map ) throws Exception { HashMap<String, Object> resultMap = new
+	 * HashMap<String, Object>(); String img = (String) map.get("img");
+	 * boardService.insertBoard(map); resultMap.put("message", "성공");
+	 * resultMap.put("boardIdx", map.get("id")); return new !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	 * Gson().toJson(resultMap); }
+	 */
 }
 
 

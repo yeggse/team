@@ -76,16 +76,15 @@ height:6rem;
 
 	/* 화면 넘기는 아이템 디자인 */
 .pagination {
-        margin:24px;
+        margin:1.5rem;
         display: inline-flex;
-        
     }
 .pagination li {
     min-width:32px;
     padding:2px 6px;
     text-align:center;
-    margin:0 3px;
-    border-radius: 6px;
+    margin:0 0.3rem;
+    border-radius: 0.33rem;
     border:1px solid #eee;
     color:#666;
 }
@@ -98,10 +97,10 @@ height:6rem;
 }
 .pagination li.active {
     background-color : red;	/* #E7AA8D */
-    color:#fff;
+    color:white;
 }
  .pagination li.active a {
-    color:#fff;
+    color:whir;
 } 
 
 
@@ -114,7 +113,7 @@ height:6rem;
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>세잎 공지사항</h2>
+			<h2>세잎 메뉴관리</h2>
 			<div style="text-align: center;">
 				<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
 				<button id="btn"  >검색</button>
@@ -145,19 +144,19 @@ height:6rem;
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
-	                   <td @click="fnDetailView(item)">{{item.noticenum}}</td> 
-	                   <td @click="fnDetailView(item)">{{item.boardtype}}</td> 
-	                   <td @click="fnDetailView(item)">{{item.title}}</td> 
-	                   <td @click="fnDetailView(item)">{{item.hits}}</td>
-	                   <td @click="fnDetailView(item)">{{item.nickname}><img src="https://a.cdn-hotels.com/gdcs/production188/d1750/2255e427-d720-43e2-ae85-6a6719fafc03.jpg?impolicy=fcrop&w=1600&h=1066&q=medium"></td>
+	                   <td @click="fnDetailView(item)">{{item.menuname}}</td> 
+	                   <td @click="fnDetailView(item)">{{item.price}}</td> 
+	                   <td @click="fnDetailView(item)">{{item.supply}}</td> 
+	                   <td @click="fnDetailView(item)">{{item.introduce}}</td>
+	                   <td @click="fnDetailView(item)"><img src="{{item.picture}}"></td>
 	                   <td @click="fnDetailView(item)">{{item.startdate}}</td>
-	                   <td @click="fnDetailView(item)">{{item.startdate}}</td>
+	                   <td @click="fnDetailView(item)">{{item.enddate}}</td>
 	               	
 	               </tr>
 				</tbody>
 			</table>
-		<!-- 페이지 넘어가는 버튼들 -->			
-			<template>
+		<!-- 페이지 넘어가는 버튼들 -->		
+			<div>
 			<paginate
 			    :page-count="pageCount"
 			    :page-range="3"
@@ -168,7 +167,7 @@ height:6rem;
 			    :container-class="'pagination'"
 			    :page-class="'page-item'">
 			  </paginate>
-			</template>
+			  </div>
 		  	<div>
 		  	<!-- v-if에 조건을 'kind'가 '사업자라면'으로 변경하기  -->
 		  		<button v-if="'admin' == userId" @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
@@ -180,6 +179,9 @@ height:6rem;
 	        
 	</div>
 </body>
+
+
+
 <script type="text/javascript">
 Vue.component('paginate', VuejsPaginate)
 var app = new Vue({ 
@@ -198,19 +200,43 @@ var app = new Vue({
             var self = this;
             var startNum = ((self.selectPage-1) * 10);
     		var lastNum = self.selectPage * 10
-            var nparmap = {startNum : startNum, lastNum : lastNum};
+            var nparmap = {startNum : self.startNum, lastNum : self.lastNum}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
             $.ajax({
-                url:"/firstBoard.dox",
+                url:"/selectResmenu2.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
                 success : function(data) {                                       
 	                self.list = data.list;
-	                self.pageCount = Math.ceil(data.cnt / 10);
-	                console.log(self.pageCount);
+	                self.pageCount = Math.ceil(data.cnt / 10);//게시물 갯수를 10으로 나누고 Math.ceil함수를 사용해서 필요한 페이지 갯수 정함 ex)(data.cnt/10)=1.02 -->페이지 2개
+	                console.log("현재 페이지의 갯수는: " + self.pageCount);
                 }
             }); 
         }  
+		// 페이지 전환 메소드
+		, changePage : function(pageNum) {
+			var self = this;
+			self.selectPage = pageNum;
+			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
+			var lastNum = pageNum * 10
+	        var nparmap = {startNum : startNum, lastNum : lastNum};
+	        $.ajax({
+	            url:"/firstBoard.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {                                       
+	                self.list = data.list;
+	                self.pageCount = Math.ceil(data.cnt / 10);
+	                console.log(self.pageCount);
+	            }
+	        }); 
+		}
+		
+		
+		
+		
+		
     	// 게시글 상세 확인
     	, fnDetailView : function(item){
     		var self = this;
@@ -245,26 +271,6 @@ var app = new Vue({
     		form.submit();
     		document.body.removeChild(form);
     	}
-		
-		// 페이지 전환 메소드
-		, changePage : function(pageNum) {
-			var self = this;
-			self.selectPage = pageNum;
-			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
-			var lastNum = pageNum * 10
-	        var nparmap = {startNum : startNum, lastNum : lastNum};
-	        $.ajax({
-	            url:"/firstBoard.dox",
-	            dataType:"json",	
-	            type : "POST", 
-	            data : nparmap,
-	            success : function(data) {                                       
-	                self.list = data.list;
-	                self.pageCount = Math.ceil(data.cnt / 10);
-	                console.log(self.pageCount);
-	            }
-	        }); 
-		}
 		// 작성하기 페이지로 이동
 		, fnAdd : function(){
     		var self = this;
@@ -295,5 +301,12 @@ var app = new Vue({
 	}
 });
 </script> 
+
+
+
+
+
+
 </html>
+
 

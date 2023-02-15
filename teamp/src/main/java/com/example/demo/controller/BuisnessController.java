@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.dao.BoardService;
-import com.example.demo.model.Board;
+import com.example.demo.dao.ResmenuService;
+import com.example.demo.model.Res;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,43 +26,35 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller // 컨트롤러라고 선언함
 public class BuisnessController {
+	@Autowired
+	private ResmenuService resmenuService;
+	
     @Autowired
 	HttpSession session;	
-	// Service 인터페이스 객체 생성 및 연결1
-    // 웹 주소
-//    @RequestMapping("/menumanagementbusiness.do") 
-//    public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-//    	HashMap<String, Object> map = new HashMap<String, Object>();
-//    	String kind = (String)session.getAttribute("KindSession");
-//    	String id = (String)session.getAttribute("userIdSession");
-//    	String resnum = (String)session.getAttribute("userResnumSession");
-//    	String reskind = (String)session.getAttribute("userReskindSession");
-//    	
-//    	
-//    	request.setAttribute("kind", kind);
-//    	request.setAttribute("userId", id);
-//    	request.setAttribute("resnum", resnum);
-//    	request.setAttribute("reskind", reskind);
-//    	
-//    	return "/menumanagement_business"; // WEB-INF에서 호출할 파일명
-//    }
     
+    //사업자 메뉴관리 페이지에 사용 
     @RequestMapping("/menumanagementbusiness.do") 
     public String menumanagement(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
     	HashMap<String, Object> map = new HashMap<String, Object>();
     	String kind = (String)session.getAttribute("KindSession");
     	String id = (String)session.getAttribute("userIdSession");
-    	
+
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id);
     	return "/web_business/menumanagement"; // WEB-INF에서 호출할 파일명
     }
-    @RequestMapping("/menuaddbusiness.do") 
-    public String menuadd(Model model) throws Exception{
-    	return "/menuadd_business"; // WEB-INF에서 호출할 파일명
-    }
-    @RequestMapping("/menuaddbusiness2.do") 
-    public String menuadd2(Model model) throws Exception{
-    	return "/menuadd_business2"; // WEB-INF에서 호출할 파일명
-    }
+    
+    //사업자 메뉴관리 페이지에 사용
+	@RequestMapping(value = "/selectResmenu2.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String firstResmenu2(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Res> list = resmenuService.selectResmenu2(map);
+		int cnt = resmenuService.selectResmenuCnt();
+		resultMap.put("list", list);
+		resultMap.put("cnt", cnt);
+
+		return new Gson().toJson(resultMap);
+	}
 }
