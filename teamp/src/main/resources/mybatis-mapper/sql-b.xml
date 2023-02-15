@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.B">	
+	
+	<!-- 메뉴 추가 -->
+	<insert id="addMenu" parameterType="hashmap" useGeneratedKeys="true" keyProperty="id" keyColumn="noticenum">	
+		INSERT INTO t3_resmenu
+			(resnum, reskind, price, startdate, menuname, introduce, supply, pickuptime) 
+		VALUES
+			( #{price}, NOW() , #{menuname}, #{introduce}, #{supply}, #{pickuptime})
+	</insert>
+	
+	<!--  reskind,   #{resnum}, #{reskind}, -->
+
+</mapper>

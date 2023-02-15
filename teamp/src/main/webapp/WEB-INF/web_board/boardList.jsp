@@ -111,7 +111,7 @@
 			<h2>세잎 공지사항</h2>
 			<div style="text-align: center;">
 				<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
-				<button id="btn"  >검색</button>
+				<button id="btn" @click="fnSearch" >검색</button>
 			</div>
 			<table class="board_list">
 				<colgroup>
@@ -279,6 +279,11 @@ var app = new Vue({
                  }
              });  
     	}
+		// 검색버튼 이벤트
+		, fnSearch : function(){
+    		var self = this;
+    		self.pageChange("/menu.add.do", {});
+		}
     }   
     , created: function () {
     	var self = this;

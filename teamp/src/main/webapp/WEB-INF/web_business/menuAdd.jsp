@@ -3,254 +3,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+	<meta charset="UTF-8">
+	<script src="js/jquery.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  	<link rel="stylesheet" href="css/detail/MenuDetail.css">
   <title>JS Bin</title>
   <jsp:include page="/layout/header.jsp"></jsp:include>
 </head>
 
 <style>
-.body{
-     line-height:2em;        
-     font-family:"맑은 고딕";
-}
-ul, li{ 
-     list-style:none;
-     text-align:center;
-     padding:0;
-     margin:0;
-}
-
-#mainWrapper > ul > li:first-child {
-     text-align: left;
-     font-size:32px;
-     height:40px;
-     vertical-align:middle;
-     line-height:30px;
-}
-#ulTable{
-	margin-top:10px;
-}
-#ulTable > li:first-child > ul > li {
-    background-color:#c9c9c9;
-    font-weight:bold;
-    text-align:center;
-}
-#ulTable > li > ul {
-    clear:both;
-    padding:0px auto;
-    position:relative;
-    min-width:40px;
-}
-#ulTable > li > ul > li { 
-    float:left;
-    font-size:10pt;
-    border-bottom:1px solid silver;
-    vertical-align:baseline;
-}    
-#ulTable > li > ul > li:first-child               	  {width:15%;} /*주문번호*/
-#ulTable > li > ul > li:first-child +li               {width:10%;} /*상호명*/
-#ulTable > li > ul > li:first-child +li+li            {width:10%;} /*메뉴*/
-#ulTable > li > ul > li:first-child +li+li+li         {width:15%;} /*시간*/
-#ulTable > li > ul > li:first-child +li+li+li+li      {width:15%;} /*결제금액*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li	  {width:15%;} /*예약상태*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li+li{width:10%;} /*상태변경*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li+li+li{width:10%;} /*상태변경*/
-#divPaging {
-     clear:both; 
-     margin:0 auto; 
-     width:220px; 
-     height:50px;
-}
-#divPaging > div {
-     float:left;
-     width: 30px;
-     margin:0 auto;
-     text-align:center;
-}
-#liSearchOption {
-	width: 320px;
-	 clear:both;
-     margin-left:350px; 
-     positio;
-	 border: 2px solid black;
-}
-.btnreview{
- 	 background:green;
-  	 color:white;
- 	 border:none;
- 	 width:66px;
-}
-
-.titletext{
-font-size: 2em;
-padding-right: 500px;
-
-
-} 	 
-.ul{
-border: 5px solid red; 
-margin: 10px;
-padding: 10px;
-width: 700px;
-align: center;
-}
-
-.btnonoff{
- 	 background:black;
-  	 color:white;
- 	 border:none;
- 	 width:300px;
- 	 height:30px;
-}
-
-.btnadd{
- 	 background:green;
-  	 color:white;
- 	 border:none;
- 	 width:77px;
- 	 height:35px;
- 	 float:right;
-}
-
-.div1{
-border: 1px solid blue;
-margin:10px;
-padding: 5px;
-}
-
-#mainWrapper{
-	 clear:both;
-     width: 800px;
-     margin-left: 350px; /*가운데 정렬*/
-     margin-right: 350px; /*가운데 정렬*/
-     margin-bottom: 350px; /*가운데 정렬*/
-     border: 2px solid black;
-     position: relative; left: -500px;
-    }
-.div2{
-border: 5px solid black;	
-width: 90%;
-height: 55px;
-padding: 5px;
-margin: 5px;
-}
-.div3{
-border: 5px solid green;	
-width: 90%;
-height: 40px;
-margin-top: 5px;
-}
+	
+		.contain {max-width:1024px; margin:30px auto; margin-top: 120px;}
+  	    input {
+            width: 50%;
+            height: 13%	;
+            margin-top: 0px;
+	        padding: 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
+         } 
+	      #btn{
+		       background-color: #8FBC94;
+		       width: 120px;
+		       height: 50px;
+		       border-radius: 10px;
+		       border: solid 2px #8FBC94;
+		       font-size: large;
+		       font-weight: bolder;
+		       color: white;
+		       padding: 0px;
+	       }
+		h1{font-size: 1em;}
+		h2{font-size: 2em;}
 
 </style>
 
-<body class="body">
+<body>
 <div>
 <jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
-	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
+	<div id="app" style="height: 900px;">
+		<div class="contain">
+				<h2>메뉴 추가하기📝 {{reskind}}</h2>
+			<table class="board_detail" style="margin-top: 20px;">
+				<colgroup>
+					<col width="10%"/>
+					<col width="20%"/>
+					<col width="10%"/>
+					<col width="20%"/>
+				</colgroup>
+				<tr style="border-bottom:2px solid #ccc;">
+					<td style="text-align : center; width: 15%;" ><h1>음식명</h1></td>
+					<td><input type="text" id="title" name="menuname" v-model="menuname" style="font-size: 1.3em; font-weight: 600;"></td>
+					<td style="text-align : center; width: 15%;" ><h1>가격</h1></td>
+					<td><input type="text" id="title" name="price" v-model="price" style="font-size: 1.3em; font-weight: 600;"></td>
+				</tr>
+				<tr style="border-bottom:2px solid #ccc;">
+					<td style="text-align : center; width: 15%;" ><h1>재고</h1></td>
+					<td><input type="text" id="title" name="supply" v-model="supply" style="font-size: 1.3em; font-weight: 600;"></td>
+					<td style="text-align : center; width: 15%;" ><h1>픽업 시간</h1></td>
+					<td><input type="text" id="title" name="pickuptime" v-model="pickuptime" style="font-size: 1.3em; font-weight: 600;"></td>
+				</tr>				
+				<tr style="border-bottom:2px solid #ccc;">
+					<td  style="text-align : center; width: 15%; " ><h1>첨부파일</h1></td>
+					<td colspan="3">
+						<div>
+						    <input type="file" id="file1" name="file1" style="font-size: 1em; font-weight: 500;"> 
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<textarea id="contents" name="introduce" v-model="introduce" style="font-weight: 400;"></textarea>
+					</td>
+				</tr>
+			</table>
+			<button id="btn" @click="fnList" class="btn" style="float: right;">목록으로</button>
+			<button id="btn" @click="fnSave" class="btn" style="float: right;">저장</button>
+		</div>
 	
-    <div id="mainWrapper"> 
-                <!--영업 on/off  -->
-        	<div class="div2">
-			<button class="btnonoff">영업시작</button>        	
-			<button class="btnonoff">영업종료</button>
-			</div>
-                <!-- 메뉴관리 -->
-        	<div class="div3">
-			<span class="titletext">메뉴관리</span>
-			<span>
-			<button class="btnadd">추가</button>
-			</span>   	
-        	</div>
-        <ul class="ul">
-            <!-- 게시판 목록  -->
-            <li>
-                <ul id ="ulTable">
-                    <li>
-                        <ul>
-                            <li>메뉴명</li>
-                            <li>가격</li>
-                            <li>재고</li>
-                            <li>픽업시간</li>
-                            <li>메뉴설명</li>
-                            <li>사진등록여부</li>
-                            <li>삭제</li>
-                            <li>수정</li>
-                        </ul>
-                    </li>
-                    
-                    <!-- 게시물이 출력될 영역 -->
-                    <li>
-                        <ul>
-                            <li>떡볶이</li>
-                            <li>30000원</li>
-                            <li>1개</li>
-                            <li>14:40</li>
-                            <li>맛있어요</li>
-                            <li>등록완료</li>
-                            <li><button @click="fnDelete" class="btnreview" >삭제</button></li>
-                            <li><button class="btnreview">수정</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>떡볶이</li>
-                            <li>30000원</li>
-                            <li>1개</li>
-                            <li>20분뒤</li>
-                            <li>맛있어요</li>
-                            <li>등록완료</li>
-                            <li><button @click="fnDelete" class="btnreview" >삭제</button></li>
-                            <li><button class="btnreview">수정</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>떡볶이</li>
-                            <li>30000원</li>
-                            <li>1개</li>
-                            <li>20분뒤</li>
-                            <li>맛있어요</li>
-                            <li>등록완료</li>
-                            <li><button @click="fnDelete" class="btnreview" >삭제</button></li>
-                            <li><button class="btnreview">수정</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>떡볶이</li>
-                            <li>30000원</li>
-                            <li>1개</li>
-                            <li>20분뒤</li>
-                            <li>맛있어요</li>
-                            <li>등록완료</li>
-                            <li><button @click="fnDelete" class="btnreview" >삭제</button></li>
-                            <li><button class="btnreview">수정</button></li>
-                        </ul>
-                    <li>                                        
-                </ul>
-            </li>
-
-            <!-- 게시판 페이징 영역 -->
-            <li>
-                <div id="divPaging">
-                    <div>◀</div>
-                       <div><b>1</b></div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
-                    <div>5</div>
-                    <div>▶</div>
-                </div>
-            </li>
-        </ul>
-        수정할것: 레이아웃,rem, 사이즈,헤더 푸터 옆에거랑 연동 잘 해보기
+	
+	
+	 </div>
     </div>
-    </div>
-    </div>
+</div>
 </body>
     <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
@@ -260,23 +96,60 @@ margin-top: 5px;
 var app = new Vue({
 	el: '#app',
     data: {
-    	id : ""
-    	, pwd : ""
-    	, pwd2 : ""
-    	, name : ""
-    	, age : ""
-    	, address : ""
-    	, flg : true
-    	, kind : "${kind}"
-    	
-    	
+    	  list : [] 
+  		  , info : {}
+ 		//  , idx : "${map.noticenum}"	// boardList 에서 받아온 값!!!
+   		  , userId : "${userId}"	//세션으로 id가져오기
+   		  , resnum : "${resnum}"
+   		  , reskind : "${reskind}"
+ 		  , selectedItemList : []
+ 	 	  , img : ""
+ 	 	  , price : ""
+ 	 	  , menuname : ""
+ 	 	  , introduce : ""
+ 	 	  , supply :""
+ 	 	  , pickuptime : ""
+ 	 	  
+ 	 		// resnum, reskind 추가 필요
     } 
     , methods: {
-    	
-    	fnDelete: function(){
+		// 저장 버튼
+		fnSave : function(){
     		var self = this;
-    		alert("정말 삭제하시겠습니까?");
-    	}
+    		console.log(self.img);
+	      	var nparmap = {price : self.price, menuname : self.menuname, introduce : self.introduce, supply : self.supply, pickuptime : self.pickuptime}; //, img : self.img 
+	        $.ajax({
+	            url:"/addBoard.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {            
+/* 	            	var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
+	       	        form.append( "file1", $("#file1")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미
+	       	     	form.append( "boardIdx",  data.boardIdx);	// 여기에 있는 boardIdx는 어디로 가나?????
+	       	        
+	       	         $.ajax({
+	       	             url : "/upload"
+	       	           , type : "POST"
+	       	           , processData : false
+	       	           , contentType : false
+	       	           , data : form
+	       	           , success:function(response) { }
+	       	           ,error: function (jqXHR) 
+	       	           {}
+	       	       }); */
+	            	alert("게시글이 저장되었습니다.");
+	           		location.href="/menu.add.do";
+	            }
+	        }); 
+		}
+		// 목록으로 가기 버튼
+		, fnList : function(){
+			location.href="/menumanagementbusiness.do";
+		} 
+		
+
+    
     }   
     , created: function () {
     
