@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@Controller // 컨트롤러라고 선언함
+@Controller // 컨트롤러라고 선언함1
 public class ResmenuController {
 	// Service 인터페이스 객체 생성 및 연결
 	@Autowired
