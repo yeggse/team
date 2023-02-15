@@ -59,6 +59,13 @@ public class BoardServiceImpl implements BoardService{
 			// TODO Auto-generated method stub
 			boardMapper.deleteBoard(map);
 		}
+		
+		//게시글 이미지 추가
+		@Override
+		public void insertBoardImg(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			boardMapper.insertBoardImg(map);
+		}
 
 		
 }

@@ -13,13 +13,13 @@
 			LIMIT #{startNum}, #{lastNum}
 	</select>
 	
-	<!-- 게시글 상세 출력 -->
+	<!-- 게시글 상세 출력 // 동일 칼럼명 들어가 있을 경우. t i 등 지정필수 -->
 	<select id="detailBoard" resultType="com.example.demo.model.Board">	
 		SELECT 
-			noticenum, nickname, startdate, title, hits, boardtype, content, creatorid
+			t.noticenum, nickname, startdate, title, hits, boardtype, content, creatorid, image
 		FROM
 			t3_board t
-		LEFT OUTER JOIN t3_board_img i on t.noticenum = i.boardnum 
+		LEFT OUTER JOIN t3_board_img i on t.noticenum = i.noticenum 
 		WHERE
 			t.noticenum = #{noticenum}
 	</select>
@@ -49,6 +49,14 @@
 				<foreach collection="list" item="item" separator=" , ">#{item.noticenum}</foreach> 
 			) 
 	</delete>
+	
+	<!-- 게시글 이미지 추가 -->
+	<insert id="insertBoardImg" parameterType="hashmap">	
+		INSERT INTO t3_board_img
+			(noticenum, image)  
+		VALUES
+			(#{noticenum}, #{img})
+	</insert>
 	
 	<!-- <select id="searchBoardList" parameterType="hashmap" resultType="com.example.demo.model.Board">	
 		SELECT

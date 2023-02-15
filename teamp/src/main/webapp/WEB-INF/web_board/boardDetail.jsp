@@ -34,7 +34,7 @@
 <body>
 	<div id="app">
 		<div class="container">
-			<h2>공지사항 상세보기 - 내용출력 이벤트 등 필요! </h2>
+			<h2>공지사항 상세보기 - 이미지 내용출력 이벤트 등 필요! </h2>
 			<div class="card">
 				<h2 class="card-header p-4">
 					{{info.title}}
@@ -44,8 +44,8 @@
 					<span class="badge badge-pill badge-dark pull-right" style="font-size: large; float: right;">{{info.startdate}}</span></h4>
 				</div>
 				<div class="card-body">
-				   	<div v-if="info.img != null" style="margin: 10px 10px 10px 10px;">	<!-- info.img : 이미지 경로(img/이미지 이름) -->
-				   		<img :src="info.img"/>	<!-- src앞에 콜론: 을 붙이면 변수로 지정가능 -->
+				   	<div v-if="info.image != null" style="margin: 10px 10px 10px 10px;">	<!-- info.img : 이미지 경로(img/이미지 이름) DB 컬럼이랑 동일한 이름으로!-->
+				   		<img :src="info.image"/>	<!-- src앞에 콜론: 을 붙이면 변수로 지정가능 -->
 				   	</div>
 				   	<div style="margin: 10px 10px 10px 10px;">
 				   		{{info.content}}
