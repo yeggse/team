@@ -29,7 +29,7 @@
                     </a>
                     
 
-                    <div href="#" onclick = "fntest()" class="nav__link collapse">
+                    <div href="#" class="nav__link collapse">
                         <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">결제 관련</span>
 
@@ -80,29 +80,7 @@
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <!-- JS -->
     <script src="js/main.js"></script>
-    <script>
-function fntest(){
-	var self = this;
-    var nparmap = {id : "${userId}"};
-    
-    $.ajax({
-        url:"/Res1.dox",
-        dataType:"json",	
-        type : "POST", 
-        data : nparmap,
-        success : function(data) {
-        	if(data.result == "success"){
-        		
-        		alert(data.user.menuname);
-        		
-        		
-        	} else{
-        		alert("실패")
-        	}
-        }
-    }); 
-}
-</script>
+
    
 </body>
 </html>

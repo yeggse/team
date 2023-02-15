@@ -5,6 +5,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
+  <script src="js/jquery.js"></script>
+  <script src="js/vue.js"></script>
   <title>JS Bin</title>
   <jsp:include page="/layout/header.jsp"></jsp:include>
 </head>
@@ -139,11 +141,11 @@ padding:0rem 1rem 0rem 1rem;
 </style>
 
 <body>
-
-	<div style="width:2483.02px; padding-top:120px;" align="center">
+<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
 	<div class="div0">
 	
-    <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+    
     <div id="mainWrapper">
         	<div class="div2">
             <!-- 게시판 제목 -->
@@ -158,76 +160,43 @@ padding:0rem 1rem 0rem 1rem;
                         <option value='T'>제목</option>
                         <option value='C'>내용</option>
                     </select>
-                    <input id='txtKeyWord' V-model="resnum" />
-                    <input class="btn2" type='button' value='검색' @click="fnTest"/>
+                    <input id='txtKeyWord' />
+                    <input class="btn2" type='button' value='검색' @click=""/>
                 </li>
                 </div>
              <div class="div3">
             <!-- 게시판 목록  -->
             <li>
-                <ul id ="ulTable">
-                    <li>
-                        <ul>
-                            <li>주문번호</li>
-                            <li>상호명</li>
-                            <li>메뉴</li>
-                            <li>시간</li>
-                            <li>결제금액</li>
-                            <li>예약상태</li>
-                            <li>상태변경</li>
-                        </ul>
-                    </li>
-                    
-                    <!-- 게시물이 출력될 영역 -->
-                    <li>
-                        <ul>
-                            <li>1</li>
-                            <li class="left">여기맛집</li>
-                            <li>${userMenuname}</li>
-                            <li>40분</li>
-                            <li>20000원</li>
-                            <li>예약완료</li>
-                            <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>2</li>
-                            <li class="left">여기맛집</li>
-                            <li>짜장면</li>
-                            <li>30분</li>
-                            <li>20000원</li>
-                            <li>예약완료</li>
-                           <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>3</li>
-                            <li class="left">여기맛집</li>
-                            <li>짜장면</li>
-                            <li>40분</li>
-                            <li>20000원</li>
-                            <li>결제취소</li>
-                           <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>4</li>
-                            <li class="left">여기맛집</li>
-                            <li>짜장면</li>
-                            <li>40분</li>
-                            <li>20000원</li>
-                            <li>결제취소</li>
-                           <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
-                        </ul>
-                    <li>                                        
-                </ul>
+            <ul id ="ulTable">
+                <li>
+                    <ul>
+                        <li>주문번호</li>
+                        <li>상호명</li>
+                        <li>메뉴</li>
+                        <li>시간</li>
+                        <li>결제금액</li>
+                        <li>예약상태</li>
+                        <li>상태변경</li>
+                    </ul>
+                </li>
+                
+                <!-- 게시물이 출력될 영역 -->
+                <li>
+                    <ul v-for="(item, index) in list">
+                        <li>{{item.ordernum}}</li>
+                        <li></li>
+                        <li>{{item.menuname}}</li>
+                        <li>{{item.pickuptime}}</li>
+                        <li>{{item.payment}}</li>
+                        <li>{{item.price}}</li>
+                        <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">예약취소</button></li>
+                    </ul>
+                </li>
+            </ul>
             </li>
+			
+			
+
             </div>   
 			<div>
             <!-- 게시판 페이징 영역 -->
@@ -252,5 +221,51 @@ padding:0rem 1rem 0rem 1rem;
 </body>
     <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
+<script type="text/javascript">
+var app = new Vue({ 
+    el: '#app',
+    data: {
+    	list : [] // 전체 데이터 리스트
+        , selectedItemList : []
+        , keyword : ""
+        , id: "${userId}"
+    }   
+    , methods: {
+    	  fnGetList : function(){
+              var self = this;
+              var nparmap = {id: self.id};
+              $.ajax({
+                  url:"/Res1.dox",
+                  dataType:"json",	
+                  type : "POST", 
+                  data : nparmap,
+                  success : function(data) {                                       
+  	                self.list = data.list;
+  	                console.log(self.list);  
+                  }
+              }); 
+          }  
+      
+      	, fnClick : function(){
+      		var self = this;
+      		var nparmap = {keyword : self.keyword}
+              $.ajax({
+              	url:"/Res1.dox",
+              	dataType:"json",	
+                  type : "POST", 
+                  data : nparmap,
+                  success : function(data) {      /* 데이터가 제대로 넘어오면, success실행됨 */                                 
+                  	self.list = data.list;
+                  }
+              });
+      	
+      	}    
 
-
+      }   
+      , created: function () {
+  		this.fnGetList();       
+  	  } 
+    
+   
+});
+</script>

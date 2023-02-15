@@ -12,7 +12,7 @@ public class Res {
 	private String supply;
 	private String ordernum;
 	private String pickuptime;
-	private String Payment;
+	private String payment;
 	public String getResnum() {
 		return resnum;
 	}
@@ -80,10 +80,10 @@ public class Res {
 		this.pickuptime = pickuptime;
 	}
 	public String getPayment() {
-		return Payment;
+		return payment;
 	}
 	public void setPayment(String payment) {
-		Payment = payment;
+		this.payment = payment;
 	}
 	
 }
