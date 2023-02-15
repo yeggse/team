@@ -164,25 +164,26 @@ var app = new Vue({
     	grade: "",
     	resadd: "",
     	tempGrade : "",
-    	si : "${si}"
-    	,reskind : "${reskind}"
+    	si : "${si}",
+    	reskind : "${reskind}"
     }   
     , methods: {
     	// 기본 화면 출력 이벤트 (식당 출력)
        	fnGet : function(){
             var self = this;
-            var nparmap = {si : self.si }; 
+            var nparmap = {si : self.si,reskind:self.reskind}; 
             $.ajax({
                 url:"/main.storelist/list.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
-                success : function(data) {      /* 데이터가 제대로 넘어오면, success실행됨 */   
+                success : function(data) {/* 데이터가 제대로 넘어오면, success실행됨 */   
                 	self.list = data.list;
+                console.log(self.reskind);
    	            	if(self.list.length > 0){
    	            		self.tempGrade = self.list[0].grade;
-   	            	}    
-                	console.log(self.reskind);
+   	            	}
+   	            	
                 }
            });
     	},
@@ -210,7 +211,8 @@ var app = new Vue({
     	
     }
     , created: function () {
-		this.fnGet();       
+		this.fnGet();
+		 
 	}
 });
 </script>

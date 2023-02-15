@@ -9,7 +9,7 @@
 			resnum, region, startdate, reskind, resname, resphone, grade, resadd
 		FROM
 			t3_restaurant	
-		where region = #{si} <!-- 시/도에 있는거 가져오기 --> 
+		where region = #{si} AND reskind = #{reskind} <!-- 시/도에 있는거 가져오기 --> 
 		ORDER BY resnum ASC
 	</select>
 	
@@ -76,6 +76,12 @@
 		group by si
 	</select>
 	
+			<select id="selectReskind" parameterType="hashmap" resultType="com.example.demo.model.Main">	
+		select reskind
+		from 
+			t3_reskind
+		where reskind = #{reskind}
+	</select>
 </mapper>
 
 <!-- 

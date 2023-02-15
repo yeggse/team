@@ -24,6 +24,6 @@ public interface MainMapper {
 	
 	// 지역 검색 출력 이벤트
 	List<Main> regionSearch(HashMap<String, Object> map);	
-	
+	Main selectReskind(HashMap<String, Object> map);
 	List<Area> selectSiList(HashMap<String, Object> map) throws Exception;
 }

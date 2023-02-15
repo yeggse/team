@@ -24,6 +24,6 @@ public interface MainService {
 
 	// 메인화면 지역 설정
 	List<Main> ListArea(HashMap<String, Object> map); // 데이터 호출을 위한 인터페이스
-	
+	Main selectReskind(HashMap<String, Object> map);
 	List<Area> selectSiList(HashMap<String, Object> map) throws Exception;
 }

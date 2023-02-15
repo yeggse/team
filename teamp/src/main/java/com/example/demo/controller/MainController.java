@@ -61,8 +61,10 @@ public class MainController {
     	HashMap<String, Object> map = new HashMap<String, Object>();
     	String id = (String)session.getAttribute("userIdSession");	
     	String kind = (String)session.getAttribute("KindSession");
+    	String reskind = (String)session.getAttribute("userReskindSession");
     	request.setAttribute("userId", id);
     	request.setAttribute("kind", kind);
+    	request.setAttribute("reskind", reskind);
     	request.setAttribute("si", area.getSi()); // 지역정보 시를 받아오는 것 request에 다시 넣어준다. 세션에는 따로 저장할 필요없어 넣어주거나 가져오지 않음(7)
     	
     	return "/web_store/storeList"; // WEB-INF에서 호출할 파일명
@@ -132,6 +134,24 @@ public class MainController {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Main> area = mainService.ListArea(map);
 		resultMap.put("list", area);
+		return new Gson().toJson(resultMap);		
+	}
+    
+    @RequestMapping(value = "/main.reskind.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String reskind(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		Main user = mainService.selectReskind(map);
+		if( user != null) {
+			session.setAttribute("userReskindSession", user.getReskind());
+			
+	    	
+			resultMap.put("user", user);
+			resultMap.put("result", "success");
+		} else {
+ 			resultMap.put("result", "fail");
+ 		}
+		
 		return new Gson().toJson(resultMap);		
 	}
 }

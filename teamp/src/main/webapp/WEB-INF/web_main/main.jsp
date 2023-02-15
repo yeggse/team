@@ -141,22 +141,18 @@ input {
 				</form>
 			</div>
 		</div>
-        
+
 		<div class="div4">
-		
+
 			<button id="imgbtn1"></button>
 			<!-- 선택별로 다른 화면 출력되어야 함!!! -->
 			<button id="imgbtn2" @click="fnSiChange"></button>
-			<!-- 선택별로 다른 화면 출력되어야 함!!! -->
-			<button id="imgbtn3" @click="fnSiChange"></button>
-			<!-- 선택별로 다른 화면 출력되어야 함!!! -->
+			<button id="imgbtn3" @click="fnSiChange1"></button>
+			<button id="imgbtn4" @click="fnSiChange2"></button>
+			<button id="imgbtn5" @click="fnSiChange3"></button>
+			<button id="imgbtn6" @click="fnSiChange4"></button>
 		</div>
-		<div class="div4">
-			<button id="imgbtn4" @click="fnSiChange"></button>
-			<button id="imgbtn5" @click="fnSiChange"></button>
-			<button id="imgbtn6" @click="fnSiChange"></button>
-		</div>
-        
+
 	</div>
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
@@ -176,21 +172,145 @@ var app = new Vue({
     , methods: {
     	
     	fnSiChange : function(){
-    	    if('${userId}' == ""){
-    	    	
-    	    	alert("로그인 후 이용해주세요");
-    	    }
-    	    else if($("#si").val() == ""){//선택된 지역의 값이 빈값이면 화면이 넘어가지 않음
-    			alert("주소를 먼저 선택해 주세요!");//검색버튼 있을때 필요함.
-    		}else{
-	    		document.frm.action = "/main.storelist.do"; //시를 선택하고 이 값으로 페이지를 이동한다는 뜻 (4)
-	    		document.frm.submit(); // 이동하면서 선택한 지역을 저장한다는 의미.(5)
-	    		document.frm1.action = "/main.storelist.do";
-	    		document.frm1.submit();
-    		}
+    		var self = this;
+    		self.reskind="한식";
+    		var nparmap = {reskind: self.reskind};
+    		$.ajax({
+				url : "/main.reskind.dox",
+				dataType : "json",
+				type : "POST",
+				data : nparmap,
+				success : function(data) {
+					
+					if('${userId}' == ""){
+						alert("로그인 후 이용해주세요");
+						}
+    	            else if($("#si").val() == ""){//선택된 지역의 값이 빈값이면 화면이 넘어가지 않음
+    			        alert("주소를 먼저 선택해 주세요!");//검색버튼 있을때 필요함.
+    		            }
+    	            else{
+    	    	        console.log(self.reskind);
+				        alert("성공");
+				        document.frm.action = "/main.storelist.do"; //시를 선택하고 이 값으로 페이지를 이동한다는 뜻 (4)
+						document.frm.submit(); // 이동하면서 선택한 지역을 저장한다는 의미.(5)
+				        }
+					
+					}
+    		})
     		
     	}
-    
+	    ,fnSiChange1 : function(){
+    		var self = this;
+    		self.reskind="일식";
+    		var nparmap = {reskind: self.reskind};
+    		$.ajax({
+				url : "/main.reskind.dox",
+				dataType : "json",
+				type : "POST",
+				data : nparmap,
+				success : function(data) {
+					
+					if('${userId}' == ""){
+						alert("로그인 후 이용해주세요");
+						}
+    	            else if($("#si").val() == ""){//선택된 지역의 값이 빈값이면 화면이 넘어가지 않음
+    			        alert("주소를 먼저 선택해 주세요!");//검색버튼 있을때 필요함.
+    		            }
+    	            else{
+    	    	        console.log(self.reskind);
+				        alert("성공");
+				        document.frm.action = "/main.storelist.do"; //시를 선택하고 이 값으로 페이지를 이동한다는 뜻 (4)
+						document.frm.submit(); // 이동하면서 선택한 지역을 저장한다는 의미.(5)
+				        }
+				
+					}
+    		})
+    		
+    	}
+	    ,fnSiChange2 : function(){
+    		var self = this;
+    		self.reskind="중식";
+    		var nparmap = {reskind: self.reskind};
+    		$.ajax({
+				url : "/main.reskind.dox",
+				dataType : "json",
+				type : "POST",
+				data : nparmap,
+				success : function(data) {
+					
+					if('${userId}' == ""){
+						alert("로그인 후 이용해주세요");
+						}
+    	            else if($("#si").val() == ""){//선택된 지역의 값이 빈값이면 화면이 넘어가지 않음
+    			        alert("주소를 먼저 선택해 주세요!");//검색버튼 있을때 필요함.
+    		            }
+    	            else{
+    	    	        console.log(self.reskind);
+				        alert("성공");
+				        document.frm.action = "/main.storelist.do"; //시를 선택하고 이 값으로 페이지를 이동한다는 뜻 (4)
+						document.frm.submit(); // 이동하면서 선택한 지역을 저장한다는 의미.(5)
+				        }
+					
+					}
+    		})
+    		
+    	}
+	    ,fnSiChange3 : function(){
+    		var self = this;
+    		self.reskind="아시아";
+    		var nparmap = {reskind: self.reskind};
+    		$.ajax({
+				url : "/main.reskind.dox",
+				dataType : "json",
+				type : "POST",
+				data : nparmap,
+				success : function(data) {
+					
+					if('${userId}' == ""){
+						alert("로그인 후 이용해주세요");
+						}
+    	            else if($("#si").val() == ""){//선택된 지역의 값이 빈값이면 화면이 넘어가지 않음
+    			        alert("주소를 먼저 선택해 주세요!");//검색버튼 있을때 필요함.
+    		            }
+    	            else{
+    	    	        console.log(self.reskind);
+				        alert("성공");
+				        document.frm.action = "/main.storelist.do"; //시를 선택하고 이 값으로 페이지를 이동한다는 뜻 (4)
+						document.frm.submit(); // 이동하면서 선택한 지역을 저장한다는 의미.(5)
+				        }
+					
+					}
+    		})
+    		
+    	}
+	    ,fnSiChange4 : function(){
+    		var self = this;
+    		self.reskind="양식";
+    		var nparmap = {reskind: self.reskind};
+    		$.ajax({
+				url : "/main.reskind.dox",
+				dataType : "json",
+				type : "POST",
+				data : nparmap,
+				success : function(data) {
+					
+					if('${userId}' == ""){
+						alert("로그인 후 이용해주세요");
+						}
+    	            else if($("#si").val() == ""){//선택된 지역의 값이 빈값이면 화면이 넘어가지 않음
+    			        alert("주소를 먼저 선택해 주세요!");//검색버튼 있을때 필요함.
+    		            }
+    	            else{
+    	    	        console.log(self.reskind);
+				        alert("성공");
+				        document.frm.action = "/main.storelist.do"; //시를 선택하고 이 값으로 페이지를 이동한다는 뜻 (4)
+						document.frm.submit(); // 이동하면서 선택한 지역을 저장한다는 의미.(5)
+				        }
+					
+					}
+    		})
+    		
+    	}
     }
     , created: function () {
 		//this.fnGetList();       
