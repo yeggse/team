@@ -130,10 +130,5 @@ public class MainController {
 		List<Main> area = mainService.ListArea(map);
 		resultMap.put("list", area);
 		return new Gson().toJson(resultMap);		
-		/*
-		 * if(area.size()>0) { session.setAttribute("RegionSession", ((Main)
-		 * area).getRegion()); resultMap.put("area", area); resultMap.put("result",
-		 * "success"); }else { resultMap.put("result", "fail"); }
-		 */
 	}
 }

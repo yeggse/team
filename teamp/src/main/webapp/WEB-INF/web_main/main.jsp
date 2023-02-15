@@ -120,7 +120,16 @@
 		<img src="img/main/point.PNG" margin-top= 10px width=50px height=70px>
 		<!-- <input type="text" v-model="region" placeholder="장소를 입력해 주세요" ></input>
 		<button id="btn" @click="fnSearch">선택</button>	조건 넣어줘야 함: 버튼이벤트 생성 : 미선택시 안넘어가게!!!!!! -->
-			<div>
+			<div v-if="'${userId}' === ''">
+				<form method="post" id="frm" name="frm"> <!-- form을 통해서 값을 다른 페이지로 값을 넘겨준다는 의미 frm이라는 이름을 주고 id에 form안에의 값이 있다. 넘겨주는 페이지 주소 있어야함!(1)-->
+					<label for="si" class="control-label">먼저 지역을 골라주세요~ : </label>
+					<select id="si" name="si" disabled v-model="si" class="form-control" @change="fnSiChange"> <!-- 선택을 했을때 change가되는데 메소드를 넣어줌(3)-->
+						<option value="">지역선택</option> <!-- 처음 값을 선택할 수 있게 빈값을 넣어준다.(2) -->
+						<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+					</select>
+				</form>
+			</div>
+			<div v-else>
 				<form method="post" id="frm" name="frm"> <!-- form을 통해서 값을 다른 페이지로 값을 넘겨준다는 의미 frm이라는 이름을 주고 id에 form안에의 값이 있다. 넘겨주는 페이지 주소 있어야함!(1)-->
 					<label for="si" class="control-label">먼저 지역을 골라주세요~ : </label>
 					<select id="si" name="si" v-model="si" class="form-control" @change="fnSiChange"> <!-- 선택을 했을때 change가되는데 메소드를 넣어줌(3)-->
@@ -132,14 +141,14 @@
 	</div>
 	
 	<div class="div4">
-		<button id="imgbtn1" onclick="location.href='/main.storelist.do'"> </button>	<!-- 선택별로 다른 화면 출력되어야 함!!! -->
-		<button id="imgbtn2" onclick="location.href='/main.storelist.do'"> </button>	<!-- 선택별로 다른 화면 출력되어야 함!!! -->
-		<button id="imgbtn3" onclick="location.href='/main.storelist.do'"> </button>	<!-- 선택별로 다른 화면 출력되어야 함!!! -->
+		<button id="imgbtn1" @click="fnClick"> </button>	<!-- 선택별로 다른 화면 출력되어야 함!!! -->
+		<button id="imgbtn2" @click="fnClick"> </button>	<!-- 선택별로 다른 화면 출력되어야 함!!! -->
+		<button id="imgbtn3" @click="fnClick"> </button>	<!-- 선택별로 다른 화면 출력되어야 함!!! -->
 	</div>
 	<div class="div4">
-		<button id="imgbtn4"></button>
-		<button id="imgbtn5"></button>
-		<button id="imgbtn6"></button>
+		<button id="imgbtn4" @click="fnClick"></button>
+		<button id="imgbtn5" @click="fnClick"></button>
+		<button id="imgbtn6" @click="fnClick"></button>
 	</div>
 		
 	</div>
@@ -154,6 +163,7 @@ var app = new Vue({
     	,list: []
 		, siList : ${siList}
 		, si : ""
+		
     }   
     , methods: {
     	fnSearch : function(){
@@ -182,6 +192,9 @@ var app = new Vue({
 	    		document.frm.submit(); // 이동하면서 선택한 지역을 저장한다는 의미.(5)
     		}
     		//alert($("#si").val());
+    	}
+    	,fnClick : function(){
+    		alert("로그인 후 지역설정을 해주세요.");
     	}
     }
     , created: function () {

@@ -37,8 +37,12 @@ public class ResmenuController {
 	}
 
 	@RequestMapping("/Mypage.do")
-	public String mp(Model model) throws Exception {
-
+	public String clicked(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		String id = (String)session.getAttribute("userIdSession");	
+    	String kind = (String)session.getAttribute("KindSession");
+    	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
 		return "/storeList_clicked"; // WEB-INF에서 호출할 파일명
 	}
 
