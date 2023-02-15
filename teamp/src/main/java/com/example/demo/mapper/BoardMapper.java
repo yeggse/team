@@ -24,4 +24,7 @@ public interface BoardMapper {
 	
 	// 게시글 삭제
 	void deleteBoard(HashMap<String, Object>map);	// delete
+	
+	//게시글 이미지 추가
+	void insertBoardImg(HashMap<String, Object> map);	
 }
