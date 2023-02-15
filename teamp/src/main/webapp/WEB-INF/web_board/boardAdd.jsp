@@ -93,25 +93,28 @@ var app = new Vue({
        , img : ""
        , boardtype : ""
        , nickname : "관리자"
+       , content : ""
     }   
     , methods: {
     	// 게시글 작성 완료 - 저장
     	fnSave : function(){
     		var self = this;
     		console.log(self.img);
-	      	var nparmap = {title : self.title, content : self.content, userId : self.userId, boardtype : self.boardtype, nickname : self.nickname}; //, img : self.img 
+	      	var nparmap = {title : self.title, content : self.content, userId : self.userId, 
+	      					boardtype : self.boardtype, nickname : self.nickname, img : self.img}; 
 	        $.ajax({
 	            url:"/addBoard.dox",
 	            dataType:"json",	
 	            type : "POST", 
 	            data : nparmap,
-	            success : function(data) {            
-/* 	            	var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
-	       	        form.append( "file1", $("#file1")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미
-	       	     	form.append( "boardIdx",  data.boardIdx);	// 여기에 있는 boardIdx는 어디로 가나?????
-	       	        
+	            success : function(data) {  
+	            	console.log(data);
+ 	            	var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
+	       	        form.append( "file1", $("#file1")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미 //이미지 선택한 파일이 form으로 들어감	보트컨트롤러의 fileList파이
+	       	     	form.append( "noticenum",  data.noticenum);	// 여기에 있는 boardIdx는 어디로 가나?????		// boardIdx에 게시글의 경로를 일치시켜주기
+	       	  		// 이미지 파일을 활성화하는 아작스 통신 더 불러오기
 	       	         $.ajax({
-	       	             url : "/upload"
+	       	             url : "/upload"	// board controller - upload파트와 연결
 	       	           , type : "POST"
 	       	           , processData : false
 	       	           , contentType : false
@@ -119,7 +122,7 @@ var app = new Vue({
 	       	           , success:function(response) { }
 	       	           ,error: function (jqXHR) 
 	       	           {}
-	       	       }); */
+	       	       }); 
 	            	alert("게시글이 저장되었습니다.");
 	           		location.href="/main.board.do";
 	            }
@@ -127,7 +130,7 @@ var app = new Vue({
 	        
     	}
         // 사진 업로드 : 미완
-/* 		, upload : function(){
+ 		, upload : function(){
    		
 			var form = new FormData();
 		        form.append( "file1", $("#file1")[0].files[0] );
@@ -141,7 +144,7 @@ var app = new Vue({
 		           , success:function(response) { }
 		           ,error: function (jqXHR) {}
 		       });
-		} */
+		} 
 		
 		// 목록으로 가기 버튼
     	, fnList : function(){
@@ -149,8 +152,6 @@ var app = new Vue({
     	} 
     }   
     , created: function () {
-    	var self = this;
-    	self.fnGetBoard(); 
 	}
 });
 </script> 

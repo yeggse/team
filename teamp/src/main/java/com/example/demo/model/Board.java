@@ -12,8 +12,22 @@ public class Board {
 	private String id;
 	private String image;
     private String creatorid;
+    private String img;
+    private int boardnum;
     
-    public String getCreatorid() {
+    public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	public int getBoardnum() {
+		return boardnum;
+	}
+	public void setBoardnum(int boardnum) {
+		this.boardnum = boardnum;
+	}
+	public String getCreatorid() {
 		return creatorid;
 	}
 	public void setCreatorid(String creatorid) {
