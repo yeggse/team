@@ -31,9 +31,15 @@ public class BuisnessController {
     	HashMap<String, Object> map = new HashMap<String, Object>();
     	String kind = (String)session.getAttribute("KindSession");
     	String id = (String)session.getAttribute("userIdSession");
+    	String resnum = (String)session.getAttribute("userResnumSession");
+    	String reskind = (String)session.getAttribute("userReskindSession");
+    	
     	
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id);
+    	request.setAttribute("resnum", resnum);
+    	request.setAttribute("reskind", reskind);
+    	
     	return "/menumanagement_business"; // WEB-INF에서 호출할 파일명
     }
     @RequestMapping("/menuaddbusiness.do") 
