@@ -2,7 +2,7 @@ package com.example.demo.model;
 
 
 public class B {
-    private String resnum;
+    private int resnum;
     private int price;
     private int supply;
     private String reskind;
@@ -17,10 +17,10 @@ public class B {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getResnum() {
+	public int getResnum() {
 		return resnum;
 	}
-	public void setResnum(String resnum) {
+	public void setResnum(int resnum) {
 		this.resnum = resnum;
 	}
 	public int getPrice() {

@@ -53,13 +53,13 @@
 					<col width="20%"/>
 				</colgroup>
 				<tr style="border-bottom:2px solid #ccc;">
-					<td style="text-align : center; width: 15%;" ><h1>음식명</h1></td>
+					<td style="text-align : center; width: 15%;" ><h1>음식명 {{resnum}}</h1></td>
 					<td><input type="text" id="title" name="menuname" v-model="menuname" style="font-size: 1.3em; font-weight: 600;"></td>
 					<td style="text-align : center; width: 15%;" ><h1>가격</h1></td>
 					<td><input type="text" id="title" name="price" v-model="price" style="font-size: 1.3em; font-weight: 600;"></td>
 				</tr>
 				<tr style="border-bottom:2px solid #ccc;">
-					<td style="text-align : center; width: 15%;" ><h1>재고</h1></td>
+					<td style="text-align : center; width: 15%;" ><h1>재고 {{userId}}</h1></td>
 					<td><input type="text" id="title" name="supply" v-model="supply" style="font-size: 1.3em; font-weight: 600;"></td>
 					<td style="text-align : center; width: 15%;" ><h1>픽업 시간</h1></td>
 					<td><input type="text" id="title" name="pickuptime" v-model="pickuptime" style="font-size: 1.3em; font-weight: 600;"></td>
@@ -117,9 +117,11 @@ var app = new Vue({
 		fnSave : function(){
     		var self = this;
     		console.log(self.img);
-	      	var nparmap = {price : self.price, menuname : self.menuname, introduce : self.introduce, supply : self.supply, pickuptime : self.pickuptime}; //, img : self.img 
+	      	var nparmap = {userId : self.userId, price : self.price, menuname : self.menuname, introduce : self.introduce, 
+	      					reskind : self.reskind, resnum : self.resnum,
+	      					supply : self.supply, pickuptime : self.pickuptime}; //, img : self.img 
 	        $.ajax({
-	            url:"/addBoard.dox",
+	            url:"/addMenu.dox",
 	            dataType:"json",	
 	            type : "POST", 
 	            data : nparmap,

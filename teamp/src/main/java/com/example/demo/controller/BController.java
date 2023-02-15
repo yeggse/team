@@ -40,16 +40,18 @@ public class BController {
     	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
     	String kind = (String)session.getAttribute("KindSession");
     	System.out.println(map.get("noticenum"));
+    	System.out.println(id+"dddd");
     	request.setAttribute("userId", id);
     	request.setAttribute("kind", kind);
-    	if(kind == "B") {
-    		String reskind = (String)session.getAttribute("userReskindSession");
-    		String resnum = (String)session.getAttribute("userResnumSession");
-    		request.setAttribute("reskind", reskind);
-    		request.setAttribute("resnum", resnum);
-    		System.out.println("dd");
-    	}
-
+		if(kind.equals("B")) { // 사업자 이면! 
+		    	Integer resnum = (Integer)session.getAttribute("userResnumSession");
+		    	String reskind = (String)session.getAttribute("userReskindSession");
+		    	request.setAttribute("reskind", reskind); 
+		    	request.setAttribute("resnum",resnum); 
+		    	System.out.println("세션 넘어옴..."); 
+		    	System.out.println(resnum+" resnum");
+		    	System.out.println(reskind+" reskind");
+		 }
     	return "/web_business/menuAdd"; // WEB-INF에서 호출할 파일명
     }
     // 게시글 작성 데이터 호출
@@ -60,7 +62,7 @@ public class BController {
 		//String img = (String) map.get("img");
 		bService.addMenu(map);
 		resultMap.put("message", "성공");
-		resultMap.put("noticenum", map.get("id")); //!!
+		//resultMap.put("noticenum", map.get("id")); //!!
 		System.out.println(map.get("id"+"dkdk"));
 		return new Gson().toJson(resultMap);
 	}
