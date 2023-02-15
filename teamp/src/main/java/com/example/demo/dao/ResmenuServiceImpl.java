@@ -32,4 +32,11 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			return resmenuMapper.selectPaymentmy1(map);
 		}
+		
+		//사업자 메뉴관리 페이지에 사용 
+		@Override
+		public List<Res> selectResmenu2(HashMap<String, Object> map) throws Exception {
+			// TODO Auto-generated method stub
+			return resmenuMapper.selectResmenu2(map);
+		}
 }

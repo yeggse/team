@@ -30,5 +30,16 @@
 		WHERE
 		 	orderer = #{id} AND salecomple = "Y"
 	</select>
+	
+	<!-- 사업자 메뉴관리 페이지에 사용 -->
+<select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+		SELECT
+			resnum, reskind, startdate, enddate, menuname, picture, introduce, price, supply, orderer  
+		FROM
+			t3_resmenu
+		WHERE
+		 	orderer = #{id} AND reskind ="chi"
+		 	<!--  -->
+	</select>
 
 </mapper>

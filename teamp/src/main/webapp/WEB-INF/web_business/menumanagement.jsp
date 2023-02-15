@@ -1,287 +1,299 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
-  <jsp:include page="/layout/header.jsp"></jsp:include>
+	<meta charset="UTF-8">
+	<script src="js/jquery.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/vuejs-paginate@latest"></script>
+	<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
+	<jsp:include page="/layout/header.jsp"></jsp:include>
+	
+	<title>board 공지사항 기본 출력 페이지</title>
 </head>
-
 <style>
-.body{
-     line-height:2em;        
-     font-family:"맑은 고딕";
-}
-ul, li{ 
-     list-style:none;
-     text-align:center;
-     padding:0;
-     margin:0;
+
+img{
+width:6rem;
+height:6rem;
 }
 
-#mainWrapper > ul > li:first-child {
-     text-align: left;
-     font-size:32px;
-     height:40px;
-     vertical-align:middle;
-     line-height:30px;
+/* ----------------------------------------------------- */
+
+	      #input {
+            width: 400px;
+            margin-top: 0px;
+	        padding: 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
+         }   
+	       #btn{
+		       background-color: #8FBC94;
+		       width: 80px;
+		       height: 40px;
+		       border-radius: 20px;
+		       border: solid 2px #8FBC94;
+		       font-size: large;
+		       color: white;
+		       padding: 0px;
+	       }
+/* ------------------------------------------------------- */
+
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #a4e271;
+	background-color:#a5d296;
+	border-radius:6px;
+	border:1px solid #74b807;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
 }
-#ulTable{
-	margin-top:10px;
+.myButton:hover {
+	background:linear-gradient(to bottom, #77a809 5%, #89c403 100%);
+	background-color:#77a809;
 }
-#ulTable > li:first-child > ul > li {
-    background-color:#c9c9c9;
-    font-weight:bold;
-    text-align:center;
-}
-#ulTable > li > ul {
-    clear:both;
-    padding:0px auto;
-    position:relative;
-    min-width:40px;
-}
-#ulTable > li > ul > li { 
-    float:left;
-    font-size:10pt;
-    border-bottom:1px solid silver;
-    vertical-align:baseline;
-}    
-#ulTable > li > ul > li:first-child               	  {width:15%;} /*주문번호*/
-#ulTable > li > ul > li:first-child +li               {width:10%;} /*상호명*/
-#ulTable > li > ul > li:first-child +li+li            {width:10%;} /*메뉴*/
-#ulTable > li > ul > li:first-child +li+li+li         {width:15%;} /*시간*/
-#ulTable > li > ul > li:first-child +li+li+li+li      {width:15%;} /*결제금액*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li	  {width:15%;} /*예약상태*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li+li{width:10%;} /*상태변경*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li+li+li{width:10%;} /*상태변경*/
-#divPaging {
-     clear:both; 
-     margin:0 auto; 
-     width:220px; 
-     height:50px;
-}
-#divPaging > div {
-     float:left;
-     width: 30px;
-     margin:0 auto;
-     text-align:center;
-}
-#liSearchOption {
-	width: 320px;
-	 clear:both;
-     margin-left:350px; 
-     positio;
-	 border: 2px solid black;
-}
-.btnreview{
- 	 background:green;
-  	 color:white;
- 	 border:none;
- 	 width:66px;
+.myButton:active {
+	position:relative;
+	top:1px;
 }
 
-.titletext{
-font-size: 2em;
-padding-right: 500px;
+    .container {max-width:1024px; margin:30px auto; margin-top: 120px;}	/* 게시글 출력 파트 */
+	.board_list {table-layout: fixed; width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:15px 0; border-collapse: collapse;}
+	.board_list thead th:first-child {background-image:none;}
+	.board_list thead th {border-bottom:1px solid #ccc; padding:13px 0; color:#3b3a3a; text-align: center; vertical-align:middle;}
+	.board_list tbody td {border-top:1px solid #ccc; padding:13px 0; text-align:center; vertical-align:middle;}
+	.board_list tbody tr:first-child td {border:none;}
+	.board_list tbody tr:hover{background:#ffff99;}
+	.board_list tbody td.title {text-align:left; padding-left:20px;}
+	.board_list tbody td a {display:inline-block}
 
-
-} 	 
-.ul{
-border: 5px solid red; 
-margin: 10px;
-padding: 10px;
-width: 700px;
-align: center;
-}
-
-.btnonoff{
- 	 background:black;
-  	 color:white;
- 	 border:none;
- 	 width:300px;
- 	 height:30px;
-}
-
-.btnadd{
- 	 background:green;
-  	 color:white;
- 	 border:none;
- 	 width:77px;
- 	 height:35px;
- 	 float:right;
-}
-
-.div1{
-border: 1px solid blue;
-margin:10px;
-padding: 5px;
-}
-
-#mainWrapper{
-	 clear:both;
-     width: 800px;
-     margin-left: 350px; /*가운데 정렬*/
-     margin-right: 350px; /*가운데 정렬*/
-     margin-bottom: 350px; /*가운데 정렬*/
-     border: 2px solid black;
-     position: relative; left: -500px;
+	/* 화면 넘기는 아이템 디자인 */
+.pagination {
+        margin:24px;
+        display: inline-flex;
+        
     }
-.div2{
-border: 5px solid black;	
-width: 90%;
-height: 55px;
-padding: 5px;
-margin: 5px;
+.pagination li {
+    min-width:32px;
+    padding:2px 6px;
+    text-align:center;
+    margin:0 3px;
+    border-radius: 6px;
+    border:1px solid #eee;
+    color:#666;
 }
-.div3{
-border: 5px solid green;	
-width: 90%;
-height: 40px;
-margin-top: 5px;
+.pagination li:hover {
+    background: #E4DBD6;
 }
+.page-item a {
+    color:#666;
+    text-decoration: none;
+}
+.pagination li.active {
+    background-color : red;	/* #E7AA8D */
+    color:#fff;
+}
+ .pagination li.active a {
+    color:#fff;
+} 
+
+
+
 
 </style>
-
-<body class="body">
-<div>
+<body>
 <jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
-	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
-	
-    <div id="mainWrapper"> 
-                <!--영업 on/off  -->
-        	<div class="div2">
-			<button class="btnonoff">영업시작</button>        	
-			<button class="btnonoff">영업종료</button>
+	<div id="app">
+		<div></div>
+	<!-- 	<div class="table-list"> -->
+			<div class="container">
+			<h2>세잎 공지사항</h2>
+			<div style="text-align: center;">
+				<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
+				<button id="btn"  >검색</button>
 			</div>
-                <!-- 메뉴관리 -->
-        	<div class="div3">
-			<span class="titletext">메뉴관리</span>
-			<span>
-			<button class="btnadd">추가</button>
-			</span>   	
-        	</div>
-        <ul class="ul">
-            <!-- 게시판 목록  -->
-            <li>
-                <ul id ="ulTable">
-                    <li>
-                        <ul>
-                            <li>메뉴명</li>
-                            <li>가격</li>
-                            <li>재고</li>
-                            <li>픽업시간</li>
-                            <li>메뉴설명</li>
-                            <li>사진등록여부</li>
-                            <li>삭제</li>
-                            <li>수정</li>
-                        </ul>
-                    </li>
-                    
-                    <!-- 게시물이 출력될 영역 -->
-                    <li>
-                        <ul>
-                            <li>떡볶이</li>
-                            <li>30000원</li>
-                            <li>1개</li>
-                            <li>14:40</li>
-                            <li>맛있어요</li>
-                            <li>등록완료</li>
-                            <li><button @click="fnDelete" class="btnreview" >삭제</button></li>
-                            <li><button class="btnreview">수정</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>떡볶이</li>
-                            <li>30000원</li>
-                            <li>1개</li>
-                            <li>20분뒤</li>
-                            <li>맛있어요</li>
-                            <li>등록완료</li>
-                            <li><button @click="fnDelete" class="btnreview" >삭제</button></li>
-                            <li><button class="btnreview">수정</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>떡볶이</li>
-                            <li>30000원</li>
-                            <li>1개</li>
-                            <li>20분뒤</li>
-                            <li>맛있어요</li>
-                            <li>등록완료</li>
-                            <li><button @click="fnDelete" class="btnreview" >삭제</button></li>
-                            <li><button class="btnreview">수정</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>떡볶이</li>
-                            <li>30000원</li>
-                            <li>1개</li>
-                            <li>20분뒤</li>
-                            <li>맛있어요</li>
-                            <li>등록완료</li>
-                            <li><button @click="fnDelete" class="btnreview" >삭제</button></li>
-                            <li><button class="btnreview">수정</button></li>
-                        </ul>
-                    <li>                                        
-                </ul>
-            </li>
-
-            <!-- 게시판 페이징 영역 -->
-            <li>
-                <div id="divPaging">
-                    <div>◀</div>
-                       <div><b>1</b></div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
-                    <div>5</div>
-                    <div>▶</div>
-                </div>
-            </li>
-        </ul>
-        수정할것: 레이아웃,rem, 사이즈,헤더 푸터 옆에거랑 연동 잘 해보기
-    </div>
-    </div>
-    </div>
+			<table class="board_list">
+				<colgroup>
+					<col width="5%"/>
+					<col width="5%"/> 
+					<col width="10%"/> 
+					<col width="*"/>
+					<col width="5%"/>
+					<col width="10%"/>
+					<col width="20%"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">-</th>
+						<th scope="col">메뉴명</th>
+						<th scope="col">가격</th>
+						<th scope="col">재고</th>
+						<th scope="col">메뉴설명</th>
+						<th scope="col">사진</th>
+						<th scope="col">업로드날짜</th>
+						<th scope="col">수정날짜</th>
+					</tr>
+				</thead>
+				<!-- db 수정되면 알맞은 값 가져오기 -->
+				<tbody>
+					<tr v-for="(item, index) in list" >                            
+	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
+	                   <td @click="fnDetailView(item)">{{item.noticenum}}</td> 
+	                   <td @click="fnDetailView(item)">{{item.boardtype}}</td> 
+	                   <td @click="fnDetailView(item)">{{item.title}}</td> 
+	                   <td @click="fnDetailView(item)">{{item.hits}}</td>
+	                   <td @click="fnDetailView(item)">{{item.nickname}><img src="https://a.cdn-hotels.com/gdcs/production188/d1750/2255e427-d720-43e2-ae85-6a6719fafc03.jpg?impolicy=fcrop&w=1600&h=1066&q=medium"></td>
+	                   <td @click="fnDetailView(item)">{{item.startdate}}</td>
+	                   <td @click="fnDetailView(item)">{{item.startdate}}</td>
+	               	
+	               </tr>
+				</tbody>
+			</table>
+		<!-- 페이지 넘어가는 버튼들 -->			
+			<template>
+			<paginate
+			    :page-count="pageCount"
+			    :page-range="3"
+			    :margin-pages="2"
+			    :click-handler="changePage"
+			    :prev-text="'<'"
+			    :next-text="'>'"
+			    :container-class="'pagination'"
+			    :page-class="'page-item'">
+			  </paginate>
+			</template>
+		  	<div>
+		  	<!-- v-if에 조건을 'kind'가 '사업자라면'으로 변경하기  -->
+		  		<button v-if="'admin' == userId" @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
+		  		<button v-if="'admin' == userId" @click="fnRemove" class="myButton" style="float: right; margin-right : 5px;">삭제</button>
+		  	</div>
+		  	
+		  </div>	
+		  	</div>
+	        
+	</div>
 </body>
-    <jsp:include page="/layout/footer.jsp"></jsp:include>
-</html>  
-
-
 <script type="text/javascript">
-var app = new Vue({
-	el: '#app',
+Vue.component('paginate', VuejsPaginate)
+var app = new Vue({ 
+    el: '#app',
     data: {
-    	id : ""
-    	, pwd : ""
-    	, pwd2 : ""
-    	, name : ""
-    	, age : ""
-    	, address : ""
-    	, flg : true
-    	, kind : "${kind}"
-    	
-    	
-    } 
+        list : [] 
+       	, selectedItemList : []
+		, selectPage: 1	// 기본 세팅이 1번 페이지로 맞추어져 있음.
+       	, pageCount: 1
+        , userId : "${userId}"
+        , boardtype : ""
+    }   
     , methods: {
-    	
-    	fnDelete: function(){
+    	// 기본 출력 메소드
+        fnGetList : function(){
+            var self = this;
+            var startNum = ((self.selectPage-1) * 10);
+    		var lastNum = self.selectPage * 10
+            var nparmap = {startNum : startNum, lastNum : lastNum};
+            $.ajax({
+                url:"/firstBoard.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {                                       
+	                self.list = data.list;
+	                self.pageCount = Math.ceil(data.cnt / 10);
+	                console.log(self.pageCount);
+                }
+            }); 
+        }  
+    	// 게시글 상세 확인
+    	, fnDetailView : function(item){
     		var self = this;
-    		alert("정말 삭제하시겠습니까?");
+    		self.pageChange("/main.board.detail.do", {noticenum : item.noticenum});	// 상세페이지로 해당 인덱스 번호를 넘겨줌~~!
+    	}
+		// 화면 전환 for 게시글 상세 확인
+    	, pageChange : function(url, param) {
+    		var target = "_self";
+    		if(param == undefined){
+    			return;
+    		}
+    		var form = document.createElement("form"); 
+    		form.name = "dataform";
+    		form.action = url;
+    		form.method = "post";
+    		form.target = target;
+    		for(var name in param){
+				var item = name;
+				var val = "";
+				if(param[name] instanceof Object){
+					val = JSON.stringify(param[name]);
+				} else {
+					val = param[name];
+				}
+				var input = document.createElement("input");
+	    		input.type = "hidden";
+	    		input.name = item;
+	    		input.value = val;
+	    		form.insertBefore(input, null);
+			}
+    		document.body.appendChild(form);
+    		form.submit();
+    		document.body.removeChild(form);
+    	}
+		
+		// 페이지 전환 메소드
+		, changePage : function(pageNum) {
+			var self = this;
+			self.selectPage = pageNum;
+			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
+			var lastNum = pageNum * 10
+	        var nparmap = {startNum : startNum, lastNum : lastNum};
+	        $.ajax({
+	            url:"/firstBoard.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {                                       
+	                self.list = data.list;
+	                self.pageCount = Math.ceil(data.cnt / 10);
+	                console.log(self.pageCount);
+	            }
+	        }); 
+		}
+		// 작성하기 페이지로 이동
+		, fnAdd : function(){
+    		var self = this;
+    		self.pageChange("/main.board.add.do", {});
+		}
+    	
+		// 게시글 삭제하기
+    	, fnRemove : function(){
+    		var self = this;
+    		var list = JSON.stringify(self.selectedItemList);
+    		var nparmap = {"test" : "1",  "list" : list};
+             $.ajax({
+                 url:"/deleteBoard.dox",
+                 dataType:"json",	
+                 type : "POST", 
+                 data : nparmap,
+                 success : function(data) {  
+                	 alert("삭제되었습니다.");
+                	 self.selectedItemList = [];
+                	 self.fnGetList();
+                 }
+             });  
     	}
     }   
     , created: function () {
-    
+    	var self = this;
+    	self.fnGetList();      
 	}
 });
+</script> 
+</html>
 
-
-</script>
