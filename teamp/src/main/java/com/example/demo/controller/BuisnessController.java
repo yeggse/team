@@ -24,7 +24,7 @@ import jakarta.servlet.http.HttpSession;
 public class BuisnessController {
     @Autowired
 	HttpSession session;	
-	// Service 인터페이스 객체 생성 및 연결
+	// Service 인터페이스 객체 생성 및 연결1
     // 웹 주소
     @RequestMapping("/menumanagementbusiness.do") 
     public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
