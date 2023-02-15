@@ -81,16 +81,16 @@
 		<table style="float:left; margin-left: 350px; width: 600px; border: 1px solid black; border-collapse : collapse; margin-top: 100px; border-radius: 5px; text-align: center;">
 			<td style="border: 1px solid #444444; font-size: x-large; font-weight: bolder; margin-top: 5px; ">
 				<div style="margin-top: 5px;"><label style="display: inline-flex; "><pre>아  이  디 </pre></label>
-					<input type="text" :placeholder="userId" readonly ></input>
+					<input type="text" :placeholder='userId' readonly ></input>
 				</div> 
 				<div style="margin-top: 20px; "><label style="display: inline-flex; "><pre>이      름 </pre></label>
-					<input type="text" :placeholder="phoneNum" readonly style="    height: fit-content;"></input>
+					<input type="text" :placeholder='name' readonly ></input>
 				</div>
 				<div style="margin-top: 20px;"><label style="display: inline-flex; "><pre>전화번호 </pre></label>
-					<input type="text" :placeholder="phoneNum" readonly></input>
+					<input type="text" :placeholder='phoneNum' readonly></input>
 				</div>
 				<div style="margin-top: 20px;"><label style="display: inline-flex; "><pre>계좌번호 </pre></label>
-					<input type="text" :placeholder="acc" readonly></input>
+					<input type="text" :placeholder='acc' readonly></input>
 				</div>					
 				<div style="margin-top: 20px; margin-bottom: 5px"><label style="display: inline-flex; "><pre>결제방법 </pre></label>
 					<form action="#" style=" display: inline;">	<!-- 나란히 만들기 위해서 display: inline -->
@@ -134,9 +134,10 @@ var app = new Vue({
     el: '#app',
     data: {
     	userId : "${userId}"
+    	,name : "${userName}"
        	,kind : "${kind}"
-       	,phoneNum : "${phoneNum}"
-        ,acc : "${acc}"        	
+       	,phoneNum : "${userPhonenum}"
+        ,acc : "${userAcc}"        	
     }   
     , methods: {
     	//예약 완료

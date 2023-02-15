@@ -24,8 +24,11 @@ public class ConsumerController {
     	String kind = (String)session.getAttribute("KindSession");
     	String id = (String)session.getAttribute("userIdSession");
     	
+    	
     	request.setAttribute("kind", kind);
-    	request.setAttribute("userId", id);    	
+    	request.setAttribute("userId", id);
+    	
+    	
     	return "/payment_my"; // WEB-INF에서 호출할 파일명
     }
     @RequestMapping("/reservemy.do") 

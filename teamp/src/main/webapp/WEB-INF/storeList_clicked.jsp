@@ -281,7 +281,7 @@ input {
 					data : nparmap,
 					success : function(data) {
 						self.list = data.list;
-						console.log(self.list);
+						console.log(${siList});
 					}
 				});
 			}

@@ -72,8 +72,8 @@ public class JoinController {
 				session.setAttribute("userIdSession", user.getId());
 				session.setAttribute("userNameSession", user.getName());
 				session.setAttribute("KindSession", user.getKind());
-				session.setAttribute("useraccSession", user.getAcc());
-				session.setAttribute("userphoneNumSession", user.getPhonenum());
+				session.setAttribute("userAccSession", user.getAcc());
+				session.setAttribute("userPhonenumSession", user.getPhonenum());
 				session.setAttribute("userFrontregisnumSession", user.getFrontregisnum());
 		    	session.setAttribute("userAfterregisnumSession", user.getAfterregisnum());
 		    	session.setAttribute("userAddressSession", user.getAddress());

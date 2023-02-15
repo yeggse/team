@@ -165,6 +165,7 @@ var app = new Vue({
     	resadd: "",
     	tempGrade : "",
     	si : "${si}"
+    	,reskind : "${reskind}"
     }   
     , methods: {
     	// 기본 화면 출력 이벤트 (식당 출력)
@@ -181,7 +182,7 @@ var app = new Vue({
    	            	if(self.list.length > 0){
    	            		self.tempGrade = self.list[0].grade;
    	            	}    
-                	console.log(self.list);
+                	console.log(self.reskind);
                 }
            });
     	},

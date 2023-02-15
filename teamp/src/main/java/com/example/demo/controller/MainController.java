@@ -75,12 +75,15 @@ public class MainController {
     	HashMap<String, Object> map = new HashMap<String, Object>();
     	String id = (String)session.getAttribute("userIdSession");	
     	String kind = (String)session.getAttribute("KindSession");
-    	String acc = (String)session.getAttribute("accSession");
-    	String phoneNum = (String)session.getAttribute("phoneNumSession");
+    	String name = (String)session.getAttribute("userNameSession");
+    	String phonenum = (String)session.getAttribute("userPhonenumSession");
+    	String acc = (String)session.getAttribute("userAccSession");
+    	request.setAttribute("userName", name);
+    	request.setAttribute("userPhonenum", phonenum);
+    	request.setAttribute("userAcc", acc);
     	request.setAttribute("userId", id);
     	request.setAttribute("kind", kind);
-    	request.setAttribute("acc", acc);
-    	request.setAttribute("phoneNum", phoneNum);
+    	
     	return "/web_store/payment"; // WEB-INF에서 호출할 파일명
     }
     
