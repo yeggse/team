@@ -15,4 +15,6 @@ public interface BoardService {
 	void editBoard(HashMap<String, Object> map);	//update
 	// 게시글 추가
 	void insertBoard(HashMap<String, Object> map);	//add / insert
+	// 게시글 삭제
+	void deleteBoard(HashMap<String, Object> map);
 }

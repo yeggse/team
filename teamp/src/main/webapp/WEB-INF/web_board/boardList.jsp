@@ -117,15 +117,17 @@
 				<colgroup>
 					<col width="5%"/>
 					<col width="5%"/> 
+					<col width="10%"/> 
 					<col width="*"/>
 					<col width="5%"/>
 					<col width="10%"/>
-					<col width="25%"/>
+					<col width="20%"/>
 				</colgroup>
 				<thead>
 					<tr>
 						<th scope="col">-</th>
 						<th scope="col">글번호</th>
+						<th scope="col">분류</th>
 						<th scope="col">제목</th>
 						<th scope="col">조회수</th>
 						<th scope="col">작성자</th>
@@ -136,6 +138,7 @@
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
 	                   <td @click="fnDetailView(item)">{{item.noticenum}}</td> 
+	                   <td @click="fnDetailView(item)">{{item.boardtype}}</td> 
 	                   <td @click="fnDetailView(item)">{{item.title}}</td> 
 	                   <td @click="fnDetailView(item)">{{item.hits}}</td>
 	                   <td @click="fnDetailView(item)">{{item.nickname}}</td>
@@ -157,10 +160,9 @@
 			    :page-class="'page-item'">
 			  </paginate>
 			</template>
-			
 		  	<div>
-		  		<button @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
-		  		<button class="myButton" style="float: right; margin-right : 5px;">삭제</button>
+		  		<button v-if="'admin' == userId" @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
+		  		<button v-if="'admin' == userId" @click="fnRemove" class="myButton" style="float: right; margin-right : 5px;">삭제</button>
 		  	</div>
 		  	
 		  </div>	
@@ -178,6 +180,8 @@ var app = new Vue({
        	, selectedItemList : []
 		, selectPage: 1	// 기본 세팅이 1번 페이지로 맞추어져 있음.
        	, pageCount: 1
+        , userId : "${userId}"
+        , boardtype : ""
     }   
     , methods: {
     	// 기본 출력 메소드
@@ -252,12 +256,29 @@ var app = new Vue({
 	            }
 	        }); 
 		}
+		// 작성하기 페이지로 이동
 		, fnAdd : function(){
     		var self = this;
-    		console.log(${userId});
     		self.pageChange("/main.board.add.do", {});
 		}
     	
+		// 게시글 삭제하기
+    	, fnRemove : function(){
+    		var self = this;
+    		var list = JSON.stringify(self.selectedItemList);
+    		var nparmap = {"test" : "1",  "list" : list};
+             $.ajax({
+                 url:"/deleteBoard.dox",
+                 dataType:"json",	
+                 type : "POST", 
+                 data : nparmap,
+                 success : function(data) {  
+                	 alert("삭제되었습니다.");
+                	 self.selectedItemList = [];
+                	 self.fnGetList();
+                 }
+             });  
+    	}
     }   
     , created: function () {
     	var self = this;

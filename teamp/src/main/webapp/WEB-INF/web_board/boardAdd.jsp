@@ -40,26 +40,32 @@
 <body>
 	<div id="app">
 		<div class="contain">
-			<h2>공지사항 작성하기 - 내용출력 이벤트 등 필요! </h2>
+			<h2>공지사항 작성하기 - 이미지 출력만 넣으면 끝 </h2>
 			<table class="board_detail" style="margin-top: 20px;">
 				<colgroup>
 					<col width="10%"/>
 					<col width="*"/>
+					<col width="10%"/>
+					<col width="20%"/>
 				</colgroup>
 				<tr style="border-bottom:2px solid #ccc;">
 					<td style="text-align : center; width: 15%;" ><h1>제목</h1></td>
 					<td><input type="text" id="title" name="title" v-model="title" style="font-size: 1.3em; font-weight: 600;"></td>
+					<td style="text-align : center; width: 15%;" ><h1>분류</h1></td>
+					<td><input type="text" id="title" name="boardtype" v-model="boardtype" style="font-size: 1.3em; font-weight: 600;"></td>
 				</tr>
 				<tr style="border-bottom:2px solid #ccc;">
-					<td style="text-align : center; width: 15%; " ><h1>첨부파일</h1></td>
-					<td>
+					<td  style="text-align : center; width: 15%; " ><h1>첨부파일</h1></td>
+					<td >
 						<div>
 						    <input type="file" id="file1" name="file1" style="font-size: 1.3em; font-weight: 500;"> 
 						</div>
 					</td>
+					<td style="text-align : center; width: 15%;" ><h1>작성자</h1></td>
+					<td><input type="text" id="title" name="nickname" v-model="nickname" style="font-size: 1.3em; font-weight: 600;"></td>
 				</tr>
 				<tr>
-					<td colspan="2">
+					<td colspan="4">
 						<textarea id="contents" name="contents" v-model="content" style="font-weight: 400;"></textarea>
 					</td>
 				</tr>
@@ -85,13 +91,15 @@ var app = new Vue({
        , selectedItemList : []
        , title : ""
        , img : ""
+       , boardtype : ""
+       , nickname : "관리자"
     }   
     , methods: {
     	// 게시글 작성 완료 - 저장
     	fnSave : function(){
     		var self = this;
     		console.log(self.img);
-	      	var nparmap = {title : self.title, content : self.content, userId : self.userId}; //, img : self.img 
+	      	var nparmap = {title : self.title, content : self.content, userId : self.userId, boardtype : self.boardtype, nickname : self.nickname}; //, img : self.img 
 	        $.ajax({
 	            url:"/addBoard.dox",
 	            dataType:"json",	
@@ -112,7 +120,7 @@ var app = new Vue({
 	       	           ,error: function (jqXHR) 
 	       	           {}
 	       	       }); */
-	            	alert("저장되었습니다..");
+	            	alert("게시글이 저장되었습니다.");
 	           		location.href="/main.board.do";
 	            }
 	        }); 

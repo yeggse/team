@@ -24,9 +24,9 @@ border: 1px solid;
   	 color:black;
  	 border:2px solid black;
  	 width:27%;
-     height:100px;
-     margin:10px;
-     padding:5px;
+     height:6.3rem;
+     margin:0.6rem;
+     padding:0.4rem;
      text-align:center;
 }
 .btnphoto2{
@@ -34,9 +34,9 @@ border: 1px solid;
   	 color:black;
  	 border:2px dashed black;
  	 width:27%;
-     height:100px;
-     margin:10px;
-     padding:5px;
+     height:6.3rem;
+     margin:0.6rem;
+     padding:0.4rem;
      text-align:center;
 }
 .btncomplete{
@@ -78,7 +78,7 @@ border: 1px solid;
 .div1{
   width: 60rem;
   height: 65rem;
-  padding: 20px;
+  padding: 1.3rem;
   border: 2px solid black;
   background: white;
   position: absolute; 
