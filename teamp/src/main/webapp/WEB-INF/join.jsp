@@ -264,7 +264,7 @@ a {
 
 								}
 							})
-						}
+						}//
 
 					},//회원가입
 					fnPwcheck : function() {
