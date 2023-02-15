@@ -228,7 +228,7 @@ var app = new Vue({
 	}
  	, fnView : function(item){
 		var self = this;
-		self.pageChange("/Mypage.do", {resnum : item.resnum});
+		self.pageChange("/Mypage.do", {resnum : item.resnum}); // resnum(pk)로 찾아야 이름으로 중복된 식당충돌을 줄일 수 있음.
 	}
     	
     }

@@ -69,8 +69,8 @@ public class JoinController {
 			Join user = joinService.selectLoginList(map);
 			
 			if( user != null) {
-				session.setAttribute("userVO", new Gson().toJson(user));
-				session.setMaxInactiveInterval(60*60);
+				session.setAttribute("userVO", new Gson().toJson(user)); // Join type의 VO안의 객체 전체를 userVO에 넣는 과정. Vue문법에 따라 Json에 넣어줘야함.(Dalseok)
+				session.setMaxInactiveInterval(60*60); // 1시간 이후 자동 로그아웃 설정(Dalseok)
 				
 				session.setAttribute("userIdSession", user.getId());
 				session.setAttribute("userNameSession", user.getName());

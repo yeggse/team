@@ -127,7 +127,7 @@ public class MainController {
 		return new Gson().toJson(resultMap);
 	} 
 	
-	 // 지역 검색 출력 이벤트 데이터 호출
+	 // 지역 검색 출력 이벤트 데이터 호출(메인)
     @RequestMapping(value = "/main.region.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String areaa(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -137,6 +137,7 @@ public class MainController {
 		return new Gson().toJson(resultMap);		
 	}
     
+    // 레스토랑 종류 출력 이벤트 데이터 호출(메인)
     @RequestMapping(value = "/main.reskind.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String reskind(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -144,7 +145,6 @@ public class MainController {
 		Main user = mainService.selectReskind(map);
 		if( user != null) {
 			session.setAttribute("userReskindSession", user.getReskind());
-			
 	    	
 			resultMap.put("user", user);
 			resultMap.put("result", "success");

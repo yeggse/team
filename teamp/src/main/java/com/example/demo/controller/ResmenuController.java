@@ -47,7 +47,7 @@ public class ResmenuController {
     	request.setAttribute("userId", id);
     	request.setAttribute("kind", kind);
     	
-		Main res = mainService.searchRes(map);
+		Main res = mainService.searchRes(map); // resnum을 통해 레스토랑 찾아주는 과정
 		request.setAttribute("res",  new Gson().toJson(res));
 		
 		return "/storeList_clicked"; // WEB-INF에서 호출할 파일명
