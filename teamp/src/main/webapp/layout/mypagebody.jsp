@@ -15,17 +15,17 @@
 </head>
 <body id="body-pd">
 
-    <div class="l-navbar" id="navbar" >
+    <div class="l-navbar" id="navbar" style = "margin-top:90px" >
         <nav class="nav">
             <div>
                 <div class="nav__brand">
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                    <a href="#" class="nav__logo">설정</a>
+                    <a href="#" class="nav__logo">마이 페이지</a>
                 </div>
                 <div class="nav__list">
                     <a href="main.do" class="nav__link active">
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
-                        <span class="nav_name">주문하기</span>
+                        <span class="nav_name">홈페이지</span>
                     </a>
                     
 
@@ -36,9 +36,9 @@
                         <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 
                         <ul class="collapse__menu">
-                            <a href="reservemy.do" class="collapse__sublink">예약 내역</a>
+                            <a href="reservemy.do" class="collapse__sublink">●예약 내역</a>
                             
-                            <a href="paymentmy.do" class="collapse__sublink">결제 내역</a>
+                            <a href="paymentmy.do" class="collapse__sublink">●결제 내역</a>
                             
                         </ul>
                     </div>
@@ -54,13 +54,13 @@
 
                         <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 
-                        <ul class="collapse__menu">
-                            <a href="#" class="collapse__sublink">양식</a>
-                            <a href="#" class="collapse__sublink">중식</a>
-                            <a href="#" class="collapse__sublink">일식</a>
-                            <a href="#" class="collapse__sublink">아시아</a>
-                            <a href="#" class="collapse__sublink">한식</a>
-                            <a href="#" class="collapse__sublink">잡식</a>
+                        <ul class="collapse__menu" style="width:120px;">
+                            <a href="#" class="collapse__sublink">●양식</a>
+                            <a href="#" class="collapse__sublink">●중식</a>
+                            <a href="#" class="collapse__sublink">●일식</a>
+                            <a href="#" class="collapse__sublink">●아시아</a>
+                            <a href="#" class="collapse__sublink">●한식</a>
+                            <a href="#" class="collapse__sublink">●잡식</a>
                         </ul>
                     </div>
 

@@ -100,15 +100,15 @@ align: center;
  	 background:black;
   	 color:white;
  	 border:none;
- 	 width:350px;
- 	 height:50px;
+ 	 width:300px;
+ 	 height:30px;
 }
 
 .btnadd{
  	 background:green;
   	 color:white;
  	 border:none;
- 	 width:80px;
+ 	 width:77px;
  	 height:35px;
  	 float:right;
 }
@@ -126,7 +126,7 @@ padding: 5px;
      margin-right: 350px; /*가운데 정렬*/
      margin-bottom: 350px; /*가운데 정렬*/
      border: 2px solid black;
-     position: relative; left: -500px; bottom:900px; 
+     position: relative; left: -500px;
     }
 .div2{
 border: 5px solid black;	
@@ -146,9 +146,9 @@ margin-top: 5px;
 
 <body class="body">
 <div>
-
+<jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
-	<jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
+	
     <div id="mainWrapper"> 
                 <!--영업 on/off  -->
         	<div class="div2">

@@ -56,14 +56,12 @@
      height:5rem;
      font-size:2rem;
 }
-
 #divPaging > div {
      float:left;
      width: 1.9rem;
      margin:0 auto;
      text-align:center;
 }
-
 #liSearchOption {
 	 clear:both;
      margin:0rem 0rem 0rem 20rem; 
@@ -85,7 +83,6 @@
  	 width:6rem;
  	 height:3.2rem;
 }
-
 ul, li{ 
      list-style:none;
      text-align:center;
@@ -114,7 +111,6 @@ height: 4rem;
 margin:auto;
 padding: 0.3rem 0rem 0rem 30rem;
 }
-
 .div2{
 border: 10px solid blue;
 width: 40rem;
@@ -123,7 +119,6 @@ font-align: center;
 font-size:8rem;
 padding:1rem 1rem 1rem 1rem;
 margin: 0rem 0rem 0rem 6rem;
-
 }
 .div3{
 border: 10px solid green;
@@ -133,7 +128,6 @@ height: 22rem;
 margin:auto;
 padding:0rem 1rem 0rem 1rem;
 }
-
 #txtKeyWord{
 	width:20rem;
 	height:3rem;
@@ -260,7 +254,6 @@ var app = new Vue({
               });
       	
       	}    
-
       }   
       , created: function () {
   		this.fnGetList();       

@@ -151,10 +151,10 @@ padding:0rem 1rem 0rem 1rem;
 </style>
 
 <body >
+<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
 	<div class="div0">
-	
-	<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+
     <div id="mainWrapper">
         	<div class="div2">
             <!-- 게시판 제목 -->
@@ -191,52 +191,17 @@ padding:0rem 1rem 0rem 1rem;
                     
                     <!-- 게시물이 출력될 영역 -->
                     <li>
-                        <ul>
-                            <li>1</li>
-                            <li>12316516</li>
-                            <li>중국집</li>
-                            <li>짜장면</li>
-                            <li>2023.02.08</li>
-                            <li>20000원</li>
+                        <ul v-for="(item, index) in list">
+                            <li>{{item.resnum}}</li>
+                            <li>{{item.ordernum}}</li>
+                            <li></li>
+                            <li>{{item.menuname}}</li>
+                            <li></li>
+                            <li>{{item.price}}</li>
                             <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
                         </ul>
                     </li>
 
-                    <li>
-                        <ul>
-                            <li>2</li>
-                            <li>12316516</li>
-                            <li>중국집</li>
-                            <li>짜장면</li>
-                            <li>2023.02.08</li>
-                            <li>20000원</li>
-                           <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>3</li>
-                            <li>12316516</li>
-                            <li>중국집</li>
-                            <li>짜장면</li>
-                            <li>2023.02.08</li>
-                            <li>20000원</li>
-                           <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>4</li>
-                            <li>12316516</li>
-                            <li>중국집</li>
-                            <li>짜장면</li>
-                            <li>2023.02.08</li>
-                            <li>20000원</li>
-                           <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
-                        </ul>
-                    <li>                                        
                 </ul>
             </li>
             </div>   
@@ -261,6 +226,35 @@ padding:0rem 1rem 0rem 1rem;
     </div>  
 </body>
     <jsp:include page="/layout/footer.jsp"></jsp:include>
+    
+    <script type="text/javascript">
+var app = new Vue({ 
+    el: '#app',
+    data: {
+    	list : [] // 전체 데이터 리스트
+        , id: "${userId}"
+    }   
+    , methods: {
+    	  fnGetList : function(){
+              var self = this;
+              var nparmap = {id: self.id};
+              $.ajax({
+                  url:"/Res2.dox",
+                  dataType:"json",	
+                  type : "POST", 
+                  data : nparmap,
+                  success : function(data) {                                       
+  	                self.list = data.list;
+  	                console.log(self.list);  
+                  }
+              }); 
+          }  
+      }   
+      , created: function () {
+  		this.fnGetList();       
+  	  } 
+});
+</script>
     
 </html>  
 

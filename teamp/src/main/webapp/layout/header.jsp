@@ -14,6 +14,7 @@
 	            text-decoration-line: none;
 	        }
 	</style>
+	
 	<title>testing_header</title>
 	<div id = "app2" class="header" >
       <a  href="main.do"><img style="margin-left:40px"src="img/main/newlogo.png" width="100px" height="80px"></a> 
@@ -40,7 +41,7 @@
       
       <a v-else href="login.do" class="header" style="margin-left: 1800px; display: flex; align-items: center;"> 로그아웃 
       </a>
-      
+     
       
      </div>
 </head>
