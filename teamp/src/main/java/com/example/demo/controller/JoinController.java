@@ -77,6 +77,14 @@ public class JoinController {
 				session.setAttribute("userFrontregisnumSession", user.getFrontregisnum());
 		    	session.setAttribute("userAfterregisnumSession", user.getAfterregisnum());
 		    	session.setAttribute("userAddressSession", user.getAddress());
+		    	
+		    	session.setAttribute("userResnameSession", user.getResname());
+				session.setAttribute("userResnumSession", user.getResnum());
+				session.setAttribute("userReskindSession", user.getReskind());
+				session.setAttribute("userResregionSession", user.getRegion());
+				session.setAttribute("userResphone", user.getResphone());
+				session.setAttribute("userResad", user.getResad());
+		    	
 				resultMap.put("user", user);
 				resultMap.put("result", "success");
 			} else {

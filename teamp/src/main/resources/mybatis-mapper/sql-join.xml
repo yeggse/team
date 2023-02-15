@@ -53,7 +53,8 @@
 
 
 	<insert id="insertMember" parameterType="hashmap">
-		INSERT INTO t3_account
+		INSERT INTO
+		t3_account(id,pwd,kind,phonenum,acc,name,address,frontregisnum,afterregisnum,nickname,resnum)
 		VALUES(
 
 		#{id}
@@ -62,13 +63,35 @@
 		, #{phonenum}
 		, #{acc}
 		, #{name}
-		, #{address}
+		,
+		#{address}
+		, #{frontregisnum}
+		, #{afterregisnum}
+		, #{nickname}
+		, #{resnum}
+
+		)
+
+	</insert>
+
+	<insert id="insertMember2" parameterType="hashmap">
+		INSERT INTO t3_account(id,pwd,kind,phonenum,acc,name,address,frontregisnum,afterregisnum,nickname
+		,resname,reskind,region,resad,resphone)
+		VALUES(
+
+		#{id}
+		, #{pwd}
+		, #{kind}
+		, #{phonenum}
+		, #{acc}
+		, #{name}
+		,
+		#{address}
 		,
 		#{frontregisnum}
 		, #{afterregisnum}
 		, #{nickname}
 		, #{resname}
-		, #{resnum}
 		, #{reskind}
 		, #{region}
 		, #{resad}
@@ -79,60 +102,71 @@
 	</insert>
 
 
+
+
 	<select id="searchpw" parameterType="hashmap"
 		resultType="com.example.demo.model.Join">
 		SELECT
 		id, frontregisnum, afterregisnum
 		FROM
 		t3_account
-		WHERE id = #{id} AND frontregisnum = #{frontregisnum} AND
-		afterregisnum = #{afterregisnum}
+		WHERE
+		id = #{id} AND frontregisnum = #{frontregisnum} AND
+		afterregisnum =
+		#{afterregisnum}
 	</select>
 
 
 	<update id="datachange" parameterType="hashmap">
 		UPDATE
-		
+
 		t3_account SET
-			pwd = #{pwd},
-			phonenum = #{phonenum},
-			nickname = #{nickname},
-			acc = #{account},
-			address = #{address},
-			resname = #{restaurant},
-			resnum = #{resnum},
-			reskind = #{kind},
-			region = #{region},
-			resad = #{resad},
-			resphone = #{resphonenum}
-		WHERE 
-			id = #{id}
+		pwd =
+		#{pwd},
+		phonenum = #{phonenum},
+		nickname = #{nickname},
+		acc = #{account},
+		address = #{address},
+		resname = #{restaurant},
+		resnum = #{resnum},
+		reskind = #{kind},
+		region = #{region},
+		resad = #{resad},
+		resphone =
+		#{resphonenum}
+		WHERE
+		id = #{id}
 	</update>
 
 	<update id="pwdchange" parameterType="hashmap">
 		UPDATE
 		t3_account
 		SET
-		pwd = #{newpwd}
+		pwd =
+		#{newpwd}
 		WHERE
 		id = #{id}
 	</update>
-	
-		
-	<select id="selectLoginList" parameterType="hashmap" resultType="com.example.demo.model.Join">	
+
+
+	<select id="selectLoginList" parameterType="hashmap"
+		resultType="com.example.demo.model.Join">
 		SELECT
-			id, pwd, name, kind, acc, phonenum, frontregisnum, afterregisnum, address
+		id, pwd, name, kind, acc, phonenum, frontregisnum,
+		afterregisnum, address
 		FROM
-			t3_account
+		t3_account
 		WHERE id = #{id} AND pwd = #{pwd}
 	</select>
-	
-	<select id="searchid" parameterType="hashmap" resultType="com.example.demo.model.Join">	
+
+	<select id="searchid" parameterType="hashmap"
+		resultType="com.example.demo.model.Join">
 		SELECT
-			id, name, frontregisnum, afterregisnum
+		id, name, frontregisnum, afterregisnum
 		FROM
-			t3_account
-		WHERE name = #{name} AND frontregisnum = #{frontregisnum} AND afterregisnum = #{afterregisnum}
+		t3_account
+		WHERE name = #{name} AND frontregisnum = #{frontregisnum} AND
+		afterregisnum = #{afterregisnum}
 	</select>
 
 

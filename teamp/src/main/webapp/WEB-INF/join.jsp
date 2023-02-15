@@ -154,6 +154,7 @@ a {
 					address : "",
 					account : "",
 					nickname : "",
+					resnum : '0',
 					num : "",
 					idcheck : false,
 					agecheck : false,
@@ -222,12 +223,7 @@ a {
 							frontregisnum : self.age,
 							afterregisnum : self.age1,
 							nickname : self.nickname,
-							resname : "",
-							resnum : 0,
-							reskind : "",
-							region : "",
-							resad : "",
-							resphone : 0
+							
 						};
 						console.log(nparmap);
 						if (self.pwd != self.pwd2) {

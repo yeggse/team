@@ -124,7 +124,7 @@ a {
 				style="margin-left: 45px"></input>
 		</div>
 		<div class="div2">
-			사업자번호 <input type="text" id="text1" v-model="resnum"
+			사업자번호 <input type="text" id="text1" v-model="num"
 				style="margin-left: 30px"></input>
 		</div>
 		<div class="div2">
@@ -172,7 +172,7 @@ a {
 			nickname : "",
 			num : "",
 			restaurant : "",
-			resnum : "",
+			num : "";
 			kind : "",
 			region : "",
 			resad : "",
