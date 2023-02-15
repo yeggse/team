@@ -228,7 +228,7 @@ var app = new Vue({
 	}
  	, fnView : function(item){
 		var self = this;
-		self.pageChange("/Mypage.do", {resname : item.resname});
+		self.pageChange("/Mypage.do", {resnum : item.resnum});
 	}
     	
     }

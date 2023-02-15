@@ -26,4 +26,5 @@ public interface MainMapper {
 	List<Main> regionSearch(HashMap<String, Object> map);	
 	Main selectReskind(HashMap<String, Object> map);
 	List<Area> selectSiList(HashMap<String, Object> map) throws Exception;
+	Main searchRes(HashMap<String, Object> map) throws Exception;
 }

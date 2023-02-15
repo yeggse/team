@@ -26,4 +26,5 @@ public interface MainService {
 	List<Main> ListArea(HashMap<String, Object> map); // 데이터 호출을 위한 인터페이스
 	Main selectReskind(HashMap<String, Object> map);
 	List<Area> selectSiList(HashMap<String, Object> map) throws Exception;
+	Main searchRes(HashMap<String, Object> map) throws Exception;
 }

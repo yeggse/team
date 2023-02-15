@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.BoardService;
+import com.example.demo.dao.MainService;
 import com.example.demo.dao.ResmenuService;
 import com.example.demo.model.Board;
+import com.example.demo.model.Main;
 import com.example.demo.model.Res;
 import com.google.gson.Gson;
 
@@ -26,6 +28,8 @@ public class ResmenuController {
 	// Service 인터페이스 객체 생성 및 연결
 	@Autowired
 	private ResmenuService resmenuService;
+	@Autowired
+    private MainService mainService;
 
 	@Autowired
     HttpSession session;
@@ -37,12 +41,15 @@ public class ResmenuController {
 	}
 
 	@RequestMapping("/Mypage.do")
-	public String clicked(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-		HashMap<String, Object> map = new HashMap<String, Object>();
+	public String clicked(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
 		String id = (String)session.getAttribute("userIdSession");	
     	String kind = (String)session.getAttribute("KindSession");
     	request.setAttribute("userId", id);
     	request.setAttribute("kind", kind);
+    	
+		Main res = mainService.searchRes(map);
+		request.setAttribute("res",  new Gson().toJson(res));
+		
 		return "/storeList_clicked"; // WEB-INF에서 호출할 파일명
 	}
 

@@ -35,11 +35,11 @@
       </div>	
       
       
-      <a v-if="'${userId}' === ''" href="login.do" class="header" style="margin-left: 1800px; display: flex; align-items: center;"> 로그인
+      <a v-if="'{{user.id}}' === ''" href="login.do" class="header" style="margin-left: 1800px; display: flex; align-items: center;"> 로그인
       </a>
      
       
-      <a v-else href="login.do" class="header" style="margin-left: 1800px; display: flex; align-items: center;"> 로그아웃 
+      <a v-else href="login.do" class="header" style="margin-left: 1800px; display: flex; align-items: center;"> {{user.name}}님 로그아웃 
       </a>
      
       
@@ -54,9 +54,7 @@
 var app = new Vue({ 
     el: '#app2',
     data: {
-    	
-    	
-    	
+    	user:${userVO}
     }   
     , methods: {
     	 

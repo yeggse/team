@@ -69,6 +69,9 @@ public class JoinController {
 			Join user = joinService.selectLoginList(map);
 			
 			if( user != null) {
+				session.setAttribute("userVO", new Gson().toJson(user));
+				session.setMaxInactiveInterval(60*60);
+				
 				session.setAttribute("userIdSession", user.getId());
 				session.setAttribute("userNameSession", user.getName());
 				session.setAttribute("KindSession", user.getKind());

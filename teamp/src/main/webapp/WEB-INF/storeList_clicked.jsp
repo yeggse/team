@@ -160,12 +160,11 @@ input {
 
 <body>
 	<div id="app" style="width: 100%; padding-top: 120px;" anlign="center">
-		<div class="title_food">옛날짜장</div>
-		<span class="grade" style="margin-left: 180px;">평점 :</span> <span
-			class="position_res" style="marin-top: -50px;"> 가게위치: <!-- {{list[0].pickuptime}} 집에서 mysqpl로 다시 수정하기.-->
-		</span>
+		<div class="title_food">{{res.resname}}</div>
+		<span class="grade" style="margin-left: 180px;">평점 :{{res.grade}}</span> 
+		<span class="position_res" style="marin-top: -50px;"> 가게위치:{{res.resadd}} <!-- {{list[0].pickuptime}} 집에서 mysqpl로 다시 수정하기.--></span>
 		<!-- 가계주소들어와야함 -->
-		<div class="position_res" style="margin-left: 619px;">픽업시간 :</div>
+		<div class="position_res" style="margin-left: 619px;">운영시간 :{{res.pickuptime}}</div>
 		<!-- 가계주소들어와야함 -->
 		<div>
 			<button id="btn_menu" @click="fnClick1">메뉴</button>
@@ -269,7 +268,9 @@ input {
 			list : [],
 			/* 게시판에 올려지는 글들은 다른 리스트 새로만들기  */
 			flg : true
-			,resname : "${map.resname}"
+			,res : ${res}
+			,user : ${userVO}
+			
 		},
 		methods : {
 			fnGetList : function() {

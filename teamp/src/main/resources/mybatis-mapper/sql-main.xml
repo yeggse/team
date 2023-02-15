@@ -24,7 +24,14 @@
 		ORDER BY resnum ASC
 	</select>	
 	
-	
+	<select id="searchRes" parameterType="hashmap" resultType="com.example.demo.model.Main">	
+		SELECT
+			resnum, region, startdate, reskind, resname, resphone, grade, resadd
+		FROM
+			t3_restaurant	
+		where
+			resnum = ${resnum}
+	</select>	
 	
 	<!-- 지역검색 -->
 	<select id="regionSearch" parameterType="hashmap" resultType="com.example.demo.model.Main">	

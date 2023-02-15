@@ -77,4 +77,9 @@ public class MainServiceImpl implements MainService{
 			// TODO Auto-generated method stub
 			return mainMapper.selectReskind(map);
 		}
+		
+		@Override
+		public Main searchRes(HashMap<String, Object> map) throws Exception {
+			return mainMapper.searchRes(map);
+		}
 }
