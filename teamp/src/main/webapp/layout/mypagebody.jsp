@@ -20,7 +20,7 @@
             <div>
                 <div class="nav__brand">
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                    <a href="#" class="nav__logo">설정</a>
+                    <a href="#" class="nav__logo">마이 페이지</a>
                 </div>
                 <div class="nav__list">
                     <a href="main.do" class="nav__link active">
