@@ -109,7 +109,7 @@
 		<div style="margin-bottom:5px; font-size:large; font-weight: bold; margin-left: 20px;">메뉴들 출력</div>	<!-- for문!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 	  </div>
 	  <div class="div3">
-	  	<a href="main.storelist.do" style="font-size:large; font-weight: bold; margin-left: 200px; color: orange;"> 메뉴를 추가하시겠습니까?</a> 
+	  	<a href="Mypage.do" style="font-size:large; font-weight: bold; margin-left: 200px; color: orange;"> 메뉴를 추가하시겠습니까?</a> 
 		<div style="margin-top: 5px; font-size:large; font-weight: bold; margin-left: 100px;">
 			결제 금액 : 계산 금액 출력	  원
 	  	</div>

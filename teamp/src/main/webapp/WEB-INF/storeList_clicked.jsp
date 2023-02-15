@@ -269,6 +269,7 @@ input {
 			list : [],
 			/* 게시판에 올려지는 글들은 다른 리스트 새로만들기  */
 			flg : true
+			,resname : "${map.resname}"
 		},
 		methods : {
 			fnGetList : function() {
@@ -282,6 +283,7 @@ input {
 					success : function(data) {
 						self.list = data.list;
 						console.log(${siList});
+						console.log(self.resname);
 					}
 				});
 			}

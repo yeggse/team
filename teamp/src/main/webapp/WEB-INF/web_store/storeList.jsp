@@ -85,31 +85,19 @@
 						<col width="25%"/>
 					</colgroup>
 					<tbody>
-						<tr v-for="(data, index) in list" v-if="index%2==0">
+						<tr v-for="(item, index) in list" v-if="index%2==0">
 							<td>
 								<span style="text-align: right; margin-right: 10px;" >
-		    					<a href= "http://localhost:8080/Mypage.do">	<!-- 링크 확인!!!!!!!!!!!! -->
+		    					<button @click="fnView(item)">	<!-- 링크 확인!!!!!!!!!!!! -->
 	    						<span style="background-color: lightgray; display: flex; text-align: center; width: 700px; height: 100px;">
-	    							<!-- 스토리에 c 문법 사용할 수 있는지 더 찾아보기. -->
-	    							<%-- <c:if test="${data.name eq '짜' }">
-			    						<img src="img/main/1.PNG" width=100px height=90px vertical-align= middle margin-right=70px>
-	    							</c:if>
-	    							<c:if test="${data.name eq '짜2' }">
-			    						<img src="img/main/2.PNG" width=100px height=90px vertical-align= middle margin-right=70px>
-	    							</c:if>
-	    							<c:if test="${data.name eq '짜3' }">
-			    						<img src="img/main/3.PNG" width=100px height=90px vertical-align= middle margin-right=70px>
-	    							</c:if>
-	    							<c:if test="${data.name eq '짜4' }">
-			    						<img src="img/main/3.PNG" width=100px height=90px vertical-align= middle margin-right=70px>
-	    							</c:if> --%>
+	    							
 		    						<img src="img/main/point.PNG" width=100px height=90px vertical-align= middle margin-right=70px>
 		    						<span style="font-size: large; font-weight: bold; color: black; margin-left: 50px;">
 		    						<br>
-		    						<div>가게명 : {{data.resname}} </div><div>{{data.grade}} 점 / 주소: {{data.resadd}}</div>  
+		    						<div>가게명 : {{item.resname}} </div><div>{{item.grade}} 점 / 주소: {{item.resadd}}</div>  
 	    							</span>
 	    						</span>
-		    					</a>
+		    					</button>
 		    					</span>
 							</td>
 						</tr>
@@ -123,18 +111,18 @@
 						<col width="25%"/>
 					</colgroup>
 					<tbody>
-						<tr v-for="(data, index) in list" v-if="index%2!=0">
+						<tr v-for="(item, index) in list" v-if="index%2!=0">
 							<td>
 								<span style="text-align: right; margin-right: 10px;" >
-		    					<a href= "http://localhost:8080/Mypage.do">	<!-- 링크 확인!!!!!!!!!!!! -->
+		    					<button @click="fnView(item)">	<!-- 링크 확인!!!!!!!!!!!! -->
 	    						<span style="background-color: lightgray; display: flex; text-align: center;width: 700px; height: 100px;">
 		    						<img src="img/main/point.PNG" width=100px height=90px vertical-align= middle margin-right=80px>
 		    						<span style="font-size: large; font-weight: bold; color: black; margin-left: 50px;">
 		    						<br>
-		    						<div>가게명 : {{data.resname}} </div><div>{{data.grade}} 점 / 주소: {{data.resadd}}</div>  
+		    						<div>가게명 : {{item.resname}} </div><div>{{item.grade}} 점 / 주소: {{item.resadd}}</div>  
 	    							</span>
 	    						</span>
-		    					</a>
+		    					</button>
 		    					</span>
 							</td>
 						</tr>
@@ -166,6 +154,7 @@ var app = new Vue({
     	tempGrade : "",
     	si : "${si}",
     	reskind : "${reskind}"
+    	
     }   
     , methods: {
     	// 기본 화면 출력 이벤트 (식당 출력)
@@ -180,6 +169,7 @@ var app = new Vue({
                 success : function(data) {/* 데이터가 제대로 넘어오면, success실행됨 */   
                 	self.list = data.list;
                 console.log(self.reskind);
+                console.log(self.list);
    	            	if(self.list.length > 0){
    	            		self.tempGrade = self.list[0].grade;
    	            	}
@@ -205,9 +195,41 @@ var app = new Vue({
             	console.log(self.list);
             }
        });
-	} 	
-    	
-    	
+	} 
+ 	
+ 	, pageChange : function(url, param) {
+		var target = "_self";
+		if(param == undefined){
+		//	this.linkCall(url);
+			return;
+		}
+		var form = document.createElement("form"); 
+		form.name = "dataform";
+		form.action = url;
+		form.method = "post";
+		form.target = target;
+		for(var name in param){
+			var item = name;
+			var val = "";
+			if(param[name] instanceof Object){
+				val = JSON.stringify(param[name]);
+			} else {
+				val = param[name];
+			}
+			var input = document.createElement("input");
+    		input.type = "hidden";
+    		input.name = item;
+    		input.value = val;
+    		form.insertBefore(input, null);
+		}
+		document.body.appendChild(form);
+		form.submit();
+		document.body.removeChild(form);
+	}
+ 	, fnView : function(item){
+		var self = this;
+		self.pageChange("/Mypage.do", {resname : item.resname});
+	}
     	
     }
     , created: function () {
