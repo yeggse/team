@@ -117,23 +117,13 @@ background:#ffff99;
 			<h2>세잎 메뉴관리</h2>
 			<div style="text-align: center;">
 			
-				<b-form-input
-         			 size="sm"
-          			class="mr-sm-2"
-          			type="text"
-          			placeholder="검색어를 입력해주세요"
-          			v-model="keyword"  //keyword에 바인딩
-          			@keyup.enter="searchresultshow(keyword)" //엔터 클릭시 searchresultshow 실행>
-          		</b-form-input>
-       				 <b-button
-          					size="sm"
-          					class="my-2 my-sm-0"
-          					type="submit"
-          					@click="searchresultshow(keyword)" //버튼 클릭시 searchresultshow 실행>
-			
-				<!-- <input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		업종 리스트 출력하는 쿼리 생성 필요!!
-				<button id="btn"  >검색</button> -->
-				
+				<input type="text" name="search" value="" placeholder="검색내용을 입력하세요." onkeypress="if (event.keyCode == 13) { try {
+    window.location.href = '/search' + '/' + looseURIEncode(document.getElementsByName('search')[0].value);
+    document.getElementsByName('search')[0].value = '';
+    return false;
+} catch (e) {} }">			
+				<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		<!--업종 리스트 출력하는 쿼리 생성 필요!!-->
+				<button id="btn"  >검색</button> 
 				
 				
 			</div>
@@ -143,9 +133,9 @@ background:#ffff99;
 					<col width="10%"/> 
 					<col width="10%"/> 
 					<col width="20%"/>
-					<col width="12.5%"/>
-					<col width="15%"/>
 					<col width="5%"/>
+					<col width="15%"/>
+					<col width="15%"/>
 					<col width="5%"/>
 				</colgroup>
 				<thead>
@@ -168,7 +158,7 @@ background:#ffff99;
 	                   <td @click="fnDetailView(item)">{{item.menuname}}</td> 
 	                   <td @click="fnDetailView(item)">{{item.price}}원</td> 
 	                   <td @click="fnDetailView(item)">{{item.introduce}}</td>
-	                   <td @click="fnDetailView(item)">{{item.picture}}<img src="https://mediahub.seoul.go.kr/wp-content/uploads/2020/10/d13ea4a756099add8375e6c795b827ab.jpg"></td>
+	                   <td @click="fnDetailView(item)">{{item.idx}}<img src=""></td>
 	                   <td @click="fnDetailView(item)">{{item.startdate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.enddate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.supply}}</td> 
@@ -218,8 +208,9 @@ var app = new Vue({
        	, pageCount: 1
         , userId : "${userId}"
         , boardtype : ""
-        ,supply:""
-        ,idx:""
+        , supply:""
+        , idx:""
+        , resnum:"${resnum}"
     }   
     , methods: {
     	// 기본 출력 메소드
@@ -227,7 +218,7 @@ var app = new Vue({
             var self = this;
             var startNum = ((self.selectPage-1) * 10);
     		var lastNum = self.selectPage * 10
-            var nparmap = {startNum : self.startNum, lastNum : self.lastNum}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
+            var nparmap = {startNum : self.startNum, lastNum : self.lastNum,resnum:self.resnum}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
             $.ajax({
                 url:"/selectResmenu2.dox",
                 dataType:"json",	

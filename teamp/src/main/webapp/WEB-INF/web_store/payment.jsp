@@ -106,7 +106,13 @@
 	  
 	  <div class="div2">
 		<div style="font-size: xx-large; font-weight: bolder; margin-bottom: 10px; margin-left: 30px; margin-top:10px;" > 선택하신 메뉴</div> 
-		<div style="margin-bottom:5px; font-size:large; font-weight: bold; margin-left: 20px;">메뉴들 출력</div>	<!-- for문!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+		<div v-for="(item, index) in list" style="margin-bottom:5px; font-size:large; font-weight: bold; margin-left: 20px;">
+		
+		<div v-if = "item.sum != 0">메뉴 : {{item.menuname}}</div>
+		<div v-if = "item.sum != 0">가격 : {{item.price}}</div>
+		<div v-if = "item.sum != 0">수량 : {{item.sum}}</div>
+		
+		</div>	<!-- for문!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 	  </div>
 	  <div class="div3">
 	  	<a href="Mypage.do" style="font-size:large; font-weight: bold; margin-left: 200px; color: orange;"> 메뉴를 추가하시겠습니까?</a> 
@@ -138,8 +144,7 @@ var app = new Vue({
        	,kind : "${kind}"
        	,phoneNum : "${userPhonenum}"
         ,acc : "${userAcc}"
-        , test: "${map.list}"
-        , reskind :"";
+        ,list: ${map.list} 
         
     }   
     , methods: {
@@ -185,8 +190,8 @@ var app = new Vue({
     		 
     , created: function () {
     	var self = this;
+    	console.log(self.list);
     	
-    	console.log(self.test);
 	}
 });
 </script>

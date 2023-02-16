@@ -33,22 +33,6 @@
 	</select>
 	
 	
-	
-	
-	
-	<!-- 사업자 메뉴관리 페이지에 사용 -->
-	<select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	
-			SELECT
-				*
-			FROM
-				t3_restaurant RES 
-			INNER JOIN 
-				t3_resmenu RM ON RES.RESNUM = RM.RESNUM
-			WHERE 
-				RES.RESNUM =1;  <!-- 하드코딩 고치기 -->
-	</select>
-	
-	
 	<!-- 사업자 메뉴관리 페이지 게시물 갯수 -->
 	<select id="selectResmenuCnt" resultType="int">	
 		SELECT 
@@ -56,6 +40,51 @@
 		FROM
 			t3_resmenu
 	</select>
+	
+	
+	
+	<!-- id join -->
+	<select id="selectResmenu3" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+			SELECT
+				*
+			FROM
+				t3_account
+			INNER JOIN 
+				t3_resmenu
+			ON 
+				t3_account.resnum = t3_resmenu.resnum
+			WHERE 
+				t3_account.resnum = #{resnum}  <!-- 하드코딩 고치기 -->
+	</select>
+	<!-- resnum join -->
+	<select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+			SELECT
+				*
+			FROM
+				t3_restaurant
+			INNER JOIN 
+				t3_resmenu
+			ON 
+				t3_restaurant.resnum = t3_resmenu.resnum
+			WHERE 
+				t3_restaurant.resnum = #{resnum}  <!-- 하드코딩 고치기 -->
+	</select>
+	
+	<!-- picture join -->
+	<select id="selectImg" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+			SELECT
+				picture
+			FROM
+				t3_resmenu_img
+			INNER JOIN 
+				t3_resmenu
+			ON 
+				t3_restaurant.picture = t3_resmenu.picture
+			WHERE 
+				t3_restaurant.idx =2;  <!-- 하드코딩 고치기 -->
+	</select>
+	
+	
 	
 
 </mapper>

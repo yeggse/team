@@ -186,7 +186,7 @@ input {
 					</div>
 					<div
 						style="margin-top: 30px; margin-right: 100px; width: 1000px; height: 180px; border: 1px solid green; float: left;">
-						<div style="margin-bottom: 10px;">보통짜장면:{{item.menuname}}</div>
+						<div style="margin-bottom: 10px;">메뉴명:{{item.menuname}}</div>
 						<div style="margin-bottom: 10px;">수량:{{item.supply}}</div>
 						<div style="margin-bottom: 10px;">가격:{{item.price}}</div>
 						<div style="margin-bottom: 10px;">간단한 음식설명:{{item.introduce}}</div>
@@ -287,7 +287,7 @@ input {
 		}
 		, fnMenuincrease : function(item){
 			var self = this;
-			if(self.list[0].supply > item.sum){
+			if(item.supply > item.sum){
 				item.sum += 1;	
 			}else{
 				alert("주문수량을 초과하였습니다.");
