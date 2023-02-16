@@ -87,7 +87,7 @@ public class BoardController {
     	String id = (String)session.getAttribute("userIdSession");
     	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
     	String kind = (String)session.getAttribute("KindSession");
-    	System.out.println(map.get("noticenum"));
+    	System.out.println("게시글 수정하기 - 게시글 번호 : "+map.get("noticenum"));
     	request.setAttribute("userId", id);
     	request.setAttribute("kind", kind);
     	return "/web_board/boardEdit"; // WEB-INF에서 호출할 파일명

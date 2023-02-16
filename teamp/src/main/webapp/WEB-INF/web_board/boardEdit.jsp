@@ -38,7 +38,7 @@
 	<div id="app">
 		<div class="container">
 			<h1>공지사항 수정하기 : 내용 출력 이벤트 필요!</h1>
-			<div><h2>{{userId}} 님께서 수정하시고 계십니다.</h2></div>
+			<div style="margin-left: 50px;"><h2>{{userId}} 님께서 수정하시고 계십니다. 수정 후 저장을 해 주세요.</h2></div>
 			<table class="board_detail">
 				<colgroup>
 					<col width="10%"/>
@@ -67,7 +67,7 @@ var app = new Vue({
     el: '#app',
     data: {
        list : [] 
-       , idx : "${map.noticenum}"	// boardList 에서 받아온 값!!!
+       , noticenum : "${map.noticenum}"	// boardList 에서 받아온 값!!!
        , userId : "${userId}"	//세션으로 id가져오기
        , selectedItemList : []
        , content : ""
@@ -77,8 +77,8 @@ var app = new Vue({
     	// 게시글 상세 기본 출력
     	fnGetBoard : function(){
             var self = this;
-            console.log("test == " + self.idx);
-            var nparmap = {noticenum : self.idx};
+            console.log("test == " + self.noticenum);
+            var nparmap = {noticenum : self.noticenum};
             $.ajax({
                 url:"/detailBoard.dox",
                 dataType:"json",	
@@ -94,7 +94,7 @@ var app = new Vue({
 	// 저장 버튼
 		, fnSave : function(){
     		var self = this;
-	      	var nparmap = {title : self.title, content : self.content, noticenum : self.idx};
+	      	var nparmap = {title : self.title, content : self.content, noticenum : self.noticenum};
 	        $.ajax({
 	            url:"/editBoard.dox",
 	            dataType:"json",	

@@ -34,7 +34,7 @@
 <body>
 	<div id="app">
 		<div class="container">
-			<h2>공지사항 상세보기 - 수정하기 페이지 수정필요!! </h2>
+			<h2>공지사항 상세보기 </h2>
 			<div class="card">
 				<h2 class="card-header p-4">
 					{{info.title}}
@@ -111,7 +111,8 @@ var app = new Vue({
         
     	, fnEdit : function(){
 			var self = this;
-			self.pageChange("./main.board.edit.do", {boardIdx : self.idx});	
+			self.pageChange("./main.board.edit.do", {noticenum : self.idx});	
+			
 		}
 		
 		// 목록으로 가기 버튼
