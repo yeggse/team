@@ -111,7 +111,7 @@ var app = new Vue({
         
     	, fnEdit : function(){
 			var self = this;
-			self.pageChange("./main.board.edit.do", {boardIdx : self.idx});	// noticenum 수정 필요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			self.pageChange("./main.board.edit.do", {boardIdx : self.idx});	
 		}
 		
 		// 목록으로 가기 버튼

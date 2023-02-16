@@ -26,7 +26,8 @@
 	<!-- 메뉴 상세보기 -->
 	<select id="detailMenu" resultType="com.example.demo.model.B">	
 		SELECT 
-			t.idx, reskind, startdate, enddate, menuname, introduce, price , supply, orderer, pickuptime, resnum
+			t.idx, reskind, startdate, enddate, menuname, introduce, price, 
+			supply, orderer, pickuptime, resnum, i.picture
 		FROM
 			t3_resmenu t
 		LEFT OUTER JOIN t3_resmenu_img i on t.idx = i.idx 
