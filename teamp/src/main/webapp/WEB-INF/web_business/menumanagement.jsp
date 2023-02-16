@@ -21,24 +21,25 @@ height:6rem;
 
 /* ----------------------------------------------------- */
 
-	      #input {
-            width: 400px;
-            margin-top: 0px;
-	        padding: 10px;
-            box-sizing: border-box;
-            border-radius: 10px;
-            border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
-         }   
-	       #btn{
-		       background-color: #8FBC94;
-		       width: 80px;
-		       height: 40px;
-		       border-radius: 20px;
-		       border: solid 2px #8FBC94;
-		       font-size: large;
-		       color: white;
-		       padding: 0px;
-	       }
+#input {
+   width: 25rem;
+   margin-top: 0rem;
+   padding: 0.66rem;
+   box-sizing: border-box;
+   border-radius: 0.66rem;
+   border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
+}
+   
+#btn{
+	background-color: #8FBC94;
+	width: 5rem;
+	height: 2.5rem;
+	border-radius: 1.25rem;
+	border: solid 2px #8FBC94;
+	font-size: large;
+	color: white;
+	padding: 0rem;
+}
 /* ------------------------------------------------------- */
 
 .myButton {
@@ -103,6 +104,11 @@ table-layout:; width:100%; border-top:2px solid #252525; border-bottom:1px solid
 .board_list tbody td {
 border-top:1px solid #ccc; padding:0.8rem 0rem; text-align:center; vertical-align:middle;
 }
+        .board_list tbody td.selected{
+        border-top:1px solid #ccc; padding:0.8rem 0rem; text-align:center; vertical-align:middle;
+                background-color:red;
+            }
+            
 .board_list tbody tr:hover{
 background:#ffff99;
 }
@@ -157,9 +163,7 @@ background:#ffff99;
 	                   <td @click="fnDetailView(item)">{{item.startdate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.enddate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.supply}}</td> 
-					   <td><p><label for="number">수량: </label><input type="number" min="1"  max="10" step="1" value="" id="number"/></p></td>
 	                   <td>
-							<button id='btnchange' onclick='changeBtnName()'> 수량변경 </button>
 	                   		<button id='btnSoldout' onclick='changeBtnName2()'> 일시품절 </button> 
 					   </td> 
 	               </tr>
@@ -195,19 +199,7 @@ background:#ffff99;
 
 
 <script type="text/javascript">
-
-function changeBtnName()  {
-	const btnElement = document.getElementById('btnchange') //id가 'btnchange'인 요소를 반환한다.
-	const inputElement = document.getElementById('number') //id가 'btnchange'인 요소를 반환한다.
-	if(btnElement.innerHTML == '수량변경' ){ //버튼의 텍스트값 확인
-		alert("재고 수량이 '" + inputElement.value + "개' 로 변경되었습니다" );
-		inputElement.value = '';
-	}else{ 
-		btnElement.innerHTML = '수량변경'
-	}
-}	
-
-function changeBtnName2()  {
+/* function changeBtnName2()  {
 	const btnElement = document.getElementById('btnSoldout') //id가 'btnchange'인 요소를 반환한다.
 	const inputElement = document.getElementById('number') //id가 'btnchange'인 요소를 반환한다.
 	if(btnElement.innerHTML == '일시품절' ){ //버튼의 텍스트값 확인
@@ -216,9 +208,35 @@ function changeBtnName2()  {
 	}else{ 
 		btnElement.innerHTML = '일시품절'
 	}
+}	 */
+/* function changeBtnName2()  {
+	const btnElement = document.getElementById('btnSoldout') //id가 'btnchange'인 요소를 반환한다.
+	const inputElement = document.getElementById('number') //id가 'btnchange'인 요소를 반환한다.
+	if(btnElement.innerHTML == '일시품절' ){ //버튼의 텍스트값 확인
+		alert("해당 상품을 일시품절처리로 변경하였습니다.");
+			style.background: red;
+	}else{ 
+		btnElement.innerHTML = '일시품절'
+	}
 }	
+ */
+/* const board_list tbody td = document.querySelector('.board_list tbody td');
 
-	
+function select(ulEl, liEl){
+    Array.from(ulEl.children).forEach(
+        v => v.classList.remove('selected')
+    )
+    if(liEl) liEl.classList.add('selected');
+}
+
+menuWrap.addEventListener('click', e => {
+    const selected = e.target;
+    select(menuWrap, selected);
+})
+ */
+
+/* ------------------------------------------------------------------------------------------------*/
+
 Vue.component('paginate', VuejsPaginate)
 var app = new Vue({ 
     el: '#app',
@@ -229,6 +247,8 @@ var app = new Vue({
        	, pageCount: 1
         , userId : "${userId}"
         , boardtype : ""
+        ,supply:""
+        ,idx:""
     }   
 
     , methods: {

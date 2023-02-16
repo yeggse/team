@@ -40,7 +40,7 @@
 		SELECT
 			resnum, reskind, startdate, enddate, menuname, picture, introduce, price, supply, orderer  
 		FROM
-			t3_resmenu ORDER BY resnum DESC
+			t3_resmenu ORDER BY idx DESC
 			<!-- 
 			LIMIT #{startNum}, #{lastNum}
 			 -->
