@@ -33,8 +33,18 @@ public class ResmenuServiceImpl implements ResmenuService{
 			return resmenuMapper.selectPaymentmy1(map);
 		}
 		
+		@Override
+		public HashMap<String, Object> selectStorecliectedImg(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			Res resimg = resmenuMapper.selectStorecliectedImg(map);
+			resultMap.put("resimg", resimg);
+			return resultMap;
+		}
 		
 		
+		
+
 		
 		
 		//사업자 메뉴관리 페이지에 사용 
@@ -49,12 +59,9 @@ public class ResmenuServiceImpl implements ResmenuService{
 			return resmenuMapper.selectResmenuCnt();
 		}
 		@Override
-		public HashMap<String, Object> selectStorecliectedImg(HashMap<String, Object> map) {
+		public List<Res> searchMenuname(HashMap<String, Object> map) throws Exception {
 			// TODO Auto-generated method stub
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		Res resimg = resmenuMapper.selectStorecliectedImg(map);
-		resultMap.put("resimg", resimg);
-		return resultMap;
+			return resmenuMapper.searchMenuname(map);
 		}
 		
 }

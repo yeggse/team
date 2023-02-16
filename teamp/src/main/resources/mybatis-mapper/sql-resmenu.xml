@@ -13,7 +13,7 @@
 	</select>
 <!-- group by 컬럼명 -->
 
-<select id="selectResmenu1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+	<select id="selectResmenu1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
 			ordernum,menuname,pickuptime,payment,price, idx
 			reskind, startdate,enddate,picture,introduce,supply,orderer,resnum
@@ -23,7 +23,7 @@
 		
 	</select>
 	
-<select id="selectPaymentmy1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+	<select id="selectPaymentmy1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
 			ordernum, menuname, price, resnum
 		FROM
@@ -31,7 +31,6 @@
 		WHERE
 		 	orderer = #{id} AND salecomple = "Y"
 	</select>
-	
 	
 	<!-- 사업자 메뉴관리 페이지 게시물 갯수 -->
 	<select id="selectResmenuCnt" resultType="int">	
@@ -43,8 +42,39 @@
 	
 	
 	
+	<!-- picture join -->
+<!-- 	<select id="selectImg" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+			SELECT
+				picture
+			FROM
+				t3_resmenu_img
+			INNER JOIN 
+				t3_resmenu
+			ON 
+				t3_restaurant.picture = t3_resmenu.picture
+			WHERE 
+				t3_restaurant.idx =2;  하드코딩 고치기
+	</select> -->
+	
+	<!-- picture print(storeList_Clicked) -->
+	<select id="selectStorecliectedImg" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+			SELECT
+				t.idx, picture
+			FROM
+			t3_resmenu_img t
+			
+		LEFT OUTER JOIN t3_resmenu_img i on t.idx = i.idx 
+		WHERE
+			t.idx = #{idx}
+	</select>	
+	
+	
+	
+	
+	
+	
 	<!-- id join -->
-	<select id="selectResmenu3" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+<!-- 	<select id="selectResmenu3" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT
 				*
 			FROM
@@ -54,8 +84,9 @@
 			ON 
 				t3_account.resnum = t3_resmenu.resnum
 			WHERE 
-				t3_account.resnum = #{resnum}  <!-- 하드코딩 고치기 -->
-	</select>
+				t3_account.resnum = #{resnum}  하드코딩 고치기
+	</select> -->
+	
 	<!-- resnum join -->
 	<select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT
@@ -70,31 +101,13 @@
 				t3_restaurant.resnum = #{resnum}  <!-- 하드코딩 고치기 -->
 	</select>
 	
-	<!-- picture join -->
-	<select id="selectImg" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+	<select id="searchMenuname" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT
-				picture
+				*
 			FROM
-				t3_resmenu_img
-			INNER JOIN 
 				t3_resmenu
-			ON 
-				t3_restaurant.picture = t3_resmenu.picture
 			WHERE 
-				t3_restaurant.idx =2;  <!-- 하드코딩 고치기 -->
+				menuname = #{menuname} 
 	</select>
-	
-	<!-- picture print(storeList_Clicked) -->
-	<select id="selectStorecliectedImg" parameterType="hashmap" resultType="com.example.demo.model.Res">	
-			SELECT
-				t.idx, picture
-			FROM
-			t3_resmenu_img t
-			
-		LEFT OUTER JOIN t3_resmenu_img i on t.idx = i.idx 
-		WHERE
-			t.idx = #{idx}
-	</select>	
-	
 
 </mapper>

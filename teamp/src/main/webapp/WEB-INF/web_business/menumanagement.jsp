@@ -99,11 +99,6 @@ table-layout:; width:100%; border-top:2px solid #252525; border-bottom:1px solid
 .board_list tbody td {
 border-top:1px solid #ccc; padding:0.8rem 0rem; text-align:center; vertical-align:middle;
 }
-        .board_list tbody td.selected{
-        border-top:1px solid #ccc; padding:0.8rem 0rem; text-align:center; vertical-align:middle;
-                background-color:red;
-            }
-            
 .board_list tbody tr:hover{
 background:#ffff99;
 }
@@ -117,13 +112,11 @@ background:#ffff99;
 			<h2>세잎 메뉴관리</h2>
 			<div style="text-align: center;">
 			
-				<input type="text" name="search" value="" placeholder="검색내용을 입력하세요." onkeypress="if (event.keyCode == 13) { try {
-    window.location.href = '/search' + '/' + looseURIEncode(document.getElementsByName('search')[0].value);
-    document.getElementsByName('search')[0].value = '';
-    return false;
-} catch (e) {} }">			
-				<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		<!--업종 리스트 출력하는 쿼리 생성 필요!!-->
-				<button id="btn"  >검색</button> 
+				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="menuname"></input>
+				<button id="btn" @click="fnSearch" >검색</button>	
+				
+		<!-- 		<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		업종 리스트 출력하는 쿼리 생성 필요!!
+				<button id="btn"  >검색</button>  -->
 				
 				
 			</div>
@@ -211,6 +204,8 @@ var app = new Vue({
         , supply:""
         , idx:""
         , resnum:"${resnum}"
+        , picture:"${userpicture}"
+        , menuname:""
     }   
     , methods: {
     	// 기본 출력 메소드
@@ -218,7 +213,7 @@ var app = new Vue({
             var self = this;
             var startNum = ((self.selectPage-1) * 10);
     		var lastNum = self.selectPage * 10
-            var nparmap = {startNum : self.startNum, lastNum : self.lastNum,resnum:self.resnum}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
+            var nparmap = {startNum : self.startNum, lastNum : self.lastNum, resnum:self.resnum, picture: self.picture}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
             $.ajax({
                 url:"/selectResmenu2.dox",
                 dataType:"json",	
@@ -307,6 +302,26 @@ var app = new Vue({
                  }
              });  
     	}
+		//메누명 검색기능
+    	,fnSearch : function(){
+            var self = this;
+            var nparmap = {menuname:self.menuname}; //다음 페이지로 넘어갈때 필요한 변수만 적어주기. 
+            $.ajax({
+                url:"/main.storelist22/slist.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {       
+                	self.list = data.list;
+                	console.log(self.list);	
+    	            	if(self.list.length == 0){
+    	            		self.fnGet();
+    	            	}    
+                	console.log(self.list);
+                	console.log("메뉴명은" + self.menuname);
+                }
+           });
+    	} 
     }   
     , created: function () {
     	var self = this;
