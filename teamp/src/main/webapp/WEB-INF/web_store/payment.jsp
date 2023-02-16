@@ -119,15 +119,33 @@ select {
 		<div class="div2">
 			<div
 				style="font-size: xx-large; font-weight: bolder; margin-bottom: 10px; margin-left: 30px; margin-top: 10px;">
-				선택하신 메뉴</div>
-			<div v-for="(item, index) in list"
-				style="margin-bottom: 5px; font-size: large; font-weight: bold; margin-left: 20px;">
-
-				<div v-if="item.sum != 0">메뉴 : {{item.menuname}}</div>
-				<div v-if="item.sum != 0">가격 : {{item.price}}</div>
-				<div v-if="item.sum != 0">수량 : {{item.sum}}</div>
-
+				선택하신 메뉴
 			</div>
+				<table class="board_list">
+				<colgroup>
+					<col width="10%"/>
+					<col width="15%"/>
+					<col width="20%"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">이름</th>
+						<th scope="col">가격</th>
+						<th scope="col">개수</th>
+					</tr>
+				</thead>
+				<tbody>
+				
+			<tr v-for="(item, index) in list"
+				style="margin-bottom: 5px; font-size: large; font-weight: bold; margin-left: 20px;">
+				
+				<td v-if = "item.sum !=0">{{item.menuname}}</td>
+				<td v-if = "item.sum !=0">{{item.price}}</td>
+				<td v-if = "item.sum !=0">{{item.sum}}</td>
+				
+			</tr>
+			</tbody>
+			</table>
 			<!-- for문!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 		</div>
 		<div class="div3">
@@ -136,7 +154,7 @@ select {
 				메뉴를 추가하시겠습니까?</a>
 			<div
 				style="margin-top: 5px; font-size: large; font-weight: bold; margin-left: 100px;">
-				결제 금액 : 계산 금액 출력 원</div>
+				결제 금액 : {{num}} 원</div>
 			<div>
 				<button @click="fnReserve"
 					style="color: white; background-color: #8FBC94; margin-top: 10px; font-weight: bold; font-size: large; margin-bottom: 0px; width: 100%; border-radius: 10px; border: solid 2px #8FBC94;">
@@ -169,7 +187,7 @@ var app = new Vue({
        	,phoneNum : "${userPhonenum}"
         ,acc : "${userAcc}"
         ,list: ${map.list} 
-        
+        ,num : 0
     }   
     , methods: {
     	//예약 완료
@@ -254,6 +272,10 @@ var app = new Vue({
     , created: function () {
     	var self = this;
     	console.log(self.list.length);
+    	for(var i =0; i<self.list.length; i++){
+    		self.num += ((self.list[i].price)*(self.list[i].sum)); 
+    	}
+    	
     	
 	}
 });
