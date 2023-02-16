@@ -15,9 +15,28 @@ public class Menu {
     private String image;
     private String picture;
     private int idx;
+	private String enddate;
+	private String orderer;
     
-    
-    public int getNo() {
+    public int getIdx() {
+		return idx;
+	}
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+	public String getEnddate() {
+		return enddate;
+	}
+	public void setEnddate(String enddate) {
+		this.enddate = enddate;
+	}
+	public String getOrderer() {
+		return orderer;
+	}
+	public void setOrderer(String orderer) {
+		this.orderer = orderer;
+	}
+	public int getNo() {
 		return idx;
 	}
 	public void setNo(int idx) {

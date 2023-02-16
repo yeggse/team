@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.mapper.MenuMapper;
+import com.example.demo.model.Menu;
 
 
 
@@ -30,5 +31,17 @@ public class MenuServiceImpl implements MenuService{
 		menuMapper.insertMenuImg(map);
 	}
 
-		
+	// 메뉴 상세보기
+	@Override
+	public HashMap<String, Object> detailMenu(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		// 조회수 
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		//bMapper.updateCnt(map);
+		//List<B> commentList = bMapper.selectCommentList(map);
+		Menu board = menuMapper.detailMenu(map);
+		//resultMap.put("commentList", commentList);
+		resultMap.put("board", board);
+		return resultMap;
+	}	
 }

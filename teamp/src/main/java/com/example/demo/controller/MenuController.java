@@ -123,6 +123,33 @@ public class MenuController {
 	        return fileName;
 	    }
 	
+		// 메뉴 상세보기 페이지
+		@RequestMapping("/menu.detail.do") 
+	    public String menuDetail(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+			String id = (String)session.getAttribute("userIdSession");
+	    	String kind = (String)session.getAttribute("KindSession");
+	    	Integer resnum = (Integer)session.getAttribute("userResnumSession");
+	    	String reskind = (String)session.getAttribute("userReskindSession");
+			request.setAttribute("map", map);
+			request.setAttribute("userId", id);
+	    	request.setAttribute("kind", kind);
+	    	request.setAttribute("reskind", reskind); 
+	    	request.setAttribute("resnum",resnum); 
+	    	System.out.println("메뉴상세보기 세션 넘어옴"); 
+	    	System.out.println(resnum+" resnum");
+	    	System.out.println(reskind+" reskind");
+	    	
+	        return "/web_business/menuDetail";
+	    }
+		// 메뉴 상세보기 호출
+		@RequestMapping(value = "/menu.detail.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String menuDetailList(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			resultMap = menuService.detailMenu(map);
+			resultMap.put("message", "성공");
+			return new Gson().toJson(resultMap);
+		}
 }
 
 
