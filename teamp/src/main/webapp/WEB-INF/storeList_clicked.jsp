@@ -193,8 +193,8 @@ input {
 					</div>
 					<div style="padding-top: 110px;">
 						<button >-</button>
-						<input style="width:50px; text-align:center;"  type="text" value="sum"></input>
-						<button >+</button>
+						<input style="width:50px; text-align:center;"  type="number" name="rechen" :value="sum"></input>
+						<button @click="test">+</button>
 					</div>
 				</div>
 					<div>
@@ -296,6 +296,10 @@ input {
 		,fnClick1 : function() {
 			var self = this;
 			self.flg = true;
+		}
+		, test : function(){
+			var self = this;
+			self.sum += 1;
 		}
 		},
 		created : function() {
