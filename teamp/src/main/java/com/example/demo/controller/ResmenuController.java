@@ -79,5 +79,18 @@ public class ResmenuController {
 		return new Gson().toJson(resultMap);
 	}
 	
+	@RequestMapping(value = "/Res/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String insertreserve(Model model,@RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		int list = resmenuService.insertreserve(map);
+		if(list>0) {
+ 			resultMap.put("result", "success");
+ 		}else {
+ 			resultMap.put("result", "fail");
+ 		}
+		resultMap.put("list", list);
+		return new Gson().toJson(resultMap);
+	}
 	
 }

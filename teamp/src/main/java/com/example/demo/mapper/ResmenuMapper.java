@@ -21,5 +21,5 @@ public interface ResmenuMapper {
 	int selectResmenuCnt();
 	
 	Res selectStorecliectedImg(HashMap<String, Object> map);
-	
+	int insertreserve(HashMap<String, Object> map) throws Exception;
 }

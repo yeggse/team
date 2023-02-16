@@ -109,5 +109,28 @@
 			WHERE 
 				menuname = #{menuname} 
 	</select>
+	
+	<insert id="insertreserve" parameterType="hashmap">
+		INSERT INTO 
+		t3_reserve(resnum,menuname,ordernum,
+		orderer,pickuptime,payment,price,review,
+		salecomple)
+
+		VALUES(
+		
+		#{resnum}
+		,#{menuname}
+		,#{ordernum}
+		,#{orderer}
+		,#{pickuptime}
+		,#{payment}
+		,#{price}
+		,#{review}
+		,#{salecomple}
+		
+		)
+		
+	</insert>
+	
 
 </mapper>

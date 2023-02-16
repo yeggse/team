@@ -20,7 +20,21 @@ public class Res {
 	private String image;
 	private String picture;
 	private String orderer;
+	private String review;
+	private String salecomple;
 
+	public String getReview() {
+		return review;
+	}
+	public void setReview(String review) {
+		this.review = review;
+	}
+	public String getSalecomple() {
+		return salecomple;
+	}
+	public void setSalecomple(String salecomple) {
+		this.salecomple = salecomple;
+	}
 	public String getId() {
 		return id;
 	}
