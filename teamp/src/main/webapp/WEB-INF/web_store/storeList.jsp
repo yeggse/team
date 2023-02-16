@@ -87,7 +87,9 @@
 					<tbody>
 						<tr v-for="(item, index) in list" v-if="index%2==0">
 							<td>
-								<span style="text-align: right; margin-right: 10px;" >
+								<span style="text-align: right; margin-right: 10px;">
+								{{list[0].region}}
+								{{si}}
 		    					<button @click="fnView(item)">	<!-- 링크 확인!!!!!!!!!!!! -->
 	    						<span style="background-color: lightgray; display: flex; text-align: center; width: 700px; height: 100px;">
 	    							
@@ -160,7 +162,7 @@ var app = new Vue({
     	// 기본 화면 출력 이벤트 (식당 출력)
        	fnGet : function(){
             var self = this;
-            var nparmap = {si : self.si,reskind:self.reskind}; 
+            var nparmap = {si : self.si, reskind:self.reskind}; 
             $.ajax({
                 url:"/main.storelist/list.dox",
                 dataType:"json",	
@@ -181,7 +183,7 @@ var app = new Vue({
  	// 가게명 검색 이벤트 (식당 출력)
    	fnSearch : function(){
         var self = this;
-        var nparmap = {resname : self.resname, grade : self.grade, resadd : self.resadd}; 
+        var nparmap = {si : self.si,resname:self.resname}; //다음 페이지로 넘어갈때 필요한 변수만 적어주기. 
         $.ajax({
             url:"/main.storelist/slist.dox",
             dataType:"json",	
@@ -189,6 +191,7 @@ var app = new Vue({
             data : nparmap,
             success : function(data) {       
             	self.list = data.list;
+            	console.log(self.list);	
 	            	if(self.list.length == 0){
 	            		self.fnGet();
 	            	}    
