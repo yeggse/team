@@ -95,7 +95,7 @@ var app = new Vue({
               var self = this;
               var startNum = ((self.selectPage-1) * 10);
       		  var lastNum = self.selectPage * 10;
-              var nparmap = {startNum : startNum, lastNum : lastNum};
+              var nparmap = {startNum : startNum, lastNum : lastNum,id:self.id};
               $.ajax({
                   url:"/reservemy.dox",
                   dataType:"json",	
@@ -107,6 +107,7 @@ var app = new Vue({
   	                console.log(self.list);  
                   }
               }); 
+              console.log(self.list);
           }  
     
       
