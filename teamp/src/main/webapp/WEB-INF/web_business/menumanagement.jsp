@@ -315,7 +315,7 @@ var app = new Vue({
                 	self.list = data.list;
                 	console.log(self.list);	
     	            	if(self.list.length == 0){
-    	            		self.fnGet();
+    	            		self.fnGetList();
     	            	}    
                 	console.log(self.list);
                 	console.log("메뉴명은" + self.menuname);
