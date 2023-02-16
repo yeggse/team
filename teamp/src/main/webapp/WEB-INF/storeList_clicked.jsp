@@ -272,7 +272,6 @@ input {
 			,user : ${userVO}// user전체가 getter/setter되서 가져고 오는 형식. {{user.id}},{{user.name}} 쓸때 이렇게 쓸수있음. 여기한번 지정하고 다른데서 계속 쓸 수 있음.
 							// 기존 방법과 차이 userId: "${userId}" 이렇게 적어 줬었음.
 		    ,sum : 0
-		    ,calcul : []
 		},
 		methods : {
 			fnGetList : function() {
