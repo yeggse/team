@@ -14,6 +14,49 @@ public class Res {
 	private String pickuptime;
 	private String payment;
 	private int sum;
+	private int idx; 
+	private String id;
+	private String img;
+	private String image;
+	private String picture;
+	private String orderer;
+
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	public String getOrderer() {
+		return orderer;
+	}
+	public void setOrderer(String orderer) {
+		this.orderer = orderer;
+	}
+	public int getIdx() {
+		return idx;
+	}
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
 	public String getResnum() {
 		return resnum;
 	}

@@ -43,7 +43,7 @@ public class BuisnessController {
 	    	String reskind = (String)session.getAttribute("userReskindSession");
 	    	request.setAttribute("reskind", reskind); 
 	    	request.setAttribute("resnum",resnum); 
-	    	System.out.println("세션 넘어옴..."); 
+	    	System.out.println("메뉴관리 세션 넘어옴"); 
 	    	System.out.println(resnum+" resnum");
 	    	System.out.println(reskind+" reskind");
 	 }

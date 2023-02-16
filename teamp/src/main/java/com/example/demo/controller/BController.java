@@ -42,6 +42,9 @@ public class BController {
     	request.setAttribute("kind", kind);
     	request.setAttribute("reskind", reskind); 
     	request.setAttribute("resnum",resnum); 
+    	System.out.println("메뉴상세보기 세션 넘어옴"); 
+    	System.out.println(resnum+" resnum");
+    	System.out.println(reskind+" reskind");
     	
         return "/web_business/menuDetail";
     }
@@ -50,11 +53,8 @@ public class BController {
 	@ResponseBody
 	public String menuDetailList(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		String img = (String) map.get("img");
-		bService.detailMenu(map);
+		resultMap = bService.detailMenu(map);
 		resultMap.put("message", "성공");
-		resultMap.put("idx", map.get("idx")); //!!
-		
 		return new Gson().toJson(resultMap);
 	}
 }

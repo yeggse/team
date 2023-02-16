@@ -148,7 +148,7 @@ var app = new Vue({
     		document.body.removeChild(form);
     	}
     }   
-    , created: function () {
+    , created: function(){
     	var self = this;
     	self.fnGetBoard(); 
 	}

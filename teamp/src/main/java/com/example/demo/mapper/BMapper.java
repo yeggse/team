@@ -16,6 +16,6 @@ import com.example.demo.model.B;
 	  void  insertMenuImg(HashMap<String, Object> map);
   
 	  // 메뉴 상세보기
-	  B selectGetMenu(HashMap<String, Object>map); // delete 
+	  B detailMenu(HashMap<String, Object >map); 
 	  
 }

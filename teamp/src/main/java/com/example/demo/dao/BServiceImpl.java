@@ -38,9 +38,9 @@ public class BServiceImpl implements BService {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		//bMapper.updateCnt(map);
 		//List<B> commentList = bMapper.selectCommentList(map);
-		B menu = bMapper.selectGetMenu(map);
+		B board = bMapper.detailMenu(map);
 		//resultMap.put("commentList", commentList);
-		resultMap.put("board", menu);
+		resultMap.put("board", board);
 		return resultMap;
 	}
 

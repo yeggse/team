@@ -15,7 +15,8 @@
 
 <select id="selectResmenu1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
-			ordernum,menuname,pickuptime,payment,price
+			ordernum,menuname,pickuptime,payment,price, idx
+			reskind, startdate,enddate,picture,introduce,supply,orderer,resnum
 		FROM
 			t3_reserve
 		WHERE orderer = #{id}

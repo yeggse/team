@@ -90,12 +90,6 @@ var app = new Vue({
    		  , resnum : "${resnum}"
    		  , reskind : "${reskind}"
  		  , selectedItemList : []
- 	 	  , img : ""
- 	 	  , price : ""
- 	 	  , menuname : ""
- 	 	  , introduce : ""
- 	 	  , supply :""
- 	 	  , pickuptime : ""
  	 	  
  
     } 
@@ -103,8 +97,8 @@ var app = new Vue({
     	// 메뉴 상세 기본 출력
     	fnGetBoard : function(){
             var self = this;
-            console.log("test == " + self.idx);
-            var nparmap = {noticenum : self.idx};
+            console.log("idx는! == " + self.idx);
+            var nparmap = {idx : self.idx};
             $.ajax({
                 url:"/menu.detail.dox",
                 dataType:"json",	
@@ -126,11 +120,41 @@ var app = new Vue({
     		var self = this;
    			self.pageChange("./main.board.edit.do", {boardIdx : self.idx});	// url이랑 index 모두 수정 필요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    		}
-
+    	// 페이지 이동
+    	, pageChange : function(url, param) {
+    		var target = "_self";
+    		if(param == undefined){
+    			return;
+    		}
+    		var form = document.createElement("form"); 
+    		form.name = "dataform";
+    		form.action = url;
+    		form.method = "post";
+    		form.target = target;
+    		for(var name in param){
+				var item = name;
+				var val = "";
+				if(param[name] instanceof Object){
+					val = JSON.stringify(param[name]);
+				} else {
+					val = param[name];
+				}
+				var input = document.createElement("input");
+	    		input.type = "hidden";
+	    		input.name = item;
+	    		input.value = val;
+	    		form.insertBefore(input, null);
+			}
+    		document.body.appendChild(form);
+    		form.submit();
+    		document.body.removeChild(form);
+    	}
+    	   
     
     }   
-    , created: function () {
-    
+	, created: function () {
+	var self = this;
+	self.fnGetBoard(); 
 	}
 });
 

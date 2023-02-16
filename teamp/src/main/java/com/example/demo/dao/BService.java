@@ -10,6 +10,6 @@
 	  // 메뉴 이미지 추가 
 	  void  insertMenuImg(HashMap<String, Object> map); 
 	  // 메뉴 상세 보기
-	  HashMap<String, Object>  detailMenu(HashMap<String, Object> map);
+	  HashMap<String, Object> detailMenu(HashMap<String, Object> map);
 }
  
