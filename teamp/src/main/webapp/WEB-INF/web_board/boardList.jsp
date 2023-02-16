@@ -13,13 +13,6 @@
 	<title>board 공지사항 기본 출력 페이지</title>
 </head>
 <style>
-/*    td{
-        border-top : 1px solid black;
-        font-size: 20px;
-        text-align: center;
-        padding : 6px;
-    }
-     */
   	      #input {
             width: 400px;
             margin-top: 0px;
@@ -198,7 +191,7 @@ var app = new Vue({
         fnGetList : function(){
             var self = this;
             var startNum = ((self.selectPage-1) * 10);
-    		var lastNum = self.selectPage * 10
+    		var lastNum = self.selectPage * 10;
             var nparmap = {startNum : startNum, lastNum : lastNum};
             $.ajax({
                 url:"/firstBoard.dox",

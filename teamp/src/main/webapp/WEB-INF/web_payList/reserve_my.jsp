@@ -4,12 +4,14 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="css/detail/reserveDetail.css">
-  <script src="js/jquery.js"></script>
-  <script src="js/vue.js"></script>
-  <title>JS Bin</title>
-  <jsp:include page="/layout/header.jsp"></jsp:include>
+    <link rel="stylesheet" href="css/detail/reserveDetail.css">
+    <script src="js/jquery.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vuejs-paginate@latest"></script>
+	<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
+	<jsp:include page="/layout/header.jsp"></jsp:include>
+	
+	 <title>예약 내역 확인하기</title>
 </head>
 
 <style>
@@ -48,13 +50,13 @@
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
-	                   <td @click="fnDetailView(item)">{{item.ordernum}}</td> 
-	                   <td @click="fnDetailView(item)">{{item.ordernum}} 수정필요</td> 
-	                   <td @click="fnDetailView(item)">{{item.menuname}} 이어 붙이기</td> 
-	                   <td @click="fnDetailView(item)">{{item.orderdate}}</td>
-	                   <td @click="fnDetailView(item)">{{item.pickuptime}}</td>
-	                   <td @click="fnDetailView(item)">{{item.price}} 더하기</td>
-	                   <td @click="fnDetailView(item)">{{item.salecomple}}</td>
+	                   <td >{{item.ordernum}}</td> 
+	                   <td >{{item.ordernum}} 수정필요</td> 
+	                   <td >{{item.menuname}} 이어 붙이기</td> 
+	                   <td >{{item.orderdate}}</td>
+	                   <td >{{item.pickuptime}}</td>
+	                   <td >{{item.price}} 더하기</td>
+	                   <td >{{item.salecomple}}</td>
 	               	
 	               </tr>
 				</tbody>
@@ -70,6 +72,7 @@
     <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
 <script type="text/javascript">
+Vue.component('paginate', VuejsPaginate)
 var app = new Vue({ 
     el: '#app',
     data: {
@@ -78,13 +81,20 @@ var app = new Vue({
 		, selectPage: 1	// 기본 세팅이 1번 페이지로 맞추어져 있음.
 		, pageCount: 1
         , id: "${userId}"
+        , ordernum : ""
+        , menuname : ""
+        , orderdate : ""
+        , pickuptime : ""
+        , price : ""
+        , salecomple : ""
+        
     }   
     , methods: {
     	// 기본 출력 메소드
       fnGetList : function(){
               var self = this;
               var startNum = ((self.selectPage-1) * 10);
-      		  var lastNum = self.selectPage * 10
+      		  var lastNum = self.selectPage * 10;
               var nparmap = {startNum : startNum, lastNum : lastNum};
               $.ajax({
                   url:"/reservemy.dox",
@@ -102,6 +112,7 @@ var app = new Vue({
       
       }   
       , created: function () {
+    	var self = this;
   		this.fnGetList();       
   	  } 
     
