@@ -193,7 +193,7 @@ input {
 					</div>
 					<div style="padding-top: 110px;">
 						<button >-</button>
-						<input style="width:50px; text-align:center;"  type="text" value="0"></input>
+						<input style="width:50px; text-align:center;"  type="text" value="sum"></input>
 						<button >+</button>
 					</div>
 				</div>
@@ -271,8 +271,7 @@ input {
 			,res : ${res} // Main type의 객체이름 res로(where=resnum 들고오는 과정) 당겨쓰는 과정 in ResmenuController
 			,user : ${userVO}// user전체가 getter/setter되서 가져고 오는 형식. {{user.id}},{{user.name}} 쓸때 이렇게 쓸수있음. 여기한번 지정하고 다른데서 계속 쓸 수 있음.
 							// 기존 방법과 차이 userId: "${userId}" 이렇게 적어 줬었음.
-		    
-			
+		    ,sum : 0
 		},
 		methods : {
 			fnGetList : function() {
