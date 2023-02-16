@@ -71,14 +71,15 @@ public class MainController {
     
     // 웹 주소 : 결제창
     @RequestMapping("/main.payment.do") 
-    public String payment(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public String payment(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
     	//세션 연결
-    	HashMap<String, Object> map = new HashMap<String, Object>();
+    	
     	String id = (String)session.getAttribute("userIdSession");	
     	String kind = (String)session.getAttribute("KindSession");
     	String name = (String)session.getAttribute("userNameSession");
     	String phonenum = (String)session.getAttribute("userPhonenumSession");
     	String acc = (String)session.getAttribute("userAccSession");
+    	request.setAttribute("map", map);
     	request.setAttribute("userName", name);
     	request.setAttribute("userPhonenum", phonenum);
     	request.setAttribute("userAcc", acc);
@@ -109,24 +110,20 @@ public class MainController {
     // 기본 화면 출력 이벤트 (식당 출력)
 	@RequestMapping(value = "/main.storelist/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String firstList(Area area,Model model, HttpServletRequest request, @RequestParam HashMap<String, Object> map) throws Exception {
+	public String firstList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		
 		List<Main> list = mainService.getList(map); // DB 접근 및 쿼리를 통한 데이터 호출 
 		resultMap.put("list", list);
-		request.setAttribute("si", area.getSi()); // 지역정보 시를 받아오는 것 request에 다시 넣어준다. 세션에는 따로 저장할 필요없어 넣어주거나 가져오지 않음(7)
 		return new Gson().toJson(resultMap);
 	}
 	
     // 식당명 검색 출력 이벤트 (식당 출력)
 	@RequestMapping(value = "/main.storelist/slist.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String searchList(Area area,Model model, HttpServletRequest request, @RequestParam HashMap<String, Object> map) throws Exception {
+	public String searchList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		
-		List<Main> listt = mainService.searchList(map); // DB 접근 및 쿼리를 통한 데이터 호출 
-		resultMap.put("list", listt);
-		request.setAttribute("si", area.getSi());
+		List<Main> list = mainService.searchList(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	} 
 	

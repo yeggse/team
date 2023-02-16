@@ -138,7 +138,7 @@ var app = new Vue({
        	,kind : "${kind}"
        	,phoneNum : "${userPhonenum}"
         ,acc : "${userAcc}"
-        , test: ${map.list} 
+        ,test: ${map.list} 
         
     }   
     , methods: {
