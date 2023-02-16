@@ -38,7 +38,15 @@ public class BuisnessController {
     	HashMap<String, Object> map = new HashMap<String, Object>();
     	String kind = (String)session.getAttribute("KindSession");
     	String id = (String)session.getAttribute("userIdSession");
-
+		if(kind.equals("B")) { // 사업자 이면! 
+	    	Integer resnum = (Integer)session.getAttribute("userResnumSession");
+	    	String reskind = (String)session.getAttribute("userReskindSession");
+	    	request.setAttribute("reskind", reskind); 
+	    	request.setAttribute("resnum",resnum); 
+	    	System.out.println("세션 넘어옴..."); 
+	    	System.out.println(resnum+" resnum");
+	    	System.out.println(reskind+" reskind");
+	 }
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id);
     	return "/web_business/menumanagement"; // WEB-INF에서 호출할 파일명

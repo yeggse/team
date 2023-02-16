@@ -104,7 +104,7 @@ var app = new Vue({
     	fnGetBoard : function(){
             var self = this;
             console.log("test == " + self.idx);
-            var nparmap = {//noticenum : self.idx};
+            var nparmap = {noticenum : self.idx};
             $.ajax({
                 url:"/menu.detail.dox",
                 dataType:"json",	
