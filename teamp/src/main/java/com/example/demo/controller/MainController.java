@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.MainService;
 import com.example.demo.model.Area;
-import com.example.demo.model.Board;
 import com.example.demo.model.Main;
 import com.google.gson.Gson;
 

@@ -7,7 +7,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   	<link rel="stylesheet" href="css/detail/MenuDetail.css">
-  <title>JS Bin</title>
+  <title>메뉴 추가</title>
   <jsp:include page="/layout/header.jsp"></jsp:include>
 </head>
 
@@ -98,7 +98,7 @@ var app = new Vue({
     data: {
     	  list : [] 
   		  , info : {}
- 		  , idx : "${map.noticenum}"	// boardList 에서 받아온 값!!! for 이미지
+ 		  , idx : "${map.idx}"	// boardList 에서 받아온 값!!! for 이미지
    		  , userId : "${userId}"	//세션으로 id가져오기
    		  , resnum : "${resnum}"
    		  , reskind : "${reskind}"
@@ -128,7 +128,7 @@ var app = new Vue({
 	            success : function(data) {            
 	            	var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
 	       	        form.append( "file1", $("#file1")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미
-	       	     	form.append( "noticenum",  data.noticenum);	// 여기에 있는 boardIdx는 어디로 가나?????
+	       	     	form.append( "idx",  data.idx);	// 여기에 있는 boardIdx는 어디로 가나?????
 	       	        
 	       	         $.ajax({
 	       	             url : "/menuUpload"

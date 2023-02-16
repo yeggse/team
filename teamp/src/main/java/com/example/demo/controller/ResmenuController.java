@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.dao.BoardService;
 import com.example.demo.dao.MainService;
 import com.example.demo.dao.ResmenuService;
-import com.example.demo.model.Board;
 import com.example.demo.model.Main;
 import com.example.demo.model.Res;
 import com.google.gson.Gson;
