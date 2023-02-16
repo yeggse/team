@@ -98,7 +98,7 @@ var app = new Vue({
     data: {
     	  list : [] 
   		  , info : {}
- 		//  , idx : "${map.noticenum}"	// boardList 에서 받아온 값!!!
+ 		  , idx : "${map.noticenum}"	// boardList 에서 받아온 값!!! for 이미지
    		  , userId : "${userId}"	//세션으로 id가져오기
    		  , resnum : "${resnum}"
    		  , reskind : "${reskind}"
@@ -110,7 +110,7 @@ var app = new Vue({
  	 	  , supply :""
  	 	  , pickuptime : ""
  	 	  
- 	 		// resnum, reskind 추가 필요
+ 
     } 
     , methods: {
 		// 저장 버튼
@@ -119,19 +119,19 @@ var app = new Vue({
     		console.log(self.img);
 	      	var nparmap = {userId : self.userId, price : self.price, menuname : self.menuname, introduce : self.introduce, 
 	      					reskind : self.reskind, resnum : self.resnum,
-	      					supply : self.supply, pickuptime : self.pickuptime}; //, img : self.img 
+	      					supply : self.supply, pickuptime : self.pickuptime, img : self.img}; 
 	        $.ajax({
 	            url:"/addMenu.dox",
 	            dataType:"json",	
 	            type : "POST", 
 	            data : nparmap,
 	            success : function(data) {            
-/* 	            	var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
+	            	var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
 	       	        form.append( "file1", $("#file1")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미
-	       	     	form.append( "boardIdx",  data.boardIdx);	// 여기에 있는 boardIdx는 어디로 가나?????
+	       	     	form.append( "noticenum",  data.noticenum);	// 여기에 있는 boardIdx는 어디로 가나?????
 	       	        
 	       	         $.ajax({
-	       	             url : "/upload"
+	       	             url : "/menuUpload"
 	       	           , type : "POST"
 	       	           , processData : false
 	       	           , contentType : false
@@ -139,12 +139,28 @@ var app = new Vue({
 	       	           , success:function(response) { }
 	       	           ,error: function (jqXHR) 
 	       	           {}
-	       	       }); */
+	       	       }); 
 	            	alert("게시글이 저장되었습니다.");
 	           		location.href="/menu.add.do";
 	            }
 	        }); 
 		}
+	    // 사진 업로드 
+		, upload : function(){
+			
+			var form = new FormData();
+		        form.append( "file1", $("#file1")[0].files[0] );
+		        
+		         $.ajax({
+		             url : "/menuUpload"
+		           , type : "POST"
+		           , processData : false
+		           , contentType : false
+		           , data : form
+		           , success:function(response) { }
+		           ,error: function (jqXHR) {}
+		       });
+		} 
 		// 목록으로 가기 버튼
 		, fnList : function(){
 			location.href="/menumanagementbusiness.do";

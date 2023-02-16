@@ -34,7 +34,7 @@
 <body>
 	<div id="app">
 		<div class="container">
-			<h2>공지사항 상세보기 - 이미지 내용출력 이벤트 등 필요! </h2>
+			<h2>공지사항 상세보기 - 수정하기 페이지 수정필요!! </h2>
 			<div class="card">
 				<h2 class="card-header p-4">
 					{{info.title}}

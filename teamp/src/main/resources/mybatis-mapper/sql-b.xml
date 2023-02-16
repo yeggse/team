@@ -13,5 +13,13 @@
 	</insert>
 	
 	<!--   useGeneratedKeys="true" keyProperty="id" keyColumn="noticenum" -->
+	
+	<!-- 메뉴 이미지 추가 -->
+	<insert id="insertMenuImg" parameterType="hashmap">	
+		INSERT INTO t3_resmenu
+			(noticenum, picture)  
+		VALUES
+			(#{noticenum}, #{img})
+	</insert>
 
 </mapper>

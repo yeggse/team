@@ -11,7 +11,29 @@ public class B {
 	private String introduce;
 	private String pickuptime;
 	private String id;
-    public String getId() {
+    private String img;
+    private String image;
+    private String picture;
+    
+    public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	public String getId() {
 		return id;
 	}
 	public void setId(String id) {

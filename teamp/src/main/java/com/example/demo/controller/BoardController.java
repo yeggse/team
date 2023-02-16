@@ -118,7 +118,7 @@ public class BoardController {
 	@ResponseBody
 	public String addBoardList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		String img = (String) map.get("img");
+		String img = (String) map.get("img"); //!!!!!!!!!!!!!!!!
 		boardService.insertBoard(map);
 		resultMap.put("message", "성공");
 		resultMap.put("noticenum", map.get("id")); //!!
@@ -180,7 +180,7 @@ public class BoardController {
 	        return "redirect:main.board.do";
 	    }
 
-	    // 현재 시간을 기준으로 파일 이름 생성
+	    // 현재 시간을 기준으로 파일 이름 생성 for 이미지 추가
 	    private String genSaveFileName(String extName) {
 	        String fileName = "";
 	        

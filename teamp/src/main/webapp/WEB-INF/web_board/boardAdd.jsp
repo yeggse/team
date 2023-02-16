@@ -40,7 +40,7 @@
 <body>
 	<div id="app">
 		<div class="contain">
-			<h2>공지사항 작성하기 - 이미지 출력만 넣으면 끝 </h2>
+			<h2>공지사항 작성하기 - 배열 및 디자인 필요 </h2>
 			<table class="board_detail" style="margin-top: 20px;">
 				<colgroup>
 					<col width="10%"/>
@@ -129,7 +129,7 @@ var app = new Vue({
 	        }); 
 	        
     	}
-        // 사진 업로드 : 미완
+        // 사진 업로드 
  		, upload : function(){
    		
 			var form = new FormData();

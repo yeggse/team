@@ -23,6 +23,13 @@ public class BServiceImpl implements BService{
 			System.out.println(map.get("resnum")+" svim;");
 			bMapper.addMenu(map);	//추가만 존재함으로 return이 필요 없다!
 		}
+		
+		//메뉴 이미지 추가
+		@Override
+		public void insertMenuImg(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			bMapper.insertMenuImg(map);
+		}
 
 		
 }
