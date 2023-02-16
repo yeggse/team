@@ -294,11 +294,11 @@ var app = new Vue({
 		
 		
 		
-    	// 게시글 상세 확인
-    	, fnDetailView : function(item){
-    		var self = this;
-    		self.pageChange("/main.board.detail.do", {noticenum : item.noticenum});	// 상세페이지로 해당 인덱스 번호를 넘겨줌~~!
-    	}
+	       // 게시글 상세 확인@@@@@@@@@@@@@/menu.detail.do@@@@@@@@@@@@@@
+	       , fnDetailView : function(item){
+	          var self = this;
+	          self.pageChange("/menu.detail.do", {idx : item.idx});   // 상세페이지로 해당 인덱스 번호를 넘겨줌~~!
+	       }
 		// 화면 전환 for 게시글 상세 확인
     	, pageChange : function(url, param) {
     		var target = "_self";
