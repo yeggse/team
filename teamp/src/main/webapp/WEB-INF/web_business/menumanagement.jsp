@@ -64,17 +64,6 @@ height:6rem;
 	top:1px;
 }
 
-    .container {max-width:1024px; margin:30px auto; margin-top: 120px;}	/* 게시글 출력 파트 */
-	.board_list {table-layout: fixed; width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:15px 0; border-collapse: collapse;}
-	.board_list thead th:first-child {background-image:none;}
-	.board_list thead th {border-bottom:1px solid #ccc; padding:13px 0; color:#3b3a3a; text-align: center; vertical-align:middle;}
-	.board_list tbody td {border-top:1px solid #ccc; padding:13px 0; text-align:center; vertical-align:middle;}
-	.board_list tbody tr:first-child td {border:none;}
-	.board_list tbody tr:hover{background:#ffff99;}
-	.board_list tbody td.title {text-align:left; padding-left:20px;}
-	.board_list tbody td a {display:inline-block}
-
-	/* 화면 넘기는 아이템 디자인 */
 .pagination {
         margin:1.5rem;
         display: inline-flex;
@@ -105,6 +94,19 @@ height:6rem;
 .tdinput{
 width:2rem;
 }
+.container {
+max-width:70rem; margin:auto; margin-top: 8rem;
+}	/* 게시글 출력 파트 */
+.board_list {
+table-layout:; width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:1rem 0rem;
+}
+.board_list tbody td {
+border-top:1px solid #ccc; padding:0.8rem 0rem; text-align:center; vertical-align:middle;
+}
+.board_list tbody tr:hover{
+background:#ffff99;
+}
+
 
 
 
@@ -151,28 +153,15 @@ width:2rem;
 	                   <td @click="fnDetailView(item)">{{item.menuname}}</td> 
 	                   <td @click="fnDetailView(item)">{{item.price}}원</td> 
 	                   <td @click="fnDetailView(item)">{{item.introduce}}</td>
-	                   <td @click="fnDetailView(item)">{{item.picture}}<img src=""></td>
+	                   <td @click="fnDetailView(item)">{{item.picture}}<img src="https://mediahub.seoul.go.kr/wp-content/uploads/2020/10/d13ea4a756099add8375e6c795b827ab.jpg"></td>
 	                   <td @click="fnDetailView(item)">{{item.startdate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.enddate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.supply}}</td> 
-	                   <td @click=""><button>수정</button></td> 
-	                   <!-- 재고 수정관련 html (미완성) -->
-    					<!-- 	<td>
-							<button type ="button" onclick="fnCalCount('p',this);">+</button>
-        					<input class="tdinput" type="text" name="pop_out" value= "{{item.supply}}"/>  values에 값 어떻게 넣어야하는지 모르겠음 
-        					<button type="button" onclick="fnCalCount('m', this);">-</button>
-    						</td> -->
-    						
-    							
-	                   <!--------------------------------------------------------------------  -->
-	                  			<form action="">
-								<fieldset>
-										<legend>input type</legend>
-										<p><label for="number">수량: </label><input type="number" min="1"  max="10" step="1" value="1" id="number"/></p>
-								</fieldset>
-								</form>
-	                   
-	               	
+					   <td><p><label for="number">수량: </label><input type="number" min="1"  max="10" step="1" value="" id="number"/></p></td>
+	                   <td>
+							<button id='btnchange' onclick='changeBtnName()'> 수량변경 </button>
+	                   		<button id='btnSoldout' onclick='changeBtnName2()'> 일시품절 </button> 
+					   </td> 
 	               </tr>
 				</tbody>
 			</table>
@@ -189,10 +178,13 @@ width:2rem;
 			    :page-class="'page-item'">
 			  </paginate>
 			  </div>
+			  
 		  	<div>
 		  	<!-- v-if에 조건을 'kind'가 '사업자라면'으로 변경하기  -->
-		  		<button v-if="'admin' == userId" @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
-		  		<button v-if="'admin' == userId" @click="fnRemove" class="myButton" style="float: right; margin-right : 5px;">삭제</button>
+		  		<button  @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
+		  		<button  @click="fnRemove" class="myButton" style="float: right; margin-right : 5px;">삭제</button>
+		  		<!-- <button v-if="'admin' == userId" @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
+		  		<button v-if="'admin' == userId" @click="fnRemove" class="myButton" style="float: right; margin-right : 5px;">삭제</button> -->
 		  	</div>
 		  	
 		  </div>	
@@ -203,6 +195,30 @@ width:2rem;
 
 
 <script type="text/javascript">
+
+function changeBtnName()  {
+	const btnElement = document.getElementById('btnchange') //id가 'btnchange'인 요소를 반환한다.
+	const inputElement = document.getElementById('number') //id가 'btnchange'인 요소를 반환한다.
+	if(btnElement.innerHTML == '수량변경' ){ //버튼의 텍스트값 확인
+		alert("재고 수량이 '" + inputElement.value + "개' 로 변경되었습니다" );
+		inputElement.value = '';
+	}else{ 
+		btnElement.innerHTML = '수량변경'
+	}
+}	
+
+function changeBtnName2()  {
+	const btnElement = document.getElementById('btnSoldout') //id가 'btnchange'인 요소를 반환한다.
+	const inputElement = document.getElementById('number') //id가 'btnchange'인 요소를 반환한다.
+	if(btnElement.innerHTML == '일시품절' ){ //버튼의 텍스트값 확인
+		alert("해당 상품을 일시품절처리로 변경하였습니다.");
+		inputElement.value = '0';
+	}else{ 
+		btnElement.innerHTML = '일시품절'
+	}
+}	
+
+	
 Vue.component('paginate', VuejsPaginate)
 var app = new Vue({ 
     el: '#app',
@@ -214,24 +230,8 @@ var app = new Vue({
         , userId : "${userId}"
         , boardtype : ""
     }   
+
     , methods: {
-/*     	//재고 수정관련 메소드 (미완성)
-    	function fnCalCount(type, ths){
-    	    var $input = $(ths).parents("td").find("input[name='pop_out']");
-    	    var tCount = Number($input.val());
-    	    var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html());
-    	    
-    	    if(type=='p'){
-    	        if(tCount < tEqCount) $input.val(Number(tCount)+1);
-    	        
-    	    }else{
-    	        if(tCount >0) $input.val(Number(tCount)-1);    
-    	        }
-    	}
-    	 /////////////////////////////////////////////// */
-    	
-    	
-    	
     	// 기본 출력 메소드
         fnGetList : function(){
             var self = this;
@@ -258,7 +258,7 @@ var app = new Vue({
 			var lastNum = pageNum * 10
 	        var nparmap = {startNum : startNum, lastNum : lastNum};
 	        $.ajax({
-	            url:"/firstBoard.dox",
+	            url:"/selectResmenu2.dox",
 	            dataType:"json",	
 	            type : "POST", 
 	            data : nparmap,
@@ -311,7 +311,7 @@ var app = new Vue({
 		// 작성하기 페이지로 이동
 		, fnAdd : function(){
     		var self = this;
-    		self.pageChange("/main.board.add.do", {});
+    		self.pageChange("/menu.add.do", {});
 		}
     	
 		// 게시글 삭제하기
