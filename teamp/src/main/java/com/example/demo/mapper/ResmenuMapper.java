@@ -19,4 +19,6 @@ public interface ResmenuMapper {
 	
 	int selectResmenuCnt();
 	
+	Res selectStorecliectedImg(HashMap<String, Object> map);
+	
 }

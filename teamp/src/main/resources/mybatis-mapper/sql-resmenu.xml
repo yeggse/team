@@ -84,7 +84,17 @@
 				t3_restaurant.idx =2;  <!-- 하드코딩 고치기 -->
 	</select>
 	
-	
+	<!-- picture print(storeList_Clicked) -->
+	<select id="selectStorecliectedImg" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+			SELECT
+				t.idx, picture
+			FROM
+			t3_resmenu_img t
+			
+		LEFT OUTER JOIN t3_resmenu_img i on t.idx = i.idx 
+		WHERE
+			t.idx = #{idx}
+	</select>	
 	
 
 </mapper>

@@ -48,6 +48,13 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			return resmenuMapper.selectResmenuCnt();
 		}
-		
+		@Override
+		public HashMap<String, Object> selectStorecliectedImg(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		Res resimg = resmenuMapper.selectStorecliectedImg(map);
+		resultMap.put("resimg", resimg);
+		return resultMap;
+		}
 		
 }

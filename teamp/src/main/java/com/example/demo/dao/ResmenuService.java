@@ -15,5 +15,6 @@ public interface ResmenuService {
 	List<Res> selectResmenu2(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 	int selectResmenuCnt();
 	
+	HashMap<String, Object> selectStorecliectedImg(HashMap<String, Object> map);
 
 }
