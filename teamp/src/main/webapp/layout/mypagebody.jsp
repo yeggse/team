@@ -43,9 +43,9 @@
                         </ul>
                     </div>
 
-                    <a href="#" class="nav__link">
+                    <a href="main.board.do" class="nav__link">
                         <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
-                        <span class="nav_name">게시판</span>
+                        <span class="nav_name">공지사항</span>
                     </a>
 
                     <div href="#" class="nav__link collapse">

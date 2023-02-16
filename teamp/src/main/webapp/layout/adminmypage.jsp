@@ -1,71 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<script src="js/jquery.js"></script>
-		<script src="js/vue.js"></script>
-		<jsp:include page="/layout/header.jsp"></jsp:include>
-		<link rel="stylesheet" href= "css/mypagebody.css" type ="text/css">
-		<style>
-		</style>
-	</head>
-	<body >
-	    <div id = "app1">
-	        <div class = "div4" >
-	        <div style = "font-size:20px"> 관리하기 </div>
-	        <div><label style ="font-size:25px; margin-left: 10px; color:gray"> 리뷰 관리 </label>
-	        <button id = "bodybtn" @click = "Aserve1" style ="font-size:20px; margin-left: 5px; color:gray"> > </button></div>
-	        <div v-if ="serve1" style = "margin:20px"><a href="datachange.do" class ="a1">전체</a></div>
-	        <div v-if ="serve1" style = "margin:20px"><a href="reservemy.do" class = "a1">한식</a></div>
-	        <div v-if ="serve1" style = "margin:20px"><a href="paymentmy.do" class = "a1">중식</a></div>
-	        <div v-if ="serve1" style = "margin:20px"><a href="paymentmy.do" class = "a1">일식</a></div>
-	        <div v-if ="serve1" style = "margin:20px"><a href="datachange2.do" class = "a1">양식</a></div>
-	        <div v-if ="serve1" style = "margin:20px"><a href="datachange2.do" class = "a1">아시아</a></div>
-	        <div><label style ="font-size:25px; margin-left: 10px; color:gray"> 회원 관리 </label>
-	        <button id = "bodybtn" @click = "Aserve2" style ="font-size:20px; margin-left: 5px; color:gray"> > </button></div>
-	        <div v-if ="serve2" style = "margin:20px" ani_type="fade"><a href="paymentmy.do" class = "a1">일반 회원 관리</a></div>
-	        <div v-if ="serve2" style = "margin:20px" ani_type="fade"><a href="datachange2.do" class = "a1">사업자 회원 관리</a></div>
-	        </div>
-	    </div>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery.js"></script>
+	<script src="js/vue.js"></script>
+	
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+
+    <title>SideBar sub menus</title>
+</head>
+<body id="body-pd">
+
+    <div class="l-navbar" id="navbar" style = "margin-top:90px" >
+        <nav class="nav">
+            <div>
+                <div class="nav__brand">
+                    <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
+                    <a href="#" class="nav__logo">관리하기</a>
+                </div>
+                <div class="nav__list">
+                    <a href="main.do" class="nav__link active">
+                        <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">홈페이지</span>
+                    </a>
+                    
+
+                    <div href="#" class="nav__link collapse">
+                        <ion-icon name="people-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">회원 관리</span>
+
+                        <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+                        <ul class="collapse__menu">
+                            <a href="paymentmy.do" class="collapse__sublink">●일반 회원 관리</a>
+                            
+                            <a href="datachange2.do" class="collapse__sublink">●사업자 회원 관리</a>
+                            
+                        </ul>
+                    </div>
+
+                    <a href="main.board.do" class="nav__link">
+                        <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">공지사항</span>
+                    </a>
+
+                    <div href="#" class="nav__link collapse">
+                        <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">리뷰 관리</span>
+
+                        <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+                        <ul class="collapse__menu" style="width:120px;">
+                            <a href="#" class="collapse__sublink">●전체</a>
+                            <a href="#" class="collapse__sublink">●양식</a>
+                            <a href="#" class="collapse__sublink">●중식</a>
+                            <a href="#" class="collapse__sublink">●일식</a>
+                            <a href="#" class="collapse__sublink">●아시아</a>
+                            <a href="#" class="collapse__sublink">●한식</a>
+                            <a href="#" class="collapse__sublink">●잡식</a>
+                        </ul>
+                    </div>
+
+                    <a href="datachange.do" class="nav__link">
+                        <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">내 정보 수정</span>
+                    </a>
+                </div>
+                <a href="login.do" class="nav__link">
+                    <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+                    <span class="nav_name">Log out</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+ <!-- IONICONS -->
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    <!-- JS -->
+    <script src="js/main.js"></script>
+
+   
+</body>
 </html>
 
-<script type="text/javascript">
-var app = new Vue({ 
-    el: '#app1',
-    data: {
-    	
-    	serve1 : false
-    	, serve2 : false
-    	
-    }   
-    , methods: {
-    	
-    	Aserve1 : function(){
-    		var self = this;
-    		console.log("test1");
-    		if(self.serve1 == false){
-    			self.serve1 = true;
-    		}
-    		else if(self.serve1 == true){
-    			self.serve1 = false;
-    		}
-    	},
-    	Aserve2 : function(){
-    		var self = this;
-    		console.log("test2");
-    		if(self.serve2 == false){
-    			self.serve2 = true;
-    		}
-    		else if(self.serve2 == true){
-    			self.serve2 = false;
-    		}
-    	}
 
-    }
-    , created: function () {
-	}
-});
-</script>
+
+
