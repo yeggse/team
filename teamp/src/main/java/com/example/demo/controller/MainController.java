@@ -71,14 +71,15 @@ public class MainController {
     
     // 웹 주소 : 결제창
     @RequestMapping("/main.payment.do") 
-    public String payment(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public String payment(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
     	//세션 연결
-    	HashMap<String, Object> map = new HashMap<String, Object>();
+    	
     	String id = (String)session.getAttribute("userIdSession");	
     	String kind = (String)session.getAttribute("KindSession");
     	String name = (String)session.getAttribute("userNameSession");
     	String phonenum = (String)session.getAttribute("userPhonenumSession");
     	String acc = (String)session.getAttribute("userAccSession");
+    	request.setAttribute("map", map);
     	request.setAttribute("userName", name);
     	request.setAttribute("userPhonenum", phonenum);
     	request.setAttribute("userAcc", acc);

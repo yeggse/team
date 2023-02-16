@@ -137,7 +137,10 @@ var app = new Vue({
     	,name : "${userName}"
        	,kind : "${kind}"
        	,phoneNum : "${userPhonenum}"
-        ,acc : "${userAcc}"        	
+        ,acc : "${userAcc}"
+        , test: "${map.list}"
+        , reskind :"";
+        
     }   
     , methods: {
     	//예약 완료
@@ -175,10 +178,15 @@ var app = new Vue({
       		form.submit();
       		document.body.removeChild(form);
       	}
+		
     }
+  
     
     		 
     , created: function () {
+    	var self = this;
+    	
+    	console.log(self.test);
 	}
 });
 </script>

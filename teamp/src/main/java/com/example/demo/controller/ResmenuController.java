@@ -44,7 +44,6 @@ public class ResmenuController {
     	String kind = (String)session.getAttribute("KindSession");
     	request.setAttribute("userId", id);
     	request.setAttribute("kind", kind);
-    	
 		Main res = mainService.searchRes(map); // resnum을 통해 레스토랑 찾아주는 과정
 		request.setAttribute("res",  new Gson().toJson(res));
 		
@@ -79,4 +78,6 @@ public class ResmenuController {
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}
+	
+	
 }

@@ -198,7 +198,7 @@ input {
 					</div>
 				</div>
 					<div>
-						<a href="/main.payment.do"><button id="btn_order">주문시작</button></a>
+						<button id="btn_order" @click = "fnView">주문시작</button>
 					</div>
 			</div>
 			<div v-else><h2 style="margin-left: 50px;">게시글 목록</h2>
@@ -221,16 +221,7 @@ input {
 						<th scope="col">별점</th>
 					</tr>
 				</thead>
-			<!-- 	<tbody>
-					<tr v-for="(item, index) in list" >                            
-	                   <td @click="fnView(item)">{{item.boardIdx}}</td> 
-	                   <td @click="fnView(item)">{{item.title}}</td> 
-	                   <td @click="fnView(item)">{{item.hitCnt}}</td>
-	                   <td @click="fnView(item)">{{item.creatorId}}</td>
-	                   <td @click="fnView(item)">{{item.createdDatetime}}</td>
-	               	
-	               </tr>
-				</tbody> -->
+			
 			</table>
 			<template>
 			  <paginate
@@ -244,10 +235,7 @@ input {
 			    :page-class="'page-item'">
 			  </paginate>
 			</template>
-		  	<!-- <div>
-		  		<button @click="fnAdd" style="float: right; margin-right:30px;">글쓰기</button>
-		  		<button @click="fnRemove" style="float: right; margin-right : 5px;">삭제</button>
-		  	</div> -->
+		  	
 		</div>
 	</div>
 			</div>
@@ -265,7 +253,7 @@ input {
 	var app = new Vue({
 		el : '#app',
 		data : {
-			list : [],
+			list :[],
 			/* 게시판에 올려지는 글들은 다른 리스트 새로만들기  */
 			flg : true
 			,res : ${res} // Main type의 객체이름 res로(where=resnum 들고오는 과정) 당겨쓰는 과정 in ResmenuController
@@ -315,6 +303,39 @@ input {
 				item.sum -= 1;	
 			}
 			
+		}
+		, pageChange : function(url, param) {
+			var target = "_self";
+			if(param == undefined){
+			//	this.linkCall(url);
+				return;
+			}
+			var form = document.createElement("form"); 
+			form.name = "dataform";
+			form.action = url;
+			form.method = "post";
+			form.target = target;
+			for(var name in param){
+				var item = name;
+				var val = "";
+				if(param[name] instanceof Object){
+					val = JSON.stringify(param[name]);
+				} else {
+					val = param[name];
+				}
+				var input = document.createElement("input");
+	    		input.type = "hidden";
+	    		input.name = item;
+	    		input.value = val;
+	    		form.insertBefore(input, null);
+			}
+			document.body.appendChild(form);
+			form.submit();
+			document.body.removeChild(form);
+		}
+		, fnView : function(){
+			var self = this;
+			self.pageChange("/main.payment.do", {list : self.list}); /// 주문갯수를 포함하는 리스트를 넘김
 		}
 		},
 		created : function() {

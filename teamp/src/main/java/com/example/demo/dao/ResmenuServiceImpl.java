@@ -49,4 +49,5 @@ public class ResmenuServiceImpl implements ResmenuService{
 			return resmenuMapper.selectResmenuCnt();
 		}
 		
+		
 }
