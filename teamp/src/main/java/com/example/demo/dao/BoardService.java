@@ -9,6 +9,10 @@ import com.example.demo.model.Board;
 public interface BoardService {
 	// 게시글 기본 출력
 	List<Board> firstBoard(HashMap<String, Object> map) throws Exception; // 데이터 호출을 위한 인터페이스
+	// 게시글 갯수 세기
+	int countBoardCnt();
+	// 게시글 검색 출력
+	List<Board> searchBoard(HashMap<String, Object> map) throws Exception;
 	// 게시글 상세 출력
 	HashMap<String, Object> detailBoard(HashMap<String, Object> map); // 데이터 호출을 위한 인터페이스	
 	// 게시글 수정

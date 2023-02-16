@@ -70,6 +70,11 @@
     color:#666;
     text-decoration: none;
 }
+	/* 페이징에 동그란 점 없어지게 하기 */
+	li{
+	list-style:none;
+	}
+	
 .pagination li.active {
     background-color : red;	/* #E7AA8D */
     color:#fff;
@@ -108,9 +113,9 @@
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>세잎 공지사항</h2>
+			<h2>세잎 공지사항 - 검색어 입력시, 페이징 오류</h2>
 			<div style="text-align: center;">
-				<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
+				<input type="text" placeholder="검색어를 입력해 주세요" id="input" v-model="title"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
 				<button id="btn" @click="fnSearch" >검색</button>
 			</div>
 			<table class="board_list">
@@ -182,6 +187,11 @@ var app = new Vue({
        	, pageCount: 1
         , userId : "${userId}"
         , boardtype : ""
+        , noticenum : ""
+        , title : ""
+        , hits : ""
+        , nickname : ""
+        , startdate : ""
     }   
     , methods: {
     	// 기본 출력 메소드
@@ -280,11 +290,25 @@ var app = new Vue({
              });  
     	}
 		// 검색버튼 이벤트
-		, fnSearch : function(){
-    		var self = this;
-    		self.pageChange("/menu.add.do", {});
-		}
-    }   
+       	,fnSearch : function(){
+            var self = this;
+            var nparmap = {boardtype : self.boardtype, noticenum : self.noticenum, title : self.title, 
+            				hits : self.hits, nickname : self.nickname, startdate : self.startdate}; 
+            $.ajax({
+                url:"/searchBoard.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {       
+                	self.list = data.list;
+    	            	if(self.list.length == 0){
+    	            		self.fnGet();
+    	            	}    
+                	console.log(self.list);
+                }
+           });
+    	}  
+    }
     , created: function () {
     	var self = this;
     	self.fnGetList();      

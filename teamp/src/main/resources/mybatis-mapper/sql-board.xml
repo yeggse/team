@@ -13,6 +13,26 @@
 			LIMIT #{startNum}, #{lastNum}
 	</select>
 	
+	<!-- 게시글 갯수 출력 -->
+	<select id="countBoardCnt" resultType="int">	
+		SELECT 
+			COUNT(*) AS CNT
+		FROM
+			t3_board
+	</select>
+	
+	<!-- 게시글 제목 검색 출력 -->
+	<select id="searchBoard" parameterType="hashmap" resultType="com.example.demo.model.Board">	
+		SELECT
+			noticenum, nickname, startdate, title, hits, creatorid, boardtype
+		FROM
+			t3_board	
+		where
+			title like concat('%', #{title}, '%')
+		ORDER BY noticenum DESC
+	</select>	
+	
+	
 	<!-- 게시글 상세 출력 // 동일 칼럼명 들어가 있을 경우. t i 등 지정필수 -->
 	<select id="detailBoard" resultType="com.example.demo.model.Board">	
 		SELECT 
