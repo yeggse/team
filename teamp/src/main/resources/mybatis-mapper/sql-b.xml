@@ -23,4 +23,15 @@
 			(#{idx}, #{img}) 
 	</insert>
 
+	<!-- 메뉴 상세보기 -->
+	<select id="selectGetMenu" resultType="com.example.demo.model.B">	
+		SELECT 
+			t.idx, reskind, startdate, enddate, menuname, picture, introduce, price , supply, orderer, pickuptime, resnum
+		FROM
+			t3_resmenu t
+		LEFT OUTER JOIN t3_resmenu_img i on t.idx = i.idx 
+		WHERE
+			t.idx = #{idx}
+	</select>
+
 </mapper>

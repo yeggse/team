@@ -7,7 +7,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   	<link rel="stylesheet" href="css/detail/MenuDetail.css">
-  <title>메뉴 추가</title>
+  <title>메뉴 추가: 시간 설정을 구체적으로 하기!</title>
   <jsp:include page="/layout/header.jsp"></jsp:include>
 </head>
 
