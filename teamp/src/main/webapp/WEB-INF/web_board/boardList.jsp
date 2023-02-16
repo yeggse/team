@@ -275,7 +275,12 @@ var app = new Vue({
 		// 게시글 삭제하기
     	, fnRemove : function(){
     		var self = this;
+    		if(self.selectedItemList.length == 0){
+    			alert("삭제하실 게시글을 선택해 주세요.");
+    			return;
+    		}
     		var list = JSON.stringify(self.selectedItemList);
+    		
     		var nparmap = {"test" : "1",  "list" : list};
              $.ajax({
                  url:"/deleteBoard.dox",
