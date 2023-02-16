@@ -65,7 +65,7 @@
                         </ul>
                     </div>
 
-                    <a href="datachange.do" class="nav__link">
+                    <a href="datachange2.do" class="nav__link">
                         <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">내 정보 수정</span>
                     </a>
