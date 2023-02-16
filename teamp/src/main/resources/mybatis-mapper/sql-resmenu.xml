@@ -57,15 +57,15 @@
 	</select> -->
 	
 	<!-- picture print(storeList_Clicked) -->
-	<select id="selectStorecliectedImg" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+	<select id="selectStorecliectedImg" resultType="com.example.demo.model.Res">	
 			SELECT
-				t.idx, picture
+				r.idx, picture
 			FROM
-			t3_resmenu_img t
+			t3_resmenu r
 			
-		LEFT OUTER JOIN t3_resmenu_img i on t.idx = i.idx 
+		LEFT OUTER JOIN t3_resmenu_img i on r.idx = i.idx 
 		WHERE
-			t.idx = #{idx}
+			r.idx = #{idx}
 	</select>	
 	
 	

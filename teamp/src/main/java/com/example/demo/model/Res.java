@@ -6,7 +6,6 @@ public class Res {
 	private String startdate;
 	private String enddate;
 	private String menuname;
-	private String pucture;
 	private String introduce;
 	private String price;
 	private String supply;
@@ -101,12 +100,7 @@ public class Res {
 	public void setMenuname(String menuname) {
 		this.menuname = menuname;
 	}
-	public String getPucture() {
-		return pucture;
-	}
-	public void setPucture(String pucture) {
-		this.pucture = pucture;
-	}
+	
 	public String getIntroduce() {
 		return introduce;
 	}
