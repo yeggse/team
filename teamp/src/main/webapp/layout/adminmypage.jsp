@@ -55,7 +55,7 @@
                         <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 
                         <ul class="collapse__menu" style="width:120px;">
-                            <a href="#" class="collapse__sublink">●전체</a>
+                            <a href="reviewadmin.do" class="collapse__sublink">●전체</a>
                             <a href="#" class="collapse__sublink">●양식</a>
                             <a href="#" class="collapse__sublink">●중식</a>
                             <a href="#" class="collapse__sublink">●일식</a>

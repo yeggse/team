@@ -24,7 +24,7 @@ ul, li{
 
      position: relative; 
      left: 0px; 
-     bottom:800px; 
+     bottom:-200px; 
      clear:both;
      width: 800px;
      height :500px;
