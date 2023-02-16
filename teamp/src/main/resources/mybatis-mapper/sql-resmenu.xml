@@ -8,7 +8,7 @@
 			*
 		FROM
 			t3_resmenu
-		WHERE 1=1
+		WHERE resnum = #{resnum}
 		
 	</select>
 <!-- group by 컬럼명 -->
