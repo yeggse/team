@@ -9,9 +9,10 @@
 				resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate
 			FROM
 				t3_reserve
+			where orderer = #{id}
 			ORDER BY orderdate DESC
 			LIMIT #{startNum}, #{lastNum}
-			where orderer = #{id}
+			
 	</select>	
 	
 	
