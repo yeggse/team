@@ -46,7 +46,7 @@ public class BuisnessController {
 	    	System.out.println("메뉴관리 세션 넘어옴"); 
 	    	System.out.println(resnum+" resnum");
 	    	System.out.println(reskind+" reskind");
-	 }
+		}
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id);
     	return "/web_business/menumanagement"; // WEB-INF에서 호출할 파일명
@@ -59,9 +59,11 @@ public class BuisnessController {
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Res> list = resmenuService.selectResmenu2(map);
-		int cnt = resmenuService.selectResmenuCnt();
+		int cnt = resmenuService.selectResmenuCnt();	
+		
 		resultMap.put("list", list);
 		resultMap.put("cnt", cnt);
+		
 
 		return new Gson().toJson(resultMap);
 	}
