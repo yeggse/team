@@ -5,7 +5,7 @@
 <mapper namespace="com.example.demo.mapper.ResmenuMapper">	
 	<select id="selectResmenu" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
-			*
+			*, 0 as sum
 		FROM
 			t3_resmenu
 		WHERE resnum = #{resnum}

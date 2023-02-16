@@ -30,7 +30,7 @@
 		FROM
 			t3_restaurant	
 		where
-			resnum = ${resnum}
+			resnum = #{resnum}
 	</select>	
 	
 	<!-- 지역검색 -->

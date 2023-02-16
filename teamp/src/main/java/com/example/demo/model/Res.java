@@ -13,6 +13,7 @@ public class Res {
 	private String ordernum;
 	private String pickuptime;
 	private String payment;
+	private int sum;
 	public String getResnum() {
 		return resnum;
 	}
@@ -84,6 +85,18 @@ public class Res {
 	}
 	public void setPayment(String payment) {
 		this.payment = payment;
+	}
+	public int getSum() {
+		return sum;
+	}
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
+	public void setOrdernum(String ordernum) {
+		this.ordernum = ordernum;
+	}
+	public void setPickuptime(String pickuptime) {
+		this.pickuptime = pickuptime;
 	}
 	
 }
