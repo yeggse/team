@@ -138,8 +138,7 @@ var app = new Vue({
        	,kind : "${kind}"
        	,phoneNum : "${userPhonenum}"
         ,acc : "${userAcc}"
-        , test: "${map.list}"
-        , reskind :"";
+        , test: ${map.list} 
         
     }   
     , methods: {
@@ -185,8 +184,8 @@ var app = new Vue({
     		 
     , created: function () {
     	var self = this;
-    	
     	console.log(self.test);
+    	
 	}
 });
 </script>
