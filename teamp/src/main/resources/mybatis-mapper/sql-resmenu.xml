@@ -5,7 +5,7 @@
 <mapper namespace="com.example.demo.mapper.ResmenuMapper">	
 	<select id="selectResmenu" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
-			reskind, startdate, enddate, menuname, picture, introduce, price, supply, orderer, pickuptime, 0 as sum <!-- 컬럼을 임의로 추가해서 계산 할 수 있게 만든거임! SQL에는 실제로 추가 된건 아님! -->
+			*, 0 as sum <!-- 컬럼을 임의로 추가해서 계산 할 수 있게 만든거임! SQL에는 실제로 추가 된건 아님! -->
 		FROM
 			t3_resmenu
 		WHERE resnum = #{resnum}
@@ -36,29 +36,18 @@
 	
 	
 	<!-- 사업자 메뉴관리 페이지에 사용 -->
-<select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	
-		SELECT
-			resnum, reskind, startdate, enddate, menuname, picture, introduce, price, supply, orderer  
-		FROM
-			t3_resmenu ORDER BY resnum DESC
-			<!-- 
-			LIMIT #{startNum}, #{lastNum}
-			 -->
-	<!-- 	WHERE
-			reskind ="chi" -->
-			
-			
-	 	<!-- ORDER BY 
-	 		noticenum DESC
-		LIMIT 
-			#{startNum}, #{lastNum}  -->
-
-
-		<!--  
-		WHERE
-			orderer = #{id} AND reskind ="chi"
-		--> 	
+	<select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+			SELECT
+				*
+			FROM
+				t3_restaurant RES 
+			INNER JOIN 
+				t3_resmenu RM ON RES.RESNUM = RM.RESNUM
+			WHERE 
+				RES.RESNUM =1;  <!-- 하드코딩 고치기 -->
 	</select>
+	
+	
 	<!-- 사업자 메뉴관리 페이지 게시물 갯수 -->
 	<select id="selectResmenuCnt" resultType="int">	
 		SELECT 

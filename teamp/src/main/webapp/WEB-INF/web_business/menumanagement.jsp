@@ -13,14 +13,11 @@
 	<title>board 공지사항 기본 출력 페이지</title>
 </head>
 <style>
-
 img{
 width:6rem;
 height:6rem;
 }
-
 /* ----------------------------------------------------- */
-
 #input {
    width: 25rem;
    margin-top: 0rem;
@@ -41,7 +38,6 @@ height:6rem;
 	padding: 0rem;
 }
 /* ------------------------------------------------------- */
-
 .myButton {
 	box-shadow:inset 0px 1px 0px 0px #a4e271;
 	background-color:#a5d296;
@@ -64,7 +60,6 @@ height:6rem;
 	position:relative;
 	top:1px;
 }
-
 .pagination {
         margin:1.5rem;
         display: inline-flex;
@@ -112,10 +107,6 @@ border-top:1px solid #ccc; padding:0.8rem 0rem; text-align:center; vertical-alig
 .board_list tbody tr:hover{
 background:#ffff99;
 }
-
-
-
-
 </style>
 <body>
 <jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
@@ -125,8 +116,26 @@ background:#ffff99;
 			<div class="container">
 			<h2>세잎 메뉴관리</h2>
 			<div style="text-align: center;">
-				<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
-				<button id="btn"  >검색</button>
+			
+				<b-form-input
+         			 size="sm"
+          			class="mr-sm-2"
+          			type="text"
+          			placeholder="검색어를 입력해주세요"
+          			v-model="keyword"  //keyword에 바인딩
+          			@keyup.enter="searchresultshow(keyword)" //엔터 클릭시 searchresultshow 실행>
+          		</b-form-input>
+       				 <b-button
+          					size="sm"
+          					class="my-2 my-sm-0"
+          					type="submit"
+          					@click="searchresultshow(keyword)" //버튼 클릭시 searchresultshow 실행>
+			
+				<!-- <input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		업종 리스트 출력하는 쿼리 생성 필요!!
+				<button id="btn"  >검색</button> -->
+				
+				
+				
 			</div>
 			<table class="board_list">
 				<colgroup>
@@ -199,44 +208,6 @@ background:#ffff99;
 
 
 <script type="text/javascript">
-/* function changeBtnName2()  {
-	const btnElement = document.getElementById('btnSoldout') //id가 'btnchange'인 요소를 반환한다.
-	const inputElement = document.getElementById('number') //id가 'btnchange'인 요소를 반환한다.
-	if(btnElement.innerHTML == '일시품절' ){ //버튼의 텍스트값 확인
-		alert("해당 상품을 일시품절처리로 변경하였습니다.");
-		inputElement.value = '0';
-	}else{ 
-		btnElement.innerHTML = '일시품절'
-	}
-}	 */
-/* function changeBtnName2()  {
-	const btnElement = document.getElementById('btnSoldout') //id가 'btnchange'인 요소를 반환한다.
-	const inputElement = document.getElementById('number') //id가 'btnchange'인 요소를 반환한다.
-	if(btnElement.innerHTML == '일시품절' ){ //버튼의 텍스트값 확인
-		alert("해당 상품을 일시품절처리로 변경하였습니다.");
-			style.background: red;
-	}else{ 
-		btnElement.innerHTML = '일시품절'
-	}
-}	
- */
-/* const board_list tbody td = document.querySelector('.board_list tbody td');
-
-function select(ulEl, liEl){
-    Array.from(ulEl.children).forEach(
-        v => v.classList.remove('selected')
-    )
-    if(liEl) liEl.classList.add('selected');
-}
-
-menuWrap.addEventListener('click', e => {
-    const selected = e.target;
-    select(menuWrap, selected);
-})
- */
-
-/* ------------------------------------------------------------------------------------------------*/
-
 Vue.component('paginate', VuejsPaginate)
 var app = new Vue({ 
     el: '#app',
@@ -250,7 +221,6 @@ var app = new Vue({
         ,supply:""
         ,idx:""
     }   
-
     , methods: {
     	// 기본 출력 메소드
         fnGetList : function(){
@@ -289,11 +259,6 @@ var app = new Vue({
 	            }
 	        }); 
 		}
-		
-		
-		
-		
-		
 	       // 게시글 상세 확인@@@@@@@@@@@@@/menu.detail.do@@@@@@@@@@@@@@
 	       , fnDetailView : function(item){
 	          var self = this;
@@ -360,5 +325,3 @@ var app = new Vue({
 </script> 
 
 </html>
-
-
