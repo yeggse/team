@@ -5,7 +5,7 @@
 <mapper namespace="com.example.demo.mapper.ResmenuMapper">	
 	<select id="selectResmenu" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
-			*, 0 as sum <!-- 컬럼을 임의로 추가해서 계산 할 수 있게 만든거임! SQL에는 실제로 추가 된건 아님! -->
+			reskind, startdate, enddate, menuname, picture, introduce, price, supply, orderer, pickuptime, 0 as sum <!-- 컬럼을 임의로 추가해서 계산 할 수 있게 만든거임! SQL에는 실제로 추가 된건 아님! -->
 		FROM
 			t3_resmenu
 		WHERE resnum = #{resnum}
@@ -40,7 +40,7 @@
 		SELECT
 			resnum, reskind, startdate, enddate, menuname, picture, introduce, price, supply, orderer  
 		FROM
-			t3_resmenu ORDER BY idx DESC
+			t3_resmenu ORDER BY resnum DESC
 			<!-- 
 			LIMIT #{startNum}, #{lastNum}
 			 -->

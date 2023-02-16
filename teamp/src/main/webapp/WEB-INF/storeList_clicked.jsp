@@ -193,7 +193,7 @@ input {
 					</div>
 					<div style="padding-top: 110px;">
 						<button @click="fnMenudegrease(item)">-</button>
-						<input style="width:50px; text-align:center;"  type="text" name="calcul" :value="item.sum"/>
+						<input style="width:50px; text-align:center;"  type="text" name="calcul" :value="item.sum"/> <!-- resmenu.xml에 ,0 as sum 을 넣음으로써 첫번째 값을 0으로 다 넣은 임의의 컬럼을 만들어줘서 가능함. :표시는 가져올때 씀 -->
 						<button @click="fnMenuincrease(item)">+</button>
 					</div>
 				</div>
@@ -298,11 +298,23 @@ input {
 			self.flg = true;
 		}
 		, fnMenuincrease : function(item){
-			item.sum += 1;
-			
+			var self = this;
+			if(self.list[0].supply > item.sum){
+				item.sum += 1;	
+			}else{
+				alert("주문수량을 초과하였습니다.");
+				return item.sum;
+			}
 		}
 		, fnMenudegrease : function(item){
-			item.sum -= 1;
+			var self = this;
+			if(item.sum < 1){
+				alert("주문수량을 체크해 주세요.");
+				return item.sum=0;	
+			}else{
+				item.sum -= 1;	
+			}
+			
 		}
 		},
 		created : function() {
