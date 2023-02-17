@@ -16,7 +16,7 @@ public class Menu {
     private String picture;
     private int idx;
 	private String enddate;
-	private String orderer;
+	private int orderer;
     
     public int getIdx() {
 		return idx;
@@ -30,10 +30,10 @@ public class Menu {
 	public void setEnddate(String enddate) {
 		this.enddate = enddate;
 	}
-	public String getOrderer() {
+	public int getOrderer() {
 		return orderer;
 	}
-	public void setOrderer(String orderer) {
+	public void setOrderer(int orderer) {
 		this.orderer = orderer;
 	}
 	public int getNo() {
