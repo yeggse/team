@@ -18,7 +18,7 @@
   padding-right: 90px;
 }
 .input2{
-  width:7.5rem;
+  width:8.7rem;
   height: 3.2rem;
   margin: 1.2rem 0.3rem 0.3rem 0.3rem ;
   border: solid #ccc;

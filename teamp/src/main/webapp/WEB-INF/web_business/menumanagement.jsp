@@ -151,7 +151,7 @@ background:#ffff99;
 	                   <td @click="fnDetailView(item)">{{item.menuname}}</td> 
 	                   <td @click="fnDetailView(item)">{{item.price}}원</td> 
 	                   <td @click="fnDetailView(item)">{{item.introduce}}</td>
-	                   <td @click="fnDetailView(item)">{{item.idx}}<img src=""></td>
+	                   <td @click="fnDetailView(item)">{{item.idx}}<img  :src="item.picture"></td>
 	                   <td @click="fnDetailView(item)">{{item.startdate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.enddate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.supply}}</td> 
@@ -202,10 +202,10 @@ var app = new Vue({
         , userId : "${userId}"
         , boardtype : ""
         , supply:""
-        , idx:""
         , resnum:"${resnum}"
+        , menuname:"${menuname}"
+        , idx:"${idx}"
         , picture:"${userpicture}"
-        , menuname:""
     }   
     , methods: {
     	// 기본 출력 메소드
@@ -222,7 +222,7 @@ var app = new Vue({
                 success : function(data) {                                       
 	                self.list = data.list;
 	                self.pageCount = Math.ceil(data.cnt / 10);//게시물 갯수를 10으로 나누고 Math.ceil함수를 사용해서 필요한 페이지 갯수 정함 ex)(data.cnt/10)=1.02 -->페이지 2개
-	                console.log("현재 페이지의 갯수는: " + self.pageCount);
+                	console.log( self.list);
                 }
             }); 
         }  
@@ -302,10 +302,10 @@ var app = new Vue({
                  }
              });  
     	}
-		//메누명 검색기능
+		//메뉴명 검색기능
     	,fnSearch : function(){
             var self = this;
-            var nparmap = {menuname:self.menuname}; //다음 페이지로 넘어갈때 필요한 변수만 적어주기. 
+            var nparmap = {menuname:self.menuname};
             $.ajax({
                 url:"/main.storelist22/slist.dox",
                 dataType:"json",	
@@ -314,18 +314,13 @@ var app = new Vue({
                 success : function(data) {       
                 	self.list = data.list;
                 	console.log(self.list);	
-    	            	if(self.list.length == 0){
-    	            		self.fnGetList();
-    	            	}    
-                	console.log(self.list);
-                	console.log("메뉴명은" + self.menuname);
                 }
            });
     	} 
     }   
     , created: function () {
     	var self = this;
-    	self.fnGetList();      
+    	self.fnGetList();    
 	}
 });
 </script> 

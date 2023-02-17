@@ -43,67 +43,6 @@
 			t3_resmenu
 	</select>
 	
-	
-	
-	<!-- picture join -->
-<!-- 	<select id="selectImg" parameterType="hashmap" resultType="com.example.demo.model.Res">	
-			SELECT
-				picture
-			FROM
-				t3_resmenu_img
-			INNER JOIN 
-				t3_resmenu
-			ON 
-				t3_restaurant.picture = t3_resmenu.picture
-			WHERE 
-				t3_restaurant.idx =2;  하드코딩 고치기
-	</select> -->
-	
-	<!-- picture print(storeList_Clicked) -->
-	<!-- <select id="selectStorecliectedImg" resultType="com.example.demo.model.Res">	
-			SELECT
-				r.idx, picture
-			FROM
-			t3_resmenu r
-			
-		LEFT OUTER JOIN t3_resmenu_img i on r.idx = i.idx 
-		WHERE
-			r.idx = #{idx}
-	</select>	
-	 -->
-	
-	
-	
-	
-	
-	<!-- id join -->
-<!-- 	<select id="selectResmenu3" parameterType="hashmap" resultType="com.example.demo.model.Res">	
-			SELECT
-				*
-			FROM
-				t3_account
-			INNER JOIN 
-				t3_resmenu
-			ON 
-				t3_account.resnum = t3_resmenu.resnum
-			WHERE 
-				t3_account.resnum = #{resnum}  하드코딩 고치기
-	</select> -->
-	
-	<!-- resnum join -->
-	<select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	
-			SELECT
-				*
-			FROM
-				t3_restaurant
-			INNER JOIN 
-				t3_resmenu
-			ON 
-				t3_restaurant.resnum = t3_resmenu.resnum
-			WHERE 
-				t3_restaurant.resnum = #{resnum}  <!-- 하드코딩 고치기 -->
-	</select>
-	
 	<select id="searchMenuname" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT
 				*
@@ -111,6 +50,19 @@
 				t3_resmenu
 			WHERE 
 				menuname = #{menuname} 
+	</select>
+	
+	<select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+			SELECT
+				resnum, menuname, introduce, picture, startdate, enddate, price, supply
+			FROM
+				t3_resmenu
+			LEFT OUTER JOIN 
+				t3_resmenu_img
+			ON 
+				t3_resmenu.idx = t3_resmenu_img.idx
+			WHERE 
+				t3_resmenu.resnum = #{resnum}  
 	</select>
 	
 	<insert id="insertreserve" parameterType="hashmap">
@@ -134,6 +86,7 @@
 		)
 		
 	</insert>
+	
 	<select id="businessReserveList" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT 
 				resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum

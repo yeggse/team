@@ -10,9 +10,6 @@
 </head>
 
 <style>
-*{
-border: 1px solid;
-}
 .text{
   text-align:center;
   font-size:2rem;
