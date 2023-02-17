@@ -28,4 +28,5 @@ public interface MainMapper {
 	List<Area> selectSiList(HashMap<String, Object> map) throws Exception;
 	// 사진 클릭 후 레스토랑 검색(resnum통함)
 	Main searchRes(HashMap<String, Object> map) throws Exception;
+	Main Cpickuptime(HashMap<String, Object> map) throws Exception;
 }

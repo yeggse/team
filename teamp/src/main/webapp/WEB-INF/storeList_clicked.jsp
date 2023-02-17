@@ -125,7 +125,7 @@ input {
 	color: black;
 	padding: 0px;
 	margin-top: 50px;
-	margin-left: 1%;
+	margin-left: 1500px;
 }
 
 #btn_order {
@@ -164,20 +164,18 @@ input {
 		<span class="grade" style="margin-left: 180px;">평점 :{{res.grade}}</span> 
 		<span class="position_res" style="marin-top: -50px;"> 가게위치:{{res.resadd}} <!-- {{list[0].pickuptime}} 집에서 mysqpl로 다시 수정하기.--></span>
 		<!-- 가계주소들어와야함 -->
-		<div class="position_res" style="margin-left: 619px;">운영시간 :{{res.pickuptime}}</div>
+		<div class="position_res" style="margin-left: 619px;">운영시간 : ${time}</div>
 		<!-- 가계주소들어와야함 1-->
 		<div>
 			<button id="btn_menu" @click="fnClick1">메뉴</button>
 			<button id="btn_review" @click="fnClick">리뷰</button>
-			<span style="margin-left: 800px; font-size: 30px;">db수</span> <span
-				class="count_menu">메뉴선택 갯수</span>
 		</div>
 		<div style="margin-top: 50px;">
 			<!-- 값이 없을때를 대비해서 예외처리도 해줘야한다. -->
 			<!-- {{list[0].price}} 포문없을때 출력하는 방법-->
-
 			<!-- 지금 예쁘게 나오는 예시 -->
 			<div v-if="flg">
+				<span class="count_menu">메뉴선택 갯수</span>
 				<div v-for="(item, index) in list" style="height:200px;">
 					<div style="margin-top: 30px; margin-left: 60px; width: 300px; height: 180px; border-radius: 10px; border: 1px solid red; float: left; margin-right: 60px;">
 						<img style="margin-left: 0px" width="100%" height="100%" :src="item.picture"/>
@@ -261,6 +259,7 @@ input {
 			,user : ${userVO}// user전체가 getter/setter되서 가져고 오는 형식. {{user.id}},{{user.name}} 쓸때 이렇게 쓸수있음. 여기한번 지정하고 다른데서 계속 쓸 수 있음.
 							// 기존 방법과 차이 userId: "${userId}" 이렇게 적어 줬었음.
 		    ,sum : 0
+		    ,time : ${time}
 		},
 		methods : {
 			fnGetImg : function() {

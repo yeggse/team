@@ -32,7 +32,16 @@
 			t3_restaurant	
 		where
 			resnum = #{resnum}
-	</select>	
+	</select>
+	<!-- 픽업가능 시간 -->
+	<select id="Cpickuptime" parameterType="hashmap" resultType="com.example.demo.model.Main">	
+		SELECT
+			pickuptime
+		FROM
+			t3_resmenu	
+		where
+			resnum = #{resnum} AND menuname = #{menuname}
+	</select>		
 	
 	<!-- 지역검색 -->
 	<select id="regionSearch" parameterType="hashmap" resultType="com.example.demo.model.Main">	
