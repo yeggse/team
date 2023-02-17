@@ -54,7 +54,7 @@
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
 	                   <td >{{item.ordernum}}</td> 
-	                   <td >{{item.ordernum}} 수정필요</td> 
+	                   <td >{{item.resname}}</td> 
 	                   <td >{{item.menuname}} 이어 붙이기</td>
 	                   <td >{{item.menunum}} </td> 
 	                   <td >{{item.orderdate}}</td>

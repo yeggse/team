@@ -338,12 +338,13 @@ input {
 		}
 		, fnView : function(){
 			var self = this;
-			self.pageChange("/main.payment.do", {list : self.list}); /// 주문갯수를 포함하는 리스트를 넘김
+			self.pageChange("/main.payment.do", {list : self.list,resname:self.res.resname}); /// 주문갯수를 포함하는 리스트를 넘김
 		}
 		},
 		created : function() {
 			var self = this;
 			this.fnGetImg();
+			
 		}
 	});
 </script>

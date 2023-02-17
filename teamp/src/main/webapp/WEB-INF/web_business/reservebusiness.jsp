@@ -18,7 +18,7 @@
 </style>
 
 <body>
-<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+<jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
 	<div id="app" >
 		<div class="container">
 			<h2 style="margin-left: 30px;">{{id}} 님께서 받으신 오늘 예약🎈</h2>
@@ -51,7 +51,7 @@
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
 	                   <td >{{item.ordernum}}</td> 
-	                   <td >{{item.ordernum}} 수정필요</td> 
+	                   <td >{{item.resname}}</td> 
 	                   <td >{{item.menuname}} 이어 붙이기</td> 
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.pickuptime}}</td>
