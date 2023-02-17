@@ -35,7 +35,6 @@
 	height: 100px;
 	font-size: 3em;
 	text-align: center;
-	border: 1px solid blue;
 	padding: 10px;
 	margin-right: 400px;
 	margin-top: 50px;
@@ -62,7 +61,6 @@
 	text-align: center;
 	margin-top: 10px;
 	padding: 5px;
-	border: 1px solid black;
 	margin-right: 500px;
 }
 
