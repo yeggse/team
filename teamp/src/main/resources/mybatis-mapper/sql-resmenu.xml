@@ -45,11 +45,15 @@
 	
 	<select id="searchMenuname" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT
-				*
+				resnum, menuname, introduce, picture, startdate, enddate, price, supply
 			FROM
 				t3_resmenu
+			LEFT OUTER JOIN 
+				t3_resmenu_img
+			ON 
+				t3_resmenu.idx = t3_resmenu_img.idx	
 			WHERE 
-				menuname = #{menuname} 
+				menuname like concat('%', #{menuname}, '%')
 	</select>
 	
 	<select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	

@@ -112,7 +112,7 @@ background:#ffff99;
 			<h2>세잎 메뉴관리</h2>
 			<div style="text-align: center;">
 			
-				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="menuname"></input>
+				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="menuname"  v-on:keyup.enter="fnSearch"></input>
 				<button id="btn" @click="fnSearch" >검색</button>	
 				
 		<!-- 		<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		업종 리스트 출력하는 쿼리 생성 필요!!
