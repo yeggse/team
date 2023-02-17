@@ -3,5 +3,14 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.AdminMapper">	
- 
+ 	<!-- 관리자 일반회원 출력 -->
+	<select id="normalMemList" parameterType="hashmap" resultType="com.example.demo.model.Admin">	
+			SELECT 
+				id, kind, phonenum, acc, name, address, frontregisnum, afterregisnum, nickname
+			FROM
+				t3_account
+			where #{kind} = "A"
+			ORDER BY id ASC
+			LIMIT #{startNum}, #{lastNum}
+	</select>
 </mapper>
