@@ -109,11 +109,11 @@ background:#ffff99;
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>일반 회원 관리</h2>
+			<h2>일반 회원 관리🙆‍♀️</h2>‍
 			<div style="text-align: center;">
 			
-				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="menuname"  v-on:keyup.enter="fnSearch"></input>
-				<button id="btn" @click="fnSearch" >검색</button>	
+				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="name"  v-on:keyup.enter="fnSearch"></input>
+				<button id="btn" >검색</button>	
 				
 		<!-- 		<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		업종 리스트 출력하는 쿼리 생성 필요!!
 				<button id="btn"  >검색</button>  -->
@@ -125,71 +125,46 @@ background:#ffff99;
 					<col width="5%"/>
 					<col width="10%"/> 
 					<col width="10%"/> 
+					<col width="*%"/>
+					<col width="15%"/>
+					<col width="15%"/>
 					<col width="20%"/>
-					<col width="5%"/>
-					<col width="15%"/>
-					<col width="15%"/>
-					<col width="5%"/>
 				</colgroup>
 				<thead>
 					<tr>
 						<th scope="col">-</th>
-						<th scope="col">메뉴명</th>
-						<th scope="col">가격</th>
-						<th scope="col">메뉴설명</th>
-						<th scope="col">사진</th>
-						<th scope="col">업로드날짜</th>
-						<th scope="col">수정날짜</th>
-						<th scope="col">재고</th>
-						<th scope="col">-</th>
+						<th scope="col">회원명</th>
+						<th scope="col">닉네임</th>
+						<th scope="col">아이디</th>
+						<th scope="col">주소</th>
+						<th scope="col">생년월일</th>
+						<th scope="col">전화번호</th>
+						<th scope="col">계좌번호</th>
 					</tr>
 				</thead>
 				<!-- db 수정되면 알맞은 값 가져오기 -->
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
-	                   <td @click="fnDetailView(item)">{{item.menuname}}</td> 
-	                   <td @click="fnDetailView(item)">{{item.price}}원</td> 
-	                   <td @click="fnDetailView(item)">{{item.introduce}}</td>
-	                   <td @click="fnDetailView(item)">{{item.idx}}<img  :src="item.picture"></td>
-	                   <td @click="fnDetailView(item)">{{item.startdate}}</td>
-	                   <td @click="fnDetailView(item)">{{item.enddate}}</td>
-	                   <td @click="fnDetailView(item)">{{item.supply}}</td> 
-	                   <td>
-	                   		<button id='btnSoldout' onclick='changeBtnName2()'> 일시품절 </button> 
-					   </td> 
+	                   <td>{{item.name}}</td> 
+	                   <td>{{item.nickname}}</td> 
+	                   <td >{{item.id}}</td>
+	                   <td >{{item.address}}</td>
+	                   <td >{{item.frontregisnum}}</td>
+	                   <td >{{item.phonenum}}</td>
+	                   <td >{{item.acc}}</td> 
 	               </tr>
 				</tbody>
 			</table>
 		<!-- 페이지 넘어가는 버튼들 -->		
-			<div>
-			<paginate
-			    :page-count="pageCount"
-			    :page-range="3"
-			    :margin-pages="2"
-			    :click-handler="changePage"
-			    :prev-text="'<'"
-			    :next-text="'>'"
-			    :container-class="'pagination'"
-			    :page-class="'page-item'">
-			  </paginate>
-			  </div>
 			  
-		  	<div>
-		  	<!-- v-if에 조건을 'kind'가 '사업자라면'으로 변경하기  -->
-		  		<button  @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
-		  		<button  @click="fnRemove" class="myButton" style="float: right; margin-right : 5px;">삭제</button>
-		  		<!-- <button v-if="'admin' == userId" @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
-		  		<button v-if="'admin' == userId" @click="fnRemove" class="myButton" style="float: right; margin-right : 5px;">삭제</button> -->
-		  	</div>
 		  	
 		  </div>	
-		  	</div>
 	</div>
 </body>
 
 
-
+</html>
 <script type="text/javascript">
 Vue.component('paginate', VuejsPaginate)
 var app = new Vue({ 
@@ -200,123 +175,34 @@ var app = new Vue({
 		, selectPage: 1	// 기본 세팅이 1번 페이지로 맞추어져 있음.
        	, pageCount: 1
         , userId : "${userId}"
-        , boardtype : ""
-        , supply:""
-        , resnum:"${resnum}"
-        , menuname:"${menuname}"
-        , idx:"${idx}"
-        , picture:"${userpicture}"
+        , name : ""
+        , nickname : ""
+        , id : ""
+        , address : ""
+        , frontregisnum : ""
+        , phonenum : ""
+        , kind :"${kind}"
+        , acc : ""
     }   
     , methods: {
     	// 기본 출력 메소드
         fnGetList : function(){
             var self = this;
             var startNum = ((self.selectPage-1) * 10);
-    		var lastNum = self.selectPage * 10
-            var nparmap = {startNum : self.startNum, lastNum : self.lastNum, resnum:self.resnum, picture: self.picture}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
+    		var lastNum = self.selectPage * 10;
+            var nparmap = {startNum : self.startNum, lastNum : self.lastNum}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
             $.ajax({
-                url:"/selectResmenu2.dox",
+                url:"/normalMem.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
                 success : function(data) {                                       
 	                self.list = data.list;
 	                self.pageCount = Math.ceil(data.cnt / 10);//게시물 갯수를 10으로 나누고 Math.ceil함수를 사용해서 필요한 페이지 갯수 정함 ex)(data.cnt/10)=1.02 -->페이지 2개
-                	console.log( self.list);
+                	console.log(self.list+"DD");
                 }
             }); 
         }  
-		// 페이지 전환 메소드
-		, changePage : function(pageNum) {
-			var self = this;
-			self.selectPage = pageNum;
-			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
-			var lastNum = pageNum * 10
-	        var nparmap = {startNum : startNum, lastNum : lastNum};
-	        $.ajax({
-	            url:"/selectResmenu2.dox",
-	            dataType:"json",	
-	            type : "POST", 
-	            data : nparmap,
-	            success : function(data) {                                       
-	                self.list = data.list;
-	                self.pageCount = Math.ceil(data.cnt / 10);
-	                console.log(self.pageCount);
-	            }
-	        }); 
-		}
-	    // 메뉴 상세 확인
-	       , fnDetailView : function(item){
-	          var self = this;
-	          self.pageChange("/menu.detail.do", {idx : item.idx});   // 상세페이지로 해당 인덱스 번호를 넘겨줌~~!
-	       }
-		// 화면 전환 for 게시글 상세 확인
-    	, pageChange : function(url, param) {
-    		var target = "_self";
-    		if(param == undefined){
-    			return;
-    		}
-    		var form = document.createElement("form"); 
-    		form.name = "dataform";
-    		form.action = url;
-    		form.method = "post";
-    		form.target = target;
-    		for(var name in param){
-				var item = name;
-				var val = "";
-				if(param[name] instanceof Object){
-					val = JSON.stringify(param[name]);
-				} else {
-					val = param[name];
-				}
-				var input = document.createElement("input");
-	    		input.type = "hidden";
-	    		input.name = item;
-	    		input.value = val;
-	    		form.insertBefore(input, null);
-			}
-    		document.body.appendChild(form);
-    		form.submit();
-    		document.body.removeChild(form);
-    	}
-		// 작성하기 페이지로 이동
-		, fnAdd : function(){
-    		var self = this;
-    		self.pageChange("/menu.add.do", {});
-		}
-    	
-		// 게시글 삭제하기
-    	, fnRemove : function(){
-    		var self = this;
-    		var list = JSON.stringify(self.selectedItemList);
-    		var nparmap = {"test" : "1",  "list" : list};
-             $.ajax({
-                 url:"/deleteBoard.dox",
-                 dataType:"json",	
-                 type : "POST", 
-                 data : nparmap,
-                 success : function(data) {  
-                	 alert("삭제되었습니다.");
-                	 self.selectedItemList = [];
-                	 self.fnGetList();
-                 }
-             });  
-    	}
-		//메뉴명 검색기능
-    	,fnSearch : function(){
-            var self = this;
-            var nparmap = {menuname:self.menuname};
-            $.ajax({
-                url:"/main.storelist22/slist.dox",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                success : function(data) {       
-                	self.list = data.list;
-                	console.log(self.list);	
-                }
-           });
-    	} 
     }   
     , created: function () {
     	var self = this;
@@ -325,4 +211,4 @@ var app = new Vue({
 });
 </script> 
 
-</html>
+

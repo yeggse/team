@@ -9,7 +9,7 @@
 				id, kind, phonenum, acc, name, address, frontregisnum, afterregisnum, nickname
 			FROM
 				t3_account
-			where #{kind} = "A"
+			where kind = "A"
 			ORDER BY id ASC
 			LIMIT #{startNum}, #{lastNum}
 	</select>
