@@ -46,9 +46,10 @@ body {
 
 		<div class="div2">
 			패스워드 <input type="password" id="text1" v-model="pwd"
-				style="margin-left: 45px"></input>
+				style="margin-left: 45px" @change="fnPwcheck"></input>
 		</div>
-
+        <div v-if = "pwdtextCheck" style ="color : blue">{{pwdtext}}</div>
+		<div v-else style ="color : red">{{pwdtext}}</div>
 		<div class="div2">
 			패스워드 확인 <input type="password" id="text1" v-model="pwd2"
 				style="margin-left: 12px"></input>
@@ -79,10 +80,19 @@ body {
 		<div class="div2">
 			사업자번호 <input type="text" id="text1" v-model="resnum"
 				style="margin-left: 30px"></input>
+			<button @click="fnresnumCheck">중복확인</button>
 		</div>
 		<div class="div2">
-			업종 <input type="password" id="text1" v-model="kind"
-				style="margin-left: 75px"></input>
+			업종
+			<select style="width: 150px; height: 30px; margin-left: 75px; font-size: large; font-weight: bold;" v-model ="kind">
+							<option value="한식">한식</option>
+							<option value="중식">중식</option>
+							<option value="양식">양식</option>
+							<option value="일식">일식</option>
+							<option value="아시아">아시아</option>
+							
+							
+			</select>
 		</div>
 		<div class="div2">
 			지역 <input type="text" id="text1" v-model="region"
@@ -123,7 +133,10 @@ body {
 			kind : "",
 			region : "",
 			resad : "",
-			resphonenum : ""
+			resphonenum : "",
+			nickcheck : false,
+			pwdtext:"",
+			pwdtextCheck:false
 
 		},
 		methods : {
@@ -149,6 +162,59 @@ body {
 					}
 				})
 			},
+			
+			fnresnumCheck : function() {
+				var self = this;
+				var nparmap = {
+					resnum : self.resnum
+				};
+				console.log(nparmap);
+				$.ajax({
+					url : "/join/resnumcheck.dox",
+					dataType : "json",
+					type : "POST",
+					data : nparmap,
+					success : function(data) {
+						//self.list = data.list;
+						if (data.num > 0) {
+							alert("이미 등록된 사업자번호입니다.");
+						} else {
+							alert("사용하실수 있는 사업자번호 입니다.");
+							self.resnumcheck = true;
+						}
+					}
+				})
+
+			},//사업자번호 중복확인
+			
+			fnPwcheck : function() {
+				var self = this;
+				var nparmap = {
+					pwd : self.pwd,
+					pwd2 : self.pwd2
+				};
+				var pattern1 = /[0-9]/;
+				var pattern2 = /[a-zA-Z]/;
+				var pattern3 = /[~!@\#$%<>^&*]/; // 원하는 특수문자 추가&제거 가능
+				 
+				if (!pattern1.test(self.pwd)
+						|| !pattern2.test(self.pwd)
+						|| !pattern3.test(self.pwd)
+						|| self.pwd.length<8||self.pwd.length>16) {
+					self.pwdtext = "❗ 영문, 숫자, 특수기호를 모두 사용하여, 8자리 이상 16자리이하로 구성하세요. \n❗❗ 사용가능한 특수 문자 : ~!@\#$%<>^&* ";
+					
+					self.pwdtextCheck = false;
+				} else {
+					self.pwdtext = "올바른 비밀번호 형태입니다.";
+					
+					self.pwdtextCheck = true;
+				}
+			
+				
+
+			}
+			,//패스워드 형식 체크
+			
 			fnfix : function() {
 
 				var self = this;
@@ -181,7 +247,9 @@ body {
 					alert("빈칸을 확인해주세요");
 				} else if (!self.nickcheck) {
 					alert("닉네임 중복확인을 해주세요");
-				} else {
+				} else if (!self.resnumcheck) {
+					alert("사업자번호 중복확인을 해주세요");
+				}else {
 					console.log(nparmap);
 					$.ajax({
 						url : "/datachange.dox",

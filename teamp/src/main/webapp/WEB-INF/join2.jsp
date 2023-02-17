@@ -331,6 +331,7 @@ a {
 						|| self.resad == "" || self.resphonenum == "") {
 					console.log(self.kind);
 					console.log(self.id);
+					console.log(self.resphonenum)
 					alert("빈칸을 확인해주세요");
 					
 				} else if (!self.idcheck) {
