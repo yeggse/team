@@ -75,7 +75,7 @@ var app = new Vue({
     data: {
     	list : [] 
         , selectedItemList : []
-		, selectPage: 1	// 기본 세팅이 1번 페이지로 맞추어져 있음.
+		, selectPage: 1	// 기본 세팅이 1번 페이지로 맞추어져 있음
 		, pageCount: 1
         , id: "${userId}"
         , ordernum : ""
