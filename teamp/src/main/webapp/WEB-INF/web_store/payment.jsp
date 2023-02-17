@@ -37,7 +37,7 @@ input {
 }
 
 select {
-	/* 콤보리스트 : https://www.freecodecamp.org/korean/news/html-select-taegeu-deurobdaun-menyu-ddoneun-kombo-riseuteureul-mandeuneun-bangbeob/ */
+	/* 1콤보리스트 : https://www.freecodecamp.org/korean/news/html-select-taegeu-deurobdaun-menyu-ddoneun-kombo-riseuteureul-mandeuneun-bangbeob/ */
 	margin-bottom: 10px;
 	margin-top: 10px;
 	background: lightgray;
