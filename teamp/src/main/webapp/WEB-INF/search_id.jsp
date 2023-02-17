@@ -121,12 +121,12 @@
         <div class="text2">회원 정보에 등록한 정보와 일치해야, 아이디를 찾을 수 있습니다.</div>
         <div>
             <span class="text3">이름</span>
-    		<input class="input1" type="text" placeholder="이름" v-model="name">
+    		<input class="input1" type="text" placeholder="이름" v-model="name" v-on:keyup.enter="fnSearchid">
   		</div>
   		<div>
             <span class="text4">주민번호</span>
-    		<input class="input2" type="text" placeholder="6자리" v-model="frontregisnum"> ㅡ
-    		<input class="input2" type="password" placeholde="" v-model="afterregisnum">
+    		<input class="input2" type="text" placeholder="6자리" v-model="frontregisnum" v-on:keyup.enter="fnSearchid"> ㅡ
+    		<input class="input2" type="password" placeholde="" v-model="afterregisnum" v-on:keyup.enter="fnSearchid">
   		</div>
   		<div>
      		<button class="btn3" @click="fnSearchid">아이디 찾기</button>
