@@ -115,7 +115,7 @@
 	
 	SET supply = supply - #{sum}
 	
-	WHERE menuname = #{menuname} 
+	WHERE resnum = #{resnum} AND menuname = #{menuname} 
 	</update>
 	
 	
