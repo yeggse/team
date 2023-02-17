@@ -17,9 +17,10 @@ public interface ResmenuMapper {
 	//	사업자 메뉴관리 페이지에 사용 
 	List<Res> selectResmenu2(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 	List<Res> searchMenuname(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
-	
+	List<Res> businessReserveList(HashMap<String, Object> map) throws Exception;
 	int selectResmenuCnt();
 	
 	Res selectStorecliectedImg(HashMap<String, Object> map);
 	int insertreserve(HashMap<String, Object> map) throws Exception;
+	
 }

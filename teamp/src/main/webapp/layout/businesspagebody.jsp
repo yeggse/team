@@ -36,7 +36,7 @@
                         <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 
                         <ul class="collapse__menu">
-                            <a href="reservemy.do" class="collapse__sublink">●주문 내역</a>
+                            <a href="reservebusiness.do" class="collapse__sublink">●주문 내역</a>
                             
                             <a href="menumanagementbusiness.do" class="collapse__sublink">●메뉴 관리</a>
                             

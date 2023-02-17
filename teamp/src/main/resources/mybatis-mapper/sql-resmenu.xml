@@ -131,6 +131,15 @@
 		)
 		
 	</insert>
-	
+	<select id="businessReserveList" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+			SELECT 
+				resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate
+			FROM
+				t3_reserve
+			where resnum = #{resnum}
+			ORDER BY orderdate DESC
+			
+			
+	</select>	
 
 </mapper>

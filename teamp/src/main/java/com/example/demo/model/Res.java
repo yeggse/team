@@ -22,6 +22,7 @@ public class Res {
 	private String orderer;
 	private String review;
 	private String salecomple;
+	private String orderdate;
 
 	public String getReview() {
 		return review;
@@ -154,6 +155,12 @@ public class Res {
 	}
 	public void setPickuptime(String pickuptime) {
 		this.pickuptime = pickuptime;
+	}
+	public String getOrderdate() {
+		return orderdate;
+	}
+	public void setOrderdate(String orderdate) {
+		this.orderdate = orderdate;
 	}
 	
 }
