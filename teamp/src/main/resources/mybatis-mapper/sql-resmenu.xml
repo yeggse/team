@@ -26,9 +26,10 @@
 		
 	</select>
 	
+	<!-- 일반 회원 결제내역 페이지  -->
 	<select id="selectPaymentmy1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
-			ordernum, menuname, price, resnum
+			resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname
 		FROM
 			t3_reserve
 		WHERE
@@ -42,6 +43,7 @@
 		FROM
 			t3_resmenu
 	</select>
+	
 	
 	<select id="searchMenuname" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT

@@ -156,7 +156,8 @@ background:#ffff99;
 	                   <td @click="fnDetailView(item)">{{item.enddate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.supply}}</td> 
 	                   <td>
-	                   		<button id='btnSoldout' onclick='changeBtnName2()'> 일시품절 </button> 
+	                   		<input id='target_btn1'  type='button' value='일시품절' />
+	                   		<input id='target_btn2'  type='button' value='다시판매'/>
 					   </td> 
 	               </tr>
 				</tbody>
@@ -191,6 +192,27 @@ background:#ffff99;
 
 
 <script type="text/javascript">
+/* function btnActive1()  {
+	  const target1 = document.getElementById('target_btn1');
+	  const target2 = document.getElementById('target_btn2');
+	  if(target1.disabled = true){
+	  target2.disabled = false;
+	  }else if(target1.disabled = false){
+	  target2.disabled = true;
+	  }
+}
+function btnActive2()  {
+	  const target1 = document.getElementById('target_btn1');
+	  const target2 = document.getElementById('target_btn2');
+	  if(target2.disabled = true){
+	  target1.disabled = false;
+	  }else if(target2.disabled = false){
+	  target1.disabled = true;
+	  }
+}  */
+
+
+
 Vue.component('paginate', VuejsPaginate)
 var app = new Vue({ 
     el: '#app',
@@ -206,6 +228,8 @@ var app = new Vue({
         , menuname:"${menuname}"
         , idx:"${idx}"
         , picture:"${userpicture}"
+   /*      ,const target1 = document.getElementById('target_btn1')
+	  	,const target2 = document.getElementById('target_btn2') */
     }   
     , methods: {
     	// 기본 출력 메소드
@@ -250,6 +274,7 @@ var app = new Vue({
 	          var self = this;
 	          self.pageChange("/menu.detail.do", {idx : item.idx});   // 상세페이지로 해당 인덱스 번호를 넘겨줌~~!
 	       }
+	    
 		// 화면 전환 for 게시글 상세 확인
     	, pageChange : function(url, param) {
     		var target = "_self";
@@ -317,6 +342,64 @@ var app = new Vue({
                 }
            });
     	} 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+/*      	,btnActive1 : function(){
+            var self = this;
+            var nparmap = {};
+            $.ajax({
+                url:"/",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {       
+                	  if(target1.disabled = true){
+                	  	  target2.disabled = false;
+                	  	  }else if(target1.disabled = false){
+                	  	  target2.disabled = true;
+                	  	  }
+                }
+           });
+    	} 
+     	
+     	,btnActive2 : function(){
+            var self = this;
+            var nparmap = {};
+            $.ajax({
+                url:"/",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {       
+                	  if(target2.disabled = true){
+                	  	  target1.disabled = false;
+                	  	  }else if(target2.disabled = false){
+                	  	  target1.disabled = true;
+                	  	  }
+                }
+           });
+    	} 
+		 */
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
     }   
     , created: function () {
     	var self = this;

@@ -36,7 +36,7 @@
                         <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 
                         <ul class="collapse__menu">
-                            <a href="paymentmy.do" class="collapse__sublink">●일반 회원 관리</a>
+                            <a href="normalMem.do" class="collapse__sublink">●일반 회원 관리</a>
                             
                             <a href="datachange2.do" class="collapse__sublink">●사업자 회원 관리</a>
                             

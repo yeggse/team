@@ -10,7 +10,7 @@
 	<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
 	<jsp:include page="/layout/header.jsp"></jsp:include>
 	
-	<title>board 공지사항 기본 출력 페이지</title>
+	<title>일반 회원 관리</title>
 </head>
 <style>
 img{
@@ -109,7 +109,7 @@ background:#ffff99;
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>세잎 메뉴관리</h2>
+			<h2>일반 회원 관리</h2>
 			<div style="text-align: center;">
 			
 				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="menuname"  v-on:keyup.enter="fnSearch"></input>

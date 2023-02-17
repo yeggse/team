@@ -14,49 +14,14 @@ public class Admin {
     private String creatorid;
     private String img;
     private int boardnum;
+    private String kind;
+    private String phonenum; 
+    private String acc; 
+    private String name; 
+    private String address; 
+    private int frontregisnum; 
+    private int afterregisnum;
     
-    public String getImg() {
-		return img;
-	}
-	public void setImg(String img) {
-		this.img = img;
-	}
-	public int getBoardnum() {
-		return boardnum;
-	}
-	public void setBoardnum(int boardnum) {
-		this.boardnum = boardnum;
-	}
-	public String getCreatorid() {
-		return creatorid;
-	}
-	public void setCreatorid(String creatorid) {
-		this.creatorid = creatorid;
-	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
-	public String getBoardtype() {
-		return boardtype;
-	}
-	public void setBoardtype(String boardtype) {
-		this.boardtype = boardtype;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public int getNoticenum() {
 		return noticenum;
 	}
@@ -87,5 +52,90 @@ public class Admin {
 	public void setStartdate(String startdate) {
 		this.startdate = startdate;
 	}
+	public String getBoardtype() {
+		return boardtype;
+	}
+	public void setBoardtype(String boardtype) {
+		this.boardtype = boardtype;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getCreatorid() {
+		return creatorid;
+	}
+	public void setCreatorid(String creatorid) {
+		this.creatorid = creatorid;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	public int getBoardnum() {
+		return boardnum;
+	}
+	public void setBoardnum(int boardnum) {
+		this.boardnum = boardnum;
+	}
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	public String getPhonenum() {
+		return phonenum;
+	}
+	public void setPhonenum(String phonenum) {
+		this.phonenum = phonenum;
+	}
+	public String getAcc() {
+		return acc;
+	}
+	public void setAcc(String acc) {
+		this.acc = acc;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public int getFrontregisnum() {
+		return frontregisnum;
+	}
+	public void setFrontregisnum(int frontregisnum) {
+		this.frontregisnum = frontregisnum;
+	}
+	public int getAfterregisnum() {
+		return afterregisnum;
+	}
+	public void setAfterregisnum(int afterregisnum) {
+		this.afterregisnum = afterregisnum;
+	} 
+    
 
 }

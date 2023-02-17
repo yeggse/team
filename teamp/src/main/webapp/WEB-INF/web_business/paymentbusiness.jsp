@@ -21,7 +21,7 @@
 <jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
 	<div id="app" >
 		<div class="container">
-			<h2 style="margin-left: 30px;">{{id}} 님께서 받으신 오늘 예약🎈</h2>
+			<h2 style="margin-left: 30px;">{{id}} 님의 매출🎈</h2>
 			<div style="text-align: center;">
 			</div>
 			<table class="board_list">
@@ -39,28 +39,21 @@
 					<tr>
 						<th scope="col">-</th>
 						<th scope="col">주문번호</th>
-						<th scope="col">상호명</th>
 						<th scope="col">메뉴</th>
-						<th scope="col">개수</th>
+					    <th scope="col">개수</th>
 						<th scope="col">주문일자</th>
-						<th scope="col">픽업시간</th>
 						<th scope="col">결제금액</th>
-						<th scope="col">예약상태</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
-	                   <td >{{item.ordernum}}</td> 
-	                   <td >{{item.resname}}</td> 
+	                   <td >{{item.ordernum}}</td>
 	                   <td >{{item.menuname}} 이어 붙이기</td> 
 	                   <td >{{item.menunum}} </td> 
 	                   <td >{{item.orderdate}}</td>
-	                   <td >{{item.pickuptime}}</td>
-	                   <td >{{item.price}} 더하기</td>
-	                   <td  >
-	                 	  <button v-if="item.salecomple =='N'" id='btnSoldout' @click='btnOnOff()'> 판매 완료 {{item.salecomple}} </button>
-	                   </td>
+	                   <td >{{item.price}}</td>
+	                   
 	               	
 	               </tr>
 				</tbody>

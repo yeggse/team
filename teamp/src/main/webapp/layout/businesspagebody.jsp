@@ -40,7 +40,7 @@
                             
                             <a href="menumanagementbusiness.do" class="collapse__sublink">●메뉴 관리</a>
                             
-                            <a href="paymentmy.do" class="collapse__sublink">●매출 관리</a>
+                            <a href="paymentbusiness.do" class="collapse__sublink">●매출 관리</a>
                         </ul>
                     </div>
 
