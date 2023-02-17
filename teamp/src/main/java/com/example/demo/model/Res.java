@@ -1,12 +1,11 @@
 package com.example.demo.model;
 
 public class Res {
-	private String resnum;
+	private int resnum;
 	private String reskind;
 	private String startdate;
 	private String enddate;
 	private String menuname;
-	private String pucture;
 	private String introduce;
 	private String price;
 	private String supply;
@@ -72,10 +71,10 @@ public class Res {
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	public String getResnum() {
+	public int getResnum() {
 		return resnum;
 	}
-	public void setResnum(String resnum) {
+	public void setResnum(int resnum) {
 		this.resnum = resnum;
 	}
 	public String getReskind() {
@@ -102,12 +101,7 @@ public class Res {
 	public void setMenuname(String menuname) {
 		this.menuname = menuname;
 	}
-	public String getPucture() {
-		return pucture;
-	}
-	public void setPucture(String pucture) {
-		this.pucture = pucture;
-	}
+	
 	public String getIntroduce() {
 		return introduce;
 	}

@@ -47,16 +47,21 @@ public class ResmenuController {
 		Main res = mainService.searchRes(map); // resnum을 통해 레스토랑 찾아주는 과정
 		request.setAttribute("res",  new Gson().toJson(res));
 		
+		
 		return "/storeList_clicked"; // WEB-INF에서 호출할 파일명
 	}
 
 	// 데이터 호출
 	@RequestMapping(value = "/Res.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String resmenu(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	public String resmenu(Model model,HttpServletRequest request, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Res> list = resmenuService.selectResmenu(map); // DB 접근 및 쿼리를 통한 데이터 호출
 		resultMap.put("list", list);
+		System.out.println("wwwwwww"+resultMap);
+		resultMap.put("message", "성공");
+		request.setAttribute("map", map);
+		System.out.println(map+"ddddddddd");
 		return new Gson().toJson(resultMap);
 	}
 	

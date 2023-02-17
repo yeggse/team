@@ -38,6 +38,7 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			HashMap<String, Object> resultMap = new HashMap<String, Object>();
 			Res resimg = resmenuMapper.selectStorecliectedImg(map);
+			System.out.println(resimg+"sssssssss");
 			resultMap.put("resimg", resimg);
 			return resultMap;
 		}

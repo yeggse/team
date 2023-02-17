@@ -5,12 +5,15 @@
 <mapper namespace="com.example.demo.mapper.ResmenuMapper">	
 	<select id="selectResmenu" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
-			*, 0 as sum <!-- 컬럼을 임의로 추가해서 계산 할 수 있게 만든거임! SQL에는 실제로 추가 된건 아님! -->
+			r.idx, reskind, startdate, enddate, menuname, introduce, price, supply, orderer, pickuptime, resnum, picture, 0 as sum <!-- 컬럼을 임의로 추가해서 계산 할 수 있게 만든거임! SQL에는 실제로 추가 된건 아님! -->
 		FROM
-			t3_resmenu
-		WHERE resnum = #{resnum}
-		
+			t3_resmenu r
+		<!-- WHERE resnum = #{resnum} -->
+		LEFT OUTER JOIN t3_resmenu_img i on r.idx = i.idx 
+		WHERE
+			r.idx = #{idx} OR resnum = #{resnum}
 	</select>
+	
 <!-- group by 컬럼명 -->
 
 	<select id="selectResmenu1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
@@ -57,17 +60,17 @@
 	</select> -->
 	
 	<!-- picture print(storeList_Clicked) -->
-	<select id="selectStorecliectedImg" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+	<!-- <select id="selectStorecliectedImg" resultType="com.example.demo.model.Res">	
 			SELECT
-				t.idx, picture
+				r.idx, picture
 			FROM
-			t3_resmenu_img t
+			t3_resmenu r
 			
-		LEFT OUTER JOIN t3_resmenu_img i on t.idx = i.idx 
+		LEFT OUTER JOIN t3_resmenu_img i on r.idx = i.idx 
 		WHERE
-			t.idx = #{idx}
+			r.idx = #{idx}
 	</select>	
-	
+	 -->
 	
 	
 	
