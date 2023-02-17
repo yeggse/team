@@ -6,7 +6,7 @@
 	<!-- 예약 내역 출력 -->
 	<select id="ReserveList" parameterType="hashmap" resultType="com.example.demo.model.Consumer">	
 			SELECT 
-				resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate
+				resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum
 			FROM
 				t3_reserve
 			where orderer = #{id}

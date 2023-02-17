@@ -22,6 +22,7 @@ public class Res {
 	private String review;
 	private String salecomple;
 	private String orderdate;
+	private int menunum;
 
 	public String getReview() {
 		return review;
@@ -155,6 +156,12 @@ public class Res {
 	}
 	public void setOrderdate(String orderdate) {
 		this.orderdate = orderdate;
+	}
+	public int getMenunum() {
+		return menunum;
+	}
+	public void setMenunum(int menunum) {
+		this.menunum = menunum;
 	}
 	
 }

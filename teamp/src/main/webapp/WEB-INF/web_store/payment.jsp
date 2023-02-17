@@ -239,6 +239,7 @@ var app = new Vue({
 				,price : self.list[i].price
 				,review:"N"
 				,salecomple: "N"
+				,menunum: self.list[i].sum
 				
 			};
 			console.log(nparmap);

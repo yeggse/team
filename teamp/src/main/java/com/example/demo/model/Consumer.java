@@ -23,6 +23,7 @@ public class Consumer {
 	private String salecomple;
 	private int no;
 	private String orderdate;
+	private int menunum;
 	
 	public String getResname() {
 		return resname;
@@ -149,6 +150,12 @@ public class Consumer {
 	}
 	public void setOrderdate(String orderdate) {
 		this.orderdate = orderdate;
+	}
+	public int getMenunum() {
+		return menunum;
+	}
+	public void setMenunum(int menunum) {
+		this.menunum = menunum;
 	}
 	
 

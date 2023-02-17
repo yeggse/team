@@ -31,9 +31,11 @@
 					<col width="10%"/> 
 					<col width="*"/>
 					<col width="10%"/>
+					<col width="10%"/>
 					<col width="15%"/>
 					<col width="15%"/>
 					<col width="15%"/>
+					
 				</colgroup>
 				<thead>
 					<tr>
@@ -41,6 +43,7 @@
 						<th scope="col">주문번호</th>
 						<th scope="col">상호명</th>
 						<th scope="col">메뉴</th>
+						<th scope="col">개수</th>
 						<th scope="col">주문일자</th>
 						<th scope="col">픽업시간</th>
 						<th scope="col">결제금액</th>
@@ -52,10 +55,11 @@
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
 	                   <td >{{item.ordernum}}</td> 
 	                   <td >{{item.ordernum}} 수정필요</td> 
-	                   <td >{{item.menuname}} 이어 붙이기</td> 
+	                   <td >{{item.menuname}} 이어 붙이기</td>
+	                   <td >{{item.menunum}} </td> 
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.pickuptime}}</td>
-	                   <td >{{item.price}} 더하기</td>
+	                   <td >{{item.price}}*{{item.menunum}}</td>
 	                   <td >{{item.salecomple}}</td>
 	               	
 	               </tr>
