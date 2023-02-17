@@ -137,13 +137,13 @@ input {
 					<label for="id"
 						style="font-weight: bolder; font-size: x-large; margin-right: 50px;">
 						ID </label> <input id="id" type="text" name="loginKey" placeholder="아이디"
-						v-model="id">
+						v-model="id" v-on:keyup.enter="fnLogin">
 				</div>
 				<div>
 					<label for="pw"
 						style="font-weight: bolder; font-size: x-large; margin-right: 40px; letter-spacing: -1px;">
 						PW </label> <input id="pw" type="password" name="password"
-						placeholder="비밀번호" v-model="pwd">
+						placeholder="비밀번호" v-model="pwd" v-on:keyup.enter="fnLogin">
 				</div>
 				<div>
 					<input id="logining" type="checkbox"
@@ -211,10 +211,8 @@ input {
 	                data : nparmap,
 	                success : function(data) {
 	                	if(data.result == "success"){
-	                		
 	                		alert(data.user.name + "님 로그인 성공!!");
 	                		self.pageChange("/main.do", {});
-	                		
 	                	} else {
 	                		alert("로그인 실패!!");
 	                	}
