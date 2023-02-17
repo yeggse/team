@@ -46,7 +46,7 @@
 						<th scope="col">개수</th>
 						<th scope="col">주문일자</th>
 						<th scope="col">픽업시간</th>
-						<th scope="col">결제금액</th>
+						<th scope="col">개당 가격</th>
 						<th scope="col">예약상태</th>
 					</tr>
 				</thead>
@@ -59,7 +59,7 @@
 	                   <td >{{item.menunum}} </td> 
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.pickuptime}}</td>
-	                   <td >{{item.price}}*{{item.menunum}}</td>
+	                   <td >{{item.price}}</td>
 	                   <td >{{item.salecomple}}</td>
 	               	
 	               </tr>
@@ -92,6 +92,7 @@ var app = new Vue({
         , price : ""
         , salecomple : ""
         
+        
     }   
     , methods: {
     	// 기본 출력 메소드
@@ -118,7 +119,7 @@ var app = new Vue({
       }   
       , created: function () {
     	var self = this;
-  		this.fnGetList();       
+  		this.fnGetList();
   	  } 
     
    
