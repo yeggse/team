@@ -50,7 +50,7 @@ public class BuisnessController {
 		}
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id);
-    	return "/web_business/menumanagement"; // WEB-INF에서 호출할 파일명
+    	return "/web_business/menumanagement"; // WEB-INF에서 호출할 파일명1
     }
     
     @RequestMapping("/reservebusiness.do") 
