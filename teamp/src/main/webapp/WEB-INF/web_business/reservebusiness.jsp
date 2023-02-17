@@ -21,7 +21,7 @@
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
 	<div id="app" >
 		<div class="container">
-			<h2 style="margin-left: 30px;">{{id}} 님의 예약 내역🎈</h2>
+			<h2 style="margin-left: 30px;">{{id}} 님께서 받으신 오늘 예약🎈</h2>
 			<div style="text-align: center;">
 			</div>
 			<table class="board_list">
@@ -56,7 +56,9 @@
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.pickuptime}}</td>
 	                   <td >{{item.price}} 더하기</td>
-	                   <td >{{item.salecomple}}</td>
+	                   <td  >
+	                 	  <button v-if="item.salecomple =='N'" id='btnSoldout' @click='btnOnOff()'> 판매 완료 {{item.salecomple}} </button>
+	                   </td>
 	               	
 	               </tr>
 				</tbody>
@@ -88,6 +90,7 @@ var app = new Vue({
         , price : ""
         , salecomple : ""
         , resnum : "${resnum}"
+       	, salecomple : ""
         
     }   
     , methods: {
@@ -109,7 +112,26 @@ var app = new Vue({
                   }
               }); 
               console.log(self.resnum);
-          }  
+          } 
+    
+    	, btnOnOff : function(){
+    		var self = this;
+	      	var nparmap = {salecomple : self.salecomple, ordernum : self.ordernum}; 
+	        $.ajax({
+	            url:"/saleFin.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {            
+	            	var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
+	       	        //form.append( "file1", $("#file1")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미
+	       	     	//form.append( "idx",  data.idx);	// 여기에 있는 boardIdx는 어디로 가나?????
+	       	        
+	            	alert("게시글이 저장되었습니다.");
+	           		location.href="/reservebusiness.do";
+	            }
+	        }); 
+    	}
     
       
       }   

@@ -98,4 +98,14 @@ public class ResmenuController {
 		return new Gson().toJson(resultMap);
 	}
 	
+	// 사업자 판매완료 버튼 이벤트
+	@RequestMapping(value = "/saleFin.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String saleFin(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resmenuService.saleFin(map);
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
+	
 }

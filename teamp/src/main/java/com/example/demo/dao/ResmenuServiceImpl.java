@@ -43,11 +43,6 @@ public class ResmenuServiceImpl implements ResmenuService{
 			return resultMap;
 		}
 		
-		
-		
-
-		
-		
 		//사업자 메뉴관리 페이지에 사용 
 		@Override
 		public List<Res> selectResmenu2(HashMap<String, Object> map) throws Exception {
@@ -73,5 +68,12 @@ public class ResmenuServiceImpl implements ResmenuService{
 		public List<Res> businessReserveList(HashMap<String, Object> map) throws Exception {
 			// TODO Auto-generated method stub
 			return resmenuMapper.businessReserveList(map);
+		}
+		
+		// 사업자 판매완료 버튼 이벤트
+		@Override
+		public void saleFin(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			resmenuMapper.saleFin(map);
 		}
 }

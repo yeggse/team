@@ -273,7 +273,7 @@ var app = new Vue({
     		 
     , created: function () {
     	var self = this;
-    	console.log(self.list.length);
+    	console.log(self.list);
     	for(var i =0; i<self.list.length; i++){
     		self.num += ((self.list[i].price)*(self.list[i].sum)); 
     	}

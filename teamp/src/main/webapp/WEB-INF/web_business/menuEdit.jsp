@@ -121,7 +121,7 @@ var app = new Vue({
 	      					reskind : self.reskind, resnum : self.resnum,
 	      					supply : self.supply, pickuptime : self.pickuptime, img : self.img}; 
 	        $.ajax({
-	            url:"/addMenu.dox",
+	            url:"/editBoard.dox",
 	            dataType:"json",	
 	            type : "POST", 
 	            data : nparmap,

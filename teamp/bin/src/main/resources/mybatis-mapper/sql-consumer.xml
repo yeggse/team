@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.ConsumerMapper">	
+	<!-- 예약 내역 출력 -->
+	<select id="ReserveList" parameterType="hashmap" resultType="com.example.demo.model.Consumer">	
+			SELECT 
+				resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate
+			FROM
+				t3_reserve
+			where orderer = #{id}
+			ORDER BY orderdate DESC
+			LIMIT #{startNum}, #{lastNum}
+			
+	</select>	
+	
+	
+	
+	
+	
+
+</mapper>

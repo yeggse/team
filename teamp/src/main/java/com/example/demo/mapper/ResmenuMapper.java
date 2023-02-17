@@ -23,4 +23,7 @@ public interface ResmenuMapper {
 	Res selectStorecliectedImg(HashMap<String, Object> map);
 	int insertreserve(HashMap<String, Object> map) throws Exception;
 	
+	// 사업자 판매완료 버튼 이벤트
+	void saleFin(HashMap<String, Object> map);	//update
+	
 }
