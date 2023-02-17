@@ -18,6 +18,7 @@ public interface ResmenuMapper {
 	List<Res> selectResmenu2(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 	List<Res> searchMenuname(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 	List<Res> businessReserveList(HashMap<String, Object> map) throws Exception;
+	List<Res> businessReserveList1(HashMap<String, Object> map) throws Exception;
 	int selectResmenuCnt();
 	
 	Res selectStorecliectedImg(HashMap<String, Object> map);

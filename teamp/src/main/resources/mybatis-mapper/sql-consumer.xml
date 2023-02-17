@@ -9,7 +9,7 @@
 				resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname
 			FROM
 				t3_reserve
-			where orderer = #{id}
+			where orderer = #{id} AND salecomple = "N"
 			ORDER BY orderdate DESC
 			LIMIT #{startNum}, #{lastNum}
 			

@@ -89,6 +89,7 @@ public class BuisnessController {
     	return "/web_business/paymentbusiness"; // WEB-INF에서 호출할 파일명
     }
     
+    ///사업자 주문정보 관련
     @RequestMapping(value = "/reservebusiness.get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String reserveBoard(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -99,7 +100,20 @@ public class BuisnessController {
 		resultMap.put("list", list);
 		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
 		return new Gson().toJson(resultMap);
-	} 
+	}
+    
+    // 사업자 매출 관련
+    @RequestMapping(value = "/reservebusiness1.get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String reserveBoard1(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Res> list = resmenuService.businessReserveList1(map);
+		//int cnt = boardService.countBoardCnt();	//게시글 갯수 세기
+		resultMap.put("list", list);
+		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
+		return new Gson().toJson(resultMap);
+	}
     
     //사업자 메뉴관리 페이지에 사용
 	@RequestMapping(value = "/selectResmenu2.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

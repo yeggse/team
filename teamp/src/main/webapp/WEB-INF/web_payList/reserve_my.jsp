@@ -47,7 +47,7 @@
 						<th scope="col">주문일자</th>
 						<th scope="col">픽업시간</th>
 						<th scope="col">개당 가격</th>
-						<th scope="col">예약상태</th>
+						<th scope="col">판매 완료</th>
 					</tr>
 				</thead>
 				<tbody>

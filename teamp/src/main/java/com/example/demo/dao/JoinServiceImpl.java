@@ -83,4 +83,10 @@ public class JoinServiceImpl implements JoinService{
 		return joinMapper.insertRes(map); // Res에 getter/setter했진만 userVO와 같은 방식 쓰기 위해선 테이블마다 .JAVA만들어 주는게 좋음.(Dalseok)
 	}
 
+	@Override
+	public int getresnumCheck(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return joinMapper.selectresnumCheck(map);
+	}
+
 }

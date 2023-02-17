@@ -82,4 +82,9 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			resmenuMapper.editSupply(map);
 		}
+		@Override
+		public List<Res> businessReserveList1(HashMap<String, Object> map) throws Exception {
+			// TODO Auto-generated method stub
+			return resmenuMapper.businessReserveList1(map);
+		}
 }

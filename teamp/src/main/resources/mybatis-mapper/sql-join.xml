@@ -40,6 +40,16 @@
 		t3_account
 		WHERE id = #{id}
 	</select>
+	
+		<select id="selectresnumCheck" parameterType="hashmap"
+		resultType="int">
+
+		SELECT
+		count(*)
+		FROM
+		t3_account
+		WHERE resnum = #{resnum}
+	</select>
 
 	<select id="selectnickCheck" parameterType="hashmap"
 		resultType="int">

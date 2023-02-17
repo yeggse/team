@@ -172,7 +172,7 @@ public class JoinController {
  	}
 	
 	
-	
+    //아이디 중복확인
     @RequestMapping(value = "/join/check.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
  	@ResponseBody
  	public String check(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -182,6 +182,7 @@ public class JoinController {
  		return new Gson().toJson(resultMap);
  	}
     
+    //닉네임 중복확인
     @RequestMapping(value = "/join/nickcheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
  	@ResponseBody
  	public String nickcheck(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -191,6 +192,15 @@ public class JoinController {
  		return new Gson().toJson(resultMap);
  	}
     
+    //사업자 중복확인
+    @RequestMapping(value = "/join/resnumcheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+ 	@ResponseBody
+ 	public String resnumcheck(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+ 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+ 		int num = joinService.getresnumCheck(map);
+ 		resultMap.put("num", num);
+ 		return new Gson().toJson(resultMap);
+ 	}
 	// 데이터 호출
 	@RequestMapping(value = "/searchpw.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody

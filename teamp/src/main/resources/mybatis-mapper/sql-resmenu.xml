@@ -22,7 +22,7 @@
 			reskind, startdate,enddate,picture,introduce,supply,orderer,resnum
 		FROM
 			t3_reserve
-		WHERE orderer = #{id}
+		WHERE orderer = #{id} 
 		
 	</select>
 	
@@ -93,18 +93,28 @@
 		)
 		
 	</insert>
-	
+	<!-- 사업자 예약관리 -->
 	<select id="businessReserveList" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT 
 				resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname
 			FROM
 				t3_reserve
 			where 
-				resnum = #{resnum}
+				resnum = #{resnum} AND salecomple ="N"
 			
 			ORDER BY orderdate DESC
 	</select>	
-	
+	<!-- 사업자 매출관리-->
+	<select id="businessReserveList1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+			SELECT 
+				resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname
+			FROM
+				t3_reserve
+			where 
+				resnum = #{resnum} AND salecomple ="Y"
+			
+			ORDER BY orderdate DESC
+	</select>
 	<!-- 사업자가 예약 완료 버튼 누르면, DB값 변경! -->
 	<update id="saleFin" parameterType="hashmap" >	
 		UPDATE t3_reserve
