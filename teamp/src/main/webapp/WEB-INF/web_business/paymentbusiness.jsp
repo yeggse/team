@@ -59,7 +59,7 @@
 				</tbody>
 			</table>
 		<!-- 페이지 넘어가는 버튼들 -->			
-    
+    <div>총 매출 : {{num}}</div>
     
 			
 
@@ -86,6 +86,7 @@ var app = new Vue({
         , salecomple : ""
         , resnum : "${resnum}"
        	, salecomple : ""
+       	, num : 0
         
     }   
     , methods: {
@@ -103,7 +104,11 @@ var app = new Vue({
                   success : function(data) {                                       
   	                self.list = data.list;
   	            	self.pageCount = Math.ceil(data.cnt / 10);
-  	                console.log(self.list);  
+  	                console.log(self.list);
+  	              for(var i =0; i<self.list.length; i++){
+  	        		self.num += ((self.list[i].price)*(self.list[i].menunum));
+  	        		console.log(self.list[i].price);
+  	        	}
                   }
               }); 
               console.log(self.resnum);
@@ -132,7 +137,9 @@ var app = new Vue({
       }   
       , created: function () {
     	var self = this;
-  		this.fnGetList();       
+  		this.fnGetList();
+  		
+  		console.log(self.list);
   	  } 
     
    
