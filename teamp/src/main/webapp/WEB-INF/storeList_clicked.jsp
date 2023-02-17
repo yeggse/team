@@ -165,7 +165,7 @@ input {
 		<span class="position_res" style="marin-top: -50px;"> 가게위치:{{res.resadd}} <!-- {{list[0].pickuptime}} 집에서 mysqpl로 다시 수정하기.--></span>
 		<!-- 가계주소들어와야함 -->
 		<div class="position_res" style="margin-left: 619px;">운영시간 :{{res.pickuptime}}</div>
-		<!-- 가계주소들어와야함 -->
+		<!-- 가계주소들어와야함 1-->
 		<div>
 			<button id="btn_menu" @click="fnClick1">메뉴</button>
 			<button id="btn_review" @click="fnClick">리뷰</button>
