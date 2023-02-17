@@ -27,4 +27,5 @@ public interface MainService {
 	Main selectReskind(HashMap<String, Object> map);
 	List<Area> selectSiList(HashMap<String, Object> map) throws Exception;
 	Main searchRes(HashMap<String, Object> map) throws Exception;
+	Main Cpickuptime(HashMap<String, Object> map) throws Exception;
 }
