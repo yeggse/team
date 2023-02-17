@@ -12,8 +12,8 @@
 		LEFT OUTER JOIN t3_resmenu_img i on r.idx = i.idx 
 		WHERE
 			r.idx = #{idx} OR resnum = #{resnum}
-		
 	</select>
+	
 <!-- group by 컬럼명 -->
 
 	<select id="selectResmenu1" parameterType="hashmap" resultType="com.example.demo.model.Res">	

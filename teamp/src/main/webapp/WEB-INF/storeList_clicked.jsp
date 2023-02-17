@@ -7,7 +7,7 @@
 <script src="js/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <jsp:include page="/layout/header.jsp"></jsp:include>
-<link rel="stylesheet" href="css/storeListClicked_Scroll.css">
+<!-- <link rel="stylesheet" href="css/storeListClicked_Scroll.css"> -->
 <title>[세잎] 업체군 리스트</title>
 </head>
 <style>
@@ -181,7 +181,7 @@ input {
 				<div v-for="(item, index) in list" style="height:200px;">
 					<div style="margin-top: 30px; margin-left: 60px; width: 300px; height: 180px; border-radius: 10px; border: 1px solid red; float: left; margin-right: 60px;">
 						<img style="margin-left: 0px" width="100%" height="100%" :src="item.picture"/>
-						{{info.picture}}
+						
 					</div>
 					<div
 						style="margin-top: 30px; margin-right: 100px; width: 1000px; height: 180px; border: 1px solid green; float: left;">
@@ -255,7 +255,7 @@ input {
 			list :[]
 			/* 게시판에 올려지는 글들은 다른 리스트 새로만들기  */
 			,info : {}
-			, idx : "${map.idx}"
+			
 			,flg : true
 			,res : ${res} // Main type의 객체이름 res로(where=resnum 들고오는 과정) 당겨쓰는 과정 in ResmenuController
 			,user : ${userVO}// user전체가 getter/setter되서 가져고 오는 형식. {{user.id}},{{user.name}} 쓸때 이렇게 쓸수있음. 여기한번 지정하고 다른데서 계속 쓸 수 있음.
@@ -265,7 +265,7 @@ input {
 		methods : {
 			fnGetImg : function() {
 				var self = this;
-				var nparmap = {resnum: self.res.resnum, idx : self.idx};
+				var nparmap = {resnum: self.res.resnum, idx: self.idx};
 				$.ajax({
 					url : "/Res.dox",
 					dataType : "json",
