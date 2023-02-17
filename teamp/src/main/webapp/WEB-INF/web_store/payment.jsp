@@ -106,7 +106,8 @@ select {
 					<form action="#" style="display: inline;">
 						<!-- 나란히 만들기 위해서 display: inline -->
 						<select
-							style="width: 400px; height: 40px; font-size: large; font-weight: bold;" v-model ="payment">
+							style="width: 400px; height: 40px; font-size: large; font-weight: bold;"
+							v-model="payment">
 							<option value="CASH">만나서 현금 결제</option>
 							<option value="account">계좌 이체</option>
 							<option value="card">만나서 카드 결제</option>
@@ -119,13 +120,12 @@ select {
 		<div class="div2">
 			<div
 				style="font-size: xx-large; font-weight: bolder; margin-bottom: 10px; margin-left: 30px; margin-top: 10px;">
-				선택하신 메뉴
-			</div>
-				<table class="board_list">
+				선택하신 메뉴</div>
+			<table class="board_list">
 				<colgroup>
-					<col width="10%"/>
-					<col width="15%"/>
-					<col width="20%"/>
+					<col width="10%" />
+					<col width="15%" />
+					<col width="20%" />
 				</colgroup>
 				<thead>
 					<tr>
@@ -135,16 +135,16 @@ select {
 					</tr>
 				</thead>
 				<tbody>
-				
-			<tr v-for="(item, index) in list"
-				style="margin-bottom: 5px; font-size: large; font-weight: bold; margin-left: 20px;">
-				
-				<td v-if = "item.sum !=0">{{item.menuname}}</td>
-				<td v-if = "item.sum !=0">{{item.price}}</td>
-				<td v-if = "item.sum !=0">{{item.sum}}</td>
-				
-			</tr>
-			</tbody>
+
+					<tr v-for="(item, index) in list"
+						style="margin-bottom: 5px; font-size: large; font-weight: bold; margin-left: 20px;">
+
+						<td v-if="item.sum !=0">{{item.menuname}}</td>
+						<td v-if="item.sum !=0">{{item.price}}</td>
+						<td v-if="item.sum !=0">{{item.sum}}</td>
+
+					</tr>
+				</tbody>
 			</table>
 			<!-- for문!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 		</div>
@@ -229,6 +229,10 @@ var app = new Vue({
       	}
 		,fnReserve : function() {
 			var self = this;
+			if(self.payment ==""){
+				alert("결제 방식을 입력해주세요");
+			}
+			else{
 			for(var i = 0; i<self.list.length; i++){
 				if(self.list[i].sum !=0){
 			var nparmap = {
@@ -247,6 +251,7 @@ var app = new Vue({
 				
 			};
 			console.log(nparmap);
+		
 		
 				$.ajax({
 					url : "/Res/get.dox",
@@ -268,6 +273,7 @@ var app = new Vue({
 				
 			}
 			}
+		}
 		}
 		
     }
