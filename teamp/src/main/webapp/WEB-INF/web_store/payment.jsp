@@ -241,6 +241,7 @@ var app = new Vue({
 				,review:"N"
 				,salecomple: "N"
 				,menunum: self.list[i].sum
+				,sum : self.list[i].sum
 				
 			};
 			console.log(nparmap);

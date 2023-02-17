@@ -25,5 +25,7 @@ public interface ResmenuMapper {
 	
 	// 사업자 판매완료 버튼 이벤트
 	void saleFin(HashMap<String, Object> map);	//update
+	//재고수정
+	void editSupply(HashMap<String, Object> map);
 	
 }

@@ -58,10 +58,7 @@ public class ResmenuController {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Res> list = resmenuService.selectResmenu(map); // DB 접근 및 쿼리를 통한 데이터 호출
 		resultMap.put("list", list);
-		System.out.println("wwwwwww"+resultMap);
 		resultMap.put("message", "성공");
-		request.setAttribute("map", map);
-		System.out.println(map+"ddddddddd");
 		return new Gson().toJson(resultMap);
 	}
 	
@@ -95,6 +92,9 @@ public class ResmenuController {
  			resultMap.put("result", "fail");
  		}
 		resultMap.put("list", list);
+		resmenuService.editSupply(map);
+		resultMap.put("message", "성공");
+		
 		return new Gson().toJson(resultMap);
 	}
 	

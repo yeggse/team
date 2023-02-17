@@ -108,7 +108,15 @@
 		WHERE ordernum = #{ordernum}
 	</update>
 	
+	<!-- 재고수정 -->
+	<update parameterType="hashmap" id="editSupply">	
 	
+	UPDATE t3_resmenu
+	
+	SET supply = supply - #{sum}
+	
+	WHERE menuname = #{menuname} 
+	</update>
 	
 	
 

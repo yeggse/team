@@ -76,4 +76,10 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			resmenuMapper.saleFin(map);
 		}
+		//재고수정
+		@Override
+		public void editSupply(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			resmenuMapper.editSupply(map);
+		}
 }
