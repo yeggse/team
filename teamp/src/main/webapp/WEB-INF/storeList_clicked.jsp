@@ -125,7 +125,7 @@ input {
 	color: black;
 	padding: 0px;
 	margin-top: 50px;
-	margin-left: 1%;
+	margin-left: 1500px;
 }
 
 #btn_order {
@@ -169,15 +169,13 @@ input {
 		<div>
 			<button id="btn_menu" @click="fnClick1">메뉴</button>
 			<button id="btn_review" @click="fnClick">리뷰</button>
-			<span style="margin-left: 800px; font-size: 30px;">db수</span> <span
-				class="count_menu">메뉴선택 갯수</span>
 		</div>
 		<div style="margin-top: 50px;">
 			<!-- 값이 없을때를 대비해서 예외처리도 해줘야한다. -->
 			<!-- {{list[0].price}} 포문없을때 출력하는 방법-->
-
 			<!-- 지금 예쁘게 나오는 예시 -->
 			<div v-if="flg">
+				<span class="count_menu">메뉴선택 갯수</span>
 				<div v-for="(item, index) in list" style="height:200px;">
 					<div style="margin-top: 30px; margin-left: 60px; width: 300px; height: 180px; border-radius: 10px; border: 1px solid red; float: left; margin-right: 60px;">
 						<img style="margin-left: 0px" width="100%" height="100%" :src="item.picture"/>

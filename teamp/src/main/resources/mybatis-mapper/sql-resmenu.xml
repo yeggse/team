@@ -96,7 +96,9 @@
 				resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum
 			FROM
 				t3_reserve
-			where resnum = #{resnum}
+			where 
+				resnum = #{resnum}
+			
 			ORDER BY orderdate DESC
 	</select>	
 	
