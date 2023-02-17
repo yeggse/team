@@ -39,10 +39,33 @@ public class AdminController {
     	request.setAttribute("kind", kind);
     	return "/web_admin/memManage"; // WEB-INF에서 호출할 파일명
     }
-    // 게시글 기본출력 데이터 호출
+    // 관리자 일반회원 출력 데이터 호출
 	@RequestMapping(value = "/normalMem.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String normalMemList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Admin> list = adminService.normalMemList(map);
+		//int cnt = adminService.countBoardCnt();	//게시글 갯수 세기
+		resultMap.put("list", list);
+		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
+		return new Gson().toJson(resultMap);
+	}
+	
+	// 관리자 사업자 회원 출력
+    @RequestMapping("/BuMemList.do") 
+    public String BuMem(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+    	String kind = (String)session.getAttribute("KindSession");
+    	String id = (String)session.getAttribute("userIdSession");
+    	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
+    	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
+    	return "/web_admin/bumManage"; // WEB-INF에서 호출할 파일명
+    }
+    // 관리자 사업자 출력 데이터 호출
+	@RequestMapping(value = "/BuMemList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String BuMemList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Admin> list = adminService.normalMemList(map);

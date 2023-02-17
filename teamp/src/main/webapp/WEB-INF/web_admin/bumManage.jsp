@@ -10,7 +10,7 @@
 	<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
 	<jsp:include page="/layout/header.jsp"></jsp:include>
 	
-	<title>일반 회원 관리</title>
+	<title>사업자 회원 관리</title>
 </head>
 <style>
 img{
@@ -109,7 +109,7 @@ background:#ffff99;
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>일반 회원 관리🙆‍♀️</h2>‍
+			<h2>사업자 회원 관리👨‍🍳</h2>‍
 			<div style="text-align: center;">
 			
 				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="name"  v-on:keyup.enter="fnSearch"></input>
@@ -126,6 +126,7 @@ background:#ffff99;
 					<col width="10%"/> 
 					<col width="10%"/> 
 					<col width="*%"/>
+					<col width="15%"/>				
 					<col width="15%"/>
 					<col width="15%"/>
 					<col width="20%"/>
@@ -136,7 +137,8 @@ background:#ffff99;
 						<th scope="col">회원명</th>
 						<th scope="col">닉네임</th>
 						<th scope="col">아이디</th>
-						<th scope="col">주소</th>
+						<th scope="col">업체명</th>
+						<th scope="col">사업자 번호</th>
 						<th scope="col">생년월일</th>
 						<th scope="col">전화번호</th>
 						<th scope="col">계좌번호</th>
@@ -149,9 +151,10 @@ background:#ffff99;
 	                   <td>{{item.name}}</td> 
 	                   <td>{{item.nickname}}</td> 
 	                   <td >{{item.id}}</td>
-	                   <td >{{item.address}}</td>
+	                   <td >{{item.resname}}</td>
+	                   <td >{{item.resnum}}</td>
 	                   <td >{{item.frontregisnum}}</td>
-	                   <td >{{item.phonenum}}</td>
+	                   <td >{{item.resphone}}</td>
 	                   <td >{{item.acc}}</td> 
 	               </tr>
 				</tbody>
@@ -193,7 +196,7 @@ var app = new Vue({
     		var lastNum = self.selectPage * 10;
             var nparmap = {startNum : startNum, lastNum : lastNum}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
             $.ajax({
-                url:"/normalMem.dox",
+                url:"/BuMemList.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,

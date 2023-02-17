@@ -16,12 +16,54 @@ public class Admin {
     private int boardnum;
     private String kind;
     private String phonenum; 
-    private String acc; 
+    private int acc; 
     private String name; 
     private String address; 
     private int frontregisnum; 
     private int afterregisnum;
+    private String resname; 
+    private int resnum; 
+    private String reskind; 
+    private String region; 
+    private String resad; 
+    private int resphone;
     
+	public String getResname() {
+		return resname;
+	}
+	public void setResname(String resname) {
+		this.resname = resname;
+	}
+	public int getResnum() {
+		return resnum;
+	}
+	public void setResnum(int resnum) {
+		this.resnum = resnum;
+	}
+	public String getReskind() {
+		return reskind;
+	}
+	public void setReskind(String reskind) {
+		this.reskind = reskind;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	public String getResad() {
+		return resad;
+	}
+	public void setResad(String resad) {
+		this.resad = resad;
+	}
+	public int getResphone() {
+		return resphone;
+	}
+	public void setResphone(int resphone) {
+		this.resphone = resphone;
+	}
 	public int getNoticenum() {
 		return noticenum;
 	}
@@ -106,10 +148,10 @@ public class Admin {
 	public void setPhonenum(String phonenum) {
 		this.phonenum = phonenum;
 	}
-	public String getAcc() {
+	public int getAcc() {
 		return acc;
 	}
-	public void setAcc(String acc) {
+	public void setAcc(int acc) {
 		this.acc = acc;
 	}
 	public String getName() {

@@ -13,4 +13,22 @@
 			ORDER BY id ASC
 			LIMIT #{startNum}, #{lastNum}
 	</select>
+	
+	
+ 	<!-- 관리자 사업자 회원 출력 -->
+	<select id="BuMemList" parameterType="hashmap" resultType="com.example.demo.model.Admin">	
+			SELECT 
+				id, kind, phonenum, acc, name, address, frontregisnum, afterregisnum, nickname, resname, resnum, 
+				reskind, region, resad, resphone
+			FROM
+				t3_account
+			where kind = "B"
+			ORDER BY id ASC
+			LIMIT #{startNum}, #{lastNum}
+	</select>	
+	
+	
+	
+	
+	
 </mapper>

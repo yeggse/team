@@ -38,7 +38,7 @@
                         <ul class="collapse__menu">
                             <a href="normalMem.do" class="collapse__sublink">●일반 회원 관리</a>
                             
-                            <a href="datachange2.do" class="collapse__sublink">●사업자 회원 관리</a>
+                            <a href="BuMemList.do" class="collapse__sublink">●사업자 회원 관리</a>
                             
                         </ul>
                     </div>
