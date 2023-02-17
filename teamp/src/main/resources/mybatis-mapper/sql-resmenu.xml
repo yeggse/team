@@ -75,7 +75,7 @@
 		INSERT INTO 
 		t3_reserve(resnum,menuname,ordernum,
 		orderer,pickuptime,payment,price,review,
-		salecomple,menunum,resname)
+		salecomple,menunum,resname,orderdate)
 
 		VALUES(
 		
@@ -90,6 +90,7 @@
 		,#{salecomple}
 		,#{menunum}
 		,#{resname}
+		,NOW()
 		)
 		
 	</insert>

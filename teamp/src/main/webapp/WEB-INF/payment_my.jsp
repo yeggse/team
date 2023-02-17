@@ -29,9 +29,10 @@
 					<col width="5%"/>
 					<col width="10%"/> 
 					<col width="10%"/> 
-					<col width="*"/>
 					<col width="10%"/>
 					<col width="10%"/>
+					<col width="10%"/>
+					<col width="15%"/>
 					<col width="15%"/>
 					<col width="15%"/>
 					<col width="15%"/>
@@ -47,6 +48,7 @@
 						<th scope="col">주문일자</th>
 						<th scope="col">픽업시간</th>
 						<th scope="col">개당 가격</th>
+						<th scope="col">주문일자</th>
 						<th scope="col">예약상태</th>
 					</tr>
 				</thead>
@@ -60,6 +62,7 @@
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.pickuptime}}</td>
 	                   <td >{{item.price}}</td>
+	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.salecomple}}</td>
 	               	
 	               </tr>
