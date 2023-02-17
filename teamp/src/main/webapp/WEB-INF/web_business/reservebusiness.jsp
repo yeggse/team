@@ -18,7 +18,7 @@
 </style>
 
 <body>
-<jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+<jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
 	<div id="app" >
 		<div class="container">
 			<h2 style="margin-left: 30px;">{{id}} 님께서 받으신 오늘 예약🎈</h2>
