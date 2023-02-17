@@ -152,7 +152,12 @@
   		<span class="span">운영정책</span>
   		<span class="span">고객센터</span>
   		<span class="span">공지사항</span>
-  		<h4>Copyright © Safe Corp. All rights reserved.</h4>                
+  		<div style="display: inline-block">
+				<img src="img/main/newlogo.png" width="30px" height="30px"
+					style="float: left; display: flex; margin-right: 5px;">
+				<h4 style="float: right; display: flex;">Copyright © Safe Corp.
+					All rights reserved.</h4>
+		</div>             
 	</div>   
     </div>
 </body>
