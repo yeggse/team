@@ -66,6 +66,8 @@ public class MainController {
     	request.setAttribute("reskind", reskind);
     	request.setAttribute("si", area.getSi()); // 지역정보 시를 받아오는 것 request에 다시 넣어준다. 세션에는 따로 저장할 필요없어 넣어주거나 가져오지 않음(7)
     	
+    	
+    	
     	return "/web_store/storeList"; // WEB-INF에서 호출할 파일명
     }
     

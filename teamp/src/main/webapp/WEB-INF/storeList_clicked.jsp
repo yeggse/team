@@ -179,10 +179,9 @@ input {
 			<!-- 지금 예쁘게 나오는 예시 -->
 			<div v-if="flg">
 				<div v-for="(item, index) in list" style="height:200px;">
-					<div v-if="info.picture != null"
-						style="margin-top: 30px; margin-left: 60px; width: 300px; height: 180px; border-radius: 10px; border: 1px solid red; float: left; margin-right: 60px;">
-						<img style="margin-left: 0px" :src="info.picture"/
-							width="100%" height="100%">
+					<div style="margin-top: 30px; margin-left: 60px; width: 300px; height: 180px; border-radius: 10px; border: 1px solid red; float: left; margin-right: 60px;">
+						<img style="margin-left: 0px" width="100%" height="100%" :src="item.picture"/>
+						{{info.picture}}
 					</div>
 					<div
 						style="margin-top: 30px; margin-right: 100px; width: 1000px; height: 180px; border: 1px solid green; float: left;">
@@ -256,6 +255,7 @@ input {
 			list :[]
 			/* 게시판에 올려지는 글들은 다른 리스트 새로만들기  */
 			,info : {}
+			, idx : "${map.idx}"
 			,flg : true
 			,res : ${res} // Main type의 객체이름 res로(where=resnum 들고오는 과정) 당겨쓰는 과정 in ResmenuController
 			,user : ${userVO}// user전체가 getter/setter되서 가져고 오는 형식. {{user.id}},{{user.name}} 쓸때 이렇게 쓸수있음. 여기한번 지정하고 다른데서 계속 쓸 수 있음.
@@ -265,7 +265,7 @@ input {
 		methods : {
 			fnGetImg : function() {
 				var self = this;
-				var nparmap = {resnum: self.res.resnum};
+				var nparmap = {resnum: self.res.resnum, idx : self.idx};
 				$.ajax({
 					url : "/Res.dox",
 					dataType : "json",
@@ -274,6 +274,7 @@ input {
 					success : function(data) {
 						self.list = data.list;
 						self.info = data.resimg;
+						console.log(self.idx);
 						console.log(self.list);
 						
 					}
@@ -341,6 +342,7 @@ input {
 		}
 		},
 		created : function() {
+			var self = this;
 			this.fnGetImg();
 		}
 	});
