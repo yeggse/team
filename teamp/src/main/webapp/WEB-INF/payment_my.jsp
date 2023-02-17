@@ -4,240 +4,103 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
-  <jsp:include page="/layout/header.jsp"></jsp:include>
-  
+    <link rel="stylesheet" href="css/detail/reserveDetail.css">
+    <script src="js/jquery.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vuejs-paginate@latest"></script>
+	<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
+	<jsp:include page="/layout/header.jsp"></jsp:include>
+	
+	 <title>예약 내역 확인하기</title>
 </head>
 
 <style>
-
-#txtKeyWord{
-	width:20rem;
-	height:3rem;
-}
-#mainWrapper > ul > li:first-child {
-	 clear:both;
-     text-align:left;
-     font-size:2rem;
-     height:3rem;
-     vertical-align:middle;
-     line-height:2rem;
-}
-#ulTable{
-	margin:1rem 1rem 1rem 1rem;
-}
-#ulTable > li:first-child > ul > li {
-    background-color:green;
-    color:white;
-    font-weight:bold;
-    text-align:center;
-    
-}
-#ulTable > li > ul {
-    clear:both;
-    padding:0.5rem 0.5rem;
-    position:relative;
-    min-width:2.5rem;
-}
-#ulTable > li > ul > li { 
-    float:left;
-    font-size:1rem;
-    border-bottom:1px solid silver;
-    vertical-align:baseline;
-}    
-#ulTable > li > ul > li:first-child               	  {width:10%; height:3rem;} /*주문번호*/
-#ulTable > li > ul > li:first-child +li               {width:15%; height:3rem;} /*상호명*/
-#ulTable > li > ul > li:first-child +li+li            {width:15%; height:3rem;} /*메뉴*/
-#ulTable > li > ul > li:first-child +li+li+li         {width:15%; height:3rem;} /*시간*/
-#ulTable > li > ul > li:first-child +li+li+li+li      {width:15%; height:3rem;} /*결제금액*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li	  {width:15%; height:3rem;} /*예약상태*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li+li{width:15%; height:3rem;} /*상태변경*/
-
-#divPaging {
-     clear:both; 
-     margin:auto; 
-     width:15rem; 
-     height:5rem;
-     font-size:2rem;
-}
-
-#divPaging > div {
-     float:left;
-     width: 1.9rem;
-     margin:0 auto;
-     text-align:center;
-}
-#liSearchOption {
-	 clear:both;
-     margin:0rem 0rem 0rem 20rem; 
-     width:40rem; 
-     height: 4rem;
-     padding: 0.2rem 0.2rem;
-}
-.btn1{
- 	 background:green;
-  	 color:white;
- 	 border:none;
- 	 width:6rem;
- 	 height:2rem;
-}
-.btn2{
- 	 background:green;
-  	 color:white;
- 	 border:none;
- 	 width:6rem;
- 	 height:3.2rem;
-}
-.btn3{
- 	 background:green;
-  	 color:white;
- 	 border:none;
- 	 width:6rem;
- 	 height:3.2rem;
-}
-
-ul, li{ 
-     list-style:none;
-     text-align:center;
-     padding:0;
-     margin:0;
-}
-.div0{
-border: 10px solid pink;
-height: 50%;
-width: 100%;
-}
-
-#mainWrapper{
-     border: 10px solid red;
-	 clear:both;
-     width: 100rem;
-     height: 60rem;
-     margin-left: 350px; /*가운데 정렬*/
-     margin-right: 350px; /*가운데 정렬*/
-     margin-bottom: 350px; /*가운데 정렬*/
-   	 position: relative;
-     
-    }
-    
-.div1{
-border: 10px solid black;
-width: 60rem;
-height: 4rem;
-margin:auto;
-padding: 0.3rem 0rem 0rem 30rem;
-}
-
-.div2{
-border: 10px solid blue;
-width: 40rem;
-height: 10rem;
-font-align: center;
-font-size:8rem;
-padding:1rem 1rem 1rem 1rem;
-margin: 0rem 0rem 0rem 6rem;
-
-}
-.div3{
-border: 10px solid green;
-margin:0.5rem;
-width: 80rem;
-height: 22rem;
-margin:auto;
-padding:0rem 1rem 0rem 1rem;
-}
-
 </style>
 
-<body >
+<body>
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
-	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
-	<div class="div0">
+	<div id="app" >
+		<div class="container">
+			<h2 style="margin-left: 30px;">{{id}} 님의 결제 내역🎈</h2>
+			<div style="text-align: center;">
+			</div>
+			<table class="board_list">
+				<colgroup>
+					<col width="5%"/>
+					<col width="10%"/> 
+					<col width="10%"/> 
+					<col width="*"/>
+					<col width="10%"/>
+					<col width="10%"/>
+					<col width="15%"/>
+					<col width="15%"/>
+					<col width="15%"/>
+					
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">-</th>
+						<th scope="col">주문번호</th>
+						<th scope="col">상호명</th>
+						<th scope="col">메뉴</th>
+						<th scope="col">개수</th>
+						<th scope="col">주문일자</th>
+						<th scope="col">픽업시간</th>
+						<th scope="col">개당 가격</th>
+						<th scope="col">예약상태</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="(item, index) in list" >                            
+	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
+	                   <td >{{item.ordernum}}</td> 
+	                   <td >{{item.resname}}</td> 
+	                   <td >{{item.menuname}} 이어 붙이기</td>
+	                   <td >{{item.menunum}} </td> 
+	                   <td >{{item.orderdate}}</td>
+	                   <td >{{item.pickuptime}}</td>
+	                   <td >{{item.price}}</td>
+	                   <td >{{item.salecomple}}</td>
+	               	
+	               </tr>
+				</tbody>
+			</table>
+		<!-- 페이지 넘어가는 버튼들 -->			
+    
+    
+			
 
-    <div id="mainWrapper">
-        	<div class="div2">
-            <!-- 게시판 제목 -->
-            결제내역
-        	</div>
-            <div class="div1">
-        	<ul>
-             <!-- 검색 폼 영역 -->
-            <li id='liSearchOption'>
-                    <select class="btn3" id='selSearchOption' >
-                        <option value='A'>제목+내용</option>
-                        <option value='T'>제목</option>
-                        <option value='C'>내용</option>
-                    </select>
-                    <input id='txtKeyWord' />
-                    <input class = "btn2" type='button' value='검색'/>
-                </li>
-                </div>
-             <div class="div3">
-            <!-- 게시판 목록  -->
-            <li>
-                <ul id ="ulTable">
-                    <li>
-                        <ul>
-                            <li>No.</li>
-                            <li>주문번호</li>
-                            <li>상호명</li>
-                            <li>메뉴</li>
-                            <li>일시</li>
-                            <li>결제금액</li>
-                            <li>리뷰</li>
-                        </ul>
-                    </li>
-                    
-                    <!-- 게시물이 출력될 영역 -->
-                    <li>
-                        <ul v-for="(item, index) in list">
-                            <li>{{item.resnum}}</li>
-                            <li>{{item.ordernum}}</li>
-                            <li></li>
-                            <li>{{item.menuname}}</li>
-                            <li></li>
-                            <li>{{item.price}}</li>
-                            <li><button class="btn1" onClick="location.href='http://localhost:8080/reviewwrite.do'">리뷰</button></li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </li>
-            </div>   
-			<div>
-            <!-- 게시판 페이징 영역 -->
-            <li>
-                <div id="divPaging">
-                    <div>◀</div>
-                       <div><b>1</b></div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
-                    <div>5</div>
-                    <div>▶</div>
-                </div>
-            </li>
-        </ul>
-        </div>	
-    </div>
-    </div>
-  
-    </div>  
+    </div>   
+ </div>
 </body>
     <jsp:include page="/layout/footer.jsp"></jsp:include>
-    
-    <script type="text/javascript">
+</html>  
+<script type="text/javascript">
+Vue.component('paginate', VuejsPaginate)
 var app = new Vue({ 
     el: '#app',
     data: {
-    	list : [] // 전체 데이터 리스트
+    	list : [] 
+        , selectedItemList : []
+		, selectPage: 1	// 기본 세팅이 1번 페이지로 맞추어져 있음.
+		, pageCount: 1
         , id: "${userId}"
+        , ordernum : ""
+        , menuname : ""
+        , orderdate : ""
+        , pickuptime : ""
+        , price : ""
+        , salecomple : ""
+        
+        
     }   
     , methods: {
-    	  fnGetList : function(){
+    	// 기본 출력 메소드
+      fnGetList : function(){
               var self = this;
-              var nparmap = {id: self.id};
+              var startNum = ((self.selectPage-1) * 10);
+      		  var lastNum = self.selectPage * 10;
+              var nparmap = {startNum : startNum, lastNum : lastNum,id:self.id};
               $.ajax({
                   url:"/Res2.dox",
                   dataType:"json",	
@@ -245,17 +108,20 @@ var app = new Vue({
                   data : nparmap,
                   success : function(data) {                                       
   	                self.list = data.list;
+  	            	self.pageCount = Math.ceil(data.cnt / 10);
   	                console.log(self.list);  
                   }
               }); 
+              console.log(self.list);
           }  
+    
+      
       }   
       , created: function () {
-  		this.fnGetList();       
+    	var self = this;
+  		this.fnGetList();
   	  } 
+    
+   
 });
 </script>
-    
-</html>  
-
-
