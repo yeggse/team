@@ -106,7 +106,7 @@ select {
 					<form action="#" style="display: inline;">
 						<!-- 나란히 만들기 위해서 display: inline -->
 						<select
-							style="width: 400px; height: 40px; font-size: large; font-weight: bold;">
+							style="width: 400px; height: 40px; font-size: large; font-weight: bold;" v-model ="payment">
 							<option value="CASH">만나서 현금 결제</option>
 							<option value="account">계좌 이체</option>
 							<option value="card">만나서 카드 결제</option>
@@ -188,6 +188,7 @@ var app = new Vue({
         ,acc : "${userAcc}"
         ,list: ${map.list} 
         ,num : 0
+        ,payment : ""
     }   
     , methods: {
     	//예약 완료
@@ -235,7 +236,7 @@ var app = new Vue({
 				,ordernum:0
 				,orderer:self.userId
 				,pickuptime:self.list[i].pickuptime
-				,payment:"카드"
+				,payment:self.payment
 				,price : self.list[i].price
 				,review:"N"
 				,salecomple: "N"
