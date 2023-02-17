@@ -186,7 +186,8 @@ var app = new Vue({
        	,kind : "${kind}"
        	,phoneNum : "${userPhonenum}"
         ,acc : "${userAcc}"
-        ,list: ${map.list} 
+        ,list: ${map.list}
+        ,resname: "${map.resname}"
         ,num : 0
         ,payment : ""
     }   
@@ -242,6 +243,7 @@ var app = new Vue({
 				,salecomple: "N"
 				,menunum: self.list[i].sum
 				,sum : self.list[i].sum
+				,resname : self.resname
 				
 			};
 			console.log(nparmap);
@@ -279,7 +281,7 @@ var app = new Vue({
     		self.num += ((self.list[i].price)*(self.list[i].sum)); 
     	}
     	
-    	
+    	console.log(self.resname);
 	}
 });
 </script>

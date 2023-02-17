@@ -23,6 +23,7 @@ public class Res {
 	private String salecomple;
 	private String orderdate;
 	private int menunum;
+	private String resname;
 
 	public String getReview() {
 		return review;
@@ -162,6 +163,12 @@ public class Res {
 	}
 	public void setMenunum(int menunum) {
 		this.menunum = menunum;
+	}
+	public String getResname() {
+		return resname;
+	}
+	public void setResname(String resname) {
+		this.resname = resname;
 	}
 	
 }
