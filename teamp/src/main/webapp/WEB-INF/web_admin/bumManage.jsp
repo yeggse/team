@@ -109,7 +109,7 @@ background:#ffff99;
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>사업자 회원 관리👨‍🍳</h2>‍
+			<h2>사업자 회원 관리👨‍🍳 현재 출력이 일반회원 되고 있음</h2>‍
 			<div style="text-align: center;">
 			
 				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="name"  v-on:keyup.enter="fnSearch"></input>
@@ -148,14 +148,14 @@ background:#ffff99;
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
-	                   <td>{{item.name}}</td> 
-	                   <td>{{item.nickname}}</td> 
-	                   <td >{{item.id}}</td>
-	                   <td >{{item.resname}}</td>
-	                   <td >{{item.resnum}}</td>
-	                   <td >{{item.frontregisnum}}</td>
-	                   <td >{{item.resphone}}</td>
-	                   <td >{{item.acc}}</td> 
+	                   <td @click="fnMemDetail(item)">{{item.name}}</td> 
+	                   <td @click="fnMemDetail(item)">{{item.nickname}}</td> 
+	                   <td @click="fnMemDetail(item)">{{item.id}}</td>
+	                   <td @click="fnMemDetail(item)">{{item.resname}}</td>
+	                   <td @click="fnMemDetail(item)">{{item.resnum}}</td>
+	                   <td @click="fnMemDetail(item)">{{item.frontregisnum}}</td>
+	                   <td @click="fnMemDetail(item)">{{item.resphone}}</td>
+	                   <td @click="fnMemDetail(item)">{{item.acc}}</td> 
 	               </tr>
 				</tbody>
 			</table>
@@ -207,6 +207,39 @@ var app = new Vue({
                 }
             }); 
         }  
+	, fnMemDetail : function(item){
+		var self = this;
+		self.pageChange("/bum.detail.do", {id : item.id});	// 상세페이지로 해당 인덱스 번호를 넘겨줌~~!
+	}
+	// 화면 전환 for 멤버정보 상세 확인
+	, pageChange : function(url, param) {
+		var target = "_self";
+		if(param == undefined){
+			return;
+		}
+		var form = document.createElement("form"); 
+		form.name = "dataform";
+		form.action = url;
+		form.method = "post";
+		form.target = target;
+		for(var name in param){
+			var item = name;
+			var val = "";
+			if(param[name] instanceof Object){
+				val = JSON.stringify(param[name]);
+			} else {
+				val = param[name];
+			}
+			var input = document.createElement("input");
+    		input.type = "hidden";
+    		input.name = item;
+    		input.value = val;
+    		form.insertBefore(input, null);
+		}
+		document.body.appendChild(form);
+		form.submit();
+		document.body.removeChild(form);
+	}    
     }   
     , created: function () {
     	var self = this;

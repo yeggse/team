@@ -63,4 +63,15 @@
 			ORDER BY id ASC
 			LIMIT #{startNum}, #{lastNum}
 	</select>	
+	
+	<!-- 사업자 상세 정보 출력 -->
+	<select id="detailbum" resultType="com.example.demo.model.Admin">	
+		SELECT 
+			id, kind, phonenum, acc, name, address, frontregisnum, afterregisnum, nickname, resname, resnum, 
+			reskind, region, resad, resphone
+		FROM
+			t3_account
+		WHERE
+			id = #{id}
+	</select>
 </mapper>

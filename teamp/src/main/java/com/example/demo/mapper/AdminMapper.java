@@ -16,6 +16,9 @@ public interface AdminMapper {
 	
 	// 일반회원 상세 정보 출력
 	Admin detailmem(HashMap<String, Object> map); // xml파일 접근 및 db 호출결과 리턴 받음
+	// 사업자 상세 정보 출력
+	Admin detailbum(HashMap<String, Object> map); // xml파일 접근 및 db 호출결과 리턴 받음
+	
 	// 일반회원 정보 수정
 	void editmem(HashMap<String, Object> map); 
 	// 일반회원 탈퇴
