@@ -27,8 +27,31 @@
 			LIMIT #{startNum}, #{lastNum}
 	</select>	
 	
+	<!-- 일반회원 상세 정보 출력 -->
+	<select id="detailmem" resultType="com.example.demo.model.Admin">	
+		SELECT 
+			id, kind, phonenum, acc, name, address, frontregisnum, afterregisnum, nickname
+		FROM
+			t3_account
+		WHERE
+			id = #{id}
+	</select>
 	
+	<!-- 일반회원 정보 수정 -->
+	<update id="editmem" parameterType="hashmap" >
+		UPDATE t3_account 
+		SET
+			pwd = #{pwd}
+		WHERE id = #{id}
+	</update>
 	
-	
+	<!-- 일반회원 탈퇴 -->
+	<delete id="deletemem" parameterType="hashmap">	
+		DELETE FROM 
+			t3_account 
+		WHERE 
+			id = #{id}
+			
+	</delete>	
 	
 </mapper>

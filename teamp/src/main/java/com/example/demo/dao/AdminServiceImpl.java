@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.mapper.AdminMapper;
 import com.example.demo.model.Admin;
+import com.example.demo.model.Board;
 
 
 @Service //서비스임을 선언
@@ -36,6 +37,32 @@ public class AdminServiceImpl implements AdminService{
 		map.put("startNum", startNum);
 		map.put("lastNum", lastNum);
 		return adminMapper.normalMemList(map);
+	}
+	
+	// 일반회원 상세 정보 출력
+	@Override
+	public HashMap<String, Object> detailmem(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		// 조회수 
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+	//	boardMapper.updateCnt(map);
+	//	List<Board> commentList = boardMapper.selectCommentList(map);
+		Admin admin = adminMapper.detailmem(map);
+	//	resultMap.put("commentList", commentList);
+		resultMap.put("board", admin);
+		return resultMap;
+	}
+	//일반회원 정보 수정
+	@Override
+	public void editmem(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		adminMapper.editmem(map);
+	}
+	// 일반회원 탈퇴
+	@Override
+	public void deletemem(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		adminMapper.deletemem(map);
 	}
 
 

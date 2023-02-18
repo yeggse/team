@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.AdminService;
 import com.example.demo.model.Admin;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -75,4 +79,57 @@ public class AdminController {
 		return new Gson().toJson(resultMap);
 	}
 
+	// 일반회원 상세 정보 출력
+    @RequestMapping("/member.detail.do") 
+    public String memDetail(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+    	String id = (String)session.getAttribute("userIdSession");
+    	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
+    	String kind = (String)session.getAttribute("KindSession");
+    	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
+    	return "/web_admin/memDetail"; // WEB-INF에서 호출할 파일명
+    }
+    // 일반회원 상세정보 출력 데이터 호출
+	@RequestMapping(value = "/detailMem.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String memBoardList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap = adminService.detailmem(map);
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
+	
+	//일반화원 정보수정
+    @RequestMapping("/memedit.do") 
+    public String boardEdit(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+    	String id = (String)session.getAttribute("userIdSession");
+    	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
+    	String kind = (String)session.getAttribute("KindSession");
+    	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
+    	return "/web_admin/memEdit"; // WEB-INF에서 호출할 파일명
+    }
+    // 일반화원 정보수정 데이터 호출
+	@RequestMapping(value = "/memEdit.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String editBoardList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		adminService.editmem(map);
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
+	
+	// 일반회원 탈퇴
+	@RequestMapping(value = "/deleteMem.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String deletememList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+	//	String json = map.get("list").toString();
+	//	ObjectMapper mapper = new ObjectMapper();
+	//    List<Map<String, Object>> list = mapper.readValue(json, new TypeReference<ArrayList<Map<String, Object>>>(){});
+	//	map.put("list", list);
+	    adminService.deletemem(map);
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
 }
