@@ -78,10 +78,9 @@ var app = new Vue({
        
     }   
     , methods: {
-    	// 게시글 상세 기본 출력
+    	// 회원정보 출력
     	fnGetMember : function(){
             var self = this;
-            console.log("test == " + self.idx);
             var nparmap = {id : self.id};
             $.ajax({
                 url:"/detailMem.dox",

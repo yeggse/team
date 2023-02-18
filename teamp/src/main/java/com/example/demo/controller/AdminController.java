@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.AdminService;
 import com.example.demo.model.Admin;
+import com.example.demo.model.Board;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
@@ -78,7 +79,17 @@ public class AdminController {
 		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
 		return new Gson().toJson(resultMap);
 	}
-
+	
+	// 일반회원 검색
+	@RequestMapping(value = "/searchMem.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String searchMem(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Admin> list = adminService.searchMem(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+		resultMap.put("list", list);
+		return new Gson().toJson(resultMap);
+	} 	
+	
 	// 일반회원 상세 정보 출력
     @RequestMapping("/member.detail.do") 
     public String memDetail(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -124,10 +135,6 @@ public class AdminController {
 	@ResponseBody
 	public String deletememList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-	//	String json = map.get("list").toString();
-	//	ObjectMapper mapper = new ObjectMapper();
-	//    List<Map<String, Object>> list = mapper.readValue(json, new TypeReference<ArrayList<Map<String, Object>>>(){});
-	//	map.put("list", list);
 	    adminService.deletemem(map);
 		resultMap.put("message", "성공");
 		return new Gson().toJson(resultMap);

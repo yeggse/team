@@ -18,4 +18,6 @@ public interface AdminService {
 	void editmem(HashMap<String, Object> map);
 	// 일반회원 탈퇴
 	void deletemem(HashMap<String, Object> map); 
+	// 일반회원 검색
+	List<Admin>searchMem(HashMap<String, Object> map) throws Exception;
 }

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.mapper.AdminMapper;
 import com.example.demo.model.Admin;
-import com.example.demo.model.Board;
 
 
 @Service //서비스임을 선언
@@ -63,6 +62,13 @@ public class AdminServiceImpl implements AdminService{
 	public void deletemem(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		adminMapper.deletemem(map);
+	}
+	
+	// 일반회원 검색
+	@Override
+	public List<Admin> searchMem(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return adminMapper.searchMem(map);
 	}
 
 

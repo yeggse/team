@@ -109,11 +109,11 @@ background:#ffff99;
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>일반 회원 관리🙆‍♀️</h2>‍
+			<h2>일반 회원 관리🙆‍♀️ - 검색버튼 쿼리 재확인</h2>‍
 			<div style="text-align: center;">
 			
-				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="name"  v-on:keyup.enter="fnSearch"></input>
-				<button id="btn" >검색</button>	
+				<input type="text" placeholder="id 혹은 이름을 검색해 주세요" v-model="search"  v-on:keyup.enter="fnSearch"></input>
+				<button id="btn" @click="fnSearch">검색</button>	
 				
 		<!-- 		<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		업종 리스트 출력하는 쿼리 생성 필요!!
 				<button id="btn"  >검색</button>  -->
@@ -183,6 +183,7 @@ var app = new Vue({
         , phonenum : ""
         , kind :"${kind}"
         , acc : ""
+        , search : ""
        
     }   
     , methods: {
@@ -237,6 +238,25 @@ var app = new Vue({
     		form.submit();
     		document.body.removeChild(form);
     	}
+		// 검색버튼 이벤트
+       	,fnSearch : function(){
+            var self = this;
+            var nparmap = {id : self.id, name : self.name}; 
+            $.ajax({
+                url:"/searchMem.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {       
+                	self.list = data.list;
+    	            	if(self.list.length == 0){
+    	            		alert("존재하지 않습니다.");
+    	            		self.fnGetList();
+    	            	}    
+                	console.log(self.list);
+                }
+           });
+    	}  		
     }   
     , created: function () {
     	var self = this;

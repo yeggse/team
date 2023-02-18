@@ -290,8 +290,7 @@ var app = new Vue({
 		// 검색버튼 이벤트
        	,fnSearch : function(){
             var self = this;
-            var nparmap = {boardtype : self.boardtype, noticenum : self.noticenum, title : self.title, 
-            				hits : self.hits, nickname : self.nickname, startdate : self.startdate}; 
+            var nparmap = {title : self.title}; 
             $.ajax({
                 url:"/searchBoard.dox",
                 dataType:"json",	
@@ -300,7 +299,7 @@ var app = new Vue({
                 success : function(data) {       
                 	self.list = data.list;
     	            	if(self.list.length == 0){
-    	            		self.fnGet();
+    	            		self.fnGetList();
     	            	}    
                 	console.log(self.list);
                 }
