@@ -231,7 +231,8 @@ var app = new Vue({
 	}
  	, fnView : function(item){
 		var self = this;
-		self.pageChange("/Mypage.do", {resnum : item.resnum, idx : item.idx}); // resnum(pk)로 찾아야 이름으로 중복된 식당충돌을 줄일 수 있음.
+		self.pageChange("/join3.do", {resnum : item.resnum, idx : item.idx}); //테스트 resnum(pk)로 찾아야 이름으로 중복된 식당충돌을 줄일 수 있음.
+		/*self.pageChange("/Mypage.do", {resnum : item.resnum, idx : item.idx});*///원래꺼 resnum(pk)로 찾아야 이름으로 중복된 식당충돌을 줄일 수 있음.
 	}
     	
     }

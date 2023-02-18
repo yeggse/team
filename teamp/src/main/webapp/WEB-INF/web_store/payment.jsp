@@ -252,7 +252,7 @@ var app = new Vue({
 			};
 			console.log(nparmap);
 		
-		
+			if(confirm("정말로 결제하시겠습니까?")){
 				$.ajax({
 					url : "/Res/get.dox",
 					dataType : "json",
@@ -270,7 +270,7 @@ var app = new Vue({
 
 					}
 				})
-				
+			}	
 			}
 			}
 		}

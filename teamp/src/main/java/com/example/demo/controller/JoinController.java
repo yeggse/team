@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.JoinService;
 import com.example.demo.model.Join;
+import com.example.demo.model.Main;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,6 +40,7 @@ public class JoinController {
 
 		return "/join2"; // WEB-INF에서 호출할 파일명
 	}
+	
 	
 	 @RequestMapping("/login.do") 
 	    public String login(Model model) throws Exception{

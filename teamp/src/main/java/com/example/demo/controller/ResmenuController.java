@@ -37,7 +37,27 @@ public class ResmenuController {
 
 		return "/main"; // WEB-INF에서 호출할 파일명
 	}
-
+	//////////////////테스트 결제///////////////////////
+	@RequestMapping("/join3.do")
+	public String main2(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception {
+		String id = (String)session.getAttribute("userIdSession");	
+    	String kind = (String)session.getAttribute("KindSession");
+    	String name = (String)session.getAttribute("userNameSession");
+    	String phonenum = (String)session.getAttribute("userPhonenumSession");
+    	String acc = (String)session.getAttribute("userAccSession");
+    	request.setAttribute("map", map);
+    	request.setAttribute("userName", name);
+    	request.setAttribute("userPhonenum", phonenum);
+    	request.setAttribute("userAcc", acc);
+    	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
+		Main res = mainService.searchRes(map); // resnum을 통해 레스토랑 찾아주는 과정
+		request.setAttribute("res",  new Gson().toJson(res));
+		Main time = mainService.Cpickuptime(map);
+		request.setAttribute("time",  new Gson().toJson(time));
+		return "/join3"; // WEB-INF에서 호출할 파일명
+	}
+    ////////////////////////////////////////////////////////////
 	@RequestMapping("/Mypage.do")
 	public String clicked(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
 		String id = (String)session.getAttribute("userIdSession");	

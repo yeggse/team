@@ -174,6 +174,7 @@ body {
 				} else if (!self.nickcheck) {
 					alert("닉네임 중복확인을 해주세요");
 				} else {
+					if(confirm("정말로 지금 정보로 수정하시겠습니까?")){
 					console.log(nparmap);
 					$.ajax({
 						url : "/datachange.dox",
@@ -187,6 +188,7 @@ body {
 
 						}
 					})
+				}
 				}
 			},
 			pageChange : function(url, param) {
