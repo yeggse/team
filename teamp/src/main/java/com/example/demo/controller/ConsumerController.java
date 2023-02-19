@@ -96,7 +96,7 @@ public class ConsumerController {
 		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
 		return new Gson().toJson(resultMap);
 	}
-	 // 리뷰 작성 데이터 호출
+	 // 리뷰 작성 데이터 호출1
 		@RequestMapping(value = "/addReviewboard.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody
 		public String addReviewList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
