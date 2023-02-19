@@ -156,7 +156,7 @@ background:#ffff99;
 	                   <td @click="fnDetailView(item)">{{item.enddate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.supply}}</td> 
 	                   <td>
-	                   		<input id='target_btn1'  type='button' value='일시품절' />
+	                   		<input id='target_btn1'  type='button' value='일시품절' @click="btnSoldout" />
 	                   		<input id='target_btn2'  type='button' value='다시판매'/>
 					   </td> 
 	               </tr>
@@ -192,27 +192,6 @@ background:#ffff99;
 
 
 <script type="text/javascript">
-/* function btnActive1()  {
-	  const target1 = document.getElementById('target_btn1');
-	  const target2 = document.getElementById('target_btn2');
-	  if(target1.disabled = true){
-	  target2.disabled = false;
-	  }else if(target1.disabled = false){
-	  target2.disabled = true;
-	  }
-}
-function btnActive2()  {
-	  const target1 = document.getElementById('target_btn1');
-	  const target2 = document.getElementById('target_btn2');
-	  if(target2.disabled = true){
-	  target1.disabled = false;
-	  }else if(target2.disabled = false){
-	  target1.disabled = true;
-	  }
-}  */
-
-
-
 Vue.component('paginate', VuejsPaginate)
 var app = new Vue({ 
     el: '#app',
@@ -228,8 +207,6 @@ var app = new Vue({
         , menuname:"${menuname}"
         , idx:"${idx}"
         , picture:"${userpicture}"
-   /*      ,const target1 = document.getElementById('target_btn1')
-	  	,const target2 = document.getElementById('target_btn2') */
     }   
     , methods: {
     	// 기본 출력 메소드
@@ -237,7 +214,7 @@ var app = new Vue({
             var self = this;
             var startNum = ((self.selectPage-1) * 10);
     		var lastNum = self.selectPage * 10
-            var nparmap = {startNum : self.startNum, lastNum : self.lastNum, resnum:self.resnum, picture: self.picture}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
+            var nparmap = {startNum : self.startNum, lastNum : self.lastNum, resnum:self.resnum, picture: self.picture, idx: self.idx}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
             $.ajax({
                 url:"/selectResmenu2.dox",
                 dataType:"json",	
@@ -250,6 +227,43 @@ var app = new Vue({
                 }
             }); 
         }  
+        
+        
+        <!--일시품절 버튼-->
+        , btnSoldout : function(){
+    		var self = this;
+	      	var nparmap = {soldout : self.soldout, idx : self.idx}; 
+	        $.ajax({
+	            url:"/soldout.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {            
+	            	alert("일시품절 처리되었습니다.");
+	            }
+	        }); 
+    	}
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
 		// 페이지 전환 메소드
 		, changePage : function(pageNum) {
 			var self = this;

@@ -135,5 +135,17 @@
 	</update>
 	
 	
+	
+	<!-- 일시품절 버튼 -->
+	<update id="soldout" parameterType="hashmap" >	
+		UPDATE 
+			t3_resmenu
+		SET
+			soldout = "NNN" 
+		WHERE 
+		  	idx = #{idx}
+	</update>
+	
+	
 
 </mapper>

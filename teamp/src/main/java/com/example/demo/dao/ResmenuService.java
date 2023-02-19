@@ -25,4 +25,9 @@ public interface ResmenuService {
 	void saleFin(HashMap<String, Object> map);	//update
 	// 재고수정
 	void editSupply(HashMap<String, Object> map);
+	
+	
+	//일시품절 버튼
+	void soldout(HashMap<String, Object> map);	
+
 }

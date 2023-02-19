@@ -1,9 +1,7 @@
 package com.example.demo.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.ResmenuService;
-import com.example.demo.model.Consumer;
 import com.example.demo.model.Res;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -115,7 +110,7 @@ public class BuisnessController {
 		return new Gson().toJson(resultMap);
 	}
     
-    //사업자 메뉴관리 페이지에 사용
+    //사업자 메뉴관리 페이지에 목록 처음으로 불러옴
 	@RequestMapping(value = "/selectResmenu2.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String firstResmenu2(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -126,7 +121,6 @@ public class BuisnessController {
 		
 		resultMap.put("list", list);
 		resultMap.put("cnt", cnt);
-		
 
 		return new Gson().toJson(resultMap);
 	}
@@ -145,5 +139,19 @@ public class BuisnessController {
 		
 		return new Gson().toJson(resultMap);
 	} 
+	
+	
+	
+	// 사업자 일시품절 버튼
+	@RequestMapping(value = "/soldout.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String soldout(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resmenuService.soldout(map);
+			
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
+
 
 }

@@ -87,4 +87,13 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			return resmenuMapper.businessReserveList1(map);
 		}
+		
+		
+		//일시품절 버튼
+		@Override
+		public void soldout(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			resmenuMapper.soldout(map);
+			
+		}
 }
