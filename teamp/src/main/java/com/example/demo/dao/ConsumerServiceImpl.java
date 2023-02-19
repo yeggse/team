@@ -26,6 +26,15 @@ public class ConsumerServiceImpl implements ConsumerService {
 		map.put("lastNum", lastNum);
 		return consumerMapper.ReserveList(map);
 	}
-
-
+	@Override
+	public void insertReviewImg(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+			consumerMapper.insertReviewImg(map);
+	}
+	//리뷰글 추가
+	@Override
+	public void addReview(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		consumerMapper.addReview(map);
+	}
 }

@@ -28,5 +28,4 @@ public class ReviewServicelmpl implements ReviewService{
 		// TODO Auto-generated method stub
 		return reviewMapper.selectreviewList1(map);
 	}
-
 }

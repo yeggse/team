@@ -123,14 +123,14 @@
               </fieldset>
             </form>
           <div>
-            <input type="text" class="text" placeholder="음식에 대한 솔직한 리뷰를 남겨주세요." v-model="reviewnum">
+            <input type="text" name="content" class="text" placeholder="음식에 대한 솔직한 리뷰를 남겨주세요." v-model="content">
           </div>  
           <div>
             <button class="btnphoto1">
               <img src="https://cdn-icons-png.flaticon.com/512/158/158715.png" style="width:50px; height:50px;" alt="사진0/5">
               <ol>사진첨부</ol>
             </button>
-            <input type="file">
+            <input type="file" id="file2" name="file2">
 			<!--  
 			<input type="file" onchange="readURL(this);">  //사진 미리보기 시도하려다 실패
 				-->            
@@ -138,7 +138,7 @@
             <button class="btnphoto2">사진</button> -->
           </div>
           <div>
-            <button class="btncomplete" @click="fnTest">완료</button>
+            <button  @click="fnSave">완료</button>
             수정할것: 레이아웃,rem, 사이즈,헤더 푸터 옆에거 연동 잘 해보기,클릭시 아래 페이지 나오게하기
           </div>
         </div>
@@ -153,22 +153,23 @@
 var app = new Vue({ 
     el: '#app',
     data: {resnum:""
-    		,reviewnum:""
-			,startdate:""
+			,writedate:""
 			,menuname:""
 			,price:""
 			,ordernum:""
-	
+			,content:""
+			,img:""
+			,number:"${map.reviewnum}"
     }
 
     , methods: {
-    	fnTest : function(){
+    	/* fnTest : function(){
             var self = this;
             var nparmap = {resnum: self.resnum, 
             		startdate: self.startdate, 
             	 	menuname: self.menuname, 
             	 	price: self.price, 
-            	 	ordernum:self.ordernum
+            	 	ordernum:self.ordernum,
             	 	reviewnum: self.reviewnum}; 
             
                 console.log(nparmap);
@@ -186,12 +187,55 @@ var app = new Vue({
                 	console.log(data.list);
                 }
             }); 
-        }
+        } */
+     fnSave : function(){
+		var self = this;
+		console.log(self.img);
+      	var nparmap = {reviewnum: self.reviewnum, content : self.content, img : self.img}; 
+        $.ajax({
+            url:"/addReviewboard.dox",
+            dataType:"json",	
+            type : "POST", 
+            data : nparmap,
+            success : function(data) {  
+            	console.log(data);
+	            	var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
+       	        form.append( "file2", $("#file2")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미 //이미지 선택한 파일이 form으로 들어감	보트컨트롤러의 fileList파이
+       	     	form.append( "number",  data.number);	// 여기에 있는 boardIdx는 어디로 가나?????		// boardIdx에 게시글의 경로를 일치시켜주기
+       	  		// 이미지 파일을 활성화하는 아작스 통신 더 불러오기
+       	         $.ajax({
+       	             url : "/upload1"	// board controller - upload파트와 연결
+       	           , type : "POST"
+       	           , processData : false
+       	           , contentType : false
+       	           , data : form
+       	           , success:function(response) { }
+       	           ,error: function (jqXHR) 
+       	           {}
+       	       }); 
+            	alert("리뷰 작성해 주셔서 감사합니다!");
+           		location.href="/join3.do";
+            }
+        }); 
+     }
+	
+    // 사진 업로드 
+		, upload : function(){
+		var form = new FormData();
+	        form.append( "file2", $("#file2")[0].files[0] );
+	        
+	         $.ajax({
+	             url : "/upload1"
+	           , type : "POST"
+	           , processData : false
+	           , contentType : false
+	           , data : form
+	           , success:function(response) { }
+	           ,error: function (jqXHR) {}
+	       });
+    	}
     }
     , created: function () {
-        
 	}
 });
-    
 </script>
-
