@@ -320,31 +320,47 @@ input {
 				<h2 style="margin-left: 50px;">게시글 목록</h2>
 				<table class="board_list">
 					<colgroup>
+					    <col width="5%" />
 						<col width="5%" />
 						<col width="5%" />
 						<col width="*" />
+						<col width="25%" />
 						<col width="5%" />
 						<col width="10%" />
-						<col width="25%" />
+						<col width="10%" />
 					</colgroup>
 					<thead>
 						<tr>
+						    <th scope="col"></th>
 							<th scope="col">No.</th>
 							<th scope="col">분류</th>
 							<th scope="col">작성자닉네임</th>
+							<th scope="col">내용</th>
 							<th scope="col">제목</th>
 							<th scope="col">날짜</th>
 							<th scope="col">별점</th>
 						</tr>
 					</thead>
+					
+					<tr v-for="(item, index) in list1" >                            
+	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList1"></td>                       
+	                   <td >{{item.reviewnum}}</td> 
+	                   <td >{{item.categori}}</td> 
+	                   <td >{{item.nickname}}</td>
+	                   <td >{{item.content}}</td> 
+	                   <td >{{item.title}}</td>
+	                   <td >{{item.date}}</td>
+	                   <td >{{item.grade}}</td>
+	               	
+	               </tr>
 
 				</table>
-				<template>
+				<%-- <template>
 					<paginate :page-count="pageCount" :page-range="3" :margin-pages="2"
 						:click-handler="changePage" :prev-text="'<'" :next-text="'>'"
 						:container-class="'pagination'" :page-class="'page-item'">
 					</paginate>
-				</template>
+				</template> --%>
 
 			</div>
 		</div>
@@ -371,15 +387,15 @@ input {
 	var app = new Vue({
 		el : '#app',
 		data : {
-			list :[]
-			/* 게시판에 올려지는 글들은 다른 리스트 새로만들기  */
+			list :[]/* 게시판에 올려지는 글들은 다른 리스트 새로만들기  */
+	        ,list1:[]//리뷰리스트
+	        ,selectedItemList1:[]
 			,info : {}
-			
 			,flg : true
 			,res : ${res} // Main type의 객체이름 res로(where=resnum 들고오는 과정) 당겨쓰는 과정 in ResmenuController
 			,user : ${userVO}// user전체가 getter/setter되서 가져고 오는 형식. {{user.id}},{{user.name}} 쓸때 이렇게 쓸수있음. 여기한번 지정하고 다른데서 계속 쓸 수 있음.
 							// 기존 방법과 차이 userId: "${userId}" 이렇게 적어 줬었음.
-		    ,sum : 0
+			,sum : 0
 		    ,time : ${time}
 			,userId : "${userId}"
 		    ,name : "${userName}"
@@ -408,6 +424,24 @@ input {
 					}
 				});
 			}
+		
+		,fnGetReview : function() {
+			var self = this;
+			var nparmap = {resnum: self.res.resnum};
+			$.ajax({
+				url : "/searchReview.dox",
+				dataType : "json",
+				type : "POST",
+				data : nparmap,
+				success : function(data) {
+					self.list1 = data.list1;
+					/* self.info = data.resimg; */
+					
+					console.log(self.list1);
+					
+				}
+			});
+		}
 		,fnClick : function() {
 			var self = this;
 			self.flg = false;
@@ -528,6 +562,7 @@ input {
 		created : function() {
 			var self = this;
 			this.fnGetImg();
+			self.fnGetReview();
 			self.resname = self.res.resname;
 			console.log(self.resname);
 			

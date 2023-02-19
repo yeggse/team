@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.mapper.ReviewMapper">	
+ 	<!-- 식당별 리뷰리스트 -->
+	<select id="selectreviewList" parameterType="hashmap" resultType="com.example.demo.model.Review">	
+			SELECT 
+				reviewnum
+				,categori
+				,resnum
+				,title
+				,picture
+				,content
+				,grade
+				,nickname
+				,date
+			FROM
+				t3_review
+			where resnum = #{resnum}
+			ORDER BY date ASC
+			
+	</select>
+	<!-- 전체 리뷰리스트 -->
+	<select id="selectreviewList1" parameterType="hashmap" resultType="com.example.demo.model.Review">	
+			SELECT 
+				reviewnum
+				,categori
+				,resnum
+				,title
+				,picture
+				,content
+				,grade
+				,nickname
+				,date
+			FROM
+				t3_review
+			WHERE reskind = #{reskind}
+			ORDER BY date ASC
+			
+	</select>
+	
+</mapper>

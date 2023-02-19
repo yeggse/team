@@ -1,213 +1,245 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
-  <jsp:include page="/layout/header.jsp"></jsp:include>
+	<meta charset="UTF-8">
+	<script src="js/jquery.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/vuejs-paginate@latest"></script>
+	<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
+	<jsp:include page="/layout/header.jsp"></jsp:include>
+	
+	<title>일반 회원 관리</title>
 </head>
-
 <style>
-.body{
-     line-height:2em;        
-     font-family:"맑은 고딕";
+img{
+width:6rem;
+height:6rem;
 }
-ul, li{ 
-     list-style:none;
-     text-align:center;
-     padding:0;
-     margin:0;
+/* ----------------------------------------------------- */
+#input {
+   width: 25rem;
+   margin-top: 0rem;
+   padding: 0.66rem;
+   box-sizing: border-box;
+   border-radius: 0.66rem;
+   border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
 }
-#mainWrapper{
-
-     position: relative; 
-     left: 0px; 
-     bottom:-200px; 
-     clear:both;
-     width: 800px;
-     height :500px;
-     margin-left: 350px; /*가운데 정렬*/
-     margin-right: 350px; /*가운데 정렬*/
-     margin-bottom: 350px; /*가운데 정렬*/
-     border: 2px solid black;
+   
+#btn{
+	background-color: #8FBC94;
+	width: 5rem;
+	height: 2.5rem;
+	border-radius: 1.25rem;
+	border: solid 2px #8FBC94;
+	font-size: large;
+	color: white;
+	padding: 0rem;
+}
+/* ------------------------------------------------------- */
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #a4e271;
+	background-color:#a5d296;
+	border-radius:6px;
+	border:1px solid #74b807;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #77a809 5%, #89c403 100%);
+	background-color:#77a809;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.pagination {
+        margin:1.5rem;
+        display: inline-flex;
     }
-#mainWrapper > ul > li:first-child {
-     text-align: left;
-     font-size:32px;
-     height:40px;
-     vertical-align:middle;
-     line-height:30px;
-}
-#ulTable{
-	margin-top:10px;
-}
-#ulTable > li:first-child > ul > li {
-    background-color:#c9c9c9;
-    font-weight:bold;
+.pagination li {
+    min-width:32px;
+    padding:2px 6px;
     text-align:center;
+    margin:0 0.3rem;
+    border-radius: 0.33rem;
+    border:1px solid #eee;
+    color:#666;
 }
-#ulTable > li > ul {
-    clear:both;
-    padding:0px auto;
-    position:relative;
-    min-width:40px;
+.pagination li:hover {
+    background: #E4DBD6;
 }
-#ulTable > li > ul > li { 
-    float:left;
-    font-size:10pt;
-    border-bottom:1px solid silver;
-    vertical-align:baseline;
-}    
-#ulTable > li > ul > li:first-child               	  {width:10%;} /*주문번호*/
-#ulTable > li > ul > li:first-child +li               {width:15%;} /*상호명*/
-#ulTable > li > ul > li:first-child +li+li            {width:15%;} /*메뉴*/
-#ulTable > li > ul > li:first-child +li+li+li         {width:15%;} /*시간*/
-#ulTable > li > ul > li:first-child +li+li+li+li      {width:10%;} /*결제금액*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li	  {width:10%;} /*예약상태*/
-#ulTable > li > ul > li:first-child +li+li+li+li+li+li{width:10%;} /*상태변경*/
-#divPaging {
-     clear:both; 
-     margin:0 auto; 
-     width:220px; 
-     height:50px;
+.page-item a {
+    color:#666;
+    text-decoration: none;
 }
-#divPaging > div {
-     float:left;
-     width: 30px;
-     margin:0 auto;
-     text-align:center;
+.pagination li.active {
+    background-color : red;	/* #E7AA8D */
+    color:white;
 }
-#liSearchOption {
-	 clear:both;
+ .pagination li.active a {
+    color:whir;
+} 
+.tdinput{
+width:2rem;
 }
-#liSearchOption {
-     margin-left:180px; auto; 
-     width:auto; 
-     positio
+.container {
+max-width:70rem; margin:auto; margin-top: 8rem;
+}	/* 게시글 출력 파트 */
+.board_list {
+table-layout:; width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:1rem 0rem;
 }
-.left {
-     text-align : left;
+.board_list tbody td {
+border-top:1px solid #ccc; padding:0.8rem 0rem; text-align:center; vertical-align:middle;
 }
-.btn{
- 	 background:green;
-  	 color:white;
- 	 border:none;
- 	 width:66px;
+.board_list tbody tr:hover{
+background:#ffff99;
 }
-
 </style>
-
 <body>
+<jsp:include page="/layout/adminmypage.jsp"></jsp:include>
 
-<div id="app" style="width:100%; padding-top:120px;" align="center"  style = "margin-top: 100px">
-	<jsp:include page="/layout/adminmypage.jsp"></jsp:include>
-    <div id="mainWrapper" class="body"> 
-        <ul>
-        	<div>
-            <!-- 게시판 제목 -->
-            <li>리뷰관리 </li>
-        	</div>
-            
-             <!-- 검색 폼 영역 -->
-             
-            <li id='liSearchOption'>
-                    <select id='selSearchOption' >
-                        <option value='A'>제목+내용</option>
-                        <option value='T'>제목</option>
-                        <option value='C'>내용</option>
-                    </select>
-                    <input id='txtKeyWord' />
-                    <input type='button' value='검색'/>
-                </li>
-                
-            <!-- 게시판 목록  -->
-            <li>
-                <ul id ="ulTable">
-                    <li>
-                        <ul>
-                            <li>No.</li>
-                            <li>점포명</li>
-                            <li>분류</li>
-                            <li>닉네임</li>
-                            <li>제목</li>
-                            <li>날짜</li>
-                            <li>별점</li>
-                        </ul>
-                    </li>
-                    
-                    <!-- 게시물이 출력될 영역 -->
-                    <li>
-                        <ul>
-                            <li>1</li>
-                            <li class="left">123165456</li>
-                            <li>떡참잘</li>
-                            <li>짜장면</li>
-                            <li>2023.02.08</li>
-                            <li>20000원</li>
-                            <li>4.5</li>
-                            <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">삭제</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>2</li>
-                            <li class="left">123165456</li>
-                            <li>떡참잘</li>
-                            <li>짜장면</li>
-                            <li>2023.02.08</li>
-                            <li>20000원</li>
-                            <li>4.5</li>
-                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">삭제</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>3</li>
-                            <li class="left">123165456</li>
-                            <li>떡참잘</li>
-                            <li>짜장면</li>
-                            <li>2023.02.08</li>
-                            <li>20000원</li>
-                            <li>4.5</li>
-                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">삭제</button></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>4</li>
-                            <li class="left">123165456</li>
-                            <li>떡참잘</li>
-                            <li>짜장면</li>
-                            <li>2023.02.08</li>
-                            <li>20000원</li>
-                            <li>4.5</li>
-                           <li><button class="btn" onClick="location.href='http://localhost:8080/reviewwrite.do'">삭제</button></li>
-                        </ul>
-                    <li>                                        
-                </ul>
-            </li>
-
-            <!-- 게시판 페이징 영역 -->
-            <li>
-                <div id="divPaging">
-                    <div>◀</div>
-                       <div><b>1</b></div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
-                    <div>5</div>
-                    <div>▶</div>
-                </div>
-            </li>
-        </ul>
-    
-    </div>
-    </div>
+	<div id="app">
+		<div></div>
+	<!-- 	<div class="table-list"> -->
+			<div class="container">
+			<h2>식당 종류별 리뷰 관리🙆‍♀️ - 검색버튼 활성화 필요</h2>‍
+			<div style="text-align: center;">
+			
+				<!-- <input type="text" placeholder="id 혹은 이름을 검색해 주세요" v-model="search"  v-on:keyup.enter="fnSearch"></input>
+				<button id="btn" @click="fnSearch">검색</button>	 검색기능 활성화 필요-->
+				
+		<!-- 		<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		업종 리스트 출력하는 쿼리 생성 필요!!
+				<button id="btn"  >검색</button>  -->
+				
+				
+			</div>
+			<table class="board_list">
+				<colgroup>
+					<col width="5%"/>
+					<col width="10%"/> 
+					<col width="10%"/> 
+					<col width="*%"/>
+					<col width="15%"/>
+					<col width="15%"/>
+					<col width="15%"/>
+					<col width="20%"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">-</th>
+						<th scope="col">리뷰 번호</th>
+						<th scope="col">분류</th>
+						<th scope="col">제목</th>
+						<th scope="col">사진</th>
+						<th scope="col">내용</th>
+						<th scope="col">별점</th>
+						<th scope="col">닉네임</th>
+						<th scope="col">날짜</th>
+					</tr>
+				</thead>
+				<!-- db 수정되면 알맞은 값 가져오기 -->
+				<tbody>
+					<tr v-for="(item, index) in list" >                            
+	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
+	                   <td>{{item.resnum}}</td> 
+	                   <td>{{item.categori}}</td> 
+	                   <td>{{item.title}}</td>
+	                   <td>{{item.picture}}</td>
+	                   <td>{{item.content}}</td>
+	                   <td>{{item.grade}}</td>
+	                   <td>{{item.nickname}}</td>
+	                   <td>{{item.date}}</td> 
+	               </tr>
+				</tbody>
+			</table>
+		<!-- 페이지 넘어가는 버튼들 -->		
+			  
+		  	
+		  </div>	
+	</div>
 </body>
-    <jsp:include page="/layout/footer.jsp"></jsp:include>
-</html>  
+
+
+</html>
+<script type="text/javascript">
+Vue.component('paginate', VuejsPaginate)
+var app = new Vue({
+		el : '#app',
+		data : {
+			list :[]/* 게시판에 올려지는 글들은 다른 리스트 새로만들기  */
+	        
+	        ,selectedItemList:[]
+	        ,reskind: ""
+			
+		},
+		methods : {
+		fnGetReview : function() {
+			var self = this;
+			var nparmap = {reskind: self.reskind};
+			$.ajax({
+				url : "/searchReview1.dox",
+				dataType : "json",
+				type : "POST",
+				data : nparmap,
+				success : function(data) {
+					self.list = data.list1;
+					/* self.info = data.resimg; */
+					
+					console.log(self.list);
+					
+				}
+			});
+		}
+		, pageChange : function(url, param) {
+			var target = "_self";
+			if(param == undefined){
+			//	this.linkCall(url);
+				return;
+			}
+			var form = document.createElement("form"); 
+			form.name = "dataform";
+			form.action = url;
+			form.method = "post";
+			form.target = target;
+			for(var name in param){
+				var item = name;
+				var val = "";
+				if(param[name] instanceof Object){
+					val = JSON.stringify(param[name]);
+				} else {
+					val = param[name];
+				}
+				var input = document.createElement("input");
+	    		input.type = "hidden";
+	    		input.name = item;
+	    		input.value = val;
+	    		form.insertBefore(input, null);
+			}
+			document.body.appendChild(form);
+			form.submit();
+			document.body.removeChild(form);
+		}
+		
+		
+		},
+		created : function() {
+			var self = this;
+			
+			
+			self.fnGetReview();
+			
+			
+			
+		}
+	});
+</script>
+
+

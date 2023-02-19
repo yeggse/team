@@ -56,7 +56,12 @@ public class ConsumerController {
     }
   
     @RequestMapping("/reviewadmin.do") 
-    public String review1(Model model) throws Exception{
+    public String review1(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	String kind = (String)session.getAttribute("KindSession");
+    	String id = (String)session.getAttribute("userIdSession");
+    	
+    	request.setAttribute("kind", kind);
+    	request.setAttribute("userId", id); 
     	return "/reviewadmin"; // WEB-INF에서 호출할 파일명
     }
   

@@ -56,12 +56,11 @@
 
                         <ul class="collapse__menu" style="width:120px;">
                             <a href="reviewadmin.do" class="collapse__sublink">●전체</a>
-                            <a href="#" class="collapse__sublink">●양식</a>
+                            <a href="reviewadmin.do" class="collapse__sublink">●양식</a>
                             <a href="#" class="collapse__sublink">●중식</a>
                             <a href="#" class="collapse__sublink">●일식</a>
                             <a href="#" class="collapse__sublink">●아시아</a>
                             <a href="#" class="collapse__sublink">●한식</a>
-                            <a href="#" class="collapse__sublink">●잡식</a>
                         </ul>
                     </div>
 
@@ -81,7 +80,6 @@
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <!-- JS -->
     <script src="js/main.js"></script>
-
    
 </body>
 </html>
