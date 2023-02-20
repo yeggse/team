@@ -12,8 +12,6 @@ import com.example.demo.model.Board;
 public interface BoardMapper {
 	// 게시글 기본출력
 	List<Board> firstBoardList(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
-	// 게시글 타입지정 출력
-	List<Board> typeBoardList(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 	
 	// 게시글 갯수 세기
 	int countBoardCnt(HashMap<String, Object> map);

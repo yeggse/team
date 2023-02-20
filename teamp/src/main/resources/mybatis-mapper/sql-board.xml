@@ -8,10 +8,13 @@
 			SELECT 
 				noticenum, nickname, startdate, title, hits, creatorid, boardtype
 			FROM
-				t3_board
-			<if test='title != null and title != ""'>
-				where title like concat('%', #{title}, '%')
-			</if>
+				t3_board where 1=1
+		<if test='title != null and title != "" '>
+			and title like concat('%', #{title}, '%') 
+		</if>
+		<if test='boardtype != null and boardtype != ""'>
+			and boardtype = #{boardtype}
+		</if>
 			ORDER BY noticenum DESC
 			LIMIT #{startNum}, #{lastNum}
 	</select>
@@ -21,25 +24,16 @@
 		SELECT 
 			COUNT(*) AS CNT
 		FROM
-			t3_board
-		<if test='title != null and title != "" and boardtype != "" and boardtype != ""'>
-			where title like concat('%', #{title}, '%') and boardtype = #{boardtype}
+			t3_board where 1=1
+		<if test='title != null and title != "" '>
+			and title like concat('%', #{title}, '%') 
+		</if>
+		<if test='boardtype != null and boardtype != ""'>
+			and boardtype = #{boardtype}
 		</if>
 	</select>
 	
 	
-	<!-- 게시글 분류 -->
-	<select id="typeBoardList" parameterType="hashmap" resultType="com.example.demo.model.Board">	
-			SELECT 
-				noticenum, nickname, startdate, title, hits, creatorid, boardtype
-			FROM
-				t3_board
-		<if test='boardtype != null and boardtype != ""'>
-			where boardtype = #{boardtype}
-		</if>			
-			ORDER BY noticenum DESC
-			LIMIT #{startNum}, #{lastNum}
-	</select>
 	
 	<!-- 게시글 상세 출력 // 동일 칼럼명 들어가 있을 경우. t i 등 지정필수 -->
 	<select id="detailBoard" resultType="com.example.demo.model.Board">	

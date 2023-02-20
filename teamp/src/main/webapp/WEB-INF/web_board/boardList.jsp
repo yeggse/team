@@ -122,10 +122,10 @@ select {
 			<div class="container">
 				<h2>세잎 공지사항 - 검색어 입력시, 페이징 오류</h2>
  					<form action="#" style="float: right; display: inline;">
-						<select  @change = "fntype"
+						<select  @change = "fnGetList"
 							style="width: 100px; height: 30px; font-size: large; font-weight: bold;"
 							v-model="boardtype">
-							<option value="all">전체</option>
+							<option value="">전체</option>
 							<option value="일반회원">일반회원</option>
 							<option value="사장님">사장님</option>
 						</select>
@@ -206,7 +206,7 @@ var app = new Vue({
         , hits : ""
         , nickname : ""
         , startdate : ""
-        , bordtype : ""
+        , boardtype : ""
     }   
     , methods: {
     	// 기본 출력 메소드 - 검색도 여기서 진행함~~
@@ -214,7 +214,7 @@ var app = new Vue({
             var self = this;
             var startNum = ((self.selectPage-1) * 10);
     		var lastNum = self.selectPage * 10;
-            var nparmap = {startNum : startNum, lastNum : lastNum, title : self.title};
+            var nparmap = {startNum : startNum, lastNum : lastNum, title : self.title, boardtype : self.boardtype};
             $.ajax({
                 url:"/firstBoard.dox",
                 dataType:"json",	
@@ -227,30 +227,7 @@ var app = new Vue({
                 }
             }); 
         }  
-    	// 게시글 분류 설정	
-		, fntype : function(){
-	        var self = this;
-	        if(self.boardtype=="일반회원"||self.boardtype=="사장님"){
-	            var startNum = ((self.selectPage-1) * 10);
-	    		var lastNum = self.selectPage * 10;
-	            var nparmap = {startNum : startNum, lastNum : lastNum, boardtype:self.boardtype};
-	            $.ajax({
-	                url:"/typeBoardList.dox",
-	                dataType:"json",	
-	                type : "POST", 
-	                data : nparmap,
-	                success : function(data) {                                       
-			                self.list = data.list;
-			                self.pageCount = Math.ceil(data.cnt / 10);
-			                console.log(self.pageCount);
-			                console.log("boardtype == "+self.boardtype);
-	                }
-	            });  
-	        }else{
-	        	self.fnGetList();
-	        	alert("노노");
-	        }
-		}
+
     	// 게시글 상세 확인
     	, fnDetailView : function(item){
     		var self = this;
@@ -292,7 +269,7 @@ var app = new Vue({
 			self.selectPage = pageNum;
 			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
 			var lastNum = 10
-	        var nparmap = {startNum : startNum, lastNum : lastNum, title : self.title};
+	        var nparmap = {startNum : startNum, lastNum : lastNum, title : self.title, boardtype : self.boardtype};
 	        $.ajax({
 	            url:"/firstBoard.dox",
 	            dataType:"json",	

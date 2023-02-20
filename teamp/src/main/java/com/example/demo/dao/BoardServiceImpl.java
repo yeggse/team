@@ -75,16 +75,6 @@ public class BoardServiceImpl implements BoardService{
 			boardMapper.insertBoardImg(map);
 		}
 		
-		// 게시글 타입 지정 출력
-		@Override
-		public List<Board> typeBoardList(HashMap<String, Object> map) throws Exception {
-			// TODO Auto-generated method stub
-			int startNum = Integer.parseInt(String.valueOf(map.get("startNum")));
-			int lastNum = Integer.parseInt(String.valueOf(map.get("lastNum")));
-			map.put("startNum", startNum);
-			map.put("lastNum", lastNum);
-			return boardMapper.typeBoardList(map);
-		}
 
 
 		

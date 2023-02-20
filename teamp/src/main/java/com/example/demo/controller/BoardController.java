@@ -18,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.dao.BoardService;
 import com.example.demo.model.Board;
-import com.example.demo.model.Main;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
@@ -59,20 +58,6 @@ public class BoardController {
 		resultMap.put("cnt", cnt);	
 		return new Gson().toJson(resultMap);
 	}
-	
-    // 게시글 타입지정 데이터 호출
-	@RequestMapping(value = "/typeBoardList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String typeBoardList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Board> list = boardService.typeBoardList(map);
-		int cnt = boardService.countBoardCnt(map);
-		resultMap.put("list", list);
-		resultMap.put("cnt", cnt);	
-		return new Gson().toJson(resultMap);
-	}
-	
 	
     // 웹 주소 :  게시글 상세보기
     @RequestMapping("/main.board.detail.do") 
