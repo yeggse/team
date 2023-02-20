@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.dao.AreaService;
 import com.example.demo.dao.MainService;
 import com.example.demo.model.Area;
 import com.example.demo.model.Main;
@@ -27,6 +27,8 @@ public class MainController {
 	// Service 인터페이스 객체 생성 및 연결
     @Autowired
     private MainService mainService;
+    @Autowired
+    private AreaService areaService;
     
     
 	@Autowired
@@ -34,6 +36,57 @@ public class MainController {
 	
     // 원래는 Model model -> 세션 연결 후 : Model model, HttpServletRequest request, HttpServletResponse response
     // 웹 주소 : 메인페이지
+	@RequestMapping("/join.do")
+	public String join(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		List<Area> siList = areaService.selectSiList(map);
+    	map.put("si", siList.get(0).getSi());
+    	request.setAttribute("siList",  new Gson().toJson(siList));
+    	
+    	List<Area> guList = areaService.selectGuList(map);
+    	map.put("gu", guList.get(0).getGu());
+    	request.setAttribute("guList",  new Gson().toJson(guList));
+    	
+    	List<Area> dongList = areaService.selectDongList(map);
+    	map.put("dong", dongList.get(0).getDong());
+    	request.setAttribute("dongList",  new Gson().toJson(dongList));
+		return "/join"; // WEB-INF에서 호출할 파일명
+	}
+	//구
+	@RequestMapping(value = "/gu/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String gu(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Area> guList = areaService.selectGuList(map);
+		resultMap.put("guList", guList);
+		return new Gson().toJson(resultMap);
+	}
+	@RequestMapping(value = "/dong/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String dong(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Area> dongList = areaService.selectDongList(map);
+		resultMap.put("dongList", dongList);
+		return new Gson().toJson(resultMap);
+	}
+	@RequestMapping("/join2.do")
+	public String join2(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		 List<Area> siList = mainService.selectSiList(map); map.put("si",
+		 siList.get(0).getSi()); request.setAttribute("siList", new
+		 Gson().toJson(siList));
+		 
+		 List<Area> guList = areaService.selectGuList(map);
+	    	map.put("gu", guList.get(0).getGu());
+	    	request.setAttribute("guList",  new Gson().toJson(guList));
+	    	
+	    List<Area> dongList = areaService.selectDongList(map);
+	    	map.put("dong", dongList.get(0).getDong());
+	    	request.setAttribute("dongList",  new Gson().toJson(dongList));
+		return "/join2"; // WEB-INF에서 호출할 파일명
+	}
     @RequestMapping("/main.do") 
     public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
     	//세션 연결
@@ -45,7 +98,6 @@ public class MainController {
     	request.setAttribute("kind", kind);
     	request.setAttribute("Region", region);
     	List<Area> siList = mainService.selectSiList(map);
-    	System.out.println(siList.get(0).getSi());
     	map.put("si", siList.get(0).getSi());
     	request.setAttribute("siList",  new Gson().toJson(siList));
     	return "/web_main/main"; // WEB-INF에서 호출할 파일명
@@ -65,7 +117,17 @@ public class MainController {
     	request.setAttribute("kind", kind);
     	request.setAttribute("reskind", reskind);
     	request.setAttribute("si", area.getSi()); // 지역정보 시를 받아오는 것 request에 다시 넣어준다. 세션에는 따로 저장할 필요없어 넣어주거나 가져오지 않음(7)
-    	
+    	 List<Area> siList = mainService.selectSiList(map); map.put("si",
+    			 siList.get(0).getSi()); request.setAttribute("siList", new
+    			 Gson().toJson(siList));
+    			 
+    			 List<Area> guList = areaService.selectGuList(map);
+    		    	map.put("gu", guList.get(0).getGu());
+    		    	request.setAttribute("guList",  new Gson().toJson(guList));
+    		    	
+    		    List<Area> dongList = areaService.selectDongList(map);
+    		    	map.put("dong", dongList.get(0).getDong());
+    		    	request.setAttribute("dongList",  new Gson().toJson(dongList));
     	
     	
     	return "/web_store/storeList"; // WEB-INF에서 호출할 파일명

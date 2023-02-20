@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.JoinService;
+import com.example.demo.dao.MainService;
+import com.example.demo.model.Area;
 import com.example.demo.model.Join;
 import com.example.demo.model.Main;
 import com.google.gson.Gson;
@@ -29,17 +31,7 @@ public class JoinController {
 	@Autowired
     HttpSession session;
 
-	@RequestMapping("/join.do")
-	public String main(Model model) throws Exception {
-
-		return "/join"; // WEB-INF에서 호출할 파일명
-	}
 	
-	@RequestMapping("/join2.do")
-	public String main1(Model model) throws Exception {
-
-		return "/join2"; // WEB-INF에서 호출할 파일명
-	}
 	
 	
 	 @RequestMapping("/login.do") 

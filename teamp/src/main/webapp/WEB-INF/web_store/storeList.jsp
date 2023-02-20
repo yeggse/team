@@ -74,7 +74,16 @@
 		<div style="margin-top: 45px; text-align: center; font-weight: bold; font-size: x-large;">
 			오늘 픽업 가능한 음식점🍕
 	    </div>
-	    
+	    <div>
+	    <label for="gu" class="control-label">상세 지역을 골라주세요~ : </label> 
+					<select
+						id="gu" name="gu" v-model="gu" class="form-control" @click = "fnGet">
+						<!-- 선택을 했을때 change가되는데 메소드를 넣어줌(3)-->
+						<option value="">지역선택</option>
+						<!-- 처음 값을 선택할 수 있게 빈값을 넣어준다.(2) -->
+						<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
+					</select>
+	    </div>
     <!-- [기본 ] 음식점 출력!! -->
 	    <div style="background-color: yellow; ">
 	    <!-- DB연결 후, 아래 링크 확인하고, 연동하기 -->
@@ -155,14 +164,16 @@ var app = new Vue({
     	resadd: "",
     	tempGrade : "",
     	si : "${si}",
-    	reskind : "${reskind}"
+    	guList : ${guList},
+    	reskind : "${reskind}",
+    	gu : ""
     	
     }   
     , methods: {
     	// 기본 화면 출력 이벤트 (식당 출력)
        	fnGet : function(){
             var self = this;
-            var nparmap = {si : self.si, reskind:self.reskind}; 
+            var nparmap = {si : self.si, reskind:self.reskind, gu : self.gu}; 
             $.ajax({
                 url:"/main.storelist/list.dox",
                 dataType:"json",	
@@ -198,7 +209,22 @@ var app = new Vue({
             	console.log(self.list);
             }
        });
-	} 
+	}
+    	,fnGuList : function(){
+    		var self = this;
+            var nparmap = {si : self.si};
+            $.ajax({
+                url:"/gu/list.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {                                       
+	                self.guList = data.guList;
+	                console.log(data.guList);
+	                self.gu = "";
+                }
+            }); 
+        }
  	
  	, pageChange : function(url, param) {
 		var target = "_self";
@@ -237,7 +263,9 @@ var app = new Vue({
     	
     }
     , created: function () {
-		this.fnGet();
+		var self = this;
+    	this.fnGet();
+		self.fnGuList();
 		 
 	}
 });

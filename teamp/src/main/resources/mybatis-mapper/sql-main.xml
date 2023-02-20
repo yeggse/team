@@ -10,7 +10,7 @@
 		FROM
 			t3_restaurant	
 		where 
-		region = #{si} AND reskind = #{reskind} <!-- 시/도에 있는거 가져오기 --> 
+		region = #{si} AND reskind = #{reskind} And region1 =#{gu} <!-- 시/도에 있는거 가져오기 --> 
 		ORDER BY resnum ASC
 	</select>
 	
@@ -82,6 +82,22 @@
 		from 
 			t_area
 		group by si
+	</select>
+	
+	<select id="selectGuList" parameterType="hashmap" resultType="com.example.demo.model.Area">	
+			select si, gu
+		from 
+			t_area
+		where si = #{si}
+		group by si, gu
+    </select>
+	
+	<select id="selectDongList" parameterType="hashmap" resultType="com.example.demo.model.Area">	
+		select si, gu, dong
+		from 
+			t_area
+		where si = #{si} and gu = #{gu}
+		group by si, gu, dong
 	</select>
 	
 			<select id="selectReskind" parameterType="hashmap" resultType="com.example.demo.model.Main">	

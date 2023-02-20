@@ -26,6 +26,8 @@ public interface MainMapper {
 	List<Main> regionSearch(HashMap<String, Object> map);	
 	Main selectReskind(HashMap<String, Object> map);
 	List<Area> selectSiList(HashMap<String, Object> map) throws Exception;
+	List<Area> selectGuList(HashMap<String, Object> map) throws Exception;
+	List<Area> selectDongList(HashMap<String, Object> map) throws Exception;
 	// 사진 클릭 후 레스토랑 검색(resnum통함)
 	Main searchRes(HashMap<String, Object> map) throws Exception;
 }
