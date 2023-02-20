@@ -116,12 +116,12 @@
 			
 			ORDER BY orderdate DESC
 	</select>
-	<!-- 사업자가 예약 완료 버튼 누르면, DB값 변경! -->
+	<!-- 사업자가 예약 완료 버튼 누르면, DB값 변경!! -->
 	<update id="saleFin" parameterType="hashmap" >	
 		UPDATE t3_reserve
 		SET
 			salecomple = "Y" 
-		WHERE ordernum = #{ordernum}
+		WHERE no = #{no}
 	</update>
 	
 	<!-- 재고수정 -->
