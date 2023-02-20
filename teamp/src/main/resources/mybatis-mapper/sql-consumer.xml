@@ -15,8 +15,29 @@
 			
 	</select>	
 	
+		<!-- 리뷰 이미지 추가 -->
+	<insert id="insertReviewImg" parameterType="hashmap">	
+		INSERT INTO t3_review_img
+			(number, bild)  
+		VALUES
+			(#{number}, #{img})
+	</insert>
 	
+	<!-- 리뷰 수정 
+	<update id="editReview" parameterType="hashmap" >	
+		UPDATE t3_review 
+		SET
+			title = #{title}, content = #{content} 
+		WHERE number = #{number}
+	</update> -->
 	
+	<!-- 리뷰작성 작성 -->
+	<insert id="addReview" parameterType="hashmap" useGeneratedKeys="true" keyProperty="id" keyColumn="number">	
+		INSERT INTO t3_review 
+			( categori, resnum, writedate, content, nickname, reskind, create_id )  
+		VALUES
+			(#{reskind},  #{resnum}, NOW() , #{content}, #{nickname}, #{reskind}, #{userId})
+	</insert>
 	
 	
 	

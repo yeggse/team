@@ -29,4 +29,6 @@ public interface ResmenuMapper {
 	//재고수정
 	void editSupply(HashMap<String, Object> map);
 	
+	//일시품절 버튼
+	void soldout(HashMap<String, Object> map);	
 }

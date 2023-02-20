@@ -11,11 +11,11 @@
 				,categori
 				,resnum
 				,title
-				,picture
+				,writedate
 				,content
 				,grade
 				,nickname
-				,date
+				,create_id
 			FROM
 				t3_review
 			where resnum = #{resnum}
@@ -30,11 +30,11 @@
 				,categori
 				,resnum
 				,title
-				,picture
+				,writedate
 				,content
 				,grade
 				,nickname
-				,date
+				,create_id
 			FROM
 				t3_review
 			WHERE reskind = #{reskind} or #{flg}

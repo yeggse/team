@@ -79,7 +79,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
 .position_res {
 	font-size: 25px;
 	font-weight: bold;
-	margin-left: 390px;
+	margin-left: 300px;
 	margin-top: 10px;
 }
 
@@ -174,13 +174,14 @@ input {
 <body>
 	<div id="app" style="width: 100%; padding-top: 120px;" anlign="center">
 		<div class="title_food">{{res.resname}}</div>
-		<span class="grade" style="margin-left: 180px;">평점
-			:{{res.grade}}</span> <span class="position_res" style="marin-top: -50px;">
+		<span class="grade" style="margin-left: 180px; ">평점
+			:{{res.grade}}</span> 
+		<span class="position_res" style="marin-top: -50px;">
 			가게위치:{{res.resadd}} <!-- {{list[0].pickuptime}} 집에서 mysqpl로 다시 수정하기.-->
 		</span>
-		<!-- 가계주소들어와야함 -->
-		<div class="position_res" style="margin-left: 619px;">운영시간 :
-			${time}</div>
+		<div class="position_res" style="margin-left: 619px;">운영시간 : {{list[0].pickuptime}}
+			
+		</div>
 		<!-- 가계주소들어와야함 1-->
 		<div>
 			<button id="btn_menu" @click="fnClick1">메뉴</button>
@@ -361,7 +362,7 @@ input {
 						:container-class="'pagination'" :page-class="'page-item'">
 					</paginate>
 				</template> --%>
-
+							<Button v-if="'${kind}' == 'A'" @click="fnReviewwrite" id="btn_menu" style="margin-left: 80%;" >리뷰 작성하기</Button>
 			</div>
 		</div>
 	</div>
@@ -396,7 +397,7 @@ input {
 			,user : ${userVO}// user전체가 getter/setter되서 가져고 오는 형식. {{user.id}},{{user.name}} 쓸때 이렇게 쓸수있음. 여기한번 지정하고 다른데서 계속 쓸 수 있음.
 							// 기존 방법과 차이 userId: "${userId}" 이렇게 적어 줬었음.
 			,sum : 0
-		    ,time : ${time}
+		    /* ,time : ${time} */
 			,userId : "${userId}"
 		    ,name : "${userName}"
 		    ,kind : "${kind}"
@@ -405,6 +406,7 @@ input {
 		    ,num : 0
 		    ,payment : ""
 		    ,resname : ""
+		    
 		},
 		methods : {
 			fnGetImg : function() {
@@ -427,7 +429,7 @@ input {
 		
 		,fnGetReview : function() {
 			var self = this;
-			var nparmap = {resnum: self.res.resnum};
+			var nparmap = {resnum: self.res.resnum };
 			$.ajax({
 				url : "/searchReview.dox",
 				dataType : "json",
@@ -510,6 +512,10 @@ input {
 		, fnView : function(){
 			var self = this;
 			self.pageChange("/main.payment.do", {list : self.list,resname:self.res.resname}); /// 주문갯수를 포함하는 리스트를 넘김
+		}
+		, fnReviewwrite : function(){
+			var self = this;
+			self.pageChange("/reviewwrite.do", {list : self.list, resname:self.res.resname}); //리뷰작성페이지 이동
 		}
 		,fnReserve : function() {
 			var self = this;

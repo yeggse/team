@@ -82,8 +82,4 @@ public class MainServiceImpl implements MainService{
 		public Main searchRes(HashMap<String, Object> map) throws Exception {
 			return mainMapper.searchRes(map);
 		}
-		@Override
-		public Main Cpickuptime(HashMap<String, Object> map) throws Exception {
-			return mainMapper.Cpickuptime(map);
-		}
 }

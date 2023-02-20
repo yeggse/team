@@ -7,11 +7,11 @@ public class Review {
    private String categori;
    private int resnum;
    private String title;
-   private String picture;
+   private String writedate;
    private String content;
    private String grade;
    private String nickname;
-   private String date;
+   private String create_id;
    private String reskind;
 
    
@@ -40,12 +40,6 @@ public String getTitle() {
 public void setTitle(String title) {
 	this.title = title;
 }
-public String getPicture() {
-	return picture;
-}
-public void setPicture(String picture) {
-	this.picture = picture;
-}
 public String getContent() {
 	return content;
 }
@@ -61,14 +55,20 @@ public void setGrade(String grade) {
 public String getNickname() {
 	return nickname;
 }
+public String getWritedate() {
+	return writedate;
+}
+public void setWritedate(String writedate) {
+	this.writedate = writedate;
+}
+public String getCreate_id() {
+	return create_id;
+}
+public void setCreate_id(String create_id) {
+	this.create_id = create_id;
+}
 public void setNickname(String nickname) {
 	this.nickname = nickname;
-}
-public String getDate() {
-	return date;
-}
-public void setDate(String date) {
-	this.date = date;
 }
 public String getReskind() {
 	return reskind;

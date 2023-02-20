@@ -4,8 +4,36 @@ package com.example.demo.model;
 public class Consumer {
 	private int resnum;
 	private int price;
+	private int number;
 	private int ordernum;
 	private String resname;
+	private String bild;
+	private String writedate;
+	private String create_id;
+	public String getWritedate() {
+		return writedate;
+	}
+	public void setWritedate(String writedate) {
+		this.writedate = writedate;
+	}
+	public String getCreate_id() {
+		return create_id;
+	}
+	public void setCreate_id(String create_id) {
+		this.create_id = create_id;
+	}
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
+	public String getBild() {
+		return bild;
+	}
+	public void setBild(String bild) {
+		this.bild = bild;
+	}
 	private String reskind;
 	private String startdate;
 	private String menuname;

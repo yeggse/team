@@ -24,7 +24,14 @@ public class Res {
 	private String orderdate;
 	private int menunum;
 	private String resname;
+	private String soldout;
 
+	public String getSoldout() {
+		return soldout;
+	}
+	public void setSoldout(String soldout) {
+		this.soldout = soldout;
+	}
 	public String getReview() {
 		return review;
 	}

@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.io.File;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.dao.ConsumerService;
 import com.example.demo.model.Consumer;
@@ -49,7 +52,8 @@ public class ConsumerController {
     	HashMap<String, Object> map = new HashMap<String, Object>();
     	String kind = (String)session.getAttribute("KindSession");
     	String id = (String)session.getAttribute("userIdSession");
-    	
+    	String nickname = (String)session.getAttribute("nicknameSession");
+    	request.setAttribute("nickname", nickname);
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id); 
     	return "/review_write"; // WEB-INF에서 호출할 파일명
@@ -91,6 +95,74 @@ public class ConsumerController {
 		resultMap.put("list", list);
 		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
 		return new Gson().toJson(resultMap);
-	}   
+	}
+	 // 리뷰 작성 데이터 호출1
+		@RequestMapping(value = "/addReviewboard.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String addReviewList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			String img = (String) map.get("img"); //!!!!!!!!!!!!!!!!
+			consumerService.addReview(map);
+			resultMap.put("message", "성공");
+	    	
+			return new Gson().toJson(resultMap);
+		}
 
+		// 리뷰 이미지 추가
+		 @RequestMapping("/upload1")	// 게시글 업로드릉 위해 필용
+		    public String result(@RequestParam("file2") MultipartFile multi, @RequestParam("number") int number, HttpServletRequest request,HttpServletResponse response, Model model)
+		    {									// "file2"의 이름을 multi 로 하겠다는 의미
+		        String url = null;
+		        try {
+		            String originFilename = multi.getOriginalFilename();	//파일 이름
+		            String extName = originFilename.substring(originFilename.lastIndexOf("."),originFilename.length());	// 파일 확장자
+		            long size = multi.getSize();
+		            String saveFileName = genSaveFileName(extName);	// 현재시간으로 파일이름을 바꾸어서 img 폴더에 저장함으로써 이름이 중복되지 않도록
+		            
+		            System.out.println("originFilename : " + originFilename);
+		            System.out.println("extensionName : " + extName);
+		            System.out.println("size : " + size);
+		            System.out.println("saveFileName : " + saveFileName);
+		            
+		            String path2 = System.getProperty("user.dir");	// 작업하고 있는 프로젝트 경로가 담기게 됨
+		            System.out.println("Working Directory = " + path2 + "src\\webapp\\img\\reviewUpload");
+		            if(!multi.isEmpty())	//이미지가 있을때 
+		            {
+		                File file = new File(path2 + "\\src\\main\\webapp\\img\\reviewUpload", saveFileName);	//현재 프로젝트 위치에서 + img폴더에 파일을 넣겠다라는 의미 
+		                																						// >> 업로드하면 프로젝트에 현재시간으로 자동 저장
+		                multi.transferTo(file);
+		                
+		                HashMap<String, Object> map = new HashMap<String, Object>();
+		                map.put("img", "\\img\\reviewUpload\\" + saveFileName);	//경로+파일명 DB 저장	=> xml 파일에서도 #{img} 로 맞추어 줘야 한다~!!!!!!
+		                map.put("number", number);	// 게시글 번호 DB저장
+		                consumerService.insertReviewImg(map);
+		                
+		                model.addAttribute("filename", multi.getOriginalFilename());
+		                model.addAttribute("uploadPath", file.getAbsolutePath());
+		                
+		                return "filelist";	// board-add 의   form.append( "file1", $("#file1")[0].files[0] ); 파트로 넘어가서 저장될 수 있도록 함 
+		            }
+		        }catch(Exception e)
+		        {
+		            System.out.println(e);
+		        }
+		        return "redirect:join3.do";
+		    }
+
+		    // 현재 시간을 기준으로 파일 이름 생성 for 이미지 추가
+		    private String genSaveFileName(String extName) {
+		        String fileName = "";
+		        
+		        Calendar calendar = Calendar.getInstance();
+		        fileName += calendar.get(Calendar.YEAR);
+		        fileName += calendar.get(Calendar.MONTH);
+		        fileName += calendar.get(Calendar.DATE);
+		        fileName += calendar.get(Calendar.HOUR);
+		        fileName += calendar.get(Calendar.MINUTE);
+		        fileName += calendar.get(Calendar.SECOND);
+		        fileName += calendar.get(Calendar.MILLISECOND);
+		        fileName += extName;
+		        
+		        return fileName;
+		    }
 }
