@@ -164,7 +164,7 @@ input {
 		<span class="grade" style="margin-left: 180px;">평점 :{{res.grade}}</span> 
 		<span class="position_res" style="marin-top: -50px;"> 가게위치:{{res.resadd}} <!-- {{list[0].pickuptime}} 집에서 mysqpl로 다시 수정하기.--></span>
 		<!-- 가계주소들어와야함 -->
-		<div class="position_res" style="margin-left: 619px;">운영시간 : ${time}</div>
+		<div class="position_res" style="margin-left: 619px;">운영시간 : </div>
 		<!-- 가계주소들어와야함 1-->
 		<div>
 			<button id="btn_menu" @click="fnClick1">메뉴</button>
@@ -255,11 +255,11 @@ input {
 			,info : {}
 			
 			,flg : true
-			,res : ${res} // Main type의 객체이름 res로(where=resnum 들고오는 과정) 당겨쓰는 과정 in ResmenuController
+			/* ,res : ${res} // Main type의 객체이름 res로(where=resnum 들고오는 과정) 당겨쓰는 과정 in ResmenuController */
 			,user : ${userVO}// user전체가 getter/setter되서 가져고 오는 형식. {{user.id}},{{user.name}} 쓸때 이렇게 쓸수있음. 여기한번 지정하고 다른데서 계속 쓸 수 있음.
 							// 기존 방법과 차이 userId: "${userId}" 이렇게 적어 줬었음.
 		    ,sum : 0
-		    ,time : ${time}
+		    /* ,time : ${time} */
 		},
 		methods : {
 			fnGetImg : function() {

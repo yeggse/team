@@ -18,7 +18,7 @@
 		<!-- 리뷰 이미지 추가 -->
 	<insert id="insertReviewImg" parameterType="hashmap">	
 		INSERT INTO t3_review_img
-			(number, bild)  
+			(number, img)  
 		VALUES
 			(#{number}, #{img})
 	</insert>

@@ -7,7 +7,6 @@ public class Consumer {
 	private int number;
 	private int ordernum;
 	private String resname;
-	private String bild;
 	private String grade;
 	private String writedate;
 	private String create_id;
@@ -29,11 +28,11 @@ public class Consumer {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	public String getBild() {
-		return bild;
+	public String getImg() {
+		return img;
 	}
-	public void setBild(String bild) {
-		this.bild = bild;
+	public void setImg(String img) {
+		this.img = img;
 	}
 	private String reskind;
 	private String startdate;
@@ -114,12 +113,7 @@ public class Consumer {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getImg() {
-		return img;
-	}
-	public void setImg(String img) {
-		this.img = img;
-	}
+	
 	public String getImage() {
 		return image;
 	}

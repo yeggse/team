@@ -98,9 +98,8 @@
 
 
 <body>
-
-	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
+	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
     <div class="div1"> <!--전체 div-->
       <div class="div2"> <!--별점,텍스트 div-->
         <h1 style="font-size:50px">리뷰 작성하기</h1>
@@ -109,11 +108,11 @@
             <form name="myform" id="myform" method="post" action="./save">
               <fieldset>
                 <legend><h2>별점</h2></legend>
-                <input @click="fnGrade" type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
-                <input @click="fnGrade" type="radio" name="rating" value="4" id="rate2"><label for="rate2">⭐</label>
-                <input @click="fnGrade" type="radio" name="rating" value="3" id="rate3"><label for="rate3">⭐</label>
-                <input @click="fnGrade" type="radio" name="rating" value="2" id="rate4"><label for="rate4">⭐</label>
-                <input @click="fnGrade" type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
+                <input @click="fnGrade" type="radio" name="rating" value="5" id="rate1" v-model = "grade"><label for="rate1">⭐</label>
+                <input @click="fnGrade" type="radio" name="rating" value="4" id="rate2" v-model = "grade"><label for="rate2">⭐</label>
+                <input @click="fnGrade" type="radio" name="rating" value="3" id="rate3" v-model = "grade"><label for="rate3">⭐</label>
+                <input @click="fnGrade" type="radio" name="rating" value="2" id="rate4" v-model = "grade"><label for="rate4">⭐</label>
+                <input @click="fnGrade" type="radio" name="rating" value="1" id="rate5" v-model = "grade"><label for="rate5">⭐</label>
               </fieldset>
             </form>
           <div>
@@ -154,7 +153,7 @@ var app = new Vue({
 			,content:""
 			,img:""
 			,nickname : "${nickname}"
-			,number:"${map.reviewnum}"
+			,reviewnum:"${map.reviewnum}"
 			,grade:""
 			
     }
@@ -185,7 +184,16 @@ var app = new Vue({
                 }
             }); 
         } */
-     fnSave : function(){
+    	 fnGrade : function(){
+    	    	$(document).ready(function(){
+    	    		$('#radioButton').click(function(){
+    	    			//getter
+    	    			self.grade = $('input[name="rating"]:checked').val();
+    	    			alert(self.grade);
+    	    		});	
+    	    	});
+    	    }
+     ,fnSave : function(){
 		var self = this;
       	var nparmap = {nickname:self.nickname, reviewnum: self.reviewnum, content : self.content, img : self.img, grade: self.grade}; 
         $.ajax({
@@ -195,14 +203,13 @@ var app = new Vue({
             data : nparmap,
             success : function(data) {  
             	console.log(data);
-            	console.log(radioVal);
             	console.log(self.grade);
 	            	var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
-       	        form.append( "file2", $("#file2")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미 //이미지 선택한 파일이 form으로 들어감	보트컨트롤러의 fileList파이
-       	     	form.append( "number",  data.number);	// 여기에 있는 boardIdx는 어디로 가나?????		// boardIdx에 게시글의 경로를 일치시켜주기
+       	        form.append( "file3", $("#file3")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미 //이미지 선택한 파일이 form으로 들어감	보트컨트롤러의 fileList파이
+       	     	form.append( "reviewnum",  data.reviewnum);	// 여기에 있는 boardIdx는 어디로 가나?????		// boardIdx에 게시글의 경로를 일치시켜주기
        	  		// 이미지 파일을 활성화하는 아작스 통신 더 불러오기
        	         $.ajax({
-       	             url : "/upload1"	// board controller - upload파트와 연결
+       	             url : "/upload2"	// board controller - upload파트와 연결
        	           , type : "POST"
        	           , processData : false
        	           , contentType : false
@@ -220,10 +227,10 @@ var app = new Vue({
     // 사진 업로드 
 		, upload : function(){
 		var form = new FormData();
-	        form.append( "file2", $("#file2")[0].files[0] );
+	        form.append( "file3", $("#file3")[0].files[0] );
 	        
 	         $.ajax({
-	             url : "/upload1"
+	             url : "/upload2"
 	           , type : "POST"
 	           , processData : false
 	           , contentType : false
@@ -232,15 +239,6 @@ var app = new Vue({
 	           ,error: function (jqXHR) {}
 	       });
     	}
-    ,fnGrade : function(){
-    	$(document).ready(function(){
-    		$('#radioButton').click(function(){
-    			//getter
-    			self.grade = $('input[name="rating"]:checked').val();
-    			alert(self.grade);
-    		});	
-    	});
-    }
     }
     , created: function () {
 	}

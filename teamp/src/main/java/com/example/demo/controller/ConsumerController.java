@@ -104,7 +104,7 @@ public class ConsumerController {
 		public String addReviewList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 			HashMap<String, Object> resultMap = new HashMap<String, Object>();
 			String img = (String) map.get("img"); //!!!!!!!!!!!!!!!!
-			String grade = (String) map.get("grade");
+			
 			consumerService.addReview(map);
 			resultMap.put("message", "성공");
 	    	
@@ -112,8 +112,8 @@ public class ConsumerController {
 		}
 
 		// 리뷰 이미지 추가
-		 @RequestMapping("/upload1")	// 게시글 업로드릉 위해 필용
-		    public String result(@RequestParam("file2") MultipartFile multi, @RequestParam("number") int number, HttpServletRequest request,HttpServletResponse response, Model model)
+		 @RequestMapping("/upload2")	// 게시글 업로드릉 위해 필용
+		    public String result(@RequestParam("file3") MultipartFile multi, @RequestParam("reviewnum") int reviewnum, HttpServletRequest request,HttpServletResponse response, Model model)
 		    {									// "file2"의 이름을 multi 로 하겠다는 의미
 		        String url = null;
 		        try {
@@ -137,7 +137,7 @@ public class ConsumerController {
 		                
 		                HashMap<String, Object> map = new HashMap<String, Object>();
 		                map.put("img", "\\img\\reviewUpload\\" + saveFileName);	//경로+파일명 DB 저장	=> xml 파일에서도 #{img} 로 맞추어 줘야 한다~!!!!!!
-		                map.put("number", number);	// 게시글 번호 DB저장
+		                map.put("reviewnum", reviewnum);	// 게시글 번호 DB저장
 		                consumerService.insertReviewImg(map);
 		                
 		                model.addAttribute("filename", multi.getOriginalFilename());
