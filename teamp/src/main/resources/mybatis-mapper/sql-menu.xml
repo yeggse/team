@@ -7,9 +7,9 @@
 	<!-- 메뉴 추가 -->
 	<insert id="addMenu" parameterType="hashmap" useGeneratedKeys="true" keyProperty="idx" keyColumn="idx" >	
 		INSERT INTO t3_resmenu
-			(resnum, reskind, price, startdate, menuname, introduce, supply, pickuptime) 
+			(resnum, reskind, price, startdate, menuname, introduce, supply, pickuptime, soldout) 
 		VALUES
-			(#{resnum}, #{reskind}, #{price}, NOW() , #{menuname}, #{introduce}, #{supply}, #{pickuptime})
+			(#{resnum}, #{reskind}, #{price}, NOW() , #{menuname}, #{introduce}, #{supply}, #{pickuptime}, 'N')
 	</insert>
 	
 	  <!-- useGeneratedKeys="true" keyProperty="id" keyColumn="noticenum" -->
