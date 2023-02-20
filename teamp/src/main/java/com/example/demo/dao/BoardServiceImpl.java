@@ -29,9 +29,13 @@ public class BoardServiceImpl implements BoardService{
 		
 		//게시글 갯수 세기
 		@Override
-		public int countBoardCnt() {
+//		public int countBoardCnt() {
+//			// TODO Auto-generated method stub
+//			return boardMapper.countBoardCnt();
+//		}
+		public List<Board> countBoardCnt(HashMap<String, Object> map) throws Exception {
 			// TODO Auto-generated method stub
-			return boardMapper.countBoardCnt();
+			return boardMapper.countBoardCnt(map);
 		}
 		
 		// 게시글 검색 출력
@@ -79,6 +83,17 @@ public class BoardServiceImpl implements BoardService{
 		public void insertBoardImg(HashMap<String, Object> map) {
 			// TODO Auto-generated method stub
 			boardMapper.insertBoardImg(map);
+		}
+		
+		// 게시글 타입 지정 출력
+		@Override
+		public List<Board> typeBoardList(HashMap<String, Object> map) throws Exception {
+			// TODO Auto-generated method stub
+			int startNum = Integer.parseInt(String.valueOf(map.get("startNum")));
+			int lastNum = Integer.parseInt(String.valueOf(map.get("lastNum")));
+			map.put("startNum", startNum);
+			map.put("lastNum", lastNum);
+			return boardMapper.typeBoardList(map);
 		}
 
 

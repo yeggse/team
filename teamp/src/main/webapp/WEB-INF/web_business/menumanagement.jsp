@@ -146,7 +146,7 @@ background:#ffff99;
 				</thead>
 				<!-- db 수정되면 알맞은 값 가져오기 -->
 				<tbody>
-					<tr v-for="(item, index) in list" >                            
+					<tr v-for="(item, index) in list" id="soldoutCheck" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
 	                   <td @click="fnDetailView(item)">{{item.menuname}}</td> 
 	                   <td @click="fnDetailView(item)">{{item.price}}원</td> 
@@ -230,6 +230,8 @@ var app = new Vue({
         //일시품절버튼
         , btnSoldout : function(item){
     		var self = this;
+    		 var color = "gray";
+    		 var bodyTag = document.getElementById("soldoutCheck");
 	      	var nparmap = {soldout : self.soldout, idx: item.idx}; 
 	        $.ajax({
 	            url:"/soldout.dox",
@@ -238,6 +240,7 @@ var app = new Vue({
 	            data : nparmap,
 	            success : function(data) {
 	            	alert("일시품절 처리되었습니다.");
+	            	bodyTag.style.backgroundColor = color;
 	            	console.log(item.idx);
 	            }
 	        }); 
@@ -247,6 +250,8 @@ var app = new Vue({
         //다시판매버튼
         , btnResell : function(item){
     		var self = this;
+    		 var color = "";
+    		 var bodyTag = document.getElementById("soldoutCheck");
 	      	var nparmap = {soldout : self.soldout, idx: item.idx}; 
 	        $.ajax({
 	            url:"/resell.dox",
@@ -255,6 +260,7 @@ var app = new Vue({
 	            data : nparmap,
 	            success : function(data) {
 	            	alert("다시판매 처리되었습니다.");
+	            	bodyTag.style.backgroundColor = color;
 	            	console.log(item.idx);
 	            }
 	        }); 

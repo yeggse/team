@@ -98,15 +98,38 @@
 	position:relative;
 	top:1px;
 }
-
-
+select {
+	margin-bottom: 10px;
+	margin-top: 10px;
+	background: lightgray;
+}
+	       #btnList{
+		       color: #8FBC94;
+		       font-weight: bold; 
+		       width: 80px;
+		       height: 40px;
+		       background-color: white;
+		       border-radius: 20px;
+		       border: white ;
+		       font-size: large;
+		       padding: 0px;
+	       }
 </style>
 <body>
 	<div id="app">
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>세잎 공지사항 - 검색어 입력시, 페이징 오류</h2>
+				<h2>세잎 공지사항 - 검색어 입력시, 페이징 오류</h2>
+ 					<form action="#" style="float: right; display: inline;">
+						<select  @change = "fntype"
+							style="width: 100px; height: 30px; font-size: large; font-weight: bold;"
+							v-model="bordtype">
+							<option value="all">전체</option>
+							<option value="A">일반회원</option>
+							<option value="B">사장님</option>
+						</select>
+					</form> 
 			<div style="text-align: center;">
 				<input type="text" placeholder="검색어를 입력해 주세요" id="input" v-model="title"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
 				<button id="btn" @click="fnSearch" >검색</button>
@@ -185,6 +208,7 @@ var app = new Vue({
         , hits : ""
         , nickname : ""
         , startdate : ""
+        , bordtype : ""
     }   
     , methods: {
     	// 기본 출력 메소드
@@ -205,6 +229,31 @@ var app = new Vue({
                 }
             }); 
         }  
+    	, fntype : function(){
+            var self = this;
+            var startNum = ((self.selectPage-1) * 10);
+    		var lastNum = self.selectPage * 10;
+            var nparmap = {startNum : startNum, lastNum : lastNum, boradtype:self.boradtype};
+            $.ajax({
+                url:"/typeBoardList.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {                                       
+
+	                if(self.boradtype=="A"){
+		                self.list = data.list;
+		                self.pageCount = Math.ceil(data.cnt / 10);
+		                console.log(self.pageCount);
+		                alert("AB");
+	                }else{
+	                	self.fnGetList();
+	                	alert("노노");
+	                }
+                }
+            });     		
+    		
+    	}
     	// 게시글 상세 확인
     	, fnDetailView : function(item){
     		var self = this;
@@ -246,7 +295,7 @@ var app = new Vue({
 			self.selectPage = pageNum;
 			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
 			var lastNum = pageNum * 10
-	        var nparmap = {startNum : startNum, lastNum : lastNum};
+	        var nparmap = {startNum : startNum, lastNum : lastNum, title : self.title};
 	        $.ajax({
 	            url:"/firstBoard.dox",
 	            dataType:"json",	

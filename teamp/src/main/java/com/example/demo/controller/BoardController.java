@@ -54,9 +54,22 @@ public class BoardController {
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Board> list = boardService.firstBoard(map);
-		int cnt = boardService.countBoardCnt();	//게시글 갯수 세기
+		//int cnt = boardService.countBoardCnt();
+		List<Board> cnt = boardService.countBoardCnt(map);///////////////////////////////////////////////////////////////
 		resultMap.put("list", list);
-		resultMap.put("cnt", cnt);	//게시글 갯수 세기
+		resultMap.put("cnt", cnt);	
+		return new Gson().toJson(resultMap);
+	}
+    // 게시글 타입지정 데이터 호출
+	@RequestMapping(value = "/typeBoardList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String typeBoardList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Board> list = boardService.firstBoard(map);
+		//int cnt = boardService.countBoardCnt();
+		resultMap.put("list", list);
+		//resultMap.put("cnt", cnt);	
 		return new Gson().toJson(resultMap);
 	}
 	//게시글 검색 출력 데이터 호출
