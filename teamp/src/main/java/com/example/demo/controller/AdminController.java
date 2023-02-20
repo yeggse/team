@@ -73,7 +73,7 @@ public class AdminController {
 	public String BuMemList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Admin> list = adminService.normalMemList(map);
+		List<Admin> list = adminService.BuMemList(map);
 		//int cnt = adminService.countBoardCnt();	//게시글 갯수 세기
 		resultMap.put("list", list);
 		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
@@ -90,6 +90,16 @@ public class AdminController {
 		return new Gson().toJson(resultMap);
 	} 	
 	
+	// 관리자회원 검색
+	@RequestMapping(value = "/searchBum.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String searchBum(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Admin> list = adminService.searchBum(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+		resultMap.put("list", list);
+		return new Gson().toJson(resultMap);
+	} 	
+	
 	// 일반회원 상세 정보 출력
     @RequestMapping("/member.detail.do") 
     public String memDetail(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -100,6 +110,7 @@ public class AdminController {
     	request.setAttribute("kind", kind);
     	return "/web_admin/memDetail"; // WEB-INF에서 호출할 파일명
     }
+    
     // 일반회원 상세정보 출력 데이터 호출
 	@RequestMapping(value = "/detailMem.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody

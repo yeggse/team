@@ -125,7 +125,7 @@ var app = new Vue({
 	       	
 	    	}else{   //취소
 	    		 alert("회원 삭제가 취소되었습니다.");
-	    		 location.href="/normalMem.do";
+	    		 location.href="/BuMemList.do";
 	    	 }
     	}
         // 회원탈퇴 실행
@@ -138,13 +138,13 @@ var app = new Vue({
 	            type : "POST", 
 	            data : nparmap,
 	            success : function(data) {  
-	           		location.href="/normalMem.do";
+	           		location.href="/BuMemList.do";
 	            }
 	        });  		
     	}
 		// 목록으로 가기 버튼
     	, fnList : function(){
-    		location.href="/normalMem.do";
+    		location.href="/BuMemList.do";
     	} 
     	// 페이지 이동
     	, pageChange : function(url, param) {

@@ -21,7 +21,7 @@
 		FROM
 			t3_account
 		where
-			id = #{id} or name = #{name}
+			(id = #{search} or name = #{search}) and kind="A"
 		ORDER BY id ASC
 	</select>
 	
@@ -43,7 +43,7 @@
 		WHERE id = #{id}
 	</update>
 	
-	<!-- 일반회원 탈퇴 -->
+	<!-- 회원 삭제 -->
 	<delete id="deletemem" parameterType="hashmap">	
 		DELETE FROM 
 			t3_account 
@@ -52,7 +52,7 @@
 			
 	</delete>	
 	
-	<!-- 관리자 사업자 회원 출력 -->
+	<!-- 사업자 회원 출력 -->
 	<select id="BuMemList" parameterType="hashmap" resultType="com.example.demo.model.Admin">	
 			SELECT 
 				id, kind, phonenum, acc, name, address, frontregisnum, afterregisnum, nickname, resname, resnum, 
@@ -62,6 +62,18 @@
 			where kind = "B"
 			ORDER BY id ASC
 			LIMIT #{startNum}, #{lastNum}
+	</select>
+	
+	<!-- 사업자 회원 검색 -->
+	<select id="searchBum" parameterType="hashmap" resultType="com.example.demo.model.Admin">	
+		SELECT
+				id, kind, phonenum, acc, name, address, frontregisnum, afterregisnum, nickname, resname, resnum, 
+				reskind, region, resad, resphone
+		FROM
+			t3_account
+		where
+			(id = #{search} or name = #{search}) and kind="B"
+		ORDER BY id ASC
 	</select>	
 	
 	<!-- 사업자 상세 정보 출력 -->

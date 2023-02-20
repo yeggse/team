@@ -109,7 +109,7 @@ background:#ffff99;
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>일반 회원 관리🙆‍♀️ - 검색버튼 쿼리 재확인</h2>‍
+			<h2>일반 회원 관리🙆‍♀️ </h2>‍
 			<div style="text-align: center;">
 			
 				<input type="text" placeholder="id 혹은 이름을 검색해 주세요" v-model="search"  v-on:keyup.enter="fnSearch"></input>
@@ -241,7 +241,7 @@ var app = new Vue({
 		// 검색버튼 이벤트
        	,fnSearch : function(){
             var self = this;
-            var nparmap = {id : self.id, name : self.name}; 
+            var nparmap = {search : self.search}; 
             $.ajax({
                 url:"/searchMem.dox",
                 dataType:"json",	

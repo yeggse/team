@@ -109,11 +109,11 @@ background:#ffff99;
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>사업자 회원 관리👨‍🍳 현재 출력이 일반회원 되고 있음</h2>‍
+			<h2>사업자 회원 관리👨‍🍳 검색버튼 활성화 필요</h2>‍
 			<div style="text-align: center;">
 			
-				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="name"  v-on:keyup.enter="fnSearch"></input>
-				<button id="btn" >검색</button>	
+				<input type="text" placeholder="id 혹은 이름을 검색해 주세요" v-model="search"  v-on:keyup.enter="fnSearch"></input>
+				<button id="btn" @click="fnSearch">검색</button>	
 				
 		<!-- 		<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		업종 리스트 출력하는 쿼리 생성 필요!!
 				<button id="btn"  >검색</button>  -->
@@ -186,6 +186,7 @@ var app = new Vue({
         , phonenum : ""
         , kind :"${kind}"
         , acc : ""
+        , search : ""
        
     }   
     , methods: {
@@ -207,39 +208,58 @@ var app = new Vue({
                 }
             }); 
         }  
-	, fnMemDetail : function(item){
-		var self = this;
-		self.pageChange("/bum.detail.do", {id : item.id});	// 상세페이지로 해당 인덱스 번호를 넘겨줌~~!
-	}
-	// 화면 전환 for 멤버정보 상세 확인
-	, pageChange : function(url, param) {
-		var target = "_self";
-		if(param == undefined){
-			return;
+		, fnMemDetail : function(item){
+			var self = this;
+			self.pageChange("/bum.detail.do", {id : item.id});	// 상세페이지로 해당 id를 넘겨줌~~!
 		}
-		var form = document.createElement("form"); 
-		form.name = "dataform";
-		form.action = url;
-		form.method = "post";
-		form.target = target;
-		for(var name in param){
-			var item = name;
-			var val = "";
-			if(param[name] instanceof Object){
-				val = JSON.stringify(param[name]);
-			} else {
-				val = param[name];
+		// 화면 전환 for 멤버정보 상세 확인
+		, pageChange : function(url, param) {
+			var target = "_self";
+			if(param == undefined){
+				return;
 			}
-			var input = document.createElement("input");
-    		input.type = "hidden";
-    		input.name = item;
-    		input.value = val;
-    		form.insertBefore(input, null);
-		}
-		document.body.appendChild(form);
-		form.submit();
-		document.body.removeChild(form);
-	}    
+			var form = document.createElement("form"); 
+			form.name = "dataform";
+			form.action = url;
+			form.method = "post";
+			form.target = target;
+			for(var name in param){
+				var item = name;
+				var val = "";
+				if(param[name] instanceof Object){
+					val = JSON.stringify(param[name]);
+				} else {
+					val = param[name];
+				}
+				var input = document.createElement("input");
+	    		input.type = "hidden";
+	    		input.name = item;
+	    		input.value = val;
+	    		form.insertBefore(input, null);
+			}
+			document.body.appendChild(form);
+			form.submit();
+			document.body.removeChild(form);
+		}  
+		// 검색버튼 이벤트
+       	,fnSearch : function(){
+            var self = this;
+            var nparmap = {search : self.search}; 
+            $.ajax({
+                url:"/searchBum.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {       
+                	self.list = data.list;
+    	            	if(self.list.length == 0){
+    	            		alert("존재하지 않습니다.");
+    	            		self.fnGetList();
+    	            	}    
+                	console.log(self.list);
+                }
+           });
+    	} 
     }   
     , created: function () {
     	var self = this;

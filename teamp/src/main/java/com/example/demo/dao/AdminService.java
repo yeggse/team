@@ -7,9 +7,9 @@ import com.example.demo.model.Admin;
 
 
 public interface AdminService {
-	// 관리자 일반회원 출력
+	// 일반회원 출력
 	List<Admin> normalMemList(HashMap<String, Object> map) throws Exception; 
-	// 관리자 사업자 회원 출력
+	// 사업자 회원 출력
 	List<Admin> BuMemList(HashMap<String, Object> map) throws Exception; 
 	// 일반회원 상세 정보 출력
 	HashMap<String, Object> detailmem(HashMap<String, Object>map); 
@@ -21,4 +21,6 @@ public interface AdminService {
 	void deletemem(HashMap<String, Object> map); 
 	// 일반회원 검색
 	List<Admin>searchMem(HashMap<String, Object> map) throws Exception;
+	// 사업자 회원 검색
+	List<Admin>searchBum(HashMap<String, Object> map) throws Exception;
 }

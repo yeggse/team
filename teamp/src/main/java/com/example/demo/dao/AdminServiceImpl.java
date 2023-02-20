@@ -85,6 +85,13 @@ public class AdminServiceImpl implements AdminService{
 		return adminMapper.searchMem(map);
 	}
 
+	// 사업자 회원 검색
+	@Override
+	public List<Admin> searchBum(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return adminMapper.searchBum(map);
+	}
+
 
 
 
