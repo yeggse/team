@@ -107,7 +107,7 @@ public class ConsumerController {
 			
 			consumerService.addReview(map);
 			resultMap.put("message", "성공");
-	    	
+			resultMap.put("reviewnum", map.get("reviewnum"));//******
 			return new Gson().toJson(resultMap);
 		}
 

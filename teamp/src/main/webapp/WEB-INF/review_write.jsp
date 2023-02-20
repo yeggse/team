@@ -123,7 +123,7 @@
               <img src="https://cdn-icons-png.flaticon.com/512/158/158715.png" style="width:50px; height:50px;" alt="사진0/5">
               <ol>사진첨부</ol>
             </button>
-            <input type="file" id="file2" name="file2">
+            <input type="file" id="file3" name="file3">
 			<!--  
 			<input type="file" onchange="readURL(this);">  //사진 미리보기 시도하려다 실패
 				-->            
@@ -145,7 +145,7 @@
 <script type="text/javascript">
 var app = new Vue({ 
     el: '#app',
-    data: {resnum:""
+    data: {resnum:"${resnum}"
 			,writedate:""
 			,menuname:""
 			,price:""
@@ -204,7 +204,7 @@ var app = new Vue({
             success : function(data) {  
             	console.log(data);
             	console.log(self.grade);
-	            	var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
+	            var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
        	        form.append( "file3", $("#file3")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미 //이미지 선택한 파일이 form으로 들어감	보트컨트롤러의 fileList파이
        	     	form.append( "reviewnum",  data.reviewnum);	// 여기에 있는 boardIdx는 어디로 가나?????		// boardIdx에 게시글의 경로를 일치시켜주기
        	  		// 이미지 파일을 활성화하는 아작스 통신 더 불러오기
@@ -219,7 +219,7 @@ var app = new Vue({
        	           {}
        	       }); 
             	alert("리뷰 작성해 주셔서 감사합니다!");
-           		location.href="/join3.do";
+           		location.href="/main.do";
             }
         }); 
      }

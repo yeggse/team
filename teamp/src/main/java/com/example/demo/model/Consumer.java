@@ -10,6 +10,20 @@ public class Consumer {
 	private String grade;
 	private String writedate;
 	private String create_id;
+	private int reviewnum;
+	
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	public int getReviewnum() {
+		return reviewnum;
+	}
+	public void setReviewnum(int reviewnum) {
+		this.reviewnum = reviewnum;
+	}
 	public String getWritedate() {
 		return writedate;
 	}
