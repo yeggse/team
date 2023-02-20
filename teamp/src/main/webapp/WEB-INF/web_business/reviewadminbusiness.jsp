@@ -126,7 +126,7 @@ background:#ffff99;
 					<col width="5%"/>
 					<col width="10%"/> 
 					<col width="10%"/> 
-					<col width="*%"/>
+					
 					<col width="15%"/>
 					<col width="15%"/>
 					<col width="15%"/>
@@ -138,7 +138,7 @@ background:#ffff99;
 						<th scope="col">리뷰 번호</th>
 						<th scope="col">분류</th>
 						<th scope="col">제목</th>
-						<th scope="col">사진</th>
+						
 						<th scope="col">내용</th>
 						<th scope="col">별점</th>
 						<th scope="col">닉네임</th>
@@ -149,14 +149,14 @@ background:#ffff99;
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
-	                   <td>{{item.resnum}}</td> 
+	                   <td>{{item.reviewnum}}</td> 
 	                   <td>{{item.categori}}</td> 
 	                   <td>{{item.title}}</td>
-	                   <td>{{item.picture}}</td>
+	                   
 	                   <td>{{item.content}}</td>
 	                   <td>{{item.grade}}</td>
 	                   <td>{{item.nickname}}</td>
-	                   <td>{{item.date}}</td> 
+	                   <td>{{item.writedate}}</td> 
 	               </tr>
 				</tbody>
 			</table>

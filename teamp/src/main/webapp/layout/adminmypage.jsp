@@ -55,12 +55,12 @@
                         <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 
                         <ul class="collapse__menu" style="width:120px;">
-                            <a href="reviewadmin.do" class="collapse__sublink">●전체</a>
-                            <a href="reviewadmin.do" class="collapse__sublink">●양식</a>
-                            <a href="#" class="collapse__sublink">●중식</a>
-                            <a href="#" class="collapse__sublink">●일식</a>
-                            <a href="#" class="collapse__sublink">●아시아</a>
-                            <a href="#" class="collapse__sublink">●한식</a>
+                            <a href="#" class="collapse__sublink" onclick="pageChange1('/reviewadmin.do',{reskind: '전체',flg :'1=1'})">●전체</a>
+                            <a href="#" class="collapse__sublink" onclick="pageChange1('/reviewadmin.do',{reskind: '양식'})">●양식</a>
+                            <a href="#" class="collapse__sublink" onclick="pageChange1('/reviewadmin.do',{reskind: '중식'})">●중식</a>
+                            <a href="#" class="collapse__sublink" onclick="pageChange1('/reviewadmin.do',{reskind: '일식'})">●일식</a>
+                            <a href="#" class="collapse__sublink" onclick="pageChange1('/reviewadmin.do',{reskind: '아시아'})">●아시아</a>
+                            <a href="#" class="collapse__sublink" onclick="pageChange1('/reviewadmin.do',{reskind: '한식'})">●한식</a>
                         </ul>
                     </div>
 
@@ -80,6 +80,37 @@
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <!-- JS -->
     <script src="js/main.js"></script>
+    <script>
+    function pageChange1 (url, param) {
+		var target = "_self";
+		if(param == undefined){
+		//	this.linkCall(url);
+			return;
+		}
+		var form = document.createElement("form"); 
+		form.name = "dataform";
+		form.action = url;
+		form.method = "post";
+		form.target = target;
+		for(var name in param){
+			var item = name;
+			var val = "";
+			if(param[name] instanceof Object){
+				val = JSON.stringify(param[name]);
+			} else {
+				val = param[name];
+			}
+			var input = document.createElement("input");
+    		input.type = "hidden";
+    		input.name = item;
+    		input.value = val;
+    		form.insertBefore(input, null);
+		}
+		document.body.appendChild(form);
+		form.submit();
+		document.body.removeChild(form);
+	}
+    </script>
    
 </body>
 </html>

@@ -19,7 +19,7 @@
 			FROM
 				t3_review
 			where resnum = #{resnum}
-			ORDER BY date ASC
+			ORDER BY writedate ASC
 			
 	</select>
 	<!-- 관리자 리뷰리스트 -->
@@ -38,7 +38,7 @@
 			FROM
 				t3_review
 			WHERE reskind = #{reskind} or #{flg}
-			ORDER BY date ASC
+			ORDER BY writedate ASC
 			
 			
 			
@@ -51,15 +51,15 @@
 				,categori
 				,resnum
 				,title
-				,picture
 				,content
+				,writedate
 				,grade
 				,nickname
-				,date
+				
 			FROM
 				t3_review
 			WHERE resnum = #{resnum}
-			ORDER BY date ASC
+			ORDER BY writedate ASC
 			
 			
 			
