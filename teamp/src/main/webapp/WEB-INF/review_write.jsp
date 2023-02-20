@@ -146,9 +146,8 @@
 var app = new Vue({ 
     el: '#app',
     data: {
-		  	  list : [] 
-			  , info : {}
-    		//resnum:"${resnum}"
+		  	list : [] 
+			, info : {}
 			,writedate:""
 			,menuname:""
 			,price:""
