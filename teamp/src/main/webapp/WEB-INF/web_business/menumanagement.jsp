@@ -102,6 +102,11 @@ border-top:1px solid #ccc; padding:0.8rem 0rem; text-align:center; vertical-alig
 .board_list tbody tr:hover{
 background:#ffff99;
 }
+.board_soldoutColor{
+background:gray;
+}
+
+
 </style>
 <body>
 <jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
@@ -146,7 +151,7 @@ background:#ffff99;
 				</thead>
 				<!-- db 수정되면 알맞은 값 가져오기 -->
 				<tbody>
-					<tr v-for="(item, index) in list" id="soldoutCheck" >                            
+					<tr v-for="(item, index) in list" id="soldoutCheck" v-bind:class="{'board_soldoutColor' : item.soldout == 'Y' }" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
 	                   <td @click="fnDetailView(item)">{{item.menuname}}</td> 
 	                   <td @click="fnDetailView(item)">{{item.price}}원</td> 
@@ -205,7 +210,6 @@ var app = new Vue({
         , supply:""
         , resnum:"${resnum}"
         , menuname:"${menuname}"
-        
         , picture:"${userpicture}"
     }   
     , methods: {
@@ -241,6 +245,7 @@ var app = new Vue({
 	            success : function(data) {
 	            	alert("일시품절 처리되었습니다.");
 	            	bodyTag.style.backgroundColor = color;
+	            	location.reload();
 	            	console.log(item.idx);
 	            }
 	        }); 
@@ -250,8 +255,6 @@ var app = new Vue({
         //다시판매버튼
         , btnResell : function(item){
     		var self = this;
-    		 var color = "";
-    		 var bodyTag = document.getElementById("soldoutCheck");
 	      	var nparmap = {soldout : self.soldout, idx: item.idx}; 
 	        $.ajax({
 	            url:"/resell.dox",
@@ -260,7 +263,7 @@ var app = new Vue({
 	            data : nparmap,
 	            success : function(data) {
 	            	alert("다시판매 처리되었습니다.");
-	            	bodyTag.style.backgroundColor = color;
+	            	location.reload();
 	            	console.log(item.idx);
 	            }
 	        }); 
