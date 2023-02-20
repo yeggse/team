@@ -121,8 +121,8 @@ select {
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
 				<h2>세잎 공지사항 - 검색어 입력시, 페이징 오류</h2>
- 					<form action="#" style="float: right; display: inline;" @click="fntype">
-						<select
+ 					<form action="#" style="float: right; display: inline;">
+						<select  @change = "fntype"
 							style="width: 100px; height: 30px; font-size: large; font-weight: bold;"
 							v-model="bordtype">
 							<option value="all">전체</option>
@@ -241,12 +241,14 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) {                                       
 
-	                if(self.boradtype=="A" || self.boradtype =="B"){
+	                if(self.boradtype=="A"){
 		                self.list = data.list;
 		                self.pageCount = Math.ceil(data.cnt / 10);
 		                console.log(self.pageCount);
+		                alert("AB");
 	                }else{
 	                	self.fnGetList();
+	                	alert("노노");
 	                }
                 }
             });     		
