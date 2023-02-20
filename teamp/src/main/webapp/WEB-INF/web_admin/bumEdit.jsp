@@ -45,7 +45,7 @@
 					<col width="*"/>
 				</colgroup>
 				<tr>
-					<td style="text-align : center;" ><h3>{{id}}님의 비밀번호 수정</h3></td>
+					<td style="text-align : center;" ><h3>id {{id}}님의 비밀번호 수정</h3></td>
 					
 				</tr>
 				<tr>
@@ -59,6 +59,7 @@
 	        
 	</div>
 </body>
+<jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
@@ -76,13 +77,13 @@ var app = new Vue({
     		var self = this;
 	      	var nparmap = {pwd : self.pwd, id : self.id};
 	        $.ajax({
-	            url:"/memEdit.dox",
+	            url:"/bumEdit.dox",
 	            dataType:"json",	
 	            type : "POST", 
 	            data : nparmap,
 	            success : function(data) {            
 	           	 	alert("비밀번호가 변경 되었습니다.");
-	           		location.href="/normalMem.do";
+	           		location.href="/BuMemList.do";
 	            }
 	        }); 
 		}
