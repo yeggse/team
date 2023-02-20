@@ -99,12 +99,11 @@ public class ConsumerController {
 		return new Gson().toJson(resultMap);
 	}
 	 // 리뷰 작성 데이터 호출1
-		@RequestMapping(value = "/addReviewboard.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@RequestMapping(value = "/addReview.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody
-		public String addReviewList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		public String addReview(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 			HashMap<String, Object> resultMap = new HashMap<String, Object>();
 			String img = (String) map.get("img"); //!!!!!!!!!!!!!!!!
-			
 			consumerService.addReview(map);
 			resultMap.put("message", "성공");
 			resultMap.put("reviewnum", map.get("reviewnum"));//******

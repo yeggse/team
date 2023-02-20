@@ -6,12 +6,58 @@ public class Consumer {
 	private int price;
 	private int number;
 	private int ordernum;
+	private String categori;
 	private String resname;
 	private String grade;
 	private String writedate;
+	private String title;
 	private String create_id;
 	private int reviewnum;
+	private String reskind;
+	private String startdate;
+	private String menuname;
+	private String introduce;
+	private String pickuptime;
+	private String id;
+	private String content;
+	private String nickname;
+	private String img;
+	private String image;
+	private String picture;
+	private int idx;
+	private String enddate;
+	private String orderer;
+	private String payment;
+	private String review;
+	private String salecomple;
+	private int no;
+	private String orderdate;
+	private int menunum;
 	
+	public String getCategori() {
+		return categori;
+	}
+	public void setCategori(String categori) {
+		this.categori = categori;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public String getGrade() {
 		return grade;
 	}
@@ -48,25 +94,6 @@ public class Consumer {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	private String reskind;
-	private String startdate;
-	private String menuname;
-	private String introduce;
-	private String pickuptime;
-	private String id;
-	private String img;
-	private String image;
-	private String picture;
-	private int idx;
-	private String enddate;
-	private String orderer;
-	private String payment;
-	private String review;
-	private String salecomple;
-	private int no;
-	private String orderdate;
-	private int menunum;
-	
 	public String getResname() {
 		return resname;
 	}

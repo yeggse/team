@@ -145,7 +145,10 @@
 <script type="text/javascript">
 var app = new Vue({ 
     el: '#app',
-    data: {resnum:"${resnum}"
+    data: {
+		  	  list : [] 
+			  , info : {}
+    		//resnum:"${resnum}"
 			,writedate:""
 			,menuname:""
 			,price:""
@@ -197,13 +200,11 @@ var app = new Vue({
 		var self = this;
       	var nparmap = {nickname:self.nickname, reviewnum: self.reviewnum, content : self.content, img : self.img, grade: self.grade}; 
         $.ajax({
-            url:"/addReviewboard.dox",
+            url:"/addReview.dox",
             dataType:"json",	
             type : "POST", 
             data : nparmap,
             success : function(data) {  
-            	console.log(data);
-            	console.log(self.grade);
 	            var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
        	        form.append( "file3", $("#file3")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미 //이미지 선택한 파일이 form으로 들어감	보트컨트롤러의 fileList파이
        	     	form.append( "reviewnum",  data.reviewnum);	// 여기에 있는 boardIdx는 어디로 가나?????		// boardIdx에 게시글의 경로를 일치시켜주기

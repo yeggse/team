@@ -17,8 +17,15 @@ public class Menu {
     private int idx;
 	private String enddate;
 	private int orderer;
+	private String soldout;
     
-    public int getIdx() {
+    public String getSoldout() {
+		return soldout;
+	}
+	public void setSoldout(String soldout) {
+		this.soldout = soldout;
+	}
+	public int getIdx() {
 		return idx;
 	}
 	public void setIdx(int idx) {
