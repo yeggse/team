@@ -8,6 +8,7 @@ public class Consumer {
 	private int ordernum;
 	private String resname;
 	private String bild;
+	private String grade;
 	private String writedate;
 	private String create_id;
 	public String getWritedate() {

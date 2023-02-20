@@ -104,6 +104,7 @@ public class ConsumerController {
 		public String addReviewList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 			HashMap<String, Object> resultMap = new HashMap<String, Object>();
 			String img = (String) map.get("img"); //!!!!!!!!!!!!!!!!
+			String grade = (String) map.get("grade");
 			consumerService.addReview(map);
 			resultMap.put("message", "성공");
 	    	

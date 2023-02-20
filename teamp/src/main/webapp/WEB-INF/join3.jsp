@@ -350,7 +350,7 @@ input {
 	                   <td >{{item.nickname}}</td>
 	                   <td >{{item.content}}</td> 
 	                   <td >{{item.title}}</td>
-	                   <td >{{item.date}}</td>
+	                   <td >{{item.writedate}}</td>
 	                   <td >{{item.grade}}</td>
 	               	
 	               </tr>

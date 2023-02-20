@@ -96,13 +96,7 @@
 
 
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
-</head>
+
 <body>
 
 	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
@@ -115,11 +109,11 @@
             <form name="myform" id="myform" method="post" action="./save">
               <fieldset>
                 <legend><h2>별점</h2></legend>
-                <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
-                <input type="radio" name="rating" value="4" id="rate2"><label for="rate2">⭐</label>
-                <input type="radio" name="rating" value="3" id="rate3"><label for="rate3">⭐</label>
-                <input type="radio" name="rating" value="2" id="rate4"><label for="rate4">⭐</label>
-                <input type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
+                <input @click="fnGrade" type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
+                <input @click="fnGrade" type="radio" name="rating" value="4" id="rate2"><label for="rate2">⭐</label>
+                <input @click="fnGrade" type="radio" name="rating" value="3" id="rate3"><label for="rate3">⭐</label>
+                <input @click="fnGrade" type="radio" name="rating" value="2" id="rate4"><label for="rate4">⭐</label>
+                <input @click="fnGrade" type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
               </fieldset>
             </form>
           <div>
@@ -138,7 +132,7 @@
             <button class="btnphoto2">사진</button> -->
           </div>
           <div>
-            <button  @click="fnSave">완료</button>
+            <button  @click="fnSave" id="radioButton">완료</button>
             수정할것: 레이아웃,rem, 사이즈,헤더 푸터 옆에거 연동 잘 해보기,클릭시 아래 페이지 나오게하기
           </div>
         </div>
@@ -159,7 +153,10 @@ var app = new Vue({
 			,ordernum:""
 			,content:""
 			,img:""
+			,nickname : "${nickname}"
 			,number:"${map.reviewnum}"
+			,grade:""
+			
     }
 
     , methods: {
@@ -190,8 +187,7 @@ var app = new Vue({
         } */
      fnSave : function(){
 		var self = this;
-		console.log(self.img);
-      	var nparmap = {reviewnum: self.reviewnum, content : self.content, img : self.img}; 
+      	var nparmap = {nickname:self.nickname, reviewnum: self.reviewnum, content : self.content, img : self.img, grade: self.grade}; 
         $.ajax({
             url:"/addReviewboard.dox",
             dataType:"json",	
@@ -199,6 +195,8 @@ var app = new Vue({
             data : nparmap,
             success : function(data) {  
             	console.log(data);
+            	console.log(radioVal);
+            	console.log(self.grade);
 	            	var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
        	        form.append( "file2", $("#file2")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미 //이미지 선택한 파일이 form으로 들어감	보트컨트롤러의 fileList파이
        	     	form.append( "number",  data.number);	// 여기에 있는 boardIdx는 어디로 가나?????		// boardIdx에 게시글의 경로를 일치시켜주기
@@ -234,6 +232,15 @@ var app = new Vue({
 	           ,error: function (jqXHR) {}
 	       });
     	}
+    ,fnGrade : function(){
+    	$(document).ready(function(){
+    		$('#radioButton').click(function(){
+    			//getter
+    			self.grade = $('input[name="rating"]:checked').val();
+    			alert(self.grade);
+    		});	
+    	});
+    }
     }
     , created: function () {
 	}
