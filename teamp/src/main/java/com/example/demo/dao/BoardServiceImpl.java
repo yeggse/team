@@ -29,14 +29,14 @@ public class BoardServiceImpl implements BoardService{
 		
 		//게시글 갯수 세기
 		@Override
-//		public int countBoardCnt() {
-//			// TODO Auto-generated method stub
-//			return boardMapper.countBoardCnt();
-//		}
-		public List<Board> countBoardCnt(HashMap<String, Object> map) throws Exception {
+		public int countBoardCnt(HashMap<String, Object> map) {
 			// TODO Auto-generated method stub
 			return boardMapper.countBoardCnt(map);
 		}
+//		public List<Board> countBoardCnt(HashMap<String, Object> map) throws Exception {
+//			// TODO Auto-generated method stub
+//			return boardMapper.countBoardCnt(map);
+//		}
 		
 		// 게시글 검색 출력
 		@Override

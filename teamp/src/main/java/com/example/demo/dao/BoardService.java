@@ -12,8 +12,8 @@ public interface BoardService {
 	// 게시글 타입 지정 출력
 	List<Board> typeBoardList(HashMap<String, Object> map) throws Exception; // 데이터 호출을 위한 인터페이스
 	// 게시글 갯수 세기
-	//int countBoardCnt();
-	List<Board> countBoardCnt(HashMap<String, Object> map) throws Exception;
+	int countBoardCnt(HashMap<String, Object> map);
+//	List<Board> countBoardCnt(HashMap<String, Object> map) throws Exception;
 	// 게시글 검색 출력
 	List<Board> searchBoard(HashMap<String, Object> map) throws Exception;
 	// 게시글 상세 출력

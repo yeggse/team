@@ -9,24 +9,30 @@
 				noticenum, nickname, startdate, title, hits, creatorid, boardtype
 			FROM
 				t3_board
+			<if test='title != null and title != ""'>
+				where title like concat('%', #{title}, '%')
+			</if>
 			ORDER BY noticenum DESC
 			LIMIT #{startNum}, #{lastNum}
 	</select>
 	
 	<!-- 게시글 갯수 출력 --><!-- 게시글 갯수 출력 --><!-- 게시글 갯수 출력 --><!-- 게시글 갯수 출력 --><!-- 게시글 갯수 출력 --><!-- 게시글 갯수 출력 -->
-<!-- 	<select id="countBoardCnt" resultType="int">	
+	<select id="countBoardCnt" parameterType="hashmap" resultType="int">	
 		SELECT 
 			COUNT(*) AS CNT
 		FROM
 			t3_board
-	</select> -->
-		<select id="countBoardCnt" parameterType="hashmap" resultType="com.example.demo.model.Board">	
+		<if test='title != null and title != ""'>
+			where title like concat('%', #{title}, '%')
+		</if>
+	</select>
+<!-- 		<select id="countBoardCnt" parameterType="hashmap" resultType="com.example.demo.model.Board">	
 		SELECT 
 			COUNT(*) AS CNT
 		FROM
 			t3_board
 		where title like concat('%', #{title}, '%')
-	</select>
+	</select> -->
 	
 	<!-- 게시글 제목 검색 출력 -->
 	<select id="searchBoard" parameterType="hashmap" resultType="com.example.demo.model.Board">	

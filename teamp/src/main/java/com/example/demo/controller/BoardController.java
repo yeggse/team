@@ -54,8 +54,8 @@ public class BoardController {
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Board> list = boardService.firstBoard(map);
-		//int cnt = boardService.countBoardCnt();
-		List<Board> cnt = boardService.countBoardCnt(map);///////////////////////////////////////////////////////////////
+		int cnt = boardService.countBoardCnt(map);
+//		List<Board> cnt = boardService.countBoardCnt(map);///////////////////////////////////////////////////////////////
 		resultMap.put("list", list);
 		resultMap.put("cnt", cnt);	
 		return new Gson().toJson(resultMap);

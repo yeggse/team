@@ -132,7 +132,7 @@ select {
 					</form> 
 			<div style="text-align: center;">
 				<input type="text" placeholder="검색어를 입력해 주세요" id="input" v-model="title"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
-				<button id="btn" @click="fnSearch" >검색</button>
+				<button id="btn" @click="fnGetList" >검색</button>
 			</div>
 			<table class="board_list">
 				<colgroup>
@@ -187,8 +187,6 @@ select {
 		  	</div>
 		  	
 		  </div>	
-		  	</div>
-	        
 	</div>
 </body>
 </html>
@@ -216,7 +214,7 @@ var app = new Vue({
             var self = this;
             var startNum = ((self.selectPage-1) * 10);
     		var lastNum = self.selectPage * 10;
-            var nparmap = {startNum : startNum, lastNum : lastNum};
+            var nparmap = {startNum : startNum, lastNum : lastNum, title : self.title};
             $.ajax({
                 url:"/firstBoard.dox",
                 dataType:"json",	
@@ -225,7 +223,7 @@ var app = new Vue({
                 success : function(data) {                                       
 	                self.list = data.list;
 	                self.pageCount = Math.ceil(data.cnt / 10);
-	                console.log(self.pageCount);
+	                console.log(data);
                 }
             }); 
         }  
@@ -294,7 +292,7 @@ var app = new Vue({
 			var self = this;
 			self.selectPage = pageNum;
 			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
-			var lastNum = pageNum * 10
+			var lastNum = 10
 	        var nparmap = {startNum : startNum, lastNum : lastNum, title : self.title};
 	        $.ajax({
 	            url:"/firstBoard.dox",
@@ -304,7 +302,7 @@ var app = new Vue({
 	            success : function(data) {                                       
 	                self.list = data.list;
 	                self.pageCount = Math.ceil(data.cnt / 10);
-	                console.log(self.pageCount);
+	                console.log(data);
 	            }
 	        }); 
 		}
