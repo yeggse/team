@@ -71,6 +71,26 @@ public class BuisnessController {
     	return "/web_business/reservebusiness"; // WEB-INF에서 호출할 파일명
     }
     
+    
+    @RequestMapping("/review.do") 
+    public String reviewadmin(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	HashMap<String, Object> map = new HashMap<String, Object>();
+    	String kind = (String)session.getAttribute("KindSession");
+    	String id = (String)session.getAttribute("userIdSession");
+		if(kind.equals("B")) { // 사업자 이면! 
+	    	Integer resnum = (Integer)session.getAttribute("userResnumSession");
+	    	String reskind = (String)session.getAttribute("userReskindSession");
+	    	String resname = (String)session.getAttribute("userResnameSession");
+	    	request.setAttribute("reskind", reskind); 
+	    	request.setAttribute("resnum",resnum); 
+	    	request.setAttribute("resname",resname); 
+	    	
+		}
+		
+    	request.setAttribute("kind", kind);
+    	request.setAttribute("userId", id);
+    	return "/web_business/reviewadminbusiness"; // WEB-INF에서 호출할 파일명
+    }
     @RequestMapping("/paymentbusiness.do") 
     public String menumanagement3(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
     	HashMap<String, Object> map = new HashMap<String, Object>();

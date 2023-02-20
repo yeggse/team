@@ -12,4 +12,5 @@ public interface ReviewMapper {
 	
 	List<Review> selectreviewList(HashMap<String, Object> map) throws Exception;
 	List<Review> selectreviewList1(HashMap<String, Object> map) throws Exception;
+	List<Review> selectreviewList2(HashMap<String, Object> map) throws Exception;
 }

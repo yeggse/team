@@ -56,5 +56,15 @@ public class ReviewController {
    		List<Review> list = reviewservice.selectreviewList1(map); // DB 접근 및 쿼리를 통한 데이터 호출 
    		resultMap.put("list1", list);
    		return new Gson().toJson(resultMap);
-   	} 	
+   	}
+    
+  //사업자용 식당리뷰 리스트
+    @RequestMapping(value = "/searchReview2.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+   	@ResponseBody
+   	public String searchReview2(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+   		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+   		List<Review> list = reviewservice.selectreviewList2(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+   		resultMap.put("list1", list);
+   		return new Gson().toJson(resultMap);
+   	} 
 }

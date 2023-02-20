@@ -22,8 +22,9 @@
 			ORDER BY date ASC
 			
 	</select>
-	<!-- 전체 리뷰리스트 -->
+	<!-- 관리자 리뷰리스트 -->
 	<select id="selectreviewList1" parameterType="hashmap" resultType="com.example.demo.model.Review">	
+			
 			SELECT 
 				reviewnum
 				,categori
@@ -36,8 +37,31 @@
 				,date
 			FROM
 				t3_review
-			WHERE reskind = #{reskind}
+			WHERE reskind = #{reskind} or #{flg}
 			ORDER BY date ASC
+			
+			
+			
+	</select>
+	
+	<select id="selectreviewList2" parameterType="hashmap" resultType="com.example.demo.model.Review">	
+			
+			SELECT 
+				reviewnum
+				,categori
+				,resnum
+				,title
+				,picture
+				,content
+				,grade
+				,nickname
+				,date
+			FROM
+				t3_review
+			WHERE resnum = #{resnum}
+			ORDER BY date ASC
+			
+			
 			
 	</select>
 	

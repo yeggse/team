@@ -149,7 +149,7 @@
 		
 	<select id="selectLoginList" parameterType="hashmap" resultType="com.example.demo.model.Join">	
 		SELECT
-			id, pwd, name, kind, acc, phonenum, frontregisnum, afterregisnum, address, resnum, reskind
+			id, pwd, name, kind, acc, phonenum, frontregisnum, afterregisnum, address, resnum, reskind,resname
 		FROM
 			t3_account
 		WHERE id = #{id} AND pwd = #{pwd}

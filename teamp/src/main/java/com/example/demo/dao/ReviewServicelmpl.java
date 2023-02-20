@@ -29,4 +29,10 @@ public class ReviewServicelmpl implements ReviewService{
 		return reviewMapper.selectreviewList1(map);
 	}
 
+	@Override
+	public List<Review> selectreviewList2(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return reviewMapper.selectreviewList2(map);
+	}
+
 }
