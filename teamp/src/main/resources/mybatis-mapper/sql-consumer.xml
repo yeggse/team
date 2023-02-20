@@ -32,7 +32,7 @@
 	</update> -->
 	
 	<!-- 리뷰작성 작성 -->
-	<insert id="addReview" parameterType="hashmap" useGeneratedKeys="true" keyProperty="id" keyColumn="reviewnum">	
+	<insert id="addReview" parameterType="hashmap" useGeneratedKeys="true" keyProperty="reviewnum" keyColumn="reviewnum">	
 		INSERT INTO t3_review 
 			( categori, resnum, writedate, content, grade, nickname, reskind, create_id )  
 		VALUES
