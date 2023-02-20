@@ -179,7 +179,7 @@ input {
 		<span class="position_res" style="marin-top: -50px;">
 			가게위치:{{res.resadd}} <!-- {{list[0].pickuptime}} 집에서 mysqpl로 다시 수정하기.-->
 		</span>
-		<div class="position_res" style="margin-left: 619px;">운영시간 : {{list[0].pickuptime}}
+		<div class="position_res" style="margin-left: 619px;">운영시간 :
 			
 		</div>
 		<!-- 가계주소들어와야함 1-->

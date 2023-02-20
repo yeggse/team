@@ -11,7 +11,7 @@
 		<!-- WHERE resnum = #{resnum} -->
 		LEFT OUTER JOIN t3_resmenu_img i on r.idx = i.idx 
 		WHERE
-			r.idx = #{idx} OR resnum = #{resnum} 
+			r.idx = #{idx} OR resnum = #{resnum} AND r.soldout= 'N'
 	</select>
 	
 <!-- group by 컬럼명 -->
