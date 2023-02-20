@@ -11,7 +11,7 @@
 		<!-- WHERE resnum = #{resnum} -->
 		LEFT OUTER JOIN t3_resmenu_img i on r.idx = i.idx 
 		WHERE
-			r.idx = #{idx} OR resnum = #{resnum}
+			r.idx = #{idx} OR resnum = #{resnum} 
 	</select>
 	
 <!-- group by 컬럼명 -->
@@ -60,7 +60,7 @@
 	
 	<select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT
-				resnum, menuname, introduce, picture, startdate, enddate, price, supply
+				resnum, menuname, introduce, picture, startdate, enddate, price, supply, t3_resmenu.idx
 			FROM
 				t3_resmenu
 			LEFT OUTER JOIN 
@@ -141,7 +141,17 @@
 		UPDATE 
 			t3_resmenu
 		SET
-			soldout = "NNN" 
+			soldout = "Y" 
+		WHERE 
+		  	idx = #{idx}
+	</update>
+	
+	<!-- 다시판매 버튼 -->
+	<update id="resell" parameterType="hashmap" >	
+		UPDATE 
+			t3_resmenu
+		SET
+			soldout = "N" 
 		WHERE 
 		  	idx = #{idx}
 	</update>

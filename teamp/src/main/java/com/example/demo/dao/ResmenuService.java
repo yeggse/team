@@ -29,5 +29,7 @@ public interface ResmenuService {
 	
 	//일시품절 버튼
 	void soldout(HashMap<String, Object> map);	
+	//다시판매 버튼
+	void resell(HashMap<String, Object> map);	
 
 }

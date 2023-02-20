@@ -96,4 +96,11 @@ public class ResmenuServiceImpl implements ResmenuService{
 			resmenuMapper.soldout(map);
 			
 		}
+		//다시판매 버튼
+		@Override
+		public void resell(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			resmenuMapper.resell(map);
+			
+		}
 }

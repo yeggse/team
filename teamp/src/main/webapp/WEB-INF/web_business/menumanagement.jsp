@@ -151,13 +151,13 @@ background:#ffff99;
 	                   <td @click="fnDetailView(item)">{{item.menuname}}</td> 
 	                   <td @click="fnDetailView(item)">{{item.price}}원</td> 
 	                   <td @click="fnDetailView(item)">{{item.introduce}}</td>
-	                   <td @click="fnDetailView(item)">{{item.idx}}<img  :src="item.picture"></td>
+	                   <td @click="fnDetailView(item)">{{item.idx}}<img :src="item.picture"></td>
 	                   <td @click="fnDetailView(item)">{{item.startdate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.enddate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.supply}}</td> 
 	                   <td>
-	                   		<input id='target_btn1'  type='button' value='일시품절' @click="btnSoldout" />
-	                   		<input id='target_btn2'  type='button' value='다시판매'/>
+	                   		<input type='button' value='일시품절' @click="btnSoldout(item)" />
+	                   		<input type='button' value='다시판매' @click="btnResell(item)" />
 					   </td> 
 	               </tr>
 				</tbody>
@@ -205,7 +205,7 @@ var app = new Vue({
         , supply:""
         , resnum:"${resnum}"
         , menuname:"${menuname}"
-        , idx:"${idx}"
+        
         , picture:"${userpicture}"
     }   
     , methods: {
@@ -223,39 +223,42 @@ var app = new Vue({
                 success : function(data) {                                       
 	                self.list = data.list;
 	                self.pageCount = Math.ceil(data.cnt / 10);//게시물 갯수를 10으로 나누고 Math.ceil함수를 사용해서 필요한 페이지 갯수 정함 ex)(data.cnt/10)=1.02 -->페이지 2개
-                	console.log( self.list);
+	                console.log(self.list);
                 }
             }); 
         }  
-        
-        
-        <!--일시품절 버튼-->
-        , btnSoldout : function(){
+        //일시품절버튼
+        , btnSoldout : function(item){
     		var self = this;
-	      	var nparmap = {soldout : self.soldout, idx : self.idx}; 
+	      	var nparmap = {soldout : self.soldout, idx: item.idx}; 
 	        $.ajax({
 	            url:"/soldout.dox",
 	            dataType:"json",	
 	            type : "POST", 
 	            data : nparmap,
-	            success : function(data) {            
+	            success : function(data) {
 	            	alert("일시품절 처리되었습니다.");
+	            	console.log(item.idx);
 	            }
 	        }); 
     	}
     	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
+        
+        //다시판매버튼
+        , btnResell : function(item){
+    		var self = this;
+	      	var nparmap = {soldout : self.soldout, idx: item.idx}; 
+	        $.ajax({
+	            url:"/resell.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {
+	            	alert("다시판매 처리되었습니다.");
+	            	console.log(item.idx);
+	            }
+	        }); 
+    	}
     	
     	
     	
@@ -356,64 +359,6 @@ var app = new Vue({
                 }
            });
     	} 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-/*      	,btnActive1 : function(){
-            var self = this;
-            var nparmap = {};
-            $.ajax({
-                url:"/",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                success : function(data) {       
-                	  if(target1.disabled = true){
-                	  	  target2.disabled = false;
-                	  	  }else if(target1.disabled = false){
-                	  	  target2.disabled = true;
-                	  	  }
-                }
-           });
-    	} 
-     	
-     	,btnActive2 : function(){
-            var self = this;
-            var nparmap = {};
-            $.ajax({
-                url:"/",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                success : function(data) {       
-                	  if(target2.disabled = true){
-                	  	  target1.disabled = false;
-                	  	  }else if(target2.disabled = false){
-                	  	  target1.disabled = true;
-                	  	  }
-                }
-           });
-    	} 
-		 */
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
     }   
     , created: function () {
     	var self = this;

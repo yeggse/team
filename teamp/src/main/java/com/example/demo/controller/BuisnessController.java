@@ -172,6 +172,17 @@ public class BuisnessController {
 		resultMap.put("message", "성공");
 		return new Gson().toJson(resultMap);
 	}
+	
+	// 사업자 다시판매 버튼
+	@RequestMapping(value = "/resell.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String resell(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resmenuService.resell(map);
+		
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
 
 
 }
