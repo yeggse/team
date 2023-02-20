@@ -60,7 +60,7 @@
 	
 	<select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT
-				resnum, menuname, introduce, picture, startdate, enddate, price, supply, t3_resmenu.idx
+				resnum, menuname, introduce, picture, startdate, enddate, price, supply, t3_resmenu.idx, soldout
 			FROM
 				t3_resmenu
 			LEFT OUTER JOIN 

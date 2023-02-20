@@ -234,8 +234,6 @@ var app = new Vue({
         //일시품절버튼
         , btnSoldout : function(item){
     		var self = this;
-    		 var color = "gray";
-    		 var bodyTag = document.getElementById("soldoutCheck");
 	      	var nparmap = {soldout : self.soldout, idx: item.idx}; 
 	        $.ajax({
 	            url:"/soldout.dox",
@@ -244,7 +242,6 @@ var app = new Vue({
 	            data : nparmap,
 	            success : function(data) {
 	            	alert("일시품절 처리되었습니다.");
-	            	bodyTag.style.backgroundColor = color;
 	            	location.reload();
 	            	console.log(item.idx);
 	            }
