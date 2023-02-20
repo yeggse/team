@@ -124,10 +124,10 @@ select {
  					<form action="#" style="float: right; display: inline;">
 						<select  @change = "fntype"
 							style="width: 100px; height: 30px; font-size: large; font-weight: bold;"
-							v-model="bordtype">
+							v-model="boardtype">
 							<option value="all">전체</option>
-							<option value="A">일반회원</option>
-							<option value="B">사장님</option>
+							<option value="일반회원">일반회원</option>
+							<option value="사장님">사장님</option>
 						</select>
 					</form> 
 			<div style="text-align: center;">
@@ -209,7 +209,7 @@ var app = new Vue({
         , bordtype : ""
     }   
     , methods: {
-    	// 기본 출력 메소드
+    	// 기본 출력 메소드 - 검색도 여기서 진행함~~
         fnGetList : function(){
             var self = this;
             var startNum = ((self.selectPage-1) * 10);
@@ -227,31 +227,30 @@ var app = new Vue({
                 }
             }); 
         }  
-    	, fntype : function(){
-            var self = this;
-            var startNum = ((self.selectPage-1) * 10);
-    		var lastNum = self.selectPage * 10;
-            var nparmap = {startNum : startNum, lastNum : lastNum, boradtype:self.boradtype};
-            $.ajax({
-                url:"/typeBoardList.dox",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                success : function(data) {                                       
-
-	                if(self.boradtype=="A"){
-		                self.list = data.list;
-		                self.pageCount = Math.ceil(data.cnt / 10);
-		                console.log(self.pageCount);
-		                alert("AB");
-	                }else{
-	                	self.fnGetList();
-	                	alert("노노");
+    	// 게시글 분류 설정	
+		, fntype : function(){
+	        var self = this;
+	        if(self.boardtype=="일반회원"||self.boardtype=="사장님"){
+	            var startNum = ((self.selectPage-1) * 10);
+	    		var lastNum = self.selectPage * 10;
+	            var nparmap = {startNum : startNum, lastNum : lastNum, boardtype:self.boardtype};
+	            $.ajax({
+	                url:"/typeBoardList.dox",
+	                dataType:"json",	
+	                type : "POST", 
+	                data : nparmap,
+	                success : function(data) {                                       
+			                self.list = data.list;
+			                self.pageCount = Math.ceil(data.cnt / 10);
+			                console.log(self.pageCount);
+			                console.log("boardtype == "+self.boardtype);
 	                }
-                }
-            });     		
-    		
-    	}
+	            });  
+	        }else{
+	        	self.fnGetList();
+	        	alert("노노");
+	        }
+		}
     	// 게시글 상세 확인
     	, fnDetailView : function(item){
     		var self = this;
@@ -334,25 +333,7 @@ var app = new Vue({
                  }
              });  
     	}
-		// 검색버튼 이벤트
-       	,fnSearch : function(){
-            var self = this;
-            var nparmap = {title : self.title}; 
-            $.ajax({
-                url:"/searchBoard.dox",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                success : function(data) {       
-                	self.list = data.list;
-    	            	if(self.list.length == 0){
-    	            		self.fnGetList();
-    	            	}    
-                	console.log(self.list);
-                }
-           });
-    	}  
-    }
+    } 
     , created: function () {
     	var self = this;
     	self.fnGetList();      

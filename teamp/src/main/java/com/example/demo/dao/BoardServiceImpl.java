@@ -33,17 +33,7 @@ public class BoardServiceImpl implements BoardService{
 			// TODO Auto-generated method stub
 			return boardMapper.countBoardCnt(map);
 		}
-//		public List<Board> countBoardCnt(HashMap<String, Object> map) throws Exception {
-//			// TODO Auto-generated method stub
-//			return boardMapper.countBoardCnt(map);
-//		}
 		
-		// 게시글 검색 출력
-		@Override
-		public List<Board> searchBoard(HashMap<String, Object> map) throws Exception {
-			// TODO Auto-generated method stub
-			return boardMapper.searchBoard(map);
-		}
 		
 		// 게시글 상세 출력
 		@Override

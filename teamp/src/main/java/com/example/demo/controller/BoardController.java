@@ -54,34 +54,24 @@ public class BoardController {
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Board> list = boardService.firstBoard(map);
-		int cnt = boardService.countBoardCnt(map);
-//		List<Board> cnt = boardService.countBoardCnt(map);///////////////////////////////////////////////////////////////
+		int cnt = boardService.countBoardCnt(map); ////////////////////////////////////////////
 		resultMap.put("list", list);
 		resultMap.put("cnt", cnt);	
 		return new Gson().toJson(resultMap);
 	}
+	
     // 게시글 타입지정 데이터 호출
 	@RequestMapping(value = "/typeBoardList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String typeBoardList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Board> list = boardService.firstBoard(map);
-		//int cnt = boardService.countBoardCnt();
+		List<Board> list = boardService.typeBoardList(map);
+		int cnt = boardService.countBoardCnt(map);
 		resultMap.put("list", list);
-		//resultMap.put("cnt", cnt);	
+		resultMap.put("cnt", cnt);	
 		return new Gson().toJson(resultMap);
 	}
-	//게시글 검색 출력 데이터 호출
-	@RequestMapping(value = "/searchBoard.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String searchList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Board> list = boardService.searchBoard(map); // DB 접근 및 쿼리를 통한 데이터 호출 
-		resultMap.put("list", list);
-		return new Gson().toJson(resultMap);
-	} 	
-	
 	
 	
     // 웹 주소 :  게시글 상세보기

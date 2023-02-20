@@ -17,10 +17,7 @@ public interface BoardMapper {
 	
 	// 게시글 갯수 세기
 	int countBoardCnt(HashMap<String, Object> map);
-//	List<Board> countBoardCnt(HashMap<String, Object> map) throws Exception;
 	
-	// 게시글 검색 출력
-	List<Board> searchBoard(HashMap<String, Object> map) throws Exception;
 	
 	// 게시글 상세 출력
 	Board detailBoard(HashMap<String, Object> map); // xml파일 접근 및 db 호출결과 리턴 받음
