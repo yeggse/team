@@ -27,7 +27,7 @@
 	<!-- storeList_Clicked에 클릭했을때 식당들 불러오기위한 resnum -->
 	<select id="searchRes" parameterType="hashmap" resultType="com.example.demo.model.Main">	
 		SELECT
-			resnum, region, startdate, reskind, resname, resphone, grade, resadd
+			resnum, region, startdate, reskind, resname, resphone, grade, resadd, resacc
 		FROM
 			t3_restaurant	
 		where

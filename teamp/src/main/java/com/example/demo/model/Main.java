@@ -18,6 +18,7 @@ public class Main {
    private int totalprice;
    private String review;
    private String salecomple;
+   private int resacc;
    
    
    public int getOrdernum() {
@@ -115,6 +116,12 @@ public String getResadd() {
 }
 public void setResadd(String resadd) {
 	this.resadd = resadd;
+}
+public int getResacc() {
+	return resacc;
+}
+public void setResacc(int resacc) {
+	this.resacc = resacc;
 }
 
 }

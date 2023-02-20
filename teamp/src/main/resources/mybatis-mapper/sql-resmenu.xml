@@ -29,7 +29,7 @@
 	<!-- 일반 회원 결제내역 페이지  -->
 	<select id="selectPaymentmy1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
-			resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname
+			resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname,reskind
 		FROM
 			t3_reserve
 		WHERE
@@ -75,7 +75,7 @@
 		INSERT INTO 
 		t3_reserve(resnum,menuname,ordernum,
 		orderer,pickuptime,payment,price,review,
-		salecomple,menunum,resname,orderdate)
+		salecomple,menunum,resname,orderdate,reskind)
 
 		VALUES(
 		
@@ -91,6 +91,8 @@
 		,#{menunum}
 		,#{resname}
 		,NOW()
+		,#{reskind}
+		
 		)
 		
 	</insert>

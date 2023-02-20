@@ -280,8 +280,12 @@ input {
 											<input type="text" :placeholder='phoneNum' readonly></input>
 										</div>
 										<div style="margin-top: 20px;">
-											<label style="display: inline-flex;"><pre>계좌번호 </pre></label>
+											<label style="display: inline-flex;"><pre>본인 계좌번호 </pre></label>
 											<input type="text" :placeholder='acc' readonly></input>
+										</div>
+										<div style="margin-top: 20px;">
+											<label style="display: inline-flex;"><pre>사장님 계좌번호 </pre></label>
+											<input type="text" :placeholder='res.resacc' readonly></input>
 										</div>
 										<div style="margin-top: 20px; margin-bottom: 5px">
 											<label style="display: inline-flex;"><pre>결제방법 </pre></label>
@@ -542,6 +546,7 @@ input {
 				                    ,menunum: self.list[i].sum
 				                    ,sum : self.list[i].sum
 				                    ,resname : self.resname
+				                    ,reskind : self.res.reskind
 				                    };
 							$.ajax({
 								url : "/Res/get.dox",

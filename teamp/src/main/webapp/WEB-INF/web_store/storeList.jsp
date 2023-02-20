@@ -213,6 +213,7 @@ var app = new Vue({
     	,fnGuList : function(){
     		var self = this;
             var nparmap = {si : self.si};
+            console.log(self.list);
             $.ajax({
                 url:"/gu/list.dox",
                 dataType:"json",	

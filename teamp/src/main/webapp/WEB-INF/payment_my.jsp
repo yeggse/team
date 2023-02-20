@@ -36,6 +36,7 @@
 					<col width="15%"/>
 					<col width="15%"/>
 					<col width="15%"/>
+					<col width="15%"/>
 					
 				</colgroup>
 				<thead>
@@ -49,7 +50,8 @@
 						<th scope="col">픽업시간</th>
 						<th scope="col">개당 가격</th>
 						<th scope="col">주문일자</th>
-						<th scope="col">예약상태</th>
+						<th scope="col">결제 여부</th>
+						<th scope="col">리뷰 작성</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,6 +66,7 @@
 	                   <td >{{item.price}}</td>
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.salecomple}}</td>
+	                   <td ><button @click="change(item)">버튼</button></td>
 	               	
 	               </tr>
 				</tbody>
@@ -96,6 +99,7 @@ var app = new Vue({
         , salecomple : ""
         
         
+        
     }   
     , methods: {
     	// 기본 출력 메소드
@@ -116,13 +120,49 @@ var app = new Vue({
                   }
               }); 
               console.log(self.list);
-          }  
+          }
+    ,
+	pageChange : function(url, param) {
+		var target = "_self";
+		if (param == undefined) {
+			//   this.linkCall(url);
+			return;
+		}
+		var form = document.createElement("form");
+		form.name = "dataform";
+		form.action = url;
+		form.method = "post";
+		form.target = target;
+		for ( var name in param) {
+			var item = name;
+			var val = "";
+			if (param[name] instanceof Object) {
+				val = JSON.stringify(param[name]);
+			} else {
+				val = param[name];
+			}
+			var input = document.createElement("input");
+			input.type = "hidden";
+			input.name = item;
+			input.value = val;
+			form.insertBefore(input, null);
+		}
+		document.body.appendChild(form);
+		form.submit();
+		document.body.removeChild(form);
+	}
+    , change :function(item){
+    	var self = this;
+    	self.pageChange("/reviewwrite.do", {resnum:item.resnum, reskind:item.reskind});
+    }
+    
     
       
       }   
       , created: function () {
     	var self = this;
   		this.fnGetList();
+  		console.log(self.list);
   	  } 
     
    
