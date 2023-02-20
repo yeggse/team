@@ -104,9 +104,10 @@ a {
 			- <input type="password" v-model="age1"></input>
 			<button @click="">실명인증</button>
 		</div>
-		<div class="div2">
-			주소 <input type="text" id="text1" v-model="address"
-				style="margin-left: 75px"></input>
+		<div class="div2">주소
+			<select id="si" name="si" v-model="address" class="form-control">
+				<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+			</select>
 		</div>
 		<div class="div2">
 			닉네임 <input type="text" id="text1" v-model="nickname"
@@ -142,9 +143,13 @@ a {
 							
 			</select>
 		</div>
-		<div class="div2">
-			지역 <input type="text" id="text1" v-model="region"
-				style="margin-left: 75px"></input>
+	    <div class="div2">지역
+			        <select id="si" name="si" v-model="region" class="form-control" @change="fnGuList">
+						<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+					</select>
+					<select id="gu" name="gu" v-model="region1" class="form-control">
+						<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
+					</select>
 		</div>
 		<div class="div2">
 			점포주소 <input type="text" id="text1" v-model="resad"
@@ -186,6 +191,7 @@ a {
 			resnum : "",
 			kind : "",
 			region : "",
+			region1 : "",
 			resad : "",
 			resphonenum : "",
 			idcheck : false,
@@ -195,10 +201,11 @@ a {
 			flg : false,
 			pwdtext:"",
 			pwdtextCheck:false
-
+			, siList : ${siList}
+			,guList : ${guList}
 		},
 		methods : {
-
+			
 			fnCheck : function() {
 				var self = this;
 				var nparmap = {
@@ -244,10 +251,24 @@ a {
 					}
 				})
 
-			},//닉네임 중복확인
+			}//닉네임 중복확인
+			,fnGuList : function(){
+	    		var self = this;
+	            var nparmap = {si : self.region};
+	            $.ajax({
+	                url:"/gu/list.dox",
+	                dataType:"json",	
+	                type : "POST", 
+	                data : nparmap,
+	                success : function(data) {                                       
+		                self.guList = data.guList;
+		                console.log(data.guList);
+		                self.gu = "";
+	                }
+	            }); 
+	        }
 			
-			
-			fnresnumCheck : function() {
+			,fnresnumCheck : function() {
 				var self = this;
 				var nparmap = {
 					resnum : self.resnum
@@ -316,6 +337,7 @@ a {
 					resnum : self.resnum,
 					reskind : self.kind,
 					region : self.region,
+					region1 : self.region1,
 					resad : self.resad,
 					resphone : self.resphonenum
 				};
@@ -328,6 +350,7 @@ a {
 						|| self.nickname == "" || self.num == ""
 						|| self.resname == "" || self.resnum == ""
 						|| self.kind == "" || self.region == ""
+							|| self.region1 == ""
 						|| self.resad == "" || self.resphonenum == "") {
 					console.log(self.kind);
 					console.log(self.id);

@@ -116,9 +116,13 @@ a {
 			- <input type="password" v-model="age1"></input>
 			<button @click="">실명인증</button>
 		</div>
-		<div class="div2">
-			주소 <input type="text" id="text1" v-model="address"
-				style="margin-left: 75px"></input>
+		<div class="div2">주소
+			        <select id="si" name="si" v-model="address" class="form-control" @change="fnGuList">
+						<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+					</select>
+					<select id="gu" name="gu" v-model="address1" class="form-control">
+						<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
+					</select>
 		</div>
 		<div class="div2">
 			닉네임 <input type="text" id="text1" v-model="nickname"
@@ -156,6 +160,7 @@ a {
 					age : "",
 					age1 : "",
 					address : "",
+					address1 : "",
 					account : "",
 					nickname : "",
 					num : "",
@@ -165,6 +170,8 @@ a {
 					flg : false,
 					pwdtext: "",
 					pwdtextCheck:false
+					,siList : ${siList}
+					,guList : ${guList}
 				},
 				methods : {
 					fnCheck : function() {
@@ -190,8 +197,22 @@ a {
 						})
 
 					},//아이디 중복확인
-					
-					fnnickCheck : function() {
+					fnGuList : function(){
+			    		var self = this;
+			            var nparmap = {si : self.address};
+			            $.ajax({
+			                url:"/gu/list.dox",
+			                dataType:"json",	
+			                type : "POST", 
+			                data : nparmap,
+			                success : function(data) {                                       
+				                self.guList = data.guList;
+				                console.log(data.guList);
+				                self.gu = "";
+			                }
+			            }); 
+			        }
+					,fnnickCheck : function() {
 						var self = this;
 						var nparmap = {
 							nickname : self.nickname
@@ -330,7 +351,7 @@ a {
 				},
 				created : function() {
 					var self = this;
-					
+					console.log(self.siList);
 
 				}
 			});

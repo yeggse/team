@@ -81,6 +81,7 @@
 		, #{resnum}
 		, #{reskind}
 		, #{region}
+		, #{region1}
 		, #{resad}
 		, #{resphone}
 
@@ -90,16 +91,18 @@
 
      <insert id="insertRes" parameterType="hashmap">
 		INSERT INTO
-		t3_restaurant(resnum,id,region,reskind,resname,resphone,resadd)
+		t3_restaurant(resnum,id,region,region1,reskind,resname,resphone,resadd)
 		VALUES(
 
         #{resnum}
 		,#{id}
 		,#{region}
+		,#{region1}
 		,#{reskind}
 		,#{resname}
 		,#{resphone}
 		,#{resad}
+		
 		
 		
 

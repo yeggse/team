@@ -131,7 +131,8 @@ input {
 			<div>
 				<form method="post" id="frm" name="frm">
 					<!-- form을 통해서 값을 다른 페이지로 값을 넘겨준다는 의미 frm이라는 이름을 주고 id에 form안에의 값이 있다. 넘겨주는 페이지 주소 있어야함!(1)-->
-					<label for="si" class="control-label">먼저 지역을 골라주세요~ : </label> <select
+					<label for="si" class="control-label">먼저 지역을 골라주세요~ : </label> 
+					<select
 						id="si" name="si" v-model="si" class="form-control">
 						<!-- 선택을 했을때 change가되는데 메소드를 넣어줌(3)-->
 						<option value="">지역선택</option>

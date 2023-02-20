@@ -82,4 +82,14 @@ public class MainServiceImpl implements MainService{
 		public Main searchRes(HashMap<String, Object> map) throws Exception {
 			return mainMapper.searchRes(map);
 		}
+		@Override
+		public List<Area> selectDongList(HashMap<String, Object> map) throws Exception {
+			// TODO Auto-generated method stub
+			return mainMapper.selectDongList(map);
+		}
+		@Override
+		public List<Area> selectGuList(HashMap<String, Object> map) throws Exception {
+			// TODO Auto-generated method stub
+			return mainMapper.selectGuList(map);
+		}
 }

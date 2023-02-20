@@ -573,6 +573,7 @@ input {
 			self.fnGetReview();
 			self.resname = self.res.resname;
 			console.log(self.resname);
+			console.log(self.res.resnum);
 			
 			
 		}
