@@ -502,8 +502,10 @@ input {
 		}
 		, fncal : function(){
 			var self = this;
-			
+			self.num = 0;
 				for(var i =0; i<self.list.length; i++){
+					
+					console.log(self.list[i]);
 		    		self.num += ((self.list[i].price)*(self.list[i].sum));
 		    		
 				}

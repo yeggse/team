@@ -59,7 +59,7 @@
 	                   <td >{{item.pickuptime}}</td>
 	                   <td >{{item.price}} 더하기</td>
 	                   <td  >
-	                 	  <button v-if="item.salecomple =='N'" id='btnSoldout' @click='btnOnOff()'> 판매 완료 {{item.salecomple}} </button>
+	                 	  <button v-if="item.salecomple =='N'" id='btnSoldout' @click='btnOnOff(item)'> 판매 완료 {{item.salecomple}} </button>
 	                   </td>
 	               	
 	               </tr>
@@ -116,9 +116,9 @@ var app = new Vue({
               console.log(self.resnum);
           } 
     
-    	, btnOnOff : function(){
+    	, btnOnOff : function(item){
     		var self = this;
-	      	var nparmap = {salecomple : self.salecomple, ordernum : self.ordernum}; 
+	      	var nparmap = {salecomple : self.salecomple, no : item.no}; 
 	        $.ajax({
 	            url:"/saleFin.dox",
 	            dataType:"json",	

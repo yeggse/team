@@ -25,6 +25,7 @@ public class Res {
 	private int menunum;
 	private String resname;
 	private String soldout;
+	private int no;
 
 	public String getSoldout() {
 		return soldout;
@@ -176,6 +177,12 @@ public class Res {
 	}
 	public void setResname(String resname) {
 		this.resname = resname;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
 	}
 	
 }

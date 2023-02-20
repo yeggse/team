@@ -121,7 +121,7 @@
 		UPDATE t3_reserve
 		SET
 			salecomple = "Y" 
-		WHERE ordernum = #{ordernum}
+		WHERE no = #{no}
 	</update>
 	
 	<!-- 재고수정 -->
