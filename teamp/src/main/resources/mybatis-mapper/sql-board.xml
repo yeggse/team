@@ -80,38 +80,8 @@
 			(#{noticenum}, #{img})
 	</insert>
 	
-	<!-- <select id="searchBoardList" parameterType="hashmap" resultType="com.example.demo.model.Board">	
-		SELECT
-			board_idx, title, hit_cnt, created_datetime
-		FROM
-			t_board
-		WHERE
-			deleted_yn = 'N'
-		<if test='keyword != null and keyword != ""'>
-			and title like concat('%', #{keyword}, '%')
-		</if>
-		ORDER BY board_idx DESC
-	</select>
-	
-	
-	
-	
-	<select id="selectBoardList2" parameterType="hashmap" resultType="com.example.demo.model.Board">	
-		SELECT
-			board_idx, title, hit_cnt, created_datetime, creator_id
-		FROM
-			t_board
-		WHERE
-			deleted_yn = 'N' AND creator_id = #{creator_id}
-		ORDER BY board_idx DESC
-	</select>
-	<select id="selectResmenu" parameterType="hashmap" resultType="com.example.demo.model.Res">	
-		SELECT
-			*
-		FROM
-			t3_resmenu
-		WHERE 1=1
-		ORDER BY resnum DESC
-	</select> -->
-
+	<!-- 게시글 조회수 상승 -->
+	<update id="updateCnt" parameterType="hashmap" >	
+		UPDATE t3_board SET hits = hits + 1 WHERE noticenum = #{noticenum}
+	</update>
 </mapper>

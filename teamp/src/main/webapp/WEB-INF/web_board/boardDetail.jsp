@@ -37,11 +37,11 @@
 			<h2>공지사항 상세보기 </h2>
 			<div class="card">
 				<h2 class="card-header p-4">
-					{{info.title}}
+					제목 : {{info.title}}
 				</h2>
 				<div class="card-body1">
-					<h4 style="font-size: large; margin-left: 20px;">분류
-					<span class="badge badge-pill badge-dark pull-right" style="font-size: large; float: right;">{{info.startdate}}</span></h4>
+					<h4 style="font-size: large; margin-left: 20px;">분류 : {{info.boardtype}}
+					<span class="badge badge-pill badge-dark pull-right" style="font-size: large; float: right;">작성일 : {{info.startdate}}</span></h4>
 				</div>
 				<div class="card-body">
 				   	<div v-if="info.image != null" style="margin: 10px 10px 10px 10px;">	<!-- info.img : 이미지 경로(img/이미지 이름) DB 컬럼이랑 동일한 이름으로!-->
@@ -93,21 +93,6 @@ var app = new Vue({
                 }
             }); 
         }
-/*     	, fnComment : function(){
-            var self = this;
-            var nparmap = {boardIdx : self.idx, userId : self.userId, content : self.comment, depth : "0", cgroup : ""};
-            $.ajax({
-                url:"/comment.dox",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                success : function(data) {
-                	alert("댓글을 등록했습니다.");
-                	self.comment = "";
-                	window.location.reload()
-                }
-            }); 
-        } */
         
     	, fnEdit : function(){
 			var self = this;

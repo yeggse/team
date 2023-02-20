@@ -32,12 +32,12 @@
 		       padding: 0px;
 	       }
     .container {max-width:1024px; margin:30px auto; margin-top: 120px;}	/* 게시글 출력 파트 */
-	.board_list {table-layout: fixed; width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:15px 0; border-collapse: collapse;}
+	.board_list {table-layout: fixed; width:100%; border-top:2px solid #c6e5d9; border-bottom:2px solid #c6e5d9; margin:15px 0; border-collapse: collapse;}
 	.board_list thead th:first-child {background-image:none;}
-	.board_list thead th {border-bottom:1px solid #ccc; padding:13px 0; color:#3b3a3a; text-align: center; vertical-align:middle;}
+	.board_list thead th {border-bottom:1px solid #ccc; padding:13px 0; color:#3e4149; text-align: center; vertical-align:middle;}
 	.board_list tbody td {border-top:1px solid #ccc; padding:13px 0; text-align:center; vertical-align:middle;}
 	.board_list tbody tr:first-child td {border:none;}
-	.board_list tbody tr:hover{background:#ffff99;}
+	.board_list tbody tr:hover{background:#fffcf0; }
 	.board_list tbody td.title {text-align:left; padding-left:20px;}
 	.board_list tbody td a {display:inline-block}
 
@@ -68,8 +68,9 @@
 	list-style:none;
 	}
 	
+	/* 페이징 컬러 */
 .pagination li.active {
-    background-color : red;	/* #E7AA8D */
+    background-color : #3e4149;	/* #E7AA8D */
     color:#fff;
 }
  .pagination li.active a {
@@ -101,7 +102,7 @@
 select {
 	margin-bottom: 10px;
 	margin-top: 10px;
-	background: lightgray;
+	background: #f4f7f7;
 }
 	       #btnList{
 		       color: #8FBC94;
@@ -120,10 +121,10 @@ select {
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-				<h2>세잎 공지사항 - 검색어 입력시, 페이징 오류</h2>
+				<h2>세잎 공지사항</h2>
  					<form action="#" style="float: right; display: inline;">
 						<select  @change = "fnGetList"
-							style="width: 100px; height: 30px; font-size: large; font-weight: bold;"
+							style="width: 110px; height: 30px; font-size: large; font-weight: bold; text-align: center;"
 							v-model="boardtype">
 							<option value="">전체</option>
 							<option value="일반회원">일반회원</option>
@@ -140,14 +141,14 @@ select {
 					<col width="5%"/> 
 					<col width="10%"/> 
 					<col width="*"/>
-					<col width="5%"/>
+					<col width="10%"/>
 					<col width="10%"/>
 					<col width="20%"/>
 				</colgroup>
 				<thead>
-					<tr>
+					<tr style="background: #c6e5d9; border-bottom: 2px solid #c6e5d9; ">
 						<th scope="col">-</th>
-						<th scope="col">글번호</th>
+						<th scope="col">번호</th>
 						<th scope="col">분류</th>
 						<th scope="col">제목</th>
 						<th scope="col">조회수</th>

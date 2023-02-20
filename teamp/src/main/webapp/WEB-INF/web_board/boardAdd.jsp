@@ -52,7 +52,16 @@
 					<td style="text-align : center; width: 15%;" ><h1>제목</h1></td>
 					<td><input type="text" id="title" name="title" v-model="title" style="font-size: 1.3em; font-weight: 600;"></td>
 					<td style="text-align : center; width: 15%;" ><h1>분류</h1></td>
-					<td><input type="text" id="title" name="boardtype" v-model="boardtype" style="font-size: 1.3em; font-weight: 600;"></td>
+					<td>
+						<form action="#" >
+						<select  
+							style="width: 160px; height: 30px; font-size: large; font-weight: bold;"
+							v-model="boardtype">
+							<option value="일반회원">일반회원</option>
+							<option value="사장님">사장님</option>
+						</select>
+					</form> 
+					</td>
 				</tr>
 				<tr style="border-bottom:2px solid #ccc;">
 					<td  style="text-align : center; width: 15%; " ><h1>첨부파일</h1></td>

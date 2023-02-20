@@ -41,7 +41,7 @@ public class BoardServiceImpl implements BoardService{
 			// TODO Auto-generated method stub
 			// 조회수 
 			HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		//	boardMapper.updateCnt(map);
+			boardMapper.updateCnt(map);		//게시글 조회수 상승
 		//	List<Board> commentList = boardMapper.selectCommentList(map);
 			Board board = boardMapper.detailBoard(map);
 		//	resultMap.put("commentList", commentList);
