@@ -79,6 +79,7 @@
 	        
 	</div>
 </body>
+<jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
@@ -112,7 +113,7 @@ var app = new Vue({
     	// 수정하기
     	, fnEdit : function(){
 			var self = this;
-			self.pageChange("./memedit.do", {id : self.id});	
+			self.pageChange("./bumedit.do", {id : self.id});	
 			
 		}
         // 회원 탈퇴 확인 버튼

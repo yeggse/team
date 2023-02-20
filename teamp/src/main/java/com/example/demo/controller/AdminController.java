@@ -128,7 +128,7 @@ public class AdminController {
     	String kind = (String)session.getAttribute("KindSession");
     	request.setAttribute("userId", id);
     	request.setAttribute("kind", kind);
-    	return "/web_admin/memDetail"; // WEB-INF에서 호출할 파일명
+    	return "/web_admin/bumDetail"; // WEB-INF에서 호출할 파일명
     }
     // 관리자 상세정보 출력 데이터 호출
 	@RequestMapping(value = "/detailBum.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -139,6 +139,8 @@ public class AdminController {
 		resultMap.put("message", "성공");
 		return new Gson().toJson(resultMap);
 	}
+	
+	
 	//일반화원 정보수정
     @RequestMapping("/memedit.do") 
     public String boardEdit(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -158,8 +160,27 @@ public class AdminController {
 		resultMap.put("message", "성공");
 		return new Gson().toJson(resultMap);
 	}
+	//사업자화원 정보수정
+    @RequestMapping("/bumedit.do") 
+    public String bumEdit(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+    	String id = (String)session.getAttribute("userIdSession");
+    	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
+    	String kind = (String)session.getAttribute("KindSession");
+    	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
+    	return "/web_admin/bumEdit"; // WEB-INF에서 호출할 파일명
+    }
+    // 사업자회원 정보수정 데이터 호출
+	@RequestMapping(value = "/bumEdit.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String editbum(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		adminService.editbum(map);
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
 	
-	// 일반회원 탈퇴
+	// 일반회원 삭제
 	@RequestMapping(value = "/deleteMem.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String deletememList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {

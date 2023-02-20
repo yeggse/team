@@ -21,6 +21,9 @@ public interface AdminMapper {
 	
 	// 일반회원 정보 수정
 	void editmem(HashMap<String, Object> map); 
+	// 사업자회원 정보 수정
+	void editbum(HashMap<String, Object> map); 
+	
 	// 일반회원 탈퇴
 	void deletemem(HashMap<String, Object> map); 
 	// 일반회원 검색

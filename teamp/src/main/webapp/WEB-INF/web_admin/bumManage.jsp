@@ -109,7 +109,7 @@ background:#ffff99;
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>사업자 회원 관리👨‍🍳 검색버튼 활성화 필요</h2>‍
+			<h2>사업자 회원 관리👨‍🍳 </h2>‍
 			<div style="text-align: center;">
 			
 				<input type="text" placeholder="id 혹은 이름을 검색해 주세요" v-model="search"  v-on:keyup.enter="fnSearch"></input>
@@ -166,7 +166,7 @@ background:#ffff99;
 	</div>
 </body>
 
-
+<jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
 <script type="text/javascript">
 Vue.component('paginate', VuejsPaginate)

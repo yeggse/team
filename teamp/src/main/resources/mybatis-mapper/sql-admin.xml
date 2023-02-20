@@ -43,6 +43,7 @@
 		WHERE id = #{id}
 	</update>
 	
+	
 	<!-- 회원 삭제 -->
 	<delete id="deletemem" parameterType="hashmap">	
 		DELETE FROM 
@@ -86,4 +87,11 @@
 		WHERE
 			id = #{id}
 	</select>
+	<!-- 사업자 회원 정보 수정 -->
+	<update id="editbum" parameterType="hashmap" >
+		UPDATE t3_account 
+		SET
+			pwd = #{pwd}
+		WHERE id = #{id}
+	</update>	
 </mapper>
