@@ -177,13 +177,13 @@ var app = new Vue({
 			list :[]/* 게시판에 올려지는 글들은 다른 리스트 새로만들기  */
 	        
 	        ,selectedItemList:[]
-	        ,reskind: ""
-			
+	        ,reskind: "${map.reskind}"
+			,flg : "${map.flg}"
 		},
 		methods : {
 		fnGetReview : function() {
 			var self = this;
-			var nparmap = {reskind: self.reskind};
+			var nparmap = {reskind: self.reskind, flg: self.flg};
 			$.ajax({
 				url : "/searchReview1.dox",
 				dataType : "json",
@@ -232,10 +232,9 @@ var app = new Vue({
 		},
 		created : function() {
 			var self = this;
-			
-			
 			self.fnGetReview();
-			
+			console.log(self.reskind);
+			console.log(self.flg);
 			
 			
 		}
