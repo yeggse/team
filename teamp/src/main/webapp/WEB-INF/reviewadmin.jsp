@@ -174,7 +174,7 @@ Vue.component('paginate', VuejsPaginate)
 var app = new Vue({
 		el : '#app',
 		data : {
-			list :[]/* 게시판에 올려지는 글들은 다른 리스트 새로만들기  */
+			list :[]/* 게시판에 올려지는 글들은 다른 리스트 새로만들기1  */
 	        
 	        ,selectedItemList:[]
 	        ,reskind: "${map.reskind}"
