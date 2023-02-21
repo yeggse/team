@@ -21,14 +21,21 @@ public class ReviewServicelmpl implements ReviewService{
 		// TODO Auto-generated method stub
 		return reviewMapper.selectreviewList(map);
 	}
-
+	
+	//관리자 리뷰리스트
 	@Override
-	public List<Review> selectreviewList1(HashMap<String, Object> map) throws Exception {
+	public List<Review> adminReviewList(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return reviewMapper.selectreviewList1(map);
+		return reviewMapper.adminReviewList(map);
 	}
-
-
+	// 관리자 리뷰 갯수
+	@Override
+	public int countAdminRCnt(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return reviewMapper.countAdminRCnt(map);
+	}
+	
+	
 	@Override
 	public List<Review> selectreviewList2(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
@@ -48,5 +55,7 @@ public class ReviewServicelmpl implements ReviewService{
 		resultMap.put("review", review);
 		return resultMap;
 	}
+
+
 
 }

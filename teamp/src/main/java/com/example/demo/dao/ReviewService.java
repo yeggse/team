@@ -8,7 +8,11 @@ import com.example.demo.model.Review;
 
 public interface ReviewService {
 	List<Review> selectreviewList(HashMap<String, Object> map) throws Exception;
-	List<Review> selectreviewList1(HashMap<String, Object> map) throws Exception;
+	//관리자 리뷰리스트
+	List<Review> adminReviewList(HashMap<String, Object> map) throws Exception;
+	//관리자 리뷰 갯수
+	int countAdminRCnt(HashMap<String, Object> map);
+	
 	List<Review> selectreviewList2(HashMap<String, Object> map) throws Exception;
 	void reviewFin(HashMap<String, Object> map);
 	
