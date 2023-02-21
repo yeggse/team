@@ -185,7 +185,7 @@ input {
 		<!-- 가계주소들어와야함 1-->
 		<div>
 			<button id="btn_menu" @click="fnClick1">메뉴</button>
-			<button id="btn_review" @click="fnClick">리뷰</button>
+			<button id="btn_review" @click="fnClick">리뷰 목록</button>
 		</div>
 		<div style="margin-top: 50px;">
 			<!-- 값이 없을때를 대비해서 예외처리도 해줘야한다. -->
@@ -325,7 +325,7 @@ input {
 				<h2 style="margin-left: 50px;">게시글 목록</h2>
 				<table class="board_list">
 					<colgroup>
-					    <col width="5%" />
+					    <!-- <col width="5%" /> -->
 						<col width="5%" />
 						<col width="5%" />
 						<col width="*" />
@@ -336,7 +336,7 @@ input {
 					</colgroup>
 					<thead>
 						<tr>
-						    <th scope="col"></th>
+						    <!-- <th scope="col"></th> -->
 							<th scope="col">No.</th>
 							<th scope="col">분류</th>
 							<th scope="col">작성자닉네임</th>
@@ -348,7 +348,7 @@ input {
 					</thead>
 					
 					<tr v-for="(item, index) in list1" >                            
-	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList1"></td>                       
+	                  <!--  <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList1"></td>  -->                      
 	                   <td >{{item.reviewnum}}</td> 
 	                   <td >{{item.categori}}</td> 
 	                   <td >{{item.nickname}}</td>
