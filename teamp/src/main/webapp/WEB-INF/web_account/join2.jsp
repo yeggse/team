@@ -222,7 +222,7 @@ a {
 				});
 
 			},
-			//닉네임 중복확인
+			//닉네임 중복확인1
 			fnnickCheck : function() {
 				var self = this;
 				var nparmap = {
