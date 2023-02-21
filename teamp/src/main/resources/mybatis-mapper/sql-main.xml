@@ -52,7 +52,7 @@
 	<!-- 식당 세션 출력 -->
 	<select id="sessionStore" parameterType="hashmap" resultType="com.example.demo.model.Main">
 		SELECT
-			resnum, ordernum, menuname, orderer, pickuptime, payment, totalprice, review, salecomple
+			resnum, ordererid, menuname, orderer, pickuptime, payment, totalprice, review, salecomple
 		FROM
 		t3_restaurant
 	</select>

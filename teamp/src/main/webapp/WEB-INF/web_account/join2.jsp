@@ -7,157 +7,335 @@
 <script src="js/jquery.js"></script>
 <script src="js/vue.js"></script>
 <jsp:include page="/layout/header.jsp"></jsp:include>
+
+
 <style>
 @import
-	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
-	;
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
-* {
+*{
 	font-family: 'Noto Sans KR', sans-serif;
 }
+body{
+	background-color: #f9f9f9;
 
-body {
-	background-color: #1BBC9B;
 }
-
-.div3 {
+.main{
 	margin: auto;
-	margin-top: 200px;
-	margin-bottom: 200px;
-	width: 400px;
-	height: 1200px;
-	background-color: #EEEFF1;
-	border-radius: 5px;
+	margin-top: 0.33rem;
+	margin-bottom: 17.5rem;
+	padding: 1.25rem;
+	width: 25rem;
+	height: 84rem;
+	border-radius: 0.33rem;
 	text-align: center;
-	padding: 20px;
+	background-color: #f9f9f9;
+	
 }
 
-.div2 {
-	margin-left: 50px;
-	margin-bottom: 10px;
-	width: 350px;
-	height: 50px;
-	background-color: #EEEFF1;
-	border-radius: 5px;
+.div1{
+	width: 30rem;
+	height: 1.5rem;
 	text-align: initial;
+	font-size: 1rem;
+	border-radius: 0rem;
+	margin:auto;
+	margin-bottom: 3.5rem;
+	background-color: #f9f9f9;
+	
+
+	display: inline-box;
 }
 
-#text1 {
-	width: 150px;
-	height: 30px;
-}
-
-input {
-	width: 100px;
-	height: 10px;
-	padding: 10px;
+.input1 {
+	width: 25rem;
+	height: 2.5rem;
+	padding: 0.75rem;
 	box-sizing: border-box;
-	border: solid black;
+	border: 1px solid #dcdcdc;
+	margin-top:: 0.1rem 0rem 0rem 0rem;
+	text-align: left;
+}
+.input2 {
+	width: 20rem;
+	height: 2.5rem;
+	padding: 0.75rem;
+	box-sizing: border-box;
+	border: 1px solid #dcdcdc;
+	margin: 0.1rem 0rem 0rem 0rem;
+	text-align: left;
+}
+.input3 {
+	width: 9.6rem;
+	height: 2.5rem;
+	padding: 0.75rem;
+	box-sizing: border-box;
+	border: 1px solid #dcdcdc;
+	margin: 0.1rem 0rem 0rem 0rem;
+	text-align: left;
 }
 
-.in {
-	margin-bottom: 10px;
+.input4 {
+	width: 12.4rem;
+	height: 2.5rem;
+	padding: 0.75rem;
+	box-sizing: border-box;
+	border: 1px solid #dcdcdc;
+	margin: 0.1rem 0rem 0rem 0rem;
+	text-align: left;
+	font-size: 0.67rem;
 }
 
-#btn1 {
+.btn1 {
 	background-color: #1BBC9B;
 	color: white;
-	border-radius: 10px;
-	border: solid black;
+	border: none;
+	width: 4.8rem; 
+	height: 2.5rem;
+}
+.btn2 {
+	background-color: #1BBC9B;
+	color: white;
+	border: none;
+	width: 25rem; 
+	height: 3rem;
+}
+.btn1:hover {
+	color:black;
+}
+.btn2:hover {
+	color:black;
 }
 
-a {
+#href1 {
 	text-decoration: none;
 	color: #9B9B9B;
-	font-size: 12px;
+	font-size: 1rem;
+	margin: 0rem 3.5rem 0rem 1rem;
 }
+#href2 {
+	text-decoration: none;
+	color: #62F903;
+	font-size: 1.2rem;
+	margin: 0rem 1rem 0rem 2.5rem;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+#href1:hover {
+	color:black;
+}
+#href2:hover {
+	color:#62a903;
+}
+
+#basicSign{
+	margin:auto;
+	margin-top: 6.5rem; 
+	
+	width:30rem;
+	height: 3rem; 
+	background-color: #f9f9f9;	
+	font-weight: bolder; 
+	font-size: 2rem; 
+	text-align: center;
+}
+
+#okPwd{
+	color : blue;
+	font-size: 0.76rem; 
+	text-align: left; 
+	margin: 0rem 0rem 0rem 8rem;
+}
+#noPwd{
+	color : red;
+	font-size: 0.76rem; 
+	text-align: left; 
+	margin: 0rem 0rem 0rem 0rem;
+}
+
 </style>
 </head>
 <body>
 
-	<div id="app" class="div3" style="border: solid black;">
-		<div id="app" class="div2" style="background-color: white; height: 50px; font-size: 25px;">	사업자 회원가입</div>
-		<div class="div2">
-			아이디 <input type="text" id="text1" v-model="id"	maxlength='13'	style="margin-left: 60px"></input>
-			<button @click="fnCheck">중복확인</button>
+	<div id="basicSign"> 
+		사업자 회원가입 
+		<a id="href2" href="join.do" > 일반 회원가입 </a> 
+	</div>
+	
+	
+	<!-- 메인프레임 -->
+	<div id="app" class="main">
+		
+	<!-- 아이디 -->
+		<div class="div1">
+			아이디 
+			<div>
+				<input type="text" class="input2" v-model="id"	maxlength='13'></input>
+				<button class="btn1" @click="fnCheck">중복확인</button>
+			</div>
 		</div>
-		<div class="div2">	비밀번호 <input type="password" id="text1" v-model="pwd" maxlength='16' @change="fnPwcheck" style="margin-left: 45px"></input>
+		
+	<!-- 비밀번호 -->
+		<div class="div1">	
+			비밀번호 
+			<div>
+				<input type="password" class="input1" v-model="pwd" maxlength='16' @change="fnPwcheck" ></input>
+			</div>
 		</div>
-		<div v-if = "pwdtextCheck" style ="color : blue">{{pwdtext}}</div>
-		<div v-else style ="color : red">{{pwdtext}} <br> {{pwdtext2}}</div>
-		<div class="div2">	비밀번호 재확인 <input type="password" id="text1" v-model="pwd2" maxlength='16' tyle="margin-left: 12px"></input>
-			<button @click="fnPwSame">비밀번호 확인</button>
+	
+	<!-- 비밀번호 기능 -->
+		<div v-if = "pwdtextCheck" id="okPwd">{{pwdtext}}</div>
+		<div v-else id="noPwd">{{pwdtext}} <br> {{pwdtext2}}</div>
+	
+	<!-- 비밀번호 재확인 -->
+		<div class="div1">	
+			비밀번호 재확인 
+			<div>
+				<input type="password" class="input1" v-model="pwd2" maxlength='16' ></input>
+				<!--  
+				<button class="btn1" @click="fnPwSame">비밀번호 확인</button>
+				-->
+			</div>
 		</div>
-		<div class="div2">
-			이름 <input type="text" id="text1" v-model="name" maxlength='7' style="margin-left: 75px"></input>
+		
+	<!-- 이름 -->
+		<div class="div1">
+			이름 
+			<div>
+				<input type="text" class="input1" v-model="name" maxlength='7' ></input>
+			</div>
 		</div>
-		<div class="div2">
-			주민번호 <input type="text" v-model="age" maxlength='6' style="margin-left: 45px"></input>
-			- <input type="password" v-model="age1"maxlength='7' ></input>
-			<button @click="fnPeople">실명인증</button>
+	
+	<!-- 주민등록번호 -->
+		<div class="div1">
+			주민번호 
+			<div>
+				<input type="text" class="input3" v-model="age" maxlength='6' ></input>
+				- <input type="password" class="input3" v-model="age1"maxlength='7' ></input>
+				<button class="btn1" @click="fnPeople">실명인증</button>
+			</div>
 		</div>
-		<div class="div2">주소
-			<select id="si" name="si" v-model="address" class="form-control">
-				<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
-			</select>
+		
+	<!-- 주소 -->
+		<div class="div1">
+			주소
+			<div>
+				<select id="si" name="si" v-model="address" class="input4" @change="fnGuList">
+					<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+				</select>
+				<select id="gu" name="gu" v-model="address1" class="input4">
+					<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
+				</select>
+			</div>
 		</div>
-		<div class="div2">
-			닉네임 <input type="text" id="text1" v-model="nickname" maxlength='10' style="margin-left: 60px"></input>
-			<button @click="fnnickCheck">중복확인</button>
+		
+	<!-- 닉네임 -->
+		<div class="div1">
+			닉네임 
+			<div>
+				<input type="text" class="input2" v-model="nickname" maxlength='10' ></input>
+				<button class="btn1" @click="fnnickCheck">중복확인</button>
+			</div>
 		</div>
-		<div class="div2">
-			연락처 <input type="text" id="text1" v-model="num" maxlength='16' style="margin-left: 60px"></input>
+		
+	<!-- 연락처 -->
+		<div class="div1">
+			연락처 
+			<div>
+				<input type="text" class="input1" v-model="num" maxlength='16' ></input>
+			</div>
 		</div>
-		<div class="div2">
-			계좌번호 <input type="text" id="text1" v-model="account" maxlength='26' style="margin-left: 45px"></input>
+	
+	<!-- 계좌번호 -->
+		<div class="div1">
+			계좌번호 
+			<div>
+				<input type="text" class="input1" v-model="account" maxlength='26'></input>
+			</div>
 		</div>
-		<div class="div2">
-			사업자명 <input type="text" id="text1" v-model="restaurant" maxlength='16' style="margin-left: 45px"></input>
+	
+	<!-- 사업자명 -->
+		<div class="div1">
+			사업자명 
+			<div>
+				<input type="text" class="input1" v-model="restaurant" maxlength='16'></input>
+			</div>
 		</div>
-		<div class="div2">
-			사업자번호 <input type="text" id="text1" v-model="resnum"	maxlength='35' style="margin-left: 30px"></input>
-			<button @click="fnresnumCheck">중복확인</button>
+	
+	<!-- 사업자번호 -->
+		<div class="div1">
+			사업자번호 
+			<div>
+				<input type="text" class="input2" v-model="resnum"	maxlength='35'></input>
+				<button class="btn1" @click="fnresnumCheck">중복확인</button>
+			</div>
 		</div>
-		<div class="div2">
-		업종
-			<select style="width: 150px; height: 30px; margin-left: 75px; font-size: large; font-weight: bold;" v-model ="kind">
-							<option value="한식">한식</option>
-							<option value="중식">중식</option>
-							<option value="양식">양식</option>
-							<option value="일식">일식</option>
-							<option value="아시아">아시아</option>
-							
-							
-			</select>
+		
+	<!-- 업종 -->
+		<div class="div1">
+			업종
+			<div>
+				<select class="input1" v-model ="kind">
+						<option value="중식">중식</option>
+						<option value="한식">한식</option>
+						<option value="양식">양식</option>
+						<option value="일식">일식</option>
+						<option value="아시아">아시아</option>
+				</select>
+			</div>
 		</div>
-	    <div class="div2">지역
-			        <select id="si" name="si" v-model="region" class="form-control" @change="fnGuList">
-						<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
-					</select>
-					<select id="gu" name="gu" v-model="region1" class="form-control">
-						<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
-					</select>
+	
+	<!-- 지역 -->
+	    <div class="div1">지역
+			        <div>
+				        <select id="si" name="si" v-model="region" class="input4" @change="fnGuList">
+							<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+						</select>
+						<select id="gu" name="gu" v-model="region1" class="input4" >
+							<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
+						</select>
+			        </div>
 		</div>
-		<div class="div2">
-			상세주소 <input type="text" id="text1" v-model="resad" style="margin-left: 45px"></input>
+		
+	<!-- 상세주소 -->
+		<div class="div1">
+			상세주소 
+			<div>
+				<input type="text" class="input1" v-model="resad" ></input>
+			</div>
 		</div>
-		<div class="div2">
-			점포번호 <input type="text" id="text1" v-model="resphonenum" maxlength='16' style="margin-left: 45px"></input>
+	
+	<!-- 점포번호 -->
+		<div class="div1">
+			점포번호 
+			<div>
+				<input type="text" class="input1" v-model="resphonenum" maxlength='16'></input>
+			</div>
 		</div>
-		<button @click="fnjoin" style="width: 200px; height: 35px;">회원가입</button>
-		<div class="div2">
-			<a href="join.do">일반 회원가입하기</a>
-
+	
+	<!-- 회원가입 버튼 -->
+		<div class="div1">
+			<button class="btn2"@click="fnjoin">회원가입</button>
+		</div>	
+	
+	<!-- href -->
+		<div class="div1">
+			<a id="href1" href="login.do">로그인 페이지로 이동</a>
 		</div>
-		<div class="div2">
-
-			<a href="login.do">로그인 페이지로 이동</a>
-		</div>
-
+	
 	</div>
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
 	var app = new Vue({
 		el : '#app',

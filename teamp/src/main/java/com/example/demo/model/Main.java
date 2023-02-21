@@ -10,7 +10,7 @@ public class Main {
    private int resphone; 
    private String grade; 
    private String resadd;
-   private int ordernum;
+   private String ordererid;
    private String menuname;
    private String orderer;
    private String pickuptime;
@@ -21,11 +21,12 @@ public class Main {
    private int resacc;
    
    
-   public int getOrdernum() {
-	return ordernum;
+
+public String getOrdererid() {
+	return ordererid;
 }
-public void setOrdernum(int ordernum) {
-	this.ordernum = ordernum;
+public void setOrdererid(String ordererid) {
+	this.ordererid = ordererid;
 }
 public String getMenuname() {
 	return menuname;
