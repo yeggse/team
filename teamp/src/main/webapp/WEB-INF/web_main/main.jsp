@@ -211,6 +211,8 @@ border: 0.2rem solid #dee2e6;
 .main{
 width:120rem;
 height:90rem;
+position:absolute;
+z-index: -100;
 }
 	
 
