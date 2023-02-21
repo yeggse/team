@@ -58,28 +58,28 @@ body {
 		<div class="div2">주민번호 : {{age}}-{{age1}}</div>
 		<div class="div2">
 			주소 <input type="text" id="text1" v-model="address"
-				style="margin-left: 75px"></input>
+				style="margin-left: 75px" :placeholder='user.address'></input>
 		</div>
 		<div class="div2">
 			닉네임 <input type="text" id="text1" v-model="nickname"
-				style="margin-left: 60px"></input>
+				style="margin-left: 60px" :placeholder='user.nickname'></input>
 			<button @click="fnnickCheck">중복확인</button>
 		</div>
 		<div class="div2">
 			연락처 <input type="text" id="text1" v-model="phonenum"
-				style="margin-left: 60px"></input>
+				style="margin-left: 60px" :placeholder='user.phonenum'></input>
 		</div>
 		<div class="div2">
 			계좌번호 <input type="text" id="text1" v-model="account"
-				style="margin-left: 45px"></input>
+				style="margin-left: 45px" :placeholder='user.acc'></input>
 		</div>
 		<div class="div2">
 			사업자명 <input type="text" id="text1" v-model="restaurant"
-				style="margin-left: 45px"></input>
+				style="margin-left: 45px" :placeholder='user.resname'></input>
 		</div>
 		<div class="div2">
 			사업자번호 <input type="text" id="text1" v-model="resnum"
-				style="margin-left: 30px"></input>
+				style="margin-left: 30px" :placeholder='user.resnum'></input>
 			<button @click="fnresnumCheck">중복확인</button>
 		</div>
 		<div class="div2">
@@ -96,15 +96,15 @@ body {
 		</div>
 		<div class="div2">
 			지역 <input type="text" id="text1" v-model="region"
-				style="margin-left: 75px"></input>
+				style="margin-left: 75px" :placeholder='user.gu'></input>
 		</div>
 		<div class="div2">
 			점포주소 <input type="text" id="text1" v-model="resad"
-				style="margin-left: 45px"></input>
+				style="margin-left: 45px" :placeholder='user.resad'></input>
 		</div>
 		<div class="div2">
 			점포번호 <input type="text" id="text1" v-model="resphonenum"
-				style="margin-left: 45px"></input>
+				style="margin-left: 45px" :placeholder='user.resphone'></input>
 		</div>
 
 		<button @click="fnfix"
@@ -136,7 +136,8 @@ body {
 			resphonenum : "",
 			nickcheck : false,
 			pwdtext:"",
-			pwdtextCheck:false
+			pwdtextCheck:false,
+			user : ${userVO}
 
 		},
 		methods : {
@@ -245,9 +246,9 @@ body {
 						|| self.kind == "" || self.region == ""
 						|| self.resad == "" || self.resphonenum == "") {
 					alert("빈칸을 확인해주세요");
-				} else if (!self.nickcheck) {
+				} else if (!self.nickcheck && self.nickname != self.user.nickname) {
 					alert("닉네임 중복확인을 해주세요");
-				} else if (!self.resnumcheck) {
+				} else if (!self.resnumcheck && self.resnum != self.user.resnum) {
 					alert("사업자번호 중복확인을 해주세요");
 				}else {
 					if(confirm("정말로 지금 정보로 수정하시겠습니까?")){

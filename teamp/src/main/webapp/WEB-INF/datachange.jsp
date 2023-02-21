@@ -61,20 +61,20 @@ body {
 		<div class="div2">주민번호 : {{age}}-{{age1}}</div>
 		<div class="div2">
 			주소 <input type="text" id="text1" v-model="address"
-				style="margin-left: 75px"></input>
+				style="margin-left: 75px" :placeholder='user.address'></input>
 		</div>
 		<div class="div2">
 			닉네임 <input type="text" id="text1" v-model="nickname"
-				style="margin-left: 60px"></input>
+				style="margin-left: 60px" :placeholder='user.nickname'></input>
 			<button @click="fnnickCheck">중복확인</button>
 		</div>
 		<div class="div2">
 			연락처 <input type="text" id="text1" v-model="phonenum"
-				style="margin-left: 60px"></input>
+				style="margin-left: 60px" :placeholder='user.phonenum'></input>
 		</div>
 		<div class="div2">
 			계좌번호 <input type="text" id="text1" v-model="account"
-				style="margin-left: 45px"></input>
+				style="margin-left: 45px" :placeholder='user.acc'></input>
 		</div>
 		<button @click="fnfix"
 			style="width: 200px; height: 35px; margin-top: 50px">수정하기</button>
@@ -99,7 +99,9 @@ body {
 			account : "",
 			pwdtext : "",
 			pwdtextCheck: false,
-			nickcheck : false
+			nickcheck : false,
+			user : ${userVO}
+			
 
 		},
 		methods : {
@@ -171,7 +173,7 @@ body {
 						|| self.address == "" || self.account == ""
 						|| self.nickname == "" || self.phonenum == "") {
 					alert("빈칸을 확인해주세요");
-				} else if (!self.nickcheck) {
+				} else if (!self.nickcheck && self.nickname != self.user.nickname) {
 					alert("닉네임 중복확인을 해주세요");
 				} else {
 					if(confirm("정말로 지금 정보로 수정하시겠습니까?")){
@@ -223,7 +225,7 @@ body {
 
 		},
 		created : function() {
-
+           
 		}
 	});
 </script>
