@@ -76,7 +76,6 @@ public class ReviewController {
     
     
     
-    
   //사업자용 식당리뷰 리스트
     @RequestMapping(value = "/searchReview2.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
    	@ResponseBody
