@@ -67,7 +67,7 @@
                 </div>
                 <a href="login.do" class="nav__link">
                     <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
-                    <span class="nav_name">Log out</span>
+                    <span class="nav_name">로그아웃</span>
                 </a>
             </div>
         </nav>
