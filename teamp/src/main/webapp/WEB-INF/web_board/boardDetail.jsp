@@ -88,8 +88,10 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) {                                       
 	                self.info = data.board;
+	                console.log(self.info);
 	                //self.commentList = data.commentList;
 	                console.log(self.idx);
+	                
                 }
             }); 
         }

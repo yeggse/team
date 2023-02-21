@@ -11,7 +11,14 @@ public class Review {
    private String content;
    private String grade;
    private String nickname;
-   private String create_id;
+   private String img;
+   public String getImg() {
+	return img;
+}
+public void setImg(String img) {
+	this.img = img;
+}
+private String create_id;
    private String reskind;
    private String review;
    private int no;
