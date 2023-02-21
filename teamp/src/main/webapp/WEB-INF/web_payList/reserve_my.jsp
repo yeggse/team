@@ -55,7 +55,7 @@
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
-	                   <td >{{item.ordernum}}</td> 
+	                   <td >{{item.no}}</td> 
 	                   <td >{{item.resname}}</td> 
 	                   <td >{{item.menuname}} </td>
 	                   <td >{{item.menunum}} </td> 
@@ -64,7 +64,6 @@
 	                   <td >{{item.price}}</td>
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.salecomple}}</td>
-	               	
 	               </tr>
 				</tbody>
 			</table>
@@ -94,7 +93,7 @@ var app = new Vue({
         , pickuptime : ""
         , price : ""
         , salecomple : ""
-        , totalprice : []
+        
         
         
     }   
@@ -119,12 +118,14 @@ var app = new Vue({
               console.log(self.list);
           }  
     
+      ,fnCal :function(item){
+    	  var totalprice = item.price * item.menunum;
+      }
       
-      }   
+      }
       , created: function () {
     	var self = this;
   		this.fnGetList();
-  		
   		
   	  } 
     
