@@ -48,7 +48,7 @@
 				<!-- <input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"> -->
 					<tr v-for="(item, index) in list" >                            
 	                   <td >{{item.orderer}}</td>                       
-	                   <td >{{item.ordernum}}</td>
+	                   <td >{{item.no}}</td>
 	                   <td >{{item.menuname}} </td> 
 	                   <td >{{item.menunum}} </td> 
 	                   <td >{{item.orderdate}}</td>

@@ -51,7 +51,7 @@
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
 	                   <td >{{item.orderer}}</td>                       
-	                   <td >{{item.ordernum}}</td> 
+	                   <td >{{item.no}}</td> 
 	                   <td >{{item.resname}}</td> 
 	                   <td >{{item.menuname}} </td> 
 	                   <td >{{item.menunum}} </td> 

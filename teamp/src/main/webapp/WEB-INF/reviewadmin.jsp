@@ -149,7 +149,7 @@ background:#ffff99;
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
-	                   <td>{{item.resnum}}</td> 
+	                   <td>{{item.reviewnum}}</td> 
 	                   <td>{{item.categori}}</td> 
 	                   <td>{{item.title}}</td>
 	                   

@@ -179,7 +179,7 @@ var app = new Vue({
 	        ,userId : "${userId}"
 	        ,resname :  "${resname}"
 	        ,reviewnum :  ""
-	        ,reviewnum :  ""
+
 	        ,categori : ""
 	        ,grade : ""
 	        ,nickname : ""
