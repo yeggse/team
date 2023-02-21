@@ -91,6 +91,7 @@ public class JoinController {
 	 		return new Gson().toJson(resultMap);
 		}	
 		
+	    
 		// 데이터 호출
 		@RequestMapping(value = "/searchid.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody

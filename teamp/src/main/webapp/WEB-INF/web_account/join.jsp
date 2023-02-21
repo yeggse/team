@@ -7,7 +7,6 @@
 <script src="js/jquery.js"></script>
 <script src="js/vue.js"></script>
 <jsp:include page="/layout/header.jsp"></jsp:include>
-<title>테스트</title>
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
@@ -86,34 +85,26 @@ a {
 	</div>
 	<div
 		style="margin-top: 15px; background-color: white; height: 30px; text-align: center; margin-left: 500px;">
-		<a href="join2.do" style="font-size: 15px; font-weight: normal;">사업자
-			회원가입</a>
+		<a href="join2.do" style="font-size: 15px; font-weight: normal;">사업자 회원가입</a>
 	</div>
 	<div id="app" class="div3" style="border: solid black;">
-		<div class="div2">
-			아이디 <input type="text" id="text1" v-model="id"
-				style="margin-left: 60px"></input>
+		<div class="div2">	아이디 <input type="text" id="text1" v-model="id" maxlength='13'	style="margin-left: 60px"></input>
 			<button @click="fnCheck">중복확인</button>
 		</div>
-		<div class="div2">
-			비밀번호 <input type="password" id="text1" v-model="pwd"
-				@change="fnPwcheck" style="margin-left: 45px"></input>
+		<div class="div2">	비밀번호 <input type="password" id="text1" v-model="pwd" maxlength='16' @change="fnPwcheck" style="margin-left: 45px"></input>
 		</div>
 		<div v-if = "pwdtextCheck" style ="color : blue">{{pwdtext}}</div>
-		<div v-else style ="color : red">{{pwdtext}}</div>
-		<div class="div2">
-			비밀번호 확인 <input type="password" id="text1" v-model="pwd2"
-				style="margin-left: 12px"></input>
-			
+		<div v-else style ="color : red">{{pwdtext}} <br> {{pwdtext2}}</div>
+		<div class="div2">	비밀번호 재확인 <input type="password" id="text1" v-model="pwd2" maxlength='16' tyle="margin-left: 12px"></input>
+			<button @click="fnPwSame">비밀번호 확인</button>
 		</div>
-		
 		<div class="div2">
-			이름 <input type="text" id="text1" v-model="name"
+			이름 <input type="text" id="text1" v-model="name" maxlength='7' 
 				style="margin-left: 75px"></input>
 		</div>
 		<div class="div2">
-			주민번호 <input type="text" v-model="age" style="margin-left: 45px"></input>
-			- <input type="password" v-model="age1"></input>
+			주민번호 <input type="text" maxlength='6' v-model="age" style="margin-left: 45px"></input>
+			- <input type="password" maxlength='7' v-model="age1"></input>
 			<button @click="">실명인증</button>
 		</div>
 		<div class="div2">주소
@@ -125,17 +116,13 @@ a {
 					</select>
 		</div>
 		<div class="div2">
-			닉네임 <input type="text" id="text1" v-model="nickname"
-				style="margin-left: 60px"></input>
+			닉네임 <input type="text" id="text1" v-model="nickname" maxlength='10' style="margin-left: 60px"></input>
 			<button @click="fnnickCheck">중복확인</button>
 		</div>
-		<div class="div2">
-			연락처 <input type="text" id="text1" v-model="num"
-				style="margin-left: 60px"></input>
+		<div class="div2">	연락처 <input type="text" id="text1" v-model="num" maxlength='16' style="margin-left: 60px"></input>
 		</div>
 		<div class="div2">
-			계좌번호 <input type="text" id="text1" v-model="account"
-				style="margin-left: 45px"></input>
+			계좌번호 <input type="text" id="text1" v-model="account" maxlength='23' style="margin-left: 45px"></input>
 		</div>
 		<button @click="fnjoin" style="width: 200px; height: 35px;">회원가입</button>
 
@@ -168,17 +155,20 @@ a {
 					agecheck : false,
 					nickcheck : false,
 					flg : false,
+					pwSame : false,
 					pwdtext: "",
+					pwdtext2: "",
 					pwdtextCheck:false
 					,siList : ${siList}
 					,guList : ${guList}
 				},
 				methods : {
+					//아이디 중복확인
 					fnCheck : function() {
 						var self = this;
-						var nparmap = {
-							id : self.id
-						};
+						var pattern1 = /[0-9]/;
+						var pattern2 = /[a-zA-Z]/;
+						var nparmap = {id : self.id};
 						console.log(nparmap);
 						$.ajax({
 							url : "/join/check.dox",
@@ -187,17 +177,22 @@ a {
 							data : nparmap,
 							success : function(data) {
 								//self.list = data.list;
-								if (data.num > 0) {
-									alert("중복되었습니다");
-								} else {
-									alert("사용하실수 있는 아이디입니다.");
-									self.idcheck = true;
+								if(!pattern1.test(self.id)||!pattern2.test(self.id)||self.id.length<3||self.id.length>13){
+									alert("영문, 숫자만을 활용한 3~13자리 ID를 입력해 주세요");
+									self.id = ""
+								} else{
+									if (data.num > 0) {
+										alert("중복된 ID가 존재합니다");
+									} else {
+										alert("사용하실수 있는 아이디입니다.");
+										self.idcheck = true;
+									}
 								}
 							}
 						})
 
-					},//아이디 중복확인
-					fnGuList : function(){
+					}
+					,fnGuList : function(){
 			    		var self = this;
 			            var nparmap = {si : self.address};
 			            $.ajax({
@@ -212,6 +207,7 @@ a {
 			                }
 			            }); 
 			        }
+					//닉네임 중복확인
 					,fnnickCheck : function() {
 						var self = this;
 						var nparmap = {
@@ -234,7 +230,7 @@ a {
 							}
 						})
 
-					},//닉네임 중복확인
+					},
 					fnjoin : function() {
 						var self = this;
 						var nparmap = {
@@ -253,26 +249,21 @@ a {
 							reskind : "",
 							region : "",
 							resad : "",
-							resphone : 0
+							resphone : 0,
 							
 						};
 						console.log(nparmap);
-						if (self.pwd != self.pwd2) {
-							alert("비밀번호가 일치하지 않습니다.");
-						} else if (self.id == "" || self.pwd == ""
-								|| self.pwd2 == "" || self.name == ""
-								|| self.age == "" || self.age1 == ""
-								|| self.address == "" || self.account == ""
+						if (self.id == "" || self.pwd == ""	|| self.pwd2 == "" || self.name == ""
+								|| self.age == "" || self.age1 == "" || self.address == "" || self.account == ""
 								|| self.nickname == "" || self.num == "") {
 							alert("빈칸을 확인해주세요");
+						} else if (!self.pwSame) {
+							alert("비밀번호 일치여부를 확인해 주세요.");
 						} else if(!self.idcheck){
 							alert("아이디 중복확인을 해주세요");
-						}
-						else if(!self.nickcheck){
+						} else if(!self.nickcheck){
 							alert("닉네임 중복확인을 해주세요");
-						}
-						
-						else {
+						} else {
 							$.ajax({
 								url : "/join/get.dox",
 								dataType : "json",
@@ -287,37 +278,44 @@ a {
 									} else {
 										alert("회원가입 실패!");
 									}
-
 								}
-							})
-						}//
+							});
+						}
 
-					},//회원가입
+					},
+					//비밀번호 양식 확인
 					fnPwcheck : function() {
 						var self = this;
-						var nparmap = {
-							pwd : self.pwd,
-							pwd2 : self.pwd2
-						};
+						var nparmap = {pwd : self.pwd, pwd2 : self.pwd2};
 						var pattern1 = /[0-9]/;
 						var pattern2 = /[a-zA-Z]/;
 						var pattern3 = /[~!@\#$%<>^&*]/; // 원하는 특수문자 추가&제거 가능
-						 
-							if (!pattern1.test(self.pwd)
-									|| !pattern2.test(self.pwd)
-									|| !pattern3.test(self.pwd)
-									|| self.pwd.length<8||self.pwd.length>16) {
-								self.pwdtext = "❗ 영문, 숫자, 특수기호를 모두 사용하여, 8자리 이상 16자리 이하로 구성하세요. \n❗❗ 사용가능한 특수 문자 : ~!@\#$%<>^&* ";
-								
-								self.pwdtextCheck = false;
-							} else {
-								self.pwdtext = "올바른 비밀번호 형태입니다.";
-								
-								self.pwdtextCheck = true;
-							}
-						
-
+						if (!pattern1.test(self.pwd)
+							|| !pattern2.test(self.pwd)
+							|| !pattern3.test(self.pwd)
+							|| self.pwd.length<8||self.pwd.length>16) {
+							self.pwdtext = "❗ 영문, 숫자, 특수기호를 모두 사용하여, 8자리 이상 16자리 이하로 구성하세요.";
+							self.pwdtext2 =	"❗❗ 사용가능한 특수 문자 : ~!@\#$%<>^&* ";
+							self.pwd = "";
+							self.pwdtextCheck = false;
+						} else {
+							self.pwdtext = "올바른 비밀번호 형태입니다.";	
+							self.pwdtextCheck = true;
+						}
 					}
+					// 비밀번호 일치 확인
+					, fnPwSame : function(){
+						var self = this;
+						var nparmap = {pwd : self.pwd, pwd2 : self.pwd2};
+						if (self.pwd != self.pwd2) {
+							alert("비밀번호가 일치하지 않습니다.");
+							self.pwSame = false;
+						} else{
+							alert("비밀번호가 일치합니다.");
+							self.pwSame = true;
+						}
+					}
+					
 					, pageChange : function(url, param) {
 				        var target = "_self";
 				        if(param == undefined){
