@@ -86,6 +86,7 @@
 	        
 	</div>
 </body>
+<jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
