@@ -57,7 +57,7 @@
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
 	                   <td >{{item.ordernum}}</td> 
 	                   <td >{{item.resname}}</td> 
-	                   <td >{{item.menuname}} 이어 붙이기</td>
+	                   <td >{{item.menuname}} </td>
 	                   <td >{{item.menunum}} </td> 
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.pickuptime}}</td>

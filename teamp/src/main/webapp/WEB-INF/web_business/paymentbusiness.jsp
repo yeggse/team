@@ -36,7 +36,7 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="col">-</th>
+						<th scope="col">성함</th>
 						<th scope="col">주문번호</th>
 						<th scope="col">메뉴</th>
 					    <th scope="col">개수</th>
@@ -45,10 +45,11 @@
 					</tr>
 				</thead>
 				<tbody>
+				<!-- <input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"> -->
 					<tr v-for="(item, index) in list" >                            
-	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
+	                   <td >{{item.orderer}}</td>                       
 	                   <td >{{item.ordernum}}</td>
-	                   <td >{{item.menuname}} 이어 붙이기</td> 
+	                   <td >{{item.menuname}} </td> 
 	                   <td >{{item.menunum}} </td> 
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.price}}</td>
@@ -58,7 +59,7 @@
 				</tbody>
 			</table>
 		<!-- 페이지 넘어가는 버튼들 -->			
-    <div>총 매출 : {{num}}</div>
+    <div>오늘 매출 : {{num}}</div>
     
 			
 

@@ -49,7 +49,7 @@
                         <span class="nav_name">리뷰 관리</span>
                     </a>
 
-                    <div href="#" class="nav__link collapse">
+                   <!--  <div href="#" class="nav__link collapse">
                         <ion-icon name="people-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">식당 찾기</span>
 
@@ -63,7 +63,7 @@
                             <a href="#" class="collapse__sublink">●한식</a>
                             <a href="#" class="collapse__sublink">●잡식</a>
                         </ul>
-                    </div>
+                    </div> -->
 
                     <a href="datachange2.do" class="nav__link">
                         <ion-icon name="settings-outline" class="nav__icon"></ion-icon>

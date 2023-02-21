@@ -25,7 +25,7 @@
       <a href="login.do" class="header" style="margin-left: 1700px; display: flex; align-items: center;">설정${kind}</a>
       </div>
       <div v-else-if="'${kind}' == 'A'">
-      <a href="paymentmy.do" class="header" style="margin-left: 1700px; display: flex; align-items: center;">설정${kind}</a>
+      <a href="reservemy.do" class="header" style="margin-left: 1700px; display: flex; align-items: center;">설정${kind}</a>
       </div>
       <div v-else-if="'${kind}' == 'B'">	
       <a href="menumanagementbusiness.do" class="header" style="margin-left: 1700px; display: flex; align-items: center;">설정${kind}</a>
