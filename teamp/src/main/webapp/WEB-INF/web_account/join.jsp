@@ -141,7 +141,7 @@ body{
 	color : blue;
 	font-size: 0.76rem; 
 	text-align: left; 
-	margin: 0rem 0rem 0rem 8rem;
+	margin: 0rem 0rem 0rem 0rem;
 }
 #noPwd{
 	color : red;
