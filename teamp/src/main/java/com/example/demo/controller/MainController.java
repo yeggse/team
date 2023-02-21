@@ -58,7 +58,6 @@ public class MainController {
 	// 사업자 회원가입 : 왜 여기에 있니..?
 	@RequestMapping("/join2.do")
 	public String join2(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
-
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		 List<Area> siList = mainService.selectSiList(map); map.put("si",
 		 siList.get(0).getSi()); request.setAttribute("siList", new
