@@ -60,7 +60,6 @@ public class MainController {
 	
 	
 	
-	
 	//구
 	@RequestMapping(value = "/gu/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
