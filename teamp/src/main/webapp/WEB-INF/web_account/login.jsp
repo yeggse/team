@@ -48,7 +48,7 @@
 	padding: 40px;
 	margin-top: 0px;
 	font-family: Fantasy;
-	border: 2px solid gray;
+	border: 2px solid #dcdcdc;
 }
 
 .span {
