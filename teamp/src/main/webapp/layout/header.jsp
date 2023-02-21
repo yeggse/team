@@ -31,7 +31,7 @@
       <a href="menumanagementbusiness.do" class="header" style="margin-left: 1700px; display: flex; align-items: center;">설정${kind}</a>
       </div>
       <div v-else-if="'${kind}' == 'C'">
-      <a href="reviewadmin.do" class="header" style="margin-left: 1700px; display: flex; align-items: center;">설정${kind}</a>
+      <a href="normalMem.do" class="header" style="margin-left: 1700px; display: flex; align-items: center;">설정${kind}</a>
       </div>	
       
       
