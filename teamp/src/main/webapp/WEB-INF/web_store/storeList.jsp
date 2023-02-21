@@ -67,7 +67,7 @@
 			<button  id="btnList">추천순</button>	<!--클릭되었을 경우, 색변화되도록 이벤트 넣기!!!  -->
 			<button id="btnList">재고순</button>	<!-- 선택순으로 리스트 출력하는 쿼리 생성 필요!! -->
 			<span style="margin-left: 1000px">
-				<input type="text" placeholder="가게명을 검색해 주세요" v-model="resname"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
+				<input type="text" placeholder="가게명을 검색해 주세요" v-model="resname1"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
 				<button id="btn" @click="fnSearch" >검색</button>
 			</span>
 		</div>
@@ -94,11 +94,9 @@
 						<col width="25%"/>
 					</colgroup>
 					<tbody>
-						<tr v-for="(item, index) in list" v-if="index%2==0">
+						<tr v-for="(item, index) in list">
 							<td>
 								<span style="text-align: right; margin-right: 10px;">
-								{{list[0].region}}
-								{{si}}
 		    					<button @click="fnView(item)">	<!-- 링크 확인!!!!!!!!!!!! -->
 	    						<span style="background-color: lightgray; display: flex; text-align: center; width: 700px; height: 100px;">
 	    							
@@ -115,31 +113,7 @@
 					</tbody>
 				</table>
 				</div>
-				
-				<div style="width: 40%; float:right; margin-top: 60px; margin-right:80px;">
-				<table >
-					<colgroup>
-						<col width="25%"/>
-					</colgroup>
-					<tbody>
-						<tr v-for="(item, index) in list" v-if="index%2!=0">
-							<td>
-								<span style="text-align: right; margin-right: 10px;" >
-		    					<button @click="fnView(item)">	<!-- 링크 확인!!!!!!!!!!!! -->
-	    						<span style="background-color: lightgray; display: flex; text-align: center;width: 700px; height: 100px;">
-		    						<img src="img/main/point.PNG" width=100px height=90px vertical-align= middle margin-right=80px>
-		    						<span style="font-size: large; font-weight: bold; color: black; margin-left: 50px;">
-		    						<br>
-		    						<div>가게명 : {{item.resname}} </div><div>{{item.grade}} 점 / 주소: {{item.resadd}}</div>  
-	    							</span>
-	    						</span>
-		    					</button>
-		    					</span>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				</div>
+			
 	   	 </div>
 
 <!-- 가게명 검색 -->
@@ -162,6 +136,7 @@ var app = new Vue({
     	resname: "",
     	grade: "",
     	resadd: "",
+    	resname1 : "",
     	tempGrade : "",
     	si : "${si}",
     	guList : ${guList},
@@ -176,7 +151,7 @@ var app = new Vue({
             var self = this;
             if(self.gu == ""){
             	self.flg = "1=1";
-            	console.log(self.flg);
+            	
             }
             else if(self.gu != ""){
             	self.flg = "";
@@ -190,7 +165,6 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) {/* 데이터가 제대로 넘어오면, success실행됨 */   
                 	self.list = data.list;
-                console.log(self.gu);
    	            	if(self.list.length > 0){
    	            		self.tempGrade = self.list[0].grade;
    	            	}
@@ -202,7 +176,7 @@ var app = new Vue({
  	// 가게명 검색 이벤트 (식당 출력)
    	fnSearch : function(){
         var self = this;
-        var nparmap = {si : self.si,resname:self.resname}; //다음 페이지로 넘어갈때 필요한 변수만 적어주기. 
+        var nparmap = {si : self.si,resname:self.resname1}; //다음 페이지로 넘어갈때 필요한 변수만 적어주기. 
         $.ajax({
             url:"/main.storelist/slist.dox",
             dataType:"json",	
@@ -210,18 +184,17 @@ var app = new Vue({
             data : nparmap,
             success : function(data) {       
             	self.list = data.list;
-            	console.log(self.list);	
+            		
 	            	if(self.list.length == 0){
 	            		self.fnGet();
 	            	}    
-            	console.log(self.list);
+            	
             }
        });
 	}
     	,fnGuList : function(){
     		var self = this;
             var nparmap = {si : self.si};
-            console.log(self.list);
             $.ajax({
                 url:"/gu/list.dox",
                 dataType:"json",	
@@ -229,7 +202,7 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) {                                       
 	                self.guList = data.guList;
-	                console.log(data.guList);
+	                
 	                self.gu = "";
                 }
             }); 
