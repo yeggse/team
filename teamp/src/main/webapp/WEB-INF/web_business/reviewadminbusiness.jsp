@@ -205,7 +205,7 @@ var app = new Vue({
 		}
 		,fnDetailreview : function(item){
 			var self = this;
-			self.pageChange("/review.board.detail.do",{reviewnum : item.reviewnum});
+			self.pageChange("/review.board.detail.do",{reviewnum : item.reviewnum, answer : item.answer});
 			console.log(self.reviewnum);
 		}
 		, pageChange : function(url, param) {

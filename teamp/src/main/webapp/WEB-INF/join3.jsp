@@ -349,13 +349,13 @@ input {
 					
 					<tr v-for="(item, index) in list1" >                            
 	                  <!--  <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList1"></td>  -->                      
-	                   <td >{{item.reviewnum}}</td> 
-	                   <td >{{item.categori}}</td> 
-	                   <td >{{item.nickname}}</td>
-	                   <td >{{item.content}}</td> 
-	                   <td >{{item.title}}</td>
-	                   <td >{{item.writedate}}</td>
-	                   <td >{{item.grade}}</td>
+	                   <td @click = "fnview(item)">{{item.reviewnum}}</td> 
+	                   <td @click = "fnview(item)">{{item.categori}}</td> 
+	                   <td @click = "fnview(item)">{{item.nickname}}</td>
+	                   <td @click = "fnview(item)">{{item.content}}</td> 
+	                   <td @click = "fnview(item)">{{item.title}}</td>
+	                   <td @click = "fnview(item)">{{item.writedate}}</td>
+	                   <td @click = "fnview(item)">{{item.grade}}</td>
 	               	
 	               </tr>
 
@@ -477,6 +477,11 @@ input {
 			}
 			
 		}
+		, fnview : function(item){
+		  var self = this;
+		  self.pageChange("/review.board.detail.do",{reviewnum:item.reviewnum})
+		}
+		
 		, pageChange : function(url, param) {
 			var target = "_self";
 			if(param == undefined){

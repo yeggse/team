@@ -52,15 +52,15 @@
 				   	</div>
 			   	</div>
 			</div>
-			<div v-for="(item, index) in commentList" style="font-size: 20px;">
-				{{item.nickname}}({{item.writedate}}) : {{item.content}}
+			<div style="font-size: 30px;">
+				사장님:{{info.answer}}
 			</div>
 		 	<div>
-					<textarea rows="3" cols="100" v-model="comment"></textarea>
-					<button @click="fnComment" class="btn" style="margin-bottom:40px;">댓글달기</button>
+					<textarea rows="3" cols="100" v-model="answer"></textarea>
+					<button v-if="'${kind}' === 'B'" @click="fnComment" class="btn" style="margin-bottom:40px;">답변하기</button>
 			</div>
 				<button @click="fnList" class="btn" style="float: right;">목록으로</button>
-				<button v-if="'${kind}' === 'B'" @click="fnEdit" class="btn">수정하기</button>	 	
+					 	
 		</div>
 	</div>
 	        
@@ -77,6 +77,7 @@ var app = new Vue({
        , userId : "${userId}"	//세션으로 id가져오기
        , comment : ""
        , commentList : []
+       , answer : ""
        
     }   
     , methods: {
@@ -91,8 +92,9 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) {                                       
 	                self.info = data.review;
-	                console.log(self.info);
-	                //self.commentList = data.commentList;
+	               
+	                self.commentList = data.review;
+	                console.log(self.commentList);
 	                
                 }
             }); 
@@ -105,7 +107,7 @@ var app = new Vue({
 		} */
 	    , fnComment : function(){
 	        var self = this;
-	        var nparmap = {reviewnum : self.reviewnum, userId : self.userId, content : self.comment, depth : "0", cgroup : ""};
+	        var nparmap = {reviewnum : self.reviewnum, userId : self.userId, answer:self.answer};
 	        $.ajax({
 	            url:"/reviewcomment.dox",
 	            dataType:"json",	

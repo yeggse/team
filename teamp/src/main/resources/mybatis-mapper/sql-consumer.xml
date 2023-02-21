@@ -34,9 +34,9 @@
 	<!-- 리뷰작성 작성 -->
 	<insert id="addReview" parameterType="hashmap" useGeneratedKeys="true" keyProperty="reviewnum" keyColumn="reviewnum">	
 		INSERT INTO t3_review 
-			( categori, resnum, writedate, content, grade, nickname, reskind, title, create_id )  
+			( categori, resnum, writedate, content, grade, nickname, reskind, title, create_id,answer )  
 		VALUES
-			(#{reskind},  #{resnum}, NOW() , #{content}, #{grade}, #{nickname}, #{reskind}, #{title}, #{userId})
+			(#{reskind},  #{resnum}, NOW() , #{content}, #{grade}, #{nickname}, #{reskind}, #{title}, #{userId},'N')
 	</insert>
 	
 	

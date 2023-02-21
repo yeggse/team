@@ -17,6 +17,7 @@ public class Review {
    private String reskind;
    private String review;
    private int no;
+   private String answer;
    
    public String getResname() {
 	return resname;
@@ -104,6 +105,12 @@ public int getNo() {
 }
 public void setNo(int no) {
 	this.no = no;
+}
+public String getAnswer() {
+	return answer;
+}
+public void setAnswer(String answer) {
+	this.answer = answer;
 }
 
 
