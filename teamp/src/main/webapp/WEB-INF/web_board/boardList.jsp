@@ -331,7 +331,7 @@ var app = new Vue({
 			var self = this;
 			self.selectPage = pageNum;
 			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
-			var lastNum = 10
+			var lastNum = 10;
 	        var nparmap = {startNum : startNum, lastNum : lastNum, title : self.title, boardtype : self.boardtype};
 	        $.ajax({
 	            url:"/firstBoard.dox",

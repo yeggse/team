@@ -53,9 +53,9 @@ public class BoardController {
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Board> list = boardService.firstBoard(map);
-		int cnt = boardService.countBoardCnt(map); ////////////////////////////////////////////
+		int cnt = boardService.countBoardCnt(map); // 게시글 숫자 세기
 		resultMap.put("list", list);
-		resultMap.put("cnt", cnt);	
+		resultMap.put("cnt", cnt);	// 게시글 숫자 세기
 		return new Gson().toJson(resultMap);
 	}
 	

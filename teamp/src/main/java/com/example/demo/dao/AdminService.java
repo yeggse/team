@@ -21,8 +21,8 @@ public interface AdminService {
 	void editbum(HashMap<String, Object> map);
 	// 일반회원 탈퇴
 	void deletemem(HashMap<String, Object> map); 
-	// 일반회원 검색
-	List<Admin>searchMem(HashMap<String, Object> map) throws Exception;
+	// 일반회원 갯수 세기
+	int countMemCnt(HashMap<String, Object> map);;
 	// 사업자 회원 검색
 	List<Admin>searchBum(HashMap<String, Object> map) throws Exception;
 }

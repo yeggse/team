@@ -9,21 +9,25 @@
 				id, kind, phonenum, acc, name, address, frontregisnum, afterregisnum, nickname
 			FROM
 				t3_account
-			where kind = "A"
+			where kind = "A" 
+		<if test='search != null and search != "" '>
+			and (id = #{search} or name = #{search})
+		</if>			
 			ORDER BY id ASC
 			LIMIT #{startNum}, #{lastNum}
 	</select>
 	
-	<!-- 일반회원 검색 -->
-	<select id="searchMem" parameterType="hashmap" resultType="com.example.demo.model.Admin">	
-		SELECT
-			id, kind, phonenum, acc, name, address, frontregisnum, afterregisnum, nickname
+	<!-- 일반회원 수 출력 -->
+	<select id="countMemCnt" parameterType="hashmap" resultType="int">	
+		SELECT 
+			COUNT(*) AS CNT
 		FROM
-			t3_account
-		where
-			(id = #{search} or name = #{search}) and kind="A"
-		ORDER BY id ASC
+			t3_account where kind = "A"
+		<if test='search != null and search != "" '>
+			and (id = #{search} or name = #{search})
+		</if>
 	</select>
+	
 	
 	<!-- 일반회원 상세 정보 출력 -->
 	<select id="detailmem" resultType="com.example.demo.model.Admin">	

@@ -18,14 +18,6 @@ width:6rem;
 height:6rem;
 }
 /* ----------------------------------------------------- */
-#input {
-   width: 25rem;
-   margin-top: 0rem;
-   padding: 0.66rem;
-   box-sizing: border-box;
-   border-radius: 0.66rem;
-   border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
-}
    
 #btn{
 	background-color: #8FBC94;
@@ -112,17 +104,12 @@ background:#ffff99;
 			<h2>일반 회원 관리🙆‍♀️ </h2>‍
 			<div style="text-align: center;">
 			
-				<input type="text" placeholder="id 혹은 이름을 검색해 주세요" v-model="search"  v-on:keyup.enter="fnSearch"></input>
-				<button id="btn" @click="fnSearch">검색</button>	
-				
-		<!-- 		<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		업종 리스트 출력하는 쿼리 생성 필요!!
-				<button id="btn"  >검색</button>  -->
-				
+				<input style="width: 40%; padding: 2px;" type="text" placeholder="id 혹은 이름을 검색해 주세요" v-model="search"  v-on:keyup.enter="fnGetList"></input>
+				<button id="btn" @click="fnGetList">검색</button>	
 				
 			</div>
 			<table class="board_list">
 				<colgroup>
-					<col width="5%"/>
 					<col width="10%"/> 
 					<col width="10%"/> 
 					<col width="*%"/>
@@ -132,20 +119,17 @@ background:#ffff99;
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="col">-</th>
 						<th scope="col">회원명</th>
 						<th scope="col">닉네임</th>
 						<th scope="col">아이디</th>
 						<th scope="col">주소</th>
 						<th scope="col">생년월일</th>
 						<th scope="col">전화번호</th>
-						
 					</tr>
 				</thead>
 				<!-- db 수정되면 알맞은 값 가져오기 -->
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
-	                   <td @click="fnMemDetail(item)"><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
 	                   <td @click="fnMemDetail(item)">{{item.name}}</td> 
 	                   <td @click="fnMemDetail(item)">{{item.nickname}}</td> 
 	                   <td @click="fnMemDetail(item)">{{item.id}}</td>
@@ -156,7 +140,19 @@ background:#ffff99;
 	               </tr>
 				</tbody>
 			</table>
-		<!-- 페이지 넘어가는 버튼들 -->		
+		<!-- 페이지 넘어가는 버튼들 -->			
+			<template>
+			<paginate
+			    :page-count="pageCount"
+			    :page-range="3"
+			    :margin-pages="2"
+			    :click-handler="changePage"
+			    :prev-text="'<'"
+			    :next-text="'>'"
+			    :container-class="'pagination'"
+			    :page-class="'page-item'">
+			  </paginate>
+			</template>	
 			  
 		  	
 		  </div>	
@@ -192,7 +188,7 @@ var app = new Vue({
             var self = this;
             var startNum = ((self.selectPage-1) * 10);
     		var lastNum = self.selectPage * 10;
-            var nparmap = {startNum : startNum, lastNum : lastNum}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
+            var nparmap = {startNum : startNum, lastNum : lastNum, search : self.search}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
             $.ajax({
                 url:"/normalMem.dox",
                 dataType:"json",	
@@ -238,25 +234,25 @@ var app = new Vue({
     		form.submit();
     		document.body.removeChild(form);
     	}
-		// 검색버튼 이벤트
-       	,fnSearch : function(){
-            var self = this;
-            var nparmap = {search : self.search}; 
-            $.ajax({
-                url:"/searchMem.dox",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                success : function(data) {       
-                	self.list = data.list;
-    	            	if(self.list.length == 0){
-    	            		alert("존재하지 않습니다.");
-    	            		self.fnGetList();
-    	            	}    
-                	console.log(self.list);
-                }
-           });
-    	}  		
+		// 페이지 전환 메소드
+		, changePage : function(pageNum) {
+			var self = this;
+			self.selectPage = pageNum;
+			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
+			var lastNum = 10;
+	        var nparmap = {startNum : startNum, lastNum : lastNum, title : self.title, boardtype : self.boardtype};
+	        $.ajax({
+	            url:"/normalMem.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {                                       
+	                self.list = data.list;
+	                self.pageCount = Math.ceil(data.cnt / 10);
+	                console.log(data);
+	            }
+	        }); 
+		}
     }   
     , created: function () {
     	var self = this;

@@ -78,12 +78,6 @@ public class AdminServiceImpl implements AdminService{
 		adminMapper.deletemem(map);
 	}
 	
-	// 일반회원 검색
-	@Override
-	public List<Admin> searchMem(HashMap<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		return adminMapper.searchMem(map);
-	}
 	// 사업자 회원 검색
 	@Override
 	public List<Admin> searchBum(HashMap<String, Object> map) throws Exception {
@@ -96,6 +90,12 @@ public class AdminServiceImpl implements AdminService{
 	public void editbum(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		adminMapper.editbum(map);
+	}
+	// 일반회원 수
+	@Override
+	public int countMemCnt(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return adminMapper.countMemCnt(map);
 	}
 
 

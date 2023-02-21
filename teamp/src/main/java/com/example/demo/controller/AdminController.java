@@ -50,9 +50,9 @@ public class AdminController {
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Admin> list = adminService.normalMemList(map);
-		//int cnt = adminService.countBoardCnt();	//게시글 갯수 세기
+		int cnt = adminService.countMemCnt(map);	//수 세기
 		resultMap.put("list", list);
-		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
+		resultMap.put("cnt", cnt);	//수 세기
 		return new Gson().toJson(resultMap);
 	}
 	
@@ -78,16 +78,6 @@ public class AdminController {
 		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
 		return new Gson().toJson(resultMap);
 	}
-	
-	// 일반회원 검색
-	@RequestMapping(value = "/searchMem.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String searchMem(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Admin> list = adminService.searchMem(map); // DB 접근 및 쿼리를 통한 데이터 호출 
-		resultMap.put("list", list);
-		return new Gson().toJson(resultMap);
-	} 	
 	
 	// 관리자회원 검색
 	@RequestMapping(value = "/searchBum.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -188,4 +178,6 @@ public class AdminController {
 		resultMap.put("message", "성공");
 		return new Gson().toJson(resultMap);
 	}
+	
+	
 }
