@@ -118,4 +118,11 @@
 		WHERE
 			t.reviewnum = #{reviewnum}
 	</select>
+	
+	<insert id="insertComment" parameterType="hashmap">	
+		INSERT INTO t3_review_answer
+			(reviewnum, content, createdate, writer, depth, cgroup)  
+		VALUES
+			(#{reviewnum}, #{content}, NOW(), #{userId} , #{depth}, #{cgroup})
+	</insert>
 </mapper>

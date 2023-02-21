@@ -55,8 +55,12 @@
 			<div v-for="(item, index) in commentList" style="font-size: 20px;">
 				{{item.nickname}}({{item.writedate}}) : {{item.content}}
 			</div>
-		 	<button @click="fnList" class="btn" style="float: right;">목록으로</button> 
-		 	<button v-if="'admin' == userId"  @click="fnEdit" class="btn">수정하기</button>	 	
+		 	<div>
+					<textarea rows="3" cols="100" v-model="comment"></textarea>
+					<button @click="fnComment" class="btn" style="margin-bottom:40px;">댓글달기</button>
+			</div>
+				<button @click="fnList" class="btn" style="float: right;">목록으로</button>
+				<button v-if="'${kind}' === 'B'" @click="fnEdit" class="btn">수정하기</button>	 	
 		</div>
 	</div>
 	        
@@ -99,7 +103,21 @@ var app = new Vue({
 			self.pageChange("./main.board.edit.do", {noticenum : self.idx});	
 			
 		} */
-		
+	    , fnComment : function(){
+	        var self = this;
+	        var nparmap = {reviewnum : self.reviewnum, userId : self.userId, content : self.comment, depth : "0", cgroup : ""};
+	        $.ajax({
+	            url:"/reviewcomment.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {
+	            	alert("댓글을 등록했습니다.");
+	            	self.comment = "";
+	            	window.location.reload();
+	            }
+	        }); 
+	    }
 		// 목록으로 가기 버튼
     	, fnList : function(){
     		location.href="/review.do";

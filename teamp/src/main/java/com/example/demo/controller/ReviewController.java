@@ -141,4 +141,14 @@ public class ReviewController {
    		resultMap.put("message", "성공");
    		return new Gson().toJson(resultMap);
    	}
+ // 리뷰 댓글 출력 데이터 호출
+   	@RequestMapping(value = "/reviewcomment.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String comment(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		
+		reviewservice.insertComment(map);
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
 }

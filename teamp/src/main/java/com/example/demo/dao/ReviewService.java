@@ -22,4 +22,6 @@ public interface ReviewService {
 	
 	//게시글 상세출력
 		HashMap<String, Object> detailReviewboard(HashMap<String, Object> map); // 데이터 호출을 위한 인터페이스
+	// 댓글 입력
+		void insertComment(HashMap<String, Object> map);	
 }

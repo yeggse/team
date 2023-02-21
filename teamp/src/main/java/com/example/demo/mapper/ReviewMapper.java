@@ -25,4 +25,6 @@ public interface ReviewMapper {
 	void reviewFin(HashMap<String, Object> map);
 	//리뷰상세출력
 	Review detailReviewboard(HashMap<String, Object> map);
+	// 댓글
+	void insertComment(HashMap<String, Object> map);
 }

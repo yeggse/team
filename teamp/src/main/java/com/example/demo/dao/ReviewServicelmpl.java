@@ -50,9 +50,6 @@ public class ReviewServicelmpl implements ReviewService{
 		reviewMapper.deleteARev(map);
 	}
 	
-	
-	
-	
 	@Override
 	public List<Review> selectreviewList2(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
@@ -73,10 +70,9 @@ public class ReviewServicelmpl implements ReviewService{
 		return resultMap;
 	}
 
-
-
-
-
-
-
+	@Override
+	public void insertComment(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		reviewMapper.insertComment(map);
+	}
 }
