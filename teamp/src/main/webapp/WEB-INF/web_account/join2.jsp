@@ -195,8 +195,8 @@ body{
 		</div>
 		
 		<!-- 비밀번호 일치확인 기능 -->
-		<div v-if = "fnPwSame" id="noPwd">{{pwdtext3}}</div>
-		<div v-else id="okPwd">{{pwdtext3}} </div>
+		<div v-if = "pwSame" id="okPwd">{{pwdtext3}}</div>
+		<div v-else id="noPwd">{{pwdtext3}}</div>
 		
 	<!-- 이름 -->
 		<div class="div1">
@@ -367,10 +367,10 @@ body{
 			pwdtext: "",
 			pwdtext2: "",
 			pwdtext3: "",
-			pwdtextCheck:false
-			, people : false
-			, siList : ${siList}
-			,guList : ${guList}
+			pwdtextCheck:false,
+			people : false,
+			siList : ${siList},
+			guList : ${guList}
 		},
 		methods : {
 			//아이디 중복확인
@@ -495,7 +495,6 @@ body{
 				var nparmap = {pwd : self.pwd, pwd2 : self.pwd2};
 				if (self.pwd != self.pwd2) {
 					self.pwdtext3 = "❗ 비밀번호가 일치하지 않습니다.";
-					self.pwd = "";
 					self.pwSame = false;
 				} else{
 					self.pwdtext3 = "비밀번호가 일치합니다";	

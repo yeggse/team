@@ -94,15 +94,18 @@ body {
 							
 			</select>
 		</div>
-		<div class="div2">
-			지역 <input type="text" id="text1" v-model="region"
-				style="margin-left: 75px" :placeholder='user.gu'></input>
+		<div class="div2">지역
+			        <select id="si" name="si" v-model="region" class="form-control" @change="fnGuList">
+						<option v-for="item in siList" v-bind:value="item.si" :placeholder='user.region'>{{item.si}}</option>
+					</select>
+					<select id="gu" name="gu" v-model="region1" class="form-control">
+						<option v-for="item in guList" v-bind:value="item.gu" :placeholder='user.region1'>{{item.gu}}</option>
+					</select>
 		</div>
 		<div class="div2">
-			점포주소 <input type="text" id="text1" v-model="resad"
-				style="margin-left: 45px" :placeholder='user.resad'></input>
+			상세주소 <input type="text" id="text1" v-model="resad" :placeholder='user.resad' style="margin-left: 45px"></input>
 		</div>
-		<div class="div2">
+        <div class="div2">
 			점포번호 <input type="text" id="text1" v-model="resphonenum"
 				style="margin-left: 45px" :placeholder='user.resphone'></input>
 		</div>
@@ -132,12 +135,17 @@ body {
 			resnum : "",
 			kind : "",
 			region : "",
+			region1 : "",
 			resad : "",
 			resphonenum : "",
 			nickcheck : false,
 			pwdtext:"",
 			pwdtextCheck:false,
-			user : ${userVO}
+			user : ${userVO},
+			resad : "",
+			siList : ${siList},
+			guList : ${guList}
+			
 
 		},
 		methods : {
@@ -162,9 +170,25 @@ body {
 						}
 					}
 				})
-			},
+			}
+		    ,fnGuList : function(){
+	    		var self = this;
+	            var nparmap = {si : self.region};
+	            $.ajax({
+	                url:"/gu/list.dox",
+	                dataType:"json",	
+	                type : "POST", 
+	                data : nparmap,
+	                success : function(data) {                                       
+		                self.guList = data.guList;
+		                console.log(data.guList);
+		                self.gu = "";
+	                }
+	            }); 
+	        }
+	
 			
-			fnresnumCheck : function() {
+			,fnresnumCheck : function() {
 				var self = this;
 				var nparmap = {
 					resnum : self.resnum
@@ -232,6 +256,7 @@ body {
 					resnum : self.resnum,
 					kind : self.kind,
 					region : self.region,
+					region1 : self.region1,
 					resad : self.resad,
 					resphonenum : self.resphonenum
 

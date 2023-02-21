@@ -141,7 +141,7 @@ var app = new Vue({
 	       	           {}
 	       	       }); 
 	            	alert("게시글이 저장되었습니다.");
-	           		location.href="/menu.add.do";
+	           		location.href="/menumanagementbusiness.do";
 	            }
 	        }); 
 		}
