@@ -131,7 +131,7 @@
             <button class="btnphoto2">사진</button> -->
           </div>
           <div>
-            <button  @click="fnSave" id="radioButton">완료</button>
+            <button  @click="fnSave" id="radioButton">완료{{userVo.nickname}}</button>
             수정할것: 레이아웃,rem, 사이즈,헤더 푸터 옆에거 연동 잘 해보기,클릭시 아래 페이지 나오게하기
           </div>
         </div>
@@ -157,6 +157,9 @@ var app = new Vue({
 			,nickname : "${nickname}"
 			,reviewnum:"${map.reviewnum}"
 			,grade:""
+			,reskind:"${map.reskind}"
+			,resnum:"${map.resnum}"
+			
 			
     }
 
@@ -197,7 +200,7 @@ var app = new Vue({
     	    }
      ,fnSave : function(){
 		var self = this;
-      	var nparmap = {nickname:self.nickname, reviewnum: self.reviewnum, content : self.content, img : self.img, grade: self.grade}; 
+      	var nparmap = {nickname:self.nickname,content : self.content, img : self.img, grade: self.grade, reskind:self.reskind, resnum: self.resnum}; 
         $.ajax({
             url:"/addReview.dox",
             dataType:"json",	
@@ -241,6 +244,7 @@ var app = new Vue({
     	}
     }
     , created: function () {
+    	
 	}
 });
 </script>

@@ -46,6 +46,7 @@ public class ResmenuController {
     	String phonenum = (String)session.getAttribute("userPhonenumSession");
     	String acc = (String)session.getAttribute("userAccSession");
     	request.setAttribute("map", map);
+    	System.out.println(map);
     	request.setAttribute("userName", name);
     	request.setAttribute("userPhonenum", phonenum);
     	request.setAttribute("userAcc", acc);

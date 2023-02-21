@@ -48,11 +48,13 @@ public class ConsumerController {
     	return "/payment_my"; // WEB-INF에서 호출할 파일명
     }
     @RequestMapping("/reviewwrite.do") 
-    public String review(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-    	HashMap<String, Object> map = new HashMap<String, Object>();
+    public String review(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
+    	
     	String kind = (String)session.getAttribute("KindSession");
     	String id = (String)session.getAttribute("userIdSession");
-    	String nickname = (String)session.getAttribute("nicknameSession");
+    	String nickname = (String)session.getAttribute("userNicknameSession");
+    	System.out.println(map);
+    	request.setAttribute("map",map);
     	request.setAttribute("nickname", nickname);
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id); 
@@ -101,12 +103,12 @@ public class ConsumerController {
 	 // 리뷰 작성 데이터 호출1
 		@RequestMapping(value = "/addReview.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody
-		public String addReview(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		public String addReview(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception {
 			HashMap<String, Object> resultMap = new HashMap<String, Object>();
 			String img = (String) map.get("img"); //!!!!!!!!!!!!!!!!
 			consumerService.addReview(map);
 			resultMap.put("message", "성공");
-			resultMap.put("reviewnum", map.get("reviewnum"));//******
+			resultMap.put("reviewnum", map.get("reviewnum"));//*****
 			return new Gson().toJson(resultMap);
 		}
 
