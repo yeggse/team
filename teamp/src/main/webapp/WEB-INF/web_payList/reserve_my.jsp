@@ -49,7 +49,7 @@
 						<th scope="col">픽업시간</th>
 						<th scope="col">개당 가격</th>
 						<th scope="col">주문 일자</th>
-						<th scope="col">판매 완료</th>
+						<th scope="col">픽업 여부</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -94,6 +94,7 @@ var app = new Vue({
         , pickuptime : ""
         , price : ""
         , salecomple : ""
+        , totalprice : []
         
         
     }   
@@ -123,6 +124,8 @@ var app = new Vue({
       , created: function () {
     	var self = this;
   		this.fnGetList();
+  		
+  		
   	  } 
     
    

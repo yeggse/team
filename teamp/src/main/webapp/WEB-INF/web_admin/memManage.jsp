@@ -128,7 +128,7 @@ background:#ffff99;
 					<col width="*%"/>
 					<col width="15%"/>
 					<col width="15%"/>
-					<col width="20%"/>
+					
 				</colgroup>
 				<thead>
 					<tr>
@@ -139,7 +139,7 @@ background:#ffff99;
 						<th scope="col">주소</th>
 						<th scope="col">생년월일</th>
 						<th scope="col">전화번호</th>
-						<th scope="col">계좌번호</th>
+						
 					</tr>
 				</thead>
 				<!-- db 수정되면 알맞은 값 가져오기 -->
@@ -152,7 +152,7 @@ background:#ffff99;
 	                   <td @click="fnMemDetail(item)">{{item.address}}</td>
 	                   <td @click="fnMemDetail(item)">{{item.frontregisnum}}</td>
 	                   <td @click="fnMemDetail(item)">{{item.phonenum}}</td>
-	                   <td @click="fnMemDetail(item)">{{item.acc}}</td> 
+	                    
 	               </tr>
 				</tbody>
 			</table>

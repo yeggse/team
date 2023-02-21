@@ -185,7 +185,7 @@ select {
 				<h2>세잎 공지사항</h2>
 
 			<div class="form-item input-group mb-3 " style="text-align: center; margin-left: 620px; float: left;">
-			<input type="text"  placeholder="찾고있는 공지사항이 있나요?" v-model="title">
+			<input type="text"  placeholder="찾고있는 공지사항이 있나요?" v-model="title" v-on:keyup.enter="fnGetList">
 			<button @click="fnGetList" class="btn btn-outline-success" type="button" id="button-addon2">검색</button>
 			</div>
 			 		<form action="#" style="float: right; display: inline;">
