@@ -105,7 +105,7 @@ a {
 		<div class="div2">
 			주민번호 <input type="text" maxlength='6' v-model="age" style="margin-left: 45px"></input>
 			- <input type="password" maxlength='7' v-model="age1"></input>
-			<button @click="">실명인증</button>
+			<button @click="fnPeople">실명인증</button>
 		</div>
 		<div class="div2">주소
 			        <select id="si" name="si" v-model="address" class="form-control" @change="fnGuList">
@@ -263,6 +263,8 @@ a {
 							alert("아이디 중복확인을 해주세요");
 						} else if(!self.nickcheck){
 							alert("닉네임 중복확인을 해주세요");
+						} else if(!self.people){
+							alert("실명인증을 해 주세요");
 						} else {
 							$.ajax({
 								url : "/join/get.dox",
@@ -315,7 +317,21 @@ a {
 							self.pwSame = true;
 						}
 					}
-					
+					// 실명인증
+					, fnPeople : function(){
+						var self = this;
+						var nparmap = {age : self.age, age1 : self.age1};
+						var pattern1 = /[0-9]/;
+						if(!pattern1.test(self.age) || !pattern1.test(self.age1)){
+							alert("숫자만 입력하세요");
+							self.age ="";
+							self.age1 = "";
+						} else{
+							alert("실명인증이 확인되었습니다. 다만, 주민 뒷번호 체크필요~~~~~~");
+							self.people = true;
+						}
+						
+					}
 					, pageChange : function(url, param) {
 				        var target = "_self";
 				        if(param == undefined){
