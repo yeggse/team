@@ -52,15 +52,16 @@
 				   	</div>
 			   	</div>
 			</div>
-			<div style="font-size: 30px;">
-				사장님:{{info.answer}}
-			</div>
-		 	<div>
-					<textarea rows="3" cols="100" v-model="answer"></textarea>
-					<button v-if="'${kind}' === 'B'" @click="fnComment" class="btn" style="margin-bottom:40px;">답변하기</button>
-			</div>
+			<div v-if="'${kind}' === 'B'">
+				<div style="font-size: 30px;">
+					사장님:{{info.answer}}
+				</div>
+			 	<div>
+						<textarea rows="3" cols="100" v-model="answer"></textarea>
+						<button @click="fnComment" class="btn" style="margin-bottom:40px;">답변하기</button>
+				</div>
+			</div>	
 				<button @click="fnList" class="btn" style="float: right;">목록으로</button>
-					 	
 		</div>
 	</div>
 	        
