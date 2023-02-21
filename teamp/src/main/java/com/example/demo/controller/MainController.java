@@ -36,6 +36,8 @@ public class MainController {
 	
     // 원래는 Model model -> 세션 연결 후 : Model model, HttpServletRequest request, HttpServletResponse response
     // 웹 주소 : 메인페이지
+	
+	// 일반 회원가입 : 왜 여기에 있니..?
 	@RequestMapping("/join.do")
 	public String join(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -51,8 +53,13 @@ public class MainController {
     	List<Area> dongList = areaService.selectDongList(map);
     	map.put("dong", dongList.get(0).getDong());
     	request.setAttribute("dongList",  new Gson().toJson(dongList));
-		return "/join"; // WEB-INF에서 호출할 파일명
+		return "/web_account/join"; // WEB-INF에서 호출할 파일명
 	}
+	
+	
+	
+	
+	
 	//구
 	@RequestMapping(value = "/gu/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
@@ -62,6 +69,11 @@ public class MainController {
 		resultMap.put("guList", guList);
 		return new Gson().toJson(resultMap);
 	}
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/dong/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String dong(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
