@@ -218,7 +218,7 @@ input {
 				</div>
 				<!-- 여기서 부터 offcanvas 테스트 -->
 				<div>
-					<button class="btn btn-primary" type="button"
+					<button class="btn btn-primary" type="button" id="btn_order"
 						data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
 						aria-controls="staticBackdrop" @click ="fncal">결제하기</button>
 					<div class="offcanvas offcanvas-start" data-bs-backdrop="static"
