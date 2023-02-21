@@ -18,22 +18,22 @@
 
 	<select id="selectResmenu1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
-			ordernum,menuname,pickuptime,payment,price, idx
+			ordererid,menuname,pickuptime,payment,price, idx
 			reskind, startdate,enddate,picture,introduce,supply,orderer,resnum
 		FROM
 			t3_reserve
-		WHERE orderer = #{id} 
+		WHERE ordererid = #{id} 
 		
 	</select>
 	
 	<!-- 일반 회원 결제내역 페이지  -->
 	<select id="selectPaymentmy1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 		SELECT
-			resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname,reskind
+			resnum, ordererid, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname,reskind
 		FROM
 			t3_reserve
 		WHERE
-		 	orderer = #{id} AND salecomple = "Y"
+		 	ordererid = #{id} AND salecomple = "Y"
 	</select>
 	
 	<!-- 사업자 메뉴관리 페이지 게시물 갯수 -->
@@ -73,7 +73,7 @@
 	
 	<insert id="insertreserve" parameterType="hashmap">
 		INSERT INTO 
-		t3_reserve(resnum,menuname,ordernum,
+		t3_reserve(resnum,menuname,ordererid,
 		orderer,pickuptime,payment,price,review,
 		salecomple,menunum,resname,orderdate,reskind)
 
@@ -81,7 +81,7 @@
 		
 		#{resnum}
 		,#{menuname}
-		,#{ordernum}
+		,#{userId}
 		,#{orderer}
 		,#{pickuptime}
 		,#{payment}
@@ -99,7 +99,7 @@
 	<!-- 사업자 예약관리 -->
 	<select id="businessReserveList" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT 
-				resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname
+				resnum, ordererid, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname
 			FROM
 				t3_reserve
 			where 
@@ -110,7 +110,7 @@
 	<!-- 사업자 매출관리-->
 	<select id="businessReserveList1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT 
-				resnum, ordernum, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname
+				resnum, ordererid, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname
 			FROM
 				t3_reserve
 			where 

@@ -26,7 +26,7 @@
 			</div>
 			<table class="board_list">
 				<colgroup>
-					<col width="5%"/>
+					
 					<col width="10%"/> 
 					<col width="10%"/> 
 					<col width="10%"/>
@@ -40,7 +40,7 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="col">-</th>
+						
 						<th scope="col">주문번호</th>
 						<th scope="col">상호명</th>
 						<th scope="col">메뉴</th>
@@ -55,7 +55,7 @@
 				</thead>
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
-	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
+	                                         
 	                   <td >{{item.no}}</td> 
 	                   <td >{{item.resname}}</td> 
 	                   <td >{{item.menuname}} </td>

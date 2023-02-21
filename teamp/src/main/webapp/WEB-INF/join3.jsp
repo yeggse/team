@@ -534,7 +534,7 @@ input {
 							var nparmap = {
 									resnum: self.list[i].resnum
 				                    ,menuname:self.list[i].menuname
-				                    ,ordernum:0
+				                    ,userId:self.userId
 				                    ,orderer:self.name
 				                    ,pickuptime:self.list[i].pickuptime
 				                    ,payment:self.payment

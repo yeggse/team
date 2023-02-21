@@ -5,7 +5,7 @@ public class Consumer {
 	private int resnum;
 	private int price;
 	private int number;
-	private int ordernum;
+	private String ordererid;
 	private String categori;
 	private String resname;
 	private String grade;
@@ -112,11 +112,12 @@ public class Consumer {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getOrdernum() {
-		return ordernum;
+	
+	public String getOrdererid() {
+		return ordererid;
 	}
-	public void setOrdernum(int ordernum) {
-		this.ordernum = ordernum;
+	public void setOrdererid(String ordererid) {
+		this.ordererid = ordererid;
 	}
 	public String getReskind() {
 		return reskind;

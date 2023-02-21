@@ -9,7 +9,7 @@ public class Res {
 	private String introduce;
 	private String price;
 	private String supply;
-	private String ordernum;
+	private String ordererid;
 	private String pickuptime;
 	private String payment;
 	private int sum;
@@ -26,24 +26,83 @@ public class Res {
 	private String resname;
 	private String soldout;
 	private int no;
-
-	public String getSoldout() {
-		return soldout;
+	public int getResnum() {
+		return resnum;
 	}
-	public void setSoldout(String soldout) {
-		this.soldout = soldout;
+	public void setResnum(int resnum) {
+		this.resnum = resnum;
 	}
-	public String getReview() {
-		return review;
+	public String getReskind() {
+		return reskind;
 	}
-	public void setReview(String review) {
-		this.review = review;
+	public void setReskind(String reskind) {
+		this.reskind = reskind;
 	}
-	public String getSalecomple() {
-		return salecomple;
+	public String getStartdate() {
+		return startdate;
 	}
-	public void setSalecomple(String salecomple) {
-		this.salecomple = salecomple;
+	public void setStartdate(String startdate) {
+		this.startdate = startdate;
+	}
+	public String getEnddate() {
+		return enddate;
+	}
+	public void setEnddate(String enddate) {
+		this.enddate = enddate;
+	}
+	public String getMenuname() {
+		return menuname;
+	}
+	public void setMenuname(String menuname) {
+		this.menuname = menuname;
+	}
+	public String getIntroduce() {
+		return introduce;
+	}
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getSupply() {
+		return supply;
+	}
+	public void setSupply(String supply) {
+		this.supply = supply;
+	}
+	public String getOrdererid() {
+		return ordererid;
+	}
+	public void setOrdererid(String ordererid) {
+		this.ordererid = ordererid;
+	}
+	public String getPickuptime() {
+		return pickuptime;
+	}
+	public void setPickuptime(String pickuptime) {
+		this.pickuptime = pickuptime;
+	}
+	public String getPayment() {
+		return payment;
+	}
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+	public int getSum() {
+		return sum;
+	}
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
+	public int getIdx() {
+		return idx;
+	}
+	public void setIdx(int idx) {
+		this.idx = idx;
 	}
 	public String getId() {
 		return id;
@@ -75,90 +134,17 @@ public class Res {
 	public void setOrderer(String orderer) {
 		this.orderer = orderer;
 	}
-	public int getIdx() {
-		return idx;
+	public String getReview() {
+		return review;
 	}
-	public void setIdx(int idx) {
-		this.idx = idx;
+	public void setReview(String review) {
+		this.review = review;
 	}
-	public int getResnum() {
-		return resnum;
+	public String getSalecomple() {
+		return salecomple;
 	}
-	public void setResnum(int resnum) {
-		this.resnum = resnum;
-	}
-	public String getReskind() {
-		return reskind;
-	}
-	public void setReskind(String reskind) {
-		this.reskind = reskind;
-	}
-	public String getStartdate() {
-		return startdate;
-	}
-	public void setStartdate(String startdate) {
-		this.startdate = startdate;
-	}
-	public String getEnddate() {
-		return enddate;
-	}
-	public void setEnddate(String enddate) {
-		this.enddate = enddate;
-	}
-	public String getMenuname() {
-		return menuname;
-	}
-	public void setMenuname(String menuname) {
-		this.menuname = menuname;
-	}
-	
-	public String getIntroduce() {
-		return introduce;
-	}
-	public void setIntroduce(String introduce) {
-		this.introduce = introduce;
-	}
-	public String getPrice() {
-		return price;
-	}
-	public void setPrice(String price) {
-		this.price = price;
-	}
-	public String getSupply() {
-		return supply;
-	}
-	public void setSupply(String supply) {
-		this.supply = supply;
-	}
-	public String getOrdernum() {
-		return ordernum;
-	}
-	public void setOrder(String ordernum) {
-		this.ordernum = ordernum;
-	}
-	public String getPickuptime() {
-		return pickuptime;
-	}
-	public void setPuckuptime(String pickuptime) {
-		this.pickuptime = pickuptime;
-	}
-	public String getPayment() {
-		return payment;
-	}
-	public void setPayment(String payment) {
-		this.payment = payment;
-	}
-	public int getSum() {
-		return sum;
-	}
-	public void setSum(int sum) {
-		this.sum = sum;
-	}
-	public void setOrdernum(String ordernum) {
-		this.ordernum = ordernum;
-	}
-	public void setPickuptime(String pickuptime) {
-		this.pickuptime = pickuptime;
+	public void setSalecomple(String salecomple) {
+		this.salecomple = salecomple;
 	}
 	public String getOrderdate() {
 		return orderdate;
@@ -178,12 +164,19 @@ public class Res {
 	public void setResname(String resname) {
 		this.resname = resname;
 	}
+	public String getSoldout() {
+		return soldout;
+	}
+	public void setSoldout(String soldout) {
+		this.soldout = soldout;
+	}
 	public int getNo() {
 		return no;
 	}
 	public void setNo(int no) {
 		this.no = no;
 	}
+
 	
 }
 
