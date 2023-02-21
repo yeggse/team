@@ -66,7 +66,7 @@
 	                   <td >{{item.price}}</td>
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.salecomple}}</td>
-	                   <td ><button @click="change(item)">버튼</button></td>
+	                   <td ><button @click="change(item)">리뷰 작성하기</button></td>
 	               	
 	               </tr>
 				</tbody>
