@@ -1,165 +1,366 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <script src="js/jquery.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<jsp:include page="/layout/header.jsp"></jsp:include>
-<title>[세잎] 메인페이지</title>
-</head>
+<script src="js/vue.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+rel="stylesheet"
+integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+crossorigin="anonymous" />
+
+<!-- 구글 폰트 사용 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap.css">
 <style>
-* {
-	font-family: 'Noto Sans KR', sans-serif;
-}
-/* 점(.)으로 시작하는 아이 : html 파트에서 클래스(명)를 의미. */
-.div1 {
-	font-size: xx-large;
-	font-weight: bolder;
-	margin-top: 100px; /* 바깥쪽여백 */
-	margin-left: 730px;
-	width: 800px;
-	border-radius: 5px; /* 모서리 둥글기 크기 */
-	/* text-align: center; */
-	padding: 20px; /* 안쪽 여백 */ /* padding-top: 50px 등으로 활용 */
-}
 
-.div2 {
-	font-size: large;
-	font-weight: bold;
-	margin-top: -25px; /* 바깥쪽여백 */
-	margin-left: 775px;
-	width: 600px;
-	border-radius: 5px; /* 모서리 둥글기 크기 */
-	/* text-align: center; */
-	padding: 20px; /* 안쪽 여백 */ /* padding-top: 50px 등으로 활용 */
-}
-
-.div3 {
-	margin-top: -50px; /* 바깥쪽여백 */
-	margin-left: 688px;
-}
-
-.div4 {
-	margin-top: 50px; /* 바깥쪽여백 */
-	margin-left: 400px;
-}
-
-input {
-	width: 25%;
-	margin-top: 0px;
-	padding: 10px;
+*{
 	box-sizing: border-box;
-	border-radius: 10px;
-	border: solid 2px #8FBC94;
-	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
+}
+body{
+	font-family: Verdana, sans-serif;
+}
+.mySlides{
+	display: none;
+}
+img{
+	vertical-align: middle;
+}
+/* Slideshow container */
+.slideshow-container {
+	max-width: 62.5rem;
+	position: relative;
+	margin: auto;
+	margin-top:5rem;
+}
+/* Caption text */
+.text {
+	color: #f2f2f2;
+	font-size: 1rem;
+	padding: 0.5rem 0.75rem;
+	position: absolute;
+	bottom: 0.5rem;
+	width: 100%;
+	text-align: center;
 }
 
-#btn {
-	background-color: #8FBC94;
-	width: 70px;
-	height: 40px;
-	border-radius: 20px;
-	border: solid 2px #8FBC94;
-	font-size: x-large;
-	color: white;
-	padding: 0px;
+/* Number text (1/3 etc) */
+.numbertext {
+	color: #f2f2f2;
+	font-size: 0.75rem;
+	padding: 0.5rem 0.75rem;
+	position: absolute;
+	top: 0;
 }
 
+/* The dots/bullets/indicators */
+.dot {
+	height: 1rem;
+	width: 1rem;
+	margin: 0rem 0.125rem;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.3s ease;
+}
+
+.active {
+	background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.6s;
+	animation-name: fade;
+	animation-duration: 1.6s;
+}
+
+@-webkit-keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+}
+
+@keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 29rem) {
+	.text {font-size: 0.75rem}
+}
 #imgbtn1 {
-	width: 350px;
-	height: 250px;
-	border-radius: 20px;
-	margin-right: 40px;
+	width: 22rem;
+	height: 15.8rem;
+	border: 0.1rem solid #343a40 ;
+	margin-right: 2.5rem;
 	padding: 0px;
 	background: url("img/main/Mfood.png") no-repeat;
+	float:left;
 }
-
 #imgbtn2 {
-	width: 350px;
-	height: 250px;
-	border-radius: 20px;
-	margin-right: 40px;
+	width: 22rem;
+	height: 15.8rem;
+	border: 0.1rem solid #343a40 ;
+	margin-right: 2.5rem;
 	padding: 0px;
 	background: url("img/main/Mkor.PNG") no-repeat;
+	float:left;
 }
-
 #imgbtn3 {
-	width: 350px;
-	height: 250px;
-	border-radius: 20px;
-	margin-right: 30px;
-	padding: 0px;
+	width: 22rem;
+	height: 15.8rem;
+	border: 0.1rem solid #343a40 ;
+	margin-right: 2.5rem;
+	padding: 0rem;
 	background: url("img/main/Mjap.PNG") no-repeat;
+		float:left;
+	
 }
-
 #imgbtn4 {
-	width: 350px;
-	height: 250px;
-	border-radius: 20px;
-	margin-right: 40px;
-	padding: 0px;
+	width: 22rem;
+	height: 15.8rem;
+	border: 0.1rem solid #343a40 ;
+	margin-right: 2.5rem;
+	padding: 0rem;
 	background: url("img/main/Mchi.PNG") no-repeat;
+		float:left;
+	
 }
-
 #imgbtn5 {
-	width: 350px;
-	height: 250px;
-	border-radius: 20px;
-	margin-right: 40px;
+	width: 22rem;
+	height: 15.8rem;
+	border: 0.1rem solid #343a40 ;
+	margin-right: 2.5rem;
 	padding: 0px;
 	background: url("img/main/Masia.PNG") no-repeat;
+		float:left;
+	
+}
+#imgbtn6 {
+	width: 22rem;
+	height: 15.8rem;
+	border: 0.1rem solid #343a40 ;
+	margin-right: 2.5rem;
+	padding: 0rem;
+	background: url("img/main/Mwe.PNG") no-repeat;
+		float:left;
+	
+}
+#imgbtn1:hover{
+border: 0.2rem solid #dee2e6;
+}
+#imgbtn2:hover{
+border: 0.2rem solid #dee2e6;
+}
+#imgbtn3:hover{
+border: 0.2rem solid #dee2e6;
+}
+#imgbtn4:hover{
+border: 0.2rem solid #dee2e6;
+}
+#imgbtn5:hover{
+border: 0.2rem solid #dee2e6;
+}
+#imgbtn6:hover{
+border: 0.2rem solid #dee2e6;
+}
+.img{
+  background: url(https://www.adobe.com/kr/creativecloud/photography/hub/guides/media_159fdae2ae33a36aa49f0f2b79fcd72a312252c8f.jpeg?width=2000&format=webply&optimize=medium) no-repeat center;
+  background-size: cover;
+  height: 500px;
+  position: relative;
 }
 
-#imgbtn6 {
-	width: 350px;
-	height: 250px;
-	border-radius: 20px;
-	margin-right: 30px;
-	padding: 0px;
-	background: url("img/main/Mwe.PNG") no-repeat;
+.select{
+	width:10rem;
+	height:3rem;
+	margin: 1.5rem 10rem 0rem 21rem;
+	transition: width 1s;
+	float: left;
+}
+.select:hover {
+	 width: 30rem;
+}
+
+.h2{
+  	text-align: center;
+  	position: absolute;
+  	top: 0%;
+  	left: 70%;
+  	color: white;
+}
+.div4{
+	width:80rem;
+	height:40rem;
+	margin:auto;
+	margin-top:5rem;
+  	display: grid;
+  	grid-template-columns: auto auto auto;
+  	padding: 1rem;
+ 	column-gap: 0rem;
+ 	row-gap: 3rem;	
+}
+.main{
+width:120rem;
+height:90rem;
+}
+	
+
+.wrap1 {
+	width:2rem;
+	height:2rem;
+	margin: 1rem 0rem 0rem 95rem;
+	position:absolute;
+	}
+.chatbox1 {
+	animation: motion 0.3s linear 0s infinite alternate;
+}
+
+.wrap2 {
+	width:2rem;
+	height:2rem;
+	margin: 1rem 0rem 0rem 93rem;
+	position:absolute;
+	}
+.chatbox2 {
+	animation: motion 0.3s linear 0.3s infinite alternate;
+}
+.wrap3 {
+	width:2rem;
+	height:2rem;
+	margin: 1rem 0rem 0rem 91rem;
+	position:absolute;
+	}
+.chatbox3 {
+	animation: motion 0.3s linear 0s infinite alternate;
+}
+@keyframes motion {
+	0% {margin-top: 0rem;}
+	100% {margin-top: 0.625rem;}
 }
 </style>
 
-<body style="margin: 0px">
-	<div id="app" style="width: 100%" anlign="center">
-		<div class="div1">지금 계신 장소가 어디신가요?</div>
-		<div class="div2">주변 식당에서 음식을 픽업해 가세요!</div>
-		<div class="div3">
-			<img src="img/main/point.PNG" margin-top=10px width=50px height=70px>
-			<div>
-				<form method="post" id="frm" name="frm">
-					<!-- form을 통해서 값을 다른 페이지로 값을 넘겨준다는 의미 frm이라는 이름을 주고 id에 form안에의 값이 있다. 넘겨주는 페이지 주소 있어야함!(1)-->
-					<label for="si" class="control-label">먼저 지역을 골라주세요~ : </label> 
-					<select
-						id="si" name="si" v-model="si" class="form-control">
-						<!-- 선택을 했을때 change가되는데 메소드를 넣어줌(3)-->
-						<option value="">지역선택</option>
-						<!-- 처음 값을 선택할 수 있게 빈값을 넣어준다.(2) -->
-						<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
-					</select>
-				</form>
-			</div>
-		</div>
+</head>
+<jsp:include page="/layout/header.jsp"></jsp:include>
+<body>
+<div id="app" class="main">
+<h2>Copyright � Safe Corp.All rights reserved</h2>
 
-		<div class="div4">
 
-			<button id="imgbtn1"></button>
-			<!-- 선택별로 다른 화면 출력되어야 함!!! -->
-			<button id="imgbtn2" @click="fnSiChange"></button>
-			<button id="imgbtn3" @click="fnSiChange1"></button>
-			<button id="imgbtn4" @click="fnSiChange2"></button>
-			<button id="imgbtn5" @click="fnSiChange3"></button>
-			<button id="imgbtn6" @click="fnSiChange4"></button>
-		</div>
 
+
+
+
+<!-- 슬라이드 -->
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="https://www.adobe.com/kr/creativecloud/photography/hub/guides/media_159fdae2ae33a36aa49f0f2b79fcd72a312252c8f.jpeg?width=2000&format=webply&optimize=medium
+  " style="width:100%; height:30rem">
+  <div class="text"></div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="http://www.kyongbuk.co.kr/news/photo/202203/2096330_527792_3845.jpg" style="width:100%; height:30rem">
+  <div class="text"></div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/04/a0004023/img/basic/a0004023_main.jpg?20191226165401" style="width:100%; height:30rem">
+  <div class="text"></div>
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+<!-- 슬라이드 -->
+
+
+
+
+
+<!-- 지역설정 -->
+<form method="post" id="frm" name="frm" >
+	<select id="si" name="si" v-model="si" class="select" >
+	<option value="">지역선택</option>
+	<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+	</select>
+</form>
+	<div  class="wrap1">
+		<img src="img/main/세잎클로버.png" class="chatbox1">
 	</div>
+	<div class="wrap2">
+		<img src="img/main/세잎클로버.png" class="chatbox2">
+	</div>
+	<div class="wrap3">
+		<img src="img/main/세잎클로버.png" class="chatbox3">
+	</div>
+<!-- 지역설정 -->
+
+
+
+
+
+<!-- 음식카테고리 -->
+<div class="div4">
+<button id="imgbtn1"></button>
+<button id="imgbtn2" @click="fnSiChange"></button>
+<button id="imgbtn3" @click="fnSiChange1"></button>
+<button id="imgbtn4" @click="fnSiChange2"></button>
+<button id="imgbtn5" @click="fnSiChange3"></button>
+<button id="imgbtn6" @click="fnSiChange4"></button>
+</div>
+<!-- 음식카테고리 -->
+
+
+
+
+
+
+</div>
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
-</html>
-<script type="text/javascript">
+</html> 
 
+<script type="text/javascript">
 var app = new Vue({ 
     el: '#app',
     data: {
@@ -318,3 +519,5 @@ var app = new Vue({
 	}
 });
 </script>
+
+
