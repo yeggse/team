@@ -216,7 +216,7 @@ input {
 						<button @click="fnMenuincrease(item)">+</button>
 					</div>
 				</div>
-				<!-- 여기서 부터 offcanvas 테스트 -->
+				<!-- 여기서 부터 offcanva 테스트 -->
 				<div>
 					<button class="btn btn-primary" type="button" id="btn_order"
 						data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
