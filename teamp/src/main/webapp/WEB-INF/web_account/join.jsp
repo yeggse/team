@@ -113,15 +113,16 @@ body{
 }
 #href2 {
 	text-decoration: none;
-	color: #9B9B9B;
-	font-size: 1rem;
-	margin: 0rem 1rem 0rem 3.5rem;
+	color: #62F903;
+	font-size: 1.2rem;
+	margin: 0rem 1rem 0rem 2.5rem;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 #href1:hover {
 	color:black;
 }
 #href2:hover {
-	color:black;
+	color:#62a903;
 }
 
 #basicSign{
@@ -132,21 +133,21 @@ body{
 	height: 3rem; 
 	background-color: #f9f9f9;	
 	font-weight: bolder; 
-	font-size: 2.5rem; 
+	font-size: 2rem; 
 	text-align: center;
 }
 
 #okPwd{
 	color : blue;
-	font-size: 0.8rem; 
+	font-size: 0.76rem; 
 	text-align: left; 
-	margin: 0rem 0rem 0rem 10rem;
+	margin: 0rem 0rem 0rem 8rem;
 }
 #noPwd{
 	color : red;
-	font-size: 0.8rem; 
+	font-size: 0.76rem; 
 	text-align: left; 
-	margin: 0rem 0rem 0rem 2rem;
+	margin: 0rem 0rem 0rem 0rem;
 }
 
 </style>
@@ -156,7 +157,10 @@ body{
 
 <body>
 
-	<div id="basicSign"> 일반 회원가입 </div>
+	<div id="basicSign"> 
+		일반 회원가입 
+		<a id="href2" href="join2.do" > 사업자회원가입 </a> 
+	</div>
 	
 	<!-- 메인프레임 -->
 	<div id="app" class="main">
@@ -255,7 +259,6 @@ body{
 		<!-- 로그인 페이지 href -->
 		<div class="div1">
 			<a href="login.do" id="href1">로그인 페이지로 이동</a>
-			<a href="join2.do" id="href2"> 사업자회원가입 </a>
 		</div>
 		
 	</div>
