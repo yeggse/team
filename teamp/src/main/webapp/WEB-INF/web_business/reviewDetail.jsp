@@ -46,6 +46,7 @@
 				<div class="card-body">
 				   	<div v-if="info.img != null" style="margin: 10px 10px 10px 10px;">	<!-- info.img : 이미지 경로(img/이미지 이름) DB 컬럼이랑 동일한 이름으로!-->
 				   		<img :src="info.img"/>	<!-- src앞에 콜론: 을 붙이면 변수로 지정가능 -->
+				   		{{info.img}}
 				   	</div>
 				   	<div style="margin: 10px 10px 10px 10px;">
 				   		{{info.content}}
@@ -88,9 +89,8 @@ var app = new Vue({
                 success : function(data) {                                       
 	                self.info = data.review;
 	                console.log(self.info);
-	                console.log("test111 == " + self.reviewnum);
 	                //self.commentList = data.commentList;
-	                console.log(self.reviewnum+"111111");
+	                
                 }
             }); 
         }
