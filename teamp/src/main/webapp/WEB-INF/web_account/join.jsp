@@ -126,7 +126,6 @@ a {
 		</div>
 		<button @click="fnjoin" style="width: 200px; height: 35px;">회원가입</button>
 
-
 		<div class="div2">
 
 			<a href="login.do">로그인 페이지로 이동</a>
