@@ -72,8 +72,35 @@ public class ReviewController {
    		resultMap.put("cnt", cnt);	// 숫자 세기
    		return new Gson().toJson(resultMap);
    	}
-    
-    
+    // 웹 주소 :  관리자용 리뷰 상세보기
+    @RequestMapping("/arevdetail.do") 
+    public String ARevDetail(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+    	String id = (String)session.getAttribute("userIdSession");
+    	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
+    	String kind = (String)session.getAttribute("KindSession");
+    	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
+    	return "/web_review/ARevDetail"; // WEB-INF에서 호출할 파일명
+    }
+    //   관리자용 리뷰 상세 출력 데이터 호출
+	@RequestMapping(value = "/ARevDetail.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String ARevDetailList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap = reviewservice.ARevDetail(map);
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
+	//관리자 리뷰 삭제
+	@RequestMapping(value = "/deleteARev.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String deleteARevList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		reviewservice.deleteARev(map);
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}	
+	
     
     
   //사업자용 식당리뷰 리스트

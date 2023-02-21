@@ -16,6 +16,10 @@ public interface ReviewMapper {
 	List<Review> adminReviewList(HashMap<String, Object> map) throws Exception;
 	// 관리자 리뷰 갯수
 	int countAdminRCnt(HashMap<String, Object> map);
+	// 관리자 리뷰 상세 출력
+	Review ARevDetail(HashMap<String, Object> map);
+	//관리자 리뷰 삭제
+	void deleteARev(HashMap<String, Object> map); 
 	
 	List<Review> selectreviewList2(HashMap<String, Object> map) throws Exception;
 	void reviewFin(HashMap<String, Object> map);
