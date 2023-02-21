@@ -37,7 +37,7 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="col">-</th>
+						<th scope="col">성함</th>
 						<th scope="col">주문번호</th>
 						<th scope="col">상호명</th>
 						<th scope="col">메뉴</th>
@@ -50,14 +50,14 @@
 				</thead>
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
-	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
+	                   <td >{{item.orderer}}</td>                       
 	                   <td >{{item.ordernum}}</td> 
 	                   <td >{{item.resname}}</td> 
-	                   <td >{{item.menuname}} 이어 붙이기</td> 
+	                   <td >{{item.menuname}} </td> 
 	                   <td >{{item.menunum}} </td> 
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.pickuptime}}</td>
-	                   <td >{{item.price}} 더하기</td>
+	                   <td >{{item.price}} </td>
 	                   <td  >
 	                 	  <button v-if="item.salecomple =='N'" id='btnSoldout' @click='btnOnOff(item)'> 판매 완료 {{item.salecomple}} </button>
 	                   </td>

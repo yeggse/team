@@ -534,7 +534,7 @@ input {
 									resnum: self.list[i].resnum
 				                    ,menuname:self.list[i].menuname
 				                    ,ordernum:0
-				                    ,orderer:self.userId
+				                    ,orderer:self.name
 				                    ,pickuptime:self.list[i].pickuptime
 				                    ,payment:self.payment
 				                    ,price : self.list[i].price

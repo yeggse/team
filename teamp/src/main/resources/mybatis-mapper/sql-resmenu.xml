@@ -114,7 +114,7 @@
 			FROM
 				t3_reserve
 			where 
-				resnum = #{resnum} AND salecomple ="Y"
+				resnum = #{resnum} AND salecomple ="Y" AND orderdate = DATE(NOW())
 			
 			ORDER BY orderdate DESC
 	</select>
