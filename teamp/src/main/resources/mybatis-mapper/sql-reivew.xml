@@ -74,4 +74,14 @@
 		WHERE no = #{no}
 	</update>
 	
+	<!-- 리뷰 상세 출력 // 동일 칼럼명 들어가 있을 경우. t i 등 지정필수 -->
+	<select id="detailReviewboard" resultType="com.example.demo.model.Review">	
+		SELECT 
+			t.reviewnum, categori, resnum, title, writedate, content, grade, nickname, reskind, img
+		FROM
+			t3_review t
+		LEFT OUTER JOIN t3_review_img i on t.reviewnum = i.reviewnum 
+		WHERE
+			t.reviewnum = #{reviewnum}
+	</select>
 </mapper>

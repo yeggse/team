@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.example.demo.mapper.ReviewMapper;
 import com.example.demo.model.Review;
 
@@ -40,6 +39,14 @@ public class ReviewServicelmpl implements ReviewService{
 	public void reviewFin(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		reviewMapper.reviewFin(map);
+	}
+	@Override
+	public HashMap<String, Object> detailReviewboard(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		Review review = reviewMapper.detailReviewboard(map);
+		resultMap.put("review", review);
+		return resultMap;
 	}
 
 }

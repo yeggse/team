@@ -76,4 +76,24 @@ public class ReviewController {
 		resultMap.put("message", "성공");
 		return new Gson().toJson(resultMap);
 	}
+ // 리뷰관리 주소 :  게시글 상세보기
+    @RequestMapping("/review.board.detail.do") 
+    public String boardDetail(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+    	String id = (String)session.getAttribute("userIdSession");
+    	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
+    	String kind = (String)session.getAttribute("KindSession");
+    	System.out.println(map.get("reviewnum"));
+    	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
+    	return "/web_business/reviewDetail"; // WEB-INF에서 호출할 파일명
+    }
+    // 리뷰 상세 출력 데이터 호출
+   	@RequestMapping(value = "/detailReviewboard.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+   	@ResponseBody
+   	public String detailReviewList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+   		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+   		resultMap = reviewservice.detailReviewboard(map);
+   		resultMap.put("message", "성공");
+   		return new Gson().toJson(resultMap);
+   	}
 }

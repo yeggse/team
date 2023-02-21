@@ -138,8 +138,7 @@ background:#ffff99;
 						<th scope="col">리뷰 번호</th>
 						<th scope="col">분류</th>
 						<th scope="col">제목</th>
-						
-						<th scope="col">내용</th>
+						<!-- <th scope="col">내용</th> -->
 						<th scope="col">별점</th>
 						<th scope="col">닉네임</th>
 						<th scope="col">날짜</th>
@@ -149,14 +148,13 @@ background:#ffff99;
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
-	                   <td>{{item.reviewnum}}</td> 
-	                   <td>{{item.categori}}</td> 
-	                   <td>{{item.title}}</td>
-	                   
-	                   <td>{{item.content}}</td>
-	                   <td>{{item.grade}}</td>
-	                   <td>{{item.nickname}}</td>
-	                   <td>{{item.writedate}}</td> 
+	                   <td @click="fnDetailreview(item)">{{item.reviewnum}}</td> 
+	                   <td @click="fnDetailreview(item)">{{item.categori}}</td> 
+	                   <td @click="fnDetailreview(item)">{{item.title}}</td>
+	                   <!-- <td>{{item.content}}</td> -->
+	                   <td @click="fnDetailreview(item)">{{item.grade}}</td>
+	                   <td @click="fnDetailreview(item)">{{item.nickname}}</td>
+	                   <td @click="fnDetailreview(item)">{{item.writedate}}</td> 
 	               </tr>
 				</tbody>
 			</table>
@@ -180,6 +178,12 @@ var app = new Vue({
 	        ,resnum : "${resnum}"
 	        ,userId : "${userId}"
 	        ,resname :  "${resname}"
+	        ,reviewnum :  ""
+	        ,reviewnum :  ""
+	        ,categori : ""
+	        ,grade : ""
+	        ,nickname : ""
+	        ,writedate : ""
 		},
 		methods : {
 		fnGetReview : function() {
@@ -198,6 +202,11 @@ var app = new Vue({
 					
 				}
 			});
+		}
+		,fnDetailreview : function(item){
+			var self = this;
+			self.pageChange("/review.board.detail.do",{reviewnum : item.reviewnum});
+			console.log(self.reviewnum);
 		}
 		, pageChange : function(url, param) {
 			var target = "_self";
@@ -229,14 +238,12 @@ var app = new Vue({
 			document.body.removeChild(form);
 		}
 		
-		
 		},
 		created : function() {
 			var self = this;
 			self.fnGetReview();
 			console.log(self.resname);
 			console.log(self.userId);
-			
 			
 		}
 	});
