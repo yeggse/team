@@ -125,6 +125,16 @@
 			salecomple = "Y" 
 		WHERE no = #{no}
 	</update>
+	<!-- 리뷰작성버튼 활성비활성 -->
+	
+	<select id="businessReviewbtn" parameterType="hashmap" resultType="com.example.demo.model.Res">>
+		SELECT
+			salecomple
+		FROM
+			t3_reserve
+		where 
+			no = #{no}
+	</select>
 	
 	<!-- 재고수정 -->
 	<update parameterType="hashmap" id="editSupply">	

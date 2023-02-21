@@ -40,7 +40,6 @@ public class ConsumerController {
     	String kind = (String)session.getAttribute("KindSession");
     	String id = (String)session.getAttribute("userIdSession");
     	
-    	
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id);
     	
