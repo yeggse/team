@@ -30,6 +30,19 @@
   background: gray;
   border:none;
 }
+.btn3{
+  margin: 15px 0px 5px 50px;
+  font-size: 16px;
+  width: 300px;
+  height: 35px;
+  text-align: center;
+  color: white;
+  background: green;
+  border:none;
+}
+.btn3:hover{
+	color:black;
+}
 .div2{
   width: 31.4rem;
   height: 42rem;
@@ -67,22 +80,16 @@
 .text4{
   margin-right: 10px;
 }
-.btn3{
-  margin: 15px 0px 5px 50px;
-  font-size: 16px;
-  width: 300px;
-  height: 35px;
-  text-align: center;
-  color: white;
-  background: green;
-  border:none;
-}
+
 .text5{
   text-align: center;
   margin-top:15px;
 }
 .text6{
   margin: 20px;
+}
+.text6:hover{
+	font-weight:bold;
 }
 .footer{
   font-size: 10px;
