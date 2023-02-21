@@ -55,7 +55,24 @@ public class MainController {
     	request.setAttribute("dongList",  new Gson().toJson(dongList));
 		return "/web_account/join"; // WEB-INF에서 호출할 파일명
 	}
-	
+	// 사업자 회원가입 : 왜 여기에 있니..?
+	@RequestMapping("/join2.do")
+	public String join2(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		 List<Area> siList = mainService.selectSiList(map); map.put("si",
+		 siList.get(0).getSi()); request.setAttribute("siList", new
+		 Gson().toJson(siList));
+		 
+		 List<Area> guList = areaService.selectGuList(map);
+	    	map.put("gu", guList.get(0).getGu());
+	    	request.setAttribute("guList",  new Gson().toJson(guList));
+	    	
+	    List<Area> dongList = areaService.selectDongList(map);
+	    	map.put("dong", dongList.get(0).getDong());
+	    	request.setAttribute("dongList",  new Gson().toJson(dongList));
+		return "/web_account/join2"; // WEB-INF에서 호출할 파일명
+	}
 	
 	
 	
@@ -82,23 +99,7 @@ public class MainController {
 		resultMap.put("dongList", dongList);
 		return new Gson().toJson(resultMap);
 	}
-	@RequestMapping("/join2.do")
-	public String join2(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		 List<Area> siList = mainService.selectSiList(map); map.put("si",
-		 siList.get(0).getSi()); request.setAttribute("siList", new
-		 Gson().toJson(siList));
-		 
-		 List<Area> guList = areaService.selectGuList(map);
-	    	map.put("gu", guList.get(0).getGu());
-	    	request.setAttribute("guList",  new Gson().toJson(guList));
-	    	
-	    List<Area> dongList = areaService.selectDongList(map);
-	    	map.put("dong", dongList.get(0).getDong());
-	    	request.setAttribute("dongList",  new Gson().toJson(dongList));
-		return "/join2"; // WEB-INF에서 호출할 파일명
-	}
     @RequestMapping("/main.do") 
     public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
     	//세션 연결

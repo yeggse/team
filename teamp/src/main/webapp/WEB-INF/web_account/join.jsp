@@ -229,8 +229,9 @@ a {
 							}
 						})
 
-					},
-					fnjoin : function() {
+					}
+					// 회원가입
+					, fnjoin : function() {
 						var self = this;
 						var nparmap = {
 							id : self.id,
@@ -262,6 +263,11 @@ a {
 							alert("아이디 중복확인을 해주세요");
 						} else if(!self.nickcheck){
 							alert("닉네임 중복확인을 해주세요");
+						} else if(!pattern1.test(self.num) ){
+							alert("연락처는 숫자만 입력해 주세요");
+						} else if(!pattern1.test(self.account)){
+							alert("계좌번호는 숫자만 입력해 주세요");
+							self.account ="";
 						} else if(!self.people){
 							alert("실명인증을 해 주세요");
 						} else {
@@ -321,7 +327,9 @@ a {
 						var self = this;
 						var nparmap = {age : self.age, age1 : self.age1};
 						var pattern1 = /[0-9]/;
-						if(!pattern1.test(self.age) || !pattern1.test(self.age1)){
+						if(self.age == "" || self.age1 == ""){
+							alert("내용을 입력하세요");
+						} else if(!pattern1.test(self.age) || !pattern1.test(self.age1)){
 							alert("숫자만 입력하세요");
 							self.age ="";
 							self.age1 = "";
