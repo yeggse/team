@@ -150,9 +150,6 @@ img{
 		float:left;
 	
 }
-#imgbtn1:hover{
-border: 0.2rem solid #343a40;
-}
 #imgbtn2:hover{
 border: 0.2rem solid #343a40;
 }

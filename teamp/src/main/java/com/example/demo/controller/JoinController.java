@@ -31,9 +31,7 @@ public class JoinController {
 	@Autowired
     HttpSession session;
 
-	
-	
-	
+	// 로그인 페이지
 	 @RequestMapping("/login.do") 
 	    public String login(Model model) throws Exception{
 	    	// 세션에 넣었던 값들 꺼내서 remove
@@ -42,20 +40,10 @@ public class JoinController {
 
 	    	// 제거
 	    	session.invalidate();	
-	    	return "/login"; // WEB-INF에서 호출할 파일명
-	    }
-	    @RequestMapping("/searchid.do") 
-	    public String searchid(Model model) throws Exception{
-	    	return "/search_id"; // WEB-INF에서 호출할 파일명
-	    }
-	    @RequestMapping("/searchpw.do") 
-	    public String searchpw(Model model) throws Exception{
-	    	return "/search_pw"; // WEB-INF에서 호출할 파일명
+	    	return "/web_account/login"; // WEB-INF에서 호출할 파일명
 	    }
 	    
-	  
-	    
-	    // 데이터 호출
+	// 로그인 페이지 데이터 호출
 	    @RequestMapping(value = "/login.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody
 		public String login(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -91,6 +79,19 @@ public class JoinController {
 	 		return new Gson().toJson(resultMap);
 		}	
 		
+	    
+	    
+	    
+	    
+	    @RequestMapping("/searchid.do") 
+	    public String searchid(Model model) throws Exception{
+	    	return "/search_id"; // WEB-INF에서 호출할 파일명
+	    }
+	    @RequestMapping("/searchpw.do") 
+	    public String searchpw(Model model) throws Exception{
+	    	return "/search_pw"; // WEB-INF에서 호출할 파일명
+	    }
+	    
 	    
 		// 데이터 호출
 		@RequestMapping(value = "/searchid.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
