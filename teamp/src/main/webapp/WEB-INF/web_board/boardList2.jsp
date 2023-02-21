@@ -9,18 +9,28 @@
 	<script src="https://unpkg.com/vuejs-paginate@latest"></script>
 	<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
 	<jsp:include page="/layout/header.jsp"></jsp:include>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	
 	<title>board 공지사항 기본 출력 페이지</title>
 </head>
 <style>
-		        * {
-	            font-family: 'Noto Sans KR', sans-serif;
-	            text-decoration-line: none;
-	        }
-	        
+  	      #input {
+            width: 400px;
+            margin-top: 0px;
+	        padding: 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
+         }   
+	       #btn{
+		       background-color: #8FBC94;
+		       width: 80px;
+		       height: 40px;
+		       border-radius: 20px;
+		       border: solid 2px #8FBC94;
+		       font-size: large;
+		       color: white;
+		       padding: 0px;
+	       }
     .container {max-width:1024px; margin:30px auto; margin-top: 120px;}	/* 게시글 출력 파트 */
 	.board_list {table-layout: fixed; width:100%; border-top:2px solid #c6e5d9; border-bottom:2px solid #c6e5d9; margin:15px 0; border-collapse: collapse;}
 	.board_list thead th:first-child {background-image:none;}
@@ -92,7 +102,7 @@
 select {
 	margin-bottom: 10px;
 	margin-top: 10px;
-	background: initial;
+	background: #f4f7f7;
 }
 	       #btnList{
 		       color: #8FBC94;
@@ -105,77 +115,6 @@ select {
 		       font-size: large;
 		       padding: 0px;
 	       }
-	       .btn-outline-success {
-			    color: #198754;
-			    border-color: #198754;
-			    hover-color: #fff;
-			    hover-bg: #198754;
-			    hover-border-color: #198754;
-			    focus-shadow-rgb: 25,135,84;
-			   active-color: #fff;
-			    active-bg: #198754;
-			    active-border-color: #198754;
-			    active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-			    disabled-color: #198754;
-			   disabled-bg: transparent;
-			    disabled-border-color: #198754;
-			    gradient: none;
-		    }
-		    .btn {
-		   		width: 80px;
-		  		height: 43px;
-			    padding-x: 0.75rem;
-			    padding-y: 0.375rem;
-			    font-family: ;
-			    font-size: 1rem;
-			    font-weight: 400;
-			    line-height: 1.5;
-			   color: #212529;
-			    bg: transparent;
-			    border-width: var(--bs-border-width);
-			   border-color: transparent;
-			    border-radius: 0.375rem;
-			    hover-border-color: transparent;
-			    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),0 1px 1px rgba(0, 0, 0, 0.075);
-			    disabled-opacity: 0.65;
-			    focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
-			    display: inline-block;
-			    padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
-			    font-family: var(--bs-btn-font-family);
-			    font-size: var(--bs-btn-font-size);
-			    font-weight: var(--bs-btn-font-weight);
-			    line-height: var(--bs-btn-line-height);
-			    color: var(--bs-btn-color);
-			    text-align: center;
-			    text-decoration: none;
-			    vertical-align: middle;
-			    cursor: pointer;
-			    -webkit-user-select: none;
-			    -moz-user-select: none;
-			    user-select: none;
-			    border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
-			    border-radius: var(--bs-btn-border-radius);
-			    background-color: var(--bs-btn-bg);
-			    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-			}
-			
-			.form-item input {
-			    width: 300px;
-			    height: 43px;
-			    padding: 12px;
-			    font-size: 18px;
-			    color: #111111;
-			    border: 0;
-			    border-radius: 5px;
-			    border: 1px #cccccc solid;
-                margin-top: 0px;
-	      		padding: 10px;
-           		box-sizing: border-box;
-			}
-			.form-item input:focus {
-			    border-color:#198754;
-			    outline: none;
-			}
 </style>
 <body>
 	<div id="app">
@@ -183,19 +122,19 @@ select {
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
 				<h2>세잎 공지사항</h2>
-
-			<div class="form-item input-group mb-3 " style="text-align: center; margin-left: 620px; float: left;">
-			<input type="text"  placeholder="찾고있는 공지사항이 있나요?" v-model="title">
-			<button @click="fnGetList" class="btn btn-outline-success" type="button" id="button-addon2">검색</button>
-			</div>
-			 		<form action="#" style="float: right; display: inline;">
-						<select @change = "fnGetList" style="width: 110px; height: 30px; font-size: 
-							large; font-weight: bold; text-align: center;" v-model="boardtype">
+ 					<form action="#" style="float: right; display: inline;">
+						<select  @change = "fnGetList"
+							style="width: 110px; height: 30px; font-size: large; font-weight: bold; text-align: center;"
+							v-model="boardtype">
 							<option value="">전체</option>
 							<option value="일반회원">일반회원</option>
 							<option value="사장님">사장님</option>
 						</select>
 					</form> 
+			<div style="text-align: center;">
+				<input type="text" placeholder="검색어를 입력해 주세요" id="input" v-model="title"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
+				<button id="btn" @click="fnGetList" >검색</button>
+			</div>
 			<table class="board_list">
 				<colgroup>
 					<col width="5%"/>
