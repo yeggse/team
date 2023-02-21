@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.dao.AreaService;
 import com.example.demo.dao.JoinService;
 import com.example.demo.dao.MainService;
 import com.example.demo.model.Area;
@@ -27,6 +28,12 @@ public class JoinController {
 	
 	@Autowired
     private JoinService joinService; 
+	
+	@Autowired
+    private MainService mainService1; 
+
+	@Autowired
+    private AreaService areaService1;
 	
 	@Autowired
     HttpSession session;
@@ -150,6 +157,20 @@ public class JoinController {
     	int frontregisnum = (Integer)session.getAttribute("userFrontregisnumSession");
     	int afterregisnum = (Integer)session.getAttribute("userAfterregisnumSession");
         String add = (String)session.getAttribute("userAddSession");
+        
+        HashMap<String, Object> map1 = new HashMap<String, Object>();
+		 List<Area> siList = mainService1.selectSiList(map); map.put("si",
+		 siList.get(0).getSi()); request.setAttribute("siList", new
+		 Gson().toJson(siList));
+		 
+		 List<Area> guList = areaService1.selectGuList(map);
+	    	map.put("gu", guList.get(0).getGu());
+	    	request.setAttribute("guList",  new Gson().toJson(guList));
+	    	
+	    List<Area> dongList = areaService1.selectDongList(map);
+	    	map.put("dong", dongList.get(0).getDong());
+	    	request.setAttribute("dongList",  new Gson().toJson(dongList));
+
         
     	request.setAttribute("userId", id);
     	request.setAttribute("userName", name);
