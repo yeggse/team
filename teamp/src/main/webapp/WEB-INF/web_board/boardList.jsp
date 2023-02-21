@@ -196,10 +196,6 @@ select {
 							<option value="사장님">사장님</option>
 						</select>
 					</form> 
-			
-			  
-
-
 			<table class="board_list">
 				<colgroup>
 					<col width="5%"/>
