@@ -77,7 +77,7 @@ body{
 .input4 {
 	width: 12.4rem;
 	height: 2.5rem;
-	padding: 0.75rem;
+	padding: 0.66rem;
 	box-sizing: border-box;
 	border: 1px solid #dcdcdc;
 	margin: 0.1rem 0rem 0rem 0rem;
