@@ -15,5 +15,5 @@ public interface ReviewMapper {
 	List<Review> selectreviewList2(HashMap<String, Object> map) throws Exception;
 	void reviewFin(HashMap<String, Object> map);
 	//리뷰상세출력
-		Review detailReviewboard(HashMap<String, Object> map);
+	Review detailReviewboard(HashMap<String, Object> map);
 }
