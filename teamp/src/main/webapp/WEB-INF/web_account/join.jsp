@@ -190,9 +190,15 @@ body{
 		<div class="div1">
 			비밀번호 확인 
 			<div>
-				<input type="password" class="input1" v-model="pwd2"></input>
+				<input type="password" class="input1" v-model="pwd2" maxlength='16' @change="fnPwSame"></input>
 			</div>
 		</div>
+		
+
+	<!-- 비밀번호 일치확인 기능 -->
+		<div v-if = "pwSame" id="okPwd">{{pwdtext3}}</div>
+		<div v-else id="noPwd">{{pwdtext3}}</div>
+
 
 		<!-- 이름 -->
 		<div class="div1">
@@ -442,15 +448,16 @@ body{
 							self.pwdtextCheck = true;
 						}
 					}
+					
 					// 비밀번호 일치 확인
 					, fnPwSame : function(){
 						var self = this;
 						var nparmap = {pwd : self.pwd, pwd2 : self.pwd2};
 						if (self.pwd != self.pwd2) {
-							alert("비밀번호가 일치하지 않습니다.");
+							self.pwdtext3 = "❗ 비밀번호가 일치하지 않습니다.";
 							self.pwSame = false;
 						} else{
-							alert("비밀번호가 일치합니다.");
+							self.pwdtext3 = "비밀번호가 일치합니다";	
 							self.pwSame = true;
 						}
 					}
