@@ -53,7 +53,7 @@
 			   	</div>
 			</div>
 		 	<button @click="fnList" class="btn" style="float: right;">목록으로</button> 
-			<button @click="fnCheck" class="btn" style="float: right;">댓글 삭제</button>
+			<button @click="fnCheck" class="btn" style="float: right;">리뷰 삭제</button>
 		</div>
 	</div>
 	        

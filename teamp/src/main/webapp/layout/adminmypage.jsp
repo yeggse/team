@@ -36,10 +36,10 @@
                         <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 
                         <ul class="collapse__menu">
-                            <a href="normalMem.do" class="collapse__sublink">●일반 회원 관리</a>
-                            
-                            <a href="BuMemList.do" class="collapse__sublink">●사업자 회원 관리</a>
-                            
+                            <a href="normalMem.do" class="collapse__sublink">●일반 회원</a>
+                            <div>
+                            <a href="BuMemList.do" class="collapse__sublink">●사업자 회원</a>
+                            </div>
                         </ul>
                     </div>
 
@@ -64,14 +64,10 @@
                         </ul>
                     </div>
 
-                    <a href="datachange.do" class="nav__link">
-                        <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
-                        <span class="nav_name">내 정보 수정</span>
-                    </a>
                 </div>
                 <a href="login.do" class="nav__link">
                     <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
-                    <span class="nav_name">Log out</span>
+                    <span class="nav_name">로그아웃</span>
                 </a>
             </div>
         </nav>
