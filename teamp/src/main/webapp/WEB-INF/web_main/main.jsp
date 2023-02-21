@@ -69,7 +69,6 @@ img{
 	display: inline-block;
 	transition: background-color 0.3s ease;
 }
-
 .active {
 	background-color: #717171;
 }
@@ -79,7 +78,7 @@ img{
 	-webkit-animation-name: fade;
 	-webkit-animation-duration: 1.6s;
 	animation-name: fade;
-	animation-duration: 1.6s;
+	animation-duration: 3.2s;
 }
 
 @-webkit-keyframes fade {
@@ -88,8 +87,8 @@ img{
 }
 
 @keyframes fade {
-	from {opacity: .4} 
-	to {opacity: 1}
+	from {opacity: 100} 
+	to {opacity: 100}
 }
 
 /* On smaller screens, decrease text size */
@@ -266,8 +265,7 @@ z-index: -100;
 
 <div class="mySlides fade">
   <div class="numbertext">1 / 3</div>
-  <img src="https://www.adobe.com/kr/creativecloud/photography/hub/guides/media_159fdae2ae33a36aa49f0f2b79fcd72a312252c8f.jpeg?width=2000&format=webply&optimize=medium
-  " style="width:100%; height:30rem">
+  <img src="https://www.adobe.com/kr/creativecloud/photography/hub/guides/media_159fdae2ae33a36aa49f0f2b79fcd72a312252c8f.jpeg?width=2000&format=webply&optimize=medium" style="width:100%; height:30rem">
   <div class="text"></div>
 </div>
 
