@@ -139,13 +139,13 @@
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
-	                   <td>{{item.reviewnum}}</td> 
-	                   <td>{{item.categori}}</td> 
-	                   <td>{{item.resname}}</td>
-	                   <td>{{item.title}}</td>
-	                   <td>{{item.grade}}</td>
-	                   <td>{{item.nickname}}</td>
-	                   <td>{{item.writedate}}</td> 
+	                   <td @click="fnDetail(item)">{{item.reviewnum}}</td> 
+	                   <td @click="fnDetail(item)">{{item.categori}}</td> 
+	                   <td @click="fnDetail(item)">{{item.resname}}</td>
+	                   <td @click="fnDetail(item)">{{item.title}}</td>
+	                   <td @click="fnDetail(item)">{{item.grade}}</td>
+	                   <td @click="fnDetail(item)">{{item.nickname}}</td>
+	                   <td @click="fnDetail(item)">{{item.writedate}}</td> 
 	               </tr>
 				</tbody>
 			</table>
@@ -250,6 +250,39 @@ var app = new Vue({
 	            }
 	        }); 
 		}
+		, fnDetail : function(item){
+			var self = this;
+			self.pageChange("/arevdetail.do", {reviewnum : item.reviewnum});	// 상세페이지로 해당 id를 넘겨줌~~!
+		}
+		// 화면 전환 for 상세 확인
+		, pageChange : function(url, param) {
+			var target = "_self";
+			if(param == undefined){
+				return;
+			}
+			var form = document.createElement("form"); 
+			form.name = "dataform";
+			form.action = url;
+			form.method = "post";
+			form.target = target;
+			for(var name in param){
+				var item = name;
+				var val = "";
+				if(param[name] instanceof Object){
+					val = JSON.stringify(param[name]);
+				} else {
+					val = param[name];
+				}
+				var input = document.createElement("input");
+	    		input.type = "hidden";
+	    		input.name = item;
+	    		input.value = val;
+	    		form.insertBefore(input, null);
+			}
+			document.body.appendChild(form);
+			form.submit();
+			document.body.removeChild(form);
+		}  
 		
 	},
 		created : function() {

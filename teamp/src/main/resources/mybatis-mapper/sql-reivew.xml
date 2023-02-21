@@ -62,9 +62,27 @@
 			</if>
 	</select>
 	
+	<!-- 관리자 리뷰 상세 출력 // 동일 칼럼명 들어가 있을 경우. t i 등 지정필수 -->
+	<select id="ARevDetail" resultType="com.example.demo.model.Review">	
+		SELECT 
+			reviewnum, categori, resnum ,title, writedate, content, grade, nickname, create_id, resname
+		FROM
+			t3_review
+		WHERE
+			reviewnum = #{reviewnum}
+	</select>
+	
+	<!-- 관리자 리뷰 삭제 -->
+	<delete id="deleteARev" parameterType="hashmap">	
+		DELETE FROM 
+			t3_review 
+		WHERE 
+			reviewnum = #{reviewnum}
+			
+	</delete>
+	
 	<!-- 사업자 리뷰리스트 -->
 	<select id="selectreviewList2" parameterType="hashmap" resultType="com.example.demo.model.Review">	
-			
 			SELECT 
 				reviewnum
 				,categori
@@ -79,9 +97,6 @@
 				t3_review
 			WHERE resnum = #{resnum}
 			ORDER BY writedate ASC
-			
-			
-			
 	</select>
 	
 	<!-- 리뷰작성버튼 활성비활성 -->

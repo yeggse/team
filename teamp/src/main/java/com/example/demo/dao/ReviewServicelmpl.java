@@ -34,6 +34,23 @@ public class ReviewServicelmpl implements ReviewService{
 		// TODO Auto-generated method stub
 		return reviewMapper.countAdminRCnt(map);
 	}
+	// 관리자 리뷰 상세 출력
+	@Override
+	public HashMap<String, Object> ARevDetail(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		Review review = reviewMapper.ARevDetail(map);
+		resultMap.put("board", review);
+		return resultMap;
+	}
+	//관리자 리뷰 삭제
+	@Override
+	public void deleteARev(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		reviewMapper.deleteARev(map);
+	}
+	
+	
 	
 	
 	@Override
@@ -55,6 +72,10 @@ public class ReviewServicelmpl implements ReviewService{
 		resultMap.put("review", review);
 		return resultMap;
 	}
+
+
+
+
 
 
 
