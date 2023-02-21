@@ -13,7 +13,8 @@ public class Review {
    private String nickname;
    private String create_id;
    private String reskind;
-
+   private String review;
+   private int no;
    
    
 public int getReviewnum() {
@@ -76,5 +77,18 @@ public String getReskind() {
 public void setReskind(String reskind) {
 	this.reskind = reskind;
 }
+public String getReview() {
+	return review;
+}
+public void setReview(String review) {
+	this.review = review;
+}
+public int getNo() {
+	return no;
+}
+public void setNo(int no) {
+	this.no = no;
+}
+
 
 }

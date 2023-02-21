@@ -18,11 +18,8 @@ crossorigin="anonymous" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap.css">
-<style>
 
-*{
-	box-sizing: border-box;
-}
+<style>
 body{
 	font-family: Verdana, sans-serif;
 }
@@ -98,7 +95,7 @@ img{
 #imgbtn1 {
 	width: 22rem;
 	height: 15.8rem;
-	border: 0.1rem solid #343a40 ;
+	border: 0.1rem solid #a0a0a0 ;
 	margin-right: 2.5rem;
 	padding: 0px;
 	background: url("img/main/Mfood.png") no-repeat;
@@ -107,7 +104,7 @@ img{
 #imgbtn2 {
 	width: 22rem;
 	height: 15.8rem;
-	border: 0.1rem solid #343a40 ;
+	border: 0.1rem solid #a0a0a0 ;
 	margin-right: 2.5rem;
 	padding: 0px;
 	background: url("img/main/Mkor.PNG") no-repeat;
@@ -116,7 +113,7 @@ img{
 #imgbtn3 {
 	width: 22rem;
 	height: 15.8rem;
-	border: 0.1rem solid #343a40 ;
+	border: 0.1rem solid #a0a0a0 ;
 	margin-right: 2.5rem;
 	padding: 0rem;
 	background: url("img/main/Mjap.PNG") no-repeat;
@@ -126,7 +123,7 @@ img{
 #imgbtn4 {
 	width: 22rem;
 	height: 15.8rem;
-	border: 0.1rem solid #343a40 ;
+	border: 0.1rem solid #a0a0a0 ;
 	margin-right: 2.5rem;
 	padding: 0rem;
 	background: url("img/main/Mchi.PNG") no-repeat;
@@ -136,7 +133,7 @@ img{
 #imgbtn5 {
 	width: 22rem;
 	height: 15.8rem;
-	border: 0.1rem solid #343a40 ;
+	border: 0.1rem solid #a0a0a0 ;
 	margin-right: 2.5rem;
 	padding: 0px;
 	background: url("img/main/Masia.PNG") no-repeat;
@@ -146,7 +143,7 @@ img{
 #imgbtn6 {
 	width: 22rem;
 	height: 15.8rem;
-	border: 0.1rem solid #343a40 ;
+	border: 0.1rem solid #a0a0a0 ;
 	margin-right: 2.5rem;
 	padding: 0rem;
 	background: url("img/main/Mwe.PNG") no-repeat;
@@ -154,22 +151,22 @@ img{
 	
 }
 #imgbtn1:hover{
-border: 0.2rem solid #dee2e6;
+border: 0.2rem solid #343a40;
 }
 #imgbtn2:hover{
-border: 0.2rem solid #dee2e6;
+border: 0.2rem solid #343a40;
 }
 #imgbtn3:hover{
-border: 0.2rem solid #dee2e6;
+border: 0.2rem solid #343a40;
 }
 #imgbtn4:hover{
-border: 0.2rem solid #dee2e6;
+border: 0.2rem solid #343a40;
 }
 #imgbtn5:hover{
-border: 0.2rem solid #dee2e6;
+border: 0.2rem solid #343a40;
 }
 #imgbtn6:hover{
-border: 0.2rem solid #dee2e6;
+border: 0.2rem solid #343a40;
 }
 .img{
   background: url(https://www.adobe.com/kr/creativecloud/photography/hub/guides/media_159fdae2ae33a36aa49f0f2b79fcd72a312252c8f.jpeg?width=2000&format=webply&optimize=medium) no-repeat center;
@@ -182,11 +179,10 @@ border: 0.2rem solid #dee2e6;
 	width:10rem;
 	height:3rem;
 	margin: 1.5rem 10rem 0rem 21rem;
-	transition: width 1s;
 	float: left;
 }
-.select:hover {
-	 width: 30rem;
+.select:hover{
+border: 0.15rem solid black;
 }
 
 .h2{
@@ -196,6 +192,7 @@ border: 0.2rem solid #dee2e6;
   	left: 70%;
   	color: white;
 }
+
 .div4{
 	width:80rem;
 	height:40rem;

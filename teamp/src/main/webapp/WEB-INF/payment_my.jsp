@@ -66,7 +66,9 @@
 	                   <td >{{item.price}}</td>
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.salecomple}}</td>
-	                   <td ><button @click="change(item)">리뷰 작성하기</button></td>
+	                   <td ><button v-if = "item.review == 'N'" @click="change(item)">리뷰 작성하기</button>
+	                        <div v-else>리뷰 작성 완료</div>
+	                   </td>
 	               	
 	               </tr>
 				</tbody>
@@ -97,6 +99,7 @@ var app = new Vue({
         , pickuptime : ""
         , price : ""
         , salecomple : ""
+        , review : ""
         
         
         
@@ -152,8 +155,8 @@ var app = new Vue({
 		document.body.removeChild(form);
 	}
     , change :function(item){
-    	var self = this;
-    	self.pageChange("/reviewwrite.do", {resnum:item.resnum, reskind:item.reskind});
+    	var self = this; 
+        self.pageChange("/reviewwrite.do", {resnum:item.resnum, reskind:item.reskind});
     }
     
     

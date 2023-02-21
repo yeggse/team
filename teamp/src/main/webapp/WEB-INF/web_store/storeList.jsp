@@ -166,14 +166,23 @@ var app = new Vue({
     	si : "${si}",
     	guList : ${guList},
     	reskind : "${reskind}",
-    	gu : ""
+    	gu : "",
+    	flg: ""
     	
     }   
     , methods: {
     	// 기본 화면 출력 이벤트 (식당 출력)
        	fnGet : function(){
             var self = this;
-            var nparmap = {si : self.si, reskind:self.reskind, gu : self.gu}; 
+            if(self.gu == ""){
+            	self.flg = "1=1";
+            	console.log(self.flg);
+            }
+            else if(self.gu != ""){
+            	self.flg = "";
+            }
+           
+            var nparmap = {si : self.si, reskind:self.reskind, gu : self.gu, flg:self.flg}; 
             $.ajax({
                 url:"/main.storelist/list.dox",
                 dataType:"json",	
@@ -181,8 +190,7 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) {/* 데이터가 제대로 넘어오면, success실행됨 */   
                 	self.list = data.list;
-                console.log(self.reskind);
-                console.log(self.list);
+                console.log(self.gu);
    	            	if(self.list.length > 0){
    	            		self.tempGrade = self.list[0].grade;
    	            	}

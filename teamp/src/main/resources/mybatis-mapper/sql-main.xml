@@ -10,7 +10,7 @@
 		FROM
 			t3_restaurant	
 		where 
-		region = #{si} AND reskind = #{reskind} And region1 =#{gu} <!-- 시/도에 있는거 가져오기 --> 
+		region = #{si} AND reskind = #{reskind} And region1 =#{gu} or #{flg} <!-- 시/도에 있는거 가져오기 --> 
 		ORDER BY resnum ASC
 	</select>
 	
