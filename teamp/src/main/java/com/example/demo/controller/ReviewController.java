@@ -49,14 +49,31 @@ public class ReviewController {
     
     
     //관리자용 식당리뷰 리스트
-    @RequestMapping(value = "/searchReview1.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping("/reviewadmin.do") 
+    public String review1(Model model,HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
+    	String kind = (String)session.getAttribute("KindSession");
+    	String id = (String)session.getAttribute("userIdSession");
+    	
+    	request.setAttribute("map", map);
+    	request.setAttribute("kind", kind);
+    	request.setAttribute("userId", id); 
+    	return "/reviewadmin"; // WEB-INF에서 호출할 파일명
+    }
+    
+    @RequestMapping(value = "/adminReviewList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
    	@ResponseBody
    	public String searchReviewkind(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
    		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-   		List<Review> list = reviewservice.selectreviewList1(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+   		List<Review> list = reviewservice.adminReviewList(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+   		int cnt = reviewservice.countAdminRCnt(map);	// 숫자 세기
    		resultMap.put("list1", list);
+   		resultMap.put("cnt", cnt);	// 숫자 세기
    		return new Gson().toJson(resultMap);
    	}
+    
+    
+    
+    
     
   //사업자용 식당리뷰 리스트
     @RequestMapping(value = "/searchReview2.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

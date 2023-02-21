@@ -10,13 +10,12 @@
 	<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
 	<jsp:include page="/layout/header.jsp"></jsp:include>
 	
-	<title>일반 회원 관리</title>
 </head>
 <style>
-img{
-width:6rem;
-height:6rem;
-}
+	img{
+	width:6rem;
+	height:6rem;
+	}
 /* ----------------------------------------------------- */
 #input {
    width: 25rem;
@@ -112,12 +111,6 @@ background:#ffff99;
 			<div class="container">
 			<h2>식당 종류별 리뷰 관리🙆‍♀️ - 검색버튼 활성화 필요</h2>‍
 			<div style="text-align: center;">
-			
-				<!-- <input type="text" placeholder="id 혹은 이름을 검색해 주세요" v-model="search"  v-on:keyup.enter="fnSearch"></input>
-				<button id="btn" @click="fnSearch">검색</button>	 검색기능 활성화 필요-->
-				
-		<!-- 		<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		업종 리스트 출력하는 쿼리 생성 필요!!
-				<button id="btn"  >검색</button>  -->
 				
 				
 			</div>
@@ -161,7 +154,18 @@ background:#ffff99;
 				</tbody>
 			</table>
 		<!-- 페이지 넘어가는 버튼들 -->		
-			  
+			<template>
+			<paginate
+			    :page-count="pageCount"
+			    :page-range="3"
+			    :margin-pages="2"
+			    :click-handler="changePage"
+			    :prev-text="'<'"
+			    :next-text="'>'"
+			    :container-class="'pagination'"
+			    :page-class="'page-item'">
+			  </paginate>
+			</template>			  
 		  	
 		  </div>	
 	</div>
@@ -175,26 +179,27 @@ var app = new Vue({
 		el : '#app',
 		data : {
 			list :[]/* 게시판에 올려지는 글들은 다른 리스트 새로만들기1  */
-	        
-	        ,selectedItemList:[]
-	        ,reskind: "${map.reskind}"
-			,flg : "${map.flg}"
+			, selectPage: 1	// 기본 세팅이 1번 페이지로 맞추어져 있음.
+	       	, pageCount: 1	        
+	        , selectedItemList:[]
+	        , reskind: "${map.reskind}"
+			, flg : "${map.flg}"
 		},
 		methods : {
 		fnGetReview : function() {
 			var self = this;
-			var nparmap = {reskind: self.reskind, flg: self.flg};
+            var startNum = ((self.selectPage-1) * 10);
+    		var lastNum = self.selectPage * 10;
+			var nparmap = {startNum : startNum, lastNum : lastNum, reskind: self.reskind, flg: self.flg};
 			$.ajax({
-				url : "/searchReview1.dox",
+				url : "/adminReviewList.dox",
 				dataType : "json",
 				type : "POST",
 				data : nparmap,
 				success : function(data) {
 					self.list = data.list1;
-					/* self.info = data.resimg; */
-					
+					self.pageCount = Math.ceil(data.cnt / 10);
 					console.log(self.list);
-					
 				}
 			});
 		}
@@ -227,9 +232,27 @@ var app = new Vue({
 			form.submit();
 			document.body.removeChild(form);
 		}
+		// 페이지 전환 메소드
+		, changePage : function(pageNum) {
+			var self = this;
+			self.selectPage = pageNum;
+			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
+			var lastNum = 10;
+	        var nparmap = {startNum : startNum, lastNum : lastNum, title : self.title, boardtype : self.boardtype};
+	        $.ajax({
+	            url:"/adminReviewList.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {                                       
+	                self.list = data.list;
+	                self.pageCount = Math.ceil(data.cnt / 10);
+	                console.log(data);
+	            }
+	        }); 
+		}
 		
-		
-		},
+	},
 		created : function() {
 			var self = this;
 			self.fnGetReview();

@@ -22,28 +22,34 @@
 			ORDER BY writedate ASC
 			
 	</select>
+	
 	<!-- 관리자 리뷰리스트 -->
-	<select id="selectreviewList1" parameterType="hashmap" resultType="com.example.demo.model.Review">	
-			
+	<select id="adminReviewList" parameterType="hashmap" resultType="com.example.demo.model.Review">	
 			SELECT 
-				reviewnum
-				,categori
-				,resnum
-				,title
-				,writedate
-				,content
-				,grade
-				,nickname
-				,create_id
+				reviewnum, categori, resnum ,title, writedate, content, grade, nickname, create_id
 			FROM
 				t3_review
-			WHERE reskind = #{reskind} or #{flg}
+			WHERE 1=1
+			<if test='reskind != null and reskind != "" '>
+			and reskind = #{reskind} 
+			</if>
+			<if test='flg != null and flg != "" '>
+			or #{flg}
+			</if>
 			ORDER BY writedate ASC
-			
-			
-			
+			LIMIT #{startNum}, #{lastNum}
 	</select>
 	
+	<!-- 관리자 갯수 출력 -->
+	<select id="countAdminRCnt" parameterType="hashmap" resultType="int">	
+		SELECT 
+			COUNT(*) AS CNT
+		FROM
+			t3_review
+		where reskind = #{reskind} or #{flg}
+	</select>
+	
+	<!-- 사업자 리뷰리스트 -->
 	<select id="selectreviewList2" parameterType="hashmap" resultType="com.example.demo.model.Review">	
 			
 			SELECT 

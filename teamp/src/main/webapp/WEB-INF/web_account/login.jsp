@@ -83,6 +83,9 @@
 	border-radius: 10px;
 	letter-spacing: 4px;
 }
+.btn2:hover {
+	color: black;
+}
 
 .btn_icon {
 	/* background: url(/images/pc/ico_comm.png) */
@@ -100,6 +103,12 @@
 	margin-right: 70px;
 	margin-left: 35px;
 	font-size: 12px;
+}
+.afind:hover {
+	font-weight:bold;
+}
+.asign:hover {
+	font-weight:bold;
 }
 
 input {
