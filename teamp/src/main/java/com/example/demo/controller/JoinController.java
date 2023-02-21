@@ -79,21 +79,12 @@ public class JoinController {
 	 		return new Gson().toJson(resultMap);
 		}	
 		
-	    
-	    
-	    
-	    
+	    // 아이디 id 찾기
 	    @RequestMapping("/searchid.do") 
 	    public String searchid(Model model) throws Exception{
-	    	return "/search_id"; // WEB-INF에서 호출할 파일명
+	    	return "/web_account/search_id"; // WEB-INF에서 호출할 파일명
 	    }
-	    @RequestMapping("/searchpw.do") 
-	    public String searchpw(Model model) throws Exception{
-	    	return "/search_pw"; // WEB-INF에서 호출할 파일명
-	    }
-	    
-	    
-		// 데이터 호출
+	    // 아이디 id 찾기 데이터 호출
 		@RequestMapping(value = "/searchid.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody
 		public String searchid(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -108,6 +99,32 @@ public class JoinController {
 			return new Gson().toJson(resultMap);
 		}
 	
+		// 비밀번호 pw 찾기 
+	    @RequestMapping("/searchpw.do") 
+	    public String searchpw(Model model) throws Exception{
+	    	return "/web_account/search_pw"; // WEB-INF에서 호출할 파일명
+	    }
+		// 비밀번호 pw 찾기 데이터 호출
+		@RequestMapping(value = "/searchpw.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String searchpw(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			Join user = joinService.searchpw(map);
+			
+			if(user != null) {
+				session.setAttribute("userId1Session", user.getId());
+				session.setAttribute("NameSession", user.getName());
+				
+				resultMap.put("user", user);
+				resultMap.put("result", "success");
+			} else {
+	 			resultMap.put("result", "fail");
+	 		}
+	 		return new Gson().toJson(resultMap);
+		}
+		
+		
+	    
 	@RequestMapping("/datachange.do")
 	public String main2(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -198,26 +215,6 @@ public class JoinController {
  		resultMap.put("num", num);
  		return new Gson().toJson(resultMap);
  	}
-	// 데이터 호출
-	@RequestMapping(value = "/searchpw.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String searchpw(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		Join user = joinService.searchpw(map);
-		
-		if(user != null) {
-			session.setAttribute("userId1Session", user.getId());
-			session.setAttribute("NameSession", user.getName());
-			
-			resultMap.put("user", user);
-			resultMap.put("result", "success");
-		} else {
- 			resultMap.put("result", "fail");
- 		}
-		
- 		return new Gson().toJson(resultMap);
-	}
-	
 
 	
 	//선생님 버전

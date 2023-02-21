@@ -101,7 +101,7 @@
 .text6{
   margin: 20px;
 }
-.footer{
+.foot{
   font-size: 10px;
   text-align: center;
   margin: 20px;
@@ -123,12 +123,12 @@
         <div class="text2">회원 정보에 등록한 정보와 일치해야, 비밀번호를 변경할 수 있습니다.</div>
         <div>
             <span class="text3">아이디</span>
-    		<input class="input1" type="text" name="loginKey" placeholder="아이디를 입력해주세요" v-model="id" v-on:keyup.enter="fnSearchpw">
+    		<input class="input1" maxlength='13' type="text" name="loginKey" placeholder="아이디를 입력해주세요" v-model="id" v-on:keyup.enter="fnSearchpw">
   		</div>
   			<div>
             <span class="text4">주민번호</span>
-    		<input class="input2" type="text" placeholder="6자리" v-model="frontregisnum" v-on:keyup.enter="fnSearchpw"> ㅡ
-    		<input class="input2" type="password" placeholde="" v-model="afterregisnum" v-on:keyup.enter="fnSearchpw">
+    		<input class="input2" type="text" maxlength='6' placeholder="6자리" v-model="frontregisnum" v-on:keyup.enter="fnSearchpw"> ㅡ
+    		<input class="input2" type="password" maxlength='7' placeholde="" v-model="afterregisnum" v-on:keyup.enter="fnSearchpw">
   		</div>
   		<!-- <div>
             <span class="text4">새 비밀번호</span>
@@ -146,12 +146,14 @@
       <a class="text6" href="http://localhost:8080/searchid.do">아이디를 잊으셨나요?</a>
       <a  class="text6" href="http://localhost:8080/login.do">로그인</a>
     </div>
-	<div class="footer">
+	<div class="foot">
+		<a href="http://127.0.0.1:8080/main.do" class="asign">
   		<span class="span">이용약관</span>
   		<span class="span">개인정보 처리방침</span>
   		<span class="span">운영정책</span>
   		<span class="span">고객센터</span>
   		<span class="span">공지사항</span>
+  		</a>
   		<div style="display: inline-block">
 				<img src="img/main/newlogo.png" width="30px" height="30px"
 					style="float: left; display: flex; margin-right: 5px;">
@@ -161,6 +163,7 @@
 	</div>   
     </div>
 </body>
+<jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
 
 

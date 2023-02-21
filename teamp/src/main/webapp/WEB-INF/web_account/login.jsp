@@ -177,7 +177,7 @@ input {
 				</div>
 				
 		<!-- 로그인 footer -->
-		<div class="loginfooter"><a href="http://127.0.0.1:8080/main.board.do" class="asign">
+		<div class="loginfooter"><a href="http://127.0.0.1:8080/main.do" class="asign">
 			<span class="span">이용약관</span> <span class="span">개인정보 처리방침</span> 
 			<span class="span">운영정책</span> <span class="span">고객센터</span> 
 			<span class="span">공지사항</a></span>

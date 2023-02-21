@@ -98,7 +98,7 @@
     text-align: center;
   margin-top:15px;
 }
-.footer{
+.foot{
   font-size: 10px;
   text-align: center;
   margin: 20px;
@@ -121,33 +121,35 @@
         <div class="text2">회원 정보에 등록한 정보와 일치해야, 아이디를 찾을 수 있습니다.</div>
         <div>
             <span class="text3">이름</span>
-    		<input class="input1" type="text" placeholder="이름" v-model="name" v-on:keyup.enter="fnSearchid">
+    		<input class="input1" type="text" maxlength='7' placeholder="이름" v-model="name" v-on:keyup.enter="fnSearchid">
   		</div>
   		<div>
             <span class="text4">주민번호</span>
-    		<input class="input2" type="text" placeholder="6자리" v-model="frontregisnum" v-on:keyup.enter="fnSearchid"> ㅡ
-    		<input class="input2" type="password" placeholde="" v-model="afterregisnum" v-on:keyup.enter="fnSearchid">
+    		<input class="input2" type="text" placeholder="6자리" maxlength='6' v-model="frontregisnum" v-on:keyup.enter="fnSearchid"> ㅡ
+    		<input class="input2" type="password" placeholde="" maxlength='7' v-model="afterregisnum" v-on:keyup.enter="fnSearchid">
   		</div>
   		<div>
      		<button class="btn3" @click="fnSearchid">아이디 찾기</button>
   		</div>
 	</div>
     <div class="text5"><a href="http://localhost:8080/login.do">로그인</a></div>
-	<div class="footer">
+	<div class="foot">
+		<a href="http://127.0.0.1:8080/main.do" class="asign">
   		<span class="span">이용약관</span>
   		<span class="span">개인정보 처리방침</span>
   		<span class="span">운영정책</span>
   		<span class="span">고객센터</span>
   		<span class="span">공지사항</span>
+  		</a>
   		<div style="display: inline-block">
 				<img src="img/main/newlogo.png" width="30px" height="30px"
 					style="float: left; display: flex; margin-right: 5px;">
-				<h4 style="float: right; display: flex;">Copyright © Safe Corp.
-					All rights reserved.</h4>
+				<h4 style="float: right; display: flex;">Copyright © Safed Corp.	All rights reserved.</h4>
 		</div>             
 	</div>   
     </div>
 </body>
+<jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
 
 <script type="text/javascript">
