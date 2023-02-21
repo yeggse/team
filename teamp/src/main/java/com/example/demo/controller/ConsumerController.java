@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.dao.ConsumerService;
+import com.example.demo.dao.ReviewService;
 import com.example.demo.model.Consumer;
 import com.google.gson.Gson;
 
@@ -29,6 +30,8 @@ public class ConsumerController {
     @Autowired
     private ConsumerService consumerService;
     
+    @Autowired
+    private ReviewService reviewService1;
 	 @Autowired
 		HttpSession session;	
 	// Service 인터페이스 객체 생성 및 연결
@@ -97,6 +100,7 @@ public class ConsumerController {
 			HashMap<String, Object> resultMap = new HashMap<String, Object>();
 			String img = (String) map.get("img"); //!!!!!!!!!!!!!!!!
 			consumerService.addReview(map);
+			reviewService1.reviewFin(map);
 			resultMap.put("message", "성공");
 			resultMap.put("reviewnum", map.get("reviewnum"));//*****
 			return new Gson().toJson(resultMap);

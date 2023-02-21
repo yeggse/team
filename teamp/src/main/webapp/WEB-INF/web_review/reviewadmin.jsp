@@ -181,6 +181,7 @@ var app = new Vue({
 	        , reskind: "${map.reskind}"
 			, flg : "${map.flg}"
 			, resname : ""
+			, categori : ""
 		},
 		methods : {
 		fnGetReview : function() {

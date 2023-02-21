@@ -158,7 +158,7 @@ var app = new Vue({
 	}
     , change :function(item){
     	var self = this; 
-    	var nparmap = {no : item.no};
+    	/* var nparmap = {no : item.no};
         $.ajax({
             url:"/reviewFin.dox",
             dataType:"json",	
@@ -173,8 +173,9 @@ var app = new Vue({
            		location.href="/reservebusiness.do";
            		
             }
-        }); 
-        self.pageChange("/reviewwrite.do", {resnum:item.resnum, reskind:item.reskind});
+        });  */
+        console.log(item.no);
+        self.pageChange("/reviewwrite.do", {resnum:item.resnum, reskind:item.reskind, resname:item.resname, no:item.no});
     }
     
     

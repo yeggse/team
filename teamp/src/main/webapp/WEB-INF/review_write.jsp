@@ -161,7 +161,8 @@ var app = new Vue({
 			,grade:""
 			,reskind:"${map.reskind}"
 			,resnum:"${map.resnum}"
-			
+			,resname : "${map.resname}"
+			,no: "${map.no}"
 			
     }
 
@@ -202,7 +203,7 @@ var app = new Vue({
     	    }
      ,fnSave : function(){
 		var self = this;
-      	var nparmap = {nickname:self.nickname,content : self.content, img : self.img, grade: self.grade, reskind:self.reskind, resnum: self.resnum, title: self.title}; 
+      	var nparmap = {nickname:self.nickname,content : self.content, img : self.img, grade: self.grade, reskind:self.reskind, resnum: self.resnum, title: self.title,resname:self.resname,no:self.no }; 
         $.ajax({
             url:"/addReview.dox",
             dataType:"json",	
@@ -266,7 +267,8 @@ var app = new Vue({
 	    }
     }
     , created: function () {
-    	
+    	console.log(self.resname);
+    	console.log(self.resnum);
 	}
 });
 </script>
