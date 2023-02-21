@@ -37,7 +37,7 @@
 					<col width="15%"/>
 					<col width="15%"/>
 					<col width="15%"/>
-					
+					<col width="15%"/>
 				</colgroup>
 				<thead>
 					<tr>
@@ -51,6 +51,7 @@
 						<th scope="col">개당 가격</th>
 						<th scope="col">주문일자</th>
 						<th scope="col">결제 여부</th>
+						<th scope="col">총 가격</th>
 						<th scope="col">리뷰 작성</th>
 					</tr>
 				</thead>
@@ -66,6 +67,7 @@
 	                   <td >{{item.price}}</td>
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.salecomple}}</td>
+	                   <td >{{item.price * item.menunum}}</td>
 	                   <td ><button v-if = "item.review == 'N'" @click="change(item)">리뷰 작성하기</button>
 	                        <div v-else>리뷰 작성 완료</div>
 	                   </td>

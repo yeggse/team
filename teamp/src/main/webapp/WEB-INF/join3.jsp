@@ -419,6 +419,7 @@ input {
 					success : function(data) {
 						self.list = data.list;
 						self.info = data.resimg;
+						console.log(self.info);
 						console.log(self.idx);
 						console.log(self.list);
 						

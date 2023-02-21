@@ -36,7 +36,7 @@
 					<col width="15%"/>
 					<col width="15%"/>
 					<col width="15%"/>
-					
+					<col width="15%"/>
 				</colgroup>
 				<thead>
 					<tr>
@@ -50,6 +50,7 @@
 						<th scope="col">개당 가격</th>
 						<th scope="col">주문 일자</th>
 						<th scope="col">픽업 여부</th>
+						<th scope="col">총 가격</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,6 +65,7 @@
 	                   <td >{{item.price}}</td>
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.salecomple}}</td>
+	                   <td>{{item.price*item.menunum}}</td>
 	               </tr>
 				</tbody>
 			</table>

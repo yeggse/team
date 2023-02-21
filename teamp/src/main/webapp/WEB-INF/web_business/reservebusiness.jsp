@@ -31,6 +31,7 @@
 					<col width="10%"/> 
 					<col width="*"/>
 					<col width="10%"/>
+					<col width="10%"/>
 					<col width="15%"/>
 					<col width="15%"/>
 					<col width="15%"/>
@@ -42,6 +43,7 @@
 						<th scope="col">상호명</th>
 						<th scope="col">메뉴</th>
 						<th scope="col">개수</th>
+						<th scope="col">개당 가격</th>
 						<th scope="col">주문일자</th>
 						<th scope="col">픽업시간</th>
 						<th scope="col">결제금액</th>
@@ -54,10 +56,11 @@
 	                   <td >{{item.no}}</td> 
 	                   <td >{{item.resname}}</td> 
 	                   <td >{{item.menuname}} </td> 
-	                   <td >{{item.menunum}} </td> 
+	                   <td >{{item.menunum}} </td>
+	                   <td >{{item.price}} </td> 
 	                   <td >{{item.orderdate}}</td>
 	                   <td >{{item.pickuptime}}</td>
-	                   <td >{{item.price}} </td>
+	                   <td >{{item.price * item.menunum}} </td>
 	                   <td  >
 	                 	  <button v-if="item.salecomple =='N'" id='btnSoldout' @click='btnOnOff(item)'> 판매 완료 {{item.salecomple}} </button>
 	                   </td>

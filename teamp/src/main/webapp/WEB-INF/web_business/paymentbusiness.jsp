@@ -30,6 +30,7 @@
 					<col width="10%"/> 
 					<col width="10%"/> 
 					<col width="5%"/>
+					<col width="5%"/>
 					<col width="10%"/>
 					<col width="15%"/>
 					
@@ -40,6 +41,7 @@
 						<th scope="col">주문번호</th>
 						<th scope="col">메뉴</th>
 					    <th scope="col">개수</th>
+					    <th scope="col">개당 가격</th>
 						<th scope="col">주문일자</th>
 						<th scope="col">결제금액</th>
 					</tr>
@@ -50,9 +52,10 @@
 	                   <td >{{item.orderer}}</td>                       
 	                   <td >{{item.no}}</td>
 	                   <td >{{item.menuname}} </td> 
-	                   <td >{{item.menunum}} </td> 
+	                   <td >{{item.menunum}} </td>
+	                   <td >{{item.price}} </td> 
 	                   <td >{{item.orderdate}}</td>
-	                   <td >{{item.price}}</td>
+	                   <td >{{item.price*item.menunum}}</td>
 	                   
 	               	
 	               </tr>
