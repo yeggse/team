@@ -143,7 +143,7 @@ body{
 	color : blue;
 	font-size: 0.76rem; 
 	text-align: left; 
-	margin: 0rem 0rem 0rem 8rem;
+	margin: 0rem 0rem 0rem 0rem;
 }
 #noPwd{
 	color : red;
@@ -182,7 +182,7 @@ body{
 			</div>
 		</div>
 	
-	<!-- 비밀번호 기능 -->
+	<!-- 비밀번호 형식확인 기능 -->
 		<div v-if = "pwdtextCheck" id="okPwd">{{pwdtext}}</div>
 		<div v-else id="noPwd">{{pwdtext}} <br> {{pwdtext2}}</div>
 	
@@ -190,12 +190,13 @@ body{
 		<div class="div1">	
 			비밀번호 재확인 
 			<div>
-				<input type="password" class="input1" v-model="pwd2" maxlength='16' ></input>
-				<!--  
-				<button class="btn1" @click="fnPwSame">비밀번호 확인</button>
-				-->
+				<input type="password" class="input1" v-model="pwd2" maxlength='16' @change="fnPwSame"></input>
 			</div>
 		</div>
+		
+		<!-- 비밀번호 일치확인 기능 -->
+		<div v-if = "fnPwSame" id="noPwd">{{pwdtext3}}</div>
+		<div v-else id="okPwd">{{pwdtext3}} </div>
 		
 	<!-- 이름 -->
 		<div class="div1">
@@ -365,6 +366,7 @@ body{
 			pwSame : false,
 			pwdtext: "",
 			pwdtext2: "",
+			pwdtext3: "",
 			pwdtextCheck:false
 			, people : false
 			, siList : ${siList}
@@ -492,10 +494,11 @@ body{
 				var self = this;
 				var nparmap = {pwd : self.pwd, pwd2 : self.pwd2};
 				if (self.pwd != self.pwd2) {
-					alert("비밀번호가 일치하지 않습니다.");
+					self.pwdtext3 = "❗ 비밀번호가 일치하지 않습니다.";
+					self.pwd = "";
 					self.pwSame = false;
 				} else{
-					alert("비밀번호가 일치합니다.");
+					self.pwdtext3 = "비밀번호가 일치합니다";	
 					self.pwSame = true;
 				}
 			}
