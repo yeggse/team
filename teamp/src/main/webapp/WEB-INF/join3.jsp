@@ -175,7 +175,7 @@ input {
 	<div id="app" style="width: 100%; padding-top: 120px;" anlign="center">
 		<div class="title_food">{{res.resname}}</div>
 		<span class="grade" style="margin-left: 180px; ">평점
-			:{{res.grade}}</span> 
+			:{{grade}}</span> 
 		<span class="position_res" style="marin-top: -50px;">
 			가게위치:{{res.resadd}} <!-- {{list[0].pickuptime}} 집에서 mysqpl로 다시 수정하기.-->
 		</span>
@@ -360,13 +360,7 @@ input {
 	               </tr>
 
 				</table>
-				<%-- <template>
-					<paginate :page-count="pageCount" :page-range="3" :margin-pages="2"
-						:click-handler="changePage" :prev-text="'<'" :next-text="'>'"
-						:container-class="'pagination'" :page-class="'page-item'">
-					</paginate>
-				</template> --%>
-							<Button v-if="'${kind}' == 'A'" @click="fnReviewwrite" id="btn_menu" style="margin-left: 80%;" >리뷰 작성하기</Button>
+				
 			</div>
 		</div>
 	</div>
@@ -410,6 +404,7 @@ input {
 		    ,num : 0
 		    ,payment : ""
 		    ,resname : ""
+		    ,grade : ""
 		    
 		},
 		methods : {
@@ -442,7 +437,13 @@ input {
 				success : function(data) {
 					self.list1 = data.list1;
 					/* self.info = data.resimg; */
+					var sum = 0;
+					for(var i =0; i<self.list1.length; i++){
+						sum += (self.list1[i].grade)/self.list1.length;
+						
+					}
 					
+					self.grade = sum.toFixed(1);
 					console.log(self.list1);
 					
 				}
@@ -518,10 +519,6 @@ input {
 		, fnView : function(){
 			var self = this;
 			self.pageChange("/main.payment.do", {list : self.list,resname:self.res.resname}); /// 주문갯수를 포함하는 리스트를 넘김
-		}
-		, fnReviewwrite : function(){
-			var self = this;
-			self.pageChange("/reviewwrite.do", {list : self.list, resname:self.res.resname}); //리뷰작성페이지 이동
 		}
 		,fnReserve : function() {
 			var self = this;
