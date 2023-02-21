@@ -65,4 +65,13 @@
 			
 	</select>
 	
+	<!-- 리뷰작성버튼 활성비활성 -->
+	
+	<update id="reviewFin" parameterType="hashmap" >	
+		UPDATE t3_reserve
+		SET
+			review = "Y" 
+		WHERE no = #{no}
+	</update>
+	
 </mapper>

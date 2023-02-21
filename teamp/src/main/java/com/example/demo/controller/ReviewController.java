@@ -66,5 +66,14 @@ public class ReviewController {
    		List<Review> list = reviewservice.selectreviewList2(map); // DB 접근 및 쿼리를 통한 데이터 호출 
    		resultMap.put("list1", list);
    		return new Gson().toJson(resultMap);
-   	} 
+   	}
+    
+    @RequestMapping(value = "/reviewFin.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String reviewFin(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		reviewservice.reviewFin(map);
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
 }

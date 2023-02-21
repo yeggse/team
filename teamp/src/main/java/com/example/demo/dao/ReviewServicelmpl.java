@@ -36,4 +36,10 @@ public class ReviewServicelmpl implements ReviewService{
 		return reviewMapper.selectreviewList2(map);
 	}
 
+	@Override
+	public void reviewFin(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		reviewMapper.reviewFin(map);
+	}
+
 }
