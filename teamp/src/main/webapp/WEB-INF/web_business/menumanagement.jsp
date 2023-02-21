@@ -343,7 +343,8 @@ var app = new Vue({
                  dataType:"json",	
                  type : "POST", 
                  data : nparmap,
-                 success : function(data) {  
+                 success : function(data) {
+                	 console.log(self.selectedItemList);
                 	 alert("삭제되었습니다.");
                 	 self.selectedItemList = [];
                 	 self.fnGetList();

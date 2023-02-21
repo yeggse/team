@@ -135,6 +135,7 @@
 			resnum = #{resnum},
 			reskind = #{kind},
 			region = #{region},
+			region1 = #{region1},
 			resad = #{resad},
 			resphone = #{resphonenum}
 		WHERE 
