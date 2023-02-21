@@ -168,7 +168,7 @@ var app = new Vue({
    	            	if(self.list.length > 0){
    	            		self.tempGrade = self.list[0].grade;
    	            	}
-   	            	
+   	            	console.log(self.list)
                 }
            });
     	},
