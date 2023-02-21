@@ -65,21 +65,23 @@
 			FROM
 				t3_account
 			where kind = "B"
+		<if test='search != null and search != "" '>
+			and (id = #{search} or name = #{search})
+		</if>	
 			ORDER BY id ASC
 			LIMIT #{startNum}, #{lastNum}
 	</select>
 	
-	<!-- 사업자 회원 검색 -->
-	<select id="searchBum" parameterType="hashmap" resultType="com.example.demo.model.Admin">	
-		SELECT
-				id, kind, phonenum, acc, name, address, frontregisnum, afterregisnum, nickname, resname, resnum, 
-				reskind, region, resad, resphone
+	<!-- 사업자 수 출력 -->
+	<select id="countBumCnt" parameterType="hashmap" resultType="int">	
+		SELECT 
+			COUNT(*) AS CNT
 		FROM
-			t3_account
-		where
-			(id = #{search} or name = #{search}) and kind="B"
-		ORDER BY id ASC
-	</select>	
+			t3_account where kind = "B"
+		<if test='search != null and search != "" '>
+			and (id = #{search} or name = #{search})
+		</if>
+	</select>
 	
 	<!-- 사업자 상세 정보 출력 -->
 	<select id="detailbum" resultType="com.example.demo.model.Admin">	

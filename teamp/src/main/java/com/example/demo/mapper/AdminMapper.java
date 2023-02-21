@@ -31,4 +31,6 @@ public interface AdminMapper {
 	
 	// 일반회원 수 세기
 	int countMemCnt(HashMap<String, Object> map);
+	// 사업자회원 수 세기
+	int countBumCnt(HashMap<String, Object> map);
 }

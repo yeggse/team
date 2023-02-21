@@ -73,21 +73,11 @@ public class AdminController {
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Admin> list = adminService.BuMemList(map);
-		//int cnt = adminService.countBoardCnt();	//게시글 갯수 세기
+		int cnt = adminService.countBumCnt(map);	// 갯수 세기
 		resultMap.put("list", list);
-		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
+		resultMap.put("cnt", cnt);	// 갯수 세기
 		return new Gson().toJson(resultMap);
 	}
-	
-	// 관리자회원 검색
-	@RequestMapping(value = "/searchBum.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String searchBum(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Admin> list = adminService.searchBum(map); // DB 접근 및 쿼리를 통한 데이터 호출 
-		resultMap.put("list", list);
-		return new Gson().toJson(resultMap);
-	} 	
 	
 	// 일반회원 상세 정보 출력
     @RequestMapping("/member.detail.do") 

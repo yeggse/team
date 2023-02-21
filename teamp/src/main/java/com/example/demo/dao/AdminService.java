@@ -22,7 +22,7 @@ public interface AdminService {
 	// 일반회원 탈퇴
 	void deletemem(HashMap<String, Object> map); 
 	// 일반회원 갯수 세기
-	int countMemCnt(HashMap<String, Object> map);;
-	// 사업자 회원 검색
-	List<Admin>searchBum(HashMap<String, Object> map) throws Exception;
+	int countMemCnt(HashMap<String, Object> map);
+	// 사업자 회원 갯수 세기
+	int countBumCnt(HashMap<String, Object> map);
 }
