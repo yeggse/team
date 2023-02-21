@@ -16,6 +16,7 @@
 				,grade
 				,nickname
 				,create_id
+				
 			FROM
 				t3_review
 			where resnum = #{resnum}
@@ -26,17 +27,20 @@
 	<!-- 관리자 리뷰리스트 -->
 	<select id="adminReviewList" parameterType="hashmap" resultType="com.example.demo.model.Review">	
 			SELECT 
-				reviewnum, categori, resnum ,title, writedate, content, grade, nickname, create_id
+				reviewnum, categori, resnum ,title, writedate, content, grade, nickname, create_id, resname
 			FROM
 				t3_review
 			WHERE 1=1
 			<if test='reskind != null and reskind != "" '>
-			and reskind = #{reskind} 
+			and (#{flg} or reskind = #{reskind}) 
 			</if>
-			<if test='flg != null and flg != "" '>
-			or #{flg}
+			<if test='resname != null and resname != "" '>
+			and resname = #{resname} 
 			</if>
-			ORDER BY writedate ASC
+			<if test='categori != null and categori != "" '>
+			and categori = #{categori} 
+			</if>
+			ORDER BY writedate DESC
 			LIMIT #{startNum}, #{lastNum}
 	</select>
 	
@@ -46,7 +50,16 @@
 			COUNT(*) AS CNT
 		FROM
 			t3_review
-		where reskind = #{reskind} or #{flg}
+			WHERE 1=1
+			<if test='reskind != null and reskind != "" '>
+			and (#{flg} or reskind = #{reskind}) 
+			</if>
+			<if test='resname != null and resname != "" '>
+			and resname = #{resname} 
+			</if>
+			<if test='categori != null and categori != "" '>
+			and categori = #{categori} 
+			</if>
 	</select>
 	
 	<!-- 사업자 리뷰리스트 -->

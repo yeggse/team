@@ -12,16 +12,25 @@ public class Review {
    private String grade;
    private String nickname;
    private String img;
-   public String getImg() {
+   private String resname;
+   private String create_id;
+   private String reskind;
+   private String review;
+   private int no;
+   
+   public String getResname() {
+	return resname;
+}
+public void setResname(String resname) {
+	this.resname = resname;
+}
+public String getImg() {
 	return img;
 }
 public void setImg(String img) {
 	this.img = img;
 }
-private String create_id;
-   private String reskind;
-   private String review;
-   private int no;
+
    
    
 public int getReviewnum() {

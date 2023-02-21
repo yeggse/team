@@ -8,6 +8,10 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="https://unpkg.com/vuejs-paginate@latest"></script>
 	<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	
 	<jsp:include page="/layout/header.jsp"></jsp:include>
 	
 </head>
@@ -17,58 +21,33 @@
 	height:6rem;
 	}
 /* ----------------------------------------------------- */
-#input {
-   width: 25rem;
-   margin-top: 0rem;
-   padding: 0.66rem;
-   box-sizing: border-box;
-   border-radius: 0.66rem;
-   border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
-}
-   
-#btn{
-	background-color: #8FBC94;
-	width: 5rem;
-	height: 2.5rem;
-	border-radius: 1.25rem;
-	border: solid 2px #8FBC94;
-	font-size: large;
-	color: white;
-	padding: 0rem;
-}
-/* ------------------------------------------------------- */
-.myButton {
-	box-shadow:inset 0px 1px 0px 0px #a4e271;
-	background-color:#a5d296;
-	border-radius:6px;
-	border:1px solid #74b807;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-}
-.myButton:hover {
-	background:linear-gradient(to bottom, #77a809 5%, #89c403 100%);
-	background-color:#77a809;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
-}
+		        * {
+	            font-family: 'Noto Sans KR', sans-serif;
+	            text-decoration-line: none;
+	        }
+	        
+    .container {max-width:1024px; margin:30px auto; margin-top: 120px;}	/* 게시글 출력 파트 */
+	.board_list {table-layout: fixed; width:100%; border-top:2px solid #c6e5d9; border-bottom:2px solid #c6e5d9; margin:15px 0; border-collapse: collapse;}
+	.board_list thead th:first-child {background-image:none;}
+	.board_list thead th {border-bottom:1px solid #ccc; padding:13px 0; color:#3e4149; text-align: center; vertical-align:middle;}
+	.board_list tbody td {border-top:1px solid #ccc; padding:13px 0; text-align:center; vertical-align:middle;}
+	.board_list tbody tr:first-child td {border:none;}
+	.board_list tbody tr:hover{background:#fffcf0; }
+	.board_list tbody td.title {text-align:left; padding-left:20px;}
+	.board_list tbody td a {display:inline-block}
+
+	/* 화면 넘기는 아이템 디자인 */
 .pagination {
-        margin:1.5rem;
+        margin:24px;
         display: inline-flex;
+        
     }
 .pagination li {
     min-width:32px;
     padding:2px 6px;
     text-align:center;
-    margin:0 0.3rem;
-    border-radius: 0.33rem;
+    margin:0 3px;
+    border-radius: 6px;
     border:1px solid #eee;
     color:#666;
 }
@@ -79,28 +58,38 @@
     color:#666;
     text-decoration: none;
 }
+	/* 페이징에 동그란 점 없어지게 하기 */
+	li{
+	list-style:none;
+	}
+	
+	/* 페이징 컬러 */
 .pagination li.active {
-    background-color : red;	/* #E7AA8D */
-    color:white;
+    background-color : #3e4149;	/* #E7AA8D */
+    color:#fff;
 }
  .pagination li.active a {
-    color:whir;
+    color:#fff;
 } 
-.tdinput{
-width:2rem;
+#btn{
+	background-color: #8FBC94;
+	width: 5rem;
+	height: 2.5rem;
+	border-radius: 1.25rem;
+	border: solid 2px #8FBC94;
+	font-size: large;
+	color: white;
+	padding: 0rem;
 }
-.container {
-max-width:70rem; margin:auto; margin-top: 8rem;
-}	/* 게시글 출력 파트 */
-.board_list {
-table-layout:; width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:1rem 0rem;
+#input {
+   width: 25rem;
+   margin-top: 0rem;
+   padding: 3rem;
+   box-sizing: border-box;
+   border-radius: 0.66rem;
+   border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
 }
-.board_list tbody td {
-border-top:1px solid #ccc; padding:0.8rem 0rem; text-align:center; vertical-align:middle;
-}
-.board_list tbody tr:hover{
-background:#ffff99;
-}
+			
 </style>
 <body>
 <jsp:include page="/layout/adminmypage.jsp"></jsp:include>
@@ -109,44 +98,51 @@ background:#ffff99;
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>식당 종류별 리뷰 관리🙆‍♀️ - 검색버튼 활성화 필요</h2>‍
-			<div style="text-align: center;">
-				
-				
+			<h2>식당 종류별 리뷰 관리🙆‍♀️</h2>
+			<div class="form-item input-group mb-3 " style="text-align: center; margin-left: 620px; float: left;">
+				<input id="input" style="width: 300px; padding: 2px;" type="text" placeholder="어떤 점포의 리뷰를 찾으시나요?" v-model="resname"  v-on:keyup.enter="fnGetReview"></input>
+				<button id="btn" @click="fnGetReview">검색</button>	
 			</div>
+				<form action="#" style="float: right; display: inline; margin-top:5px; margin-bottom:5px;">
+					<select @change = "fnGetReview" style="width: 110px; height: 30px; font-size: large; font-weight: bold; text-align: center;" v-model="categori">
+							<option value="">전체</option>
+							<option value="한식">한식</option>
+							<option value="양식">양식</option>
+							<option value="중식">중식</option>
+							<option value="일식">일식</option>
+							<option value="아시아">아시아</option>
+						</select>
+					</form> ‍
 			<table class="board_list">
 				<colgroup>
+					<col width="5%"/>
 					<col width="5%"/>
 					<col width="10%"/> 
 					<col width="10%"/> 
 					<col width="*%"/>
-					
-					<col width="15%"/>
-					<col width="15%"/>
+					<col width="5%"/>
+					<col width="10%"/>
 					<col width="20%"/>
 				</colgroup>
 				<thead>
 					<tr>
 						<th scope="col">-</th>
 						<th scope="col">리뷰 번호</th>
-						<th scope="col">분류</th>
+						<th scope="col">업종</th>
+						<th scope="col">점포명</th>
 						<th scope="col">제목</th>
-						
-						<th scope="col">내용</th>
 						<th scope="col">별점</th>
 						<th scope="col">닉네임</th>
 						<th scope="col">날짜</th>
 					</tr>
 				</thead>
-				<!-- db 수정되면 알맞은 값 가져오기 -->
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
 	                   <td>{{item.reviewnum}}</td> 
 	                   <td>{{item.categori}}</td> 
+	                   <td>{{item.resname}}</td>
 	                   <td>{{item.title}}</td>
-	                   
-	                   <td>{{item.content}}</td>
 	                   <td>{{item.grade}}</td>
 	                   <td>{{item.nickname}}</td>
 	                   <td>{{item.writedate}}</td> 
@@ -184,13 +180,15 @@ var app = new Vue({
 	        , selectedItemList:[]
 	        , reskind: "${map.reskind}"
 			, flg : "${map.flg}"
+			, resname : ""
 		},
 		methods : {
 		fnGetReview : function() {
 			var self = this;
             var startNum = ((self.selectPage-1) * 10);
     		var lastNum = self.selectPage * 10;
-			var nparmap = {startNum : startNum, lastNum : lastNum, reskind: self.reskind, flg: self.flg};
+			var nparmap = {startNum : startNum, lastNum : lastNum, categori : self.categori,
+						reskind: self.reskind, flg: self.flg, resname:self.resname};
 			$.ajax({
 				url : "/adminReviewList.dox",
 				dataType : "json",
@@ -238,14 +236,15 @@ var app = new Vue({
 			self.selectPage = pageNum;
 			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
 			var lastNum = 10;
-	        var nparmap = {startNum : startNum, lastNum : lastNum, title : self.title, boardtype : self.boardtype};
+	        var nparmap = {startNum : startNum, lastNum : lastNum, reskind: self.reskind, categori:self.categori,
+	        				flg: self.flg, resname:self.resname};
 	        $.ajax({
 	            url:"/adminReviewList.dox",
 	            dataType:"json",	
 	            type : "POST", 
 	            data : nparmap,
 	            success : function(data) {                                       
-	                self.list = data.list;
+	                self.list = data.list1;
 	                self.pageCount = Math.ceil(data.cnt / 10);
 	                console.log(data);
 	            }

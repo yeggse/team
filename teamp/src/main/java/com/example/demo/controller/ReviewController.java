@@ -57,13 +57,15 @@ public class ReviewController {
     	request.setAttribute("map", map);
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id); 
-    	return "/reviewadmin"; // WEB-INF에서 호출할 파일명
+    	return "/web_review/reviewadmin"; // WEB-INF에서 호출할 파일명
     }
-    
+    //관리자용 식당리뷰 리스트 호출
     @RequestMapping(value = "/adminReviewList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
    	@ResponseBody
    	public String searchReviewkind(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
    		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+   		map.put("startNum", Integer.parseInt((String)map.get("startNum"))); // startNum : 가끔 문자열로 들어갈 때가 있음.. 그때는 직접 숫자형으로 변환해야 함
+   		map.put("lastNum", Integer.parseInt((String)map.get("lastNum")));	// lastNum : 가끔 문자열로 들어갈 때가 있음.. 그때는 직접 숫자형으로 변환해야 함
    		List<Review> list = reviewservice.adminReviewList(map); // DB 접근 및 쿼리를 통한 데이터 호출 
    		int cnt = reviewservice.countAdminRCnt(map);	// 숫자 세기
    		resultMap.put("list1", list);
