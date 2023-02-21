@@ -115,9 +115,10 @@
                 <input @click="fnGrade" type="radio" name="rating" value="1" id="rate5" v-model = "grade"><label for="rate5">⭐</label>
               </fieldset>
             </form>
+            <input type="text" name="title" placeholder="리뷰제목" v-model="title">
           <div>
             <input type="text" name="content" class="text" placeholder="음식에 대한 솔직한 리뷰를 남겨주세요." v-model="content">
-          </div>  
+          </div>
           <div>
             <button class="btnphoto1">
               <img src="https://cdn-icons-png.flaticon.com/512/158/158715.png" style="width:50px; height:50px;" alt="사진0/5">
@@ -153,6 +154,7 @@ var app = new Vue({
 			,price:""
 			,ordernum:""
 			,content:""
+			,title: ""
 			,img:""
 			,nickname : "${nickname}"
 			,reviewnum:"${map.reviewnum}"
@@ -200,7 +202,7 @@ var app = new Vue({
     	    }
      ,fnSave : function(){
 		var self = this;
-      	var nparmap = {nickname:self.nickname,content : self.content, img : self.img, grade: self.grade, reskind:self.reskind, resnum: self.resnum}; 
+      	var nparmap = {nickname:self.nickname,content : self.content, img : self.img, grade: self.grade, reskind:self.reskind, resnum: self.resnum, title: self.title}; 
         $.ajax({
             url:"/addReview.dox",
             dataType:"json",	
