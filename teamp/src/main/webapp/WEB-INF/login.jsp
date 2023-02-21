@@ -124,10 +124,6 @@ input {
 		<div>
 			<button onClick="location.href='http://127.0.0.1:8080/paymentmy.do'">결제내역</button>
 			<button onClick="location.href='http://127.0.0.1:8080/reservemy.do'">예약내역</button>
-			<button onClick="location.href='http://127.0.0.1:8080/reviewwrite.do'">리뷰쓰기</button>
-			<button onClick="location.href='http://127.0.0.1:8080/searchid.do'">아이디찾기</button>
-			<button onClick="location.href='http://127.0.0.1:8080/searchpw.do'">비밀번호찾기</button>
-			<button onClick="location.href='http://127.0.0.1:8080/menumanagementbusiness.do'">메뉴관리</button>
 		</div>
 		<div class="div0">
 			<label class="label1"> 로그인 </label>
