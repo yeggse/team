@@ -384,6 +384,7 @@ var app = new Vue({
 				data : nparmap,
 				success : function(data) {
 					
+					
 					if('${userId}' == ""){
 						alert("로그인 후 이용해주세요");
 						}
