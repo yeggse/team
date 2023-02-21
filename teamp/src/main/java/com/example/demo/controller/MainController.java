@@ -203,7 +203,7 @@ public class MainController {
 		return new Gson().toJson(resultMap);
 	} 
 	
-	 // 지역 검색 출력 이벤트 데이터 호출(메인)
+	 // 지역 검색 출력 이벤트 데이터 호출(메인1)
     @RequestMapping(value = "/main.region.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String areaa(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
