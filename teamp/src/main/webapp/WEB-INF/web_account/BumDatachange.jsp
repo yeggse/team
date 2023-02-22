@@ -5,7 +5,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>JS Bin</title>
 <jsp:include page="/layout/header.jsp"></jsp:include>
 </head>
 <style>
@@ -38,48 +37,39 @@ body {
 <body>
 	<jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
 	<div id="app" class="div3" style="margin-top: 100px">
-		<div id="app" class="div2"
-			style="background-color: white; height: 50px; font-size: 25px;">
+		<div id="app" class="div2" style="background-color: white; height: 50px; font-size: 25px;">
 			회원정보 수정</div>
 
 		<div class="div2">아이디 : {{id}}</div>
 
 		<div class="div2">
-			패스워드 <input type="password" id="text1" v-model="pwd"
-				style="margin-left: 45px" @change="fnPwcheck"></input>
+			패스워드 <input type="password" id="text1" v-model="pwd" style="margin-left: 45px" @change="fnPwcheck"></input>
 		</div>
         <div v-if = "pwdtextCheck" style ="color : blue">{{pwdtext}}</div>
 		<div v-else style ="color : red">{{pwdtext}}</div>
 		<div class="div2">
-			패스워드 확인 <input type="password" id="text1" v-model="pwd2"
-				style="margin-left: 12px"></input>
+			패스워드 확인 <input type="password" id="text1" v-model="pwd2" style="margin-left: 12px"></input>
 		</div>
 		<div class="div2">이름 : {{name}}</div>
-		<div class="div2">주민번호 : {{age}}-{{age1}}</div>
+		<div class="div2">생년월일 : {{age}}</div>
 		<div class="div2">
-			주소 <input type="text" id="text1" v-model="address"
-				style="margin-left: 75px" :placeholder='user.address'></input>
+			주소 <input type="text" id="text1" v-model="address" style="margin-left: 75px" :placeholder='address'></input>
 		</div>
 		<div class="div2">
-			닉네임 <input type="text" id="text1" v-model="nickname"
-				style="margin-left: 60px" :placeholder='user.nickname'></input>
+			닉네임 <input type="text" id="text1" v-model="nickname" style="margin-left: 60px" :placeholder='nickname'></input>
 			<button @click="fnnickCheck">중복확인</button>
 		</div>
 		<div class="div2">
-			연락처 <input type="text" id="text1" v-model="phonenum"
-				style="margin-left: 60px" :placeholder='user.phonenum'></input>
+			연락처 <input type="text" id="text1" v-model="phonenum" style="margin-left: 60px" :placeholder='phonenum'></input>
 		</div>
 		<div class="div2">
-			계좌번호 <input type="text" id="text1" v-model="account"
-				style="margin-left: 45px" :placeholder='user.acc'></input>
+			계좌번호 <input type="text" id="text1" v-model="account" style="margin-left: 45px" :placeholder='account'></input>
 		</div>
 		<div class="div2">
-			사업자명 <input type="text" id="text1" v-model="restaurant"
-				style="margin-left: 45px" :placeholder='user.resname'></input>
+			사업자명 <input type="text" id="text1" v-model="restaurant" style="margin-left: 45px" :placeholder='restaurant'></input>
 		</div>
 		<div class="div2">
-			사업자번호 <input type="text" id="text1" v-model="resnum"
-				style="margin-left: 30px" :placeholder='user.resnum'></input>
+			사업자번호 <input type="text" id="text1" v-model="resnum" style="margin-left: 30px" :placeholder='resnum'></input>
 			<button @click="fnresnumCheck">중복확인</button>
 		</div>
 		<div class="div2">
@@ -107,7 +97,7 @@ body {
 		</div>
         <div class="div2">
 			점포번호 <input type="text" id="text1" v-model="resphonenum"
-				style="margin-left: 45px" :placeholder='user.resphone'></input>
+				style="margin-left: 45px" :placeholder='resphonenum'></input>
 		</div>
 
 		<button @click="fnfix"
@@ -127,17 +117,17 @@ body {
 			name : "${userName}",
 			age : "${userFrontregisnum}",
 			age1 : "${userafterregisnum}",
-			address : "",
-			nickname : "",
-			phonenum : "",
-			account : "",
-			restaurant : "",
+			address : "${useraddress}",
+			nickname : "${usernickname}",
+			phonenum : "${userphonenum}",
+			account : "${useraccount}",
+			restaurant : "${resname}",
 			resnum : "",
 			kind : "",
 			region : "",
 			region1 : "",
 			resad : "",
-			resphonenum : "",
+			resphonenum : "${resphone}",
 			nickcheck : false,
 			pwdtext:"",
 			pwdtextCheck:false,
@@ -235,8 +225,6 @@ body {
 					self.pwdtextCheck = true;
 				}
 			
-				
-
 			}
 			,//패스워드 형식 체크1
 			

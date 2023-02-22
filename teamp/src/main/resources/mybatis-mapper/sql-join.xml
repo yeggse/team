@@ -121,7 +121,7 @@
 		afterregisnum = #{afterregisnum}
 	</select>
 
-
+	<!-- 회원정보변경 : 개인+사업자 -->
 	<update id="datachange" parameterType="hashmap">
 		UPDATE
 		
@@ -141,6 +141,7 @@
 		WHERE 
 			id = #{id}
 	</update>
+	
 
 	<update id="pwdchange" parameterType="hashmap">
 		UPDATE
