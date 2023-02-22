@@ -141,7 +141,7 @@ var app = new Vue({
 	       	           {}
 	       	       }); 
 	            	alert("게시글이 저장되었습니다.");
-	           		location.href="/menumanagementbusiness.do";
+	           		location.href="/menumanagement.do";
 	            }
 	        }); 
 		}
@@ -163,7 +163,7 @@ var app = new Vue({
 		} 
 		// 목록으로 가기 버튼
 		, fnList : function(){
-			location.href="/menumanagementbusiness.do";
+			location.href="/menumanagement.do";
 		} 
 		
 

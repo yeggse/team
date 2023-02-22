@@ -39,7 +39,7 @@
                         <ul class="collapse__menu">
                             <a href="reservebusiness.do" class="collapse__sublink">●주문 내역</a>
                             
-                            <a href="menumanagementbusiness.do" class="collapse__sublink">●메뉴 관리</a>
+                            <a href="menumanagement.do" class="collapse__sublink">●메뉴 관리</a>
                             
                             <a href="paymentbusiness.do" class="collapse__sublink">●매출 관리</a>
                         </ul>

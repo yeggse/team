@@ -62,8 +62,8 @@ public class ResmenuController {
 		return "/join3"; // WEB-INF에서 호출할 파일명
 	}
 	
-    //사업자 메뉴관리 페이지
-    @RequestMapping("/menumanagementbusiness.do") 
+    //사업자 메뉴관리 페이지 
+    @RequestMapping("/menumanagement.do") 
     public String menumanagement(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
     	HashMap<String, Object> map = new HashMap<String, Object>();
     	String kind = (String)session.getAttribute("KindSession");
@@ -79,7 +79,7 @@ public class ResmenuController {
 		}
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id);
-    	return "/web_business/menumanagement"; // WEB-INF에서 호출할 파일명1
+    	return "/web_business/menuManagement"; // WEB-INF에서 호출할 파일명1
     }
     
     //사업자 메뉴관리 호출

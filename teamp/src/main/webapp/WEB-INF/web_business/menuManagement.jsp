@@ -123,11 +123,11 @@ background:gray;
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>세잎 메뉴관리</h2>
+			<h2>세잎 메뉴관리 : 페이징이 제대로 처리되지 않고 있음~~</h2>
 			<div style="text-align: center;">
 			
-				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="menuname"  v-on:keyup.enter="fnSearch"></input>
-				<button id="btn" @click="fnSearch" >검색</button>	
+				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="menuname"  v-on:keyup.enter="fnGetList"></input>
+				<button id="btn" @click="fnGetList" >검색</button>	
 				
 			</div>
 			<table class="board_list">
@@ -225,7 +225,7 @@ var app = new Vue({
             var self = this;
             var startNum = ((self.selectPage-1) * 10);
     		var lastNum = self.selectPage * 10
-            var nparmap = {startNum : self.startNum, lastNum : self.lastNum, resnum:self.resnum, picture: self.picture, idx: self.idx}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
+            var nparmap = {startNum : self.startNum, lastNum : self.lastNum, menuname:self.menuname, resnum:self.resnum, picture: self.picture, idx: self.idx}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
             $.ajax({
                 url:"/selectResmenu2.dox",
                 dataType:"json",	
@@ -279,7 +279,7 @@ var app = new Vue({
 			self.selectPage = pageNum;
 			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
 			var lastNum = 10;
-	        var nparmap = {startNum : startNum, lastNum : lastNum, resnum:self.resnum, picture: self.picture, idx: self.idx};
+	        var nparmap = {startNum : startNum, lastNum : lastNum, menuname: self.menuname, resnum:self.resnum, picture: self.picture, idx: self.idx};
 	        $.ajax({
 	            url:"/selectResmenu2.dox",
 	            dataType:"json",	
@@ -358,21 +358,6 @@ var app = new Vue({
              });  
             }
     	}
-		//메뉴명 검색기능
-    	,fnSearch : function(){
-            var self = this;
-            var nparmap = {menuname:self.menuname};
-            $.ajax({
-                url:"/main.storelist22/slist.dox",
-                dataType:"json",	
-                type : "POST", 
-                data : nparmap,
-                success : function(data) {       
-                	self.list = data.list;
-                	console.log(self.list);	
-                }
-           });
-    	} 
     }   
     , created: function () {
     	var self = this;

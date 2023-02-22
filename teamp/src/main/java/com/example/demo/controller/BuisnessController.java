@@ -111,19 +111,6 @@ public class BuisnessController {
 	}
     
 
-    // 식당명 검색 출력 이벤트 (식당 출력)
-	@RequestMapping(value = "/main.storelist22/slist.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String searchList(Model model, HttpServletRequest request, @RequestParam HashMap<String, Object> map) throws Exception {
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		
-		List<Res> listt = resmenuService.searchMenuname(map); // DB 접근 및 쿼리를 통한 데이터 호출 
-		resultMap.put("list", listt);
-		
-		return new Gson().toJson(resultMap);
-	} 
-	
-	
 	
 	// 사업자 일시품절 버튼
 	@RequestMapping(value = "/soldout.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

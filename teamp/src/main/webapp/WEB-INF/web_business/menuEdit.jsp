@@ -163,7 +163,7 @@ var app = new Vue({
 		} 
 		// 목록으로 가기 버튼
 		, fnList : function(){
-			location.href="/menumanagementbusiness.do";
+			location.href="/menumanagement.do";
 		} 
 		
 

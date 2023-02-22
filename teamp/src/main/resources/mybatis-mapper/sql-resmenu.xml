@@ -38,28 +38,23 @@
 				t3_resmenu.idx = t3_resmenu_img.idx
 			WHERE 
 				t3_resmenu.resnum = #{resnum}  
+		<if test='menuname != null and menuname != "" '>
+			and menuname like concat('%', #{menuname}, '%')
+		</if>				
 	</select>
+	
 	<!-- 사업자 메뉴관리 페이지 게시물 갯수 -->
 	<select id="selectResmenuCnt" parameterType="hashmap" resultType="int">	
 		SELECT 
 			COUNT(*) AS CNT
 		FROM
 			t3_resmenu where resnum = #{resnum}
+		<if test='menuname != null and menuname != "" '>
+			and menuname like concat('%', #{menuname}, '%')
+		</if>	
 	</select>
 	
 	
-	<select id="searchMenuname" parameterType="hashmap" resultType="com.example.demo.model.Res">	
-			SELECT
-				resnum, menuname, introduce, picture, startdate, enddate, price, supply
-			FROM
-				t3_resmenu
-			LEFT OUTER JOIN 
-				t3_resmenu_img
-			ON 
-				t3_resmenu.idx = t3_resmenu_img.idx	
-			WHERE 
-				menuname like concat('%', #{menuname}, '%')
-	</select>
 	
 	
 	<insert id="insertreserve" parameterType="hashmap">
