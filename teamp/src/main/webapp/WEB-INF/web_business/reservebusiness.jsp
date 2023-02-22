@@ -21,7 +21,7 @@
 <jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
 	<div id="app" >
 		<div class="container">
-			<h2 style="margin-left: 30px;">{{id}} 님께서 받으신 오늘 예약🎈</h2>
+			<h2 style="margin-left: 30px;">오늘 {{id}} 님께서 받으신 예약🎈</h2>
 			<div style="text-align: center;">
 			</div>
 			<table class="board_list">
