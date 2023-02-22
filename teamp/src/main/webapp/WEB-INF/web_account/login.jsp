@@ -168,18 +168,18 @@ input {
 			</div>
 		</div>
 					<!-- 슬라이드 -->
-				<div  class="slideshow-container">
-					<div class="mySlides fade">
+				<div  class="slideshow-container" style="z-index: 100;">
+					<div class="mySlides">
 					  <img src="img/design/naver.jpg" onclick="javascript:location.href='http://naver.com'" style="width:500px; height:90px">
 					  <div class="text"></div>
 					</div>
 					
-					<div class="mySlides fade">
+					<div class="mySlides">
 					  <img src="img/design/daum.PNG" onclick="javascript:location.href='http://daum.net'" style="width:500px; height:90px">
 					  <div class="text"></div>
 					</div>
 					
-					<div class="mySlides fade">
+					<div class="mySlides">
 					  <img src="img/design/nate.PNG" onclick="javascript:location.href='http://nate.com'" style="width:500px; height:90px">
 					  <div class="text"></div>
 					</div>
