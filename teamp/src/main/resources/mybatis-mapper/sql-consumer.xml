@@ -27,7 +27,7 @@
 	
 	
 	
-	<!-- 예약 내역 출력 -->
+	<!-- 일반 회원 예약내역 출력 -->
 	<select id="ReserveList" parameterType="hashmap" resultType="com.example.demo.model.Consumer">	
 			SELECT 
 				resnum, ordererid, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname,reskind
@@ -37,9 +37,20 @@
 			ORDER BY orderdate DESC
 			LIMIT #{startNum}, #{lastNum}
 			
-	</select>	
+	</select>
 	
-		<!-- 리뷰 이미지 추가 -->
+	<!-- 일반 회원 예약내역 개수 -->
+	<select id="ReserveCnt" parameterType="hashmap" resultType="int">	
+		SELECT 
+			COUNT(*) AS CNT
+		FROM
+			t3_reserve where 1=1 AND salecomple = "Y"
+		<if test='id != null and id != "" '>
+			and ordererid = #{id}
+		</if>
+	</select>		
+	
+	<!-- 리뷰 이미지 추가 -->
 	<insert id="insertReviewImg" parameterType="hashmap">	
 		INSERT INTO t3_review_img
 			(reviewnum, img)  

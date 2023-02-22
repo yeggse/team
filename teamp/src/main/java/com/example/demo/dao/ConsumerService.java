@@ -10,6 +10,8 @@ import com.example.demo.model.Consumer;
   public interface ConsumerService { 
 	  // 예약 내역 출력 
 	  List<Consumer> ReserveList(HashMap<String, Object> map) throws Exception;
+	 // 예약 내역 갯수	  
+	  int ReserveCnt(HashMap<String, Object> map);
 	//리뷰 이미지 추가
 	  void insertReviewImg(HashMap<String, Object> map);
 	// 리뷰글 추가

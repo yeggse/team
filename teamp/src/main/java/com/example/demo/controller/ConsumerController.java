@@ -50,7 +50,7 @@ public class ConsumerController {
     	
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id);
-    	return "/payment_my"; // WEB-INF에서 호출할 파일명
+    	return "/web_payList/payment_my"; // WEB-INF에서 호출할 파일명
     }
     //개인 결제내역 호출
     
@@ -109,11 +109,13 @@ public class ConsumerController {
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Consumer> list = consumerService.ReserveList(map);
-		//int cnt = boardService.countBoardCnt();	//게시글 갯수 세기
+		int cnt = consumerService.ReserveCnt(map);	// 갯수 세기
 		resultMap.put("list", list);
-		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
+		resultMap.put("cnt", cnt);	// 갯수 세기
 		return new Gson().toJson(resultMap);
 	}
+	
+	
 	 // 리뷰 작성 데이터 호출1
 		@RequestMapping(value = "/addReview.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody

@@ -26,6 +26,13 @@ public class ConsumerServiceImpl implements ConsumerService {
 		map.put("lastNum", lastNum);
 		return consumerMapper.ReserveList(map);
 	}
+	 // 예약 내역 갯수	  
+	@Override
+	public int ReserveCnt(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return consumerMapper.ReserveCnt(map);
+	}
+	
 	@Override
 	public void insertReviewImg(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
@@ -50,5 +57,6 @@ public class ConsumerServiceImpl implements ConsumerService {
 		// TODO Auto-generated method stub
 		return consumerMapper.PaymentmyCnt(map);
 	}
+
 	
 }
