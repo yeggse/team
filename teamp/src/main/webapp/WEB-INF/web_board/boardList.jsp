@@ -185,10 +185,10 @@ select {
 				<h2>세잎 공지사항</h2>
 
 			<div class="form-item input-group mb-3 " style="text-align: center; margin-left: 620px; float: left;">
-			<input type="text"  placeholder="찾고있는 공지사항이 있나요?" v-model="title" v-on:keyup.enter="fnGetList">
+			<input type="text" placeholder="찾고있는 공지사항이 있나요?" v-model="title" v-on:keyup.enter="fnGetList">
 			<button @click="fnGetList" class="btn btn-outline-success" type="button" id="button-addon2">검색</button>
 			</div>
-			 		<form action="#" style="float: right; display: inline;">
+			 		<form action="#" style="float: left; display: inline;">
 						<select @change = "fnGetList" style="width: 110px; height: 30px; font-size: 
 							large; font-weight: bold; text-align: center;" v-model="boardtype">
 							<option value="">전체</option>
@@ -196,6 +196,10 @@ select {
 							<option value="사장님">사장님</option>
 						</select>
 					</form> 
+			<span style="float: right; margin-top:10px; margin-bottom: 9px;">
+				<button v-if="'admin' == userId" @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
+		  		<button v-if="'admin' == userId" @click="fnRemove" class="myButton" style="float: right; margin-right : 5px;">삭제</button>
+			</span>					
 			<table class="board_list">
 				<colgroup>
 					<col width="5%"/>
@@ -233,6 +237,7 @@ select {
 		<!-- 페이지 넘어가는 버튼들 -->			
 			<template>
 			<paginate
+				style="margin-top:5px; margin-bottom:100px;"
 			    :page-count="pageCount"
 			    :page-range="3"
 			    :margin-pages="2"
@@ -244,8 +249,7 @@ select {
 			  </paginate>
 			</template>
 		  	<div>
-		  		<button v-if="'admin' == userId" @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
-		  		<button v-if="'admin' == userId" @click="fnRemove" class="myButton" style="float: right; margin-right : 5px;">삭제</button>
+
 		  	</div>
 		  	
 		  </div>	

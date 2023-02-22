@@ -30,10 +30,13 @@
 		       color: white;
 		       padding: 0px;
 	       }
+	       		.containers {
+			max-width:60rem; margin:auto; margin-top: 12rem; z-index:-100px;
+		}
 </style>
 <body>
 	<div id="app">
-		<div class="container">
+		<div class="containers">
 			<h2>공지사항 상세보기 </h2>
 			<div class="card">
 				<h2 class="card-header p-4">
@@ -45,7 +48,7 @@
 				</div>
 				<div class="card-body">
 				   	<div v-if="info.image != null" style="margin: 10px 10px 10px 10px;">	<!-- info.img : 이미지 경로(img/이미지 이름) DB 컬럼이랑 동일한 이름으로!-->
-				   		<img :src="info.image"/>	<!-- src앞에 콜론: 을 붙이면 변수로 지정가능 -->
+				   		<img :src="info.image" style="max-width:600px; max-height:600px; "/>	<!-- src앞에 콜론: 을 붙이면 변수로 지정가능 -->
 				   	</div>
 				   	<div style="margin: 10px 10px 10px 10px;">
 				   		{{info.content}}
@@ -55,8 +58,10 @@
 			<div v-for="(item, index) in commentList" style="font-size: 20px;">
 				{{item.nickname}}({{item.startdate}}) : {{item.content}}
 			</div>
+			<div style="margin-bottom:100px;">
 		 	<button @click="fnList" class="btn" style="float: right;">목록으로</button> 
-		 	<button v-if="'admin' == userId"  @click="fnEdit" class="btn">수정하기</button>	 	
+		 	<button v-if="'admin' == userId"  @click="fnEdit" class="btn">수정하기</button>	 
+		 	</div>	
 		</div>
 	</div>
 	        

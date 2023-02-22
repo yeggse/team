@@ -18,27 +18,53 @@
 	        padding: 10px;
             box-sizing: border-box;
             border-radius: 10px;
-            border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
+            border: solid 2px #548687;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
          }   
-	       #btn{
-		       background-color: #8FBC94;
-		       width: 80px;
-		       height: 40px;
-		       border-radius: 20px;
-		       border: solid 2px #8FBC94;
-		       font-size: large;
-		       color: white;
-		       padding: 0px;
-	       }
-		h1{font-size: 3em;}
+         textarea{
+            width: 400px;
+            margin-top: 0px;
+	        padding: 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/        
+         }
+	       #btnn{
+				box-shadow:inset 0px 1px 0px 0px #a4e271;
+				background-color:#a5d296;
+				border-radius:6px;
+				border:1px solid #74b807;
+				display:inline-block;
+				cursor:pointer;
+				color:#ffffff;
+				font-family:Arial;
+				font-size:15px;
+				font-weight:bold;
+				padding:6px 24px;
+				text-decoration:none;
+				margin-right: 10px;
+				margin-top: 5px;
+			}
+				       
+			#btnn:hover {
+				background:linear-gradient(to bottom, #77a809 5%, #89c403 100%);
+				background-color:#77a809;
+			}
+			#btnn:active {
+				position:relative;
+				top:1px;
+			}
+select
+		h1{font-size: 3em; }
 		h2{font-size: 2em;}
 		h3{font-size: 1.5em;}
+		.container {
+			max-width:60rem; margin:auto; margin-top: 12rem;
+		}
 </style>
 <body>
 	<div id="app">
 		<div class="container">
-			<h1>공지사항 수정하기 : 내용 출력 이벤트 필요!</h1>
-			<div style="margin-left: 50px;"><h2>{{userId}} 님께서 수정하시고 계십니다. 수정 후 저장을 해 주세요.</h2></div>
+			<h2 style="font-weight: bold; ">공지사항 수정하기</h2>
 			<table class="board_detail">
 				<colgroup>
 					<col width="10%"/>
@@ -54,8 +80,8 @@
 					</td>
 				</tr>
 			</table>
-		 	<button @click="fnList" class="btn" style="float: right;">목록으로</button> 
-			<button @click="fnSave" class="btn" style="float: right;">저장</button>
+		 	<button @click="fnList" id="btnn" style="float: right;">목록으로</button> 
+			<button @click="fnSave" id="btnn" style="float: right;">저장</button>
 		</div>
 	</div>
 	        

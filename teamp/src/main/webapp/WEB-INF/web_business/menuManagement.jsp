@@ -100,7 +100,7 @@ height:6rem;
 width:2rem;
 }
 .container {
-max-width:70rem; margin:auto; margin-top: 8rem;
+max-width:70rem; margin:auto; margin-top: 8rem; z-index:-100px;
 }	/* 게시글 출력 파트 */
 .board_list {
 table-layout:; width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:1rem 0rem;

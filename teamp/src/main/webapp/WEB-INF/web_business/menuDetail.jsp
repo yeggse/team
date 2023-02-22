@@ -13,7 +13,7 @@
 
 <style>
 	
-		.contain {max-width:1024px; margin:30px auto; margin-top: 120px;}
+		.contain {max-width:60rem; margin:30px auto; margin-top: 120px;  margin-bottom: 120px;}
   	    input {
             width: 50%;
             height: 13%	;
@@ -64,9 +64,10 @@
 			   	</div>
 			</div>
 			
-			
+		<div style="margin-bottom:200000px;">
 			<button id="btn" @click="fnList" class="btn" style="float: right;">목록으로</button>
 			<button id="btn" @click="fnEdit" class="btn" style="float: right;">수정하기</button>
+		</div>
 		</div>
 	
 	
