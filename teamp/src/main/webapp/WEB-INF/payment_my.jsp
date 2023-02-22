@@ -15,6 +15,19 @@
 </head>
 
 <style>
+	/* 페이징에 동그란 점 없어지게 하기 */
+	li{
+	list-style:none;
+	}
+	
+	/* 페이징 컬러 */
+.pagination li.active {
+    background-color : #3e4149;	/* #E7AA8D */
+    color:#fff;
+}
+ .pagination li.active a {
+    color:#fff;
+} 
 </style>
 
 <body>
@@ -76,7 +89,18 @@
 				</tbody>
 			</table>
 		<!-- 페이지 넘어가는 버튼들 -->			
-    
+			<template>
+			<paginate
+			    :page-count="pageCount"
+			    :page-range="3"
+			    :margin-pages="2"
+			    :click-handler="changePage"
+			    :prev-text="'<'"
+			    :next-text="'>'"
+			    :container-class="'pagination'"
+			    :page-class="'page-item'">
+			  </paginate>
+			</template>    
     
 			
 
@@ -112,7 +136,7 @@ var app = new Vue({
               var self = this;
               var startNum = ((self.selectPage-1) * 10);
       		  var lastNum = self.selectPage * 10;
-              var nparmap = {startNum : startNum, lastNum : lastNum,id:self.id};
+              var nparmap = {startNum : startNum, lastNum : lastNum, id:self.id};
               $.ajax({
                   url:"/paymentmy.dox",
                   dataType:"json",	
@@ -126,8 +150,7 @@ var app = new Vue({
               }); 
               console.log(self.list);
           }
-    ,
-	pageChange : function(url, param) {
+    , pageChange : function(url, param) {
 		var target = "_self";
 		if (param == undefined) {
 			//   this.linkCall(url);
@@ -155,6 +178,25 @@ var app = new Vue({
 		document.body.appendChild(form);
 		form.submit();
 		document.body.removeChild(form);
+	}
+	// 페이지 전환 메소드
+	, changePage : function(pageNum) {
+		var self = this;
+		self.selectPage = pageNum;
+		var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
+		var lastNum = 10;
+        var nparmap = {startNum : startNum, lastNum : lastNum, id:self.id};
+        $.ajax({
+            url:"/paymentmy.dox",
+            dataType:"json",	
+            type : "POST", 
+            data : nparmap,
+            success : function(data) {                                       
+                self.list = data.list;
+                self.pageCount = Math.ceil(data.cnt / 10);
+                console.log(data);
+            }
+        }); 
 	}
     , change :function(item){
     	var self = this; 

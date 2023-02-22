@@ -11,9 +11,10 @@
 			t3_reserve
 		WHERE
 		 	ordererid = #{id} AND salecomple = "Y"
+		LIMIT #{startNum}, #{lastNum}
 	</select>
 	
-	<!-- 일반 회원 결제내역 개수 
+	<!-- 일반 회원 결제내역 개수 -->
 	<select id="PaymentmyCnt" parameterType="hashmap" resultType="int">	
 		SELECT 
 			COUNT(*) AS CNT
@@ -22,7 +23,7 @@
 		<if test='id != null and id != "" '>
 			and ordererid = #{id}
 		</if>
-	</select>	 -->	
+	</select>	 	
 	
 	
 	

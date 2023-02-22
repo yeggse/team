@@ -18,5 +18,6 @@ import com.example.demo.model.Consumer;
 	 //개인 결제내역
 	  List<Consumer> selectPaymentmy(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 	// 결제내역 개수
+	  int PaymentmyCnt(HashMap<String, Object> map);
 }
  

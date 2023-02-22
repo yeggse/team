@@ -44,5 +44,11 @@ public class ConsumerServiceImpl implements ConsumerService {
 		// TODO Auto-generated method stub
 		return consumerMapper.selectPaymentmy(map);
 	}
+	// 결제내역 개수
+	@Override
+	public int PaymentmyCnt(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return consumerMapper.PaymentmyCnt(map);
+	}
 	
 }

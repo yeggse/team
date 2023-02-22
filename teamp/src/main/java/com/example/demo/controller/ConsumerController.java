@@ -58,7 +58,12 @@ public class ConsumerController {
 	@ResponseBody
 	public String paymentmy(Model model,@RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+   		map.put("startNum", Integer.parseInt((String)map.get("startNum"))); // startNum : 가끔 문자열로 들어갈 때가 있음.. 그때는 직접 숫자형으로 변환해야 함
+   		map.put("lastNum", Integer.parseInt((String)map.get("lastNum")));	// lastNum : 가끔 문자열로 들어갈 때가 있음.. 그때는 직접 숫자형으로 변환해야 함
+   		
 		List<Consumer> list = consumerService.selectPaymentmy(map);
+		int cnt = consumerService.PaymentmyCnt(map); 	// 숫자
+		resultMap.put("cnt", cnt);	// 숫자
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}
