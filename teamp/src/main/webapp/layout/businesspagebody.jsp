@@ -17,7 +17,7 @@
 <body id="body-pd">
 
     <div class="l-navbar" id="navbar" style = "margin-top:90px" >
-        <nav class="nav">
+        <nav class="nav1">
             <div>
                 <div class="nav__brand">
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
