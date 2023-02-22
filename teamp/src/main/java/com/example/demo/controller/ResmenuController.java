@@ -37,6 +37,13 @@ public class ResmenuController {
 
 		return "/main"; // WEB-INF에서 호출할 파일명
 	}
+	
+	
+	//일반회원 결제 내역 호출하기
+
+	
+	
+	
 	//////////////////테스트 결제///////////////////////
 	@RequestMapping("/join3.do")
 	public String main2(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -89,15 +96,7 @@ public class ResmenuController {
 		return new Gson().toJson(resultMap);
 	}
 	
-	//payment_my
-	@RequestMapping(value = "/Res2.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String paymentmy(Model model,@RequestParam HashMap<String, Object> map) throws Exception {
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Res> list = resmenuService.selectPaymentmy1(map);
-		resultMap.put("list", list);
-		return new Gson().toJson(resultMap);
-	}
+
 	
 	@RequestMapping(value = "/Res/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody

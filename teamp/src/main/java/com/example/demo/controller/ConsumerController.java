@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.dao.ConsumerService;
+import com.example.demo.dao.ResmenuService;
 import com.example.demo.dao.ReviewService;
 import com.example.demo.model.Consumer;
+import com.example.demo.model.Res;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,14 +31,16 @@ public class ConsumerController {
 	// Service 인터페이스 객체 생성 및 연결
     @Autowired
     private ConsumerService consumerService;
-    
+	@Autowired
+	private ResmenuService resmenuService;
     @Autowired
     private ReviewService reviewService1;
+    
 	 @Autowired
 		HttpSession session;	
 	// Service 인터페이스 객체 생성 및 연결
 	 
- 
+	 //개인 결제내역
     @RequestMapping("/paymentmy.do") 
     public String main(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
     	HashMap<String, Object> map = new HashMap<String, Object>();
@@ -45,10 +49,18 @@ public class ConsumerController {
     	
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id);
-    	
-    	
     	return "/payment_my"; // WEB-INF에서 호출할 파일명
     }
+    //개인 결제내역 호출
+	@RequestMapping(value = "/Res2.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String paymentmy(Model model,@RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Res> list = resmenuService.selectPaymentmy1(map);
+		resultMap.put("list", list);
+		return new Gson().toJson(resultMap);
+	}
+    
     @RequestMapping("/reviewwrite.do") 
     public String review(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
     	
