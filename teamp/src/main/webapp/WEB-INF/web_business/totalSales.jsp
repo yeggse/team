@@ -11,7 +11,6 @@
 	<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
 	<jsp:include page="/layout/header.jsp"></jsp:include>
 	
-	 <title>예약 내역 확인하기</title>
 </head>
 
 <style>
@@ -121,13 +120,15 @@ var app = new Vue({
   	                self.list = data.list;
   	            	self.pageCount = Math.ceil(data.cnt / 10);
   	                console.log(self.list);
-  	              for(var i =0; i<self.list.length; i++){
+  	                
+  	                // 총가격 구하기
+  	              	for(var i =0; i<self.list.length; i++){
   	        		self.num += ((self.list[i].price)*(self.list[i].menunum));
   	        		console.log(self.list[i].price);
-  	        	}
+  	        		}
                   }
               }); 
-              console.log(self.resnum);
+            console.log(self.resnum);
           } 
 		// 페이지 전환 메소드
 		, changePage : function(pageNum) {
@@ -142,7 +143,7 @@ var app = new Vue({
 	            type : "POST", 
 	            data : nparmap,
 	            success : function(data) {                                       
-	                self.list = data.list1;
+	                self.list = data.list;
 	                self.pageCount = Math.ceil(data.cnt / 10);
 	                console.log(data);
 	            }
