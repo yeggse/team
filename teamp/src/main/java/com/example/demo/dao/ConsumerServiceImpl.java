@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.mapper.ConsumerMapper;
 import com.example.demo.model.Consumer;
-import com.example.demo.model.Res;
 
 @Service // 서비스임을 선언
 public class ConsumerServiceImpl implements ConsumerService {
@@ -41,8 +40,9 @@ public class ConsumerServiceImpl implements ConsumerService {
 	
 	//개인 결제내역	
 	@Override
-	public List<Res> selectPaymentmy1(HashMap<String, Object> map) throws Exception {
+	public List<Consumer> selectPaymentmy(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return consumerMapper.selectPaymentmy1(map);
+		return consumerMapper.selectPaymentmy(map);
 	}
+	
 }

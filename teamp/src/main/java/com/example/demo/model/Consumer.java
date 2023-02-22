@@ -37,6 +37,7 @@ public class Consumer {
 	private String orderdate;
 	private int menunum;
 	
+	
 	public String getSupply() {
 		return supply;
 	}

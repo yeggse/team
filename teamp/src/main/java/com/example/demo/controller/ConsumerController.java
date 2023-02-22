@@ -18,7 +18,6 @@ import com.example.demo.dao.ConsumerService;
 import com.example.demo.dao.ResmenuService;
 import com.example.demo.dao.ReviewService;
 import com.example.demo.model.Consumer;
-import com.example.demo.model.Res;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,8 +30,10 @@ public class ConsumerController {
 	// Service 인터페이스 객체 생성 및 연결
     @Autowired
     private ConsumerService consumerService;
+    
 	@Autowired
 	private ResmenuService resmenuService;
+	
     @Autowired
     private ReviewService reviewService1;
     
@@ -52,11 +53,12 @@ public class ConsumerController {
     	return "/payment_my"; // WEB-INF에서 호출할 파일명
     }
     //개인 결제내역 호출
+    
 	@RequestMapping(value = "/paymentmy.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String paymentmy(Model model,@RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Res> list = consumerService.selectPaymentmy1(map);
+		List<Consumer> list = consumerService.selectPaymentmy(map);
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}

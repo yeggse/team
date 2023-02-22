@@ -3,8 +3,8 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.ConsumerMapper">	
-	<!-- 일반 회원 결제내역 페이지  -->
-	<select id="selectPaymentmy1" parameterType="hashmap" resultType="com.example.demo.model.Consumer">	
+	<!-- 일반 회원 결제내역 출력  -->
+	<select id="selectPaymentmy" parameterType="hashmap" resultType="com.example.demo.model.Consumer">	
 		SELECT
 			resnum, ordererid, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname,reskind
 		FROM
@@ -12,6 +12,19 @@
 		WHERE
 		 	ordererid = #{id} AND salecomple = "Y"
 	</select>
+	
+	<!-- 일반 회원 결제내역 개수 
+	<select id="PaymentmyCnt" parameterType="hashmap" resultType="int">	
+		SELECT 
+			COUNT(*) AS CNT
+		FROM
+			t3_reserve where 1=1 AND salecomple = "Y"
+		<if test='id != null and id != "" '>
+			and ordererid = #{id}
+		</if>
+	</select>	 -->	
+	
+	
 	
 	<!-- 예약 내역 출력 -->
 	<select id="ReserveList" parameterType="hashmap" resultType="com.example.demo.model.Consumer">	
