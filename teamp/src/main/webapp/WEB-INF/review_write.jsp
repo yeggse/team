@@ -45,7 +45,7 @@
 
 
 #label{
-  margin:1rem 0rem 0rem 5rem;
+  margin:1rem 0rem 1rem 5rem;
 }
 
 #chooseFile:hover{
@@ -68,26 +68,24 @@
   margin-top:6rem;
   width:70rem;
   height:7rem;
-  border:1px solid;
 }
 #myform fieldset{
 	width:17rem;
+	height:8.5rem;
 	margin:auto;
 	margin-left:26.5rem;
-	margin-top:-2rem;
+	margin-top:0rem;
     display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
     direction: rtl; /* 이모지 순서 반전 */
-     border:1px solid;
 }
 .div000{
 width:20rem;
 }
 .div00{
-width:12.5rem;
+width:15rem;
 height:4rem;
 margin:auto;
 margin-bottom:-5rem;
- border:1px solid;
  text-decoration: none;
 	color: #62F903;
 	text-shadow: 0px 0 black, 0 0px black, 0px 0 black, 0 0px black;
@@ -98,13 +96,11 @@ width:66rem;
 height:22rem;
 margin:auto;
 margin-top: 1rem;
- border:1px solid;
 }
 .p1{
 	width:10rem;
 	height:2rem;
 	margin:auto;
-	 border:1px solid;
 }
 
 .input1{
@@ -114,7 +110,15 @@ margin-top: 1rem;
 	margin-left: 0.5rem;
   vertical-align : top;
   text-align:left ;
-  
+  border:1px solid;
+}
+.input2{
+  width:65rem;
+  height:2.5rem;
+	margin:auto;
+	margin-left: 0.5rem;
+  vertical-align : top;
+  text-align:left ;
   border:1px solid;
 }
 
@@ -123,21 +127,23 @@ width:14rem;
 height:2rem;
 margin:auto;
 margin-left:28rem;
- border:1px solid;
+margin-bottom:1rem;
 }
 
 .div2{
-width:66rem;
-height:3rem;
+width:65rem;
+height:2rem;
 margin:auto;
- border:1px solid;
+border:1px dotted;
+}
+.div2:hover{
+background:#dcdcdc;
 }
 
 .div3{
 width:66rem;
 height:3rem;
 margin:auto;
- border:1px solid;
 }
 #chooseFile{
   width: 65rem;
@@ -146,13 +152,7 @@ margin:auto;
   border:1px dotted black;
    border:1px solid;
 }
-#filedset{
-width:17rem;
-height:8.5rem;
-margin:auto;
-margin-left:10rem;
- border:1px solid;
-}
+
 
 input::file-selector-button {
 display:none;
@@ -186,7 +186,10 @@ display:none;
    
 	 <!--리뷰작성-->
  	<div class="div0">
-    	<p class="p1">어떤점이 좋았나요?</p>
+ 	
+    	<div>
+    		  <input class="input2" Type="text" placeholder="제목을 입력해주세요" name="content" v-model="title"></imput>  
+   		</div>
    	 	<div>
     		  <input class="input1" Type="text" placeholder="리뷰를 입력해주세요" name="content" v-model="content"></imput>  
    		</div>
