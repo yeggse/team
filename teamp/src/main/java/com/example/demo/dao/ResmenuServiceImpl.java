@@ -22,12 +22,15 @@ public class ResmenuServiceImpl implements ResmenuService{
 			
 			return resmenuMapper.selectResmenu(map); // db를 호출하는 mapper와 연결
 		}
-		
-		 
 		@Override
 		public List<Res> selectResmenu1(HashMap<String, Object> map) throws Exception {
 			// TODO Auto-generated method stub
 			return resmenuMapper.selectResmenu1(map);
+		}
+		@Override
+		public List<Res> selectPaymentmy1(HashMap<String, Object> map) throws Exception {
+			// TODO Auto-generated method stub
+			return resmenuMapper.selectPaymentmy1(map);
 		}
 		
 		@Override
@@ -99,5 +102,10 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			resmenuMapper.resell(map);
 			
+		}
+		@Override
+		public void deleteresmenu(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			resmenuMapper.deleteresmenu(map);
 		}
 }

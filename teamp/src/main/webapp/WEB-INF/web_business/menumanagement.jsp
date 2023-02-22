@@ -336,20 +336,26 @@ var app = new Vue({
 		// 게시글 삭제하기
     	, fnRemove : function(){
     		var self = this;
+    		if(self.selectedItemList.length == 0){
+    			alert("삭제하실 게시글을 선택해 주세요.");
+    			return;
+    		}
     		var list = JSON.stringify(self.selectedItemList);
-    		var nparmap = {"test" : "1",  "list" : list};
-             $.ajax({
-                 url:"/deleteBoard.dox",
+    		
+    		var nparmap = {"list" : list};
+            if(confirm("정말 삭제하시겠습니까?")) { 
+    		$.ajax({
+                 url:"/deleteresmenu.dox",
                  dataType:"json",	
                  type : "POST", 
                  data : nparmap,
-                 success : function(data) {
-                	 console.log(self.selectedItemList);
+                 success : function(data) {  
                 	 alert("삭제되었습니다.");
                 	 self.selectedItemList = [];
                 	 self.fnGetList();
                  }
              });  
+            }
     	}
 		//메뉴명 검색기능
     	,fnSearch : function(){

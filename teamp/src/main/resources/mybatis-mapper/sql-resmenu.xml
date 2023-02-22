@@ -150,6 +150,15 @@
 		  	idx = #{idx}
 	</update>
 	
+	<!--메뉴 삭제 -->
+	<delete id="deleteresmenu" parameterType="hashmap">	
+		DELETE FROM 
+			t3_resmenu 
+		WHERE 
+			idx IN ( 
+				<foreach collection="list" item="item" separator=" , ">#{item.idx}</foreach> 
+			) 
+	</delete>
 	
 
 </mapper>

@@ -9,7 +9,7 @@ import com.example.demo.model.Res;
 public interface ResmenuService {
 	List<Res> selectResmenu(HashMap<String, Object> map) throws Exception; // 데이터 호출을 위한 인터페이스
 	List<Res> selectResmenu1(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
-	
+	List<Res> selectPaymentmy1(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 	
 	//	사업자 메뉴관리 페이지에 사용 
 	List<Res> selectResmenu2(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
@@ -26,7 +26,7 @@ public interface ResmenuService {
 	// 재고수정
 	void editSupply(HashMap<String, Object> map);
 	
-	
+	void deleteresmenu(HashMap<String, Object>map);
 	//일시품절 버튼
 	void soldout(HashMap<String, Object> map);	
 	//다시판매 버튼
