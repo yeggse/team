@@ -89,10 +89,18 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			resmenuMapper.editSupply(map);
 		}
+		
+		//사업자 매출관리
 		@Override
-		public List<Res> businessReserveList1(HashMap<String, Object> map) throws Exception {
+		public List<Res> totalSales(HashMap<String, Object> map) throws Exception {
 			// TODO Auto-generated method stub
-			return resmenuMapper.businessReserveList1(map);
+			return resmenuMapper.totalSales(map);
+		}
+		// 사업자 매출관리 갯수
+		@Override
+		public int totalSalesCnt(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			return resmenuMapper.totalSalesCnt(map);
 		}
 		
 		
@@ -115,6 +123,10 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			resmenuMapper.deleteresmenu(map);
 		}
+		
+
+		
+		
 		
 
 }

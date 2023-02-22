@@ -21,9 +21,10 @@
 <jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
 	<div id="app" >
 		<div class="container">
-			<h2 style="margin-left: 30px;">{{id}} 님의 매출🎈</h2>
+			<h2 style="margin-left: 30px;">{{id}} 님의 오늘 매출🎈</h2>
 			<div style="text-align: center;">
 			</div>
+			<div><h3 style="margin-left: 30px; float: right;">총 매출 : {{num}} 원</h3></div>
 			<table class="board_list">
 				<colgroup>
 					<col width="5%"/>
@@ -61,8 +62,20 @@
 	               </tr>
 				</tbody>
 			</table>
-		<!-- 페이지 넘어가는 버튼들 -->			
-    <div>오늘 매출 : {{num}}</div>
+		<!-- 페이지 넘어가는 버튼들 -->	
+			<template>
+			<paginate
+			    :page-count="pageCount"
+			    :page-range="3"
+			    :margin-pages="2"
+			    :click-handler="changePage"
+			    :prev-text="'<'"
+			    :next-text="'>'"
+			    :container-class="'pagination'"
+			    :page-class="'page-item'">
+			  </paginate>
+			</template>		
+    
     
 			
 
@@ -98,9 +111,9 @@ var app = new Vue({
               var self = this;
               var startNum = ((self.selectPage-1) * 10);
       		  var lastNum = self.selectPage * 10;
-              var nparmap = {startNum : startNum, lastNum : lastNum, resnum : self.resnum};
+              var nparmap = {startNum : startNum, lastNum : lastNum, resnum : self.resnum, salecomple:self.salecomple, orderdate:self.orderdate};
               $.ajax({
-                  url:"/reservebusiness1.get.dox",
+                  url:"/totalSales.dox",
                   dataType:"json",	
                   type : "POST", 
                   data : nparmap,
@@ -116,7 +129,25 @@ var app = new Vue({
               }); 
               console.log(self.resnum);
           } 
-    
+		// 페이지 전환 메소드
+		, changePage : function(pageNum) {
+			var self = this;
+			self.selectPage = pageNum;
+			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
+			var lastNum = 10;
+	        var nparmap = {startNum : startNum, lastNum : lastNum, resnum: self.resnum, salecomple:self.salecomple, orderdate:self.orderdate};
+	        $.ajax({
+	            url:"/totalSales.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {                                       
+	                self.list = data.list1;
+	                self.pageCount = Math.ceil(data.cnt / 10);
+	                console.log(data);
+	            }
+	        }); 
+		}    
     	
     
       

@@ -105,15 +105,23 @@
 	
 	
 	<!-- 사업자 매출관리-->
-	<select id="businessReserveList1" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+	<select id="totalSales" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT 
 				resnum, ordererid, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname
 			FROM
 				t3_reserve
 			where 
 				resnum = #{resnum} AND salecomple ="Y" AND orderdate = DATE(NOW())
-			
 			ORDER BY orderdate DESC
+	</select>
+	
+	<!-- 사업자 매출관리 페이지 게시물 갯수 -->
+	<select id="totalSalesCnt" parameterType="hashmap" resultType="int">	
+		SELECT 
+			COUNT(*) AS CNT
+		FROM
+			t3_reserve 
+		where resnum = #{resnum} AND salecomple ="Y" AND orderdate = DATE(NOW())
 	</select>
 	
 	<!-- 사업자가 예약 완료 버튼 누르면, DB값 변경!!! -->

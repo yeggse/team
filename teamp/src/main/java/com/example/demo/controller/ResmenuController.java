@@ -196,4 +196,56 @@ public class ResmenuController {
 		resultMap.put("message", "성공");
 		return new Gson().toJson(resultMap);
 	}
+	
+	// 사업자 일시품절 버튼
+	@RequestMapping(value = "/soldout.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String soldout(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resmenuService.soldout(map);
+			
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
+	
+	// 사업자 다시판매 버튼
+	@RequestMapping(value = "/resell.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String resell(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resmenuService.resell(map);
+		
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
+	
+	
+    // 사업자 매출 출력 페이지
+    @RequestMapping("/paymentbusiness.do") 
+    public String menumanagement3(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	HashMap<String, Object> map = new HashMap<String, Object>();
+    	String kind = (String)session.getAttribute("KindSession");
+    	String id = (String)session.getAttribute("userIdSession");
+	    	Integer resnum = (Integer)session.getAttribute("userResnumSession");
+	    	String reskind = (String)session.getAttribute("userReskindSession");
+	    	request.setAttribute("reskind", reskind); 
+	    	request.setAttribute("resnum",resnum); 
+		
+    	request.setAttribute("kind", kind);
+    	request.setAttribute("userId", id);
+    	return "/web_business/totalSales"; // WEB-INF에서 호출할 파일명
+    }
+    
+    // 사업자 매출 출력 페이지 호출
+    @RequestMapping(value = "/totalSales.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String reserveBoard1(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Res> list = resmenuService.totalSales(map);
+		int cnt = resmenuService.totalSalesCnt(map);	//게시글 갯수 세기
+		resultMap.put("list", list);
+		resultMap.put("cnt", cnt);	//게시글 갯수 세기
+		return new Gson().toJson(resultMap);
+	}
 }
