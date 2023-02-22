@@ -26,6 +26,7 @@ public class Res {
 	private String resname;
 	private String soldout;
 	private int no;
+	private int total;
 	public int getResnum() {
 		return resnum;
 	}
@@ -175,6 +176,12 @@ public class Res {
 	}
 	public void setNo(int no) {
 		this.no = no;
+	}
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
 	}
 
 	

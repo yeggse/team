@@ -123,7 +123,7 @@ background:gray;
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>세잎 메뉴관리 : 페이징이 제대로 처리되지 않고 있음~~</h2>
+			<h2>세잎 메뉴관리</h2>
 			<div style="text-align: center;">
 			
 				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="menuname"  v-on:keyup.enter="fnGetList"></input>
@@ -225,7 +225,7 @@ var app = new Vue({
             var self = this;
             var startNum = ((self.selectPage-1) * 10);
     		var lastNum = self.selectPage * 10
-            var nparmap = {startNum : self.startNum, lastNum : self.lastNum, menuname:self.menuname, resnum:self.resnum, picture: self.picture, idx: self.idx}; //startNum:page에 표시되는 최소 게시물 갯수(0), lastNum:page에 표시되는 최대 게시물 갯수(10)
+            var nparmap = {startNum : startNum, lastNum : lastNum, menuname:self.menuname, resnum:self.resnum, picture: self.picture, idx: self.idx}; 
             $.ajax({
                 url:"/selectResmenu2.dox",
                 dataType:"json",	

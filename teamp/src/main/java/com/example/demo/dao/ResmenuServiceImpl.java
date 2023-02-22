@@ -92,15 +92,16 @@ public class ResmenuServiceImpl implements ResmenuService{
 		
 		//사업자 매출관리
 		@Override
-		public List<Res> totalSales(HashMap<String, Object> map) throws Exception {
+		public HashMap<String, Object> totalSales(HashMap<String, Object> map) throws Exception {
+			HashMap<String, Object> result = new HashMap<String, Object>();
+			List<Res> list =  resmenuMapper.totalSales(map);
+			int cnt = resmenuMapper.totalSalesCnt(map);	// 사업자 매출관리 갯수
+			int total = resmenuMapper.totalCount(map);
+			result.put("list", list);
+			result.put("cnt", cnt);
+			result.put("total", total);
 			// TODO Auto-generated method stub
-			return resmenuMapper.totalSales(map);
-		}
-		// 사업자 매출관리 갯수
-		@Override
-		public int totalSalesCnt(HashMap<String, Object> map) {
-			// TODO Auto-generated method stub
-			return resmenuMapper.totalSalesCnt(map);
+			return result;
 		}
 		
 		

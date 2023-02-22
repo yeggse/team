@@ -22,6 +22,7 @@ public interface ResmenuMapper {
 	List<Res> totalSales(HashMap<String, Object> map) throws Exception;
 	// 사업자 매출관리 갯수
 	int totalSalesCnt(HashMap<String, Object> map);
+	int totalCount(HashMap<String, Object> map);
 	
 	// 사업자 예약 관리
 	List<Res> businessNowRes(HashMap<String, Object> map) throws Exception;

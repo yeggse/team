@@ -119,17 +119,12 @@ var app = new Vue({
                   success : function(data) {                                       
   	                self.list = data.list;
   	            	self.pageCount = Math.ceil(data.cnt / 10);
-  	                console.log(self.list);
-  	                
-  	                // 총가격 구하기
-  	              	for(var i =0; i<self.list.length; i++){
-  	        		self.num += ((self.list[i].price)*(self.list[i].menunum));
-  	        		console.log(self.list[i].price);
-  	        		}
+  	            	self.num = data.total;
+  	                console.log(data);
                   }
               }); 
             console.log(self.resnum);
-          } 
+         } 
     
 		// 페이지 전환 메소드
 		, changePage : function(pageNum) {

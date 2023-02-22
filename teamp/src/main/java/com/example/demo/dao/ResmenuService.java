@@ -15,9 +15,7 @@ public interface ResmenuService {
 	List<Res> selectResmenu2(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 	
 	//사업자 매출관리
-	List<Res> totalSales(HashMap<String, Object> map) throws Exception;
-	// 사업자 매출관리 갯수
-	int totalSalesCnt(HashMap<String, Object> map);
+	HashMap<String, Object> totalSales(HashMap<String, Object> map) throws Exception;
 	
 	// 사업자 예약 관리
 	List<Res> businessNowRes(HashMap<String, Object> map) throws Exception;

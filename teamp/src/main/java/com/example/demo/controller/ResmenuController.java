@@ -85,8 +85,9 @@ public class ResmenuController {
     @RequestMapping(value = "/businessNowRes.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String businessNowRes(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		map.put("startNum", Integer.parseInt((String)map.get("startNum"))); // startNum : 가끔 문자열로 들어갈 때가 있음.. 그때는 직접 숫자형으로 변환해야 함
+   		map.put("lastNum", Integer.parseInt((String)map.get("lastNum")));   	
 		List<Res> list = resmenuService.businessNowRes(map);
 		int cnt = resmenuService.NowResCnt(map);	//게시글 갯수 세기
 		resultMap.put("list", list);
@@ -119,7 +120,8 @@ public class ResmenuController {
 	@ResponseBody
 	public String firstResmenu2(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-   		
+		map.put("startNum", Integer.parseInt((String)map.get("startNum"))); // startNum : 가끔 문자열로 들어갈 때가 있음.. 그때는 직접 숫자형으로 변환해야 함
+   		map.put("lastNum", Integer.parseInt((String)map.get("lastNum")));   		
 		List<Res> list = resmenuService.selectResmenu2(map);
 		int cnt = resmenuService.selectResmenuCnt(map);	
 		resultMap.put("list", list);
@@ -241,11 +243,9 @@ public class ResmenuController {
 	@ResponseBody
 	public String reserveBoard1(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		
-		List<Res> list = resmenuService.totalSales(map);
-		int cnt = resmenuService.totalSalesCnt(map);	//게시글 갯수 세기
-		resultMap.put("list", list);
-		resultMap.put("cnt", cnt);	//게시글 갯수 세기
+		map.put("startNum", Integer.parseInt((String)map.get("startNum"))); // startNum : 가끔 문자열로 들어갈 때가 있음.. 그때는 직접 숫자형으로 변환해야 함
+   		map.put("lastNum", Integer.parseInt((String)map.get("lastNum")));
+   		resultMap = resmenuService.totalSales(map);
 		return new Gson().toJson(resultMap);
 	}
 }

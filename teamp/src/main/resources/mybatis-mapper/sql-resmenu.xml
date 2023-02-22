@@ -40,7 +40,8 @@
 				t3_resmenu.resnum = #{resnum}  
 		<if test='menuname != null and menuname != "" '>
 			and menuname like concat('%', #{menuname}, '%')
-		</if>				
+		</if>		
+		LIMIT #{startNum}, #{lastNum}		
 	</select>
 	
 	<!-- 사업자 메뉴관리 페이지 게시물 갯수 -->
@@ -92,6 +93,7 @@
 			where 
 				resnum = #{resnum} AND salecomple ="N"
 			ORDER BY orderdate DESC
+			LIMIT #{startNum}, #{lastNum}
 	</select>	
 	
 	<!-- 사업자 예약관리 페이지 게시물 갯수 -->
@@ -108,11 +110,21 @@
 	<select id="totalSales" parameterType="hashmap" resultType="com.example.demo.model.Res">	
 			SELECT 
 				resnum, ordererid, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname
+				, (SELECT AVG(price * menunum) FROM t3_reserve WHERE resnum = #{resnum} AND salecomple ="Y" AND orderdate = DATE(NOW())) as total
 			FROM
 				t3_reserve
 			where 
 				resnum = #{resnum} AND salecomple ="Y" AND orderdate = DATE(NOW())
 			ORDER BY orderdate DESC
+			LIMIT #{startNum}, #{lastNum}
+	</select>
+	<!-- 사업자 매출관리 전체 금액 -->
+	<select id="totalCount" parameterType="hashmap" resultType="int">	
+			SELECT 
+				SUM(price * menunum) 
+			FROM 
+				t3_reserve 
+			WHERE resnum = #{resnum} AND salecomple ="Y" AND orderdate = DATE(NOW())
 	</select>
 	
 	<!-- 사업자 매출관리 페이지 게시물 갯수 -->
