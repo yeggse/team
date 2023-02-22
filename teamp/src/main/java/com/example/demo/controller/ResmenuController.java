@@ -62,7 +62,7 @@ public class ResmenuController {
 		return "/join3"; // WEB-INF에서 호출할 파일명
 	}
 	
-    //사업자 메뉴관리 페이지
+    //사업자 메뉴관리 페이지 
     @RequestMapping("/menumanagement.do") 
     public String menumanagement(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
     	HashMap<String, Object> map = new HashMap<String, Object>();
