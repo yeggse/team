@@ -1,128 +1,212 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<script src="js/jquery.js"></script>
-	<script src="js/vue.js"></script>
-	<jsp:include page="/layout/header.jsp"></jsp:include>
-	<title>[세잎] 업체군 리스트</title>
+<meta charset="UTF-8">
+<script src="js/jquery.js"></script>
+<script src="js/vue.js"></script>
+<jsp:include page="/layout/header.jsp"></jsp:include>
+<title>[세잎] 업체군 리스트</title>
+
 </head>
 <style>
-	        * {
-	            font-family: 'Noto Sans KR', sans-serif;
-	        }
-
-		
-	        /* 점(.)으로 시작하는 아이 : html 파트에서 클래스(명)를 의미. */
-	      .div1{
-	        margin-top: 120px;	/* 바깥쪽여백 */	
-	         margin-left: 100px;
-	       }
-	      
-	      input {
-	            width: 400px;
-	            margin-top: 0px;
-	            padding: 10px;
-	            box-sizing: border-box;
-	            border-radius: 10px;
-	            border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
-	        }   
-	       #btn{
-		       background-color: #8FBC94;
-		       width: 80px;
-		       height: 40px;
-		       border-radius: 20px;
-		       border: solid 2px #8FBC94;
-		       font-size: large;
-		       color: white;
-		       padding: 0px;
-	       }
-	       #btnList{
-		       color: #8FBC94;
-		       font-weight: bold; 
-		       width: 80px;
-		       height: 40px;
-		       background-color: white;
-		       border-radius: 20px;
-		       border: white ;
-		       font-size: large;
-		       padding: 0px;
-	       }
-	       .row {
-   margin: 0px auto;
-   width:100%
+* {
+	font-family: 'Noto Sans KR', sans-serif;
 }
-                col-md-6{
+.img{
+  width:3rem;
+  height:3rem;
+  position:absolute;
+  top:11.08rem;
+  left:46.5rem;
+  border:0.06rem solid;
+  border-radius:0.33rem;
+}
+/* 지역선택라인 */
+.div2{
+width: 120rem; 
+  height:15rem;
+  margin:auto;
+  margin-top:5rem;
+  background-image:url(https://img.freepik.com/premium-photo/long-horizontal-banner-with-three-simple-donuts-on-blue-background-colorful-donuts-with-copy-space-i_158001-1380.jpg);
+}
+#gu{
+width:20rem;
+height:3rem;
+text-align:center;
+margin:auto;
+margin-top:6rem;
+}
+#gu:hover{
+border:0.15rem solid ;
+}
 
-                    max-width : 50%
+.div0 {/* 검색라인 */
+	width:120rem;
+	height:4rem;
+	margin:auto;
+ 	 border-bottom:0.15rem solid #dcdcdc;
+}
+#span1{
+margin-left: 60rem;
+}
+/* 추천순 */
+#btnList1 {
+	color: white;
+	font-weight: bold;
+	width: 5rem;
+	height: 3rem;
+	margin-left:0rem;
+	background-color: #8FBC94;
+	font-size: large;
+  border:1px solid;
+}
+/* 재고순 */
+#btnList2 {
+	color: white;
+	font-weight: bold;
+	width: 5rem;
+	height: 3rem;
+	background-color: #8FBC94;
+	font-size: large;
+  border:1px solid;
+}
+input {
+	width: 25rem;
+	height: 3.2rem;
+	margin-left:19rem;
+	margin-top:0.2rem;
+	box-sizing: border-box;
+	border: solid 0.14rem #dcdcdc;
+}
 
-                }
+#btnList1:hover{
+background: #dcdcdc;
+}
+#btnList2:hover{
+background: #dcdcdc;
+}
+#btn { /* 검색버튼 */
+	background-color: #8FBC94;
+	font-weight: bold;
+	width: 5rem;
+	height: 3.1rem;
+	border: none;
+	font-size: large;
+	color: white;
+}
+#btn:hover{
+background: #dcdcdc;
+}
+
+
+/*  음식점출력라인*/
+.div3{
+margin:auto;
+width: 120rem; 
+height:100%;
+}
+
+/*td 메인프레임  */
+.div4{
+background-color: white; 
+display: flex; 
+text-align: center; 
+margin:auto;
+margin-bottom:1rem;
+margin-top:1rem;
+width: 60rem; 
+height: 7rem;
+  border:0.15rem solid #dcdcdc;
+}
+.div4:hover{
+border: 0.15rem solid;
+}
+
+#img1{
+width:12rem;
+height:6.7rem;
+vertical-align:middle;
+margin:auto;
+margin-left: 2rem;
+}
+
+/*td 가게명 설명  */
+.div5{
+width:45rem;
+font-size: large; 
+font-weight: bold; 
+text-align:left;
+color: black; 
+}
+
+.div6{
+margin:auto;
+margin-top:0.3rem;
+}
 </style>
 
-<body style="margin: 0px">	
-	<div id="app" style="width:2483.02pxl" align="center">		<!-- 화면 고정을 위해 필요 -->
-		<div class="div1">
-			<button  id="btnList">추천순</button>	<!--클릭되었을 경우, 색변화되도록 이벤트 넣기!!!  -->
-			<button id="btnList">재고순</button>	<!-- 선택순으로 리스트 출력하는 쿼리 생성 필요!! -->
-			<span style="margin-left: 1000px">
-				<input type="text" placeholder="가게명을 검색해 주세요" v-model="resname1"></input>		<!-- 업종 리스트 출력하는 쿼리 생성 필요!! -->
-				<button id="btn" @click="fnSearch" >검색</button>
-			</span>
+<body>
+
+	<!-- 메인 프레임 -->
+	<div id="app" style="width: 2483.02pxl" align="center">
+	
+		<!-- 지역선택 라인 -->
+		<div class="div2">
+			<img src="https://cdn-icons-gif.flaticon.com/6844/6844326.gif" class="img">
+			<select id="gu" name="gu" v-model="gu" @click="fnGet">
+				<option value="" >고객님의 지역을 선택해주세요</option>
+				<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
+			</select>
 		</div>
-		<div style="margin-top: 45px; text-align: center; font-weight: bold; font-size: x-large;">
-			오늘 픽업 가능한 음식점🍕
-	    </div>
-	    <div>
-	    <label for="gu" class="control-label">상세 지역을 골라주세요~ : </label> 
-					<select
-						id="gu" name="gu" v-model="gu" class="form-control" @click = "fnGet">
-						<!-- 선택을 했을때 change가되는데 메소드를 넣어줌(3)-->
-						<option value="">지역선택</option>
-						<!-- 처음 값을 선택할 수 있게 빈값을 넣어준다.(2) -->
-						<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
-					</select>
-	    </div>
-    <!-- [기본 ] 음식점 출력!! -->
-	    <div style="background-color: yellow; ">
-	    <!-- DB연결 후, 아래 링크 확인하고, 연동하기 -->
-	    <!-- https://velog.io/@dldldl1022/Spring%EA%B3%BC-vue%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9E%A5%EC%86%8C-%EB%AA%A9%EB%A1%9D-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0 -->
-				<div style="width: 40%; float:left; margin-top: 60px; margin-left:80px;">
-				<table >
+		
+		<!-- 검색라인 -->
+	 	<div class="div0">
+	 		<button id="btnList1">추천순</button>
+			<button id="btnList2">재고순</button>
+			
+   			 	<input class="input1" type="text" placeholder="가게명을 검색해주세요." v-model="resname1" />
+    	 		<button id="btn" @click="fnSearch" >검색</button>
+  		</div>
+  		
+		<!-- [기본 ] 음식점 출력!! -->
+			<!-- DB연결 후, 아래 링크 확인하고, 연동하기 -->
+			<!-- https://velog.io/@dldldl1022/Spring%EA%B3%BC-vue%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9E%A5%EC%86%8C-%EB%AA%A9%EB%A1%9D-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0 -->
+			<div class="div3">
+				<table>
+				<!--  당분간은 주석해두기. 딱히 필요없어 보여서
 					<colgroup>
-						<col width="25%"/>
+						<col width="50%" />
 					</colgroup>
+				-->
 					<tbody>
 						<tr v-for="(item, index) in list">
-							<td>
-								<span style="text-align: right; margin-right: 10px;">
-		    					<button @click="fnView(item)">	<!-- 링크 확인!!!!!!!!!!!! -->
-	    						<span style="background-color: lightgray; display: flex; text-align: center; width: 700px; height: 100px;">
-	    							
-		    						<img src="img/main/point.PNG" width=100px height=90px vertical-align= middle margin-right=70px>
-		    						<span style="font-size: large; font-weight: bold; color: black; margin-left: 50px;">
-		    						<br>
-		    						<div>가게명 : {{item.resname}} </div><div>{{item.grade}} 점 / 주소: {{item.resadd}}</div>  
-	    							</span>
-	    						</span>
-		    					</button>
-		    					</span>
+							<!-- 왼쪽라인 td -->
+							<td> 
+										<!-- 링크 확인!!!!!!!!!!!! -->
+										<div class="div4" @click="fnView(item)">
+											<img id="img1" src="img/main/point.PNG" > 
+											<div class="div5">
+												<div class="div6">
+													상호명 _ {{item.resname}} 
+												</div>
+												<div class="div6">
+													평점 _ ⭐{{item.grade}}점 
+												<div class="div6">
+													주소 _ {{item.resadd}}
+												</div>
+												</div>
+											</div>
+										</div>
 							</td>
 						</tr>
 					</tbody>
 				</table>
-				</div>
-			
-	   	 </div>
+			</div>
+		</div>
 
-<!-- 가게명 검색 -->
-	   	 
-	   	 
-	   	 
-	   	 
-	   	 
- </div>
+
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
 
@@ -176,7 +260,7 @@ var app = new Vue({
  	// 가게명 검색 이벤트 (식당 출력)
    	fnSearch : function(){
         var self = this;
-        var nparmap = {si : self.si, resname1 : self.resname1}; //다음 페이지로 넘어갈때 필요한 변수만 적어주기. 
+        var nparmap = {si : self.si,resname1:self.resname1}; //다음 페이지로 넘어갈때 필요한 변수만 적어주기. 
         $.ajax({
             url:"/main.storelist/slist.dox",
             dataType:"json",	

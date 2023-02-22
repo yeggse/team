@@ -11,6 +11,8 @@
 
 <style>
 /*별점*/
+
+
 #myform legend{
   font-size:1rem;
   text-align: center;
@@ -78,9 +80,6 @@
     display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
     direction: rtl; /* 이모지 순서 반전 */
      border:1px solid;
-}
-.div000{
-width:20rem;
 }
 .div00{
 width:12.5rem;
@@ -158,6 +157,7 @@ input::file-selector-button {
 display:none;
 }
 
+
 </style>
 
 
@@ -166,13 +166,12 @@ display:none;
 <body>
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
 
+
   <!--메인 프레임-->
   <div id="app" class="main">
     
-    <!-- 제목 -->
     <div class="div00"><h1>리뷰작성하기</h1></div>
-
-	 <!--별점-->
+ <!--별점-->
     <form name="myform" id="myform" method="post" action="./save">
               <fieldset id="filedset">
                 <legend><h4>?상품은 만족하셨나요</h4></legend>
@@ -183,13 +182,13 @@ display:none;
                 <input @click="fnGrade" type="radio" name="rating" value="1" id="rate5" v-model = "grade"><label for="rate5">⭐</label>
               </fieldset>
             </form>
-   
-	 <!--리뷰작성-->
+    
+	    <!--리뷰작성-->
  	<div class="div0">
     	<p class="p1">어떤점이 좋았나요?</p>
-   	 	<div>
-    		  <input class="input1" Type="text" placeholder="리뷰를 입력해주세요" name="content" v-model="content"></imput>  
-   		</div>
+   	 <div>
+    	  <input class="input1" Type="text" placeholder="리뷰를 입력해주세요" name="content" v-model="content"></imput>  
+   	 </div>
  	</div>
 
     <!--사진 첨부하기-->
