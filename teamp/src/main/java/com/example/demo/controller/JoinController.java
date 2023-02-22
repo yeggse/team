@@ -143,8 +143,9 @@ public class JoinController {
     	String account = (String)session.getAttribute("userAccSession");
     	int frontregisnum = (Integer)session.getAttribute("userFrontregisnumSession");
     	int afterregisnum = (Integer)session.getAttribute("userAfterregisnumSession");
-        String add = (String)session.getAttribute("userAddSession");
-    	
+    	String add = (String)session.getAttribute("userAddSession");
+
+    	request.setAttribute("userId", id);
         request.setAttribute("usernickname", nickname);
     	request.setAttribute("userphonenum", phonenum);
     	request.setAttribute("useraccount",account);
@@ -158,7 +159,7 @@ public class JoinController {
 		return "/web_account/MemDatachange"; // WEB-INF에서 호출할 파일명
 	}
 	
-	// 정보변경
+	// 회원 정보변경 데이터 호출
 	@RequestMapping(value = "/datachange.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String datachange(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
@@ -167,7 +168,7 @@ public class JoinController {
 		resultMap.put("message, ", "성공");
 		return new Gson().toJson(resultMap);
 	}
-	
+	// 사업자 회원 정보변경 	
 	@RequestMapping("/datachange2.do")
 	public String main3(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -175,8 +176,15 @@ public class JoinController {
     	String name = (String)session.getAttribute("userNameSession");
     	int frontregisnum = (Integer)session.getAttribute("userFrontregisnumSession");
     	int afterregisnum = (Integer)session.getAttribute("userAfterregisnumSession");
+    	String address = (String)session.getAttribute("userAddressSession");
+    	String nickname = (String)session.getAttribute("userNicknameSession");
+    	String phonenum = (String)session.getAttribute("userPhonenumSession");
+    	String account = (String)session.getAttribute("userAccSession");    	
         String add = (String)session.getAttribute("userAddSession");
-        
+    	String resname = (String)session.getAttribute("userResnameSession");
+    	int resnum = (Integer)session.getAttribute("userResnumSession");
+    	int resphone = (Integer)session.getAttribute("userResphone");
+    	
         HashMap<String, Object> map1 = new HashMap<String, Object>();
 		 List<Area> siList = mainService1.selectSiList(map); map.put("si",
 		 siList.get(0).getSi()); request.setAttribute("siList", new
@@ -189,8 +197,14 @@ public class JoinController {
 	    List<Area> dongList = areaService1.selectDongList(map);
 	    	map.put("dong", dongList.get(0).getDong());
 	    	request.setAttribute("dongList",  new Gson().toJson(dongList));
-
-        
+	    	
+	    request.setAttribute("resname", resname);
+	    request.setAttribute("resnum", resnum);
+	    request.setAttribute("resphone",resphone);
+	    request.setAttribute("usernickname", nickname);
+	    request.setAttribute("userphonenum", phonenum);
+	    request.setAttribute("useraccount",account);      
+	    request.setAttribute("useraddress",address);
     	request.setAttribute("userId", id);
     	request.setAttribute("userName", name);
     	request.setAttribute("userFrontregisnum", frontregisnum);
