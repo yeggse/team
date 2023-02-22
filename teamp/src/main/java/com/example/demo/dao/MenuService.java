@@ -11,4 +11,6 @@ public interface MenuService {
 	void insertMenuImg(HashMap<String, Object> map);
 	// 메뉴 상세 보기
 	HashMap<String, Object> detailMenu(HashMap<String, Object> map);
+	// 메뉴 수정
+	void editMenu(HashMap<String, Object> map);
 }

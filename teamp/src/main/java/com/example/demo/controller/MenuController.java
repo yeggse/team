@@ -31,16 +31,6 @@ public class MenuController {
     HttpSession session;
 	
     
-    @RequestMapping("/menu.edit.do") 
-    public String boardEdit(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
-    	String id = (String)session.getAttribute("userIdSession");
-    	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
-    	String kind = (String)session.getAttribute("KindSession");
-    	request.setAttribute("userId", id);
-    	request.setAttribute("kind", kind);
-    	return "/web_business/menuEdit"; // WEB-INF에서 호출할 파일명
-    }
-	
     // 웹 주소 :  메뉴 추가하기
     @RequestMapping("/menu.add.do") 
     public String menuAdd(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
@@ -160,6 +150,27 @@ public class MenuController {
 			resultMap.put("message", "성공");
 			return new Gson().toJson(resultMap);
 		}
+		
+		// 메뉴 수정
+	    @RequestMapping("/menu.edit.do") 
+	    public String boardEdit(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+	    	String id = (String)session.getAttribute("userIdSession");
+	    	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
+	    	String kind = (String)session.getAttribute("KindSession");
+	    	request.setAttribute("userId", id);
+	    	request.setAttribute("kind", kind);
+	    	return "/web_business/menuEdit"; // WEB-INF에서 호출할 파일명
+	    }
+		
+	 // 메뉴 수정 호출
+		@RequestMapping(value = "/editMenu.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String editMenuList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			menuService.editMenu(map);
+			resultMap.put("message", "성공");
+			return new Gson().toJson(resultMap);
+		}	    
 }
 
 

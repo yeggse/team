@@ -17,8 +17,7 @@ public interface MenuMapper {
 //	// 게시글 상세 출력
 //	Board detailBoard(HashMap<String, Object> map); // xml파일 접근 및 db 호출결과 리턴 받음
 //	
-//	// 게시글 수정
-//	void editBoard(HashMap<String, Object> map);	//update
+//	
 //		// 게시글 삭제
 //	void deleteBoard(HashMap<String, Object>map);	// delete
 	
@@ -28,5 +27,6 @@ public interface MenuMapper {
 	void insertMenuImg(HashMap<String, Object> map);
 	  // 메뉴 상세보기
 	Menu detailMenu(HashMap<String, Object >map); 
-
+	// 메뉴 수정
+	void editMenu(HashMap<String, Object> map);	//update
 }

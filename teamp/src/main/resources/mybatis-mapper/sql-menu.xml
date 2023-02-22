@@ -38,4 +38,14 @@
 			t.idx = #{idx}
 	</select>
 	
+	<!-- 메뉴 수정 -->
+	<update id="editMenu" parameterType="hashmap" >	
+		UPDATE t3_resmenu 
+		SET
+			price = #{price}, menuname = #{menuname}, introduce = #{introduce}, supply = #{supply}, 
+			pickuptime = #{pickuptime}
+		WHERE idx = #{idx}
+	</update>
+	
+	
 </mapper> 

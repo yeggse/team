@@ -37,11 +37,14 @@ public class MenuServiceImpl implements MenuService{
 		// TODO Auto-generated method stub
 		// 조회수 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		//bMapper.updateCnt(map);
-		//List<B> commentList = bMapper.selectCommentList(map);
 		Menu board = menuMapper.detailMenu(map);
-		//resultMap.put("commentList", commentList);
 		resultMap.put("board", board);
 		return resultMap;
 	}	
+	// 메뉴 수정
+	@Override
+	public void editMenu(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		menuMapper.editMenu(map);
+	}
 }

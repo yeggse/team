@@ -44,7 +44,7 @@
 <jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
 	<div id="app" style="height: 900px;">
 		<div class="contain">
-				<h2>메뉴 수정하기✒✒ 아직 파일만 만들어둠..!{{reskind}}</h2>
+				<h2>메뉴 수정하기✒✒</h2>
 			<table class="board_detail" style="margin-top: 20px;">
 				<colgroup>
 					<col width="10%"/>
@@ -64,14 +64,6 @@
 					<td style="text-align : center; width: 15%;" ><h1>픽업 시간</h1></td>
 					<td><input type="text" id="title" name="pickuptime" v-model="pickuptime" style="font-size: 1.3em; font-weight: 600;"></td>
 				</tr>				
-				<tr style="border-bottom:2px solid #ccc;">
-					<td  style="text-align : center; width: 15%; " ><h1>첨부파일</h1></td>
-					<td colspan="3">
-						<div>
-						    <input type="file" id="file1" name="file1" style="font-size: 1em; font-weight: 500;"> 
-						</div>
-					</td>
-				</tr>
 				<tr>
 					<td colspan="4">
 						<textarea id="contents" name="introduce" v-model="introduce" style="font-weight: 400;"></textarea>
@@ -113,10 +105,10 @@ var app = new Vue({
  
     } 
     , methods: {
-    	// 상세 기본 출력
+    	// 상세 메뉴 기본 출력
     	fnGetMenu : function(){
             var self = this;
-            console.log("test == " + self.idx);
+            console.log("메뉴 인덱스 == " + self.idx);
             var nparmap = {idx : self.idx};
             $.ajax({
                 url:"/menu.detail.dox",
@@ -127,9 +119,8 @@ var app = new Vue({
                     self.price = data.board.price;
                     self.menuname = data.board.menuname;               	
                     self.introduce = data.board.introduce;
-                    self.menuname = data.board.menuname;
-                    self.introduce = data.board.introduce;
-                    self.menuname = data.board.menuname;                
+                    self.supply = data.board.supply;
+                    self.pickuptime = data.board.pickuptime;
                 }
             }); 
         }
@@ -138,49 +129,19 @@ var app = new Vue({
     		var self = this;
     		console.log(self.img);
 	      	var nparmap = {userId : self.userId, price : self.price, menuname : self.menuname, introduce : self.introduce, 
-	      					reskind : self.reskind, resnum : self.resnum,
-	      					supply : self.supply, pickuptime : self.pickuptime, img : self.img}; 
+	      					reskind : self.reskind, resnum : self.resnum, idx : self.idx,
+	      					supply : self.supply, pickuptime : self.pickuptime}; 
 	        $.ajax({
-	            url:"/editBoard.dox",
+	            url:"/editMenu.dox",
 	            dataType:"json",	
 	            type : "POST", 
 	            data : nparmap,
 	            success : function(data) {            
-	            	var form = new FormData();	// FormData란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
-	       	        form.append( "file1", $("#file1")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미
-	       	     	form.append( "idx",  data.idx);	// 여기에 있는 boardIdx는 어디로 가나?????
-	       	        
-	       	         $.ajax({
-	       	             url : "/menuUpload"
-	       	           , type : "POST"
-	       	           , processData : false
-	       	           , contentType : false
-	       	           , data : form
-	       	           , success:function(response) { }
-	       	           ,error: function (jqXHR) 
-	       	           {}
-	       	       }); 
-	            	alert("게시글이 저장되었습니다.");
-	           		location.href="/menu.add.do";
+	           	 	alert("메뉴가 수정되었습니다.");
+	           		location.href="/menumanagement.do";
 	            }
-	        }); 
+	        }); 	   
 		}
-	    // 사진 업로드 
-		, upload : function(){
-			
-			var form = new FormData();
-		        form.append( "file1", $("#file1")[0].files[0] );
-		        
-		         $.ajax({
-		             url : "/menuUpload"
-		           , type : "POST"
-		           , processData : false
-		           , contentType : false
-		           , data : form
-		           , success:function(response) { }
-		           ,error: function (jqXHR) {}
-		       });
-		} 
 		// 목록으로 가기 버튼
 		, fnList : function(){
 			location.href="/menumanagement.do";
@@ -190,7 +151,8 @@ var app = new Vue({
     
     }   
     , created: function () {
-    
+    	var self = this;
+    	self.fnGetMenu();
 	}
 });
 

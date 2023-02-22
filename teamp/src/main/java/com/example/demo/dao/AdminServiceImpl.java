@@ -57,10 +57,7 @@ public class AdminServiceImpl implements AdminService{
 		// TODO Auto-generated method stub
 		// 조회수 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-	//	boardMapper.updateCnt(map);
-	//	List<Board> commentList = boardMapper.selectCommentList(map);
 		Admin admin = adminMapper.detailbum(map);
-	//	resultMap.put("commentList", commentList);
 		resultMap.put("board", admin);
 		return resultMap;
 	}

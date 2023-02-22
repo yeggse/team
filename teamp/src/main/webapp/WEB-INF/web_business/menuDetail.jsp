@@ -44,15 +44,15 @@
 <jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
 	<div id="app" style="height: 900px;">
 		<div class="contain">
-			<h2>메뉴 상세보기📝 {{reskind}}</h2>
+			<h2>메뉴 상세보기📝</h2>
 			<div class="card">
 				<h2 class="card-header p-4">
 					음식명 : {{info.menuname}}
-					<span class="badge badge-pill badge-dark pull-right" style="font-size: large; float: right;">가격 : {{info.price}}</span>
+					<span style="font-size: large; float: right;">가격 : {{info.price}}</span>
 				</h2>
 				<div class="card-body1">
 					<h4 style="font-size: large; margin-left: 20px;"> 재고 : {{info.supply}}
-					<span class="badge badge-pill badge-dark pull-right" style="font-size: large; float: right;"> 픽업 시간 : {{info.pickuptime}}</span></h4>
+					<span  style="font-size: large; float: right;"> 픽업 시간 : {{info.pickuptime}}</span></h4>
 				</div>
 				<div class="card-body">
 				   	<div v-if="info.picture != null" style="margin: 10px 10px 10px 10px;">	<!-- info.img : 이미지 경로(img/이미지 이름) DB 컬럼이랑 동일한 이름으로!-->
