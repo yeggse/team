@@ -66,11 +66,8 @@
         -webkit-overflow-scrolling: touch;
       }
     </style>
-</head>
-
-<body style="margin: 0px;" >
-
-	<div id="app2">
+    
+    <div id="app2">
 	<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
        <a  href="main.do"><img style="margin-left:40px"src="img/main/newlogo.png" width="100px" height="80px"></a> 
 
@@ -91,6 +88,11 @@
       </div>
     </header>
 	</div>
+</head>
+
+<body style="margin: 0px;" >
+
+	
 <script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

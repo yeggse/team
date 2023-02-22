@@ -9,6 +9,7 @@
 	<script src="js/vue.js"></script>
 	
     <!-- CSS -->
+    
     <link rel="stylesheet" href="css/styles.css" type="text/css">
 
     <title>SideBar sub menus</title>
@@ -29,7 +30,7 @@
                     </a>
                     
 
-                    <div href="#" class="nav__link collapse">
+                    <div href="#" class="nav__link collapse1">
                         <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">가게 관리</span>
 
