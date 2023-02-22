@@ -13,6 +13,7 @@
 	rel="stylesheet"
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous" />
+	<link rel="stylesheet" href="css/header.css" type="text/css">
 	
 <style>
       .bd-placeholder-img {
@@ -67,7 +68,7 @@
       }
     </style>
     
-    <div id="app2">
+    <div id="app2" class = "header">
 	<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
        <a  href="main.do"><img style="margin-left:40px"src="img/main/newlogo.png" width="100px" height="80px"></a> 
 

@@ -15,8 +15,8 @@
 </head>
 <body id="body-pd">
 
-    <div class="l-navbar" id="navbar" style = "margin-top:90px" >
-        <nav class="nav">
+    <div class="l-navbar" id="navbar" style = "margin-top:129px" >
+        <nav class="nav1">
             <div>
                 <div class="nav__brand">
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
@@ -29,7 +29,7 @@
                     </a>
                     
 
-                    <div href="#" class="nav__link collapse">
+                    <div href="#" class="nav__link collapse1">
                         <ion-icon name="people-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">회원 관리</span>
 
@@ -48,7 +48,7 @@
                         <span class="nav_name">공지사항</span>
                     </a>
 
-                    <div href="#" class="nav__link collapse">
+                    <div href="#" class="nav__link collapse1">
                         <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">리뷰 관리</span>
 

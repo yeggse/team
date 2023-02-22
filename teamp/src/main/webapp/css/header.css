@@ -5,17 +5,16 @@
          top:0; 
          left: 0;
          right: 0;
-         width: 120rem;
+        
            color: black;
            height: 5.5rem;
-           font-size: 1.25rem;
-           font-weight: bold;
+          
            padding: 0.33rem;
            background-color:white;
            border-bottom: 0.06rem solid #000;
            
            /* 아직은 없어도 이상없음 
-           flot: right;1
+           flot: right;
             display: inline-flex;
             */
             
