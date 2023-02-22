@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.MainMapper">	
-	<!-- 기본 출력 -->
+	<!-- 기본 출력1 -->
 	<select id="firstList" parameterType="hashmap" resultType="com.example.demo.model.Main">	
 		SELECT
 			resnum, region, startdate, reskind, resname, resphone, grade, resadd
