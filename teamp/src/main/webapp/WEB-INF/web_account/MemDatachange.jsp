@@ -58,7 +58,7 @@ body {
 		<div class="div2">
 			닉네임 <input type="text" id="text1" v-model="nickname" style="margin-left: 60px" :placeholder='nickname'></input>
 			<button @click="fnnickCheck">중복확인</button>
-			<div>닉네임 미변경시, 중복확인을 누르지 마세요~!</div>
+			
 		</div>
 		<div class="div2">
 			연락처 <input type="text" id="text1" v-model="phonenum" style="margin-left: 60px" :placeholder='phonenum'></input>
