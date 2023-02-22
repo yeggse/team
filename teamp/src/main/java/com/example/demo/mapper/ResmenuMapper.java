@@ -21,6 +21,8 @@ public interface ResmenuMapper {
 	
 	// 사업자 예약 관리
 	List<Res> businessNowRes(HashMap<String, Object> map) throws Exception;
+	// 사업자 예약관리 페이지 게시물 갯수
+	int NowResCnt(HashMap<String, Object> map);
 	
 	//사업자 메뉴관리 페이지 게시물 갯수
 	int selectResmenuCnt(HashMap<String, Object> map);

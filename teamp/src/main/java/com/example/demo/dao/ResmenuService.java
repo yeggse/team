@@ -17,7 +17,8 @@ public interface ResmenuService {
 	
 	// 사업자 예약 관리
 	List<Res> businessNowRes(HashMap<String, Object> map) throws Exception;
-	
+	// 사업자 예약관리 페이지 게시물 갯수
+	int NowResCnt(HashMap<String, Object> map);
 	
 	HashMap<String, Object> selectStorecliectedImg(HashMap<String, Object> map);
 	int insertreserve(HashMap<String, Object> map) throws Exception;

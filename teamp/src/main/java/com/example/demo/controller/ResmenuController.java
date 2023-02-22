@@ -88,9 +88,9 @@ public class ResmenuController {
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Res> list = resmenuService.businessNowRes(map);
-		//int cnt = boardService.countBoardCnt();	//게시글 갯수 세기
+		int cnt = resmenuService.NowResCnt(map);	//게시글 갯수 세기
 		resultMap.put("list", list);
-		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
+		resultMap.put("cnt", cnt);	//게시글 갯수 세기
 		return new Gson().toJson(resultMap);
 	}
     

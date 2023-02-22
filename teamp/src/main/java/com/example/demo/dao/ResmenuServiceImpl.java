@@ -69,6 +69,13 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			return resmenuMapper.businessNowRes(map);
 		}
+		// 사업자 예약관리 페이지 게시물 갯수
+		@Override
+		public int NowResCnt(HashMap<String, Object> map) {
+			// TODO Auto-generated method stub
+			return resmenuMapper.NowResCnt(map);
+		}
+		
 		
 		// 사업자 판매완료 버튼 이벤트
 		@Override
@@ -108,4 +115,6 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			resmenuMapper.deleteresmenu(map);
 		}
+		
+
 }

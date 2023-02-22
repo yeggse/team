@@ -91,9 +91,17 @@
 				t3_reserve
 			where 
 				resnum = #{resnum} AND salecomple ="N"
-			
 			ORDER BY orderdate DESC
 	</select>	
+	
+	<!-- 사업자 예약관리 페이지 게시물 갯수 -->
+	<select id="NowResCnt" parameterType="hashmap" resultType="int">	
+		SELECT 
+			COUNT(*) AS CNT
+		FROM
+			t3_reserve 
+		where resnum = #{resnum} AND salecomple ="N"
+	</select>
 	
 	
 	<!-- 사업자 매출관리-->
