@@ -69,7 +69,7 @@
     </style>
     
     <div id="app2" class = "header">
-	<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+	<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 ">
        <a  href="main.do"><img style="margin-left:40px"src="img/main/newlogo.png" width="100px" height="80px"></a> 
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
