@@ -200,22 +200,6 @@ var app = new Vue({
 	}
     , change :function(item){
     	var self = this; 
-    	/* var nparmap = {no : item.no};
-        $.ajax({
-            url:"/reviewFin.dox",
-            dataType:"json",	
-            type : "POST", 
-            data : nparmap,
-            success : function(data) {            
-            	var form = new FormData();	// FormDat1a란 HTML 단이 아닌 자바스크립트 단에서 폼 데이터를 다루는 객체
-       	        //form.append( "file1", $("#file1")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미
-       	     	//form.append( "idx",  data.idx);	// 여기에 있는 boardIdx는 어디로 가나?????
-       	        
-            	
-           		location.href="/reservebusiness.do";
-           		
-            }
-        });  */
         console.log(item.no);
         self.pageChange("/reviewwrite.do", {resnum:item.resnum, reskind:item.reskind, resname:item.resname, no:item.no});
     }
