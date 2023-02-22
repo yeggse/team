@@ -49,11 +49,14 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			return resmenuMapper.selectResmenu2(map);
 		}
+		
+		//사업자 메뉴관리 페이지 게시물 갯수
 		@Override
-		public int selectResmenuCnt() {
+		public int selectResmenuCnt(HashMap<String, Object> map) {
 			// TODO Auto-generated method stub
-			return resmenuMapper.selectResmenuCnt();
+			return resmenuMapper.selectResmenuCnt(map);
 		}
+		
 		@Override
 		public List<Res> searchMenuname(HashMap<String, Object> map) throws Exception {
 			// TODO Auto-generated method stub

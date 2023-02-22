@@ -10,13 +10,49 @@
 	<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
 	<jsp:include page="/layout/header.jsp"></jsp:include>
 	
-	<title>board 공지사항 기본 출력 페이지</title>
 </head>
 <style>
 img{
 width:6rem;
 height:6rem;
 }
+
+	/* 화면 넘기는 아이템 디자인 */
+.pagination {
+        margin:24px;
+        display: inline-flex;
+        
+    }
+.pagination li {
+    min-width:32px;
+    padding:2px 6px;
+    text-align:center;
+    margin:0 3px;
+    border-radius: 6px;
+    border:1px solid #eee;
+    color:#666;
+}
+.pagination li:hover {
+    background: #E4DBD6;
+}
+.page-item a {
+    color:#666;
+    text-decoration: none;
+}
+	/* 페이징에 동그란 점 없어지게 하기 */
+	li{
+	list-style:none;
+	}
+	
+	/* 페이징 컬러 */
+.pagination li.active {
+    background-color : #3e4149;	/* #E7AA8D */
+    color:#fff;
+}
+ .pagination li.active a {
+    color:#fff;
+} 
+
 /* ----------------------------------------------------- */
 #input {
    width: 25rem;
@@ -60,33 +96,6 @@ height:6rem;
 	position:relative;
 	top:1px;
 }
-.pagination {
-        margin:1.5rem;
-        display: inline-flex;
-    }
-.pagination li {
-    min-width:32px;
-    padding:2px 6px;
-    text-align:center;
-    margin:0 0.3rem;
-    border-radius: 0.33rem;
-    border:1px solid #eee;
-    color:#666;
-}
-.pagination li:hover {
-    background: #E4DBD6;
-}
-.page-item a {
-    color:#666;
-    text-decoration: none;
-}
-.pagination li.active {
-    background-color : red;	/* #E7AA8D */
-    color:white;
-}
- .pagination li.active a {
-    color:whir;
-} 
 .tdinput{
 width:2rem;
 }
@@ -120,10 +129,6 @@ background:gray;
 				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="menuname"  v-on:keyup.enter="fnSearch"></input>
 				<button id="btn" @click="fnSearch" >검색</button>	
 				
-		<!-- 		<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		업종 리스트 출력하는 쿼리 생성 필요!!
-				<button id="btn"  >검색</button>  -->
-				
-				
 			</div>
 			<table class="board_list">
 				<colgroup>
@@ -156,7 +161,7 @@ background:gray;
 	                   <td @click="fnDetailView(item)">{{item.menuname}}</td> 
 	                   <td @click="fnDetailView(item)">{{item.price}}원</td> 
 	                   <td @click="fnDetailView(item)">{{item.introduce}}</td>
-	                   <td @click="fnDetailView(item)">{{item.idx}}<img :src="item.picture"></td>
+	                   <td @click="fnDetailView(item)"><img :src="item.picture"></td>
 	                   <td @click="fnDetailView(item)">{{item.startdate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.enddate}}</td>
 	                   <td @click="fnDetailView(item)">{{item.supply}}</td> 
@@ -178,7 +183,7 @@ background:gray;
 			    :next-text="'>'"
 			    :container-class="'pagination'"
 			    :page-class="'page-item'">
-			  </paginate>
+			 </paginate>
 			  </div>
 			  
 		  	<div>
@@ -193,7 +198,8 @@ background:gray;
 		  	</div>
 	</div>
 </body>
-
+<jsp:include page="/layout/footer.jsp"></jsp:include>
+</html>
 
 
 <script type="text/javascript">
@@ -211,6 +217,7 @@ var app = new Vue({
         , resnum:"${resnum}"
         , menuname:"${menuname}"
         , picture:"${userpicture}"
+        , idx :""
     }   
     , methods: {
     	// 기본 출력 메소드
@@ -231,6 +238,7 @@ var app = new Vue({
                 }
             }); 
         }  
+    
         //일시품절버튼
         , btnSoldout : function(item){
     		var self = this;
@@ -265,21 +273,13 @@ var app = new Vue({
 	            }
 	        }); 
     	}
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
 		// 페이지 전환 메소드
 		, changePage : function(pageNum) {
 			var self = this;
 			self.selectPage = pageNum;
 			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
-			var lastNum = pageNum * 10
-	        var nparmap = {startNum : startNum, lastNum : lastNum};
+			var lastNum = 10;
+	        var nparmap = {startNum : startNum, lastNum : lastNum, resnum:self.resnum, picture: self.picture, idx: self.idx};
 	        $.ajax({
 	            url:"/selectResmenu2.dox",
 	            dataType:"json",	
@@ -288,10 +288,11 @@ var app = new Vue({
 	            success : function(data) {                                       
 	                self.list = data.list;
 	                self.pageCount = Math.ceil(data.cnt / 10);
-	                console.log(self.pageCount);
+	                console.log(data);
 	            }
 	        }); 
 		}
+		
 	    // 메뉴 상세 확인
 	       , fnDetailView : function(item){
 	          var self = this;
@@ -379,5 +380,3 @@ var app = new Vue({
 	}
 });
 </script> 
-
-</html>

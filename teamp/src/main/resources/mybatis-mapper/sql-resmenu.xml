@@ -26,13 +26,25 @@
 		
 	</select>
 	
-	
+	<!-- 사업자 메뉴관리 페이지 -->
+	<select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	
+			SELECT
+				resnum, menuname, introduce, picture, startdate, enddate, price, supply, t3_resmenu.idx, soldout
+			FROM
+				t3_resmenu
+			LEFT OUTER JOIN 
+				t3_resmenu_img
+			ON 
+				t3_resmenu.idx = t3_resmenu_img.idx
+			WHERE 
+				t3_resmenu.resnum = #{resnum}  
+	</select>
 	<!-- 사업자 메뉴관리 페이지 게시물 갯수 -->
-	<select id="selectResmenuCnt" resultType="int">	
+	<select id="selectResmenuCnt" parameterType="hashmap" resultType="int">	
 		SELECT 
 			COUNT(*) AS CNT
 		FROM
-			t3_resmenu
+			t3_resmenu where resnum = #{resnum}
 	</select>
 	
 	
@@ -49,18 +61,6 @@
 				menuname like concat('%', #{menuname}, '%')
 	</select>
 	
-	<select id="selectResmenu2" parameterType="hashmap" resultType="com.example.demo.model.Res">	
-			SELECT
-				resnum, menuname, introduce, picture, startdate, enddate, price, supply, t3_resmenu.idx, soldout
-			FROM
-				t3_resmenu
-			LEFT OUTER JOIN 
-				t3_resmenu_img
-			ON 
-				t3_resmenu.idx = t3_resmenu_img.idx
-			WHERE 
-				t3_resmenu.resnum = #{resnum}  
-	</select>
 	
 	<insert id="insertreserve" parameterType="hashmap">
 		INSERT INTO 

@@ -30,6 +30,7 @@ public class ResmenuController {
 	// Service 인터페이스 객체 생성 및 연결
 	@Autowired
 	private ResmenuService resmenuService;
+	
 	@Autowired
     private MainService mainService;
 
@@ -59,6 +60,39 @@ public class ResmenuController {
 		Main res = mainService.searchRes(map); // resnum을 통해 레스토랑 찾아주는 과정
 		request.setAttribute("res",  new Gson().toJson(res));
 		return "/join3"; // WEB-INF에서 호출할 파일명
+	}
+	
+    //사업자 메뉴관리 페이지
+    @RequestMapping("/menumanagementbusiness.do") 
+    public String menumanagement(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	HashMap<String, Object> map = new HashMap<String, Object>();
+    	String kind = (String)session.getAttribute("KindSession");
+    	String id = (String)session.getAttribute("userIdSession");
+		if(kind.equals("B")) { // 사업자 이면! 
+	    	Integer resnum = (Integer)session.getAttribute("userResnumSession");
+	    	String reskind = (String)session.getAttribute("userReskindSession");
+	    	request.setAttribute("reskind", reskind); 
+	    	request.setAttribute("resnum",resnum); 
+	    	System.out.println("메뉴관리 세션 넘어옴"); 
+	    	System.out.println(resnum+" resnum");
+	    	System.out.println(reskind+" reskind");
+		}
+    	request.setAttribute("kind", kind);
+    	request.setAttribute("userId", id);
+    	return "/web_business/menumanagement"; // WEB-INF에서 호출할 파일명1
+    }
+    
+    //사업자 메뉴관리 호출
+	@RequestMapping(value = "/selectResmenu2.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String firstResmenu2(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Res> list = resmenuService.selectResmenu2(map);
+		int cnt = resmenuService.selectResmenuCnt(map);	
+		resultMap.put("list", list);
+		resultMap.put("cnt", cnt);
+		return new Gson().toJson(resultMap);
 	}
     ////////////////////////////////////////////////////////////
 	/*

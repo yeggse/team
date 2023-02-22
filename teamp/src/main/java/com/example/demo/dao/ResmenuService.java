@@ -14,7 +14,6 @@ public interface ResmenuService {
 	//	사업자 메뉴관리 페이지에 사용 
 	List<Res> selectResmenu2(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 	List<Res> searchMenuname(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
-	int selectResmenuCnt();
 	List<Res> businessReserveList(HashMap<String, Object> map) throws Exception;
 	List<Res> businessReserveList1(HashMap<String, Object> map) throws Exception;
 	
@@ -32,6 +31,7 @@ public interface ResmenuService {
 	//다시판매 버튼
 	void resell(HashMap<String, Object> map);
 	
-		
+	//사업자 메뉴관리 페이지 게시물 갯수
+	int selectResmenuCnt(HashMap<String, Object> map);	
 
 }
