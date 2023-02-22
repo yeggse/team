@@ -260,7 +260,15 @@ var app = new Vue({
  	// 가게명 검색 이벤트 (식당 출력)
    	fnSearch : function(){
         var self = this;
-        var nparmap = {si : self.si,resname1:self.resname1}; //다음 페이지로 넘어갈때 필요한 변수만 적어주기. 
+        if(self.gu == ""){
+        	self.flg = "1=1";
+        	
+        }
+        else if(self.gu != ""){
+        	self.flg = "";
+        }
+       
+        var nparmap = {si : self.si , resname1:self.resname1 , reskind:self.reskind ,gu: self.gu, flg: self.flg}; //다음 페이지로 넘어갈때 필요한 변수만 적어주기. 
         $.ajax({
             url:"/main.storelist/slist.dox",
             dataType:"json",	
@@ -269,9 +277,7 @@ var app = new Vue({
             success : function(data) {       
             	self.list = data.list;
             		
-	            	if(self.list.length == 0){
-	            		self.fnGet();
-	            	}    
+	            	  
             	
             }
        });
