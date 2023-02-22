@@ -13,8 +13,11 @@ public interface ResmenuService {
 	
 	//	사업자 메뉴관리 페이지에 사용 
 	List<Res> selectResmenu2(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
-	List<Res> businessReserveList(HashMap<String, Object> map) throws Exception;
 	List<Res> businessReserveList1(HashMap<String, Object> map) throws Exception;
+	
+	// 사업자 예약 관리
+	List<Res> businessNowRes(HashMap<String, Object> map) throws Exception;
+	
 	
 	HashMap<String, Object> selectStorecliectedImg(HashMap<String, Object> map);
 	int insertreserve(HashMap<String, Object> map) throws Exception;

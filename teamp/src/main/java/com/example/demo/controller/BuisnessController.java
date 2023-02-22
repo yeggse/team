@@ -28,44 +28,9 @@ public class BuisnessController {
     @Autowired
 	HttpSession session;	
     
-    @RequestMapping("/reservebusiness.do") 
-    public String menumanagement2(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-    	HashMap<String, Object> map = new HashMap<String, Object>();
-    	String kind = (String)session.getAttribute("KindSession");
-    	String id = (String)session.getAttribute("userIdSession");
-		if(kind.equals("B")) { // 사업자 이면! 
-	    	Integer resnum = (Integer)session.getAttribute("userResnumSession");
-	    	String reskind = (String)session.getAttribute("userReskindSession");
-	    	request.setAttribute("reskind", reskind); 
-	    	request.setAttribute("resnum",resnum); 
-	    	
-		}
-		
-    	request.setAttribute("kind", kind);
-    	request.setAttribute("userId", id);
-    	return "/web_business/reservebusiness"; // WEB-INF에서 호출할 파일명
-    }
+
     
     
-    @RequestMapping("/review.do") 
-    public String reviewadmin(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
-    	HashMap<String, Object> map = new HashMap<String, Object>();
-    	String kind = (String)session.getAttribute("KindSession");
-    	String id = (String)session.getAttribute("userIdSession");
-		if(kind.equals("B")) { // 사업자 이면! 
-	    	Integer resnum = (Integer)session.getAttribute("userResnumSession");
-	    	String reskind = (String)session.getAttribute("userReskindSession");
-	    	String resname = (String)session.getAttribute("userResnameSession");
-	    	request.setAttribute("reskind", reskind); 
-	    	request.setAttribute("resnum",resnum); 
-	    	request.setAttribute("resname",resname); 
-	    	
-		}
-		
-    	request.setAttribute("kind", kind);
-    	request.setAttribute("userId", id);
-    	return "/web_business/reviewadminbusiness"; // WEB-INF에서 호출할 파일명
-    }
     @RequestMapping("/paymentbusiness.do") 
     public String menumanagement3(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
     	HashMap<String, Object> map = new HashMap<String, Object>();
@@ -84,18 +49,6 @@ public class BuisnessController {
     	return "/web_business/paymentbusiness"; // WEB-INF에서 호출할 파일명
     }
     
-    ///사업자 주문정보 관련
-    @RequestMapping(value = "/reservebusiness.get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String reserveBoard(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Res> list = resmenuService.businessReserveList(map);
-		//int cnt = boardService.countBoardCnt();	//게시글 갯수 세기
-		resultMap.put("list", list);
-		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
-		return new Gson().toJson(resultMap);
-	}
     
     // 사업자 매출 관련
     @RequestMapping(value = "/reservebusiness1.get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -109,8 +62,6 @@ public class BuisnessController {
 		//resultMap.put("cnt", cnt);	//게시글 갯수 세기
 		return new Gson().toJson(resultMap);
 	}
-    
-
 	
 	// 사업자 일시품절 버튼
 	@RequestMapping(value = "/soldout.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

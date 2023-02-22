@@ -10,7 +10,6 @@
 	<script src="https://unpkg.com/vuejs-paginate@0.9.0"></script>
 	<jsp:include page="/layout/header.jsp"></jsp:include>
 	
-	<title>일반 회원 관리</title>
 </head>
 <style>
 img{
@@ -110,15 +109,9 @@ background:#ffff99;
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>{{resname}} 점포 리뷰 관리🙆‍♀️ - 검색버튼 활성화 필요</h2>‍
+			<h2>점포 리뷰 관리🙆‍♀️ - 검색버튼 활성화 필요</h2>‍
 			<div style="text-align: center;">
 			
-				<!-- <input type="text" placeholder="id 혹은 이름을 검색해 주세요" v-model="search"  v-on:keyup.enter="fnSearch"></input>
-				<button id="btn" @click="fnSearch">검색</button>	 검색기능 활성화 필요-->
-				
-		<!-- 		<input type="text" placeholder="검색어를 입력해 주세요" id="input"></input>		업종 리스트 출력하는 쿼리 생성 필요!!
-				<button id="btn"  >검색</button>  -->
-				
 				
 			</div>
 			<table class="board_list">
@@ -126,7 +119,6 @@ background:#ffff99;
 					<col width="5%"/>
 					<col width="10%"/> 
 					<col width="10%"/> 
-					
 					<col width="15%"/>
 					<col width="15%"/>
 					<col width="15%"/>
@@ -138,20 +130,17 @@ background:#ffff99;
 						<th scope="col">리뷰 번호</th>
 						<th scope="col">분류</th>
 						<th scope="col">제목</th>
-						<!-- <th scope="col">내용</th> -->
 						<th scope="col">별점</th>
 						<th scope="col">닉네임</th>
 						<th scope="col">날짜</th>
 					</tr>
 				</thead>
-				<!-- db 수정되면 알맞은 값 가져오기 -->
 				<tbody>
 					<tr v-for="(item, index) in list" >                            
 	                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="selectedItemList"></td>                       
 	                   <td @click="fnDetailreview(item)">{{item.reviewnum}}</td> 
 	                   <td @click="fnDetailreview(item)">{{item.categori}}</td> 
 	                   <td @click="fnDetailreview(item)">{{item.title}}</td>
-	                   <!-- <td>{{item.content}}</td> -->
 	                   <td @click="fnDetailreview(item)">{{item.grade}}</td>
 	                   <td @click="fnDetailreview(item)">{{item.nickname}}</td>
 	                   <td @click="fnDetailreview(item)">{{item.writedate}}</td> 
@@ -159,13 +148,23 @@ background:#ffff99;
 				</tbody>
 			</table>
 		<!-- 페이지 넘어가는 버튼들 -->		
-			  
+			<template>
+			<paginate
+			    :page-count="pageCount"
+			    :page-range="3"
+			    :margin-pages="2"
+			    :click-handler="changePage"
+			    :prev-text="'<'"
+			    :next-text="'>'"
+			    :container-class="'pagination'"
+			    :page-class="'page-item'">
+			  </paginate>
+			</template>			  
 		  	
 		  </div>	
 	</div>
 </body>
-
-
+<jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
 <script type="text/javascript">
 Vue.component('paginate', VuejsPaginate)
@@ -173,35 +172,55 @@ var app = new Vue({
 		el : '#app',
 		data : {
 			list :[]/* 게시판에 올려지는 글들은 다른 리스트 새로만들기  */
-	        
+			, selectPage: 1	// 기본 세팅이 1번 페이지로 맞추어져 있음.
+	       	, pageCount: 1	        
 	        ,selectedItemList:[]
 	        ,resnum : "${resnum}"
 	        ,userId : "${userId}"
 	        ,resname :  "${resname}"
 	        ,reviewnum :  ""
-
 	        ,categori : ""
 	        ,grade : ""
 	        ,nickname : ""
 	        ,writedate : ""
 		},
 		methods : {
-		fnGetReview : function() {
+    	// 기본 출력 메소드 - 검색도 여기서 진행함~~
+        fnGetReview : function(){
+            var self = this;
+            var startNum = ((self.selectPage-1) * 10);
+    		var lastNum = self.selectPage * 10;
+            var nparmap = {startNum : startNum, lastNum : lastNum, resnum: self.resnum};
+            $.ajax({
+                url:"/BuReviewList.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {                                       
+	                self.list = data.list1;
+	                self.pageCount = Math.ceil(data.cnt / 10);
+	                console.log(data.cnt);
+                }
+            }); 
+        } 		
+		// 페이지 전환 메소드
+		, changePage : function(pageNum) {
 			var self = this;
-			var nparmap = {resnum: self.resnum};
-			$.ajax({
-				url : "/searchReview2.dox",
-				dataType : "json",
-				type : "POST",
-				data : nparmap,
-				success : function(data) {
-					self.list = data.list1;
-					/* self.info = data.resimg; */
-					
-					console.log(self.list);
-					
-				}
-			});
+			self.selectPage = pageNum;
+			var startNum = ((pageNum-1) * 10);	// 한페이지에 10개씩 출력되도록 하기 위해 필요함
+			var lastNum = 10;
+	        var nparmap = {startNum : startNum, lastNum : lastNum, resnum: self.resnum};
+	        $.ajax({
+	            url:"/BuReviewList.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {                                       
+	                self.list = data.list1;
+	                self.pageCount = Math.ceil(data.cnt / 10);
+	                console.log(data);
+	            }
+	        }); 
 		}
 		,fnDetailreview : function(item){
 			var self = this;

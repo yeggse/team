@@ -50,11 +50,22 @@ public class ReviewServicelmpl implements ReviewService{
 		reviewMapper.deleteARev(map);
 	}
 	
+	
+	
+	
+	//사업자 리뷰리스트
 	@Override
-	public List<Review> selectreviewList2(HashMap<String, Object> map) throws Exception {
+	public List<Review> BuReviewList(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return reviewMapper.selectreviewList2(map);
+		return reviewMapper.BuReviewList(map);
 	}
+	// 사업자 리뷰리스트 갯수
+	@Override
+	public int BuReviewCnt(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return reviewMapper.BuReviewCnt(map);
+	}
+	
 
 	@Override
 	public void reviewFin(HashMap<String, Object> map) {
@@ -75,4 +86,5 @@ public class ReviewServicelmpl implements ReviewService{
 		// TODO Auto-generated method stub
 		reviewMapper.insertComment(map);
 	}
+
 }

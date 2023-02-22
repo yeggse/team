@@ -106,7 +106,7 @@ var app = new Vue({
       		  var lastNum = self.selectPage * 10;
               var nparmap = {startNum : startNum, lastNum : lastNum, resnum : self.resnum};
               $.ajax({
-                  url:"/reservebusiness.get.dox",
+                  url:"/businessNowRes.dox",
                   dataType:"json",	
                   type : "POST", 
                   data : nparmap,

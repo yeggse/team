@@ -62,10 +62,12 @@ public class ResmenuServiceImpl implements ResmenuService{
 			// TODO Auto-generated method stub
 			return resmenuMapper.insertreserve(map);
 		}
+		
+		// 사업자 예약 관리
 		@Override
-		public List<Res> businessReserveList(HashMap<String, Object> map) throws Exception {
+		public List<Res> businessNowRes(HashMap<String, Object> map) throws Exception {
 			// TODO Auto-generated method stub
-			return resmenuMapper.businessReserveList(map);
+			return resmenuMapper.businessNowRes(map);
 		}
 		
 		// 사업자 판매완료 버튼 이벤트

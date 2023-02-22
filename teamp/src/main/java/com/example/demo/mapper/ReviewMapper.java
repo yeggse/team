@@ -21,7 +21,13 @@ public interface ReviewMapper {
 	//관리자 리뷰 삭제
 	void deleteARev(HashMap<String, Object> map); 
 	
-	List<Review> selectreviewList2(HashMap<String, Object> map) throws Exception;
+	
+	// 사업자 리뷰리스트
+	List<Review> BuReviewList(HashMap<String, Object> map) throws Exception;
+	// 사업자 리뷰리스트 갯수
+	int BuReviewCnt(HashMap<String, Object> map);
+	
+	
 	void reviewFin(HashMap<String, Object> map);
 	//리뷰상세출력
 	Review detailReviewboard(HashMap<String, Object> map);
