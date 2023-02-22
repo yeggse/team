@@ -21,10 +21,8 @@
 		FROM
 			t3_restaurant	
 		where
-			1=1 and region = #{si} 
-			<if test='resname != null and resname != "" '>
+			region = #{si}  and reskind = #{reskind}
 			AND resname like concat('%', #{resname1}, '%')
-			</if>  
 		ORDER BY resnum ASC
 	</select>	
 	<!-- storeList_Clicked에 클릭했을때 식당들 불러오기위한 resnum -->

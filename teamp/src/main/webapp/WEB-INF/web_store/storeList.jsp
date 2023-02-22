@@ -176,7 +176,7 @@ var app = new Vue({
  	// 가게명 검색 이벤트 (식당 출력)
    	fnSearch : function(){
         var self = this;
-        var nparmap = {si : self.si,resname:self.resname1}; //다음 페이지로 넘어갈때 필요한 변수만 적어주기. 
+        var nparmap = {si : self.si, resname1 : self.resname1}; //다음 페이지로 넘어갈때 필요한 변수만 적어주기. 
         $.ajax({
             url:"/main.storelist/slist.dox",
             dataType:"json",	
