@@ -52,11 +52,11 @@
 				   	</div>
 			   	</div>
 			</div>
-			<div v-if="'${kind}' === 'B'">
+			<div>
 				<div style="font-size: 30px;">
 					사장님:{{info.answer}}
 				</div>
-			 	<div>
+			 	<div v-if="'${kind}' === 'B'">
 						<textarea rows="3" cols="100" v-model="answer"></textarea>
 						<button @click="fnComment" class="btn" style="margin-bottom:40px;">답변하기</button>
 				</div>
