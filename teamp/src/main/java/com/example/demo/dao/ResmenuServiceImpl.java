@@ -58,11 +58,6 @@ public class ResmenuServiceImpl implements ResmenuService{
 		}
 		
 		@Override
-		public List<Res> searchMenuname(HashMap<String, Object> map) throws Exception {
-			// TODO Auto-generated method stub
-			return resmenuMapper.searchMenuname(map);
-		}
-		@Override
 		public int insertreserve(HashMap<String, Object> map) throws Exception {
 			// TODO Auto-generated method stub
 			return resmenuMapper.insertreserve(map);
