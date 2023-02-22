@@ -187,7 +187,7 @@ display:none;
  	<div class="div0">
     	<p class="p1">어떤점이 좋았나요?</p>
    	 <div>
-    	  <input class="input1" Type="text" placeholder="리뷰를 입력해주세요" name="content" v-model="content"></imput>  
+    	  <input class="input1" Type="text" placeholder="리뷰를 입력해주세요" v-model="content"></imput>  
    	 </div>
  	</div>
 
@@ -200,14 +200,14 @@ display:none;
                 </div>
                 
                 <div class="div2">
-	                <input type="file" id="file3" name="file3">
+	                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
                 </div>
             </form>
   
     <!--취소/등록 버튼-->
           <div class="div3">
                <button class="btn1" @click="fnSave">취소</button>
-               <button class="btn1" @click="fnSave" id="radioButton">등록</button>
+               <button class="btn1" @click="fnSave">등록</button>
           </div>
     
    </div>

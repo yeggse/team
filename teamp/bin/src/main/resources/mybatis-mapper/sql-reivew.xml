@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.mapper.ReviewMapper">	
+ 	<!-- 식당별 리뷰리스트 -->
+	<select id="selectreviewList" parameterType="hashmap" resultType="com.example.demo.model.Review">	
+			SELECT 
+				reviewnum
+				,categori
+				,resnum
+				,title
+				,writedate
+				,content
+				,grade
+				,nickname
+				,create_id
+				
+			FROM
+				t3_review
+			where resnum = #{resnum}
+			ORDER BY writedate ASC
+			
+	</select>
+	
+	<!-- 관리자 리뷰리스트 -->
+	<select id="adminReviewList" parameterType="hashmap" resultType="com.example.demo.model.Review">	
+			SELECT 
+				reviewnum, categori, resnum ,title, writedate, content, grade, nickname, create_id, resname
+			FROM
+				t3_review
+			WHERE 1=1
+			<if test='reskind != null and reskind != "" '>
+			and (#{flg} or reskind = #{reskind}) 
+			</if>
+			<if test='resname != null and resname != "" '>
+			and resname = #{resname} 
+			</if>
+			<if test='categori != null and categori != "" '>
+			and categori = #{categori} 
+			</if>
+			ORDER BY writedate DESC
+			LIMIT #{startNum}, #{lastNum}
+	</select>
+	
+	<!-- 관리자 갯수 출력 -->
+	<select id="countAdminRCnt" parameterType="hashmap" resultType="int">	
+		SELECT 
+			COUNT(*) AS CNT
+		FROM
+			t3_review
+			WHERE 1=1
+			<if test='reskind != null and reskind != "" '>
+			and (#{flg} or reskind = #{reskind}) 
+			</if>
+			<if test='resname != null and resname != "" '>
+			and resname = #{resname} 
+			</if>
+			<if test='categori != null and categori != "" '>
+			and categori = #{categori} 
+			</if>
+	</select>
+	
+	<!-- 관리자 리뷰 상세 출력 // 동일 칼럼명 들어가 있을 경우. t i 등 지정필수 -->
+	<select id="ARevDetail" resultType="com.example.demo.model.Review">	
+		SELECT 
+			reviewnum, categori, resnum ,title, writedate, content, grade, nickname, create_id, resname
+		FROM
+			t3_review
+		WHERE
+			reviewnum = #{reviewnum}
+	</select>
+	
+	<!-- 관리자 리뷰 삭제 -->
+	<delete id="deleteARev" parameterType="hashmap">	
+		DELETE FROM 
+			t3_review 
+		WHERE 
+			reviewnum = #{reviewnum}
+			
+	</delete>
+	
+	<!-- 사업자 리뷰리스트 -->
+	<select id="selectreviewList2" parameterType="hashmap" resultType="com.example.demo.model.Review">	
+			SELECT 
+				reviewnum
+				,categori
+				,resnum
+				,title
+				,content
+				,writedate
+				,grade
+				,nickname
+				,answer
+				
+			FROM
+				t3_review
+			WHERE resnum = #{resnum}
+			ORDER BY writedate ASC
+	</select>
+	
+	<!-- 리뷰작성버튼 활성비활성 -->
+	
+	<update id="reviewFin" parameterType="hashmap" >	
+		UPDATE t3_reserve
+		SET
+			review = "Y" 
+		WHERE no = #{no}
+	</update>
+	
+	<!-- 리뷰 상세 출력 // 동일 칼럼명 들어가 있을 경우. t i 등 지정필수 -->
+	<select id="detailReviewboard" resultType="com.example.demo.model.Review">	
+		SELECT 
+			t.reviewnum, categori, resnum, title, writedate, content, grade, nickname, reskind, img, answer
+		FROM
+			t3_review t
+		LEFT OUTER JOIN t3_review_img i on t.reviewnum = i.reviewnum 
+		WHERE
+			t.reviewnum = #{reviewnum}
+	</select>
+	
+	<insert id="insertComment" parameterType="hashmap">	
+		update  t3_review
+		set answer = #{answer}  
+		where
+			reviewnum = #{reviewnum}
+	</insert>
+</mapper>

@@ -10,154 +10,88 @@
 </head>
 
 <style>
-/*별점*/
-
-
-#myform legend{
-  font-size:1rem;
-  text-align: center;
-  margin:auto;
+.text{
+  text-align:center;
+  font-size:2rem;
+  width:30rem;
+  height:20rem;
+}
+.btnphoto1{
+ 	 background:white;
+  	 color:black;
+ 	 border:2px solid black;
+ 	 width:27%;
+     height:6.3rem;
+     margin:0.6rem;
+     padding:0.4rem;
+     text-align:center;
+}
+.btnphoto2{
+ 	 background:white;
+  	 color:black;
+ 	 border:2px dashed black;
+ 	 width:27%;
+     height:6.3rem;
+     margin:0.6rem;
+     padding:0.4rem;
+     text-align:center;
+}
+.btncomplete{
+ 	 background:green;
+  	 color:white;
+ 	 border:none;
+ 	 width:30rem;
+     height:3rem;
+     margin:1rem;
+     font-size:2rem;
 }
 
+/*별점*/
+#myform fieldset{
+    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+    direction: rtl; /* 이모지 순서 반전 */
+    border: 0; /* 필드셋 테두리 제거 */
+}
+#myform fieldset legend{
+    text-align: left;
+}
 #myform input[type=radio]{
     display: none; /* 라디오박스 감춤 */
 }
 #myform label{
     font-size: 2rem; /* 이모지 크기 */
     color: transparent; /* 기존 이모지 컬러 제거 */
-    text-shadow: 0rem 0rem 0rem #f0f0f0; /* 새 이모지 색상 부여 */
+    text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
 }
 #myform label:hover{
-    text-shadow: 0rem 0rem 0rem gray; 
+    text-shadow: 0 0 0 gray; /* 마우스 호버 */
 }
 #myform label:hover ~ label{
-    text-shadow: 0rem 0rem 0rem gray; /* 호버 연속적으로 */
+    text-shadow: 0 0 0 gray; /* 마우스 호버 뒤에오는 이모지들 */
 }
 #myform input[type=radio]:checked ~ label{
-    text-shadow: 0rem 0rem 0rem #db4455; /* 마우스 클릭 체크 */
+    text-shadow: 0 0 0 yellow; /* 마우스 클릭 체크 */
 }
-
-.main{
-	margin:auto;
-	margin-top:5rem;
-  width:75rem;
-  height:46rem;
-  border: 1px solid;
-}
-
-
-#label{
-  margin:1rem 0rem 0rem 5rem;
-}
-
-#chooseFile:hover{
-  background:#dcdcdc;
-}
-
-.btn1{
-  width:32rem;
-  height:2.3rem;
-  margin:auto;
-  margin-left:0.5rem;
-  border:none;
-}
-.btn1:hover{
-  background:green;
-}
-
-#myform{
-  margin:auto;
-  margin-top:6rem;
-  width:70rem;
-  height:7rem;
-  border:1px solid;
-}
-#myform fieldset{
-	width:17rem;
-	margin:auto;
-	margin-left:26.5rem;
-	margin-top:-2rem;
-    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
-    direction: rtl; /* 이모지 순서 반전 */
-     border:1px solid;
-}
-.div00{
-width:12.5rem;
-height:4rem;
-margin:auto;
-margin-bottom:-5rem;
- border:1px solid;
- text-decoration: none;
-	color: #62F903;
-	text-shadow: 0px 0 black, 0 0px black, 0px 0 black, 0 0px black;
-}
-
-.div0{
-width:66rem;
-height:22rem;
-margin:auto;
-margin-top: 1rem;
- border:1px solid;
-}
-.p1{
-	width:10rem;
-	height:2rem;
-	margin:auto;
-	 border:1px solid;
-}
-
-.input1{
-  width:65rem;
-  height:19rem;
-	margin:auto;
-	margin-left: 0.5rem;
-  vertical-align : top;
-  text-align:left ;
-  
-  border:1px solid;
-}
-
 .div1{
-width:14rem;
-height:2rem;
-margin:auto;
-margin-left:28rem;
- border:1px solid;
+  width: 60rem;
+  height: 65rem;
+  padding: 1.3rem;
+  border: 2px solid black;
+  background: white;
+  position: absolute; 
+  left: 50%; 
+  transform: translateX(-50%); 
 }
-
 .div2{
-width:66rem;
-height:3rem;
-margin:auto;
- border:1px solid;
+  width: 30rem;
+  height: 50rem;
+  padding: 2rem;
+  border: 2px solid black;
+  background: white;
+  1position: absolute; 
+  left: 50%; 
+  transform: translateX(-50%); 
 }
-
-.div3{
-width:66rem;
-height:3rem;
-margin:auto;
- border:1px solid;
-}
-#chooseFile{
-  width: 65rem;
-  height:2rem;
-  margin: 0rem 0rem 0rem 0.5rem;
-  border:1px dotted black;
-   border:1px solid;
-}
-#filedset{
-width:17rem;
-height:8.5rem;
-margin:auto;
-margin-left:10rem;
- border:1px solid;
-}
-
-input::file-selector-button {
-display:none;
-}
-
-
 </style>
 
 
@@ -165,16 +99,15 @@ display:none;
 
 <body>
 <jsp:include page="/layout/mypagebody.jsp"></jsp:include>
-
-
-  <!--메인 프레임-->
-  <div id="app" class="main">
-    
-    <div class="div00"><h1>리뷰작성하기</h1></div>
- <!--별점-->
-    <form name="myform" id="myform" method="post" action="./save">
-              <fieldset id="filedset">
-                <legend><h4>?상품은 만족하셨나요</h4></legend>
+	<div id="app" style="width:2483.02px; padding-top:120px;" align="center">
+    <div class="div1"> <!--전체 div-->
+      <div class="div2"> <!--별점,텍스트 div-->
+        <h1 style="font-size:50px">리뷰 작성하기</h1>
+        <div>
+          <div>
+            <form name="myform" id="myform" method="post" action="./save">
+              <fieldset>
+                <legend><h2>별점</h2></legend>
                 <input @click="fnGrade" type="radio" name="rating" value="5" id="rate1" v-model = "grade"><label for="rate1">⭐</label>
                 <input @click="fnGrade" type="radio" name="rating" value="4" id="rate2" v-model = "grade"><label for="rate2">⭐</label>
                 <input @click="fnGrade" type="radio" name="rating" value="3" id="rate3" v-model = "grade"><label for="rate3">⭐</label>
@@ -182,50 +115,34 @@ display:none;
                 <input @click="fnGrade" type="radio" name="rating" value="1" id="rate5" v-model = "grade"><label for="rate5">⭐</label>
               </fieldset>
             </form>
-    
-	    <!--리뷰작성-->
- 	<div class="div0">
-    	<p class="p1">어떤점이 좋았나요?</p>
-   	 <div>
-    	  <input class="input1" Type="text" placeholder="리뷰를 입력해주세요" name="content" v-model="content"></imput>  
-   	 </div>
- 	</div>
-
-    <!--사진 첨부하기-->
-            <form method="post" enctype="multipart/form-data">
-              <div class="div1">
-                    <label id="label">
-                        📷 사진 첨부하기 
-                    </label>
-                </div>
-                
-                <div class="div2">
-	                <input type="file" id="file3" name="file3">
-                </div>
-            </form>
-  
-    <!--취소/등록 버튼-->
-          <div class="div3">
-               <button class="btn1" @click="fnSave">취소</button>
-               <button class="btn1" @click="fnSave" id="radioButton">등록</button>
+            <input type="text" name="title" placeholder="리뷰제목" v-model="title">
+          <div>
+            <input type="text" name="content" class="text" placeholder="음식에 대한 솔직한 리뷰를 남겨주세요." v-model="content">
           </div>
-    
+          <div>
+            <button class="btnphoto1">
+              <img src="https://cdn-icons-png.flaticon.com/512/158/158715.png" style="width:50px; height:50px;" alt="사진0/5">
+              <ol>사진첨부</ol>
+            </button>
+            <input type="file" id="file3" name="file3">
+			<!--  
+			<input type="file" onchange="readURL(this);">  //사진 미리보기 시도하려다 실패
+				-->            
+           <!--  <button class="btnphoto2">사진</button>
+            <button class="btnphoto2">사진</button> -->
+          </div>
+          <div>
+            <button  @click="fnSave" id="radioButton">완료</button>
+            수정할것: 레이아웃,rem, 사이즈,헤더 푸터 옆에거 연동 잘 해보기,클릭시 아래 페이지 나오게하기
+          </div>
+        </div>
+     </div>     
+    </div>
+   </div> <!--전체 div-->
    </div>
-
 </body>
   <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>  
-
-
-
-
-
-
-
-
-
-
-
 <script type="text/javascript">
 var app = new Vue({ 
     el: '#app',
