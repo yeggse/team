@@ -118,7 +118,7 @@ var app = new Vue({
 		// 수정하기 버튼
         , fnEdit : function(){
     		var self = this;
-   			self.pageChange("./main.board.edit.do", {boardIdx : self.idx});	// url이랑 index 모두 수정 필요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   			self.pageChange("./menu.edit.do", {boardIdx : self.idx});	// url이랑 index 모두 수정 필요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    		}
     	// 페이지 이동
     	, pageChange : function(url, param) {

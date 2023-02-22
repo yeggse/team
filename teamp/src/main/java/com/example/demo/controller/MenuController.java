@@ -30,6 +30,16 @@ public class MenuController {
     @Autowired
     HttpSession session;
 	
+    
+    @RequestMapping("/menu.edit.do") 
+    public String boardEdit(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+    	String id = (String)session.getAttribute("userIdSession");
+    	request.setAttribute("map", map);	// request : 해당페이지 호출하면서 해당 객체를 불러오는 것
+    	String kind = (String)session.getAttribute("KindSession");
+    	request.setAttribute("userId", id);
+    	request.setAttribute("kind", kind);
+    	return "/web_business/menuEdit"; // WEB-INF에서 호출할 파일명
+    }
 	
     // 웹 주소 :  메뉴 추가하기
     @RequestMapping("/menu.add.do") 
