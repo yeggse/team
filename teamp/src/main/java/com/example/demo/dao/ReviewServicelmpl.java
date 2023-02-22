@@ -52,7 +52,6 @@ public class ReviewServicelmpl implements ReviewService{
 	
 	
 	
-	
 	//사업자 리뷰리스트
 	@Override
 	public List<Review> BuReviewList(HashMap<String, Object> map) throws Exception {

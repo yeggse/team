@@ -21,7 +21,7 @@
 <jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
 	<div id="app" >
 		<div class="container">
-			<h2 style="margin-left: 30px;">{{id}} 님께서 받으신 오늘 예약🎈</h2>
+			<h2 style="margin-left: 30px;">{{id}} 님께서 받으신 오늘 예약🎈  : 아니왜 페이징 안되냐고오오오ㅠㅠㅠ</h2>
 			<div style="text-align: center;">
 			</div>
 			<table class="board_list">
@@ -125,9 +125,11 @@ var app = new Vue({
   	                self.list = data.list;
   	            	self.pageCount = Math.ceil(data.cnt / 10);
   	                console.log(self.list);  
+  	            	console.log(startNum+"startNum"); 
+  	            	console.log(lastNum+"lastNum"); 
                   }
               }); 
-              console.log(self.resnum);
+            console.log(self.resnum);
           } 
 		// 페이지 전환 메소드
 		, changePage : function(pageNum) {
@@ -142,7 +144,7 @@ var app = new Vue({
 	            type : "POST", 
 	            data : nparmap,
 	            success : function(data) {                                       
-	                self.list = data.list1;
+	                self.list = data.list;
 	                self.pageCount = Math.ceil(data.cnt / 10);
 	                console.log(data);
 	            }

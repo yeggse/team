@@ -226,10 +226,10 @@ public class ResmenuController {
     	HashMap<String, Object> map = new HashMap<String, Object>();
     	String kind = (String)session.getAttribute("KindSession");
     	String id = (String)session.getAttribute("userIdSession");
-	    	Integer resnum = (Integer)session.getAttribute("userResnumSession");
-	    	String reskind = (String)session.getAttribute("userReskindSession");
-	    	request.setAttribute("reskind", reskind); 
-	    	request.setAttribute("resnum",resnum); 
+	    Integer resnum = (Integer)session.getAttribute("userResnumSession");
+	    String reskind = (String)session.getAttribute("userReskindSession");
+	    request.setAttribute("reskind", reskind); 
+	    request.setAttribute("resnum",resnum); 
 		
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id);
@@ -240,8 +240,8 @@ public class ResmenuController {
     @RequestMapping(value = "/totalSales.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String reserveBoard1(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		
 		List<Res> list = resmenuService.totalSales(map);
 		int cnt = resmenuService.totalSalesCnt(map);	//게시글 갯수 세기
 		resultMap.put("list", list);
