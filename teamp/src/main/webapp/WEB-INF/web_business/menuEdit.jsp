@@ -113,8 +113,28 @@ var app = new Vue({
  
     } 
     , methods: {
+    	// 상세 기본 출력
+    	fnGetMenu : function(){
+            var self = this;
+            console.log("test == " + self.idx);
+            var nparmap = {idx : self.idx};
+            $.ajax({
+                url:"/menu.detail.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {       
+                    self.price = data.board.price;
+                    self.menuname = data.board.menuname;               	
+                    self.introduce = data.board.introduce;
+                    self.menuname = data.board.menuname;
+                    self.introduce = data.board.introduce;
+                    self.menuname = data.board.menuname;                
+                }
+            }); 
+        }
 		// 저장 버튼
-		fnSave : function(){
+		, fnSave : function(){
     		var self = this;
     		console.log(self.img);
 	      	var nparmap = {userId : self.userId, price : self.price, menuname : self.menuname, introduce : self.introduce, 
