@@ -81,7 +81,7 @@ public class ConsumerController {
     	request.setAttribute("nickname", nickname);
     	request.setAttribute("kind", kind);
     	request.setAttribute("userId", id); 
-    	return "/csstest/reviewwritetest"; // WEB-INF에서 호출할 파일명
+    	return "/review_write"; // WEB-INF에서 호출할 파일명
     }
   
 
