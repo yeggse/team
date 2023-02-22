@@ -121,7 +121,7 @@ select {
 			    disabled-border-color: #198754;
 			    gradient: none;
 		    }
-		    .btn {
+		    .btn1 {
 		   		width: 80px;
 		  		height: 43px;
 			    padding-x: 0.75rem;

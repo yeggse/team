@@ -98,7 +98,7 @@ img{
 	border: 0.1rem solid #a0a0a0 ;
 	margin-right: 2.5rem;
 	padding: 0px;
-	background: url("img/main/Mfood.png") no-repeat;
+	
 	float:left;
 }
 #imgbtn2 {
@@ -307,7 +307,7 @@ z-index: -100;
 
 <!-- 음식카테고리 -->
 <div class="div4">
-<button id="imgbtn1"></button>
+
 <button id="imgbtn2" @click="fnSiChange"></button>
 <button id="imgbtn3" @click="fnSiChange1"></button>
 <button id="imgbtn4" @click="fnSiChange2"></button>
@@ -321,7 +321,10 @@ z-index: -100;
 
 
 
+
 </div>
+
+
 <script>
 var slideIndex = 0;
 showSlides();
