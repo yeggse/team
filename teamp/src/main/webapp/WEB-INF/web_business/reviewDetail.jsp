@@ -53,7 +53,7 @@
 			   	</div>
 			</div>
 			<div>
-				<div style="font-size: 30px;">
+				<div v-if=" info.answer != null " style="font-size: 30px;">
 					사장님:{{info.answer}}
 				</div>
 			 	<div v-if="'${kind}' === 'B'">
