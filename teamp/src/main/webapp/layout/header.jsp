@@ -76,7 +76,7 @@
         <li><a href="main.do" class="nav-link px-2 link-secondary">Home</a></li>
         <li v-if="'${kind}' == ''"><a href="login.do" class="nav-link px-2 link-dark">My page</a></li>
         <li v-else-if="'${kind}' == 'A'"><a href="reservemy.do" class="nav-link px-2 link-dark">My page</a></li>
-        <li v-else-if="'${kind}' == 'B'"><a href="menumanagementbusiness.do" class="nav-link px-2 link-dark">My page</a></li>
+        <li v-else-if="'${kind}' == 'B'"><a href="menumanagement.do" class="nav-link px-2 link-dark">My page</a></li>
         <li v-else-if="'${kind}' == 'C'"><a href="normalMem.do" class="nav-link px-2 link-dark">My page</a></li>
         <li><a href="main.board.do" class="nav-link px-2 link-secondary">Notice</a></li> 
         <li><a href="main.do" class="nav-link px-2 link-secondary">About</a></li>
