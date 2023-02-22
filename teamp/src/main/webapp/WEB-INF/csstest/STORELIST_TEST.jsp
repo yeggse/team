@@ -14,42 +14,47 @@
 * {
 	font-family: 'Noto Sans KR', sans-serif;
 }
-.img{
-  width:3rem;
-  height:3rem;
-  position:absolute;
-  top:11.08rem;
-  left:46.5rem;
-  border:0.06rem solid;
-  border-radius:0.33rem;
+
+.img {
+	width: 3rem;
+	height: 3rem;
+	position: absolute;
+	top: 11.08rem;
+	left: 46.5rem;
+	border: 0.06rem solid;
+	border-radius: 0.33rem;
 }
 /* 지역선택라인 */
-.div2{
-width: 120rem; 
-  height:15rem;
-  margin:auto;
-  margin-top:5rem;
-  background-image:url(https://img.freepik.com/premium-photo/long-horizontal-banner-with-three-simple-donuts-on-blue-background-colorful-donuts-with-copy-space-i_158001-1380.jpg);
-}
-#gu{
-width:20rem;
-height:3rem;
-text-align:center;
-margin:auto;
-margin-top:6rem;
-}
-#gu:hover{
-border:0.15rem solid ;
+.div2 {
+	width: 120rem;
+	height: 15rem;
+	margin: auto;
+	margin-top: 5rem;
+	background-image:
+		url(https://img.freepik.com/premium-photo/long-horizontal-banner-with-three-simple-donuts-on-blue-background-colorful-donuts-with-copy-space-i_158001-1380.jpg);
 }
 
-.div0 {/* 검색라인 */
-	width:120rem;
-	height:4rem;
-	margin:auto;
- 	 border-bottom:0.15rem solid #dcdcdc;
+#gu {
+	width: 20rem;
+	height: 3rem;
+	text-align: center;
+	margin: auto;
+	margin-top: 6rem;
 }
-#span1{
-margin-left: 60rem;
+
+#gu:hover {
+	border: 0.15rem solid;
+}
+
+.div0 { /* 검색라인 */
+	width: 120rem;
+	height: 4rem;
+	margin: auto;
+	border-bottom: 0.15rem solid #dcdcdc;
+}
+
+#span1 {
+	margin-left: 60rem;
 }
 /* 추천순 */
 #btnList1 {
@@ -57,10 +62,10 @@ margin-left: 60rem;
 	font-weight: bold;
 	width: 5rem;
 	height: 3rem;
-	margin-left:0rem;
+	margin-left: 0rem;
 	background-color: #8FBC94;
 	font-size: large;
-  border:1px solid;
+	border: 1px solid;
 }
 /* 재고순 */
 #btnList2 {
@@ -70,23 +75,26 @@ margin-left: 60rem;
 	height: 3rem;
 	background-color: #8FBC94;
 	font-size: large;
-  border:1px solid;
+	border: 1px solid;
 }
+
 input {
 	width: 25rem;
 	height: 3.2rem;
-	margin-left:19rem;
-	margin-top:0.2rem;
+	margin-left: 19rem;
+	margin-top: 0.2rem;
 	box-sizing: border-box;
 	border: solid 0.14rem #dcdcdc;
 }
 
-#btnList1:hover{
-background: #dcdcdc;
+#btnList1:hover {
+	background: #dcdcdc;
 }
-#btnList2:hover{
-background: #dcdcdc;
+
+#btnList2:hover {
+	background: #dcdcdc;
 }
+
 #btn { /* 검색버튼 */
 	background-color: #8FBC94;
 	font-weight: bold;
@@ -96,54 +104,55 @@ background: #dcdcdc;
 	font-size: large;
 	color: white;
 }
-#btn:hover{
-background: #dcdcdc;
+
+#btn:hover {
+	background: #dcdcdc;
 }
 
-
 /*  음식점출력라인*/
-.div3{
-margin:auto;
-width: 120rem; 
-height:100%;
+.div3 {
+	margin: auto;
+	width: 120rem;
+	height: 100%;
 }
 
 /*td 메인프레임  */
-.div4{
-background-color: white; 
-display: flex; 
-text-align: center; 
-margin:auto;
-margin-bottom:1rem;
-margin-top:1rem;
-width: 60rem; 
-height: 7rem;
-  border:1px solid #dcdcdc;
-}
-.div4:hover{
-border: 0.15rem solid;
+.div4 {
+	background-color: white;
+	display: flex;
+	text-align: center;
+	margin: auto;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+	width: 60rem;
+	height: 7rem;
+	border: 0.15rem solid #dcdcdc;
 }
 
-#img1{
-width:12rem;
-height:6.7rem;
-vertical-align:middle;
-margin:auto;
-margin-left: 2rem;
+.div4:hover {
+	border: 0.15rem solid;
+}
+
+#img1 {
+	width: 12rem;
+	height: 6.7rem;
+	vertical-align: middle;
+	margin: auto;
+	margin-left: 2rem;
 }
 
 /*td 가게명 설명  */
-.div5{
-width:45rem;
-font-size: large; 
-font-weight: bold; 
-text-align:left;
-color: black; 
+.div5 {
+	width: 45rem;
+	font-size: large;
+	font-weight: bold;
+	text-align: left;
+	color: black;
 }
 
-.div6{
-margin:auto;
-margin-top:0.3rem;
+.div6 {
+	margin: auto;
+	margin-top: 0.3rem;
 }
 </style>
 
@@ -151,60 +160,58 @@ margin-top:0.3rem;
 
 	<!-- 메인 프레임 -->
 	<div id="app" style="width: 2483.02pxl" align="center">
-	
+
 		<!-- 지역선택 라인 -->
 		<div class="div2">
-			<img src="https://cdn-icons-gif.flaticon.com/6844/6844326.gif" class="img">
-			<select id="gu" name="gu" v-model="gu" @click="fnGet">
-				<option value="" >고객님의 지역을 선택해주세요</option>
+			<img src="https://cdn-icons-gif.flaticon.com/6844/6844326.gif"
+				class="img"> <select id="gu" name="gu" v-model="gu"
+				@click="fnGet">
+				<option value="">고객님의 지역을 선택해주세요</option>
 				<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
 			</select>
 		</div>
-		
+
 		<!-- 검색라인 -->
-	 	<div class="div0">
-	 		<button id="btnList1">추천순</button>
+		<div class="div0">
+			<button id="btnList1">추천순</button>
 			<button id="btnList2">재고순</button>
-			
-   			 	<input class="input1" type="text" placeholder="가게명을 검색해주세요." v-model="resname1" />
-    	 		<button id="btn" @click="fnSearch" >검색</button>
-  		</div>
-  		
+
+			<input class="input1" type="text" placeholder="가게명을 검색해주세요."
+				v-model="resname1" />
+			<button id="btn" @click="fnSearch">검색</button>
+		</div>
+
 		<!-- [기본 ] 음식점 출력!! -->
-			<!-- DB연결 후, 아래 링크 확인하고, 연동하기 -->
-			<!-- https://velog.io/@dldldl1022/Spring%EA%B3%BC-vue%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9E%A5%EC%86%8C-%EB%AA%A9%EB%A1%9D-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0 -->
-			<div class="div3">
-				<table>
+		<!-- DB연결 후, 아래 링크 확인하고, 연동하기 -->
+		<!-- https://velog.io/@dldldl1022/Spring%EA%B3%BC-vue%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9E%A5%EC%86%8C-%EB%AA%A9%EB%A1%9D-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0 -->
+		<div class="div3">
+			<table>
 				<!--  당분간은 주석해두기. 딱히 필요없어 보여서
 					<colgroup>
 						<col width="50%" />
 					</colgroup>
 				-->
-					<tbody>
-						<tr v-for="(item, index) in list">
-							<!-- 왼쪽라인 td -->
-							<td> 
-										<!-- 링크 확인!!!!!!!!!!!! -->
-										<div class="div4" @click="fnView(item)">
-											<img id="img1" src="img/main/point.PNG" > 
-											<div class="div5">
-												<div class="div6">
-													상호명 _ {{item.resname}} 
-												</div>
-												<div class="div6">
-													평점 _ ⭐{{item.grade}}점 
-												<div class="div6">
-													주소 _ {{item.resadd}}
-												</div>
-												</div>
-											</div>
-										</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+				<tbody>
+					<tr v-for="(item, index) in list">
+						<!-- 왼쪽라인 td -->
+						<td>
+							<!-- 링크 확인!!!!!!!!!!!! -->
+							<div class="div4" @click="fnView(item)">
+								<img id="img1" src="img/main/point.PNG">
+								<div class="div5">
+									<div class="div6">상호명 _ {{item.resname}}</div>
+									<div class="div6">
+										평점 _ ⭐{{item.grade}}점
+										<div class="div6">주소 _ {{item.resadd}}</div>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
+	</div>
 
 
 </body>
