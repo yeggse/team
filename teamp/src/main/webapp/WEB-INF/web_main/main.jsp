@@ -247,12 +247,6 @@ z-index: -100;
 <jsp:include page="/layout/header.jsp"></jsp:include>
 <body>
 <div id="app" class="main">
-<h2>Copyright � Safe Corp.All rights reserved</h2>
-
-
-
-
-
 
 <!-- 슬라이드 -->
 <div class="slideshow-container">
