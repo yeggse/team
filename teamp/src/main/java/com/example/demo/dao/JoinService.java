@@ -19,5 +19,7 @@ public interface JoinService {
 //     List<Join> pwdchange(HashMap<String, Object> map);
      
      void pwdchange(HashMap<String, Object> map); //선생님 버전
+     
+     // 회원 정보변경
      void datachange(HashMap<String, Object> map); //선생님 버전1
 }

@@ -59,6 +59,7 @@ public class JoinServiceImpl implements JoinService{
 		joinMapper.pwdchange(map);
 	} //선생님 버전
 
+	// 회원 정보변경
 	@Override
 	public void datachange(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub

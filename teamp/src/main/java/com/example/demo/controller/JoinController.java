@@ -131,24 +131,43 @@ public class JoinController {
 		}
 		
 		
-	    
+	// 일반회원 정보변경   
 	@RequestMapping("/datachange.do")
 	public String main2(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
     	String id = (String)session.getAttribute("userIdSession");
     	String name = (String)session.getAttribute("userNameSession");
+    	String address = (String)session.getAttribute("userAddressSession");
+    	String nickname = (String)session.getAttribute("userNicknameSession");
+    	String phonenum = (String)session.getAttribute("userPhonenumSession");
+    	String account = (String)session.getAttribute("userAccSession");
     	int frontregisnum = (Integer)session.getAttribute("userFrontregisnumSession");
     	int afterregisnum = (Integer)session.getAttribute("userAfterregisnumSession");
         String add = (String)session.getAttribute("userAddSession");
-        
+    	
+        request.setAttribute("usernickname", nickname);
+    	request.setAttribute("userphonenum", phonenum);
+    	request.setAttribute("useraccount",account);
     	request.setAttribute("userId", id);
     	request.setAttribute("userName", name);
+    	request.setAttribute("useraddress",address);
     	request.setAttribute("userFrontregisnum", frontregisnum);
     	request.setAttribute("userafterregisnum", afterregisnum);
     	request.setAttribute("userAdd", add);
     	
-		return "/datachange"; // WEB-INF에서 호출할 파일명
+		return "/web_account/MemDatachange"; // WEB-INF에서 호출할 파일명
 	}
+	
+	// 정보변경
+	@RequestMapping(value = "/datachange.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String datachange(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		joinService.datachange(map);
+		resultMap.put("message, ", "성공");
+		return new Gson().toJson(resultMap);
+	}
+	
 	@RequestMapping("/datachange2.do")
 	public String main3(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -177,7 +196,7 @@ public class JoinController {
     	request.setAttribute("userFrontregisnum", frontregisnum);
     	request.setAttribute("userafterregisnum", afterregisnum);
     	request.setAttribute("userAdd", add);
-		return "/datachange2"; // WEB-INF에서 호출할 파일명
+		return "/web_account/BumDatachange"; // WEB-INF에서 호출할 파일명
 	}
 	
 	@RequestMapping("/searchpwdchange.do") 
@@ -248,13 +267,6 @@ public class JoinController {
 		return new Gson().toJson(resultMap);
 	}
 	
-	@RequestMapping(value = "/datachange.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String datachange(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		joinService.datachange(map);
-		resultMap.put("message, ", "성공");
-		return new Gson().toJson(resultMap);
-	}
+
 
 }
