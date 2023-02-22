@@ -130,6 +130,7 @@ var app = new Vue({
               }); 
             console.log(self.resnum);
           } 
+    
 		// 페이지 전환 메소드
 		, changePage : function(pageNum) {
 			var self = this;
