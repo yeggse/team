@@ -114,7 +114,7 @@ var app = new Vue({
       		  var lastNum = self.selectPage * 10;
               var nparmap = {startNum : startNum, lastNum : lastNum,id:self.id};
               $.ajax({
-                  url:"/Res2.dox",
+                  url:"/paymentmy.dox",
                   dataType:"json",	
                   type : "POST", 
                   data : nparmap,

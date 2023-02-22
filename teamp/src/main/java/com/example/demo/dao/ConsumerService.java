@@ -5,6 +5,7 @@
 import java.util.List;
 
 import com.example.demo.model.Consumer;
+import com.example.demo.model.Res;
   
   
   public interface ConsumerService { 
@@ -14,5 +15,9 @@ import com.example.demo.model.Consumer;
 	  void insertReviewImg(HashMap<String, Object> map);
 	// 리뷰글 추가
 	  void addReview(HashMap<String, Object> map);
+	  
+		 //개인 결제내역
+		List<Res> selectPaymentmy1(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
+		
 }
  

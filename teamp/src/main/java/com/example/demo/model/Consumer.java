@@ -2,6 +2,9 @@
 package com.example.demo.model;
 
 public class Consumer {
+	private String supply;
+	private int sum;
+	private String soldout;
 	private int resnum;
 	private int price;
 	private int number;
@@ -34,6 +37,24 @@ public class Consumer {
 	private String orderdate;
 	private int menunum;
 	
+	public String getSupply() {
+		return supply;
+	}
+	public void setSupply(String supply) {
+		this.supply = supply;
+	}
+	public int getSum() {
+		return sum;
+	}
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
+	public String getSoldout() {
+		return soldout;
+	}
+	public void setSoldout(String soldout) {
+		this.soldout = soldout;
+	}
 	public String getCategori() {
 		return categori;
 	}
