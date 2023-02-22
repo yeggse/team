@@ -99,7 +99,7 @@ var app = new Vue({
         
     }   
     , methods: {
-    	// 기본 출력 메소드
+    	// 기본 출력
       fnGetList : function(){
               var self = this;
               var startNum = ((self.selectPage-1) * 10);
