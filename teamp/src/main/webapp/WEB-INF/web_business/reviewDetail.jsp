@@ -30,6 +30,8 @@
 		       color: white;
 		       padding: 0px;
 	       }
+	       
+	       
 </style>
 <body>
 	<div id="app">
@@ -51,11 +53,13 @@
 				   		{{info.content}}
 				   	</div>
 			   	</div>
+			   	
+			   	<div class = "card-body" v-if=" info.answer != null " style="font-size: 20px;">
+					<label style="display: inline-flex; border-radius:5px; background-color:darkgray;">사장님:{{info.answer}}</label>
+				</div>
 			</div>
 			<div>
-				<div v-if=" info.answer != null " style="font-size: 30px;">
-					사장님:{{info.answer}}
-				</div>
+				
 			 	<div v-if="'${kind}' === 'B'">
 						<textarea rows="3" cols="100" v-model="answer"></textarea>
 						<button @click="fnComment" class="btn" style="margin-bottom:40px;">답변하기</button>
