@@ -20,11 +20,11 @@
             border-radius: 10px;
             border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
          }   
-	       #btn{
+	       #btnn{
 		       background-color: #8FBC94;
 		       width: 80px;
 		       height: 40px;
-		       border-radius: 20px;
+		       border-radius: 10px;
 		       border: solid 2px #8FBC94;
 		       font-size: large;
 		       color: white;
@@ -38,12 +38,10 @@
 		<div class="container">
 			<h2>리뷰 상세보기 </h2>
 			<div class="card">
-				<h2 class="card-header p-4">
-					제목 : {{info.title}}
-				</h2>
+				<h2 class="card-header" style="font-size:larger; font-weight:600; text-align: center;"> 제목 : {{info.title}} </h2>
 				<div class="card-body1">
-					<h4 style="font-size: large; margin-left: 20px;">분류 : {{info.categori}}
-					<span class="badge badge-pill badge-dark pull-right" style="font-size: large; float: right;">작성일 : {{info.writedate}}</span></h4>
+					<h4 style="font-size: large; margin-left: 20px;">작성자 : {{info.nickname}}
+					<span class="badge badge-pill badge-dark pull-right" style="font-size: large; float: right;">리뷰 작성일 : {{info.writedate}}</span></h4>
 				</div>
 				<div class="card-body">
 				   	<div v-if="info.img != null" style="margin: 10px 10px 10px 10px;">	<!-- info.img : 이미지 경로(img/이미지 이름) DB 컬럼이랑 동일한 이름으로!-->
@@ -55,17 +53,23 @@
 			   	</div>
 			   	
 			   	<div class = "card-body" v-if=" info.answer != null " style="font-size: 20px;">
-					<label style="display: inline-flex; border-radius:5px; background-color:darkgray;">사장님:{{info.answer}}</label>
+					<label style="display: inline-flex; border-radius:5px; background-color:aliceblue; float: right;">사장님 댓글 작성 여부 : {{info.answer}}</label>
 				</div>
 			</div>
 			<div>
 				
 			 	<div v-if="'${kind}' === 'B'">
-						<textarea rows="3" cols="100" v-model="answer"></textarea>
-						<button @click="fnComment" class="btn" style="margin-bottom:40px;">답변하기</button>
+			 	<div class="card">
+			 	<h2 class="card-header" style="font-size:large; font-weight:600; text-align: center;"> 사장님! 리뷰에 대한 댓글을 작성해 주세요😊	 </h2>
+				<div class="card-body1">
+						<textarea rows="3" cols="100" v-model="answer" style="width: -webkit-fill-available; height: 200px;"></textarea>
+						<button @click="fnComment" id="btnn" style="margin-bottom:4px; float: right;">답변하기</button>
+				</div>
+			 	
+
 				</div>
 			</div>	
-				<button @click="fnList" class="btn" style="float: right;">목록으로</button>
+				<button @click="fnList" id="btnn" style="float: right; margin-bottom:200px; margin-right: 15px;">목록으로</button>
 		</div>
 	</div>
 	        

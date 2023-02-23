@@ -59,16 +59,18 @@
 		position:relative;
 		top:1px;
 	}
+	/* 화면 넘기는 아이템 디자인 */
 	.pagination {
-	        margin:1.5rem;
+	        margin:24px;
 	        display: inline-flex;
+	        
 	    }
 	.pagination li {
 	    min-width:32px;
 	    padding:2px 6px;
 	    text-align:center;
-	    margin:0 0.3rem;
-	    border-radius: 0.33rem;
+	    margin:0 3px;
+	    border-radius: 6px;
 	    border:1px solid #eee;
 	    color:#666;
 	}
@@ -79,12 +81,18 @@
 	    color:#666;
 	    text-decoration: none;
 	}
+		/* 페이징에 동그란 점 없어지게 하기 */
+		li{
+		list-style:none;
+		}
+		
+		/* 페이징 컬러 */
 	.pagination li.active {
-	    background-color : red;	/* #E7AA8D */
-	    color:white;
+	    background-color : #3e4149;	/* #E7AA8D */
+	    color:#fff;
 	}
 	 .pagination li.active a {
-	    color:whir;
+	    color:#fff;
 	} 
 	.tdinput{
 	width:2rem;
