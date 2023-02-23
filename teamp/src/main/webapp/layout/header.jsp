@@ -74,10 +74,10 @@
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="main.do" class="nav-link px-2 link-secondary">Home</a></li>
-        <li v-if="'${kind}' == ''"><a href="login.do" class="nav-link px-2 link-dark">My page</a></li>
-        <li v-else-if="'${kind}' == 'A'"><a href="reservemy.do" class="nav-link px-2 link-dark">My page</a></li>
-        <li v-else-if="'${kind}' == 'B'"><a href="menumanagement.do" class="nav-link px-2 link-dark">My page</a></li>
-        <li v-else-if="'${kind}' == 'C'"><a href="normalMem.do" class="nav-link px-2 link-dark">My page</a></li>
+        <li v-if="'${kind}' == ''"><a href="login.do" class="nav-link px-2 link-secondary">My page</a></li>
+        <li v-else-if="'${kind}' == 'A'"><a href="reservemy.do" class="nav-link px-2 link-secondary">My page</a></li>
+        <li v-else-if="'${kind}' == 'B'"><a href="menumanagement.do" class="nav-link px-2 link-secondary">My page</a></li>
+        <li v-else-if="'${kind}' == 'C'"><a href="normalMem.do" class="nav-link px-2 link-secondary">My page</a></li>
         <li><a href="main.board.do" class="nav-link px-2 link-secondary">Notice</a></li> 
         <li><a href="main.do" data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link px-2 link-secondary">About</a></li>
       </ul>
