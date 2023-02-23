@@ -85,7 +85,7 @@
       <div class="col-md-3 text-end">
         <button v-if="'${userId}' === ''" type="button" @click = "fnLogin" class="btn btn-outline-primary me-2">Login</button>
         <button v-else type="button" @click = "fnLogin" class="btn btn-outline-primary me-2">Log-out</button>
-        <button type="button" @click = "fnSignUp" class="btn btn-primary">Sign-up</button>
+        <button v-if="'' == '${userId}'" type="button" @click = "fnSignUp" class="btn btn-primary">Sign-up</button>
       </div>
     </header>
 	</div>
