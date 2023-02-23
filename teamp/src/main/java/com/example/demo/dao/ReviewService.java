@@ -33,4 +33,7 @@ public interface ReviewService {
 		List<Review> gradebring(HashMap<String, Object> map) throws Exception;
 		//별점업데이트메소드
 		void gradeupgrade(HashMap<String, Object> map);
+		//별점대 식당나열
+		List<Review> Resarray(HashMap<String, Object> map) throws Exception;
+		
 }

@@ -19,6 +19,7 @@ public class Review {
    private int no;
    private String answer;
    private float avg;
+   private float average;
    
    public String getResname() {
 	return resname;
@@ -118,6 +119,12 @@ public float getAvg() {
 }
 public void setAvg(float avg) {
 	this.avg = avg;
+}
+public float getAverage() {
+	return average;
+}
+public void setAverage(float average) {
+	this.average = average;
 }
 
 
