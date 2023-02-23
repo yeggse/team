@@ -466,13 +466,10 @@ background: #gray;
 					self.list1 = data.list1;
 					/* self.info = data.resimg; */
 					var sum = 0;
-					for(var i =0; i<self.list1.length; i++){
-						sum += (self.list1[i].grade)/self.list1.length;
-						
-					}
 					
-					self.grade = sum.toFixed(1);
-					console.log(self.list1);
+					if(data.list1.length > 0){
+						self.grade = data.list1[0].avg;	
+					}
 					
 				}
 			});

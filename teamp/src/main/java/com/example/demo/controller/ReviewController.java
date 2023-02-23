@@ -1,24 +1,19 @@
 package com.example.demo.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 import com.example.demo.dao.ReviewService;
-import com.example.demo.model.Admin;
 import com.example.demo.model.Review;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -176,5 +171,16 @@ public class ReviewController {
 		reviewservice.insertComment(map);
 		resultMap.put("message", "성공");
 		return new Gson().toJson(resultMap);
+	}
+ // DB가져오기 호출
+   	@PostMapping(value = "/review/gradebring.dox", produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String gradebring1(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+   		List<Review> list2 = reviewservice.selectreviewList(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+   		resultMap.put("list1", list2);
+   		reviewservice.gradeupgrade(map);
+   		System.out.println(list2);
+   		return new Gson().toJson(resultMap);
 	}
 }
