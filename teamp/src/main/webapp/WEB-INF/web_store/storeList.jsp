@@ -57,7 +57,7 @@ margin-left: 60rem;
 	font-weight: bold;
 	width: 5rem;
 	height: 3rem;
-	margin-left:0rem;
+	margin-right:5rem;
 	background-color: #8FBC94;
 	font-size: large;
   border:1px solid;
@@ -164,7 +164,6 @@ margin-top:0.3rem;
 		<!-- 검색라인 -->
 	 	<div class="div0">
 	 		<button @click="fnResarray" id="btnList1">추천순</button>
-			<button id="btnList2">재고순</button>
 			
    			 	<input class="input1" type="text" placeholder="가게명을 검색해주세요." v-model="resname1" />
     	 		<button id="btn" @click="fnSearch" >검색</button>

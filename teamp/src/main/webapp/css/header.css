@@ -1,6 +1,8 @@
 @CHARSET "UTF-8";
 
 .header{
+		width:120rem;
+		height:100%;
          position: fixed;
          top:0; 
          left: 0;

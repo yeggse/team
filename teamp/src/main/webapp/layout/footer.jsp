@@ -33,7 +33,8 @@
 						<span style="float: left; font-weight: bold; display: flex; align-items: center; font-size: 20px; font-family:Verdana; margin-top: 2px; color: red;">	 	   
 							고객센터 1599-11115 (유료)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 						</span >
-						<span style="float: right;"> <div style="font-weight: nomal; font-size: 10px; font-family:Verdana; margin-top: 2px; display: flex; align-items: center;">
+						<span style="float: right;"> 
+							<div style="font-weight: nomal; font-size: 10px; font-family:Verdana; margin-top: 2px; display: flex; align-items: center;">
 								31205) 인천광역시 부평구 부평 5동 122-68</div>
 							<div style="font-weight: nomal; font-size: 10px; font-family:Verdana; margin-top: 2px; display: flex; align-items: center;">
 								사업자 번호 : 109-457-12648-58</div>

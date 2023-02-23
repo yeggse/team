@@ -312,7 +312,7 @@ var app = new Vue({
        	           {}
        	       }); 
             	alert("리뷰 작성해 주셔서 감사합니다!");
-           		location.href="/main.do";
+           		location.href="/paymentmy.do";
             }
         }); 
      }

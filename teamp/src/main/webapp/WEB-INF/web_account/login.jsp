@@ -96,6 +96,7 @@
 	text-decoration: none;
 	font-size: 12px;
 	margin-right: 20px;
+	color:gray;
 }
 
 .asign {
@@ -103,6 +104,14 @@
 	margin-right: 70px;
 	margin-left: 35px;
 	font-size: 12px;
+	color:gray;
+}
+.asign1 {
+	text-decoration: none;
+	color:black;
+}
+.asign1:hover {
+border-bottom:0.1rem solid;
 }
 .afind:hover {
 	font-weight:bold;
@@ -129,6 +138,15 @@ input {
 	max-height: 90px;
 	position: absolute;
 	left: 50%;
+    transform: translate(-44%, -80%);
+	margin: auto;
+	margin-top:5rem;
+}
+.slideshow-container2 {
+	max-width: 31.25rem;
+	max-height: 5.6rem;
+	position: absolute;
+	left: 60.3rem;
     transform: translate(-44%, -80%);
 	margin: auto;
 	margin-top:5rem;
@@ -168,7 +186,7 @@ input {
 			</div>
 		</div>
 					<!-- 슬라이드 -->
-				<div  class="slideshow-container" style="z-index: 100;">
+				<div  class="slideshow-container2" style="z-index: 100;">
 					<div class="mySlides">
 					  <img src="img/design/naver.jpg" onclick="javascript:location.href='http://naver.com'" style="width:500px; height:90px">
 					  <div class="text"></div>
@@ -186,13 +204,13 @@ input {
 				</div>
 				
 		<!-- 로그인 footer -->
-		<div class="loginfooter"><a href="http://127.0.0.1:8080/main.do" class="asign">
+		<div class="loginfooter">
 			<span class="span">이용약관</span> <span class="span">개인정보 처리방침</span> 
 			<span class="span">운영정책</span> <span class="span">고객센터</span> 
-			<span class="span">공지사항</a></span>
+			<span class="span"><a href="http://127.0.0.1:8080/main.board.do" class="asign1">공지사항</a></span>
 			<div style="display: inline-block">
 				<img src="img/main/newlogo.png" width="30px" height="30px" style="float: left; display: flex; margin-right: 5px;">
-				<h4 style="float: right; display: flex; font-size:large;">Copyright © Safed Corp. All rights reserved.</h4>
+				<h4 style="float: right; display: flex; font-size:0.5rem;">Copyright © Safed Corp. All rights reserved.</h4>
 			</div>
 		</div>
 

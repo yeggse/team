@@ -93,7 +93,9 @@ img{
 	margin-right: 2.5rem;
 	padding: 0px;
 	background: url("img/main/Mkor.PNG") no-repeat;
+	background-size: cover;
 	float:left;
+	
 }
 #imgbtn3 {
 	width: 22rem;
@@ -102,6 +104,7 @@ img{
 	margin-right: 2.5rem;
 	padding: 0rem;
 	background: url("img/main/Mjap.PNG") no-repeat;
+	background-size: cover;
 		float:left;
 	
 }
@@ -112,6 +115,7 @@ img{
 	margin-right: 2.5rem;
 	padding: 0rem;
 	background: url("img/main/Mchi.PNG") no-repeat;
+	background-size: cover;
 		float:left;
 	
 }
@@ -122,6 +126,7 @@ img{
 	margin-right: 2.5rem;
 	padding: 0px;
 	background: url("img/main/Masia.PNG") no-repeat;
+	background-size: cover;
 		float:left;
 	
 }
@@ -132,6 +137,7 @@ img{
 	margin-right: 2.5rem;
 	padding: 0rem;
 	background: url("img/main/Mwe.PNG") no-repeat;
+	background-size: cover;
 		float:left;
 	
 }

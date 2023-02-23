@@ -10,12 +10,22 @@
 </head>
 <style>
 .input1{
-  width:11rem;
+  width:13rem;
   height: 3.2rem;
   margin: 1.2rem 0.3rem 0.3rem 0.3rem ;
   border: solid #ccc;
   border-width: 0 0 0.18rem;
   padding-right: 5rem;
+  font-size:0.8rem;
+}
+.input2{
+  width:13rem;
+  height: 3.2rem;
+  margin: 1.2rem 0.3rem 0.3rem 1.2rem ;
+  border: solid #ccc;
+  border-width: 0 0 0.18rem;
+  padding-right: 5rem;
+  font-size:0.8rem;
 }
 .title{
   font-size: 2rem;
@@ -118,11 +128,11 @@
   		</div>
   		<div>
             <span class="text4">새로운 비밀번호</span>
-    		<input class="input1" type="text" placeholder="새로운 비밀번호를 입력해주세요" v-model="newpwd" >
+    		<input class="input1" type="password" placeholder="새로운 비밀번호" v-model="newpwd" >
   		</div>
       	<div>
             <span class="text4">비밀번호 확인</span>
-    		<input class="input1" type="text" placeholder="새로운 비밀번호를 다시 입력해주세요" v-model="newpwdconfirm" >
+    		<input class="input2" type="password" placeholder="비밀번호 확인" v-model="newpwdconfirm" >
   		</div>
   		
       	
@@ -177,6 +187,7 @@
                 		alert("비밀번호가 일치하지 않습니다.");
                 	}else{
                 		alert("비밀번호가 변경되었습니다.");
+                		window.open("http://127.0.0.1:8080/login.do");  
                 		
                 	}         
                 }

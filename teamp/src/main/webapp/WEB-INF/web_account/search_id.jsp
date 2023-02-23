@@ -10,9 +10,9 @@
 </head>
 <style>
 .input1{
-  width:13rem;
+  width:17.3rem;
   height: 3.2rem;
-  margin: 1.2rem 0.3rem 0.3rem 0.3rem ;
+  margin: 1.2rem 0.3rem 0.3rem 1.2rem ;
   border: solid #ccc;
   border-width: 0 0 0.18rem;
   padding-right: 90px;
@@ -179,6 +179,8 @@ var app = new Vue({
             				name: self.name, 
             				frontregisnum: self.frontregisnum, 
             				afterregisnum: self.afterregisnum}; 
+          					
+            
            
             $.ajax({
                 url:"/searchid.dox",
@@ -193,6 +195,8 @@ var app = new Vue({
                 	if(data.result == "success"){
                 		alert(data.list[0].name + "님의 아이디는: " + data.list[0].id);
                 		self.id = data.list[0].id;
+                		window.open("http://127.0.0.1:8080/login.do");  
+                        
                 	} else {
                 		alert("일치하는 정보가 없습니다.");
                 	}

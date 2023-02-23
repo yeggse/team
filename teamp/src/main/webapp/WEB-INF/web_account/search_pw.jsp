@@ -10,15 +10,15 @@
 </head>
 <style>
 .input1{
-  width:13rem;
+  width:17rem;
   height: 3.2rem;
-  margin: 1.2rem 0.3rem 0.3rem 0.3rem ;
+  margin: 1.2rem 0.3rem 0.3rem -1rem ;
   border: solid #ccc;
   border-width: 0 0 0.18rem;
   padding-right: 90px;
 }
 .input2{
-  width:8.7rem;
+  width:7.4rem;
   height: 3.2rem;
   margin: 1.2rem 0.3rem 0.3rem 0.3rem ;
   border: solid #ccc;
