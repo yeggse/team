@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<meta name="format-detection" content="telephone=no">
 <script src="js/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <jsp:include page="/layout/header.jsp"></jsp:include>
@@ -17,11 +19,14 @@
 <!-- 구글 폰트 사용 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link type="text/css" rel="stylesheet" href="css/js-load.css" media="screen" />
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap"
 	rel="stylesheet">
 
 <link rel="stylesheet" href="css/bootstrap.css">
+<script type="text/javascript" src="js/js-load.js"></script>
+
 </head>
 
 
@@ -347,7 +352,7 @@ background: #gray;
 			</div>
 
 			<!-- 여기까지 테스트 -->
-			<div v-else>
+			
 				<div id="contents" style="width:825px">
 					<div id="js-load" class="main">
 						<ul class="container lists">
