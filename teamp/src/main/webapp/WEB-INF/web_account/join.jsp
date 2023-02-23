@@ -169,7 +169,7 @@ body{
 		<div class="div1">
 			아이디
 			<div>
-				<input type="text"  class="input2" v-model="id"></input>
+				<input type="text"  class="input2" v-model="id" @change="idcheck1"></input>
 				<button @click="fnCheck" class="btn1">중복확인</button>
 			</div>
 		</div>
@@ -235,7 +235,7 @@ body{
 		<div class="div1">
 			닉네임 
 			<div>
-				<input type="text" class="input2"  v-model="nickname" ></input>
+				<input type="text" class="input2"  v-model="nickname" @change="nickcheck1" ></input>
 				<button @click="fnnickCheck" class="btn1">중복확인</button>
 			</div>
 		</div>
@@ -295,6 +295,7 @@ body{
 					pwSame : false,
 					pwdtext: "",
 					pwdtext2: "",
+					pwdtext3: "",
 					pwdtextCheck:false
 					,siList : ${siList}
 					,guList : ${guList}
@@ -369,6 +370,16 @@ body{
 
 					}
 					// 회원가입
+					, idcheck1 : function(){
+						var self = this;
+						self.idcheck = false;
+						console.log("테스트");
+					}
+					, nickcheck1 : function(){
+						var self = this;
+						self.nickcheck = false;
+						
+					}
 					, fnjoin : function() {
 						var self = this;
 						var nparmap = {
