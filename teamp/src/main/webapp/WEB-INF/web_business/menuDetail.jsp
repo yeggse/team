@@ -56,7 +56,7 @@
 				</div>
 				<div class="card-body">
 				   	<div v-if="info.picture != null" style="margin: 10px 10px 10px 10px;">	<!-- info.img : 이미지 경로(img/이미지 이름) DB 컬럼이랑 동일한 이름으로!-->
-				   		<img :src="info.picture"/>	<!-- src앞에 콜론: 을 붙이면 변수로 지정가능 -->
+				   		<img :src="info.picture" style="max-width:300px; max-height:300px;"/>	<!-- src앞에 콜론: 을 붙이면 변수로 지정가능 -->
 				   	</div>
 				   	<div style="margin: 10px 10px 10px 10px;">
 				   		{{info.introduce}}
