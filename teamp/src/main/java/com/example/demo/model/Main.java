@@ -19,6 +19,7 @@ public class Main {
    private String review;
    private String salecomple;
    private int resacc;
+   private String average;
    
    
 
@@ -123,6 +124,12 @@ public int getResacc() {
 }
 public void setResacc(int resacc) {
 	this.resacc = resacc;
+}
+public String getAverage() {
+	return average;
+}
+public void setAverage(String average) {
+	this.average = average;
 }
 
 }

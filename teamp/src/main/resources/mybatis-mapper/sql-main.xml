@@ -5,13 +5,29 @@
 <mapper namespace="com.example.demo.mapper.MainMapper">	
 	<!-- 기본 출력 -->
 	<select id="firstList" parameterType="hashmap" resultType="com.example.demo.model.Main">	
-		SELECT
+		<!-- SELECT
 			resnum, region, startdate, reskind, resname, resphone, grade, resadd
 		FROM
 			t3_restaurant	
 		where 
-		region = #{si} AND reskind = #{reskind} And (region1 =#{gu} or #{flg}) <!-- 시/도에 있는거 가져오기 --> 
-		ORDER BY resnum ASC
+		region = #{si} AND reskind = #{reskind} And (region1 =#{gu} or #{flg}) 시/도에 있는거 가져오기 
+		ORDER BY resnum ASC -->
+		
+		select r.resnum, r.region, r.startdate, r.reskind, r.resname, r.resphone, r.grade, r.resadd, t.average
+		from t3_restaurant r
+		INNER JOIN (
+			select r.resnum, avg(r2.grade) as average from t3_restaurant r
+			INNER JOIN t3_review r2 on r.resnum = r2.resnum
+			group by r.resnum
+		) t on r.resnum = t.resnum
+		where 
+		r.region = #{si} AND r.reskind = #{reskind} And (r.region1 =#{gu} or #{flg})
+		<if test='recommend != null and recommend != "" and recommend=="0"'>
+			ORDER BY r.resnum ASC
+		</if>
+		<if test='recommend != null and recommend != "" and recommend=="1"'>
+			ORDER BY t.average DESC
+		</if>
 	</select>
 	
 	<!-- 식당명 검색 후 출력 -->

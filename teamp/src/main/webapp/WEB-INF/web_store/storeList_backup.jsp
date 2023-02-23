@@ -155,7 +155,7 @@ margin-top:0.3rem;
 		<!-- 지역선택 라인 -->
 		<div class="div2">
 			<img src="https://cdn-icons-gif.flaticon.com/6844/6844326.gif" class="img">
-			<select id="gu" name="gu" v-model="gu" @click="fnGet('0')">
+			<select id="gu" name="gu" v-model="gu" @click="fnGet">
 				<option value="" >고객님의 지역을 선택해주세요</option>
 				<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
 			</select>
@@ -163,7 +163,7 @@ margin-top:0.3rem;
 		
 		<!-- 검색라인 -->
 	 	<div class="div0">
-	 		<button @click="fnGet('1')" id="btnList1">추천순</button>
+	 		<button @click="fnResarray" id="btnList1">추천순</button>
 			
    			 	<input class="input1" type="text" placeholder="가게명을 검색해주세요." v-model="resname1" />
     	 		<button id="btn" @click="fnSearch" >검색</button>
@@ -230,7 +230,7 @@ var app = new Vue({
     }   
     , methods: {
     	// 기본 화면 출력 이벤트 (식당 출력)
-       	fnGet : function(recommend){
+       	fnGet : function(){
             var self = this;
             if(self.gu == ""){
             	self.flg = "1=1";
@@ -240,7 +240,7 @@ var app = new Vue({
             	self.flg = "";
             }
            
-            var nparmap = {si : self.si, reskind:self.reskind, gu : self.gu, flg:self.flg, recommend:recommend}; 
+            var nparmap = {si : self.si, reskind:self.reskind, gu : self.gu, flg:self.flg}; 
             $.ajax({
                 url:"/main.storelist/list.dox",
                 dataType:"json",	
@@ -339,7 +339,7 @@ var app = new Vue({
     }
     , created: function () {
 		var self = this;
-    	this.fnGet('0');
+    	this.fnGet();
 		self.fnGuList();
 		 
 	}
