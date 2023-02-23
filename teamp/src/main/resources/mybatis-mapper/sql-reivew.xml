@@ -16,7 +16,7 @@
 			and (#{flg} or reskind = #{reskind}) 
 			</if>
 			<if test='resname != null and resname != "" '>
-			and resname = #{resname} 
+			and resname like concat('%', #{resname}, '%') 
 			</if>
 			<if test='categori != null and categori != "" '>
 			and categori = #{categori} 
@@ -36,7 +36,7 @@
 			and (#{flg} or reskind = #{reskind}) 
 			</if>
 			<if test='resname != null and resname != "" '>
-			and resname = #{resname} 
+			and resname like concat('%', #{resname}, '%') 
 			</if>
 			<if test='categori != null and categori != "" '>
 			and categori = #{categori} 

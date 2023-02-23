@@ -72,7 +72,8 @@
 				</div>	
 				
 				<button @click="fnList" id="btnn" style="float: left; margin-bottom:200px; margin-right: 15px;">목록으로</button>
-		</div>
+			</div>
+			<button v-if="'${kind}'=='C'" @click="" id="btnn" style="float: left;">삭제</button>
 	</div>
 	        
 	</div>

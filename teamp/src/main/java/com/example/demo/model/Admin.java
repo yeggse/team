@@ -16,7 +16,7 @@ public class Admin {
     private int boardnum;
     private String kind;
     private String phonenum; 
-    private int acc; 
+    private long acc; 
     private String name; 
     private String address; 
     private int frontregisnum; 
@@ -148,10 +148,10 @@ public class Admin {
 	public void setPhonenum(String phonenum) {
 		this.phonenum = phonenum;
 	}
-	public int getAcc() {
+	public long getAcc() {
 		return acc;
 	}
-	public void setAcc(int acc) {
+	public void setAcc(long acc) {
 		this.acc = acc;
 	}
 	public String getName() {

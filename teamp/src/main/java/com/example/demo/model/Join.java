@@ -5,7 +5,7 @@ public class Join {
 	private String pwd;
 	private String kind;
 	private String phonenum;
-	private String acc;
+	private long acc;
 	private String name;
 	private String address;
 	private int frontregisnum;
@@ -24,10 +24,10 @@ public class Join {
 	public void setPhonenum(String phonenum) {
 		this.phonenum = phonenum;
 	}
-	public String getAcc() {
+	public long getAcc() {
 		return acc;
 	}
-	public void setAcc(String acc) {
+	public void setAcc(long acc) {
 		this.acc = acc;
 	}
 	public String getId() {
