@@ -71,6 +71,7 @@
 		<!-- 페이지 넘어가는 버튼들 -->			
 			<template>
 			<paginate
+				style="margin-bottom:200px;"
 			    :page-count="pageCount"
 			    :page-range="3"
 			    :margin-pages="2"
@@ -164,7 +165,7 @@ var app = new Vue({
 	       	        //form.append( "file1", $("#file1")[0].files[0] );	// <input name="file1" value="$("#file1")[0].files[0]"> 의미
 	       	     	//form.append( "idx",  data.idx);	// 여기에 있는 boardIdx는 어디로 가나?????
 	       	        
-	            	alert("게시글이 저장되었습니다.");
+	            	alert("판매 완료되었습니다.");
 	           		location.href="/reservebusiness.do";
 	            }
 	        }); 

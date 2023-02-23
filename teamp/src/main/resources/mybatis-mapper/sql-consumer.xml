@@ -33,7 +33,7 @@
 				resnum, ordererid, menuname, orderer, pickuptime, payment, price, review, salecomple, no, orderdate, menunum,resname,reskind
 			FROM
 				t3_reserve
-			where ordererid = #{id} AND salecomple = "N"
+			where ordererid = #{id} AND salecomple = "N" 
 			ORDER BY orderdate DESC
 			LIMIT #{startNum}, #{lastNum}
 			
@@ -44,7 +44,7 @@
 		SELECT 
 			COUNT(*) AS CNT
 		FROM
-			t3_reserve where 1=1 AND salecomple = "Y"
+			t3_reserve where 1=1 AND salecomple = "Y" 
 		<if test='id != null and id != "" '>
 			and ordererid = #{id}
 		</if>
