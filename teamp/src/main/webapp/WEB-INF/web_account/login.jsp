@@ -37,7 +37,7 @@
 	text-align: center;
 	padding: 10px;
 	margin-right: 400px;
-	margin-top: 50px;
+	margin-top: 1px;
 	font-weight: bold;
 	margin-bottom: -50px;
 }
@@ -192,7 +192,7 @@ input {
 			<span class="span">공지사항</a></span>
 			<div style="display: inline-block">
 				<img src="img/main/newlogo.png" width="30px" height="30px" style="float: left; display: flex; margin-right: 5px;">
-				<h4 style="float: right; display: flex;">Copyright © Safed Corp. All rights reserved.</h4>
+				<h4 style="float: right; display: flex; font-size:large;">Copyright © Safed Corp. All rights reserved.</h4>
 			</div>
 		</div>
 
