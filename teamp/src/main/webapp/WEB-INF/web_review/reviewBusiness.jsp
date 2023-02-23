@@ -12,97 +12,98 @@
 	
 </head>
 <style>
-img{
-width:6rem;
-height:6rem;
-}
-/* ----------------------------------------------------- */
-#input {
-   width: 25rem;
-   margin-top: 0rem;
-   padding: 0.66rem;
-   box-sizing: border-box;
-   border-radius: 0.66rem;
-   border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
-}
-   
-#btn{
-	background-color: #8FBC94;
-	width: 5rem;
-	height: 2.5rem;
-	border-radius: 1.25rem;
-	border: solid 2px #8FBC94;
-	font-size: large;
-	color: white;
-	padding: 0rem;
-}
-/* ------------------------------------------------------- */
-.myButton {
-	box-shadow:inset 0px 1px 0px 0px #a4e271;
-	background-color:#a5d296;
-	border-radius:6px;
-	border:1px solid #74b807;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-}
-.myButton:hover {
-	background:linear-gradient(to bottom, #77a809 5%, #89c403 100%);
-	background-color:#77a809;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
-}
-.pagination {
-        margin:1.5rem;
-        display: inline-flex;
-    }
-.pagination li {
-    min-width:32px;
-    padding:2px 6px;
-    text-align:center;
-    margin:0 0.3rem;
-    border-radius: 0.33rem;
-    border:1px solid #eee;
-    color:#666;
-}
-.pagination li:hover {
-    background: #E4DBD6;
-}
-.page-item a {
-    color:#666;
-    text-decoration: none;
-}
-.pagination li.active {
-    background-color : red;	/* #E7AA8D */
-    color:white;
-}
- .pagination li.active a {
-    color:whir;
-} 
-.tdinput{
-width:2rem;
-}
-.container {
-max-width:70rem; margin:auto; margin-top: 8rem;
-}	/* 게시글 출력 파트 */
+	img{
+	width:6rem;
+	height:6rem;
+	}
+	/* ----------------------------------------------------- */
+	#input {
+	   width: 25rem;
+	   margin-top: 0rem;
+	   padding: 0.66rem;
+	   box-sizing: border-box;
+	   border-radius: 0.66rem;
+	   border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
+	}
+	   
+	#btn{
+		background-color: #8FBC94;
+		width: 5rem;
+		height: 2.5rem;
+		border-radius: 1.25rem;
+		border: solid 2px #8FBC94;
+		font-size: large;
+		color: white;
+		padding: 0rem;
+	}
+	/* ------------------------------------------------------- */
+	.myButton {
+		box-shadow:inset 0px 1px 0px 0px #a4e271;
+		background-color:#a5d296;
+		border-radius:6px;
+		border:1px solid #74b807;
+		display:inline-block;
+		cursor:pointer;
+		color:#ffffff;
+		font-family:Arial;
+		font-size:15px;
+		font-weight:bold;
+		padding:6px 24px;
+		text-decoration:none;
+	}
+	.myButton:hover {
+		background:linear-gradient(to bottom, #77a809 5%, #89c403 100%);
+		background-color:#77a809;
+	}
+	.myButton:active {
+		position:relative;
+		top:1px;
+	}
+	.pagination {
+	        margin:1.5rem;
+	        display: inline-flex;
+	    }
+	.pagination li {
+	    min-width:32px;
+	    padding:2px 6px;
+	    text-align:center;
+	    margin:0 0.3rem;
+	    border-radius: 0.33rem;
+	    border:1px solid #eee;
+	    color:#666;
+	}
+	.pagination li:hover {
+	    background: #E4DBD6;
+	}
+	.page-item a {
+	    color:#666;
+	    text-decoration: none;
+	}
+	.pagination li.active {
+	    background-color : red;	/* #E7AA8D */
+	    color:white;
+	}
+	 .pagination li.active a {
+	    color:whir;
+	} 
+	.tdinput{
+	width:2rem;
+	}
+	.container {
+	max-width:70rem; margin:auto; margin-top: 8rem;
+	}
+	/* 게시글 출력 파트 */
 	.board_list thead th:first-child {background-image:none;}
 	.board_list thead th {border-bottom:1px solid #ccc; padding:13px 0; color:#3e4149; text-align: center; vertical-align:middle;}
-.board_list {
-table-layout:; width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:1rem 0rem;
-}
-.board_list tbody td {
-border-top:1px solid #ccc; padding:0.8rem 0rem; text-align:center; vertical-align:middle;
-}
-.board_list tbody tr:hover{
-background:#ffff99;
-}
+	.board_list {
+	table-layout:; width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:1rem 0rem;
+	}
+	.board_list tbody td {
+	border-top:1px solid #ccc; padding:0.8rem 0rem; text-align:center; vertical-align:middle;
+	}
+	.board_list tbody tr:hover{
+	background:#ffff99;
+	}
 </style>
 <body>
 <jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
