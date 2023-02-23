@@ -101,7 +101,7 @@ body {
 		</div>
 
 		<button @click="fnfix"
-			style="width: 200px; height: 35px; margin-top: 50px">수정하기</button>
+			style="width: 200px; height: 35px; margin-top: 50px; margin-bottom: 200px;">수정하기</button>
 
 	</div>
 </body>

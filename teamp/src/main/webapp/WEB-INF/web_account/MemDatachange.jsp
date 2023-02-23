@@ -66,7 +66,7 @@ body {
 		<div class="div2">
 			계좌번호 <input type="text" id="text1" v-model="account" style="margin-left: 45px" :placeholder='acc'></input>
 		</div>
-		<button @click="fnfix" style="width: 200px; height: 35px; margin-top: 50px">수정하기</button>
+		<button @click="fnfix" style="width: 200px; height: 35px; margin-top: 50px; margin-bottom: 200px;">수정하기</button>
 
 	</div>
 </body>
