@@ -110,8 +110,7 @@
  	<!-- 식당별 리뷰리스트 -->
 	<select id="selectreviewList" parameterType="hashmap" resultType="com.example.demo.model.Review">	
 			SELECT 
-			t.reviewnum, categori, resnum, title, writedate, content, grade, nickname, reskind, img, answer,
-			(select avg(grade) from t3_review where t.resnum = #{resnum}) as avg
+			t.reviewnum, categori, resnum, title, writedate, content, grade, nickname, reskind, img, answer,(select truncate(avg(grade),1) from t3_review where t.resnum = #{resnum}) as avg
 		FROM
 			t3_review t
 		LEFT OUTER JOIN t3_review_img i on t.reviewnum = i.reviewnum 
