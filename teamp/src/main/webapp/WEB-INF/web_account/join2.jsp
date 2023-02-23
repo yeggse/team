@@ -169,7 +169,7 @@ body{
 		<div class="div1">
 			아이디 
 			<div>
-				<input type="text" class="input2" v-model="id"	maxlength='13'></input>
+				<input type="text" class="input2" v-model="id"	maxlength='13' @change="idcheck1"></input>
 				<button class="btn1" @click="fnCheck">중복확인</button>
 			</div>
 		</div>
@@ -233,7 +233,7 @@ body{
 		<div class="div1">
 			닉네임 
 			<div>
-				<input type="text" class="input2" v-model="nickname" maxlength='10' ></input>
+				<input type="text" class="input2" v-model="nickname" maxlength='10' @change="nickcheck1"></input>
 				<button class="btn1" @click="fnnickCheck">중복확인</button>
 			</div>
 		</div>
@@ -266,7 +266,7 @@ body{
 		<div class="div1">
 			사업자번호 
 			<div>
-				<input type="text" class="input2" v-model="resnum"	maxlength='35'></input>
+				<input type="text" class="input2" v-model="resnum"	maxlength='35' @change="resnumcheck1"></input>
 				<button class="btn1" @click="fnresnumCheck">중복확인</button>
 			</div>
 		</div>
@@ -516,6 +516,21 @@ body{
 					alert("실명인증이 확인되었습니다. 다만, 주민 뒷번호 체크필요~~~~~~");
 					self.people = true;
 				}
+				
+			}
+			, idcheck1 : function(){
+				var self = this;
+				self.idcheck = false;
+				console.log("테스트");
+			}
+			, nickcheck1 : function(){
+				var self = this;
+				self.nickcheck = false;
+				
+			}
+			, resnumcheck1 : function(){
+				var self = this;
+				self.resnumcheck = false;
 				
 			}
 			// 회원가입
