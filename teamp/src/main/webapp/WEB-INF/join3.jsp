@@ -44,11 +44,6 @@
 }
 
 /*상호명 별점 가게설명  */
-.div1{
-width:50rem;
-height:10rem;
-
-}
 .title_food {
 	width:25rem;
 	height:9.9rem;
@@ -68,39 +63,38 @@ padding:2rem;
 text-align:left;
 }
 /* 버튼div  */
-.div2{
-width:51rem;
+#div2{
+width:100%;
 height:5rem;
 margin:auto;
 margin-bottom:-0.3rem;
+border-top:0.15rem solid #dedede;
+border-bottom:0.15rem solid white;
+
 }
 
 .btn1{
-width:24.87rem;
-height:4.7rem;
+width:49%;
+height:4.5rem;
 background:white;
-border-left: 0.15rem solid #dcdcdc;
-border-rigth: 0.15rem solid #dcdcdc;
-border-top:none;
-border-bottom:none;
-margin:0rem;
+border:none;
+border-right:0.3rem solid #dedede;
 }
 .btn1:hover{
-background: #dcdcdc;
+border-bottom: 0.3rem solid green;
 }
 .btn2{
-width:24.87rem;
-height:4.7rem;
+width:49%;
+height:4.5rem;
 background:white;
-border-left: none;
-border-right: 0.15rem solid #dcdcdc;
-border-top:none;
-border-bottom:none;
-margin:0rem;
+border:none;
+border-left:0.3rem solid #dedede;
 }
 .btn2:hover{
-background: #dcdcdc;
+border-bottom: 0.3rem solid green;
 }
+
+
 
 .count_menu {
 	width:15rem;
@@ -119,7 +113,6 @@ height:100%;
 .itemMain{
 width:55rem;
 height:10rem;
-
 }
 /* 메뉴사진  */
 .itemImg{
@@ -131,7 +124,6 @@ margin-left:1rem;
 margin-top:1rem;
 
 float: left; 
-border: 1px solid red; 
 }
 
 /* 메뉴설명 */
@@ -143,7 +135,8 @@ margin-left:0rem;
 margin-top:1rem;
 float: left;
 text-align:left;
-border: 1px solid green; 
+border: 0.15rem solid #dedede; 
+border-left:none;
 }
 
 /*메뉴 갯수 선택버튼  */
@@ -158,7 +151,7 @@ z-index:-1;
 .div1{
 width:50rem;
 height:100%;
-border:0.15rem solid #dcdcdc;
+border:0.15rem solid #dedede;
 }
 
 .input2{
@@ -176,7 +169,9 @@ height:2rem;
 margin:auto;
 margin-top:0.8rem;
 margin-right:5rem;
+border:none;
 }
+
 .btnPM:hover{
 background: #gray;
 }
@@ -201,14 +196,12 @@ background: #gray;
 				⭐평점:{{grade}}<br><br>
 				🏠가게위치:{{res.resadd}} 
 			</div>
+			<div id="div2">
+				<input type="button" class="btn1" @click="fnClick1" value="메뉴"></input>
+				<input type="button" class="btn2" @click="fnClick" value="리뷰 목록"></input>
+			</div>
 		</div>
 
-		<!-- 버튼 -->
-		<div class="div2">
-			<button class="btn1" @click="fnClick1">메뉴</button>
-			<button class="btn2" @click="fnClick">리뷰 목록</button>
-		</div>
-		
 		
 		<!-- 시작================================================================================================ -->
 			<!-- 여기부터 결제페이지까지 한 덩어리 -->
