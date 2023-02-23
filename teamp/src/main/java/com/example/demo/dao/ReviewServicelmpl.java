@@ -95,4 +95,9 @@ public class ReviewServicelmpl implements ReviewService{
 		// TODO Auto-generated method stub
 		reviewMapper.gradeupgrade(map);
 	}
+	@Override
+	public List<Review> Resarray(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return reviewMapper.Resarray(map);
+	}
 }

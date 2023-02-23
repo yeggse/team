@@ -163,7 +163,7 @@ margin-top:0.3rem;
 		
 		<!-- 검색라인 -->
 	 	<div class="div0">
-	 		<button @click="fnResarray" id="btnList1">추천순</button>
+	 		<button id="btnList1">추천순</button>
 			<button id="btnList2">재고순</button>
 			
    			 	<input class="input1" type="text" placeholder="가게명을 검색해주세요." v-model="resname1" />
@@ -181,7 +181,7 @@ margin-top:0.3rem;
 					</colgroup>
 				-->
 					<tbody>
-						<tr v-for="(item, index) in list">
+						<tr v-for="(item, index) in list1">
 							<!-- 왼쪽라인 td -->
 							<td> 
 										<!-- 링크 확인!!!!!!!!!!!! -->
@@ -215,7 +215,7 @@ margin-top:0.3rem;
 var app = new Vue({ 
     el: '#app',
     data: {
-    	list:[],
+    	list1:[],
     	searchList : [],
     	resname: "",
     	grade: "",
@@ -243,16 +243,16 @@ var app = new Vue({
            
             var nparmap = {si : self.si, reskind:self.reskind, gu : self.gu, flg:self.flg}; 
             $.ajax({
-                url:"/main.storelist/list.dox",
+                url:"/main.resarray/list.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
                 success : function(data) {/* 데이터가 제대로 넘어오면, success실행됨 */   
-                	self.list = data.list;
-   	            	if(self.list.length > 0){
-   	            		self.tempGrade = self.list[0].grade;
+                	self.list1 = data.list1;
+   	            	if(self.list1.length > 0){
+   	            		self.tempGrade = self.list1[0].grade;
    	            	}
-   	            	console.log(self.list)
+   	            	console.log(self.list1)
                 }
            });
     	},
@@ -332,11 +332,7 @@ var app = new Vue({
 		self.pageChange("/join3.do", {resnum : item.resnum, idx : item.idx}); //테스트 resnum(pk)로 찾아야 이름으로 중복된 식당충돌을 줄일 수 있음.
 		/*self.pageChange("/Mypage.do", {resnum : item.resnum, idx : item.idx});*///원래꺼 resnum(pk)로 찾아야 이름으로 중복된 식당충돌을 줄일 수 있음.
 	}
- 	, fnResarray: function(item){
-		var self = this;
-		self.pageChange("/main.resarray.do", {resnum : item.resnum, idx : item.idx}); //테스트 resnum(pk)로 찾아야 이름으로 중복된 식당충돌을 줄일 수 있음.
-		/*self.pageChange("/Mypage.do", {resnum : item.resnum, idx : item.idx});*///원래꺼 resnum(pk)로 찾아야 이름으로 중복된 식당충돌을 줄일 수 있음.
-	}
+    	
     }
     , created: function () {
 		var self = this;
