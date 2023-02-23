@@ -97,7 +97,7 @@ background:#ffff99;
 </style>
 <body>
 <jsp:include page="/layout/adminmypage.jsp"></jsp:include>
-	<div id="app">
+	<div id="app" style="margin-bottom:100px">
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
