@@ -210,7 +210,7 @@ display:none;
   
     <!--취소/등록 버튼-->
           <div class="div3">
-               <button class="btn1" @click="fnSave">취소</button>
+               <button class="btn1" @click="fncancel">취소</button>
                <button class="btn1" @click="fnSave" id="radioButton">등록</button>
           </div>
     
@@ -332,6 +332,39 @@ var app = new Vue({
 	           ,error: function (jqXHR) {}
 	       });
     	}
+		, fncancel : function(){
+	    	var self = this;
+	    	self.pageChange("/paymentmy.do", {nickname:self.nickname,content : self.content, img : self.img, grade: self.grade, reskind:self.reskind, resnum: self.resnum, title: self.title,resname:self.resname,no:self.no});
+	    }
+	    , pageChange : function(url, param) {
+			var target = "_self";
+			if(param == undefined){
+			//	this.linkCall(url);
+				return;
+			}
+			var form = document.createElement("form"); 
+			form.name = "dataform";
+			form.action = url;
+			form.method = "post";
+			form.target = target;
+			for(var name in param){
+				var item = name;
+				var val = "";
+				if(param[name] instanceof Object){
+					val = JSON.stringify(param[name]);
+				} else {
+					val = param[name];
+				}
+				var input = document.createElement("input");
+	    		input.type = "hidden";
+	    		input.name = item;
+	    		input.value = val;
+	    		form.insertBefore(input, null);
+			}
+			document.body.appendChild(form);
+			form.submit();
+			document.body.removeChild(form);
+		}
 		, change :function(item){
 	    	var self = this;
 	    	var nparmap = {no : item.no};
