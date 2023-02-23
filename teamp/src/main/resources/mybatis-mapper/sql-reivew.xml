@@ -135,4 +135,16 @@
 		where
 			reviewnum = #{reviewnum}
 	</insert>
+	
+	<!-- 식당 순서대로나열 -->
+	<select id="Resarray" resultType="com.example.demo.model.Review">
+		select * 
+		from t3_restaurant r
+		INNER JOIN (
+		select r.resnum, avg(r2.grade) as average from t3_restaurant r
+		INNER JOIN t3_review r2 on r.resnum = r2.resnum
+		group by r.resnum
+		) r2 on r.resnum = r2.resnum
+		order by average desc
+	</select>
 </mapper>
