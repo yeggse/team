@@ -33,6 +33,9 @@ public interface ReviewMapper {
 	Review detailReviewboard(HashMap<String, Object> map);
 	// 댓글
 	void insertComment(HashMap<String, Object> map);
+	// 댓글 작성 표시
+	void insertCommentCheck(HashMap<String, Object> map);
+	
 	//DB별점넣기 평점순대로 할려고
 	List<Review> gradebring(HashMap<String, Object> map) throws Exception;
 

@@ -4,17 +4,6 @@
 
 
 <mapper namespace="com.example.demo.mapper.ReviewMapper">	
- 	<!-- 식당별 리뷰리스트 -->
-	<select id="selectreviewList" parameterType="hashmap" resultType="com.example.demo.model.Review">	
-			SELECT 
-			t.reviewnum, categori, resnum, title, writedate, content, grade, nickname, reskind, img, answer,(select avg(grade) from t3_review where t.resnum = #{resnum}) as avg
-		FROM
-			t3_review t
-		LEFT OUTER JOIN t3_review_img i on t.reviewnum = i.reviewnum 
-		WHERE
-			t.resnum = #{resnum}
-			
-	</select>
 	
 	<!-- 관리자 리뷰리스트 -->
 	<select id="adminReviewList" parameterType="hashmap" resultType="com.example.demo.model.Review">	
@@ -73,20 +62,22 @@
 			
 	</delete>
 	
-	<!-- 사업자 리뷰리스트 출력-->
+	<!-- 사업자 리뷰리스트 출력                                                                                                   -->
 	<select id="BuReviewList" parameterType="hashmap" resultType="com.example.demo.model.Review">	
 			SELECT 
-				reviewnum
+				t.reviewnum
 				,categori
 				,resnum
 				,title
-				,content
+				,t.content
 				,writedate
 				,grade
 				,nickname
 				,answer
+				,a.comments
 			FROM
-				t3_review
+				t3_review t
+			LEFT OUTER JOIN t3_review_answer a on a.reviewnum = t.reviewnum 
 			WHERE 1=1	
 			<if test='resnum != null and resnum != "" '>
 			and resnum = #{resnum}
@@ -108,9 +99,20 @@
 	</select>
 	
 	
-		
+ 	<!-- 식당별 리뷰리스트 -->
+	<select id="selectreviewList" parameterType="hashmap" resultType="com.example.demo.model.Review">	
+			SELECT 
+			t.reviewnum, categori, resnum, title, writedate, content, grade, nickname, reskind, img, answer,
+			(select avg(grade) from t3_review where t.resnum = #{resnum}) as avg
+		FROM
+			t3_review t
+		LEFT OUTER JOIN t3_review_img i on t.reviewnum = i.reviewnum 
+		WHERE
+			t.resnum = #{resnum}
+			
+	</select>
+			
 	<!-- 리뷰작성버튼 활성비활성 -->
-	
 	<update id="reviewFin" parameterType="hashmap" >	
 		UPDATE t3_reserve
 		SET
@@ -120,21 +122,45 @@
 	
 	<!-- 리뷰 상세 출력 // 동일 칼럼명 들어가 있을 경우. t i 등 지정필수 -->
 	<select id="detailReviewboard" resultType="com.example.demo.model.Review">	
-		SELECT 
+<!-- 		SELECT 
 			t.reviewnum, categori, resnum, title, writedate, content, grade, nickname, reskind, img, answer
 		FROM
 			t3_review t
 		LEFT OUTER JOIN t3_review_img i on t.reviewnum = i.reviewnum 
 		WHERE
+			t.reviewnum = #{reviewnum} -->
+			
+		SELECT 
+			t.reviewnum, categori, resnum, title, writedate, content, grade, nickname, reskind,  answer, addr.img, comments, addr.writer, addr.createdate
+		FROM
+		t3_review t  
+        LEFT OUTER JOIN  
+		(SELECT 
+			ra.comments, ra.writer, ra.createdate, img, a.reviewnum
+		FROM
+			t3_review a
+		LEFT OUTER JOIN t3_review_answer ra on ra.reviewnum = a.reviewnum
+		LEFT OUTER JOIN t3_review_img i  on i.reviewnum = a.reviewnum ) addr on addr.reviewnum = t.reviewnum 
+		WHERE
 			t.reviewnum = #{reviewnum}
+            
 	</select>
 	
+	<!-- 사장님 댓글 작성   -->                                                                                                                             
 	<insert id="insertComment" parameterType="hashmap">	
-		update  t3_review
-		set answer = #{answer}  
-		where
-			reviewnum = #{reviewnum}
-	</insert>
+		INSERT INTO t3_review_answer 
+			(comments, writer, createdate, reviewnum) 
+		VALUES
+			(#{comments}, #{userId}, NOW() , #{reviewnum})
+	</insert> 
+	
+	<!-- 사장님 댓글 작성 표시   -->                                                                                                                             
+	<insert id="insertCommentCheck" parameterType="hashmap">	
+ 		update  t3_review
+		set answer="Y"
+		where reviewnum = #{reviewnum} 
+	</insert> 	
+	
 	
 	<!-- 식당 순서대로나열 -->
 	<select id="Resarray" resultType="com.example.demo.model.Review">

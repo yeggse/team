@@ -84,6 +84,7 @@ public class ReviewServicelmpl implements ReviewService{
 	public void insertComment(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		reviewMapper.insertComment(map);
+		reviewMapper.insertCommentCheck(map);
 	}
 	@Override
 	public List<Review> gradebring(HashMap<String, Object> map) throws Exception {

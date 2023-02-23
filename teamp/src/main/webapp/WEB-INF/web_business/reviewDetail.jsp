@@ -57,19 +57,21 @@
 				</div>
 			</div>
 			<div>
+			 	<div v-if="'${kind}' === 'B' && info.answer=='N'">
+			 	<div class="card" style="margin-bottom:0px; margin-top:40px;">
+			 	<h2 class="card-header" style=" font-size:large; font-weight:600; text-align: center;"> 사장님! 리뷰에 대한 댓글을 작성해 주세요😊	 </h2>
+				</div>
+					<textarea rows="3" cols="100" v-model="comments" style="margin-top:0px; width: -webkit-fill-available; height: 200px;"></textarea>
+					<button @click="fnComment" id="btnn" style="margin-bottom:4px; float: right;">답변하기</button>
+				</div>	
+				<div v-else if="'${kind}' === 'B' && info.answer=='Y'">
+			 	<div class="card" style="margin-bottom:0px; margin-top:40px;">
+			 	<h2 class="card-header" style=" font-size:large; font-weight:600; text-align: center;"> 사장님께서 작성하신 댓글입니다😊	 </h2>
+				</div>
+					<div class = "card-body" style="margin-top:0px; width: -webkit-fill-available; height: 200px;">{{info.comments}}</div>
+				</div>	
 				
-			 	<div v-if="'${kind}' === 'B'">
-			 	<div class="card">
-			 	<h2 class="card-header" style="font-size:large; font-weight:600; text-align: center;"> 사장님! 리뷰에 대한 댓글을 작성해 주세요😊	 </h2>
-				<div class="card-body1">
-						<textarea rows="3" cols="100" v-model="answer" style="width: -webkit-fill-available; height: 200px;"></textarea>
-						<button @click="fnComment" id="btnn" style="margin-bottom:4px; float: right;">답변하기</button>
-				</div>
-			 	
-
-				</div>
-			</div>	
-				<button @click="fnList" id="btnn" style="float: right; margin-bottom:200px; margin-right: 15px;">목록으로</button>
+				<button @click="fnList" id="btnn" style="float: left; margin-bottom:200px; margin-right: 15px;">목록으로</button>
 		</div>
 	</div>
 	        
@@ -87,13 +89,14 @@ var app = new Vue({
        , comment : ""
        , commentList : []
        , answer : ""
+       , comments : ""
        
     }   
     , methods: {
     	// 게시글 상세 기본 출력
     	fnGetReview : function(){
             var self = this;
-            var nparmap = {reviewnum : self.reviewnum};
+            var nparmap = {reviewnum : self.reviewnum, comments:self.comments};
             $.ajax({
                 url:"/detailReviewboard.dox",
                 dataType:"json",	
@@ -108,24 +111,29 @@ var app = new Vue({
                 }
             }); 
         }
-        
-    	/* , fnEdit : function(){
+          
+    	 , fnComment : function(){
 			var self = this;
-			self.pageChange("./main.board.edit.do", {noticenum : self.idx});	
+        	if(self.comments==""){
+        		alert("댓글을 작성해 주세요");
+        		return;
+        	} else{
+            	self.fnCommen();
+        	}				
 			
-		} */
-	    , fnComment : function(){
+		} 
+	    , fnCommen : function(){
 	        var self = this;
-	        var nparmap = {reviewnum : self.reviewnum, userId : self.userId, answer:self.answer};
+	        var nparmap = {reviewnum : self.reviewnum, userId : self.userId, answer:self.answer, comments:self.comments};
 	        $.ajax({
 	            url:"/reviewcomment.dox",
 	            dataType:"json",	
 	            type : "POST", 
 	            data : nparmap,
 	            success : function(data) {
-	            	alert("댓글을 등록했습니다.");
-	            	self.comment = "";
-	            	window.location.reload();
+		            	alert("댓글을 등록했습니다.");
+		            	self.comment = "";
+		            	self.fnList();
 	            }
 	        }); 
 	    }

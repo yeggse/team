@@ -29,6 +29,8 @@ public interface ReviewService {
 		HashMap<String, Object> detailReviewboard(HashMap<String, Object> map); // 데이터 호출을 위한 인터페이스
 	// 댓글 입력
 		void insertComment(HashMap<String, Object> map);
+
+
 		//DB별점넣기 평점순대로 할려고
 		List<Review> gradebring(HashMap<String, Object> map) throws Exception;
 		//별점업데이트메소드

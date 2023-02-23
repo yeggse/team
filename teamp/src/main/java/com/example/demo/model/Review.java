@@ -20,8 +20,16 @@ public class Review {
    private String answer;
    private float avg;
    private float average;
+   private String comments;
    
-   public String getResname() {
+   
+   public String getComments() {
+	return comments;
+}
+public void setComments(String comments) {
+	this.comments = comments;
+}
+public String getResname() {
 	return resname;
 }
 public void setResname(String resname) {
