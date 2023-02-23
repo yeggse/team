@@ -183,7 +183,7 @@ public class JoinController {
         String add = (String)session.getAttribute("userAddSession");
     	String resname = (String)session.getAttribute("userResnameSession");
     	int resnum = (Integer)session.getAttribute("userResnumSession");
-    	int resphone = (Integer)session.getAttribute("userResphone");
+    	String resphone = (String)session.getAttribute("userResphone");
     	
         HashMap<String, Object> map1 = new HashMap<String, Object>();
 		 List<Area> siList = mainService1.selectSiList(map); map.put("si",

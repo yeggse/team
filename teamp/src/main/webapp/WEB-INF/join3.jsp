@@ -49,6 +49,11 @@
 }
 
 /*상호명 별점 가게설명  */
+.div1{
+width:50rem;
+height:10rem;
+
+}
 .title_food {
 	width:25rem;
 	height:9.9rem;
@@ -68,38 +73,39 @@ padding:2rem;
 text-align:left;
 }
 /* 버튼div  */
-#div2{
-width:100%;
+.div2{
+width:51rem;
 height:5rem;
 margin:auto;
 margin-bottom:-0.3rem;
-border-top:0.15rem solid #dedede;
-border-bottom:0.15rem solid white;
-
 }
 
 .btn1{
-width:49%;
-height:4.5rem;
+width:24.87rem;
+height:4.7rem;
 background:white;
-border:none;
-border-right:0.3rem solid #dedede;
+border-left: 0.15rem solid #dcdcdc;
+border-rigth: 0.15rem solid #dcdcdc;
+border-top:none;
+border-bottom:none;
+margin:0rem;
 }
 .btn1:hover{
-border-bottom: 0.3rem solid green;
+background: #dcdcdc;
 }
 .btn2{
-width:49%;
-height:4.5rem;
+width:24.87rem;
+height:4.7rem;
 background:white;
-border:none;
-border-left:0.3rem solid #dedede;
+border-left: none;
+border-right: 0.15rem solid #dcdcdc;
+border-top:none;
+border-bottom:none;
+margin:0rem;
 }
 .btn2:hover{
-border-bottom: 0.3rem solid green;
+background: #dcdcdc;
 }
-
-
 
 .count_menu {
 	width:15rem;
@@ -118,6 +124,7 @@ height:100%;
 .itemMain{
 width:55rem;
 height:10rem;
+
 }
 /* 메뉴사진  */
 .itemImg{
@@ -129,6 +136,7 @@ margin-left:1rem;
 margin-top:1rem;
 
 float: left; 
+border: 1px solid red; 
 }
 
 /* 메뉴설명 */
@@ -140,11 +148,10 @@ margin-left:0rem;
 margin-top:1rem;
 float: left;
 text-align:left;
-border: 0.15rem solid #dedede; 
-border-left:none;
+border: 1px solid green; 
 }
 
-/*메뉴 갯수 선택버튼 */
+/*메뉴 갯수 선택버튼  */
 .itemBtn{
 width:3.5rem;
 height:8.1rem;
@@ -156,7 +163,7 @@ z-index:-1;
 .div1{
 width:50rem;
 height:100%;
-border:0.15rem solid #dedede;
+border:0.15rem solid #dcdcdc;
 }
 
 .input2{
@@ -174,9 +181,7 @@ height:2rem;
 margin:auto;
 margin-top:0.8rem;
 margin-right:5rem;
-border:none;
 }
-
 .btnPM:hover{
 background: #gray;
 }
@@ -201,12 +206,14 @@ background: #gray;
 				⭐평점:{{grade}}<br><br>
 				🏠가게위치:{{res.resadd}} 
 			</div>
-			<div id="div2">
-				<input type="button" class="btn1" @click="fnClick1" value="메뉴"></input>
-				<input type="button" class="btn2" @click="fnClick" value="리뷰 목록"></input>
-			</div>
 		</div>
 
+		<!-- 버튼 -->
+		<div class="div2">
+			<button class="btn1" @click="fnClick1">메뉴</button>
+			<button class="btn2" @click="fnClick">리뷰 목록</button>
+		</div>
+		
 		
 		<!-- 시작================================================================================================ -->
 			<!-- 여기부터 결제페이지까지 한 덩어리 -->
@@ -348,9 +355,9 @@ background: #gray;
 			
 				<div id="contents" style="width:825px">
 					<div id="js-load" class="main">
-						<ul class="container lists">
+						<ul class="container lists" >
 							<h2>리뷰 상세보기</h2>
-							<li class="card lists_item js-load" v-for="(item, index) in list1">
+							<li class="card lists_item js-load" v-for="(item, index) in list1" style ="z-index:-100;">
 								<h2 class="card-header p-4">제목 : {{item.title}}</h2>
 								<div class="card-body1">
 									<h4 style="font-size: large; margin-left: 20px;">
@@ -361,11 +368,11 @@ background: #gray;
 									</h4>
 								</div>
 								<div class="card-body">
-									<div v-if="item.img != null"
+									<div v-if="item.img != undefined"
 										style="margin: 10px 10px 10px 10px;">
-										<!-- info.img : 이미지 경로(img/이미지 이름) DB 컬럼이랑 동일한 이름으로!-->
+										info.img : 이미지 경로(img/이미지 이름) DB 컬럼이랑 동일한 이름으로!
 										<img :src="item.img" />
-										<!-- src앞에 콜론: 을 붙이면 변수로 지정가능 -->
+										src앞에 콜론: 을 붙이면 변수로 지정가능
 									</div>
 									<div style="margin: 10px 10px 10px 10px;">
 										{{item.content}}</div>
@@ -464,7 +471,7 @@ background: #gray;
 					self.list1 = data.list1;
 					/* self.info = data.resimg; */
 					var sum = 0;
-					
+					console.log("list1 ====", self.list1);
 					if(data.list1.length > 0){
 						self.grade = data.list1[0].avg;	
 					}

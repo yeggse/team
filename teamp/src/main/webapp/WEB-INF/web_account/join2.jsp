@@ -210,8 +210,8 @@ body{
 		<div class="div1">
 			주민번호 
 			<div>
-				<input type="text" class="input3" v-model="age" maxlength='6' ></input>
-				- <input type="password" class="input3" v-model="age1"maxlength='7' ></input>
+				<input type="text" class="input3" v-model="age" onkeypress='return checkNumber(event)' maxlength='6' ></input>
+				- <input type="password" class="input3" onkeypress='return checkNumber(event)' v-model="age1"maxlength='7' ></input>
 				<button class="btn1" @click="fnPeople">실명인증</button>
 			</div>
 		</div>
@@ -220,11 +220,11 @@ body{
 		<div class="div1">
 			주소
 			<div>
-				<select id="si" name="si" v-model="address" class="input4" @change="fnGuList">
+				<select id="si1" name="si1" v-model="address" class="input4" @change="fnGuList1">
 					<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
 				</select>
-				<select id="gu" name="gu" v-model="address1" class="input4">
-					<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
+				<select id="gu1" name="gu1" v-model="address1" class="input4">
+					<option v-for="item in guList1" v-bind:value="item.gu">{{item.gu}}</option>
 				</select>
 			</div>
 		</div>
@@ -242,7 +242,7 @@ body{
 		<div class="div1">
 			연락처 
 			<div>
-				<input type="text" class="input1" v-model="num" maxlength='16' ></input>
+				<input type="text" class="input1" v-model="num" placeholder="-빼고 핸드폰번호 11자리를 입력해주세요" onkeypress='return checkNumber(event);' maxlength='11' ></input>
 			</div>
 		</div>
 	
@@ -250,7 +250,7 @@ body{
 		<div class="div1">
 			계좌번호 
 			<div>
-				<input type="text" class="input1" v-model="account" maxlength='26'></input>
+				<input type="text" class="input1" v-model="account" placeholder="-빼고 계좌번호 13자리를 입력해주세요" onkeypress='return checkNumber(event);' maxlength='13'></input>
 			</div>
 		</div>
 	
@@ -266,7 +266,7 @@ body{
 		<div class="div1">
 			사업자번호 
 			<div>
-				<input type="text" class="input2" v-model="resnum"	maxlength='35' @change="resnumcheck1"></input>
+				<input type="text" class="input2" v-model="resnum"	onkeypress='return checkNumber(event)' maxlength='35' @change="resnumcheck1"></input>
 				<button class="btn1" @click="fnresnumCheck">중복확인</button>
 			</div>
 		</div>
@@ -309,7 +309,7 @@ body{
 		<div class="div1">
 			점포번호 
 			<div>
-				<input type="text" class="input1" v-model="resphonenum" maxlength='16'></input>
+				<input type="text" class="input1" v-model="resphonenum" placeholder="-빼고 번호 10~11자리를 입력해주세요" onkeypress='return checkNumber(event)' maxlength='11'></input>
 			</div>
 		</div>
 	
@@ -324,6 +324,20 @@ body{
 		</div>
 	
 	</div>
+	<script>
+	function checkNumber(event) {
+		  if(event.key === '.' 
+		     || event.key === '-'
+		     || event.key >= 0 && event.key <= 9) {
+		    return true;
+		  }
+		  
+		  return false;
+		  
+		}
+	
+	
+	</script>
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
@@ -348,6 +362,7 @@ body{
 			age : "",
 			age1 : "",
 			address : "",
+			address1 : "",
 			account : "",
 			nickname : "",
 			num : "",
@@ -370,7 +385,8 @@ body{
 			pwdtextCheck:false,
 			people : false,
 			siList : ${siList},
-			guList : ${guList}
+			guList : ${guList},
+			guList1 : []
 		},
 		methods : {
 			//아이디 중복확인
@@ -441,6 +457,21 @@ body{
 	                }
 	            }); 
 	        }
+			,fnGuList1 : function(){
+	    		var self = this;
+	            var nparmap = {si : self.address};
+	            $.ajax({
+	                url:"/gu/list.dox",
+	                dataType:"json",	
+	                type : "POST", 
+	                data : nparmap,
+	                success : function(data) {                                       
+		                self.guList1 = data.guList;
+		                console.log(data.guList);
+		                self.gu = "";
+	                }
+	            }); 
+	        }
 			//사업자번호 중복확인
 			,fnresnumCheck : function() {
 				var self = this;
@@ -505,16 +536,12 @@ body{
 			, fnPeople : function(){
 				var self = this;
 				var nparmap = {age : self.age, age1 : self.age1};
-				var pattern1 = /[0-9]/;
-				if(self.age == "" || self.age1 == ""){
-					alert("내용을 입력하세요");
-				} else if(!pattern1.test(self.age) || !pattern1.test(self.age1)){
-					alert("숫자만 입력하세요");
-					self.age ="";
-					self.age1 = "";
-				} else{
-					alert("실명인증이 확인되었습니다. 다만, 주민 뒷번호 체크필요~~~~~");
+				if(self.age.length == 6 && self.age1.length == 7){
+					alert("실명인증이 확인되었습니다.");
 					self.people = true;
+				} 
+				else{
+					alert("정말로 전부 입력하셨나요?");
 				}
 				
 			}
@@ -545,6 +572,7 @@ body{
 					acc : self.account,
 					name : self.name,
 					address : self.address,
+					address1 : self.address1,
 					frontregisnum : self.age,
 					afterregisnum : self.age1,
 					nickname : self.nickname,
@@ -569,11 +597,6 @@ body{
 					console.log(self.id);
 					console.log(self.resphonenum)
 					alert("빈칸을 확인해주세요");
-				} else if(!pattern1.test(self.resphonenum) ||!pattern1.test(self.num) ){
-					alert("연락처와 점포번호는 숫자만 입력해 주세요");
-				} else if(!pattern1.test(self.account)){
-					alert("계좌번호는 숫자만 입력해 주세요");
-					self.account ="";
 				} else if(!self.people){
 					alert("실명인증을 해 주세요");
 				} else if (!self.pwSame) {

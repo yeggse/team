@@ -43,13 +43,16 @@ body {
 		<div class="div2">아이디 : {{id}}</div>
 
 		<div class="div2">
-			패스워드 <input type="password" id="text1" v-model="pwd" @change="fnPwcheck" style="margin-left: 45px"></input>
+			패스워드 <input type="password" id="text1" v-model="pwd" @change="fnPwcheck" style="margin-left: 45px" maxlength='16' @change="fnPwSame"></input>
 		</div>
         <div v-if = "pwdtextCheck" style ="color : blue">{{pwdtext}}</div>
 		<div v-else style ="color : red">{{pwdtext}}</div>
 		<div class="div2">
 			패스워드 확인 <input type="password" id="text1" v-model="pwd2" style="margin-left: 12px"></input>
 		</div>
+		<!-- 비밀번호 일치확인 기능 -->
+		<div v-if = "pwSame" id="okPwd">{{pwdtext3}}</div>
+		<div v-else id="noPwd">{{pwdtext3}}</div>
 		<div class="div2">이름 : {{name}}</div>
 		<div class="div2">생년월일 : {{age}}</div>
 		<div class="div2">
@@ -61,14 +64,25 @@ body {
 			
 		</div>
 		<div class="div2">
-			연락처 <input type="text" id="text1" v-model="phonenum" style="margin-left: 60px" :placeholder='phonenum'></input>
+			연락처 <input type="text" id="text1" v-model="phonenum" style="margin-left: 60px" :placeholder='phonenum' onkeypress='return checkNumber(event)' maxlength='11'></input>
 		</div>
 		<div class="div2">
-			계좌번호 <input type="text" id="text1" v-model="account" style="margin-left: 45px" :placeholder='acc'></input>
+			계좌번호 <input type="text" id="text1" v-model="account" style="margin-left: 45px" :placeholder='acc' onkeypress='return checkNumber(event)' maxlength='13'></input>
 		</div>
-		<button @click="fnfix" style="width: 200px; height: 35px; margin-top: 50px; margin-bottom: 200px;">수정하기</button>
+		<button @click="fnfix" style="width: 200px; height: 35px; margin-top: 50px">수정하기</button>
 
 	</div>
+	<script>
+	function checkNumber(event) {
+		  if(event.key >= 0 && event.key <= 9) {
+		    return true;
+		  }
+		  
+		  return false;
+		}
+	
+	
+	</script>
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
@@ -86,10 +100,14 @@ body {
 			nickname : "${usernickname}",
 			phonenum : "${userphonenum}",
 			account : "${useraccount}",
+			acc : "",
 			pwdtext : "",
+			pwdtext2: "",
+			pwdtext3: "",
 			pwdtextCheck: false,
 			nickcheck : false,
 			user : ${userVO},
+			pwSame : false
 
 		},
 		methods : {
@@ -106,9 +124,14 @@ body {
 					data : nparmap,
 					success : function(data) {
 						//self.list = data.list;
-						if (data.num > 0) {
+						if(self.nickname == "${usernickname}"){
+							alert("변경할 닉네임을 입력해주세요.");
+						}
+						else if (data.num > 0) {
 							alert("중복된 닉네임 입니다.");
-						} else {
+						}
+						
+						else {
 							alert("사용하실수 있는 닉네임입니다.");
 							self.nickcheck = true;
 						} 
@@ -130,7 +153,8 @@ body {
 							|| !pattern3.test(self.pwd)
 							|| self.pwd.length<8||self.pwd.length>16) {
 						self.pwdtext = "❗ 영문, 숫자, 특수기호를 모두 사용하여, 8자리 이상 16자리 이하로 구성하세요. \n❗❗ 사용가능한 특수 문자 : ~!@\#$%<>^&* ";
-						
+						self.pwdtext2 =	"❗❗ 사용가능한 특수 문자 : ~!@\#$%<>^&* ";
+						self.pwd = "";
 						self.pwdtextCheck = false;
 					} else {
 						self.pwdtext = "올바른 비밀번호 형태입니다.";
@@ -139,6 +163,17 @@ body {
 					}
 				
 
+			}
+			, fnPwSame : function(){
+				var self = this;
+				var nparmap = {pwd : self.pwd, pwd2 : self.pwd2};
+				if (self.pwd != self.pwd2) {
+					self.pwdtext3 = "❗ 비밀번호가 일치하지 않습니다.";
+					self.pwSame = false;
+				} else{
+					self.pwdtext3 = "비밀번호가 일치합니다";	
+					self.pwSame = true;
+				}
 			}
 			,fnfix : function() {
 

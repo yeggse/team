@@ -212,9 +212,9 @@ body{
 		<div class="div1">
 			주민번호 
 			<div>
-				<input type="text" class="input3" v-model="age" ></input>
-				- <input type="password" class="input3" v-model="age1"></input>
-				<button @click="" class="btn1">실명인증</button>
+				<input type="text" class="input3" v-model="age" onkeypress='return checkNumber(event)' maxlength='6'></input>
+				- <input type="password" class="input3" v-model="age1" onkeypress='return checkNumber(event)' maxlength='7'></input>
+				<button @click="fnPeople" class="btn1">실명인증</button>
 			</div>
 		</div>
 		
@@ -235,7 +235,7 @@ body{
 		<div class="div1">
 			닉네임 
 			<div>
-				<input type="text" class="input2"  v-model="nickname" @change="nickcheck1" ></input>
+				<input type="text" class="input2"  v-model="nickname" maxlength='10' @change="nickcheck1" ></input>
 				<button @click="fnnickCheck" class="btn1">중복확인</button>
 			</div>
 		</div>
@@ -244,7 +244,7 @@ body{
 		<div class="div1">
 			연락처 
 			<div>
-				<input type="text" class="input1" v-model="num" placeholder="전화번호 입력"></input>
+				<input type="text" class="input1" v-model="num" placeholder="-빼고 핸드폰번호 11자리를 입력해주세요" onkeypress='return checkNumber(event)' maxlength='11'></input>
 			</div>
 		</div>
 		
@@ -252,7 +252,7 @@ body{
 		<div class="div1">
 			계좌번호 
 			<div>
-				<input type="text" class="input1" v-model="account" placeholder="계좌번호 입력" ></input>
+				<input type="text" class="input1" v-model="account" placeholder="-빼고 계좌번호 13자리를 입력해주세요" onkeypress='return checkNumber(event)' maxlength='13'></input>
 			</div>
 		</div>
 		
@@ -268,6 +268,19 @@ body{
 		</div>
 		
 	</div>
+	<script>
+	function checkNumber(event) {
+		  if(event.key === '.' 
+		     || event.key === '-'
+		     || event.key >= 0 && event.key <= 9) {
+		    return true;
+		  }
+		  
+		  return false;
+		}
+	
+	
+	</script>
 </body>
 <jsp:include page="/layout/footer.jsp"></jsp:include>
 </html>
@@ -297,6 +310,7 @@ body{
 					pwdtext2: "",
 					pwdtext3: "",
 					pwdtextCheck:false
+					,people : false
 					,siList : ${siList}
 					,guList : ${guList}
 				},
@@ -390,6 +404,7 @@ body{
 							acc : self.account,
 							name : self.name,
 							address : self.address,
+							address1 : self.address1,
 							frontregisnum : self.age,
 							afterregisnum : self.age1,
 							nickname : self.nickname,
@@ -397,8 +412,9 @@ body{
 							resnum : 0,
 							reskind : "",
 							region : "",
+							region1 : "",
 							resad : "",
-							resphone : 0,
+							resphone : "",
 							
 						};
 						console.log(nparmap);
@@ -412,11 +428,6 @@ body{
 							alert("아이디 중복확인을 해주세요");
 						} else if(!self.nickcheck){
 							alert("닉네임 중복확인을 해주세요");
-						} else if(!pattern1.test(self.num) ){
-							alert("연락처는 숫자만 입력해 주세요");
-						} else if(!pattern1.test(self.account)){
-							alert("계좌번호는 숫자만 입력해 주세요");
-							self.account ="";
 						} else if(!self.people){
 							alert("실명인증을 해 주세요");
 						} else {
@@ -476,16 +487,12 @@ body{
 					, fnPeople : function(){
 						var self = this;
 						var nparmap = {age : self.age, age1 : self.age1};
-						var pattern1 = /[0-9]/;
-						if(self.age == "" || self.age1 == ""){
-							alert("내용을 입력하세요");
-						} else if(!pattern1.test(self.age) || !pattern1.test(self.age1)){
-							alert("숫자만 입력하세요");
-							self.age ="";
-							self.age1 = "";
-						} else{
-							alert("실명인증이 확인되었습니다. 다만, 주민 뒷번호 체크필요~~~~~~");
+						if(self.age.length == 6 && self.age1.length == 7){
+							alert("실명인증이 확인되었습니다.");
 							self.people = true;
+						} 
+						else{
+							alert("정말로 전부 입력하셨나요?");
 						}
 						
 					}

@@ -5,9 +5,10 @@ public class Join {
 	private String pwd;
 	private String kind;
 	private String phonenum;
-	private long acc;
+	private String acc;
 	private String name;
 	private String address;
+	private String address1;
 	private int frontregisnum;
 	private int afterregisnum;
 	private String nickname;
@@ -15,8 +16,9 @@ public class Join {
 	private int resnum;
 	private String reskind;
 	private String region;
+	private String region1;
 	private String resad;
-	private int resphone;
+	private String resphone;
 	
 	public String getPhonenum() {
 		return phonenum;
@@ -24,10 +26,10 @@ public class Join {
 	public void setPhonenum(String phonenum) {
 		this.phonenum = phonenum;
 	}
-	public long getAcc() {
+	public String getAcc() {
 		return acc;
 	}
-	public void setAcc(long acc) {
+	public void setAcc(String acc) {
 		this.acc = acc;
 	}
 	public String getId() {
@@ -108,11 +110,26 @@ public class Join {
 	public void setResad(String resad) {
 		this.resad = resad;
 	}
-	public int getResphone() {
+	public String getResphone() {
 		return resphone;
 	}
-	public void setResphone(int resphone) {
+	public void setResphone(String resphone) {
 		this.resphone = resphone;
+	}
+	public String getAddress1() {
+		return address1;
+	}
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+	public String getRegion1() {
+		return region1;
+	}
+	public void setRegion1(String region1) {
+		this.region1 = region1;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 }
