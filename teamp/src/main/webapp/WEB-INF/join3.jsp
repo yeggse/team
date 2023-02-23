@@ -144,7 +144,7 @@ border: 0.15rem solid #dedede;
 border-left:none;
 }
 
-/*메뉴 갯수 선택버튼  */
+/*메뉴 갯수 선택버튼 */
 .itemBtn{
 width:3.5rem;
 height:8.1rem;
