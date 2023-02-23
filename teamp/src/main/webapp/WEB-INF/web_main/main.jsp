@@ -47,24 +47,9 @@ img{
 	text-align: center;
 }
 
-/* Number text (1/3 etc) */
-.numbertext {
-	color: #f2f2f2;
-	font-size: 0.75rem;
-	padding: 0.5rem 0.75rem;
-	position: absolute;
-	top: 0;
-}
 
 /* The dots/bullets/indicators */
 .dot {
-	height: 1rem;
-	width: 1rem;
-	margin: 0rem 0.125rem;
-	background-color: #bbb;
-	border-radius: 50%;
-	display: inline-block;
-	transition: background-color 0.3s ease;
 }
 .active {
 	background-color: #717171;
@@ -252,19 +237,16 @@ z-index: -100;
 <div class="slideshow-container">
 
 <div class="mySlides fade">
-  <div class="numbertext">1 / 3</div>
   <img src="https://www.adobe.com/kr/creativecloud/photography/hub/guides/media_159fdae2ae33a36aa49f0f2b79fcd72a312252c8f.jpeg?width=2000&format=webply&optimize=medium" style="width:100%; height:30rem">
   <div class="text"></div>
 </div>
 
 <div class="mySlides fade">
-  <div class="numbertext">2 / 3</div>
   <img src="http://www.kyongbuk.co.kr/news/photo/202203/2096330_527792_3845.jpg" style="width:100%; height:30rem">
   <div class="text"></div>
 </div>
 
 <div class="mySlides fade">
-  <div class="numbertext">3 / 3</div>
   <img src="https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/04/a0004023/img/basic/a0004023_main.jpg?20191226165401" style="width:100%; height:30rem">
   <div class="text"></div>
 </div>
@@ -277,7 +259,6 @@ z-index: -100;
   <span class="dot"></span> 
   <span class="dot"></span> 
 </div>
-<!-- 슬라이드 -->
 
 
 
@@ -299,11 +280,6 @@ z-index: -100;
 	<div class="wrap3">
 		<img src="img/main/세잎클로버.png" class="chatbox3">
 	</div>
-<!-- 지역설정 -->
-
-
-
-
 
 <!-- 음식카테고리 -->
 <div class="div4">
@@ -314,13 +290,6 @@ z-index: -100;
 <button id="imgbtn5" @click="fnSiChange3"></button>
 <button id="imgbtn6" @click="fnSiChange4"></button>
 </div>
-<!-- 음식카테고리 -->
-
-
-
-
-
-
 
 </div>
 
