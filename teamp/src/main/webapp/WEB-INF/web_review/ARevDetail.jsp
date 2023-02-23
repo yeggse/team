@@ -22,39 +22,61 @@
          }   
 	       #btn{
 		       background-color: #8FBC94;
-		       width: 80px;
+		       width: 120px;
 		       height: 40px;
-		       border-radius: 20px;
+		       border-radius: 10px;
 		       border: solid 2px #8FBC94;
 		       font-size: large;
 		       color: white;
 		       padding: 0px;
+		       margin-top:10px;
+		       margin-bottom:10px;
+		       margin-right:10px;
 	       }
 </style>
 <body>
 	<div id="app">
 		<div class="container">
-			<h2>리뷰 상세 보기🔎 사장님댓글까지 출력되도록~~ </h2>
+			<h2>리뷰 상세 보기🔎 </h2>
 			<div class="card">
 				<h2 class="card-header p-4">
 					업체명 : {{info.resname}}     
-					<span class="badge badge-pill badge-dark pull-right" style="font-size: large; float: right; ">업체 번호 : {{info.resnum}}</span>
-					<span class="badge badge-pill badge-dark pull-right" style="font-size: large; float: right;margin-right:40px;">카테고리 : {{info.categori}}</span>
-					<span class="badge badge-pill badge-dark pull-right" style="font-size: large; float: right;margin-right:40px;">리뷰번호 : {{info.reviewnum}}</span>
+					<span  style="font-size: large; float: right; ">업체 번호 : {{info.resnum}}</span>
+					<span  style="font-size: large; float: right;margin-right:40px;">카테고리 : {{info.categori}}</span>
+					<span  style="font-size: large; float: right;margin-right:40px;"> 리뷰번호 : {{info.reviewnum}}</span>
 				</h2>
 				<div class="card-body1">
 					<h4 style="font-size: large; margin-left: 20px;"> 제목 : {{info.title}}
-					<span class="badge badge-pill badge-dark pull-right" style="font-size: large; float: right;"> 작성자 : {{info.nickname}}</span></h4>
 				</div>
+				<div class="card-body1">
+					<h4 style="font-size: large; margin-left: 20px;"> 리뷰 작성일 : {{info.writedate}}
+					<span style="font-size: large; float: right;"> 작성자 : {{info.nickname}}</span></h4>
+				</div>				
 				<div class="card-body1">
 				   	<div style="margin: 10px 10px 10px 10px;">
 				   		{{info.content}}
 				   	</div>
 			   	</div>
+			   </div>
+			   	<div v-if="info.answer=='N'">
+			 		<div class="card" style="margin-bottom:0px; margin-top:40px;">
+			 			<h2 class="card-header" style=" font-size:large; font-weight:600; text-align: center;"> 사장님께서 작성한 댓글이 없습니다😥</h2>
+			 		</div>
+			 	</div>
+				<div v-else>
+			 	<div class="card" style="margin-bottom:0px; margin-top:40px;">
+			 	<h2 class="card-header" style=" font-size:large; font-weight:600; text-align: center;"> 사장님께서 작성하신 댓글입니다😊	 </h2>
+				</div>
+					<div class = "card-body1" style="margin-top:0px; width: -webkit-fill-available; height: 200px;">{{info.comments}}</div>
+				</div>
+				
+				
+			
+			<div>
+		 		<button @click="fnList" id="btn" style="float: right;">목록으로</button> 
+				<button @click="fnCheck" id="btn" style="float: right;">리뷰 삭제</button>
 			</div>
-		 	<button @click="fnList" class="btn" style="float: right;">목록으로</button> 
-			<button @click="fnCheck" class="btn" style="float: right;">리뷰 삭제</button>
-		</div>
+		
 	</div>
 	        
 	</div>
@@ -71,22 +93,24 @@ var app = new Vue({
        , userId : "${userId}"	//세션으로 id가져오기 - admin을 의미함
        , comment : ""
        , commentList : []
-       
+       , answer : ""       
+       , comments : ""      
     }   
     , methods: {
-    	// 회원정보 출력
-    	fnGetMember : function(){
+    	// 상세 기본 출력
+    	fnGetReview : function(){
             var self = this;
-            var nparmap = {reviewnum : self.reviewnum};
+            var nparmap = {reviewnum : self.reviewnum, comments:self.comments};
             $.ajax({
                 url:"/ARevDetail.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
                 success : function(data) {                                       
-	                self.info = data.board;	// serviceImp 파트에서 넘어오는 것!
-	                //self.commentList = data.commentList;
-	                console.log(self.idx);
+	                self.info = data.board;
+		               
+	                self.commentList = data.board;
+	                console.log(self.commentList);
                 }
             }); 
         }
@@ -152,7 +176,7 @@ var app = new Vue({
     }   
     , created: function(){
     	var self = this;
-    	self.fnGetMember(); 
+    	self.fnGetReview(); 
 	}
 });
 </script> 

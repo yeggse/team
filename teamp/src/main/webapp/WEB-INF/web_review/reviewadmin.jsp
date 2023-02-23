@@ -253,7 +253,7 @@ var app = new Vue({
 		}
 		, fnDetail : function(item){
 			var self = this;
-			self.pageChange("/arevdetail.do", {reviewnum : item.reviewnum});	// 상세페이지로 해당 id를 넘겨줌~~!
+			self.pageChange("/arevdetail.do", {reviewnum : item.reviewnum, resname:self.resname});	
 		}
 		// 화면 전환 for 상세 확인
 		, pageChange : function(url, param) {

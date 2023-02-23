@@ -46,11 +46,18 @@
 	<!-- 관리자 리뷰 상세 출력 // 동일 칼럼명 들어가 있을 경우. t i 등 지정필수 -->
 	<select id="ARevDetail" resultType="com.example.demo.model.Review">	
 		SELECT 
-			reviewnum, categori, resnum ,title, writedate, content, grade, nickname, create_id, resname
+			t.reviewnum, categori, resnum, title, writedate, content, grade, nickname, reskind,  answer, addr.img, comments, addr.writer, addr.createdate, t.resname
 		FROM
-			t3_review
+		t3_review t  
+        LEFT OUTER JOIN  
+		(SELECT 
+			ra.comments, ra.writer, ra.createdate, img, a.reviewnum
+		FROM
+			t3_review a
+		LEFT OUTER JOIN t3_review_answer ra on ra.reviewnum = a.reviewnum
+		LEFT OUTER JOIN t3_review_img i  on i.reviewnum = a.reviewnum ) addr on addr.reviewnum = t.reviewnum 
 		WHERE
-			reviewnum = #{reviewnum}
+			t.reviewnum = #{reviewnum}
 	</select>
 	
 	<!-- 관리자 리뷰 삭제 -->
@@ -75,6 +82,7 @@
 				,nickname
 				,answer
 				,a.comments
+				
 			FROM
 				t3_review t
 			LEFT OUTER JOIN t3_review_answer a on a.reviewnum = t.reviewnum 
@@ -122,14 +130,6 @@
 	
 	<!-- 리뷰 상세 출력 // 동일 칼럼명 들어가 있을 경우. t i 등 지정필수 -->
 	<select id="detailReviewboard" resultType="com.example.demo.model.Review">	
-<!-- 		SELECT 
-			t.reviewnum, categori, resnum, title, writedate, content, grade, nickname, reskind, img, answer
-		FROM
-			t3_review t
-		LEFT OUTER JOIN t3_review_img i on t.reviewnum = i.reviewnum 
-		WHERE
-			t.reviewnum = #{reviewnum} -->
-			
 		SELECT 
 			t.reviewnum, categori, resnum, title, writedate, content, grade, nickname, reskind,  answer, addr.img, comments, addr.writer, addr.createdate
 		FROM

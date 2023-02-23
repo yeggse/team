@@ -67,6 +67,7 @@ public class ReviewController {
    		resultMap.put("cnt", cnt);	// 숫자 세기
    		return new Gson().toJson(resultMap);
    	}
+    
     // 웹 주소 :  관리자용 리뷰 상세보기
     @RequestMapping("/arevdetail.do") 
     public String ARevDetail(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{

@@ -98,7 +98,7 @@
 		<div></div>
 	<!-- 	<div class="table-list"> -->
 			<div class="container">
-			<h2>식당 종류별 리뷰 관리🙆‍♀️</h2>
+			<h2>식당 종ㅇㅇㅇ류별 리뷰 관리🙆‍♀️</h2>
 			<div class="form-item input-group mb-3 " style="text-align: center; margin-left: 620px; float: left;">
 				<input id="input" style="width: 300px; padding: 2px;" type="text" placeholder="어떤 점포의 리뷰를 찾으시나요?" v-model="resname"  v-on:keyup.enter="fnGetReview"></input>
 				<button id="btn" @click="fnGetReview">검색</button>	
@@ -180,6 +180,7 @@ var app = new Vue({
 	        , selectedItemList:[]
 	        , reskind: "${map.reskind}"
 			, flg : "${map.flg}"
+			,resname :  "${resname}"
 			, resname : ""
 			, categori : ""
 		},
@@ -253,7 +254,7 @@ var app = new Vue({
 		}
 		, fnDetail : function(item){
 			var self = this;
-			self.pageChange("/arevdetail.do", {reviewnum : item.reviewnum});	// 상세페이지로 해당 id를 넘겨줌~~!
+			self.pageChange("/detailReviewboard.do", {reviewnum : item.reviewnum});
 		}
 		// 화면 전환 for 상세 확인
 		, pageChange : function(url, param) {

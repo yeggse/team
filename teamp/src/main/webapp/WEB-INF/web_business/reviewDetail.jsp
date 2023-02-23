@@ -94,7 +94,7 @@ var app = new Vue({
        
     }   
     , methods: {
-    	// 게시글 상세 기본 출력
+    	// 상세 기본 출력
     	fnGetReview : function(){
             var self = this;
             var nparmap = {reviewnum : self.reviewnum, comments:self.comments};
