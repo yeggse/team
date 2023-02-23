@@ -92,6 +92,8 @@ width:2rem;
 .container {
 max-width:70rem; margin:auto; margin-top: 8rem;
 }	/* 게시글 출력 파트 */
+	.board_list thead th:first-child {background-image:none;}
+	.board_list thead th {border-bottom:1px solid #ccc; padding:13px 0; color:#3e4149; text-align: center; vertical-align:middle;}
 .board_list {
 table-layout:; width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:1rem 0rem;
 }

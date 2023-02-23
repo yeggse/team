@@ -54,7 +54,7 @@ height:6rem;
 } 
 
 /* ----------------------------------------------------- */
-#input {
+#inputt {
    width: 25rem;
    margin-top: 0rem;
    padding: 0.66rem;
@@ -66,8 +66,8 @@ height:6rem;
 #btn{
 	background-color: #8FBC94;
 	width: 5rem;
-	height: 2.5rem;
-	border-radius: 1.25rem;
+	height: 3rem;
+	border-radius: 0.9rem;
 	border: solid 2px #8FBC94;
 	font-size: large;
 	color: white;
@@ -105,6 +105,8 @@ max-width:70rem; margin:auto; margin-top: 8rem; z-index:-100px;
 .board_list {
 table-layout:; width:100%; border-top:2px solid #252525; border-bottom:1px solid #ccc; margin:1rem 0rem;
 }
+	.board_list thead th:first-child {background-image:none;}
+	.board_list thead th {border-bottom:1px solid #ccc; padding:13px 0; color:#3e4149; text-align: center; vertical-align:middle;}
 .board_list tbody td {
 border-top:1px solid #ccc; padding:0.8rem 0rem; text-align:center; vertical-align:middle;
 }
@@ -126,7 +128,7 @@ background:gray;
 			<h2>세잎 메뉴관리</h2>
 			<div style="text-align: center;">
 			
-				<input type="text" placeholder="메뉴명을 검색해 주세요" v-model="menuname"  v-on:keyup.enter="fnGetList"></input>
+				<input type="text" id="inputt" placeholder="메뉴명을 검색해 주세요" v-model="menuname"  v-on:keyup.enter="fnGetList"></input>
 				<button id="btn" @click="fnGetList" >검색</button>	
 				
 			</div>
@@ -186,12 +188,9 @@ background:gray;
 			 </paginate>
 			  </div>
 			  
-		  	<div>
-		  	<!-- v-if에 조건을 'kind'가 '사업자라면'으로 변경하기  -->
+		  	<div style="margin-bottom:400px;">
 		  		<button  @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
 		  		<button  @click="fnRemove" class="myButton" style="float: right; margin-right : 5px;">삭제</button>
-		  		<!-- <button v-if="'admin' == userId" @click="fnAdd" class="myButton" style="float: right; margin-right: 10px;">작성하기</button>
-		  		<button v-if="'admin' == userId" @click="fnRemove" class="myButton" style="float: right; margin-right : 5px;">삭제</button> -->
 		  	</div>
 		  	
 		  </div>	
