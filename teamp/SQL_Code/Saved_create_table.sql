@@ -118,5 +118,10 @@ CREATE TABLE `t3_review_img` (
   `img` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`reviewnum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
+CREATE TABLE `t_area` (
+  `idx` int NOT NULL,
+  `si` varchar(45) DEFAULT NULL,
+  `gu` varchar(45) DEFAULT NULL,
+  `dong` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
