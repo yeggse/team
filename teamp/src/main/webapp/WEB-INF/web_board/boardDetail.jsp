@@ -33,6 +33,28 @@
 	       		.containers {
 			max-width:60rem; margin:auto; margin-top: 12rem; z-index:-100px;
 		}
+		.myButton {
+			box-shadow:inset 0px 1px 0px 0px #a4e271;
+			background-color:#a5d296;
+			border-radius:6px;
+			border:1px solid #74b807;
+			display:inline-block;
+			cursor:pointer;
+			color:#ffffff;
+			font-family:Arial;
+			font-size:15px;
+			font-weight:bold;
+			padding:6px 24px;
+			text-decoration:none;
+		}
+		.myButton:hover {
+			background:linear-gradient(to bottom, #77a809 5%, #89c403 100%);
+			background-color:#77a809;
+		}
+		.myButton:active {
+			position:relative;
+			top:1px;
+		}
 </style>
 <body>
 	<div id="app">
@@ -59,8 +81,8 @@
 				{{item.nickname}}({{item.startdate}}) : {{item.content}}
 			</div>
 			<div style="margin-bottom:100px;">
-		 	<button @click="fnList" class="btn" style="float: right;">목록으로</button> 
-		 	<button v-if="'admin' == userId"  @click="fnEdit" class="btn">수정하기</button>	 
+		 	<button @click="fnList" class="myButton" style="float: right;">목록으로</button> 
+		 	<button v-if="'admin' == userId"  @click="fnEdit" class="myButton">수정하기</button>	 
 		 	</div>	
 		</div>
 	</div>
