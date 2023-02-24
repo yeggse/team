@@ -63,9 +63,6 @@
 					<td><input type="text" id="title" name="supply" v-model="supply" style="font-size: 1.3em; font-weight: 600;"></td>
 					<td style="text-align : center; width: 15%;" ><h1>픽업 시간</h1></td>
 					<td>
-						<!-- <input type="text" id="title" name="pickuptime" v-model="pickuptime" style="font-size: 1.3em; font-weight: 600;"> -->
-						
-						
 					<form action="#" style="float: left; display: contents;">
 						<select style="width: 410px; height: 50px; font-size: 
 							large; font-weight: bold; text-align: center;" v-model="pickuptime">
