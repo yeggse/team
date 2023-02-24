@@ -76,8 +76,8 @@
 				
 			
 			<div>
-		 		<button @click="fnList" id="btn" style="float: right;">목록으로</button> 
-				<button @click="fnCheck" id="btn" style="float: right;">리뷰 삭제</button>
+		 		<button @click="fnList" id="btn" style="float: right; margin-bottom: 200px;">목록으로</button> 
+				<button @click="fnCheck" id="btn" style="float: right; margin-bottom: 200px;">리뷰 삭제</button>
 			</div>
 		
 	</div>

@@ -152,6 +152,7 @@
 		<!-- 페이지 넘어가는 버튼들 -->		
 			<template>
 			<paginate
+				style=" margin-bottom: 200px;"
 			    :page-count="pageCount"
 			    :page-range="3"
 			    :margin-pages="2"
