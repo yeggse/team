@@ -44,7 +44,7 @@
 <jsp:include page="/layout/businesspagebody.jsp"></jsp:include>
 	<div id="app" style="height: 900px;">
 		<div class="contain">
-				<h2>메뉴 추가하기📝 {{reskind}}</h2>
+				<h2>메뉴 추가하기📝</h2>
 			<table class="board_detail" style="margin-top: 20px;">
 				<colgroup>
 					<col width="10%"/>
@@ -53,16 +53,51 @@
 					<col width="20%"/>
 				</colgroup>
 				<tr style="border-bottom:2px solid #ccc;">
-					<td style="text-align : center; width: 15%;" ><h1>음식명 {{resnum}}</h1></td>
+					<td style="text-align : center; width: 15%;" ><h1>음식명</h1></td>
 					<td><input type="text" id="title" name="menuname" v-model="menuname" style="font-size: 1.3em; font-weight: 600;"></td>
 					<td style="text-align : center; width: 15%;" ><h1>가격</h1></td>
 					<td><input type="text" id="title" name="price" v-model="price" style="font-size: 1.3em; font-weight: 600;"></td>
 				</tr>
 				<tr style="border-bottom:2px solid #ccc;">
-					<td style="text-align : center; width: 15%;" ><h1>재고 {{userId}}</h1></td>
+					<td style="text-align : center; width: 15%;" ><h1>재고</h1></td>
 					<td><input type="text" id="title" name="supply" v-model="supply" style="font-size: 1.3em; font-weight: 600;"></td>
 					<td style="text-align : center; width: 15%;" ><h1>픽업 시간</h1></td>
-					<td><input type="text" id="title" name="pickuptime" v-model="pickuptime" style="font-size: 1.3em; font-weight: 600;"></td>
+					<td>
+						<!-- <input type="text" id="title" name="pickuptime" v-model="pickuptime" style="font-size: 1.3em; font-weight: 600;"> -->
+						
+						
+					<form action="#" style="float: left; display: contents;">
+						<select style="width: 410px; height: 50px; font-size: 
+							large; font-weight: bold; text-align: center;" v-model="pickuptime">
+							<option value="1시">1시</option>
+							<option value="2시">2시</option>
+							<option value="3시">3시</option>
+							<option value="4시">4시</option>
+							<option value="5시">5시</option>
+							<option value="6시">6시</option>
+							<option value="7시">7시</option>
+							<option value="8시">8시</option>
+							<option value="9시">9시</option>
+							<option value="10시">10시</option>
+							<option value="11시">11시</option>
+							<option value="12시">12시</option>							
+							<option value="13시">13시</option>
+							<option value="14시">14시</option>
+							<option value="15시">15시</option>
+							<option value="16시">16시</option>
+							<option value="17시">17시</option>
+							<option value="18시">18시</option>			
+							<option value="19시">19시</option>
+							<option value="20시">20시</option>
+							<option value="21시">21시</option>
+							<option value="22시">22시</option>
+							<option value="23시">23시</option>						
+							<option value="24시">24시</option>	
+						</select>
+					</form> 
+					
+					
+					</td>
 				</tr>				
 				<tr style="border-bottom:2px solid #ccc;">
 					<td  style="text-align : center; width: 15%; " ><h1>첨부파일</h1></td>
