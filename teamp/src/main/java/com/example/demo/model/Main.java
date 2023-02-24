@@ -18,7 +18,7 @@ public class Main {
    private int totalprice;
    private String review;
    private String salecomple;
-   private int resacc;
+   private long resacc;
    private String average;
    
    
@@ -119,10 +119,10 @@ public String getResadd() {
 public void setResadd(String resadd) {
 	this.resadd = resadd;
 }
-public int getResacc() {
+public long getResacc() {
 	return resacc;
 }
-public void setResacc(int resacc) {
+public void setResacc(long resacc) {
 	this.resacc = resacc;
 }
 public String getAverage() {
