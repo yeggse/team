@@ -15,13 +15,16 @@
 		
 		select r.resnum, r.region, r.startdate, r.reskind, r.resname, r.resphone, r.grade, r.resadd, t.average
 		from t3_restaurant r
-		INNER JOIN (
+		LEFT JOIN (
 			select r.resnum, avg(r2.grade) as average from t3_restaurant r
-			INNER JOIN t3_review r2 on r.resnum = r2.resnum
+			LEFT JOIN t3_review r2 on r.resnum = r2.resnum
 			group by r.resnum
 		) t on r.resnum = t.resnum
 		where 
-		r.region = #{si} AND r.reskind = #{reskind} And (r.region1 =#{gu} or #{flg})
+		r.region = #{si} AND r.reskind = #{reskind}
+		<if test='gu != null and gu != "" and gu =="0"'> 
+			And r.region1 =#{gu}
+		</if>
 		<if test='recommend != null and recommend != "" and recommend=="0"'>
 			ORDER BY r.resnum ASC
 		</if>
