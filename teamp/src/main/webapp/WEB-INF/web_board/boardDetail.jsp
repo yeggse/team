@@ -20,16 +20,6 @@
             border-radius: 10px;
             border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
          }   
-	       #btn{
-		       background-color: #8FBC94;
-		       width: 80px;
-		       height: 40px;
-		       border-radius: 20px;
-		       border: solid 2px #8FBC94;
-		       font-size: large;
-		       color: white;
-		       padding: 0px;
-	       }
 	       		.containers {
 			max-width:60rem; margin:auto; margin-top: 12rem; z-index:-100px;
 		}

@@ -20,16 +20,28 @@
             border-radius: 10px;
             border: solid 2px #8FBC94;	/* 외부 테두리 선  =>  border: none => 선 없음. border: solid 1.74px yellow; 등으로 활용*/
          }   
-	       #btn{
-		       background-color: #8FBC94;
-		       width: 80px;
-		       height: 40px;
-		       border-radius: 20px;
-		       border: solid 2px #8FBC94;
-		       font-size: large;
-		       color: white;
-		       padding: 0px;
-	       }
+		.myButton {
+			box-shadow:inset 0px 1px 0px 0px #a4e271;
+			background-color:#a5d296;
+			border-radius:6px;
+			border:1px solid #74b807;
+			display:inline-block;
+			cursor:pointer;
+			color:#ffffff;
+			font-family:Arial;
+			font-size:15px;
+			font-weight:bold;
+			padding:6px 24px;
+			text-decoration:none;
+		}
+		.myButton:hover {
+			background:linear-gradient(to bottom, #77a809 5%, #89c403 100%);
+			background-color:#77a809;
+		}
+		.myButton:active {
+			position:relative;
+			top:1px;
+		}
 </style>
 <body>
 	<div id="app">
@@ -56,9 +68,9 @@
 				   	</div>
 			   	</div>
 			</div>
-		 	<button @click="fnList" class="btn" style="float: right;">목록으로</button> 
-		 	<button v-if="'admin' == userId"  @click="fnEdit" class="btn">수정하기</button>	 	
-			<button @click="fnCheck" class="btn" style="float: right;">회원 삭제</button>
+		 	<button @click="fnList" class="myButton" style="float: right;">목록으로</button> 
+		 	<button v-if="'admin' == userId"  @click="fnEdit" class="myButton">수정하기</button>	 	
+			<button @click="fnCheck" class="myButton" style="float: right; margin-right:30px;">회원 삭제</button>
 		</div>
 	</div>
 	        
