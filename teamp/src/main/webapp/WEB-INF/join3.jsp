@@ -312,25 +312,25 @@ background: #gray;
 										</div>
 										<div style="margin-top: 20px;">
 											<label style="display: inline-flex;"><pre>전화번호 </pre></label>
-											<input type="text" :placeholder='phoneNum' readonly></input>
+											<input style="margin-left: 25px;" type="text" :placeholder='phoneNum' readonly></input>
 										</div>
 										<div style="margin-top: 20px;">
 											<label style="display: inline-flex;"><pre>본인 계좌번호 </pre></label>
-											<input type="text" :placeholder='acc' readonly></input>
+											<input style="margin-right: 35px;" type="text" :placeholder='acc' readonly></input>
 										</div>
-										<div style="margin-top: 20px;">
+										<!-- <div style="margin-top: 20px;">
 											<label style="display: inline-flex;"><pre>사장님 계좌번호 </pre></label>
-											<input type="text" :placeholder='res.resacc' readonly></input>
-										</div>
+											<input style="margin-right: 55px;" type="text" :placeholder='res.resacc' readonly></input>
+										</div> -->
 										<div style="margin-top: 20px; margin-bottom: 5px">
 											<label style="display: inline-flex;"><pre>결제방법 </pre></label>
-											<form action="#" style="display: inline;">
+											<form action="#" style="display: inline; margin-left: 75px;">
 												<!-- 나란히 만들기 위해서 display: inline -->
 												<select
 													style="width: 400px; height: 40px; font-size: large; font-weight: bold;"
 													v-model="payment">
 													<option value="CASH">만나서 현금 결제</option>
-													<option value="account">계좌 이체</option>
+													<!-- <option value="account">계좌 이체</option> -->
 													<option value="card">만나서 카드 결제</option>
 												</select>
 											</form>
