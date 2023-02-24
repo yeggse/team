@@ -352,7 +352,7 @@ background: #gray;
 			</div>
 
 			<!-- 여기까지 테스트 -->
-			
+			<div v-show ="!flg">
 				<div id="contents" style="width:825px">
 					<div id="js-load" class="main">
 						<ul class="container lists" >
