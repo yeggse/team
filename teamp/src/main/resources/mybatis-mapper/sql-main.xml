@@ -5,14 +5,6 @@
 <mapper namespace="com.example.demo.mapper.MainMapper">	
 	<!-- 기본 출력 -->
 	<select id="firstList" parameterType="hashmap" resultType="com.example.demo.model.Main">	
-		<!-- SELECT
-			resnum, region, startdate, reskind, resname, resphone, grade, resadd
-		FROM
-			t3_restaurant	
-		where 
-		region = #{si} AND reskind = #{reskind} And (region1 =#{gu} or #{flg}) 시/도에 있는거 가져오기 
-		ORDER BY resnum ASC -->
-		
 		select r.resnum, r.region, r.startdate, r.reskind, r.resname, r.resphone, r.grade, r.resadd, t.average
 		from t3_restaurant r
 		LEFT JOIN (
