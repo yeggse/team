@@ -353,15 +353,15 @@ background: #gray;
 
 			<!-- 여기까지 테스트 -->
 			<div v-show ="!flg">
-				<div id="contents" style="width:825px">
+				<div id="contents">
 					<div id="js-load" class="main">
 						<ul class="container lists" >
 							<h2>리뷰 상세보기</h2>
-							<li class="card lists_item js-load" v-for="(item, index) in list1" style ="z-index:-100;">
+							<li class="card lists__item js-load" v-for="(item, index) in list1" style ="z-index:-100;">
 								<h2 class="card-header p-4">제목 : {{item.title}}</h2>
 								<div class="card-body1">
 									<h4 style="font-size: large; margin-left: 20px;">
-										분류 : {{item.categori}} 
+										분류 : {{item.categori}}
 										<span class="badge badge-pill badge-dark pull-right"
 											style="font-size: large; float: right;">
 											작성일 :{{item.writedate}}</span>
@@ -370,12 +370,12 @@ background: #gray;
 								<div class="card-body">
 									<div v-if="item.img != undefined"
 										style="margin: 10px 10px 10px 10px;">
-										info.img : 이미지 경로(img/이미지 이름) DB 컬럼이랑 동일한 이름으로!
+										
 										<img :src="item.img" />
-										src앞에 콜론: 을 붙이면 변수로 지정가능
+										{{item.content}}
+										
 									</div>
-									<div style="margin: 10px 10px 10px 10px;">
-										{{item.content}}</div>
+									
 								</div>
 								<div class="card-body" v-if=" item.answer != null "
 									style="font-size: 20px;">
