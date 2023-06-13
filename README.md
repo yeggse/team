@@ -85,7 +85,7 @@
 > 📌[결제 구현 시연](https://blog.naver.com/leehv1234/223029056834) 📌[코드 보기](https://github.com/yeggse/team/blob/7bf527c0c34b3e076e2bfd0d5ff28693ddeaf599/teamp/src/main/webapp/WEB-INF/web_store/payment.jsp)
 >
 > 📌[게시판 구현 시연](https://blog.naver.com/leehv1234/223091293776)
-  (https://github.com/yeggse/team/tree/7bf527c0c34b3e076e2bfd0d5ff28693ddeaf599/teamp/src/main/webapp/WEB-INF/web_board)
+  📌[코드 보기](https://github.com/yeggse/team/tree/7bf527c0c34b3e076e2bfd0d5ff28693ddeaf599/teamp/src/main/webapp/WEB-INF/web_board)
 >
 </details>
 
